@@ -1,9 +1,5 @@
-# New ports collection makefile for:	tcpillust
-# Date created:		14 April 2000
-# Whom:			nishida@sfc.wide.ad.jp
-#
+# Created by: nishida@sfc.wide.ad.jp
 # $FreeBSD$
-#
 
 PORTNAME=	tcpillust
 PORTVERSION=	2.01
@@ -13,12 +9,12 @@ CATEGORIES=	net tcl tk
 MASTER_SITES=	http://www.jp.nishida.org/tcpillust/
 
 MAINTAINER=	nishida@sfc.wide.ad.jp
-COMMENT=	A graphical TCP connection analysis tool
+COMMENT=	Graphical TCP connection analysis tool
 
+USES=		motif
 USE_TCL=	yes
 USE_TK=		yes
 USE_XORG=	xt
-USE_MOTIF=	yes
 
 MAN1=		tcpillust.1
 PORTDOCS=	tcpclient.log tcpserver.log

@@ -12,14 +12,16 @@ MAINTAINER=	cy@FreeBSD.org
 COMMENT=	File system security and verification program
 
 LICENSE=	GPLv2
+
 NO_LICENSES_INSTALL=	yes
 LATEST_LINK=	${PORTNAME}
 MAN5=		twfiles.5 twconfig.5 twpolicy.5
 MAN8=		siggen.8 tripwire.8 twadmin.8 twintro.8 twprint.8
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}-src
+MAKE_JOBS_UNSAFE=	yes
+USES=		gmake
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 MAKE_ARGS=	SYSPRE=${ARCH}-unknown-freebsd
 IS_INTERACTIVE=	yes
 M4=		/usr/bin/m4
@@ -163,18 +165,17 @@ create-database:
 .if ${PORT_OPTIONS:MSW_ONLY} && ${WITH_SW_ONLY} == "true"
 	@ ${ECHO} SW_ONLY has been specified, database will not be built.
 .else
-	@ ${MKDIR} -p ${TWCFG} ${TWPOLICY} ${TWSITEKEYDIR} ${TWLOCALKEYDIR} \
+	@ ${MKDIR} ${TWCFG} ${TWPOLICY} ${TWSITEKEYDIR} ${TWLOCALKEYDIR} \
 		${TWDB} ${TWREPORT}
 	@ ${ECHO} Creating tripwire database
 	@ cd ${TWCFG} && ${PREFIX}/sbin/tripwire --init
 	@ ${ECHO_CMD}
 	@ ${ECHO} The tripwire database, configuration file and
 	@ ${ECHO} policy file are signed using the local and site keys,
-	@ ${ECHO} therefore according to the support staff at
-	@ ${ECHO} tripwiresecurity.com, creating a floppy is not necessary.
+	@ ${ECHO} therefore the authors suggest creating a floppy is not necessary.
 .endif
 .endif
 
 post-install:	install-config-files create-database make-pkg-install
-	
+
 .include <bsd.port.post.mk>

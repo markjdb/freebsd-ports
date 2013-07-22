@@ -9,6 +9,7 @@
     SUBDIR += R-cran-stringr
     SUBDIR += R-cran-xtable
     SUBDIR += ack
+    SUBDIR += adabrowse
     SUBDIR += add-css-links
     SUBDIR += af-aspell
     SUBDIR += aft
@@ -771,6 +772,7 @@
     SUBDIR += p5-Text-Brew
     SUBDIR += p5-Text-CSV
     SUBDIR += p5-Text-CSV-Encoded
+    SUBDIR += p5-Text-CSV-Hashify
     SUBDIR += p5-Text-CSV-Simple
     SUBDIR += p5-Text-CSV_XS
     SUBDIR += p5-Text-Capitalize
@@ -1187,6 +1189,7 @@
     SUBDIR += py-rxp
     SUBDIR += py-sgrep
     SUBDIR += py-sphinx
+    SUBDIR += py-sphinxcontrib-adadomain
     SUBDIR += py-sphinxcontrib-bitbucket
     SUBDIR += py-stripogram
     SUBDIR += py-syck
@@ -1298,6 +1301,7 @@
     SUBDIR += rubygem-escape_utils
     SUBDIR += rubygem-ezamar
     SUBDIR += rubygem-fast_xs
+    SUBDIR += rubygem-fast_xs073
     SUBDIR += rubygem-ferret
     SUBDIR += rubygem-formosa
     SUBDIR += rubygem-heredoc_unindent
@@ -1340,6 +1344,7 @@
     SUBDIR += rubygem-xml-simple
     SUBDIR += rubygem-xslt
     SUBDIR += rubygem-yard
+    SUBDIR += rubygem-zmq
     SUBDIR += rw-aspell
     SUBDIR += rxp
     SUBDIR += s5
@@ -1460,7 +1465,6 @@
     SUBDIR += txt2html
     SUBDIR += txt2man
     SUBDIR += txt2tags
-    SUBDIR += ua-ispell
     SUBDIR += uim
     SUBDIR += uim-el
     SUBDIR += uim-el-emacs21

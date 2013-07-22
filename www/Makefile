@@ -1297,6 +1297,7 @@
     SUBDIR += p5-WWW-Shorten-Googl
     SUBDIR += p5-WWW-Shorten-KUSO
     SUBDIR += p5-WWW-Shorten-NotLong
+    SUBDIR += p5-WWW-Shorten-Yourls
     SUBDIR += p5-WWW-Shorten-isgd
     SUBDIR += p5-WWW-SourceForge
     SUBDIR += p5-WWW-Spinn3r
@@ -1519,7 +1520,6 @@
     SUBDIR += py-django-tagging
     SUBDIR += py-django-tastypie
     SUBDIR += py-django-threaded-multihost
-    SUBDIR += py-django13
     SUBDIR += py-django14
     SUBDIR += py-django_compressor
     SUBDIR += py-djangotoolbox
@@ -1690,6 +1690,7 @@
     SUBDIR += quixote
     SUBDIR += qupzilla
     SUBDIR += red5
+    SUBDIR += redaxo
     SUBDIR += redmine
     SUBDIR += redmine-backlogs
     SUBDIR += redmine-basecamp
@@ -1749,6 +1750,7 @@
     SUBDIR += rubygem-feed-normalizer
     SUBDIR += rubygem-feedzirra
     SUBDIR += rubygem-haml
+    SUBDIR += rubygem-haml-coderay
     SUBDIR += rubygem-hpricot
     SUBDIR += rubygem-http-cookie
     SUBDIR += rubygem-httparty
@@ -1808,6 +1810,7 @@
     SUBDIR += rubygem-taggable
     SUBDIR += rubygem-thin
     SUBDIR += rubygem-tinyatom
+    SUBDIR += rubygem-tinymce-rails
     SUBDIR += rubygem-typhoeus
     SUBDIR += rubygem-uglifier
     SUBDIR += rubygem-unicorn
@@ -1910,6 +1913,7 @@
     SUBDIR += trac-addcomment
     SUBDIR += trac-advancedticketworkflow
     SUBDIR += trac-announcer
+    SUBDIR += trac-attachmentpolicy
     SUBDIR += trac-autocomplete
     SUBDIR += trac-batchmodify
     SUBDIR += trac-bzr
@@ -1954,15 +1958,18 @@
     SUBDIR += trac-scrumburndown
     SUBDIR += trac-simpleticket
     SUBDIR += trac-spam-filter
+    SUBDIR += trac-subtickets
     SUBDIR += trac-tags
     SUBDIR += trac-themeengine
     SUBDIR += trac-ticketimport
     SUBDIR += trac-tickettemplate
     SUBDIR += trac-timingandestimation
     SUBDIR += trac-tocmacro
+    SUBDIR += trac-tracdragdrop
     SUBDIR += trac-tweakui
     SUBDIR += trac-vote
     SUBDIR += trac-wantedpages
+    SUBDIR += trac-watchlist
     SUBDIR += trac-wikigoodies
     SUBDIR += trac-wikinegotiator
     SUBDIR += trac-wikinotification
@@ -2127,7 +2134,6 @@
     SUBDIR += xpi-google_shortcuts
     SUBDIR += xpi-grab_and_drag
     SUBDIR += xpi-greasemonkey
-    SUBDIR += xpi-gwt-dev-plugin
     SUBDIR += xpi-httpfox
     SUBDIR += xpi-imagezoom
     SUBDIR += xpi-imdbpreview
@@ -2200,6 +2206,7 @@
     SUBDIR += yuicompressor
     SUBDIR += zen-cart
     SUBDIR += zend-framework
+    SUBDIR += zend-framework1
     SUBDIR += zenphoto
     SUBDIR += zerowait-httpd
     SUBDIR += zikula

@@ -111,6 +111,7 @@
     SUBDIR += hp2xx
     SUBDIR += hpijs
     SUBDIR += hplip
+    SUBDIR += hplip-plugin
     SUBDIR += hs-hscolour
     SUBDIR += html2latex
     SUBDIR += html2ps
@@ -180,7 +181,6 @@
     SUBDIR += lpr-wrapper
     SUBDIR += lprps
     SUBDIR += lyx
-    SUBDIR += lyx16
     SUBDIR += magicfilter
     SUBDIR += makeindex
     SUBDIR += mapagi

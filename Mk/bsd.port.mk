@@ -320,9 +320,6 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				  the system or installed from a port.
 # USE_CSTD		- Override the default C language standard (gnu89, gnu99)
 # USE_BINUTILS	- Use binutils suite from port instead of the version in base.
-# USE_GMAKE		- If set, this port uses gmake.
-# GMAKE			- Set to path of GNU make if not in $PATH.
-#				  Default: gmake
 ##
 # USE_GHOSTSCRIPT
 #				- If set, this port needs ghostscript to both
@@ -352,16 +349,9 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				  MAKE_ENV are extended with a DISPLAY variable.
 #
 # USE_GL		- A list of Mesa or GL related dependencies needed by the port.
-#				  Supported components are: glut, glu, glw, gl and linux.
+#				  Supported components are: glut, glu, glw, and gl.
 #				  If set to "yes", this is equivalent to "glu". Note that
 #				  glew and glut depend on glu, glw and glu depend on gl.
-# USE_MOTIF		- If set, this port uses a Motif toolkit. Implies USE_XORG+= xpm
-# NO_OPENMOTIF	- If set, this port uses a custom Motif toolkit
-#				  instead of Openmotif.
-#				  Used only when USE_MOTIF is set.
-# WANT_LESSTIF	- If set, this port uses Lesstif as Motif toolkit.
-#				  Used only when USE_MOTIF is set.  Implies
-#				  NO_OPENMOTIF.
 ##
 # USE_SDL		- If set, this port uses the sdl libraries.
 #				  See bsd.sdl.mk for more information.
@@ -903,20 +893,16 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 # MAKE_ARGS		- Any extra arguments to sub-make in build and install stages.
 #				  Default: none
 ##
-# MAKE_JOBS_SAFE
-#				- This port can safely be built on multiple cpus in parallel.
-#				  The make will be invoked with -jX parameter where X equals
-#				  number of cores present in the system.
 # MAKE_JOBS_UNSAFE
 #				- Disallow multiple jobs even when user set a global override.
 #				  To be used with known bad ports.
 # DISABLE_MAKE_JOBS
 #				- Set to disable the multiple jobs feature.  User settable.
-# FORCE_MAKE_JOBS
-#				- Force all ports to be built with multiple jobs, except ports
-#				  that are explicitly marked MAKE_JOBS_UNSAFE.  User settable.
 # MAKE_JOBS_NUMBER
 #				- Override the number of make jobs to be used.  User settable.
+# MAKE_JOBS_NUMBER_LIMIT
+#				- Set a limit for maximum number of make jobs allowed to be
+#				  used.
 ## cacche
 #
 # WITH_CCACHE_BUILD
@@ -1131,6 +1117,7 @@ _DISTDIR?=		${DISTDIR}/${DIST_SUBDIR}
 INDEXDIR?=		${PORTSDIR}
 SRC_BASE?=		/usr/src
 USESDIR?=		${PORTSDIR}/Mk/Uses
+LIB_DIRS?=		/lib /usr/lib ${LOCALBASE}/lib
 
 # make sure bmake treats -V as expected 
 .MAKE.EXPAND_VARIABLES= yes
@@ -1214,13 +1201,6 @@ WITH_PKGNG?=	yes
 # Only define tools here (for transition period with between pkg tools)
 .include "${PORTSDIR}/Mk/bsd.commands.mk"
 
-.for _CATEGORY in ${CATEGORIES}
-PKGCATEGORY?=	${_CATEGORY}
-.endfor
-_PORTDIRNAME=	${.CURDIR:T}
-PORTDIRNAME?=	${_PORTDIRNAME}
-PKGORIGIN?=		${PKGCATEGORY}/${PORTDIRNAME}
-
 MASTERDIR?=	${.CURDIR}
 
 .if ${MASTERDIR} != ${.CURDIR}
@@ -1259,6 +1239,13 @@ USE_SUBMAKE=	yes
 .include "${MASTERDIR}/Makefile.local"
 USE_SUBMAKE=	yes
 .endif
+
+.for _CATEGORY in ${CATEGORIES}
+PKGCATEGORY?=	${_CATEGORY}
+.endfor
+_PORTDIRNAME=	${.CURDIR:T}
+PORTDIRNAME?=	${_PORTDIRNAME}
+PKGORIGIN?=		${PKGCATEGORY}/${PORTDIRNAME}
 
 # where 'make config' records user configuration options
 PORT_DBDIR?=	/var/db/ports
@@ -1501,6 +1488,10 @@ PKGCOMPATDIR?=		${LOCALBASE}/lib/compat/pkg
 
 .include "${PORTSDIR}/Mk/bsd.pbi.mk"
 
+.if defined(USE_GMAKE)
+USES+=	gmake
+.endif
+
 # Loading features
 .for f in ${USES}
 _f=${f:C/\:.*//g}
@@ -1686,10 +1677,6 @@ EXTRACT_DEPENDS+=	${LOCALBASE}/bin/xz:${PORTSDIR}/archivers/xz
 .endif
 .if defined(USE_MAKESELF)
 EXTRACT_DEPENDS+=	unmakeself:${PORTSDIR}/archivers/unmakeself
-.endif
-.if defined(USE_GMAKE)
-BUILD_DEPENDS+=		gmake:${PORTSDIR}/devel/gmake
-CONFIGURE_ENV+=	MAKE=${GMAKE}
 .endif
 
 .if defined(USE_GCC) || defined(USE_FORTRAN)
@@ -1890,32 +1877,10 @@ IGNORE=		cannot be built: there is no emulators/linux_base-${USE_LINUX}, perhaps
 RUN_DEPENDS+=	${LINUX_BASE_PORT}
 .endif
 
-.if defined(USE_MOTIF)
-USE_XORG+=			xpm
-.if defined(WANT_LESSTIF)
-LIB_DEPENDS+=		Xm:${PORTSDIR}/x11-toolkits/lesstif
-NO_OPENMOTIF=		yes
-.endif
-.if !defined(NO_OPENMOTIF)
-LIB_DEPENDS+=		Xm.4:${PORTSDIR}/x11-toolkits/open-motif
-.endif
-.endif
-
-X_FONTSERVER_PORT=	${PORTSDIR}/x11-fonts/xfs
-X_VFBSERVER_PORT=	${PORTSDIR}/x11-servers/xorg-vfbserver
-X_FONTS_ENCODINGS_PORT=	${PORTSDIR}/x11-fonts/encodings
-X_FONTS_MISC_PORT=	${PORTSDIR}/x11-fonts/xorg-fonts-miscbitmaps
-X_FONTS_100DPI_PORT=	${PORTSDIR}/x11-fonts/xorg-fonts-100dpi
-X_FONTS_75DPI_PORT=	${PORTSDIR}/x11-fonts/xorg-fonts-75dpi
-X_FONTS_CYRILLIC_PORT=	${PORTSDIR}/x11-fonts/xorg-fonts-cyrillic
-X_FONTS_TTF_PORT=	${PORTSDIR}/x11-fonts/xorg-fonts-truetype
-X_FONTS_TYPE1_PORT=	${PORTSDIR}/x11-fonts/xorg-fonts-type1
-X_FONTS_ALIAS_PORT=	${PORTSDIR}/x11-fonts/font-alias
-
 .if defined(USE_DISPLAY) && !defined(DISPLAY)
-BUILD_DEPENDS+=	Xvfb:${X_VFBSERVER_PORT} \
-	${LOCALBASE}/lib/X11/fonts/misc/8x13O.pcf.gz:${X_FONTS_MISC_PORT} \
-	${LOCALBASE}/lib/X11/fonts/misc/fonts.alias:${X_FONTS_ALIAS_PORT} \
+BUILD_DEPENDS+=	Xvfb:${PORTSDIR}/x11-servers/xorg-vfbserver \
+	${LOCALBASE}/lib/X11/fonts/misc/8x13O.pcf.gz:${PORTSDIR}/x11-fonts/xorg-fonts-miscbitmaps \
+	${LOCALBASE}/lib/X11/fonts/misc/fonts.alias:${PORTSDIR}/x11-fonts/font-alias \
 	${LOCALBASE}/share/X11/xkb/rules/base:${PORTSDIR}/x11/xkeyboard-config \
 	xkbcomp:${PORTSDIR}/x11/xkbcomp
 .if !defined(PACKAGE_BUILDING)
@@ -1933,7 +1898,6 @@ _GL_glu_LIB_DEPENDS=		GLU.1:${PORTSDIR}/graphics/libGLU
 _GL_glu_USE_XORG=		glproto dri2proto
 _GL_glw_LIB_DEPENDS=		GLw.1:${PORTSDIR}/graphics/libGLw
 _GL_glut_LIB_DEPENDS=		glut.12:${PORTSDIR}/graphics/freeglut
-_GL_linux_RUN_DEPENDS=		${LINUXBASE}/usr/lib/libGL.so.1.2:${PORTSDIR}/graphics/linux-dri74
 
 .if defined(USE_GL)
 . if ${USE_GL:L} == "yes"
@@ -2056,6 +2020,15 @@ RUN_DEPENDS+=	${_GL_${_component}_RUN_DEPENDS}
 USE_SUBMAKE=	yes
 .endif
 
+# Loading features
+.for f in ${_USES_POST}
+_f=${f:C/\:.*//g}
+.if ${_f} != ${f}
+${_f}_ARGS:=	${f:C/^[^\:]*\://g}
+.endif
+.include "${USESDIR}/${_f}.mk"
+.endfor
+
 .if defined(USE_XORG)
 # Add explicit X options to avoid problems with false positives in configure
 .if defined(GNU_CONFIGURE)
@@ -2142,7 +2115,7 @@ MAKE_FLAGS?=	-f
 MAKEFILE?=		Makefile
 MAKE_ENV+=		PREFIX=${PREFIX} \
 			LOCALBASE=${LOCALBASE} \
-			MOTIFLIB="${MOTIFLIB}" LIBDIR="${LIBDIR}" \
+			LIBDIR="${LIBDIR}" \
 			CC="${CC}" CFLAGS="${CFLAGS}" \
 			CPP="${CPP}" CPPFLAGS="${CPPFLAGS}" \
 			LDFLAGS="${LDFLAGS}" \
@@ -2167,18 +2140,20 @@ CFLAGS:=	${CFLAGS:N-std=*} -std=${USE_CSTD}
 # Multiple make jobs support
 .if defined(DISABLE_MAKE_JOBS) || defined(MAKE_JOBS_UNSAFE)
 _MAKE_JOBS=		#
-.else
-.if defined(MAKE_JOBS_SAFE) || defined(FORCE_MAKE_JOBS)
-MAKE_JOBS_NUMBER?=	`${SYSCTL} -n kern.smp.cpus`
-_MAKE_JOBS?=		-j${MAKE_JOBS_NUMBER}
-.if defined(FORCE_MAKE_JOBS) && !defined(MAKE_JOBS_SAFE)
-BUILD_FAIL_MESSAGE+=	"You have chosen to use multiple make jobs (parallelization) for all ports.  This port was not tested for this setting.  Please remove FORCE_MAKE_JOBS and retry the build before reporting the failure to the maintainer."
-.endif
-.endif
-.endif
-
-.if empty(MAKE_JOBS_NUMBER)
 MAKE_JOBS_NUMBER=	1
+.else
+.if defined(MAKE_JOBS_NUMBER)
+_MAKE_JOBS_NUMBER:=	${MAKE_JOBS_NUMBER}
+.else
+_MAKE_JOBS_NUMBER!=	${SYSCTL} -n kern.smp.cpus
+.endif
+.if defined(MAKE_JOBS_NUMBER_LIMIT) && ( ${MAKE_JOBS_NUMBER_LIMIT} < ${_MAKE_JOBS_NUMBER} )
+MAKE_JOBS_NUMBER=	${MAKE_JOBS_NUMBER_LIMIT}
+.else
+MAKE_JOBS_NUMBER=	${_MAKE_JOBS_NUMBER}
+.endif
+_MAKE_JOBS?=		-j${MAKE_JOBS_NUMBER}
+BUILD_FAIL_MESSAGE+=	Try to set MAKE_JOBS_UNSAFE=yes and rebuild before reporting the failure to the maintainer.
 .endif
 
 # ccache support
@@ -2397,8 +2372,6 @@ PKG_SUFX?=		.tbz
 .endif
 # where pkg_add records its dirty deeds.
 PKG_DBDIR?=		/var/db/pkg
-
-MOTIFLIB?=	-L${LOCALBASE}/lib -lXm -lXp
 
 ALL_TARGET?=		all
 INSTALL_TARGET?=	install
@@ -3702,23 +3675,13 @@ do-configure:
 
 .if !target(do-build)
 do-build:
-.if defined(USE_GMAKE)
-	@(cd ${BUILD_WRKSRC}; if ! ${SETENV} ${MAKE_ENV} ${GMAKE} ${MAKE_FLAGS} ${MAKEFILE} ${_MAKE_JOBS} ${MAKE_ARGS} ${ALL_TARGET}; then \
-		if [ x != x${BUILD_FAIL_MESSAGE} ] ; then \
-			${ECHO_MSG} "===> Compilation failed unexpectedly."; \
-			(${ECHO_CMD} ${BUILD_FAIL_MESSAGE}) | ${FMT} 75 79 ; \
-			fi; \
-		${FALSE}; \
-		fi)
-.else
 	@(cd ${BUILD_WRKSRC}; if ! ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_FLAGS} ${MAKEFILE} ${_MAKE_JOBS} ${MAKE_ARGS} ${ALL_TARGET}; then \
-		if [ x != x${BUILD_FAIL_MESSAGE} ] ; then \
+		if [ -n "${BUILD_FAIL_MESSAGE}" ] ; then \
 			${ECHO_MSG} "===> Compilation failed unexpectedly."; \
-			(${ECHO_CMD} ${BUILD_FAIL_MESSAGE}) | ${FMT} 75 79 ; \
+			(${ECHO_CMD} "${BUILD_FAIL_MESSAGE}") | ${FMT} 75 79 ; \
 			fi; \
 		${FALSE}; \
 		fi)
-.endif
 .endif
 
 # Check conflicts
@@ -3839,11 +3802,7 @@ check-install-conflicts:
 
 .if !target(do-install)
 do-install:
-.if defined(USE_GMAKE)
-	@(cd ${INSTALL_WRKSRC} && ${SETENV} ${MAKE_ENV} ${GMAKE} ${MAKE_FLAGS} ${MAKEFILE} ${MAKE_ARGS} ${INSTALL_TARGET})
-.else # !defined(USE_GMAKE)
 	@(cd ${INSTALL_WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_FLAGS} ${MAKEFILE} ${MAKE_ARGS} ${INSTALL_TARGET})
-.endif
 .endif
 
 # Package
@@ -5065,7 +5024,34 @@ ${deptype:L}-depends:
 
 lib-depends:
 .if defined(LIB_DEPENDS) && !defined(NO_DEPENDS)
-	@set -e ; for i in ${LIB_DEPENDS}; do \
+	@set -e ; \
+	for i in ${LIB_DEPENDS:M*.so*\:*}; do \
+		lib=$${i%%:*} ; \
+		dir=$${i#*:}  ; \
+		target="${DEPENDS_TARGET}"; \
+		depends_args="${DEPENDS_ARGS}"; \
+		${ECHO_MSG}  -n "====> ${PKGNAME} depends on shared library: $${lib}:" ; \
+		found=0 ; \
+		dirs="${LIB_DIRS} `${CAT} ${LOCALBASE}/libdata/ldconfig/* 2>/dev/null || : `" ; \
+		for libdir in $$dirs; do \
+			test -f $${libdir}/$${lib} || continue; \
+			if [ -x /usr/bin/file ]; then \
+				[ `file -b -L --mime-type $${libdir}/$${lib}` = "application/x-sharedlib" ] || continue ; \
+			fi ; \
+			found=1 ; \
+			${ECHO_MSG} " - found"; \
+		done ; \
+		if [ $${found} -eq 0 ]; then \
+			${ECHO_MSG} " - not found"; \
+			${ECHO_MSG} "===>    Verifying for $$lib in $$dir"; \
+			if [ ! -d "$$dir" ] ; then \
+				${ECHO_MSG} "    => No directory for $$lib.  Skipping.."; \
+			else \
+				${_INSTALL_DEPENDS} \
+			fi ; \
+		fi ; \
+	done
+	@set -e ; for i in ${LIB_DEPENDS:N*.so*\:*}; do \
 		lib=$${i%%:*}; \
 		pattern="`${ECHO_CMD} $$lib | ${SED} -E -e 's/\./\\\\./g' -e 's/(\\\\)?\+/\\\\+/g'`"\
 		dir=$${i#*:}; \
@@ -6083,14 +6069,14 @@ do-config:
 		(${ECHO_MSG} "===> Cannot create $${optionsdir}, check permissions"; exit 1); \
 	${ECHO_MSG} "===>  Returning to user credentials"
 .else
-	@(optionsdir=${OPTIONS_FILE}; optionsdir=$${optionsdir%/*}; \
+	@optionsdir=${OPTIONS_FILE}; optionsdir=$${optionsdir%/*}; \
 	oldoptionsdir=${OPTIONSFILE}; oldoptionsdir=$${oldoptionsdir%/*}; \
 	if [ -d $${oldoptionsdir} -a ! -d $${optionsdir} ]; then \
 		${MV} $${oldoptionsdir} $${optionsdir}; \
 	elif [ -d $${oldoptionsdir} -a -d $${optionsdir} ]; then \
 		${RM} -rf $${oldoptionsdir} ; \
 	fi ; \
-	${MKDIR} $${optionsdir} 2> /dev/null) || \
+	${MKDIR} $${optionsdir} 2> /dev/null || \
 	(${ECHO_MSG} "===> Cannot create $${optionsdir}, check permissions"; exit 1)
 .endif
 	@TMPOPTIONSFILE=$$(mktemp -t portoptions); \

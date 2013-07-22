@@ -3,6 +3,7 @@
 
 PORTNAME=	pokerth
 PORTVERSION=	1.0.1
+PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/1.0
 DISTNAME=	PokerTH-${PORTVERSION}-src
@@ -22,9 +23,8 @@ LIB_DEPENDS=	boost_thread:${PORTSDIR}/devel/boost-libs \
 		protobuf:${PORTSDIR}/devel/protobuf
 BUILD_DEPENDS=	${LOCALBASE}/include/libircclient.h:${PORTSDIR}/irc/libircclient
 
-USES=		iconv
+USES=		iconv gmake
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 MAKE_JOBS_SAFE=	yes
 USE_QT4=	gui corelib network sql sql-sqlite3 qmake_build \
 		moc_build rcc_build uic_build

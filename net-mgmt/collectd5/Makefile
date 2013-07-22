@@ -3,17 +3,17 @@
 
 PORTNAME=	collectd
 PORTVERSION=	5.3.0
+PORTREVISION=	3
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://collectd.org/files/
 
 MAINTAINER=	ports@bsdserwis.com
 COMMENT=	Systems & network statistics collection daemon
 
+USES=		gmake
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	autoconf autoheader automake libltdl
-WANT_GNOME=	yes
 
 LATEST_LINK=	collectd5
 
@@ -27,9 +27,9 @@ GCRYPT_DESC=		Build with libgcrypt
 JSON_DESC=		Enable JSON plugins
 MEMCACHEC_DESC=		Enable memcachec plugin
 MODBUS_DESC=		Enable modbus plugin
-MYSQL_DESC=		Enable mysql-basd plugins
+MYSQL_DESC=		Enable mysql-based plugins
 NUTUPS_DESC=		Enable nut (ups) plugin
-PGSQL_DESC=		Enable postgresql-basd plugins
+PGSQL_DESC=		Enable postgresql-based plugins
 PING_DESC=		Enable ping plugin
 PYTHON_DESC=		Enable python-based plugins
 REDIS_DESC=		Enable redis-based plugins
@@ -206,6 +206,7 @@ PLIST_SUB+=	DBI="@comment "
 .if ${PORT_OPTIONS:MGCRYPT}
 LIB_DEPENDS+=	gcrypt:${PORTSDIR}/security/libgcrypt
 CONFIGURE_ARGS+=--with-libgcrypt=${LOCALBASE}
+LDFLAGS+=	-lgcrypt
 .endif
 
 .if ${PORT_OPTIONS:MJSON}
@@ -258,7 +259,7 @@ PLIST_SUB+=	NUTUPS="@comment "
 
 .if ${PORT_OPTIONS:MPGSQL}
 USE_PGSQL=	yes
-CONFIGURE_ARGS+=--with-postgresql=${LOCALBASE} --enable-postgresql
+CONFIGURE_ARGS+=--with-postgresql=${LOCALBASE} --enable-postgresql --with-libpq
 PLIST_SUB+=	PGSQL=""
 .else
 PLIST_SUB+=	PGSQL="@comment "
@@ -291,7 +292,7 @@ PLIST_SUB+=	REDIS="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MROUTEROS}
-LIB_DEPENDS+=	routeros:${PORTSDIR}/net/routeros
+LIB_DEPENDS+=	routeros:${PORTSDIR}/net/librouteros
 CONFIGURE_ARGS+=--with-librouteros=${LOCALBASE} --enable-routeros
 PLIST_SUB+=	ROUTEROS=""
 .else
@@ -309,7 +310,7 @@ PLIST_SUB+=	RRDTOOL="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MSTATGRAB}
-USE_PKGCONFIG=	yes
+USES+=		pkgconfig
 LIB_DEPENDS+=	statgrab:${PORTSDIR}/devel/libstatgrab
 CONFIGURE_ENV+= LIBS="`pkg-config --libs libstatgrab`"
 CONFIGURE_ARGS+=--with-libstatgrab=${LOCALBASE} \
@@ -337,7 +338,7 @@ PLIST_SUB+=	TOKYOTYRANT="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MVIRT}
-LIB_DEPENDS+=	virt:${PORTSDIR}/devel/libvirt
+LIB_DEPENDS+=	virt.1001:${PORTSDIR}/devel/libvirt
 CONFIGURE_ARGS+=--enable-libvirt
 .if empty(PORT_OPTIONS:MXML)
 IGNORE=		VIRT requires XML. Either select XML or deselect VIRT.

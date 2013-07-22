@@ -7,10 +7,12 @@
     SUBDIR += STk
     SUBDIR += Sather
     SUBDIR += abcl
+    SUBDIR += adacontrol
     SUBDIR += afnix
     SUBDIR += algol68g
     SUBDIR += alisp
     SUBDIR += arena
+    SUBDIR += asis
     SUBDIR += asn1c
     SUBDIR += atlast
     SUBDIR += ats
@@ -40,7 +42,6 @@
     SUBDIR += cmucl
     SUBDIR += cmucl-extra
     SUBDIR += cocor
-    SUBDIR += copper
     SUBDIR += cparser
     SUBDIR += csharp-mode.el
     SUBDIR += cython
@@ -102,6 +103,7 @@
     SUBDIR += gjs
     SUBDIR += gnat
     SUBDIR += gnat-aux
+    SUBDIR += gnat_util
     SUBDIR += gnatdroid-armv5
     SUBDIR += gnatdroid-armv7
     SUBDIR += gnatdroid-binutils
@@ -131,6 +133,7 @@
     SUBDIR += intel2gas
     SUBDIR += intercal
     SUBDIR += io
+    SUBDIR += ironpython
     SUBDIR += itcl
     SUBDIR += jakarta-commons-jelly
     SUBDIR += jruby
@@ -375,6 +378,7 @@
     SUBDIR += xds-c
     SUBDIR += xotcl
     SUBDIR += yabasic
+    SUBDIR += yap
     SUBDIR += yorick
     SUBDIR += ypsilon
 

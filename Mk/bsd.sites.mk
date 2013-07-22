@@ -68,17 +68,17 @@ MASTER_SITE_APACHE+= \
 	http://www.apache.org/dist/%SUBDIR%/ \
 	http://archive.apache.org/dist/%SUBDIR%/ \
 	http://ftp.twaren.net/Unix/Web/apache/%SUBDIR%/ \
-	ftp://ftp-stud.fht-esslingen.de/pub/Mirrors/ftp.apache.org/dist/%SUBDIR%/ \
+	http://apache.mirror.uber.com.au/%SUBDIR%/ \
+	http://apache.spd.co.il/%SUBDIR%/ \
+	http://ftp.mirrorservice.org/sites/ftp.apache.org/%SUBDIR/ \
+	http://ftp-stud.fht-esslingen.de/pub/Mirrors/ftp.apache.org/dist/%SUBDIR%/ \
 	ftp://mir1.ovh.net/ftp.apache.org/dist/%SUBDIR%/ \
 	ftp://ftp.forthnet.gr/pub/www/apache/%SUBDIR%/ \
 	ftp://xenia.sote.hu/pub/mirrors/www.apache.org/%SUBDIR%/ \
 	ftp://ftp.heanet.ie/mirrors/www.apache.org/dist/%SUBDIR%/ \
-	ftp://ftp.rhnet.is/pub/apache/%SUBDIR%/ \
 	${MASTER_SITE_RINGSERVER:S,%SUBDIR%,net/apache/&,} \
-	ftp://ftp.task.gda.pl/pub/www/apache/dist/%SUBDIR%/ \
-	ftp://sunsite.icm.edu.pl/pub/www/apache/dist/%SUBDIR%/ \
-	ftp://apache.rinet.ru/pub/mirror/apache.org/dist/%SUBDIR%/ \
-	ftp://ftp.sunet.se/pub/www/servers/apache/dist/%SUBDIR%/
+	ftp://ftp.sunet.se/pub/www/servers/apache/dist/%SUBDIR%/ \
+	http://mirrors.ircam.fr/pub/apache/%SUBDIR%/
 .endif
 
 .if !defined(IGNORE_MASTER_SITE_APACHE_COMMONS_BINARIES)
@@ -218,18 +218,13 @@ MASTER_SITE_EASYSW+= \
 
 .if !defined(IGNORE_MASTER_SITE_ECLIPSE)
 MASTER_SITE_ECLIPSE+= \
+	ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/eclipse.org/%SUBDIR%/ \
 	ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/eclipse/%SUBDIR%/ \
-	http://sunsite.informatik.rwth-aachen.de/eclipse/downloads/drops/%SUBDIR%/ \
-	ftp://ftp.tu-clausthal.de/pub/eclipse/downloads/drops/%SUBDIR%/ \
 	http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/%SUBDIR%/ \
-	ftp://ftp.unixag-zw.fh-kl.de/pub/mirrors/eclipse/drops/%SUBDIR%/ \
-	http://eclipse.teccomm.les.inf.puc-rio.br/downloads/drops/%SUBDIR%/ \
-	http://mirrors.ibiblio.org/pub/mirrors/eclipse/eclipse/downloads/drops/%SUBDIR%/ \
-	http://www.eclipse.ps.pl/downloads/drops/%SUBDIR%/ \
-	${MASTER_SITE_RINGSERVER:S,%SUBDIR%,misc/eclipse/downloads/drops/&,} \
+	ftp://sunsite.cnlab-switch.ch/mirror/eclipse/%SUBDIR%/ \
 	ftp://sunsite.cnlab-switch.ch/mirror/eclipse/eclipse/downloads/drops/%SUBDIR%/ \
-	http://download.eclipse.org/eclipse/downloads/drops/%SUBDIR%/ \
-	ftp://download.eclipse.org/%SUBDIR%/
+	ftp://sunsite.cnlab-switch.ch/mirror/eclipse/eclipse/downloads/drops4/%SUBDIR%/ \
+	http://eclipse.org/downloads/download.php?mirror_id=96&r=1&file=/%SUBDIR%/
 .endif
 
 .if !defined(IGNORE_MASTER_SITE_EXIM)
@@ -539,8 +534,8 @@ IGNORE?=	Using master as GH_TAGNAME is invalid. \
 		Must use a tag or commit hash so the upstream does\
 		not "reroll" as soon as the branch is updated
 .endif
-MASTER_SITE_GITHUB+=		https://nodeload.github.com/%SUBDIR% \
-				http://nodeload.github.com/%SUBDIR%
+MASTER_SITE_GITHUB+=		https://codeload.github.com/%SUBDIR% \
+				http://codeload.github.com/%SUBDIR%
 MASTER_SITE_GITHUB_CLOUD+=	http://cloud.github.com/downloads/%SUBDIR%
 .if !defined(MASTER_SITES) || !${MASTER_SITES:MGH} && !${MASTER_SITES:MGHC}
 MASTER_SITES+=	GH GHC

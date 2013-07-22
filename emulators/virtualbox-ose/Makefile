@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	virtualbox-ose
-DISTVERSION=	4.2.14
+DISTVERSION=	4.2.16
+PORTREVISION=	2
 CATEGORIES=	emulators
 MASTER_SITES=	http://download.virtualbox.org/virtualbox/${DISTVERSION}/ \
 		http://tmp.chruetertee.ch/ \
@@ -26,7 +27,7 @@ BUILD_DEPENDS=	yasm:${PORTSDIR}/devel/yasm \
 		cdrecord:${PORTSDIR}/sysutils/cdrtools
 LIB_DEPENDS=	png15:${PORTSDIR}/graphics/png \
 		xslt.2:${PORTSDIR}/textproc/libxslt \
-		curl.6:${PORTSDIR}/ftp/curl
+		curl:${PORTSDIR}/ftp/curl
 RUN_DEPENDS=	${KMODDIR}/vboxdrv.ko:${PORTSDIR}/emulators/virtualbox-ose-kmod \
 		cdrecord:${PORTSDIR}/sysutils/cdrtools
 

@@ -38,8 +38,8 @@
     SUBDIR += avahi-app
     SUBDIR += avahi-autoipd
     SUBDIR += avahi-gtk
+    SUBDIR += avahi-header
     SUBDIR += avahi-libdns
-    SUBDIR += avahi-qt3
     SUBDIR += avahi-qt4
     SUBDIR += avahi-sharp
     SUBDIR += babeld
@@ -478,9 +478,6 @@
     SUBDIR += opendpi
     SUBDIR += openh323
     SUBDIR += openistgt
-    SUBDIR += openldap23-client
-    SUBDIR += openldap23-sasl-client
-    SUBDIR += openldap23-server
     SUBDIR += openldap24-client
     SUBDIR += openldap24-sasl-client
     SUBDIR += openldap24-server
@@ -501,6 +498,7 @@
     SUBDIR += osrtspproxy
     SUBDIR += ossp-sa
     SUBDIR += ostinato
+    SUBDIR += owncloud-csync
     SUBDIR += p5-AddressBook
     SUBDIR += p5-Amazon-SQS-Simple
     SUBDIR += p5-AnyEvent-MPRPC
@@ -791,6 +789,7 @@
     SUBDIR += p5-ZConf-Bookmarks
     SUBDIR += p5-ZeroMQ
     SUBDIR += p5-perl-ldap
+    SUBDIR += packetdrill
     SUBDIR += packter-agent
     SUBDIR += panoptis
     SUBDIR += paris-traceroute
@@ -1226,7 +1225,6 @@
     SUBDIR += urelay
     SUBDIR += uriparser
     SUBDIR += urlendec
-    SUBDIR += urtwn-firmware-kmod
     SUBDIR += usbredir
     SUBDIR += userfw
     SUBDIR += ushare

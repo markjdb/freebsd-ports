@@ -36,7 +36,6 @@ ACTUAL-PACKAGE-DEPENDS?= \
 		${PKG_QUERY} "%dn: {origin: %do, version: \"%dv\"}" " " ${_LIB_RUN_DEPENDS:C,[^:]*:([^:]*):?.*,\1,:C,${PORTSDIR}/,,} 2>/dev/null || : ; \
 	fi
 
-
 .if !target(fake-pkg)
 fake-pkg:
 .if !defined(NO_PKG_REGISTER)
@@ -262,7 +261,7 @@ check-already-installed:
 
 .if !target(deinstall)
 deinstall:
-.if ${UID} != 0 && !defined(INSTALL_AS_USER)
+.if defined(UID) && ${UID} != 0 && !defined(INSTALL_AS_USER)
 	@${ECHO_MSG} "===>  Switching to root credentials for '${.TARGET}' target"
 	@cd ${.CURDIR} && \
 		${SU_CMD} "${MAKE} ${.TARGET}"

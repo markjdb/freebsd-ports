@@ -282,6 +282,7 @@
     SUBDIR += libpwstor
     SUBDIR += libsectok
     SUBDIR += libsodium
+    SUBDIR += libsparkcrypto
     SUBDIR += libssh
     SUBDIR += libssh2
     SUBDIR += libtasn1
@@ -358,6 +359,7 @@
     SUBDIR += openscep
     SUBDIR += openssh-askpass
     SUBDIR += openssh-portable
+    SUBDIR += openssh-portable-base
     SUBDIR += openssl
     SUBDIR += openssl_tpm_engine
     SUBDIR += openvas-client
@@ -371,10 +373,10 @@
     SUBDIR += openvpn-auth-radius
     SUBDIR += openvpn-beta
     SUBDIR += openvpn-devel
-    SUBDIR += openvpn20
     SUBDIR += openvpn22
     SUBDIR += ophcrack
     SUBDIR += opieprint
+    SUBDIR += orthrus
     SUBDIR += osiris
     SUBDIR += ossec-hids-client
     SUBDIR += ossec-hids-local
@@ -707,7 +709,6 @@
     SUBDIR += pinentry-curses
     SUBDIR += pinentry-gtk
     SUBDIR += pinentry-gtk2
-    SUBDIR += pinentry-qt
     SUBDIR += pinentry-qt4
     SUBDIR += pkcrack
     SUBDIR += pkcs11-dump
@@ -715,6 +716,7 @@
     SUBDIR += pkcs11-helper
     SUBDIR += pks
     SUBDIR += pktsuckers
+    SUBDIR += please
     SUBDIR += polarssl
     SUBDIR += poly1305aes
     SUBDIR += portsentry
@@ -745,7 +747,6 @@
     SUBDIR += py-cerealizer
     SUBDIR += py-certify
     SUBDIR += py-clamav
-    SUBDIR += py-crack
     SUBDIR += py-cracklib
     SUBDIR += py-cryptkit
     SUBDIR += py-ecdsa
@@ -807,7 +808,6 @@
     SUBDIR += py-zope.security
     SUBDIR += py-zope.securitypolicy
     SUBDIR += py-zope.session
-    SUBDIR += pyobfsproxy
     SUBDIR += qca-cyrus-sasl
     SUBDIR += qca-gnupg
     SUBDIR += qca-ossl

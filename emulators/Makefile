@@ -150,13 +150,13 @@
     SUBDIR += stonx
     SUBDIR += svr4_base
     SUBDIR += swine
-    SUBDIR += tiemu2
     SUBDIR += tiemu3
     SUBDIR += tilem
     SUBDIR += tme
     SUBDIR += tpm-emulator
     SUBDIR += tuxnes
     SUBDIR += uae
+    SUBDIR += ucon64
     SUBDIR += vMac
     SUBDIR += vba
     SUBDIR += vboxtool

@@ -3,7 +3,7 @@
 
 PORTNAME=	ede
 PORTVERSION=	2.0
-PORTREVSION=	1
+PORTREVISION=	2
 CATEGORIES=	x11-wm
 MASTER_SITES=	SF \
 		SF/${PORTNAME}/${PORTNAME}lib/${PORTVERSION}:edelib
@@ -20,7 +20,7 @@ BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen \
 		jam:${PORTSDIR}/devel/jam \
 		update-mime-database:${PORTSDIR}/misc/shared-mime-info
 LIB_DEPENDS=	dbus-1.3:${PORTSDIR}/devel/dbus \
-		curl.6:${PORTSDIR}/ftp/curl \
+		curl:${PORTSDIR}/ftp/curl \
 		startup-notification-1.0:${PORTSDIR}/x11/startup-notification \
 		fltk.1:${PORTSDIR}/x11-toolkits/fltk
 RUN_DEPENDS=	update-mime-database:${PORTSDIR}/misc/shared-mime-info
@@ -36,7 +36,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-edelib_path=${EDELIB_WRKSRC} \
 		--with-fltk-path=${LOCALBASE}
 INSTALL_ICONS=	yes
-MAKE_JOBS_SAFE=	yes
+MAKE_JOBS_UNSAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -49,13 +49,8 @@ EDELIB_DISTNAME=${EDELIB_NAME}-${EDELIB_VERSION}
 EDELIB_DISTFILE=${EDELIB_DISTNAME}${EXTRACT_SUFX}
 EDELIB_WRKSRC=	${WRKDIR}/${EDELIB_DISTNAME}
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MHAL}
-LIB_DEPENDS+=	hal.1:${PORTSDIR}/sysutils/hal
-.else
-CONFIGURE_ARGS+=--disable-hal
-.endif
+HAL_LIB_DEPENDS=	libhal.so.1:${PORTSDIR}/sysutils/hal
+HAL_CONFIGURE_OFF=	--disable-hal
 
 # use multiple make jobs
 _make_jobs=	-j${MAKE_JOBS_NUMBER}

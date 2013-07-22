@@ -14,8 +14,11 @@ LIB_DEPENDS=	cdio.13:${PORTSDIR}/sysutils/libcdio \
 		sndfile.1:${PORTSDIR}/audio/libsndfile \
 		vorbis.4:${PORTSDIR}/audio/libvorbis
 
+BROKEN=		Does not build
+
+MAKE_JOBS_UNSAFE=	yes
+USES=		gmake
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
 USE_SDL=	sdl net
 USE_XORG=	x11

@@ -17,10 +17,8 @@ LICENSE_FILE_CDDL=	${WRKSRC}/CDDL.Schily.txt
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION:C/.a.*//g}
 
 USE_BZIP2=	yes
-USE_GMAKE=	yes
+USES=	gmake
 MAKE_ARGS=	INS_BASE=${PREFIX} DEFMANBASE=.
-
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		smake.1
 MAN5=		makefiles.5 makerules.5

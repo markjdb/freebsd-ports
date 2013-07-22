@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	icinga
-PORTVERSION=	1.9.1
+PORTVERSION=	1.9.3
 CATEGORIES=	net-mgmt
 MASTER_SITES=	SF
 
@@ -18,6 +18,8 @@ USES=		iconv
 USE_PERL5_BUILD=	yes
 USE_AUTOTOOLS=	autoconf libltdl
 USE_RC_SUBR=	icinga
+
+MAKE_JOBS_UNSAFE=yes
 
 GNU_CONFIGURE=	yes
 

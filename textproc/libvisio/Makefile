@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	libvisio
-PORTVERSION=	0.0.28
+PORTVERSION=	0.0.30
 CATEGORIES=	textproc devel
 MASTER_SITES=	http://dev-www.libreoffice.org/src/
 
@@ -19,11 +19,10 @@ LIB_DEPENDS=	wpd-0.9:${PORTSDIR}/textproc/libwpd \
 CONFIGURE_ARGS=	--disable-werror
 CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
 USE_PERL5_BUILD=yes
 USE_XZ=		yes
-USES=		pathfix pkgconfig
+USES=		gmake pathfix pkgconfig
 
 .include <bsd.port.pre.mk>
 

@@ -119,6 +119,7 @@ gsview*			print/gsview		Can only be distributed for free
 hcwPVRP2.sys		multimedia/pvr250	Driver is part of the CD-ROM distribution coming with the TV card
 hcwPVRP2.sys		multimedia/pvrxxx	Driver is part of the CD-ROM distribution coming with the TV card
 homard-*		french/homard		Only free for use in conjunction with french/aster.  For any other purpose, you have to acquire a license
+hplip-*-plugin.run	print/hplip-plugin	License agreement is required
 httprint_freebsd_*.zip	security/httprint	No cost for personal, education and non-commercial use
 huludesktop-i386.rpm	multimedia/linux-huludesktop No redistribution allowed, not for commercial use, export controlled
 HyperSpec-*		devel/clisp-hyperspec	Commercial redistribution prohibited
@@ -233,7 +234,6 @@ ski-*.i386.rpm		emulators/ski		Restrictive license
 skype*			net-im/skype		Not for redistribution
 SnowIsh-*		x11-themes/gnome-icons-snowish Author rights unclear
 sof-*-cdrom-x86.run	games/linux-sof		Redistribution is limited
-speakinghangmanfree*	games/speakinghangman	Licence does not allow redistribution
 speedmgmt*		net/pppoa		Not for redistribution -- see http://www.alcatel.com/consumer/dsl/disclaimer_lx.htm
 squeezeboxserver-*	audio/squeezeboxserver	Contains non-redistributable firmware, documentation, and images
 srd-fpw*		japanese/srd-fpw	The original dictionary is not free
@@ -266,7 +266,6 @@ uDrawGraph-*		graphics/uDrawGraph	Binary under GNU LGPL without accompanying sou
 ue*dev.zip		editors/uemacs		Resale allowed for media cost only
 uplink-demo		games/linux-uplink-demo	Redistribution limited
 uppaal-*.zip		devel/uppaal		Downloading requires completion of a license agreement
-urtwn-firmware-kmod*	net/urtwn-firmware-kmod	This is a modified version of a restricted firmware
 ut2004-lnx-*		games/linux-ut2004-demo	Redistribution limited
 ut_linux_mgr_*		sysutils/linux-megamgr	Redistribution prohibited
 uzap.tar.gz		editors/uzap		This software may not be used to make a profit in any way.

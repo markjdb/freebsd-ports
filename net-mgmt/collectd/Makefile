@@ -3,6 +3,7 @@
 
 PORTNAME=	collectd
 PORTVERSION=	4.10.9
+PORTREVISION=	2
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://collectd.org/files/
 
@@ -154,6 +155,9 @@ CONFIGURE_ARGS+=--enable-bind
 LIB_DEPENDS+=	curl:${PORTSDIR}/ftp/curl
 LIB_DEPENDS+=	xml2:${PORTSDIR}/textproc/libxml2
 PLIST_SUB+=	BIND=""
+.  if empty(PORT_OPTIONS:MCURL)
+IGNORE=	BIND requires CURL. Either select CURL or deselect BIND
+.  endif
 .else
 CONFIGURE_ARGS+=--disable-bind
 PLIST_SUB+=	BIND="@comment "
@@ -163,6 +167,9 @@ PLIST_SUB+=	BIND="@comment "
 CONFIGURE_ARGS+=--enable-apache
 LIB_DEPENDS+=	curl:${PORTSDIR}/ftp/curl
 PLIST_SUB+=	APACHE=""
+.  if empty(PORT_OPTIONS:MCURL)
+IGNORE=	APACHE requires CURL. Either select CURL or deselect APACHE
+.  endif
 .else
 CONFIGURE_ARGS+=--disable-apache
 PLIST_SUB+=	APACHE="@comment "
@@ -284,6 +291,9 @@ PLIST_SUB+=	MYSQL="@comment "
 LIB_DEPENDS+=	curl:${PORTSDIR}/ftp/curl
 CONFIGURE_ARGS+=--enable-nginx
 PLIST_SUB+=	NGINX=""
+.  if empty(PORT_OPTIONS:MCURL)
+IGNORE=	NGINX requires CURL. Either select CURL or deselect NGINX
+.  endif
 .else
 CONFIGURE_ARGS+=--disable-nginx
 PLIST_SUB+=	NGINX="@comment "
@@ -392,7 +402,7 @@ PLIST_SUB+=	TOKYOTYRANT="@comment "
 
 .if ${PORT_OPTIONS:MLIBVIRT}
 CONFIGURE_ARGS+=--enable-libvirt
-LIB_DEPENDS+=	virt.1000:${PORTSDIR}/devel/libvirt
+LIB_DEPENDS+=	virt.1001:${PORTSDIR}/devel/libvirt
 PLIST_SUB+=	VIRT=""
 .else
 CONFIGURE_ARGS+=--disable-libvirt

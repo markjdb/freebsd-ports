@@ -1,10 +1,9 @@
-# Created by: Nik Clayton <nik@freebsd.org>
+# Created by: Nik Clayton <nik@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	docproj
 PORTVERSION=	1.17
-PORTREVISION=	11
+PORTREVISION=	13
 CATEGORIES=	textproc
 MASTER_SITES=	# empty
 DISTFILES=	# empty

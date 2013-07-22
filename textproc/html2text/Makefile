@@ -11,6 +11,8 @@ MASTER_SITE_SUBDIR=	apps/www/converters
 MAINTAINER=	eadler@FreeBSD.org
 COMMENT=	Converts HTML documents into plain text
 
+LICENSE=	GPLv2
+
 HAS_CONFIGURE=	yes
 
 MANCOMPRESSED=	yes
@@ -18,8 +20,6 @@ MAN1=		html2text.1
 MAN5=		html2textrc.5
 PORTDOCS=	CHANGES CREDITS KNOWN_BUGS README TODO
 PLIST_FILES=	bin/html2text
-
-MAKE_JOBS_SAFE=	yes
 
 CONFLICTS=	py27-html2text-[0-9]*
 

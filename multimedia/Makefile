@@ -247,6 +247,7 @@
     SUBDIR += mplayer2
     SUBDIR += mplayerxp
     SUBDIR += mplex
+    SUBDIR += mpv
     SUBDIR += msdl
     SUBDIR += mxflib
     SUBDIR += mythtv
@@ -351,6 +352,7 @@
     SUBDIR += transkode
     SUBDIR += tstools
     SUBDIR += tunapie
+    SUBDIR += tvheadend
     SUBDIR += umph
     SUBDIR += umplayer
     SUBDIR += umr

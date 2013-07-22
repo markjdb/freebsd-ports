@@ -17,11 +17,9 @@ LIB_DEPENDS=	pci:${PORTSDIR}/devel/libpci
 ONLY_FOR_ARCHS=	i386 amd64
 
 USE_GCC=	any
-USE_GMAKE=	yes
+USES=	gmake pkgconfig
 ALL_TARGET=	x86info lsmsr
-USES=	pkgconfig
 USE_PYTHON_BUILD=yes
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		x86info.1
 MAN8=		lsmsr.8

@@ -12,10 +12,10 @@ PORTNAME?=	vim
 #		! Doing so is dis-genuine.  It implies we're at a level we are
 #		! not.  The "PATCHLEVEL" patch needs to apply before bumping
 #		! PATCHLEVEL to that level.
-PATCHLEVEL=	1014
+PATCHLEVEL=	1314
 PORTVERSION=	7.3.${PATCHLEVEL}
 RELEASE=	vim-${PORTVERSION:C/\.[0-9a-z]*$//}
-PORTREVISION?=	1
+PORTREVISION?=	0
 CATEGORIES?=	editors
 MASTER_SITES=	${MASTER_SITE_VIM}
 DISTFILES=	${RELEASE}${EXTRACT_SUFX}
@@ -25,15 +25,7 @@ PATCH_SITES=	${MASTER_SITES:S|unix|patches/${PORTVERSION:C/\.[0-9a-z]*$//}|}\
 PATCHFILES!=	/usr/bin/jot -s " " -w ${PORTVERSION:C/\.[0-9]*$//}.%03d  \
 			${PATCHLEVEL} 1 ${PATCHLEVEL}
 #	bits to remove
-BADPATCHES=	225 235 246 247 252 253 336 386 387 400 434 487 491 527 569 578 579 580 581 583 584 \
-		611 640 650 654 655 656 657 658 659 660 670 671 672 683 684 688 711 748 \
-		749 751 780 786 791 793 796 798 803 808 810 816 817 819 825 827 831 \
-		838 861 873 881 887 890 893 895 896 898 904 906 907 908 909 910 911 914 922 924 \
-		925 926 928 929 932 937 938 939 940 941 942 943 945 947 948 949 950 951 952 954 955 956 \
-		957 958 959 960 961 962 963 964 965 966 967 969 970 973 975 976 977 978 979 980 981 982 \
-		983 986 987 988 989 990 991 992 993 994 995 996 997 998 999 1001 1002 1003 1004 1005 1006 \
-		1008 1009 1010 1011 1012 1013 1014
-
+BADPATCHES=	527 780 796 873 890 1104 1111
 .for p in ${BADPATCHES}
 PATCHFILES:=	${PATCHFILES:N7.3.${p}}
 .endfor
@@ -43,26 +35,28 @@ COMMENT?=	Vi "workalike", with many additional features
 
 SLAVEDIRS=	editors/vim-lite
 
-.if defined(WITH_OPTIONS) || defined(WITH_VIM_OPTIONS) || !defined(LITE) && defined(PACKAGE_BUILDING)
+.if !defined(LITE)
+.if defined(WITH_OPTIONS) || defined(WITH_VIM_OPTIONS)
 .include "${.CURDIR}/../vim/options"
-. if !defined(LITE) && defined(PACKAGE_BUILDING)
 OPTIONS_DEFAULT+=	CSCOPE EXUBERANT_CTAGS PERL PYTHON RUBY \
 			TCL LUA X11 GTK2
-. endif
-.include <bsd.port.options.mk>
 .else
 VIM_PORT_SCRIPT_LANGS?=	LUA PERL PYTHON RUBY TCL
 VIM_PORT_OPTIONS=	CSCOPE DOCS EXAMPLES EXUBERANT_CTAGS \
 			${VIM_PORT_SCRIPT_LANGS}
 PORT_OPTIONS?=	${VIM_PORT_OPTIONS}
 .endif
+.endif
 
-CONFLICTS=	vim6* vim*-gnome libsysinfo
+.include <bsd.port.options.mk>
+
+CONFLICTS=	vim6* vim*-gnome
 .if defined(LITE)
 CONFLICTS+=	vim*
 .else
 CONFLICTS+=	vim*-lite
 .endif
+
 MAKE_JOBS_UNSAFE=	yes
 USE_BZIP2=	yes
 DIST_SUBDIR=	vim
@@ -167,7 +161,7 @@ USE_XORG+=	xt glproto
 . endif
 
 . if ${PORT_OPTIONS:MMOTIF}
-USE_MOTIF=	yes
+USES+=		motif
 CONF_OPT_GUI="--enable-gui=motif --with-motif-lib=\"${MOTIFLIB}\""
 MAKE_ARGS+=	MOTIFHOME=${LOCALBASE}
 . endif
@@ -180,9 +174,6 @@ MAKE_ARGS+=	CONF_OPT_GUI=${CONF_OPT_GUI} ${I18N}
 USES+=	iconv
 .endif
 
-
-pre-patch:
-	@${REINPLACE_CMD} -e 's/newwin/new_wp/g' ${WRKSRC}/window.c
 
 post-patch:
 	@(${FIND} ${WRKSRC}/../runtime/ -name menu\*.vim -print0 | ${XARGS} -0 \
@@ -197,7 +188,8 @@ pre-configure:
 	@${REINPLACE_CMD} -e ' \
 		s|\$$gtk_config_prefix/bin/gtk-config|\$${GTK_CONFIG}|g; \
 		s|\$$gtk_config_exec_prefix/bin/gtk-config|\$${GTK_CONFIG}|g; \
-		s|/usr/local|${LOCALBASE}|g' \
+		s|/usr/local|${LOCALBASE}|g; \
+		s|set dummy lua;|set dummy lua-${LUA_VER};|g' \
 		${WRKSRC}/auto/configure
 .if ${PORT_OPTIONS:MXTERM_SAVE}
 	@${REINPLACE_CMD} -e ' \
@@ -255,8 +247,8 @@ cklatest: .PHONY
 	-(${SED} -i '' "s/^PATCHLEVEL=.*$$/PATCHLEVEL=	`ncftpls \
 	    ftp://ftp.vim.org/pub/vim/patches/${PORTVERSION:C/\.[0-9a-z]*$//}/ \
 		| grep "^${PORTVERSION:C/\.[0-9a-z]*$//}" \
-		| ${SED} -n -e 's/${PORTVERSION:C/[0-9]*$//}\([0-9][0-9][0-9]\)$$/\1/p' \
-		| ${TAIL} -1`/" Makefile)
+		| ${SED} -n -E -e 's/${PORTVERSION:C/[0-9]*$//}([0-9]+)$$/\1/p' \
+		| sort -n | ${TAIL} -1`/" Makefile)
 	@${ECHO} -n "Now at: "
 	@${MAKE} -V PATCHLEVEL
 
@@ -270,5 +262,44 @@ ckp:
 
 ckmtree:
 	${MTREE_CMD} -f ${MTREE_FILE} -p ${PREFIX}
+
+do-patch:
+	@${ECHO_MSG} "===>  Applying distribution patches for ${PKGNAME} from `pwd`"
+	@set -e ; \
+	(cd ${_DISTDIR} ; \
+	for i  in ${_PATCHFILES}; do \
+		if [ ${PATCH_DEBUG_TMP} = yes ]; then \
+			${ECHO_MSG} "===>   Applying distribution patch $$i" ; \
+		fi ; \
+		${PATCH} ${PATCH_DIST_ARGS} -i ${_DISTDIR}/$$i; \
+	done )
+	@set -e ;\
+	if [ -d ${PATCHDIR} ]; then \
+		if [ "`${ECHO_CMD} ${PATCHDIR}/patch-*`" != "${PATCHDIR}/patch-*" ]; then \
+			${ECHO_MSG} "===>  Applying ${OPSYS} patches for ${PKGNAME}" ; \
+			PATCHES_APPLIED="" ; \
+			for i in ${PATCHDIR}/patch-*; do \
+				case $$i in \
+					*.orig|*.rej|*~|*,v) \
+						${ECHO_MSG} "===>   Ignoring patchfile $$i" ; \
+						;; \
+					*) \
+						if [ ${PATCH_DEBUG_TMP} = yes ]; then \
+							${ECHO_MSG} "===>   Applying ${OPSYS} patch $$i" ; \
+						fi; \
+						if ${PATCH} ${PATCH_ARGS} < $$i ; then \
+							PATCHES_APPLIED="$$PATCHES_APPLIED $$i" ; \
+						else \
+							${ECHO_MSG} `${ECHO_CMD} "=> Patch $$i failed to apply cleanly." | ${SED} "s|${PATCHDIR}/||"` ; \
+							if [ x"$$PATCHES_APPLIED" != x"" ]; then \
+								${ECHO_MSG} `${ECHO_CMD} "=> Patch(es) $$PATCHES_APPLIED applied cleanly." | ${SED} "s|${PATCHDIR}/||g"` ; \
+							fi; \
+							${FALSE} ; \
+						fi; \
+						;; \
+				esac; \
+			done; \
+		fi; \
+	fi
 
 .include <bsd.port.mk>

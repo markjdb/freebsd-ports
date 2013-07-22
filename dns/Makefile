@@ -18,6 +18,7 @@
     SUBDIR += crossip
     SUBDIR += curvedns
     SUBDIR += ddclient
+    SUBDIR += ddns
     SUBDIR += dhisd
     SUBDIR += djbdns
     SUBDIR += djbdns-tools
@@ -37,6 +38,7 @@
     SUBDIR += dnsmasq
     SUBDIR += dnsmasq-devel
     SUBDIR += dnsmax-perl
+    SUBDIR += dnsperf
     SUBDIR += dnsproxy
     SUBDIR += dnsreflector
     SUBDIR += dnstop
@@ -54,6 +56,7 @@
     SUBDIR += geta
     SUBDIR += ghtool
     SUBDIR += hesiod
+    SUBDIR += hostdb
     SUBDIR += idnkit
     SUBDIR += idnkit2
     SUBDIR += inadyn

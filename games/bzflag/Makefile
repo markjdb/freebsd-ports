@@ -2,12 +2,12 @@
 
 PORTNAME=	bzflag
 PORTVERSION=	2.4.2
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}%20source/${PORTVERSION}
 
 MAINTAINER=	kevinz5000@gmail.com
-COMMENT=	A multiplayer 3D tank battle game
+COMMENT=	Multiplayer 3D tank battle game
 
 LICENSE=	LGPL21
 

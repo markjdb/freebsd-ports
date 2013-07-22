@@ -5,6 +5,158 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20130720:
+  AFFECTS: users of japanese/mozc-server and japanese/mozc-el
+  AUTHOR: hrs@FreeBSD.org
+
+  The bin/mozc_emacs_helper program is now built and installed by
+  japanese/mozc-server because the build processes are heavily
+  overlapped with each other and the helper program does not depend on
+  most of what mozc-server does actually.  To upgrade them, please remove
+  mozc-el first to prevent a conflict with the installed bin/mozc_emacs_helper.
+
+20130719:
+  AFFECTS: users of sysutils/bacula-server, sysutils/bacula-client, sysutils/bacula-bat
+  AUTHOR: dvl@FreeBSD.org
+
+  The configuration files for bacula have been moved to PREFIX/etc/bacula.
+  Moveyour existing configuration files to this directory after
+  upgrading.
+
+20130718:
+  AFFECTS: users of security/logcheck
+  AUTHOR: glarkin@FreeBSD.org
+
+  The logcheck port now provides a configuration option controlling
+  installation of the crontab file. When installing the port interactively,
+  the port option is enabled by default to mimic previous behavior.
+
+  When the port is installed non-interactively (BATCH=yes) the crontab
+  file *will not* be installed automatically. If the EXAMPLES port option
+  is enabled, the crontab file can be installed manually at a later time
+  from EXAMPLESDIR/crontab.in.
+
+20130718:
+  AFFECTS: users of www/zend-framework
+  AUTHOR: wg@FreeBSD.org
+
+  zend-framework has been updated to 2.2.1 and old 1.12.0 has been copied
+  to www/zend-framework1. If you wish to stay with the older version run:
+
+  # portmaster -o www/zend-framework1 www/zend-framework
+    or
+  # portupgrade -fo www/zend-framework1 www/zend-framework
+    or
+  # pkg set -o www/zend-framework:www/zend-framework1
+
+20130714:
+  AFFECTS: users of net/avahi-gtk
+  AUTHOR: kwm@FreeBSD.org
+
+  Avahi was updated to 0.6.31, due to changes in the avahi-gtk port it will
+  be necessary to remove the avahi-gtk port before updating. 
+  Users of pkg packages can skip this step.
+
+   pkg_delete -f avahi-gtk\*
+  or
+   pkg delete -f avahi-gtk
+  followed by
+   portmaster net/avahi-gtk
+  or
+   portupgrade net/avahi-gtk
+
+20130711:
+  AFFECTS: users of dns/py-ldns
+  AUTHOR: mat@FreeBSD.org
+
+  The dns/py-ldns port now only installs the Python bits, and depends on
+  dns/ldns. Because of that, you can't just do a regular upgrade, it'd install
+  dns/ldns overwritting existing files and removing them when removing the old
+  version of dns/py-ldns.
+
+  # pkg_delete -f py-ldns-\*
+  # cd /usr/ports/dns/py-ldns && make clean && make install clean
+    or
+  # pkg delete -fg py-ldns-\*
+  # pkg install -f dns/py-ldns
+
+20130707:
+  AFFECTS: users of www/ajaxplorer
+  AUTHOR: madpilot@FreeBSD.org
+
+  Ajaxplorer was updated to 5.0.1. This is a major update and some
+  manual intervention may be needed.
+
+  Before upgrading you should preserve the following files in WWWDIR
+  (defaults to PREFIX/www/ajaxplorer) if you have customized them:
+
+  conf/bootstrap_conf.php
+  conf/bootstrap_context.php
+  conf/bootstrap_plugins.php
+  conf/bootstrap_repositories.php
+
+  and put them back after the upgrade.
+
+  If you are using a database backend you will need to manually
+  update your database table using the sql script the port will
+  install at WWWDIR/conf/conf/4.2.3-5.0.0-db-upgrade.sql
+
+  Don't forget to check the documentation about upgrading from
+  version 4.x at:
+  http://ajaxplorer.info/ajaxplorer-5-0-0:/#Upgrade_from_4X_to_500
+
+20130706:
+  AFFECTS: users of devel/apr1
+  AUTHOR: ohauer@FreeBSD.org
+
+  APR was updated to 1.4.8 and APR-util was updated to 1.5.2.
+
+  Please rebuild all ports which are using functions from
+  APR/APR-util such as apache, subversion ...
+
+  # portmaster -r apr
+  or
+  # portupgrade -r devel/apr1
+  or
+  # pkg install -fR devel/apr1
+
+20130705:
+  AFFECTS: users of x11/kdelibs4
+  AUTHOR: kde@FreeBSD.org
+
+  The KDE Software Compilation 4.10.4 was committed a few days ago, and
+  version 4.10.5 was committed today.
+
+  They include better support for using clang as the compiler, but that
+  requires recompiling all KDE ports which depend on x11/kdelibs4. Most
+  ports which fall into this category are already part of the KDE Software
+  Compilation and have been updated to version 4.10.5, but those released
+  separately need to be rebuilt manually.
+
+  If you are building your KDE ports with clang, doing the following is
+  recommended:
+
+  # portmaster -r kdelibs-4\*
+    or
+  # portupgrade -fr x11/kdelibs4
+    or
+  # pkg install -fR x11/kdelibs4
+
+  Alternatively, to avoid rebuilding the ports which are part of the 4.10.5
+  update:
+
+  # portmaster -x \*-4.10.5\* -r kdelibs-4\*
+    or
+  # portupgrade -x \*-4.10.5\* -fr x11/kdelibs4
+
+20130703:
+  AFFECTS: users of comms/trustedqsl and comms/tqsllib
+  AUTHOR: db@FreeBSD.org
+
+  Upstream have removed the need for a separate port for the library
+  formerly found in comms/tqsllib. Please remove tqsllib before installing
+  trustedqsl
+
 20130627:
   AFFECTS: users of ports-mgmt/portmaster
   AUTHOR: bdrewery@FreeBSD.org
@@ -91,7 +243,7 @@ you update your ports collection, before attempting any port upgrades.
     ${PREFIX}/www/magento/app/{design,locale} \
     ${PREFIX}/www/magento/{downloader,skin}
 
-  The conservative aproach will alert you to extensions that try to write in
+  The conservative approach will alert you to extensions that try to write in
   Magento core, while allowing clean extensions to install properly (corner
   cases may exist).
 
@@ -104,7 +256,7 @@ you update your ports collection, before attempting any port upgrades.
   If you want to upgrade, and use http/https access to repositories,
   please check, that the SERF option is enabled, as NEON support
   is gone. Also, mod_dontdothat and svnauthz_validate are
-  now eanbled with one option TOOLS, among other new tools
+  now enabled with one option TOOLS, among other new tools
   and SVNMUCC is enabled always.
 
   subversion-1.7.x is available as devel/subversion17
@@ -282,7 +434,7 @@ you update your ports collection, before attempting any port upgrades.
 
   xorg, including libraries and some drivers, was updated.
   If you are running the default xorg distribution, no special upgrade procedure
-  should be neccessary.
+  should be necessary.
   If you are running with WITH_NEW_XORG= make sure to update and rebuild all
   installed drivers since xorg-server has been updated.
 
@@ -695,7 +847,7 @@ you update your ports collection, before attempting any port upgrades.
   AFFECTS: users of textproc/apache-solr
   AUTHOR: vanilla@FreeBSD.org
 
-  textproc/apache-solr has beed repocopied to textproc/apache-solr3.
+  textproc/apache-solr has been repocopied to textproc/apache-solr3.
   If you need to continue with the old stable version please run
 
   # portmaster -o textproc/apache-solr3 textproc/apache-solr
@@ -831,7 +983,7 @@ you update your ports collection, before attempting any port upgrades.
 
   LibreOffice has been updated to 3.6.5 with a bundle version of libcmis. The
   build will fail if you sill have net/libcmis 0.1 installed. Before upgrading
-  LibreOffice you should either first remove libcmis from your system or uprade
+  LibreOffice you should either first remove libcmis from your system or upgrade
   it to version 0.3.
 
 20130205:
@@ -1410,7 +1562,7 @@ you update your ports collection, before attempting any port upgrades.
   AUTHOR: tj@FreeBSD.org
 
   After reinstalling the port if you wish to use the datastore used before
-  or have any undelivered persistant messages add the following to rc.conf
+  or have any undelivered persistent messages add the following to rc.conf
     activemq_data=/usr/local/activemq
 
 20121022:
@@ -1424,7 +1576,7 @@ you update your ports collection, before attempting any port upgrades.
   samba_enable=YES
 
   to get the script working. You can still control each of the daemons
-  individualy, by disabling/enabling them with:
+  individually, by disabling/enabling them with:
 
   nmbd_enable=NO
   smbd_enable=NO
@@ -2113,7 +2265,7 @@ you update your ports collection, before attempting any port upgrades.
   The lighttpd startup script has been changed and is now compatible to the
   apache startup script. The "reload" subcommand now sends a SIGHUP to the
   process and triggers cycling of log files. The new command "graceful"
-  performs a graceful restart (similiar to former "reload") and "gracefulstop"
+  performs a graceful restart (similar to former "reload") and "gracefulstop"
   performs a graceful stop. The "check" command has been replaced with
   the "configtest" command.
 
@@ -2399,9 +2551,9 @@ you update your ports collection, before attempting any port upgrades.
   AFFECTS: users of editors/libreoffice
   AUTHORS: bapt@FreeBSD.org
 
-  LOCALIZED_LANG option has gone, localised packages are now available
+  LOCALIZED_LANG option has gone, localized packages are now available
   separately, you can also use editors/libreoffice-i18n to pick the
-  localisation you want.
+  localization you want.
 
 20120425:
   AFFECTS: users of mail/postfix, mail/postfix2[6-8]

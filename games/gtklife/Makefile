@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 
 WANT_GNOME=	yes
 INSTALLS_ICONS=	yes
-USE_GMAKE=	yes
+USES=	gmake
 MAKE_ARGS=	CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" docdir="${DOCSDIR}"
 
 PLIST=		${WRKDIR}/pkg-plist
@@ -34,8 +34,6 @@ DESKTOP_ENTRIES="GtkLife" \
 
 OPTIONS_DEFINE=	GTK2
 GTK2_DESC=	GTK2 gui toolkit support (beta)
-
-MAKE_JOBS_SAFE=	yes
 
 .include <bsd.port.options.mk>
 

@@ -44,6 +44,7 @@
     SUBDIR += adime
     SUBDIR += aegis
     SUBDIR += afay
+    SUBDIR += ahven
     SUBDIR += aifad
     SUBDIR += alabastra
     SUBDIR += ald
@@ -534,6 +535,7 @@
     SUBDIR += geany-plugins
     SUBDIR += geany-plugins-l10n
     SUBDIR += gearmand
+    SUBDIR += gearmand-devel
     SUBDIR += gecode
     SUBDIR += generate
     SUBDIR += generatorrunner
@@ -579,7 +581,6 @@
     SUBDIR += gnome-vfs
     SUBDIR += gnome-vfs-monikers
     SUBDIR += gnome-vfs-reference
-    SUBDIR += gnome-vfs1
     SUBDIR += gnome-vfsmm
     SUBDIR += gnome2-hacker-tools
     SUBDIR += gnucflow
@@ -906,7 +907,6 @@
     SUBDIR += kdesdk4
     SUBDIR += kdesvn-kde4
     SUBDIR += kdevelop
-    SUBDIR += kdevelop-custom-buildsystem
     SUBDIR += kdevelop-kde4
     SUBDIR += kdevelop-pg-qt
     SUBDIR += kdevelop-php
@@ -948,6 +948,7 @@
     SUBDIR += libbonobo-reference
     SUBDIR += libbonobomm
     SUBDIR += libburn
+    SUBDIR += libc++
     SUBDIR += libccid
     SUBDIR += libcfg
     SUBDIR += libcfu
@@ -974,6 +975,7 @@
     SUBDIR += libdlna
     SUBDIR += libdnsres
     SUBDIR += libdombey
+    SUBDIR += libdouble-conversion
     SUBDIR += libds
     SUBDIR += libdsp
     SUBDIR += libdwarf
@@ -995,6 +997,7 @@
     SUBDIR += libexplain
     SUBDIR += libffi
     SUBDIR += libfirm
+    SUBDIR += libfortuna
     SUBDIR += libfreefare
     SUBDIR += libftdi
     SUBDIR += libg19
@@ -1118,8 +1121,6 @@
     SUBDIR += libtar
     SUBDIR += libtecla
     SUBDIR += libthai
-    SUBDIR += libticalcs
-    SUBDIR += libtifiles
     SUBDIR += libtifiles2
     SUBDIR += libtool
     SUBDIR += libtpl
@@ -1134,6 +1135,7 @@
     SUBDIR += libvanessa_socket
     SUBDIR += libvc
     SUBDIR += libvirt
+    SUBDIR += libvirt-glib
     SUBDIR += libvirt-java
     SUBDIR += libvolume_id
     SUBDIR += libvshadow
@@ -1212,6 +1214,7 @@
     SUBDIR += magit
     SUBDIR += make++
     SUBDIR += makedepend
+    SUBDIR += matreshka
     SUBDIR += maven-ant-tasks
     SUBDIR += maven-wrapper
     SUBDIR += maven2
@@ -1245,6 +1248,8 @@
     SUBDIR += ml-doc
     SUBDIR += mm
     SUBDIR += mm-common
+    SUBDIR += mongo-c-driver
+    SUBDIR += mongo-cxx-driver
     SUBDIR += mono-addins
     SUBDIR += mono-tools
     SUBDIR += monodevelop
@@ -1315,6 +1320,7 @@
     SUBDIR += ocaml-lacaml
     SUBDIR += ocaml-lwt
     SUBDIR += ocaml-magic
+    SUBDIR += ocaml-opam
     SUBDIR += ocaml-ounit
     SUBDIR += ocaml-pcre
     SUBDIR += ocaml-pomap
@@ -1410,13 +1416,16 @@
     SUBDIR += p5-AnyEvent-DBI
     SUBDIR += p5-AnyEvent-DBI-Abstract
     SUBDIR += p5-AnyEvent-DBus
+    SUBDIR += p5-AnyEvent-Connection
     SUBDIR += p5-AnyEvent-Filesys-Notify
     SUBDIR += p5-AnyEvent-Gearman
     SUBDIR += p5-AnyEvent-Graphite
     SUBDIR += p5-AnyEvent-I3
     SUBDIR += p5-AnyEvent-MessagePack
+    SUBDIR += p5-AnyEvent-RPC
     SUBDIR += p5-AnyEvent-Run
     SUBDIR += p5-AnyEvent-Subprocess
+    SUBDIR += p5-AnyEvent-Worker
     SUBDIR += p5-AnyMQ
     SUBDIR += p5-App-Build
     SUBDIR += p5-App-CLI
@@ -2168,6 +2177,7 @@
     SUBDIR += p5-Iterator-Util
     SUBDIR += p5-JIRA-Client
     SUBDIR += p5-JQuery
+    SUBDIR += p5-JSON-Path
     SUBDIR += p5-JSON-RPC
     SUBDIR += p5-JSON-RPC-Common
     SUBDIR += p5-JSON-RPC-Dispatcher
@@ -2238,6 +2248,7 @@
     SUBDIR += p5-Log-Trace
     SUBDIR += p5-Log-TraceMessages
     SUBDIR += p5-Logfile-Rotate
+    SUBDIR += p5-Lvalue
     SUBDIR += p5-Luka
     SUBDIR += p5-MRO-Compat
     SUBDIR += p5-MRO-Define
@@ -3477,6 +3488,7 @@
     SUBDIR += py-colorama
     SUBDIR += py-configobj
     SUBDIR += py-construct
+    SUBDIR += py-country
     SUBDIR += py-coverage
     SUBDIR += py-crcmod
     SUBDIR += py-ctags
@@ -3515,6 +3527,7 @@
     SUBDIR += py-five.globalrequest
     SUBDIR += py-five.localsitemanager
     SUBDIR += py-flake8
+    SUBDIR += py-paver
     SUBDIR += py-pyflakes
     SUBDIR += py-flask-babel
     SUBDIR += py-flexmock
@@ -3618,6 +3631,7 @@
     SUBDIR += py-parsedatetime
     SUBDIR += py-parsing
     SUBDIR += py-pathtools
+    SUBDIR += py-pbr
     SUBDIR += py-pefile
     SUBDIR += py-period
     SUBDIR += py-phpserialize
@@ -3678,7 +3692,6 @@
     SUBDIR += py-qt4-scripttools
     SUBDIR += py-qt4-test
     SUBDIR += py-rauth
-    SUBDIR += py-reddit
     SUBDIR += py-repl
     SUBDIR += py-repoze.lru
     SUBDIR += py-repoze.tm2
@@ -3718,6 +3731,7 @@
     SUBDIR += py-stevedore
     SUBDIR += py-subversion
     SUBDIR += py-subvertpy
+    SUBDIR += py-sysctl
     SUBDIR += py-sysv_ipc
     SUBDIR += py-tables
     SUBDIR += py-tconfpy
@@ -4030,8 +4044,10 @@
     SUBDIR += rubygem-childprocess
     SUBDIR += rubygem-chronic
     SUBDIR += rubygem-classifier
+    SUBDIR += rubygem-climate_control
     SUBDIR += rubygem-clio
     SUBDIR += rubygem-cloudfiles
+    SUBDIR += rubygem-cocaine
     SUBDIR += rubygem-coffee-rails
     SUBDIR += rubygem-coffee-script
     SUBDIR += rubygem-coffee-script-source
@@ -4118,6 +4134,7 @@
     SUBDIR += rubygem-main
     SUBDIR += rubygem-map
     SUBDIR += rubygem-mash
+    SUBDIR += rubygem-metaclass
     SUBDIR += rubygem-metaid
     SUBDIR += rubygem-method_source
     SUBDIR += rubygem-minitest
@@ -4143,6 +4160,7 @@
     SUBDIR += rubygem-open4
     SUBDIR += rubygem-orm_adapter
     SUBDIR += rubygem-paint
+    SUBDIR += rubygem-paperclip
     SUBDIR += rubygem-parsetree
     SUBDIR += rubygem-piston
     SUBDIR += rubygem-pkg-config
@@ -4197,6 +4215,7 @@
     SUBDIR += rubygem-safe_yaml
     SUBDIR += rubygem-sdl
     SUBDIR += rubygem-sequel
+    SUBDIR += rubygem-sequel3
     SUBDIR += rubygem-sexp_processor
     SUBDIR += rubygem-shoulda
     SUBDIR += rubygem-shoulda-context
@@ -4395,7 +4414,7 @@
     SUBDIR += trio
     SUBDIR += truc
     SUBDIR += uatraits
-    SUBDIR += uboot-mkimage 
+    SUBDIR += uboot-mkimage
     SUBDIR += uclmmbase
     SUBDIR += ucommon
     SUBDIR += ucpp

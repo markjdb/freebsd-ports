@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	flexget
-PORTVERSION=	1.1.45
+PORTVERSION=	1.1.76
 PORTEPOCH=	1
 CATEGORIES=	www python
 MASTER_SITES=	http://download.flexget.com/archive/ \
@@ -15,6 +15,8 @@ COMMENT=	Program to automate downloading from different sources
 
 LICENSE=	MIT
 
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}paver>=0:${PORTSDIR}/devel/py-paver \
+		${PYTHON_PKGNAMEPREFIX}distribute>=0:${PORTSDIR}/devel/py-distribute
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}feedparser>=5.1.3:${PORTSDIR}/textproc/py-feedparser \
 		${PYTHON_PKGNAMEPREFIX}sqlalchemy>=0.7:${PORTSDIR}/databases/py-sqlalchemy \
 		${PYTHON_PKGNAMEPREFIX}yaml>0:${PORTSDIR}/devel/py-yaml \
@@ -31,7 +33,8 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}feedparser>=5.1.3:${PORTSDIR}/textproc/py-fe
 		${PYTHON_PKGNAMEPREFIX}dateutil>=2.1:${PORTSDIR}/devel/py-dateutil \
 		${PYTHON_PKGNAMEPREFIX}jsonschema>=2.0:${PORTSDIR}/devel/py-jsonschema \
 		${PYTHON_PKGNAMEPREFIX}tvrage>0:${PORTSDIR}/devel/py-tvrage
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}nose>0:${PORTSDIR}/devel/py-nose \
+TEST_DEPENDS:=	${RUN_DEPENDS} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:${PORTSDIR}/devel/py-nose \
 		${PYTHON_PKGNAMEPREFIX}mock>0:${PORTSDIR}/devel/py-mock
 
 USE_PYTHON=		-2.7

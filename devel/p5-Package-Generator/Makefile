@@ -1,12 +1,8 @@
-# New ports collection makefile for:	p5-Package-Generator
-# Date Created:				22 Apr 2008
-# Whom:					Emanuel Haupt <ehaupt@FreeBSD.org>
-#
+# Created by: Emanuel Haupt <ehaupt@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Package-Generator
-PORTVERSION=	0.103
+PORTVERSION=	1.105
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-

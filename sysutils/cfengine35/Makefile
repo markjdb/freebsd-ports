@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cfengine
-PORTVERSION=	3.5.0
+PORTVERSION=	3.5.1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://cfengine.com/source-code/download?file=
 
@@ -17,7 +17,7 @@ LATEST_LINK=	cfengine35
 
 FETCH_BEFORE_ARGS=	-o ${DISTDIR}/${DISTFILES}
 
-CONFLICTS=	cfengine-[23]*
+CONFLICTS=	cfengine-[234]*
 
 USE_RC_SUBR=	cf-execd cf-serverd
 
@@ -25,6 +25,7 @@ USE_LDCONFIG=	yes
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
 USE_GMAKE=	yes
+USE_GCC=	any
 # EXAMPLESDIR=	${PREFIX}/share/examples/cfengine3
 DOCSDIR=	${PREFIX}/share/doc/cfengine
 CONFIGURE_ARGS=	--docdir=${DOCSDIR} \
@@ -75,7 +76,7 @@ LDFLAGS+=		-L${LOCALBASE}/lib/mysql
 
 .if ${PORT_OPTIONS:MLIBVIRT}
 CONFIGURE_ARGS+=	--with-libvirt=${LOCALBASE}
-LIB_DEPENDS+=		virt.1000:${PORTSDIR}/devel/libvirt
+LIB_DEPENDS+=		virt.1001:${PORTSDIR}/devel/libvirt
 .endif
 
 .include <bsd.port.post.mk>

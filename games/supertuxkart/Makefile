@@ -3,6 +3,7 @@
 
 PORTNAME=	supertuxkart
 PORTVERSION=	0.8
+PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	SF/supertuxkart/SuperTuxKart/${PORTVERSION}
 EXTRACT_SUFX=	-src.tar.bz2
@@ -17,7 +18,7 @@ LIB_DEPENDS=	vorbisfile:${PORTSDIR}/audio/libvorbis \
 		ogg:${PORTSDIR}/audio/libogg \
 		fribidi:${PORTSDIR}/converters/fribidi \
 		curl:${PORTSDIR}/ftp/curl \
-		jpeg.11:${PORTSDIR}/graphics/jpeg \
+		jpeg:${PORTSDIR}/graphics/jpeg \
 		png15:${PORTSDIR}/graphics/png
 
 USE_BZIP2=	yes

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	cfengine
-PORTVERSION=	3.4.4
+PORTVERSION=	3.4.5
+PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://cfengine.com/source-code/download?file=
 
@@ -17,7 +18,7 @@ LATEST_LINK=	cfengine34
 
 FETCH_BEFORE_ARGS=	-o ${DISTDIR}/${DISTFILES}
 
-CONFLICTS=	cfengine-2* cfengine-3.[23]* cfengine-devel-*
+CONFLICTS=	cfengine-2* cfengine-3.[235]* cfengine-devel-*
 
 USE_RC_SUBR=	cf-execd cf-serverd
 
@@ -74,9 +75,9 @@ LIB_DEPENDS+=		mysqlclient:${PORTSDIR}/${_MYSQL_CLIENT}
 LDFLAGS+=		-L${LOCALBASE}/lib/mysql
 .endif
 
-.if ${PORT_OPTIONS:MLIBVERT}
+.if ${PORT_OPTIONS:MLIBVIRT}
 CONFIGURE_ARGS+=	--with-libvirt=${LOCALBASE}
-LIB_DEPENDS+=		virt.1000:${PORTSDIR}/devel/libvirt
+LIB_DEPENDS+=		virt.1001${PORTSDIR}/devel/libvirt
 .endif
 
 MAN8=	cf-agent.8	cf-key.8	cf-monitord.8	\

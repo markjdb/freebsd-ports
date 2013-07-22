@@ -4,7 +4,8 @@
 PORTNAME=	ssamtse
 PORTVERSION=	1.07b1
 CATEGORIES=	games linux
-MASTER_SITES=	http://liflg.0wnitsch.de/files/final/
+MASTER_SITES=	http://home.coc-ag.de/dressler-ro/liflg/files/final/ \
+		http://bsd-geek.de/FreeBSD/distfiles/
 PKGNAMEPREFIX=	linux-
 DISTFILES=	${PORTNAME:S|ssam|serious.sam.|}_${PORTVERSION:S|b|beta|}-english-2.run
 

@@ -4,7 +4,7 @@
 
 PORTNAME=	cfengine
 PORTVERSION=	3.3.8
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	sysutils
 MASTER_SITES=	http://cfengine.com/source-code/download?file=
 PKGNAMESUFFIX=	33
@@ -15,7 +15,7 @@ COMMENT=	A systems administration tool for networks
 LATEST_LINK=	cfengine33
 FETCH_BEFORE_ARGS=	-o ${DISTDIR}/${DISTFILES}
 
-CONFLICTS=	cfengine-2* cfengine-3.[24]* cfengine-devel-*
+CONFLICTS=	cfengine-2* cfengine-3.[245]* cfengine-devel-*
 
 USE_RC_SUBR=	cf-execd cf-serverd
 
@@ -70,7 +70,7 @@ LDFLAGS+=		-L${LOCALBASE}/lib/mysql
 
 .if ${PORT_OPTIONS:MLIBVIRT}
 CONFIGURE_ARGS+=	--with-libvirt=${LOCALBASE}
-LIB_DEPENDS+=		virt.1000:${PORTSDIR}/devel/libvirt
+LIB_DEPENDS+=		virt.1001:${PORTSDIR}/devel/libvirt
 .endif
 
 MAN8=	cf-agent.8	cf-key.8	cf-monitord.8	\

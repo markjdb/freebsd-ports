@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	png
-PORTVERSION=	1.5.16
+PORTVERSION=	1.5.17
 CATEGORIES=	graphics
 MASTER_SITES=	SF/lib${PORTNAME}/lib${PORTNAME}15/${PORTVERSION}
 DISTNAME=	lib${PORTNAME}-${PORTVERSION}
@@ -30,10 +30,6 @@ OPTIONS_DEFAULT=APNG
 APNG_DESC=Enable Animated PNG support
 
 .include <bsd.port.options.mk>
-
-.if defined(WITH_DEBUG)
-BROKEN=		Please remove WITH_DEBUG for this port
-.endif
 
 .if ${PORT_OPTIONS:MAPNG} || make(makesum) || defined(FETCH_ALL)
 MASTER_SITES+=	SF/apng/libpng/libpng15/:apng

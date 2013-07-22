@@ -3,6 +3,7 @@
 
 PORTNAME=	pacman
 PORTVERSION=	4.0.3
+PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	ftp://ftp.archlinux.org/other/pacman/ \
 		http://mirror.amdmi3.ru/distfiles/
@@ -45,10 +46,6 @@ CURL_DESC=	Use libcurl fetcher instead of external curl/wget
 GPGME_DESC=	Use GPGME for PGP signature verification
 
 .include <bsd.port.options.mk>
-
-.if ${OSVERSION} < 800000
-IGNORE=		does not build on < 8.x
-.endif
 
 .if ${PORT_OPTIONS:MCURL}
 CONFIGURE_ARGS+=--with-libcurl=${LOCALBASE}

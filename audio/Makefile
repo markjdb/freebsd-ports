@@ -206,7 +206,6 @@
     SUBDIR += funktrackergold
     SUBDIR += gbemol
     SUBDIR += gbsplay
-    SUBDIR += gdam
     SUBDIR += gervill
     SUBDIR += ghostess
     SUBDIR += gigedit
@@ -636,6 +635,7 @@
     SUBDIR += py-pyacoustid
     SUBDIR += py-pyaudio
     SUBDIR += py-cddb
+    SUBDIR += py-discogs-client
     SUBDIR += py-eyed3
     SUBDIR += py-fastaudio
     SUBDIR += py-id3

@@ -337,7 +337,6 @@
     SUBDIR += gnomebreakout
     SUBDIR += gnomechess
     SUBDIR += gnomekiss
-    SUBDIR += gnomememoryblocks
     SUBDIR += gnomermind
     SUBDIR += gnomesudoku
     SUBDIR += gnono
@@ -634,7 +633,6 @@
     SUBDIR += nethack34
     SUBDIR += nethack34-gnome
     SUBDIR += nethack34-nox11
-    SUBDIR += nethack34-qt
     SUBDIR += netherearth
     SUBDIR += netpanzer
     SUBDIR += netrek-BRMH-bin
@@ -902,7 +900,6 @@
     SUBDIR += spacehulk
     SUBDIR += spacejunk
     SUBDIR += speak
-    SUBDIR += speakinghangman
     SUBDIR += species
     SUBDIR += spellathon
     SUBDIR += spellcast

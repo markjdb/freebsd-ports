@@ -3,6 +3,7 @@
 
 PORTNAME=	netsurf
 PORTVERSION=	3.0
+PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	http://download.netsurf-browser.org/netsurf/releases/source-full/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-full-src
@@ -17,14 +18,13 @@ BUILD_DEPENDS=	flex:${PORTSDIR}/textproc/flex
 LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl \
 		mng:${PORTSDIR}/graphics/libmng
 
-USE_GMAKE=	yes
 ALL_TARGET=	#empty
 CFLAGS+=	-I${LOCALBASE}/include
 MAKE_ARGS=	HOST_CC="${CC}" CC="${CC}" CCOPT="" HOST="${OPSYS}" \
 		WARNFLAGS="" Q="" OPTCFLAGS="${CFLAGS}"
-USES=		bison
+USES=		bison gmake
 USE_GNOME=	librsvg2
-MAKE_JOBS_SAFE=	yes
+MAKE_JOBS_UNSAFE=	yes
 
 NSFB_VERSION=	0.1.0
 WRKSRC=		${WRKDIR}/${PORTNAME}-full-${PORTVERSION}
@@ -33,14 +33,12 @@ DESKTOP_ENTRIES="NetSurf" "${COMMENT}" "" "${PORTNAME}" "" "true"
 
 OPTIONS_DEFINE=	GSTREAMER WEBP
 
+WEBP_LIB_DEPENDS=	webp:${PORTSDIR}/graphics/webp
+
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGSTREAMER}
 USE_GSTREAMER=	yes
-.endif
-
-.if ${PORT_OPTIONS:MWEBP}
-LIB_DEPENDS+=	webp:${PORTSDIR}/graphics/webp
 .endif
 
 post-patch:

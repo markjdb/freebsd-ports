@@ -3,7 +3,7 @@
 
 PORTNAME=	gogglesmm
 PORTVERSION=	0.12.7
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	audio
 MASTER_SITES=	GOOGLE_CODE
 
@@ -32,8 +32,7 @@ HAS_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--mandir=${PREFIX}/man --prefix=${PREFIX}
 MAKE_JOBS_SAFE=	yes
 
-USES=		pkgconfig
-USE_GMAKE=	yes
+USES=		pkgconfig gmake
 USE_XZ=		yes
 INSTALLS_ICONS=	yes
 MAN1=		gogglesmm.1

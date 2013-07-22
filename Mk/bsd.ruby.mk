@@ -202,7 +202,7 @@ RUBY20=			"@comment "
 RUBY_RELVERSION=	1.9.3
 RUBY_PORTREVISION=	0
 RUBY_PORTEPOCH=		1
-RUBY_PATCHLEVEL=	429
+RUBY_PATCHLEVEL=	448
 
 RUBY_VERSION?=		${RUBY_RELVERSION}.${RUBY_PATCHLEVEL}
 RUBY_DISTVERSION?=	${RUBY_RELVERSION}-p${RUBY_PATCHLEVEL}
@@ -473,9 +473,9 @@ do-extract:
 
 do-build:
 	@(cd ${BUILD_WRKSRC}; if ! ${SETENV} ${GEM_ENV} ${RUBYGEMBIN} build --force ${GEMFILES}spec ; then \
-		if [ x != x${BUILD_FAIL_MESSAGE} ] ; then \
+		if [ -n "${BUILD_FAIL_MESSAGE}" ] ; then \
 			${ECHO_MSG} "===> Compilation failed unexpectedly."; \
-			(${ECHO_CMD} ${BUILD_FAIL_MESSAGE}) | ${FMT} 75 79 ; \
+			(${ECHO_CMD} "${BUILD_FAIL_MESSAGE}") | ${FMT} 75 79 ; \
 			fi; \
 		${FALSE}; \
 		fi)

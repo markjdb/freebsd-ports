@@ -9,10 +9,9 @@ MAINTAINER=	eadler@FreeBSD.org
 COMMENT=	POSIX-compliant implementation of /bin/sh
 
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 CFLAGS+=	-DUNUSABLE_RT_SIGNALS
 
-MAKE_JOBS_SAFE=	yes
+USES=	gmake
 
 PLIST_FILES=	bin/dash
 MAN1=		dash.1

@@ -47,6 +47,7 @@ do-configure:
 .if !defined(NO_INSTALL_MANPAGES)
 LATE_INSTALL_ARGS=	install.man
 .endif
+
 .endif
 
 .endif

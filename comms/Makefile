@@ -82,7 +82,6 @@
     SUBDIR += libimobiledevice
     SUBDIR += libirman
     SUBDIR += libmodbus
-    SUBDIR += libticables
     SUBDIR += libticables2
     SUBDIR += libticalcs2
     SUBDIR += linpsk
@@ -157,7 +156,6 @@
     SUBDIR += tkhylafax
     SUBDIR += tkscanfax
     SUBDIR += tlf
-    SUBDIR += tqsllib
     SUBDIR += trustedqsl
     SUBDIR += twpsk
     SUBDIR += uarduno

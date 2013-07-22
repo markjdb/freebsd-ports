@@ -3,6 +3,7 @@
 
 PORTNAME=	openxcom
 PORTVERSION=	0.9.0
+PORTREVISION=	1
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -30,7 +31,9 @@ MAKEFILE=	Makefile.simple
 
 SUB_FILES=	pkg-message
 
-PLIST_FILES=	bin/openxcom
+PLIST_FILES=	bin/openxcom share/applications/${PORTNAME}.desktop \
+		share/pixmaps/${PORTNAME}.svg
+PLIST_DIRSTRY=	share/applications
 
 PORTDOCS=	*
 PORTDATA=	*
@@ -45,6 +48,9 @@ post-patch:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/${PORTNAME} ${PREFIX}/bin/
+	${MKDIR} ${PREFIX}/share/applications
+	${INSTALL_DATA} ${WRKSRC}/res/linux/openxcom.desktop ${PREFIX}/share/applications
+	${INSTALL_DATA} ${WRKSRC}/res/linux/icons/openxcom.svg ${PREFIX}/share/pixmaps
 .if !defined(NOPORTDATA)
 	${MKDIR} ${DATADIR}
 	cd ${WRKSRC}/bin && ${COPYTREE_SHARE} data ${DATADIR}/

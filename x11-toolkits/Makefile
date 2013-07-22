@@ -125,7 +125,7 @@
     SUBDIR += linux-f10-gtk2
     SUBDIR += linux-f10-openmotif
     SUBDIR += linux-f10-pango
-    SUBDIR += linux-f10-qt33
+    SUBDIR += linux-f10-qt45
     SUBDIR += linux-f10-tk85
     SUBDIR += movingmotif
     SUBDIR += mowitz
@@ -198,6 +198,7 @@
     SUBDIR += py-gtkglext
     SUBDIR += py-gtksourceview
     SUBDIR += py-gui
+    SUBDIR += py-kivy
     SUBDIR += py-kiwi
     SUBDIR += py-pyqwt
     SUBDIR += py-qt
@@ -222,6 +223,7 @@
     SUBDIR += qt33
     SUBDIR += qt4-gui
     SUBDIR += qt4pas
+    SUBDIR += qtada
     SUBDIR += qwt4
     SUBDIR += qwt5
     SUBDIR += qwt5-designerplugin

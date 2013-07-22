@@ -11,13 +11,14 @@ EXTRACT_SUFX=	.tgz
 MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	Tracks bandwidth usage by IP address
 
+LICENSE=	GPLv2
+
 LIB_DEPENDS+=	gd:${PORTSDIR}/graphics/gd
 
 USE_CSTD=	gnu89
 
-USE_GMAKE=	YES
 GNU_CONFIGURE=	YES
-USES=		iconv
+USES=		iconv gmake
 
 post-install:
 	@${INSTALL_SCRIPT} ${FILESDIR}/bandwidthd.sh \

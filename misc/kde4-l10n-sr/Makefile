@@ -12,5 +12,5 @@ KDE4_L10N=	sr
 MANLANG=	${KDE4_L10N} sr@latin
 .include <${.CURDIR}/Makefile.man>
 
-.include "${.CURDIR}/../../misc/kde4-l10n/files/bsd.l10n.mk"
-.include <bsd.port.post.mk>
+.include "${.CURDIR}/../kde4-l10n/files/bsd.l10n.mk"
+.include <bsd.port.mk>

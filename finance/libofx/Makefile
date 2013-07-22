@@ -3,13 +3,14 @@
 
 PORTNAME=	libofx
 PORTVERSION=	0.9.5
+PORTREVISION=	1
 CATEGORIES=	finance
 MASTER_SITES=	SF
 
 MAINTAINER=	jhale@FreeBSD.org
 COMMENT=	OpenSource implementation of the OFX (Open Financial eXchange)
 
-LIB_DEPENDS=	curl.6:${PORTSDIR}/ftp/curl \
+LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl \
 		xml\\+\\+-2.6.2:${PORTSDIR}/textproc/libxml++26 \
 		osp.5:${PORTSDIR}/textproc/opensp
 
@@ -18,6 +19,7 @@ USES=		iconv
 USE_GMAKE=	yes
 USE_AUTOTOOLS=	aclocal autoheader automake autoconf libtool
 ACLOCAL_ARGS=	-I m4
+AUTOMAKE_ARGS=	--add-missing
 CONFIGURE_ARGS=	--disable-doxygen --disable-dot --disable-gengetopt \
 		--with-opensp-includes=${LOCALBASE}/include/OpenSP \
 		--with-opensp-libs=${LOCALBASE}/lib

@@ -3,7 +3,7 @@
 
 PORTNAME=	ghostscript
 PORTVERSION=	8.71
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	print
 MASTER_SITES=	http://downloads.ghostscript.com/public/:gs_srcs \
 		SF/ghostscript/GPL%20Ghostscript/${PORTVERSION}:gs_srcs \
@@ -38,13 +38,13 @@ CONFLICTS_INSTALL= \
 		ghostscript9-agpl-nox11-[0-9]*
 
 USE_XZ=		yes
-USE_GMAKE=	yes
+USES=		gmake
 WANT_GNOME=	yes
 USE_LDCONFIG=	yes
 USE_AUTOTOOLS=	autoconf
 GNU_CONFIGURE=	yes
 
-MAKE_JOBS_SAFE=	yes
+MAKE_JOBS_UNSAFE=	yes
 MAKE_ENV=	CFLAGS_STANDARD="${CFLAGS}" \
 		XCFLAGS="${XCFLAGS}" XLDFLAGS="${XLDFLAGS}" \
 		EXTRALIBS="${EXTRALIBS}" \
@@ -96,7 +96,10 @@ EXCLUDE_DIRS=	jbig2dec jpeg expat jasper libpng tiff zlib
 .include <bsd.port.pre.mk>
 .include "${FILESDIR}/Makefile.drivers_post"
 
-.for D in ${OPTIONS_DEFINE:MGS_*:S/^GS_//}
+.for D in ${OPTIONS_DEFINE:MGS_*:S/^GS_//} \
+	${OPTIONS_MULTI_X11:MGS_*:S/^GS_//} \
+	${OPTIONS_GROUP_ICONV:MGS_*:S/^GS_//} \
+	${OPTIONS_GROUP_SVGALIB:MGS_*:S/^GS_//}
 .if ${PORT_OPTIONS:MGS_${D}}
 PLIST_SUB+=	GS_${D}=""
 .else
@@ -150,7 +153,10 @@ pre-build-drivers.mak:
 .for N in ${DEVS_LIST}
 	@${ECHO_CMD} 'DEVICE_${N}=' >> ${WRKSRC}/base/drivers.mak
 .endfor
-.for D in ${OPTIONS_DEFINE:MGS_*:S/^GS_//}
+.for D in ${OPTIONS_DEFINE:MGS_*:S/^GS_//} \
+	${OPTIONS_MULTI_X11:MGS_*:S/^GS_//} \
+	${OPTIONS_GROUP_ICONV:MGS_*:S/^GS_//} \
+	${OPTIONS_GROUP_SVGALIB:MGS_*:S/^GS_//}
 .for N in ${DEVS_LIST}
 .if ${PORT_OPTIONS:MGS_${D}}
 .if !defined(OPTIONS_UNSET) || !${OPTIONS_UNSET:MGS_${D}}

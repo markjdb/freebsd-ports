@@ -1,12 +1,7 @@
-# New ports collection makefile for:	p5-Test-Reporter
-# Date created:				Sat Dec 20 23:11:45 CET 2003
-# Whom:					Lars Thegler <lars@thegler.dk>
-#
 # $FreeBSD$
-#
 
 PORTNAME=	Test-Reporter
-PORTVERSION=	1.58
+PORTVERSION=	1.59
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -18,6 +13,7 @@ RUN_DEPENDS=	p5-Net>0:${PORTSDIR}/net/p5-Net
 BUILD_DEPENDS:=	${RUN_DEPENDS}
 
 PERL_CONFIGURE=	yes
+MAKE_JOBS_UNSAFE=	yes
 
 MAN3=		Test::Reporter.3 \
 		Test::Reporter::Transport.3 \

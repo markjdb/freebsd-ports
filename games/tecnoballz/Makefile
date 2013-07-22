@@ -12,12 +12,13 @@ EXTRACT_SUFX=	.tgz
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	A brick breaker (Arkanoid-like game)
 
-LIB_DEPENDS=	mikmod.2:${PORTSDIR}/audio/libmikmod \
-		vorbisfile.6:${PORTSDIR}/audio/libvorbis \
+LIB_DEPENDS=	mikmod:${PORTSDIR}/audio/libmikmod \
+		vorbisfile:${PORTSDIR}/audio/libvorbis \
 		ogg:${PORTSDIR}/audio/libogg \
-		smpeg.1:${PORTSDIR}/multimedia/smpeg
+		smpeg:${PORTSDIR}/multimedia/smpeg
 
 USE_AUTOTOOLS=	automake aclocal
+AUTOMAKE_ARGS=	--add-missing
 USE_SDL=	sdl mixer image
 USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
