@@ -1,12 +1,9 @@
-# New ports collection makefile for:	Net-SNPP
-# Date created:		6 Jun 2002
-# Whom:			devin@spamcop.net
-#
+# Created by: devin@spamcop.net
 # $FreeBSD$
-#
 
 PORTNAME=	Net-SNPP
 PORTVERSION=	1.17
+PORTREVISION=	1
 CATEGORIES=	net perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -20,7 +17,7 @@ MAN3=		Net::SNPP.3 \
 		Net::SNPP::Server.3
 
 post-patch:
-	@${PERL} -pi -e '$$_="" if /warnings/;' \
+	@${REINPLACE_CMD} -i '' -e '/warnings/d' \
 		${WRKSRC}/lib/Net/SNPP/Server.pm
 	@${RM} ${WRKSRC}/lib/Net/SNPP/Server.pm.orig
 

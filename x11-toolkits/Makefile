@@ -129,6 +129,7 @@
     SUBDIR += linux-f10-tk85
     SUBDIR += movingmotif
     SUBDIR += mowitz
+    SUBDIR += mygui
     SUBDIR += neXtaw
     SUBDIR += nucleo
     SUBDIR += ocaml-lablgtk2
@@ -201,7 +202,6 @@
     SUBDIR += py-kivy
     SUBDIR += py-kiwi
     SUBDIR += py-pyqwt
-    SUBDIR += py-qt
     SUBDIR += py-qt4-gui
     SUBDIR += py-sexy
     SUBDIR += py-tkinter
@@ -219,12 +219,9 @@
     SUBDIR += py-wxPython28-unicode
     SUBDIR += py-xlib
     SUBDIR += py31-tkinter
-    SUBDIR += qscintilla
-    SUBDIR += qt33
     SUBDIR += qt4-gui
     SUBDIR += qt4pas
     SUBDIR += qtada
-    SUBDIR += qwt4
     SUBDIR += qwt5
     SUBDIR += qwt5-designerplugin
     SUBDIR += qwt6

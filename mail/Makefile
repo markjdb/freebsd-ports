@@ -85,6 +85,7 @@
     SUBDIR += cyrus-imapd23
     SUBDIR += cyrus-imapd24
     SUBDIR += cyrus2courier
+    SUBDIR += cyrus2dovecot
     SUBDIR += davmail
     SUBDIR += dbmail
     SUBDIR += dbmail22
@@ -212,7 +213,6 @@
     SUBDIR += jmba
     SUBDIR += junkfilter
     SUBDIR += kbiff
-    SUBDIR += kcheckgmail
     SUBDIR += kshowmail
     SUBDIR += lbdb
     SUBDIR += lens

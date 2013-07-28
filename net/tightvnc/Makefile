@@ -4,27 +4,27 @@
 PORTNAME=	tightvnc
 PORTVERSION=	1.3.10
 PORTREVISION=	3
-CATEGORIES=	net
+CATEGORIES=	net java
 MASTER_SITES=	SF/vnc-tight/TightVNC-unix/${PORTVERSION}
 DISTNAME=	${PORTNAME}-${PORTVERSION}_unixsrc
 
 MAINTAINER=	itetcu@FreeBSD.org
 COMMENT=	Enhanced version of VNC
 
-LIB_DEPENDS=	jpeg.11:${PORTSDIR}/graphics/jpeg
+LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/LICENCE.TXT
+
+LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg
 RUN_DEPENDS=	showrgb:${PORTSDIR}/x11/rgb \
 		xauth:${PORTSDIR}/x11/xauth \
 		xorg-fonts>=7.2:${PORTSDIR}/x11-fonts/xorg-fonts
 
 MAKE_JOBS_UNSAFE=	yes
-
 CONFLICTS=	tridiavnc-[0-9]* vnc-[0-9]*
-
 WRKSRC=		${WRKDIR}/vnc_unixsrc
-
-USES=		imake
+USES=		imake shebangfix
+SHEBANG_FILES=	vncserver
 CFLAGS+=	-Wno-return-type
-USE_GCC=	yes
 USE_BZIP2=	yes
 USE_PERL5=	yes
 USE_XORG=	xaw
@@ -36,9 +36,6 @@ MAN1=		Xvnc.1 vncviewer.1 vncpasswd.1 vncconnect.1 vncserver.1
 OPTIONS_DEFINE=	JVNC_VIEWER
 JVNC_VIEWER_DESC=	Install Java-based vnc viewer
 
-#.include <bsd.port.pre.mk>
-
-### use me when 5.5, 6.1, 6.2R die or we do impement something in b.p.m
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MJVNC_VIEWER}
@@ -61,11 +58,11 @@ IGNORE=		vnc has already been installed, please uninstall it first
 
 post-patch:
 .for file in vncviewer/Imakefile Xvnc/config/cf/vnclibs.def
-	@${PERL} -pi -e "s,%%LOCALBASE%%,${PREFIX},g" ${WRKSRC}/${file}
+	@${REINPLACE_CMD} -i '' -e "s|%%LOCALBASE%%|${PREFIX}|g" ${WRKSRC}/${file}
 .endfor
-	@${PERL} -pi -e "s,/usr/local/vnc/classes,${DATADIR}/classes,g ; \
-		s,^#!/usr/bin/perl,#!${PERL},g" ${WRKSRC}/vncserver
-	@${PERL} -pi -e "s,%%CC%%,${CC},g ; \
+	@${REINPLACE_CMD} -i '' -e "s|/usr/local/vnc/classes|${DATADIR}/classes|g" \
+		${WRKSRC}/vncserver
+	@${REINPLACE_CMD} -i '' -e "s|%%CC%%|${CC}|g ; \
 		s|%%CFLAGS%%|${CFLAGS}|g" ${WRKSRC}/Xvnc/config/cf/FreeBSD.cf
 
 do-install:

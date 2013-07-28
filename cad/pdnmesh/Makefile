@@ -32,10 +32,9 @@ USE_GNOME=	gdkpixbuf2 gtk20
 USE_XORG=	ice pixman sm x11 xau xcb xcomposite xcursor xdamage xdmcp \
 		xext xfixes xmu xi xinerama xrandr xrender xt xxf86vm
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+LDFLAGS+=	-L${LOCALBASE}/lib -lm
 
 MAN1=		pdnmesh.1
 MAN5=		pdnmesh_input.5

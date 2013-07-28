@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	whois
-PORTVERSION=	3.1.3
+PORTVERSION=	3.2.1
 CATEGORIES=	net rubygems
 MASTER_SITES=	RG
 
-MAINTAINER=	freebsdports@chillibear.com
+MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Ruby whois library
 
 USE_RUBY=	yes

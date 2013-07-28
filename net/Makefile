@@ -79,7 +79,6 @@
     SUBDIR += coda6_server
     SUBDIR += corkscrew
     SUBDIR += courier-authlib-ldap
-    SUBDIR += cphone
     SUBDIR += crtmpserver
     SUBDIR += cryptcat
     SUBDIR += csocks
@@ -283,19 +282,14 @@
     SUBDIR += jsch
     SUBDIR += jumpgate
     SUBDIR += jwhois
-    SUBDIR += kdenetwork3
     SUBDIR += kdenetwork4
-    SUBDIR += kiax
     SUBDIR += kio-upnp-ms
     SUBDIR += kippo
     SUBDIR += kissd
     SUBDIR += knc
-    SUBDIR += knemo
     SUBDIR += knemo-kde4
     SUBDIR += kojoney
-    SUBDIR += kphone
     SUBDIR += krdc
-    SUBDIR += krdesktop
     SUBDIR += krfb
     SUBDIR += kwooty
     SUBDIR += l2tpd
@@ -303,7 +297,6 @@
     SUBDIR += ladvd
     SUBDIR += lam
     SUBDIR += lambdamoo
-    SUBDIR += lanbrowsing
     SUBDIR += latd
     SUBDIR += ldap-stats
     SUBDIR += ldap2dns
@@ -322,6 +315,7 @@
     SUBDIR += libfixbuf
     SUBDIR += libgnetwork
     SUBDIR += libgweather
+    SUBDIR += libilbc
     SUBDIR += libkvkontakte
     SUBDIR += libmediawiki
     SUBDIR += libmms
@@ -498,6 +492,7 @@
     SUBDIR += osrtspproxy
     SUBDIR += ossp-sa
     SUBDIR += ostinato
+    SUBDIR += owamp
     SUBDIR += owncloud-csync
     SUBDIR += p5-AddressBook
     SUBDIR += p5-Amazon-SQS-Simple
@@ -883,7 +878,6 @@
     SUBDIR += poptop
     SUBDIR += portfwd
     SUBDIR += pppd23
-    SUBDIR += pppload
     SUBDIR += pppoa
     SUBDIR += pptpclient
     SUBDIR += proftpd-mod_ldap
@@ -1050,6 +1044,7 @@
     SUBDIR += rubygem-openid
     SUBDIR += rubygem-packetfu
     SUBDIR += rubygem-pcaprub
+    SUBDIR += rubygem-rabbiter
     SUBDIR += rubygem-rightaws
     SUBDIR += rubygem-rightflexiscale
     SUBDIR += rubygem-rightgogrid
@@ -1114,7 +1109,6 @@
     SUBDIR += slbd
     SUBDIR += slirp
     SUBDIR += slurm
-    SUBDIR += smb4k
     SUBDIR += smb4k-kde4
     SUBDIR += smbldap-tools
     SUBDIR += smm++
@@ -1207,7 +1201,6 @@
     SUBDIR += tucan
     SUBDIR += turses
     SUBDIR += turnserver
-    SUBDIR += twinkle
     SUBDIR += twitux
     SUBDIR += u6rd
     SUBDIR += ucarp

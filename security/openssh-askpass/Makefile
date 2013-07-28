@@ -3,13 +3,16 @@
 
 PORTNAME=	OpenSSH-askpass
 PORTVERSION=	1.2.4.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	security
 MASTER_SITES=	http://www.jmknoble.net/software/x11-ssh-askpass/
 DISTNAME=	x11-ssh-askpass-${PORTVERSION}
 
 MAINTAINER=	hrs@FreeBSD.org
 COMMENT=	Graphical password applet for entering SSH passphrase
+
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/README
 
 USE_XORG=	x11 xt sm ice
 DOCSDIR=	${PREFIX}/share/doc/ssh-askpass

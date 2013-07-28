@@ -3,7 +3,7 @@
 
 PORTNAME=	openjdk6
 PORTVERSION=	b27
-PORTREVISION?=	4
+PORTREVISION?=	6
 CATEGORIES=	java devel
 MASTER_SITES=	http://download.java.net/openjdk/jdk6/promoted/${PORTVERSION}/ \
 		http://download.java.net/jaxp/openjdk/jdk6/:jaxp \
@@ -56,7 +56,7 @@ TEST_DESC=	Add support for running regression test
 USES=		gmake motif
 
 .include <bsd.port.options.mk>
-.include "${PORTSDIR}/java/openjdk6/Makefile.icedtea"
+.include "${.CURDIR}/../openjdk6/Makefile.icedtea"
 
 EXTRA_PATCHES=	${ICEDTEA_PATCHES}
 
@@ -173,6 +173,8 @@ DISTFILES+=	${JTREGFILE}:jtreg
 EXTRACT_ONLY+=	${JTREGFILE}
 BUILD_DEPENDS+=	${LOCALBASE}/lib/X11/fonts/dejavu:${PORTSDIR}/x11-fonts/dejavu
 USE_DISPLAY=	yes
+.else
+EXTRA_PATCHES+=	${FILESDIR}/test_gamma-disable.patch
 .endif
 
 COPYDIRS=	\
