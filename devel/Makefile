@@ -36,6 +36,7 @@
     SUBDIR += abi-compliance-checker
     SUBDIR += ace
     SUBDIR += ace+tao-doc
+    SUBDIR += acme
     SUBDIR += activitymail
     SUBDIR += adabooch
     SUBDIR += adabooch-doc-html
@@ -51,6 +52,7 @@
     SUBDIR += alf
     SUBDIR += allegro
     SUBDIR += allegro-devel
+    SUBDIR += android-tools-adb
     SUBDIR += anjuta
     SUBDIR += anjuta-extras
     SUBDIR += antlr
@@ -67,6 +69,8 @@
     SUBDIR += argouml
     SUBDIR += argp-standalone
     SUBDIR += argtable
+    SUBDIR += arm-eabi-binutils
+    SUBDIR += arm-eabi-gcc
     SUBDIR += arm-elf-binutils
     SUBDIR += aros-sdk
     SUBDIR += art
@@ -371,6 +375,7 @@
     SUBDIR += dulwich
     SUBDIR += duplo
     SUBDIR += dwarfdump
+    SUBDIR += dxa65
     SUBDIR += dyncall
     SUBDIR += e00compr
     SUBDIR += e2fsprogs-libss
@@ -545,7 +550,6 @@
     SUBDIR += gflags
     SUBDIR += giggle
     SUBDIR += gindent
-    SUBDIR += gio-fam-backend
     SUBDIR += gio-sharp
     SUBDIR += git
     SUBDIR += git-merge-changelog
@@ -937,7 +941,6 @@
     SUBDIR += libbobcat
     SUBDIR += libbonobo
     SUBDIR += libbonobo-reference
-    SUBDIR += libbonobomm
     SUBDIR += libburn
     SUBDIR += libc++
     SUBDIR += libccid
@@ -2994,6 +2997,7 @@
     SUBDIR += p5-github_creator
     SUBDIR += p5-iCal-Parser
     SUBDIR += p5-indirect
+    SUBDIR += p5-interface
     SUBDIR += p5-latest
     SUBDIR += p5-lexical-underscore
     SUBDIR += p5-lib-abs
@@ -4089,6 +4093,7 @@
     SUBDIR += rubygem-gibbler
     SUBDIR += rubygem-gio2
     SUBDIR += rubygem-git
+    SUBDIR += rubygem-github_api
     SUBDIR += rubygem-glib2
     SUBDIR += rubygem-gobject-introspection
     SUBDIR += rubygem-grit
@@ -4436,6 +4441,7 @@
     SUBDIR += winpdb
     SUBDIR += wizardkit
     SUBDIR += wxGlade
+    SUBDIR += xa65
     SUBDIR += xc3sprog
     SUBDIR += xdg-user-dirs
     SUBDIR += xdg-utils

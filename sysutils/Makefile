@@ -342,7 +342,6 @@
     SUBDIR += gnome_subr
     SUBDIR += gnomebaker
     SUBDIR += goaccess
-    SUBDIR += googlog
     SUBDIR += gosa
     SUBDIR += gpkgdep
     SUBDIR += gpte
@@ -933,6 +932,7 @@
     SUBDIR += ttyload
     SUBDIR += tw_cli
     SUBDIR += tzdialog
+    SUBDIR += u-boot-beaglebone-eabi
     SUBDIR += ua
     SUBDIR += ucspi-ipc
     SUBDIR += ucspi-proxy

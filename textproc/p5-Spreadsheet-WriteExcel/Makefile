@@ -16,7 +16,10 @@ BUILD_DEPENDS=	p5-Parse-RecDescent>=0:${PORTSDIR}/devel/p5-Parse-RecDescent \
 		p5-Date-Manip>=0:${PORTSDIR}/devel/p5-Date-Manip
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
+USE_DOS2UNIX=	yes
+DOS2UNIX_REGEX=	"*.p[lm]"
 
 MAN1=		chartex.1
 MAN3=		Spreadsheet::WriteExcel.3 \
@@ -39,10 +42,6 @@ MAN3=		Spreadsheet::WriteExcel.3 \
 		Spreadsheet::WriteExcel::Utility.3 \
 		Spreadsheet::WriteExcel::Workbook.3 \
 		Spreadsheet::WriteExcel::Worksheet.3
-
-post-patch:
-	@${FIND} ${WRKSRC} -name "*.p[lm]"| \
-	${XARGS} ${PERL} -pi -e 's/\x0D(?=\x0A)//g'
 
 post-install:
 .ifndef(NOPORTDOCS)

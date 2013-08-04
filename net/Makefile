@@ -441,7 +441,6 @@
     SUBDIR += nos-ttb
     SUBDIR += nph
     SUBDIR += ns
-    SUBDIR += ns2
     SUBDIR += nss-pam-ldapd
     SUBDIR += nss-pam-ldapd-sasl
     SUBDIR += nss_ldap
@@ -1038,6 +1037,7 @@
     SUBDIR += rubygem-macaddr
     SUBDIR += rubygem-net-ldap
     SUBDIR += rubygem-net-netrc
+    SUBDIR += rubygem-network_interface
     SUBDIR += rubygem-oauth
     SUBDIR += rubygem-oauth2
     SUBDIR += rubygem-open-uri-cached

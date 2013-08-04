@@ -3,6 +3,8 @@
 #
 # $FreeBSD$
 #
+# /!\ THIS FILE IS DEPRECATED PLEASE CONFIGURE USING USES=perl5 /!\
+#
 # bsd.perl.mk - Support for Perl-based ports.
 #
 # Created by: Gabor Kovesdan <gabor@FreeBSD.org>
@@ -43,6 +45,7 @@
 # USE_PERL5_RUN		- If set, this port uses perl5 for running.
 #
 # PERL_MODBUILD		- Use Module::Build to configure, build and install port.
+.if !defined(USES) || !${USES:Mperl5}
 
 .if !defined(_POSTMKINCLUDED) && !defined(Perl_Pre_Include)
 
@@ -183,8 +186,6 @@ CONFIGURE_ENV+=	PERL_MM_USE_DEFAULT="YES"
 .endif # defined(PERL_CONFIGURE)
 
 .if defined(USE_PERL5) || defined(USE_PERL5_BUILD)
-EXTRACT_DEPENDS+=	${PERL5}:${PORTSDIR}/lang/${PERL_PORT}
-PATCH_DEPENDS+=		${PERL5}:${PORTSDIR}/lang/${PERL_PORT}
 BUILD_DEPENDS+=		${PERL5}:${PORTSDIR}/lang/${PERL_PORT}
 .endif
 .if defined(USE_PERL5) || defined(USE_PERL5_RUN)
@@ -231,3 +232,4 @@ do-install:
 .endif # !defined(USE_GMAKE)
 .endif # defined(PERL_MODBUILD)
 .endif # defined(_POSTMKINCLUDED) && !defined(Perl_Post_Include)
+.endif

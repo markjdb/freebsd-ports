@@ -1,9 +1,5 @@
-# New ports collection makefile for:	wml
-# Date created:		09-Sep-1997
-# Whom:			Ralf S. Engelschall <rse@engelschall.com>
-#
+# Created by: Ralf S. Engelschall <rse@engelschall.com>
 # $FreeBSD$
-#
 
 PORTNAME=	wml
 PORTVERSION=	2.0.12
@@ -28,10 +24,10 @@ RUN_DEPENDS=	\
 BUILD_DEPENDS=	lynx:${PORTSDIR}/www/lynx \
 		${RUN_DEPENDS}
 
-USE_PERL5=	yes
 GNU_CONFIGURE=	yes
 USE_GMAKE=	yes
-USES=		gettext
+USES=		gettext perl5
+USE_PERL5=	run build patch
 CONFIGURE_ARGS=	--with-perl=${PERL5} --with-catdir=man \
 		--prefix=${PREFIX}
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	System-Command
-PORTVERSION=	1.101
+PORTVERSION=	1.103
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -13,7 +13,8 @@ COMMENT=	Object for running system commands
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		System::Command.3
 

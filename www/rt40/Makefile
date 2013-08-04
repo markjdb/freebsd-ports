@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	rt
-PORTVERSION=	4.0.15
+PORTVERSION=	4.0.16
 CATEGORIES=	www
 MASTER_SITES=	http://download.bestpractical.com/pub/rt/release/ \
 		SF/requesttracker/
@@ -66,7 +66,7 @@ BUILD_DEPENDS+=	${CORE_DEPS}       \
 
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USE_PERL5=	yes
+USES+=		perl5
 USE_AUTOTOOLS=	autoconf
 
 .include <bsd.port.options.mk>
@@ -190,6 +190,8 @@ CONFIGURE_ARGS+=	--enable-layout=${RT_LAYOUT} \
 	--with-db-rt-pass=${DB_PASSWORD} \
 	--with-db-database=${DB_DATABASE} \
 	--with-db-dba=${DB_DBA_USER}
+
+CONFIGURE_ENV+=	PERL=${LOCALBASE}/bin/perl
 
 PKGMESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	CPAN-Changes
-PORTVERSION=	0.20
+PORTVERSION=	0.22
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,7 +10,11 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Read and write CPAN Changes files
 
-PERL_CONFIGURE=	yes
+LICENSE=	ART10 GPLv1
+LICENSE_COMB=	dual
+
+USES=		perl5
+USE_PERL5=	configure
 
 MAN1=	tidy_changelog.1
 MAN3=	CPAN::Changes.3 \

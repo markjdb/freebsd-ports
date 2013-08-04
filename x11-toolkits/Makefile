@@ -100,7 +100,6 @@
     SUBDIR += libXt
     SUBDIR += libbonoboui
     SUBDIR += libbonoboui-reference
-    SUBDIR += libbonobouimm
     SUBDIR += libgail-gnome
     SUBDIR += libgdiplus
     SUBDIR += libgnomeprintui
@@ -183,6 +182,7 @@
     SUBDIR += pango
     SUBDIR += pango-reference
     SUBDIR += pangomm
+    SUBDIR += pangox-compat
     SUBDIR += pangoxsl
     SUBDIR += paragui-devel
     SUBDIR += phat

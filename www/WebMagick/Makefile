@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	WebMagick
-PORTVERSION=	2.03p18
-DISTVERSION=	2.03pre18
+PORTVERSION=	2.03p20
+DISTVERSION=	2.03pre20
 PORTEPOCH=	1
 CATEGORIES=	www graphics
 MASTER_SITES=	SF/${PORTNAME:L}/${PORTNAME:L}-beta/${DISTVERSION}
@@ -16,8 +16,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	MagickWand:${PORTSDIR}/graphics/ImageMagick
 RUN_DEPENDS=	p5-Sort-Naturally>=0:${PORTSDIR}/textproc/p5-Sort-Naturally
 
-USES=		shebangfix
-USE_PERL5=	yes
+USES=		shebangfix perl5
 USE_AUTOTOOLS=  autoconf aclocal automake
 AUTOMAKE_ARGS+=	--add-missing
 INFO=		webmagick

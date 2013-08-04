@@ -1,9 +1,5 @@
-# New ports collection makefile for:	Search::Saryer
-# Date created:		8 October 2002
-# Whom:			Akinori MUSHA aka knu <knu@idaemons.org>
-#
+# Created by: Akinori MUSHA aka knu <knu@idaemons.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Search-Saryer
 PORTVERSION=	0.40
@@ -17,7 +13,8 @@ COMMENT=	Perl interface to the Sary library
 
 LIB_DEPENDS=	sary.10:${PORTSDIR}/textproc/sary
 
-PERL_CONFIGURE=	yes
+USES=		perl5 pkgconfig
+USE_PERL5=	configure
 
 MAN3=		Search::Saryer.3
 

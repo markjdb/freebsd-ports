@@ -1,9 +1,5 @@
-# New ports collection makefile for:	btparse
-# Date created:				2006-03-19
-# Whom:					Kay Lehmann <kay_lehmann@web.de>
-#
+# Created by: Kay Lehmann <kay_lehmann@web.de>
 # $FreeBSD$
-#
 
 PORTNAME=	btparse
 PORTVERSION=	0.35
@@ -16,7 +12,8 @@ COMMENT=	C library for parsing and processing BibTeX data files
 
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-USE_PERL5_BUILD=yes
+USES=		perl5
+USE_PERL5=	build
 
 MAN3=		btparse.3 bt_language.3 bt_input.3 bt_traversal.3 \
 		bt_postprocess.3 bt_macros.3 bt_split_names.3 \
