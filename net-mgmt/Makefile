@@ -178,7 +178,6 @@
     SUBDIR += nfsen
     SUBDIR += ng_ipacct
     SUBDIR += nitpicker
-    SUBDIR += noc
     SUBDIR += nocol
     SUBDIR += nrpe2
     SUBDIR += nsca
@@ -189,6 +188,7 @@
     SUBDIR += observium
     SUBDIR += ocsinventory-agent
     SUBDIR += ocsinventory-ng
+    SUBDIR += omping
     SUBDIR += openlldp
     SUBDIR += openvmps
     SUBDIR += ourmon
@@ -203,6 +203,7 @@
     SUBDIR += p5-FusionInventory-Agent
     SUBDIR += p5-FusionInventory-Agent-Task-NetDiscovery
     SUBDIR += p5-FusionInventory-Agent-Task-SNMPQuery
+    SUBDIR += p5-GRNOC-Config
     SUBDIR += p5-GRNOC-TL1
     SUBDIR += p5-MRTG-Parse
     SUBDIR += p5-Mon

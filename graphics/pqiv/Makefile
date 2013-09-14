@@ -27,6 +27,7 @@ GH_ACCOUNT=	phillipberndt
 
 WRKSRC=		${WRKDIR}/${DISTNAME}
 
+USES=		pkgconfig
 USE_BZIP2=	yes
 USE_GNOME=	gtk20
 USE_CSTD=	gnu89
@@ -36,8 +37,8 @@ MAN1=		pqiv.1
 PORTDOCS=	README.markdown
 PLIST_FILES=	bin/pqiv
 
-CPPFLAGS+=	$$(${pkgconfig_DETECT} --cflags gtk+-2.0 gthread-2.0)
-LDFLAGS+=	$$(${pkgconfig_DETECT} --libs gtk+-2.0 gthread-2.0)
+CPPFLAGS+=	`pkg-config --cflags gtk+-2.0 gthread-2.0`
+LDFLAGS+=	`pkg-config --libs gtk+-2.0 gthread-2.0`
 
 .include <bsd.port.options.mk>
 

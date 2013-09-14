@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	IO-Socket-IP
-PORTVERSION=	0.22
+PORTVERSION=	0.23
 CATEGORIES=	net ipv6 perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -17,7 +17,8 @@ BUILD_DEPENDS=	p5-Socket>=1.97:${PORTSDIR}/net/p5-Socket
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-Test-Pod>=1:${PORTSDIR}/devel/p5-Test-Pod
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		IO::Socket::IP.3
 

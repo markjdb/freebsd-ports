@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	varnish
-PORTVERSION=	3.0.3
-PORTREVISION=	2
+PORTVERSION=	3.0.4
 CATEGORIES=	www
 MASTER_SITES=	http://repo.varnish-cache.org/source/
 
@@ -16,12 +15,11 @@ LIB_DEPENDS=	pcre:${PORTSDIR}/devel/pcre
 CONFLICTS=	varnish-2.*
 
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_PYTHON_BUILD=	yes
 CONFIGURE_ARGS=	--localstatedir=${PREFIX} --enable-tests
 CONFIGURE_ENV=	RST2MAN=true
 USE_LDCONFIG=	yes
-USE_GNOME=	pkgconfig
 USE_AUTOTOOLS=  aclocal libtool libtoolize automake autoconf
 ACLOCAL_ARGS=	-I m4
 LIBTOOLFLAGS=	--copy --force --disable-static
@@ -38,7 +36,6 @@ SUB_FILES=	pkg-message
 BAD_TESTS+=	r00832
 EXTRA_PATCHES+=	${FILESDIR}/no-inet6.patch
 .endif
-MAKE_JOBS_SAFE=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|\$$(libdir)/pkgconfig|\$$(prefix)/libdata/pkgconfig|' \

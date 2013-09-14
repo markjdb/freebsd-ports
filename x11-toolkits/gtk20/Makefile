@@ -5,7 +5,7 @@
 
 PORTNAME=	gtk
 PORTVERSION=	2.24.19
-PORTREVISION?=	1
+PORTREVISION?=	2
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME
 MASTER_SITE_SUBDIR=	sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
@@ -26,15 +26,14 @@ PORTSCOUT=	limitw:0,even
 
 BUILD_DEPENDS+=	g-ir-scanner:${PORTSDIR}/devel/gobject-introspection
 RUN_DEPENDS+=	${LOCALBASE}/share/mime/magic:${PORTSDIR}/misc/shared-mime-info \
-		${LOCALBASE}/share/icons/hicolor/index.theme:${PORTSDIR}/misc/hicolor-icon-theme
+		${LOCALBASE}/share/icons/hicolor/index.theme:${PORTSDIR}/misc/hicolor-icon-theme \
+		python:${PORTSDIR}/lang/python
 
-USE_GMAKE=	yes
-USE_PERL5_BUILD=yes
-MAKE_JOBS_SAFE=	yes
 USE_LDCONFIG=	yes
 USE_AUTOTOOLS=	libtool
 USE_GNOME=	gnomehack atk pango gdkpixbuf2 ltverhack gtk-update-icon-cache
-USES=		gettext
+USES=		gettext gmake pkgconfig perl5
+USE_PERL5=	build
 USE_XORG=	xext xrender x11 xinerama xi xrandr xcursor xfixes xdamage \
 		xcomposite
 CONFIGURE_ARGS=	--enable-static --with-xinput=yes

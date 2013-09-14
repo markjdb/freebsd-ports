@@ -21,10 +21,8 @@ RUN_DEPENDS=	display:${PORTSDIR}/graphics/ImageMagick \
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/${PORTNAME}
 
 USE_GNOME=	gtk20
-USES=		gettext
-USE_GMAKE=	yes
+USES=		gettext gmake pkgconfig
 MAKE_ENV=	CFLAGS1="${CFLAGS}"
-MAKE_JOBS_SAFE=	yes
 
 MANLANG=	"" es
 MAN1=		${PORTNAME}.1

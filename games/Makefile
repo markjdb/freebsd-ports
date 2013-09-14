@@ -356,7 +356,6 @@
     SUBDIR += greed
     SUBDIR += gretools
     SUBDIR += grhino
-    SUBDIR += gridlock
     SUBDIR += gru
     SUBDIR += grubik
     SUBDIR += gshisen
@@ -427,7 +426,6 @@
     SUBDIR += jutils
     SUBDIR += jvgs
     SUBDIR += jzip
-    SUBDIR += kaid
     SUBDIR += kajaani-kombat
     SUBDIR += kajongg
     SUBDIR += kanagram
@@ -465,7 +463,6 @@
     SUBDIR += kolf
     SUBDIR += kollision
     SUBDIR += konquest
-    SUBDIR += koth
     SUBDIR += kpat
     SUBDIR += krank
     SUBDIR += kreversi
@@ -622,6 +619,7 @@
     SUBDIR += netpanzer
     SUBDIR += netrek-BRMH-bin
     SUBDIR += netrek-client-cow
+    SUBDIR += netradiant
     SUBDIR += netris
     SUBDIR += netspades
     SUBDIR += nettoe
@@ -934,6 +932,7 @@
     SUBDIR += tksol
     SUBDIR += tmw
     SUBDIR += tomatoes
+    SUBDIR += tomenet
     SUBDIR += tong
     SUBDIR += toppler
     SUBDIR += torcs

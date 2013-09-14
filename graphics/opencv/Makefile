@@ -14,11 +14,10 @@ COMMENT=	Open Source Computer Vision library from Intel
 LICENSE=	BSD
 LICENSE_FILE=	${WRKSRC}/doc/license.txt
 
-USE_GNOME=	pkgconfig
 WANT_GSTREAMER=	yes
 MAKE_JOBS_UNSAFE=	yes
 USE_BZIP2=	yes
-USES=		cmake
+USES=		cmake pkgconfig
 USE_LDCONFIG=	yes
 
 WRKSRC=		${WRKDIR}/OpenCV-${DISTVERSION}
@@ -29,10 +28,16 @@ NOT_FOR_ARCHS_REASON_sparc64=	does not compile on sparc64
 DATADIR=	${PREFIX}/share/OpenCV
 PLIST_SUB+=	VERSION=${DISTVERSION}
 
+_COMPVERSION!= ${CC} --version
+.if ${_COMPVERSION:Mclang}
+USE_CXXSTD=	gnu++11
+CXXFLAGS+=	-Wno-error -Wno-c++11-narrowing
+.endif
+
 .if !defined(_BUILDING_OPENCV_CORE) && !defined(_BUILDING_OPENCV_PYTHON)
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-opencv
 LIB_DEPENDS+=	opencv_core.2:${PORTSDIR}/graphics/opencv-core
-LDFLAGS+=	-L${LOCALBASE}/lib
+LDFLAGS+=	-L${LOCALBASE}/lib -lopencv_core
 
 PORTDOCS=	*
 
@@ -42,8 +47,6 @@ EIGEN2_DESC=	Eigen 2 support
 GTK_DESC=	GTK+ support
 OPENEXR_DESC=	OpenEXR support
 TBB_DESC=	TBB support
-
-LDFLAGS+=	-lopencv_core
 
 OPTIONS_DEFAULT=	EIGEN2 JASPER JPEG PNG TIFF V4L
 

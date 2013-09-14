@@ -193,7 +193,6 @@
     SUBDIR += exiv2
     SUBDIR += exrtools
     SUBDIR += f-spot
-    SUBDIR += f90gl
     SUBDIR += fbm
     SUBDIR += feh
     SUBDIR += ffff
@@ -250,7 +249,6 @@
     SUBDIR += gdtclft
     SUBDIR += geeqie
     SUBDIR += gegl
-    SUBDIR += geglmm
     SUBDIR += geoapi
     SUBDIR += geomorph
     SUBDIR += geomview
@@ -507,9 +505,6 @@
     SUBDIR += libgeotiff
     SUBDIR += libgfx
     SUBDIR += libggi
-    SUBDIR += libggigcp
-    SUBDIR += libggimisc
-    SUBDIR += libggiwmh
     SUBDIR += libgltext
     SUBDIR += libgnomecanvas
     SUBDIR += libgnomecanvas-reference
@@ -574,6 +569,7 @@
     SUBDIR += lprof-devel
     SUBDIR += lua-gd
     SUBDIR += luminance
+    SUBDIR += luxrays
     SUBDIR += luxrender
     SUBDIR += mahotas
     SUBDIR += makehuman
@@ -771,7 +767,6 @@
     SUBDIR += php55-exif
     SUBDIR += php55-gd
     SUBDIR += phplot
-    SUBDIR += phpsview
     SUBDIR += picpuz
     SUBDIR += picturebook
     SUBDIR += picviz
@@ -877,8 +872,6 @@
     SUBDIR += pymorph
     SUBDIR += pyro
     SUBDIR += pysvg
-    SUBDIR += q-graph
-    SUBDIR += qcamview
     SUBDIR += qcomicbook
     SUBDIR += qcread
     SUBDIR += qgis
@@ -981,7 +974,6 @@
     SUBDIR += sketch
     SUBDIR += sng
     SUBDIR += sodipodi
-    SUBDIR += spcaview
     SUBDIR += springgraph
     SUBDIR += squish
     SUBDIR += sswf

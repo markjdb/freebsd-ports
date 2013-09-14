@@ -18,8 +18,8 @@ LIB_DEPENDS=	mpfr:${PORTSDIR}/math/mpfr
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-Test-Exception>=0:${PORTSDIR}/devel/p5-Test-Exception
 
-PERL_CONFIGURE=	yes
-USE_GMAKE=	yes
+USE_PERL5=	configure
+USES=		gmake perl5
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION:R}${PORTVERSION:E}
 
 MAN3=		DateTime::Astro.3 \

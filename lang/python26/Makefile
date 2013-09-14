@@ -3,7 +3,7 @@
 
 PORTNAME=	python26
 PORTVERSION=	2.6.8
-PORTREVISION=	5
+PORTREVISION=	7
 CATEGORIES=	lang python ipv6
 MASTER_SITES=	PYTHON
 MASTER_SITE_SUBDIR=	${PYTHON_MASTER_SITE_SUBDIR}
@@ -23,7 +23,6 @@ CONFIGURE_SCRIPT=	../configure # must be relative
 CONFIGURE_ENV=	SVNVERSION="echo freebsd"
 MAKE_ENV=	VPATH="${PYTHON_WRKSRC}"
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 INSTALL_TARGET=	altinstall
 MAN1=		${PYTHON_VERSION}.1
 
@@ -51,7 +50,6 @@ BINLINKS_SUB_TMPL=	-e 's,smtpd,smtpd%%VERSION%%,' \
 			-e 's,2to3,2to3-%%VERSION%%,' \
 			-e 's,(idle|pydoc|python-shared|python),\1%%VERSION%%,'
 BINLINKS_SUB_PYTHON_VER=	${BINLINKS_SUB_TMPL:S/%%VERSION%%/${PYTHON_VER}/g}
-BINLINKS_SUB_PYTHON_MAJOR_VER=	${BINLINKS_SUB_TMPL:S/%%VERSION%%/${PYTHON_MAJOR_VER}/g}
 
 OPTIONS_DEFINE=		THREADS SEM PTH PYMALLOC IPV6 FPECTL EXAMPLES NLS
 OPTIONS_DEFAULT=	THREADS UCS4 PYMALLOC IPV6
@@ -65,9 +63,12 @@ NLS_DESC=	Enable Gettext support for the locale module
 
 .if ${PORT_OPTIONS:MNLS}
 USES+=		gettext
-# XXX do not set any LDFLAGS or CFLAGS - this causes pyexpat to fail building
-#LDFLAGS+=	"-L${LOCALBASE}/lib"
-#CFLAGS+=	"-I${LOCALBASE}/include"
+LDFLAGS+=	-L${LOCALBASE}/lib
+# We use CPPFLAGS over CFLAGS here due to -I ordering causing things like
+# elementtree and pyexpat to break with python27, or to silence preprocessor
+# complaints with python33
+CPPFLAGS+=	-I${LOCALBASE}/include
+CONFIGURE_ENV+=	LIBS="-lintl"
 .else
 CONFIGURE_ENV+=	ac_cv_lib_intl_textdomain=no ac_cv_header_libintl_h=no
 .endif
@@ -86,13 +87,6 @@ SEM_MSG=	"@comment "
 
 SUB_FILES=	pkg-message
 SUB_LIST=	SEM=${SEM_MSG}
-
-.if ${PYTHON_VERSION} == ${PYTHON_DEFAULT_VERSION}
-MLINKS=		${PYTHON_VERSION}.1 python.1
-PLIST_SUB+=	IF_DEFAULT=""
-.else
-PLIST_SUB+=	IF_DEFAULT="@comment "
-.endif
 
 .if ${PORT_OPTIONS:MTHREADS}
 PLIST_SUB+=	THREADS=""
@@ -153,7 +147,7 @@ CONFIGURE_ARGS+=	--disable-ipv6
 CONFIGURE_ARGS+=	--with-fpectl
 .endif
 
-CONFIGURE_ENV+=	OPT="${CFLAGS} ${_PTH_CPPFLAGS}"
+CONFIGURE_ENV+=	OPT="${_PTH_CPPFLAGS}"
 
 pre-patch:
 	${CP} -r ${PATCH_WRKSRC}/Lib/plat-freebsd8 \
@@ -267,15 +261,6 @@ post-install:
 	@${MKDIR} ${MANPREFIX}/man/man1
 	${INSTALL_MAN} ${PYTHON_WRKSRC}/Misc/python.man \
 		${MANPREFIX}/man/man1/${PYTHON_VERSION}.1
-
-.if ${PYTHON_VERSION} == ${PYTHON_DEFAULT_VERSION}
-	for f in ${BIN_FILES}; do \
-		TARGET=`${ECHO_CMD} $$f | ${SED} -E ${BINLINKS_SUB_PYTHON_VER}`; \
-		TARGET_MAJOR=`${ECHO_CMD} $$f | ${SED} -E ${BINLINKS_SUB_PYTHON_MAJOR_VER}`; \
-		cd ${PREFIX}/bin && ${LN} -sf $$TARGET $$TARGET_MAJOR; \
-		cd ${PREFIX}/bin && ${LN} -sf $$TARGET_MAJOR $$f; \
-	done
-.endif
 
 .if !defined(NOPORTDATA)
 	@${MKDIR} ${DATADIR}

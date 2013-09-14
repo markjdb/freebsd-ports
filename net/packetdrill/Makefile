@@ -14,7 +14,6 @@ LICENSE=	GPLv2
 USES=		bison
 MAKE_ENV+=	PTHREAD_CFLAGS="${PTHREAD_CFLAGS}" \
 		PTHREAD_LIBS="${PTHREAD_LIBS}"
-MAKE_JOBS_SAFE=	yes
 PORTDOCS=	README
 PORTEXAMPLES=	fr-4pkt-sack-bsd.pkt fr-4pkt-sack-linux.pkt
 
@@ -22,6 +21,17 @@ OPTIONS_DEFINE=	DOCS EXAMPLES
 OPTIONS_DEFAULT=DOCS EXAMPLES
 
 .include <bsd.port.options.mk>
+
+do-configure:
+	${PRINTF} "%s\n" "#include <stdio.h>" "int main(void) {" \
+	    "char *p = fmemopen; char *q = open_memstream; return 0; }" \
+	    > ${WRKDIR}/configure.c
+	${TOUCH} ${WRKSRC}/ports_config.h
+	cd ${WRKDIR} && \
+	    if ${CC} -o /dev/null configure.c > /dev/null 2>&1; then \
+		${PRINTF} "%s\n" "#define HAVE_FMEMOPEN 1" \
+		"#define HAVE_OPEN_MEMSTREAM 1" > ${WRKSRC}/ports_config.h; \
+	    fi
 
 pre-build:
 	${INSTALL_DATA} ${FILESDIR}/Makefile ${FILESDIR}/Makefile.inc ${WRKSRC}

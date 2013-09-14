@@ -2,16 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	wordpress
-PORTVERSION=	3.5.2
+PORTVERSION=	3.6.1
 CATEGORIES=	japanese www
 MASTER_SITES=	http://ja.wordpress.org/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-ja
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	A state-of-the-art semantic personal publishing platform
+COMMENT=	State-of-the-art semantic personal publishing platform
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/license.txt
 
 CONFLICTS_INSTALL=	wordpress-3.* de-wordpress-3.* ru-wordpress-3.*
 
@@ -28,6 +27,8 @@ PORTDOCS=	license.txt readme.html
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 pre-everything::
 	@${ECHO_CMD} "If you want to upgrade, you must read upgrade document."
 	@${ECHO_CMD} ""
@@ -39,8 +40,6 @@ pre-install:
 		${FIND} -d . -type d | ${SED} -e 's|^\.|@dirrm %%WWWDIR%%|') > ${PLIST}
 	if [ ! -f ${WRKSRC}/wp-config-sample.php ]; then ${CP} \
 		${WRKSRC}/wp-config.php.sample ${WRKSRC}/wp-config.php; fi
-
-.include <bsd.port.options.mk>
 
 do-install:
 	${INSTALL} -d -g ${WWWGRP} -m 755 -o ${WWWOWN} ${WWWDIR}/

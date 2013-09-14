@@ -67,6 +67,7 @@ CUPS_SUFFIX=	-image
 LICENSE=	LGPL21
 OPTIONS_DEFINE=	GNUTLS
 .else
+INSTALLS_ICONS=	yes
 PORTREVISION=	1
 CUPS_SUFFIX=	-base
 OPTIONS_DEFINE=	GNUTLS LIBPAPER PHP PYTHON PAM LDAP DBUS LIBUSB XDG_OPEN GHOSTSCRIPT XPDF AVAHI MDNSRESPONDER
@@ -148,7 +149,7 @@ PLIST_SUB+=		PHP="@comment "
 
 .if !defined(CUPS_CLIENT) && !defined(CUPS_IMAGE) && ${PORT_OPTIONS:MGHOSTSCRIPT}
 .if ${PORT_OPTIONS:MXPDF}
-IGNORE=			you must select one and only one option to build pdftops
+IGNORE=			You must select one and only one option to build pdftops
 .endif
 USE_GHOSTSCRIPT=	yes
 CONFIGURE_ARGS+=	--enable-pdftops --with-pdftops=${LOCALBASE}/bin/gs
@@ -175,7 +176,7 @@ LIB_DEPENDS+=		paper:${PORTSDIR}/print/libpaper
 
 .if !defined(CUPS_CLIENT) && !defined(CUPS_IMAGE) && ${PORT_OPTIONS:MMDNSRESPONDER}
 .if ${PORT_OPTIONS:MAVAHI}
-IGNORE=			you must select one and only one option to build for Zeroconf
+IGNORE=			You must select one and only one option to build for Zeroconf
 .endif
 LIB_DEPENDS+=		dns_sd:${PORTSDIR}/net/mDNSResponder
 CONFIGURE_ARGS+=	--with-dnssd-includes=${LOCALBASE}/include
@@ -231,7 +232,7 @@ CONFIGURE_ARGS+=	LIBS="-lssp_nonshared"
 MAN1=	cups-config.1
 .elif defined(CUPS_IMAGE)
 .else
-MAN1=	cancel.1 \
+MAN1+=	cancel.1 \
 	cupstestdsc.1 \
 	cupstestppd.1 \
 	ipptool.1 \
@@ -387,7 +388,7 @@ post-install:
 .if  ${PORT_OPTIONS:MGHOSTSCRIPT} || ${PORT_OPTIONS:MXPDF}
 	${INSTALL_PROGRAM} ${WRKSRC}/filter/pdftops ${PREFIX}/libexec/cups/filter/
 .endif
-	${LN} -s ${PREFIX}/bin/lpr ${PREFIX}/bin/lpr-cups
+	${LN} -sf ${PREFIX}/bin/lpr ${PREFIX}/bin/lpr-cups
 	${INSTALL} -d ${CUPS_ETCDIR}/
 	${CP} -p ${WRKSRC}/conf/snmp.conf ${WRKSRC}/conf/snmp.conf.N
 .for f in cupsd.conf mime.convs mime.types snmp.conf

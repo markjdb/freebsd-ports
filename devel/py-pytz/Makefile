@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pytz
-PORTVERSION=	2013b
+PORTVERSION=	2013d
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,6 +14,13 @@ USE_BZIP2=	yes
 USE_PYTHON=	yes
 USE_PYDISTUTILS=	easy_install
 
-PLIST_FILES=	%%PYTHON_SITELIBDIR%%/%%PYEASYINSTALL_EGG%%
+.include <bsd.port.pre.mk>
 
-.include <bsd.port.mk>
+post-patch:
+	@${REINPLACE_CMD} -e 's|=True|=False|' ${WRKSRC}/setup.py
+
+.if ${PYTHON_REL} >= 320
+.include "${PORTSDIR}/devel/py-virtualenv/files/py3k-fix-pkg-plist.inc"
+.endif
+
+.include <bsd.port.post.mk>

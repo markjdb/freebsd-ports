@@ -20,7 +20,7 @@ OPTIONS_DEFAULT=PERL PYTHON UNIQUE
 UNIQUE_DESC=	Remote controle backend support
 
 USE_XZ=		yes
-USES=		desktop-file-utils gettext pathfix shared-mime-info
+USES=		desktop-file-utils gettext pathfix shared-mime-info pkgconfig
 USE_GNOME=	gconf2 gtk20 libxml2
 USE_GL=		glu
 USE_GMAKE=	yes
@@ -30,7 +30,6 @@ CONFIGURE_ARGS=	--disable-silent-rules --disable-gtk-doc \
 		--without-kde4-thumbnailer
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

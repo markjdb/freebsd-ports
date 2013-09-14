@@ -1,9 +1,5 @@
-# New ports collection makefile for:	freealut
-# Date created:				08 March 2006
-# Whom:					Oliver Lehmann <oliver@FreeBSD.org>
-#
+# Created by: Oliver Lehmann <oliver@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	freealut
 PORTVERSION=	1.1.0
@@ -18,8 +14,7 @@ USE_AUTOTOOLS=	libtool
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-USE_GMAKE=	yes
-USE_GNOME=	pkgconfig gnomehack
+USES=		gmake pathfix pkgconfig
 USE_OPENAL=	al
 USE_LDCONFIG=	yes
 

@@ -51,6 +51,681 @@ Note:  Please add new entries to the beginning of this file.
 
 -->
 <vuxml xmlns="http://www.vuxml.org/apps/vuxml-1">
+  <vuln vid="5bd6811f-1c75-11e3-ba72-98fc11cdc4f5">
+    <topic>linux-flashplugin -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>linux-f10-flashplugin</name>
+	<range><lt>11.2r202.310</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Adobe reports:</p>
+	<blockquote cite="http://www.adobe.com/support/security/bulletins/apsb13-21.html">
+	  <p>These updates address vulnerabilities that could cause a crash
+	    and potentially allow an attacker to take control of the affected system.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-3361</cvename>
+      <cvename>CVE-2013-3362</cvename>
+      <cvename>CVE-2013-3363</cvename>
+      <cvename>CVE-2013-5324</cvename>
+      <url>http://www.adobe.com/support/security/bulletins/apsb13-21.html</url>
+    </references>
+    <dates>
+      <discovery>2013-09-10</discovery>
+      <entry>2013-09-13</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="a851b305-1bc3-11e3-95b7-00e0814cab4e">
+    <topic>django -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>py26-django</name>
+	<name>py27-django</name>
+	<range><ge>1.5</ge><lt>1.5.3</lt></range>
+	<range><ge>1.4</ge><lt>1.4.7</lt></range>
+      </package>
+      <package>
+	<name>py26-django-devel</name>
+	<name>py27-django-devel</name>
+	<range><lt>20130912,1</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The Django project reports:</p>
+	<blockquote cite="https://www.djangoproject.com/weblog/2013/sep/10/security-releases-issued/">
+	  <p>These releases address a directory-traversal vulnerability in one
+	    of Django's built-in template tags. While this issue requires some
+	    fairly specific factors to be exploitable, we encourage all users
+	    of Django to upgrade promptly.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-4315</cvename>
+    </references>
+    <dates>
+      <discovery>2013-09-10</discovery>
+      <entry>2013-09-12</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="f8a913cc-1322-11e3-8ffa-20cf30e32f6d">
+    <topic>svnserve is vulnerable to a local privilege escalation vulnerability via symlink attack.</topic>
+    <affects>
+      <package>
+	<name>subversion</name>
+	<range><ge>1.4.0</ge><lt>1.6.23_2</lt></range>
+	<range><ge>1.7.0</ge><lt>1.7.13</lt></range>
+	<range><ge>1.8.0</ge><lt>1.8.3</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Subversion Project reports:</p>
+	<blockquote cite="http://subversion.apache.org/security/CVE-2013-4277-advisory.txt">
+	  <p>svnserve takes a --pid-file option which creates a file containing the
+	    process id it is running as.  It does not take steps to ensure that the file
+	    it has been directed at is not a symlink.  If the pid file is in a directory
+	    writeable by unprivileged users, the destination could be replaced by a
+	    symlink allowing for privilege escalation.  svnserve does not create a pid
+	    file by default.</p>
+	  <p>All versions are only vulnerable when the --pid-file=ARG option is used.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-4277</cvename>
+      <url>http://subversion.apache.org/security/CVE-2013-4277-advisory.txt</url>
+    </references>
+    <dates>
+      <discovery>2013-08-30</discovery>
+      <entry>2013-09-02</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="b3b8d491-0fbb-11e3-8c50-1c6f65c11ee6">
+    <topic>cacti -- allow remote attackers to execute arbitrary SQL commands</topic>
+    <affects>
+      <package>
+	<name>cacti</name>
+	<range><lt>0.8.8b</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Cacti release reports:</p>
+	<blockquote cite="http://www.cacti.net/release_notes_0_8_8b.php">
+	  <p>Multiple security vulnerabilities have been fixed:</p>
+	  <ul>
+	    <li>SQL injection vulnerabilities</li>
+	  </ul>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+       <cvename>CVE-2013-1434</cvename>
+       <cvename>CVE-2013-1435</cvename>
+       <url>http://www.cacti.net/release_notes_0_8_8b.php</url>
+    </references>
+    <dates>
+      <discovery>2013-08-06</discovery>
+      <entry>2013-08-29</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="fd2bf3b5-1001-11e3-ba94-0025905a4771">
+    <topic>asterisk -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>asterisk11</name>
+	<range><gt>11.*</gt><lt>11.5.1</lt></range>
+      </package>
+      <package>
+	<name>asterisk10</name>
+	<range><gt>10.*</gt><lt>10.12.3</lt></range>
+      </package>
+      <package>
+	<name>asterisk18</name>
+	<range><gt>1.8.*</gt><lt>1.8.21.1</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The Asterisk project reports:</p>
+	<blockquote cite="https://www.asterisk.org/security">
+	  <p>Remote Crash From Late Arriving SIP ACK With SDP</p>
+	  <p>Remote Crash when Invalid SDP is sent in SIP Request</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-5641</cvename>
+      <cvename>CVE-2013-5642</cvename>
+      <url>http://downloads.asterisk.org/pub/security/AST-2013-004.html</url>
+      <url>http://downloads.asterisk.org/pub/security/AST-2013-005.html</url>
+      <url>https://www.asterisk.org/security</url>
+    </references>
+    <dates>
+      <discovery>2013-08-27</discovery>
+      <entry>2013-08-28</entry>
+      <modified>2013-08-29</modified>
+    </dates>
+  </vuln>
+
+  <vuln vid="ae651a4b-0a42-11e3-ba52-00262d5ed8ee">
+    <topic>chromium -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>chromium</name>
+	<range><lt>29.0.1547.57</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Google Chrome Releases reports:</p>
+	<blockquote cite="http://googlechromereleases.blogspot.nl/">
+	  <p>25 security fixes in this release, including:</p>
+	  <ul>
+	    <li>[181617] High CVE-2013-2900: Incomplete path sanitization in
+	      file handling. Credit to Krystian Bigaj.</li>
+	    <li> [254159] Low CVE-2013-2905: Information leak via overly broad
+	      permissions on shared memory files. Credit to Christian
+	      Jaeger.</li>
+	    <li>[257363] High CVE-2013-2901: Integer overflow in ANGLE. Credit
+	      to Alex Chapman.</li>
+	    <li>[260105] High CVE-2013-2902: Use after free in XSLT. Credit to
+	      cloudfuzzer.</li>
+	    <li>[260156] High CVE-2013-2903: Use after free in media element.
+	      Credit to cloudfuzzer.</li>
+	    <li>[260428] High CVE-2013-2904: Use after free in document
+	      parsing. Credit to cloudfuzzer.</li>
+	    <li>[274602] CVE-2013-2887: Various fixes from internal audits,
+	      fuzzing and other initiatives (Chrome 29).</li>
+	  </ul>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-2887</cvename>
+      <cvename>CVE-2013-2900</cvename>
+      <cvename>CVE-2013-2901</cvename>
+      <cvename>CVE-2013-2902</cvename>
+      <cvename>CVE-2013-2903</cvename>
+      <cvename>CVE-2013-2904</cvename>
+      <cvename>CVE-2013-2905</cvename>
+      <url>http://googlechromereleases.blogspot.nl/</url>
+    </references>
+    <dates>
+      <discovery>2013-08-20</discovery>
+      <entry>2013-08-21</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="4d087b35-0990-11e3-a9f4-bcaec565249c">
+    <topic>gstreamer-ffmpeg -- Multiple vulnerabilities in bundled libav</topic>
+    <affects>
+      <package>
+	<name>gstreamer-ffmpeg</name>
+	<range><lt>0.10.13_1</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<blockquote cite="http://libav.org/releases/libav-0.7.7.changelog">
+	  <p>Bundled version of libav in gstreamer-ffmpeg contains a number of
+	     vulnerabilities.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2011-3892</cvename>
+      <cvename>CVE-2011-3893</cvename>
+      <cvename>CVE-2011-3895</cvename>
+      <cvename>CVE-2011-3929</cvename>
+      <cvename>CVE-2011-3936</cvename>
+      <cvename>CVE-2011-3937</cvename>
+      <cvename>CVE-2011-3940</cvename>
+      <cvename>CVE-2011-3945</cvename>
+      <cvename>CVE-2011-3947</cvename>
+      <cvename>CVE-2011-3951</cvename>
+      <cvename>CVE-2011-3952</cvename>
+      <cvename>CVE-2011-4031</cvename>
+      <cvename>CVE-2011-4351</cvename>
+      <cvename>CVE-2011-4352</cvename>
+      <cvename>CVE-2011-4353</cvename>
+      <cvename>CVE-2011-4364</cvename>
+      <cvename>CVE-2011-4579</cvename>
+      <cvename>CVE-2012-0848</cvename>
+      <cvename>CVE-2012-0850</cvename>
+      <cvename>CVE-2012-0851</cvename>
+      <cvename>CVE-2012-0852</cvename>
+      <cvename>CVE-2012-0853</cvename>
+      <cvename>CVE-2012-0858</cvename>
+      <cvename>CVE-2012-0947</cvename>
+      <cvename>CVE-2012-2772</cvename>
+      <cvename>CVE-2012-2775</cvename>
+      <cvename>CVE-2012-2777</cvename>
+      <cvename>CVE-2012-2779</cvename>
+      <cvename>CVE-2012-2783</cvename>
+      <cvename>CVE-2012-2784</cvename>
+      <cvename>CVE-2012-2786</cvename>
+      <cvename>CVE-2012-2787</cvename>
+      <cvename>CVE-2012-2788</cvename>
+      <cvename>CVE-2012-2790</cvename>
+      <cvename>CVE-2012-2791</cvename>
+      <cvename>CVE-2012-2793</cvename>
+      <cvename>CVE-2012-2794</cvename>
+      <cvename>CVE-2012-2798</cvename>
+      <cvename>CVE-2012-2800</cvename>
+      <cvename>CVE-2012-2801</cvename>
+      <cvename>CVE-2012-2803</cvename>
+      <cvename>CVE-2012-5144</cvename>
+      <url>http://libav.org/releases/libav-0.7.7.changelog</url>
+    </references>
+    <dates>
+      <discovery>2013-08-20</discovery>
+      <entry>2013-08-20</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="689c2bf7-0701-11e3-9a25-002590860428">
+    <topic>GnuPG and Libgcrypt -- side-channel attack vulnerability</topic>
+    <affects>
+      <package>
+	<name>libgcrypt</name>
+	<range><lt>1.5.3</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Werner Koch of the GNU project reports:</p>
+	<blockquote cite="http://lists.gnupg.org/pipermail/gnupg-announce/2013q3/000329.html">
+	  <p>Noteworthy changes in version 1.5.3:</p>
+	  <p>Mitigate the Yarom/Falkner flush+reload side-channel attack on RSA secret keys...</p>
+	  <p>Note that Libgcrypt is used by GnuPG 2.x and thus this release fixes the above
+	    problem. The fix for GnuPG less than 2.0 can be found in the just released GnuPG
+	    1.4.14.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+    <url>http://eprint.iacr.org/2013/448</url>
+    <url>http://lists.gnupg.org/pipermail/gnupg-announce/2013q3/000329.html</url>
+    <url>http://lists.gnupg.org/pipermail/gnupg-announce/2013q3/000330.html</url>
+    </references>
+    <dates>
+      <discovery>2013-07-18</discovery>
+      <entry>2013-08-17</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="2b2f6092-0694-11e3-9e8e-000c29f6ae42">
+    <topic>puppet -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>puppet</name>
+	<range><ge>2.7</ge><lt>2.7.23</lt></range>
+	<range><ge>3.0</ge><lt>3.2.4</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Puppet Labs reports:</p>
+	<blockquote cite="http://puppetlabs.com/security/cve/cve-2013-4761/">
+	  <p>By using the `resource_type` service, an attacker could
+	    cause puppet to load arbitrary Ruby files from the puppet
+	    master node's file system. While this behavior is not
+	    enabled by default, `auth.conf` settings could be modified
+	    to allow it. The exploit requires local file system access
+	    to the Puppet Master.</p>
+	  <p>Puppet Module Tool (PMT) did not correctly control
+	    permissions of modules it installed, instead transferring
+	    permissions that existed when the module was built.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-4761</cvename>
+      <cvename>CVE-2013-4956</cvename>
+      <url>http://puppetlabs.com/security/cve/cve-2013-4761/</url>
+      <url>http://puppetlabs.com/security/cve/cve-2013-4956/</url>
+    </references>
+    <dates>
+      <discovery>2013-07-05</discovery>
+      <entry>2013-08-16</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="9a0a892e-05d8-11e3-ba09-000c29784fd1">
+    <topic>lcms2 -- Null Pointer Dereference Denial of Service Vulnerability</topic>
+    <affects>
+      <package>
+	<name>lcms2</name>
+	<range><lt>2.5</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Mageia security team reports:</p>
+	<blockquote cite="http://advisories.mageia.org/MGASA-2013-0240.html">
+	  <p>It was discovered that Little CMS did not properly verify certain
+	    memory allocations. If a user or automated system using Little CMS
+	    were tricked into opening a specially crafted file, an attacker
+	    could cause Little CMS to crash (CVE-2013-4160).
+	  </p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-4160</cvename>
+      <url>http://advisories.mageia.org/MGASA-2013-0240.html</url>
+      <url>https://bugs.mageia.org/show_bug.cgi?id=10816</url>
+    </references>
+    <dates>
+      <discovery>2013-07-22</discovery>
+      <entry>2013-08-15</entry>
+      <modified>2013-08-19</modified>
+    </dates>
+  </vuln>
+
+  <vuln vid="72bf9e21-03df-11e3-bd8d-080027ef73ec">
+    <topic>polarssl -- denial of service vulnerability</topic>
+    <affects>
+      <package>
+	<name>polarssl</name>
+	<range><lt>1.2.8</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Paul Bakker reports:</p>
+	<blockquote cite="https://polarssl.org/tech-updates/security-advisories/polarssl-security-advisory-2013-03">
+	  <p>A bug in the logic of the parsing of PEM encoded certificates in
+	    x509parse_crt() can result in an infinite loop, thus hogging processing
+	    power.</p>
+	  <p>While parsing a Certificate message during the SSL/TLS handshake,
+	    PolarSSL extracts the presented certificates and sends them on to
+	    be parsed. As the RFC specifies that the certificates in the
+	    Certificate message are always X.509 certificates in DER format,
+	    bugs in the decoding of PEM certificates should normally not be
+	    triggerable via the SSL/TLS handshake.</p>
+	  <p>Versions of PolarSSL prior to 1.1.7 in the 1.1 branch and prior
+	    to 1.2.8 in the 1.2 branch call the generic x509parse_crt()
+	    function for parsing during the handshake. x509parse_crt() is a
+	    generic functions that wraps parsing of both PEM-encoded and
+	    DER-formatted certificates. As a result it is possible to craft
+	    a Certificate message that includes a PEM encoded certificate in
+	    the Certificate message that triggers the infinite loop.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-4623</cvename>
+      <url>https://polarssl.org/tech-updates/security-advisories/polarssl-security-advisory-2013-03</url>
+    </references>
+    <dates>
+      <discovery>2013-06-21</discovery>
+      <entry>2013-08-13</entry>
+      <modified>2013-08-15</modified>
+    </dates>
+  </vuln>
+
+  <vuln vid="e21c7c7a-0116-11e3-9e83-3c970e169bc2">
+    <topic>samba -- denial of service vulnerability</topic>
+    <affects>
+      <package>
+	<name>samba34</name>
+	<range><gt>0</gt></range>
+      </package>
+      <package>
+	<name>samba35</name>
+	<range><gt>0</gt></range>
+      </package>
+      <package>
+	<name>samba36</name>
+	<range><gt>3.6.*</gt><lt>3.6.17</lt></range>
+      </package>
+      <package>
+	<name>samba4</name>
+	<range><gt>4.0.*</gt><lt>4.0.8</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The Samba project reports:</p>
+	<blockquote cite="http://www.samba.org/samba/security/CVE-2013-4124">
+	  <p>All current released versions of Samba are vulnerable to
+	    a denial of service on an authenticated or guest connection.
+	    A malformed packet can cause the smbd server to loop the CPU
+	    performing memory allocations and preventing any further service.</p>
+	  <p>A connection to a file share, or a local account is needed
+	    to exploit this problem, either authenticated or unauthenticated
+	    if guest connections are allowed.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-4124</cvename>
+      <url>http://www.samba.org/samba/security/CVE-2013-4124</url>
+    </references>
+    <dates>
+      <discovery>2013-08-05</discovery>
+      <entry>2013-08-09</entry>
+      <modified>2013-08-09</modified>
+    </dates>
+  </vuln>
+
+  <vuln vid="0998e79d-0055-11e3-905b-0025905a4771">
+    <topic>mozilla -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>firefox</name>
+	<range><gt>18.0,1</gt><lt>23.0,1</lt></range>
+	<range><lt>17.0.8,1</lt></range>
+      </package>
+      <package>
+	<name>linux-firefox</name>
+	<range><lt>17.0.8,1</lt></range>
+      </package>
+      <package>
+	<name>linux-seamonkey</name>
+	<range><lt>2.20</lt></range>
+      </package>
+      <package>
+	<name>linux-thunderbird</name>
+	<range><lt>17.0.8</lt></range>
+      </package>
+      <package>
+	<name>seamonkey</name>
+	<range><lt>2.20</lt></range>
+      </package>
+      <package>
+	<name>thunderbird</name>
+	<range><gt>11.0</gt><lt>17.0.8</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The Mozilla Project reports:</p>
+	<blockquote cite="http://www.mozilla.org/security/known-vulnerabilities/">
+	  <p>MFSA 2013-63 Miscellaneous memory safety hazards (rv:23.0 /
+	    rv:17.0.8)</p>
+	  <p>MFSA 2013-64 Use after free mutating DOM during SetBody</p>
+	  <p>MFSA 2013-65 Buffer underflow when generating CRMF requests</p>
+	  <p>MFSA 2013-66 Buffer overflow in Mozilla Maintenance Service and
+	    Mozilla Updater</p>
+	  <p>MFSA 2013-67 Crash during WAV audio file decoding</p>
+	  <p>MFSA 2013-68 Document URI misrepresentation and masquerading</p>
+	  <p>MFSA 2013-69 CRMF requests allow for code execution and XSS
+	    attacks</p>
+	  <p>MFSA 2013-70 Bypass of XrayWrappers using XBL Scopes</p>
+	  <p>MFSA 2013-71 Further Privilege escalation through Mozilla Updater</p>
+	  <p>MFSA 2013-72 Wrong principal used for validating URI for some
+	    Javascript components</p>
+	  <p>MFSA 2013-73 Same-origin bypass with web workers and
+	    XMLHttpRequest</p>
+	  <p>MFSA 2013-74 Firefox full and stub installer DLL hijacking</p>
+	  <p>MFSA 2013-75 Local Java applets may read contents of local file
+	    system</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+	<cvename>CVE-2013-1701</cvename>
+	<cvename>CVE-2013-1702</cvename>
+	<cvename>CVE-2013-1704</cvename>
+	<cvename>CVE-2013-1705</cvename>
+	<cvename>CVE-2013-1706</cvename>
+	<cvename>CVE-2013-1707</cvename>
+	<cvename>CVE-2013-1708</cvename>
+	<cvename>CVE-2013-1709</cvename>
+	<cvename>CVE-2013-1710</cvename>
+	<cvename>CVE-2013-1711</cvename>
+	<cvename>CVE-2013-1712</cvename>
+	<cvename>CVE-2013-1713</cvename>
+	<cvename>CVE-2013-1714</cvename>
+	<cvename>CVE-2013-1715</cvename>
+	<cvename>CVE-2013-1717</cvename>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-63.html</url>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-64.html</url>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-65.html</url>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-66.html</url>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-67.html</url>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-68.html</url>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-69.html</url>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-70.html</url>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-71.html</url>
+	<url>https://www.mozilla.org/security/announce/2013/mfsa2013-72.html</url>
+	<url>http://www.mozilla.org/security/known-vulnerabilities/</url>
+    </references>
+    <dates>
+      <discovery>2013-08-06</discovery>
+      <entry>2013-08-08</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="4b448a96-ff73-11e2-b28d-080027ef73ec">
+    <topic>PuTTY -- Four security holes in versions before 0.63</topic>
+    <affects>
+      <package>
+	<name>putty</name>
+	<range><lt>0.63</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Simon Tatham reports:</p>
+	<blockquote cite="http://lists.tartarus.org/pipermail/putty-announce/2013/000018.html">
+	  <p>This [0.63] release fixes multiple security holes in previous versions of
+	    PuTTY, which can allow an SSH-2 server to make PuTTY overrun or
+	    underrun buffers and crash. [...]
+	  </p><p>
+	    These vulnerabilities can be triggered before host key verification,
+	    which means that you are not even safe if you trust the server you
+	    <em>think</em> you're connecting to, since it could be spoofed over the
+	    network and the host key check would not detect this before the attack
+	    could take place.
+	  </p><p>
+	    Additionally, when PuTTY authenticated with a user's private key, the
+	    private key or information equivalent to it was accidentally kept in
+	    PuTTY's memory for the rest of its run, where it could be retrieved by
+	    other processes reading PuTTY's memory, or written out to swap files
+	    or crash dumps. This release fixes that as well.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-4206</cvename>
+      <cvename>CVE-2013-4207</cvename>
+      <cvename>CVE-2013-4208</cvename>
+      <cvename>CVE-2013-4852</cvename>
+      <mlist msgid="E1V6lUs-0007kP-40@atreus.tartarus.org">http://lists.tartarus.org/pipermail/putty-announce/2013/000018.html</mlist>
+      <url>http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-modmul.html</url>
+      <url>http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-bignum-division-by-zero.html</url>
+      <url>http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/private-key-not-wiped.html</url>
+      <url>http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-signature-stringlen.html</url>
+    </references>
+    <dates>
+      <discovery>2013-07-08</discovery>
+      <entry>2013-08-07</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="e6839625-fdfa-11e2-9430-20cf30e32f6d">
+    <topic>typo3 -- Multiple vulnerabilities in TYPO3 Core</topic>
+    <affects>
+      <package>
+	<name>typo3</name>
+	<range><ge>4.5.0</ge><lt>4.5.29</lt></range>
+	<range><ge>4.7.0</ge><lt>4.7.14</lt></range>
+	<range><ge>6.1.0</ge><lt>6.1.3</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Typo Security Team reports:</p>
+	<blockquote cite="http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2013-002/">
+	  <p>It has been discovered that TYPO3 Core is vulnerable to
+	    Cross-Site Scripting and Remote Code Execution.</p>
+	  <p>TYPO3 bundles flash files for video and audio playback. Old
+	    versions of FlowPlayer and flashmedia are susceptible to
+	    Cross-Site Scripting. No authentication is required to exploit
+	    this vulnerability.</p>
+	  <p>The file upload component and the File Abstraction Layer are
+	    failing to check for denied file extensions, which allows
+	    authenticated editors (even with limited permissions) to
+	    upload php files with arbitrary code, which can then be
+	    executed in web server's context.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2011-3642</cvename>
+      <cvename>CVE-2013-1464</cvename>
+    </references>
+    <dates>
+      <discovery>2013-07-30</discovery>
+      <entry>2013-08-05</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="17326fd5-fcfb-11e2-9bb9-6805ca0b3d42">
+    <topic>phpMyAdmin -- clickJacking protection can be bypassed</topic>
+    <affects>
+      <package>
+	<name>phpMyAdmin</name>
+	<range><lt>4.0.5</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The phpMyAdmin development team reports:</p>
+	<blockquote cite="http://www.phpmyadmin.net/home_page/security/PMASA-2013-10.php">
+	  <p> phpMyAdmin has a number of mechanisms to avoid a
+	  clickjacking attack, however these mechanisms either work
+	  only in modern browser versions, or can be bypassed.</p>
+	  <p>"We have no solution for 3.5.x, due to the proposed
+	  solution requiring JavaScript. We don't want to introduce a
+	  dependency to JavaScript in the 3.5.x family."</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <url>http://www.phpmyadmin.net/home_page/security/PMASA-2013-10.php</url>
+    </references>
+    <dates>
+      <discovery>2013-08-04</discovery>
+      <entry>2013-08-04</entry>
+    </dates>
+  </vuln>
+
   <vuln vid="69098c5c-fc4b-11e2-8ad0-00262d5ed8ee">
     <topic>chromium -- multiple vulnerabilities</topic>
     <affects>
@@ -9062,7 +9737,7 @@ executed in your Internet Explorer while displaying the email.</p>
     <dates>
       <discovery>2012-08-13</discovery>
       <entry>2012-09-08</entry>
-      <modified>2012-09-23</modified>
+      <modified>2013-05-13</modified>
     </dates>
   </vuln>
 
@@ -12978,9 +13653,9 @@ executed in your Internet Explorer while displaying the email.</p>
     <affects>
       <package>
 	<name>nvidia-driver</name>
-	<range><gt>173.14.35_1</gt><lt>295.71</lt></range>
-	<range><gt>96.43.20_2</gt><lt>173.14.35</lt></range>
-	<range><gt>71.86.15_2</gt><lt>96.43.20_2</lt></range>
+	<range><gt>173.14.35_2</gt><lt>295.71</lt></range>
+	<range><gt>96.43.20_3</gt><lt>173.14.35</lt></range>
+	<range><gt>71.86.15_3</gt><lt>96.43.20_2</lt></range>
 	<range><lt>71.86.15_2</lt></range>
       </package>
     </affects>
@@ -17326,10 +18001,12 @@ executed in your Internet Explorer while displaying the email.</p>
     <references>
       <cvename>CVE-2011-4607</cvename>
       <mlist>http://lists.tartarus.org/pipermail/putty-announce/2011/000017.html</mlist>
+      <url>http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/password-not-wiped.html</url>
     </references>
     <dates>
       <discovery>2011-12-10</discovery>
       <entry>2011-12-12</entry>
+      <modified>2013-08-07</modified>
     </dates>
   </vuln>
 

@@ -24,13 +24,14 @@ JSON_XS_DESC=	Use JSON::XS
 JSON_DESC=	Use JSON
 JSON_DWIW_DESC=	Use JSON::DWIW
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		XML::XML2JSON.3
 
 .include <bsd.port.options.mk>
 
-.if empty(PORT_OPTIONS:MJSON_SYCK) && empty(PORT_OPTIONS:MJSON_XS) && empty(PORT_OPTIONS:MJSON) && empty(PORT_OPTIONS:MJSON_DWIW)
+.if !${PORT_OPTIONS:MJSON_SYCK} && !${PORT_OPTIONS:MJSON_XS} && !${PORT_OPTIONS:MJSON} && !${PORT_OPTIONS:MJSON_DWIW}
 IGNORE=		you must choose at least one JSON module
 .endif
 

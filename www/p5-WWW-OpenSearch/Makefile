@@ -1,17 +1,13 @@
-# New ports collection makefile for:	p5-WWW-OpenSearch
-# Date created:		2006-07-10
-# Whom:			Gea-Suan Lin <gslin@gslin.org>
-#
+# Created by: Gea-Suan Lin <gslin@gslin.org>
 # $FreeBSD$
-#
 
 PORTNAME=	WWW-OpenSearch
-PORTVERSION=	0.16
+PORTVERSION=	0.17
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	sahil@FreeBSD.org
+MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Search A9 OpenSearch compatible engines
 
 RUN_DEPENDS=	p5-URI-Template>=0:${PORTSDIR}/net/p5-URI-Template \
@@ -22,7 +18,8 @@ RUN_DEPENDS=	p5-URI-Template>=0:${PORTSDIR}/net/p5-URI-Template \
 		p5-XML-LibXML>=1.58:${PORTSDIR}/textproc/p5-XML-LibXML
 BUILD_DEPENDS:=	${RUN_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		WWW::OpenSearch.3 \
 		WWW::OpenSearch::Agent.3 \

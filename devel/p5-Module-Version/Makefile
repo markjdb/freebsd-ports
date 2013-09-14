@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Module-Version
-# Date created:		2010-07-02
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@sunpoet.net>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@sunpoet.net>
 # $FreeBSD$
-#
 
 PORTNAME=	Module-Version
 PORTVERSION=	0.12
@@ -14,7 +10,8 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Get module versions
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN1=		mversion.1
 MAN3=		Module::Version.3 Module::Version::App.3

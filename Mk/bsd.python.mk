@@ -27,7 +27,7 @@ Python_Include_MAINTAINER=	python@FreeBSD.org
 #					  default: ${PYTHONBASE}/bin/${PYTHON_VERSION}
 #
 # PYTHON_DISTFILE	- The ${DISTFILE} for your python version. Needed for
-#					  extensions like Tkinter, py-gdbm and py-expat, which
+#					  extensions like bsddb, gdbm, sqlite3 and tkinter, which
 #					  are built from sources contained in the Python
 #					  distribution.
 #
@@ -80,6 +80,9 @@ Python_Include_MAINTAINER=	python@FreeBSD.org
 #					  format "python2.0". Set this in your makefile in case you
 #					  want to build extensions with an older binary.
 #					  default: depends on the version of your python binary
+#
+# PYTHON_VER		- Version of the python binary in your ${PATH}, in the
+#					  format "2.7".
 #
 # PYTHON_DEFAULT_VERSION
 #					- Version of the default python binary in your ${PATH}, in
@@ -558,10 +561,12 @@ PYTHON_NO_DEPENDS?=		NO
 
 .if ${PYTHON_NO_DEPENDS} == "NO"
 .if defined(USE_PYTHON_BUILD)
-BUILD_DEPENDS+=	${PYTHON_CMD}:${PYTHON_PORTSDIR}
+BUILD_DEPENDS+=	${PYTHON_CMD}:${PYTHON_PORTSDIR} \
+		python:${PORTSDIR}/lang/python
 .endif
 .if defined(USE_PYTHON_RUN)
-RUN_DEPENDS+=	${PYTHON_CMD}:${PYTHON_PORTSDIR}
+RUN_DEPENDS+=	${PYTHON_CMD}:${PYTHON_PORTSDIR} \
+		python:${PORTSDIR}/lang/python
 .endif
 .endif		# ${PYTHON_NO_DEPENDS} == "NO"
 

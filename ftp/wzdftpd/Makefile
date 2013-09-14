@@ -25,7 +25,6 @@ ACLOCAL_ARGS=	-I m4 -I ac-helpers
 AUTOMAKE_ARGS=	--add-missing --copy
 CONFIGURE_ARGS=	--sysconfdir=${ETCDIR} --without-pam --disable-bonjour
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 USE_RC_SUBR=	wzdftpd
 
@@ -39,7 +38,7 @@ MAN8=		wzdftpd.8
 
 .if ${PORT_OPTIONS:MICONV}
 USES+=		iconv
-CONFIGURE_ARGS+=	--with-libiconv-prefix=${LOCALBASE}
+CONFIGURE_ARGS+=	${ICONV_CONFIGURE_ARG}
 .else
 CONFIGURE_ARGS+=	--disable-utf8
 .endif

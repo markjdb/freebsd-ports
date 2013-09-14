@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	graphviz
-PORTVERSION=	2.30.1
-PORTREVERSION=	100
+PORTVERSION=	2.34.0
 CATEGORIES=	graphics tk
 MASTER_SITES=	http://www.graphviz.org/pub/graphviz/ARCHIVE/
 
@@ -17,8 +16,7 @@ LIB_DEPENDS+=	jpeg:${PORTSDIR}/graphics/jpeg \
 		expat:${PORTSDIR}/textproc/expat2 \
 		gd:${PORTSDIR}/${GD_PORT}
 
-USES=		bison
-USE_GMAKE=	yes
+USES=		bison gmake pkgconfig
 USE_AUTOTOOLS=	libltdl libtool
 WANT_GNOME=	yes
 GNU_CONFIGURE=	yes
@@ -31,8 +29,7 @@ MAKE_ENV=	EXPR_COMPAT=yes MISSING=${TRUE}
 MAN1=		acyclic.1 bcomps.1 ccomps.1 cluster.1 diffimg.1 dijkstra.1 \
 		dot.1 gc.1 graphml2gv.1 gml2gv.1 gv2gxl.1 gvmap.1 gvmap.sh.1 \
 		gvgen.1 mm2gv.1 gvcolor.1 gvpack.1 gvpr.1 nop.1 osage.1 \
-		patchwork.1 prune.1 sccmap.1 smyrna.1 tred.1 unflatten.1 \
-		vimdot.1
+		patchwork.1 prune.1 sccmap.1 tred.1 unflatten.1 vimdot.1
 MAN3=		cdt.3 expr.3 cgraph.3 graph.3 gvc.3 pack.3 pathplan.3 xdot.3
 MAN7=		graphviz.7
 MLINKS=		dot.1 circo.1 \
@@ -64,12 +61,13 @@ PDOCS_HTML=	doc/*.html doc/info/*.gif
 
 USE_LDCONFIG=	${PREFIX}/lib/${PORTNAME}
 
-OPTIONS_DEFINE=	XPM DIGCOLA IPSEPCOLA ICONV NLS PANGOCAIRO LIBRSVG2 GTK2 GDK_PIXBUF GNOMEUI SMYRNA GVEDIT MING DEVIL GHOSTSCRIPT PERL PHP PYTHON RUBY LUA TCL GUILE TK NVTHREADS
+OPTIONS_DEFINE=	XPM DIGCOLA IPSEPCOLA ICONV NLS PANGOCAIRO LIBRSVG2 POPPLER ANN GTK2 GDK_PIXBUF GNOMEUI SMYRNA GVEDIT MING DEVIL GHOSTSCRIPT PERL PHP PYTHON RUBY LUA TCL GUILE TK NVTHREADS
 OPTIONS_DEFAULT?=	XPM DIGCOLA IPSEPCOLA ICONV NLS PANGOCAIRO
 NO_OPTIONS_SORT=yes
 DIGCOLA_DESC=	neato layout engine wiwth DIGCOLA features
 IPSEPCOLA_DESC=	neato layout engine wiwth IPSEPCOLA features
 PANGOCAIRO_DESC=pangocairo support
+ANN_DESC=	ANN edge bundling support
 SMYRNA_DESC=	SMYRNA graph viewer (requires GTK2)
 GVEDIT_DESC=	gvedit (requires qt)
 GTK2_DESC=	gtk2 plugin (requires PANGOCAIRO)
@@ -165,17 +163,37 @@ CONFIGURE_ARGS+=	--without-pangocairo
 PLIST_SUB+=		WITH_PANGOCAIRO="@comment "
 .endif
 
-.if ${PORT_OPTIONS:MLIBRVG2}
+.if ${PORT_OPTIONS:MLIBRSVG2}
 CONFIGURE_ARGS+=	--with-rsvg=yes
 PLIST_SUB+=		WITH_RSVG=""
 USE_GNOME+=		librsvg2
-USE_GL+=		gl glu
+USE_GL+=		gl glu glut
 .if empty(PORT_OPTIONS:MPANGOCAIRO)
 IGNORE=			option PANGOCAIRO is required for option LIBRVG2
 .endif
 .else
 CONFIGURE_ARGS+=	--without-rsvg
 PLIST_SUB+=		WITH_RSVG="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MPOPPLER}
+LIB_DEPENDS+=		poppler-glib:${PORTSDIR}/graphics/poppler-glib
+CONFIGURE_ARGS+=        --with-poppler=yes
+PLIST_SUB+=		WITH_POPPLER=""
+.else
+CONFIGURE_ARGS+=        --without-poppler
+PLIST_SUB+=		WITH_POPPLER="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MANN}
+LIB_DEPENDS+=           ann:${PORTSDIR}/math/ann
+CONFIGURE_ENV+=		ANN_CFLAGS=-I${LOCALBASE}/include ANN_LIBS=-lann
+CONFIGURE_ARGS+=        --with-ann=yes
+PLIST_SUB+=             WITH_ANN=""
+MAN1+=			mingle.1
+.else
+CONFIGURE_ARGS+=        --without-ann
+PLIST_SUB+=             WITH_ANN="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MGTK2}
@@ -267,6 +285,7 @@ CONFIGURE_ARGS+=	--without-ipsepcola
 
 .if ${PORT_OPTIONS:MSMYRNA}
 CONFIGURE_ARGS+=	--with-smyrna=yes
+MAN1+=			smyrna.1
 PLIST_SUB+=		WITH_SMYRNA=""
 .else
 PLIST_SUB+=		WITH_SMYRNA="@comment "

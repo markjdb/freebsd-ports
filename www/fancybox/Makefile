@@ -1,9 +1,5 @@
-# New ports collection makefile for:	fancybox
-# Date created:		2011-05-30
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	fancybox
 PORTVERSION=	1.3.4
@@ -12,7 +8,7 @@ MASTER_SITES=	GOOGLE_CODE
 DISTNAME=	jquery.${PORTNAME}-${PORTVERSION}
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A JavaScript library for image/html/multimedia content display
+COMMENT=	JavaScript library for image/html/multimedia content display
 
 NO_BUILD=	yes
 USE_ZIP=	yes

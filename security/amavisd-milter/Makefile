@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	amavisd-milter
-PORTVERSION=	1.5.0
-PORTREVISION=	2
+PORTVERSION=	1.6.0
 CATEGORIES=	security mail
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -11,8 +10,6 @@ MAINTAINER=	prehor@gmail.com
 COMMENT=	Milter for amavisd-new
 
 RUN_DEPENDS=	amavisd:${PORTSDIR}/security/amavisd-new
-
-BROKEN=	Does not build
 
 ##
 # Use the following quirks to choose which sendmail to use (ports or system):
@@ -30,7 +27,6 @@ AMAVISUSER?=	vscan
 AMAVISDIR?=	/var/amavis
 
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 CONFIGURE_ARGS=	--localstatedir=${AMAVISDIR} --with-working-dir=tmp
 USE_RC_SUBR=	${PORTNAME}
 

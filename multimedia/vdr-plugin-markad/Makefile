@@ -14,11 +14,11 @@ COMMENT=	Video Disk Recorder - MarkAd plugin
 LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg \
 		execinfo:${PORTSDIR}/devel/libexecinfo
 
+USES=		pkgconfig
 PATCH_STRIP=	-p1
 HAVE_CONFIGURE=	yes
 PORTDOCS=	COPYING README HISTORY
 PORTDATA=	logos
-MAKE_JOBS_SAFE=	yes
 WRKSRC=		${WRKDIR}/${PLUGIN}-${DISTVERSION}
 VDR_PLUGIN_MAKEFILES=	${WRKSRC}/command/Makefile ${WRKSRC}/plugin/Makefile
 DEFINES+=	-DDATADIR=\\\"${DATADIR}\\\" -DPREFIX=\\\"${PREFIX}\\\"

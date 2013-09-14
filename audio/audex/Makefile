@@ -1,13 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	audex
-DISTVERSION=	0.74b1
-PORTREVISION=	5
+DISTVERSION=	0.77b1
 CATEGORIES=	audio kde
 MASTER_SITES=	http://kde.maniatek.com/${PORTNAME}/files/
 
 MAINTAINER=	jhale@FreeBSD.org
-COMMENT=	Audio CD ripping utility for KDE4
+COMMENT=	KDE4 audio CD ripping utility
 
 LICENSE=	GPLv3
 
@@ -15,10 +14,9 @@ LIB_DEPENDS=	cdda_paranoia:${PORTSDIR}/audio/cdparanoia
 
 USE_XZ=		yes
 USES=		cmake
-USE_KDE4=	automoc4 kdeprefix kdelibs libkcddb
+USE_KDE4=	automoc4 kdeprefix kdelibs libkcddb libkcompactdisc
 USE_QT4=	gui dbus network svg xml \
 		qmake_build moc_build rcc_build uic_build
-MAKE_JOBS_SAFE=	yes
 
 OPTIONS_DEFINE=		NLS EYED3 FAAC FLAC LAME VORBIS
 OPTIONS_DEFAULT=	FLAC VORBIS

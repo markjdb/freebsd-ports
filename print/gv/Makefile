@@ -14,13 +14,12 @@ LIB_DEPENDS=	Xaw3d:${PORTSDIR}/x11-toolkits/Xaw3d
 
 USE_XORG=	xpm ice sm xext xmu x11
 USE_GHOSTSCRIPT=	yes
-USE_GMAKE=	yes
-USES=		iconv
-USE_PERL5_BUILD=	yes
+USES=		iconv gmake perl5
+USE_PERL5=	build
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-CONFIGURE_ENV +=	LDFLAGS="${LDFLAGS}" LIBS="-liconv"
+CONFIGURE_ENV +=	LDFLAGS="${LDFLAGS}" LIBS="${ICONV_LIB}"
 CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/X11 \
 			--enable-setenv-code \
 			--enable-SIGCHLD-fallback

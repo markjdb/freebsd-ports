@@ -13,7 +13,6 @@
     SUBDIR += chattahoochie
     SUBDIR += cicquin
     SUBDIR += cjc
-    SUBDIR += cli-msn
     SUBDIR += climm
     SUBDIR += coccinella
     SUBDIR += convey
@@ -70,8 +69,9 @@
     SUBDIR += libtelepathy
     SUBDIR += libyahoo2
     SUBDIR += licq
-    SUBDIR += licq-console
+    SUBDIR += licq-icq
     SUBDIR += licq-jabber
+    SUBDIR += licq-msn
     SUBDIR += licq-osd
     SUBDIR += licq-qt-gui
     SUBDIR += linpopup

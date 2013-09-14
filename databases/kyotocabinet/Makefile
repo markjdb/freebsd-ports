@@ -8,7 +8,7 @@ MASTER_SITES=	http://fallabs.com/${PORTNAME}/pkg/ \
 		LOCAL/sunpoet
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A straightforward implementation of DBM
+COMMENT=	Straightforward implementation of DBM
 
 LICENSE=	GPLv3
 
@@ -16,10 +16,8 @@ OPTIONS_DEFINE=	DOCS
 
 GNU_CONFIGURE=	yes
 MAKE_ARGS=	PCDIR="${PREFIX}/libdata/pkgconfig"
-MAKE_JOBS_SAFE=	yes
-USE_GCC=	4.2+
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
+USES=		gmake
 
 MAN1=		kccachetest.1 \
 		kcdirmgr.1 \
@@ -54,7 +52,7 @@ BROKEN=		Does not link on powerpc
 .endif
 
 post-patch:
-.if empty(PORT_OPTIONS:MDOCS)
+.if !${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e '/DOCDIR/d' ${WRKSRC}/Makefile.in
 .endif
 

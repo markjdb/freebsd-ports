@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	e16
-PORTVERSION=	1.0.13
+PORTVERSION=	1.0.13.001
 CATEGORIES=	x11-wm enlightenment
-MASTER_SITES=	SF/enlightenment/${PORTNAME}/${PORTVERSION}/
+MASTER_SITES=	SF/enlightenment/${PORTNAME}/Snapshots/
 
 MAINTAINER=	gahr@FreeBSD.org
 COMMENT=	A very artistic X window manager
@@ -14,8 +14,7 @@ SOUND_DESC=	Sound support via pulseaudio/libsndfile
 
 USE_XORG=	compositeproto damageproto xextproto x11 xbitmaps xcomposite xdamage \
 		xext xfixes xft xinerama xrandr xrender xxf86vm
-USES=		gettext iconv
-USE_GMAKE=	yes
+USES=		gettext gmake iconv pkgconfig
 USE_EFL=	imlib2
 USE_AUTOTOOLS=	libtool
 GNU_CONFIGURE=	yes

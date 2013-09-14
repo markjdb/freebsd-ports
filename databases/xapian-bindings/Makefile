@@ -37,7 +37,7 @@ PLIST_SUB+=	LUA="@comment "
 .if ${PORT_OPTIONS:MPERL}
 CONFIGURE_ARGS+=--with-perl
 CONFIGURE_ENV+=	PERL_LIB="${SITE_PERL}"
-USE_PERL5=	yes
+USES=		perl5
 PLIST_SUB+=	PERL=""
 .else
 PLIST_SUB+=	PERL="@comment "
@@ -77,7 +77,7 @@ PLIST_SUB+=	RUBY="@comment "
 post-patch:
 # do not install rdoc
 	@${REINPLACE_CMD} -e '/^install-data-am:/ s|install-data-local||' ${WRKSRC}/ruby/Makefile.in
-.if empty(PORT_OPTIONS:MDOCS)
+.if !${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e '/^install-data-am:/ s|install-dist_docdataDATA install-dist_exampledataDATA ||' ${WRKSRC}/lua/Makefile.in ${WRKSRC}/php/Makefile.in ${WRKSRC}/python/Makefile.in
 	@${REINPLACE_CMD} -e '/^install-data-am:/ s|install-dist_docdataDATA||; 799 s|install-dist_exampledataDATA ||' ${WRKSRC}/ruby/Makefile.in
 .endif

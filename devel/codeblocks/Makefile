@@ -20,13 +20,13 @@ LIB_DEPENDS=	boost_system:${PORTSDIR}/devel/boost-libs \
 RUN_DEPENDS=	update-mime-database:${PORTSDIR}/misc/shared-mime-info
 
 USES=		pkgconfig
+USE_FAM=	yes
 USE_WX=		2.8
 WANT_UNICODE=	yes
 USE_GNOME=	gnomehack desktopfileutils
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}release8629
 

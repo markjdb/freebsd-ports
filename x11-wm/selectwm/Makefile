@@ -7,14 +7,14 @@ CATEGORIES=	x11-wm
 MASTER_SITES=	http://ordiluc.net/selectwm/
 
 MAINTAINER=	bhaga@absoludicrous.com
-COMMENT=	A GTK application to let you select a window manager when starting X
+COMMENT=	GTK application to let you select a window manager when starting X
 
 MAN1=		selectwm.1
 
+USES=		pkgconfig
 USE_BZIP2=	yes
 USE_GNOME=	gtk20
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 PLIST_FILES=	bin/selectwm share/locale/fr/LC_MESSAGES/selectwm.mo
 

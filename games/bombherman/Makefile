@@ -24,13 +24,12 @@ GH_PROJECT=	Bomb-her-man
 GH_TAGNAME=	${GH_COMMIT}
 GH_COMMIT=	8f5aa22
 
+USES=		gmake pkgconfig
 USE_SDL=	sdl image mixer ttf
 USE_GNOME=	intltool librsvg2
 GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	automake:env
-USE_GMAKE=	yes
 ALL_TARGET=	# empty
-MAKE_JOBS_SAFE=	yes
 
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

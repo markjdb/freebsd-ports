@@ -2,17 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	liveMedia
-PORTVERSION=	2013.04.30
+PORTVERSION=	2013.08.31
 PORTEPOCH=	2
 CATEGORIES=	net devel
-MASTER_SITES=	http://www.live555.com/liveMedia/public/ \
-		LOCAL/bdrewery/${PORTNAME}/
+MASTER_SITES=	SF/fbsdports/distfiles/ \
+		http://www.live555.com/liveMedia/public/
 DISTNAME=	live.${PORTVERSION}
 
 MAINTAINER=	c.petrik.sosa@gmail.com
 COMMENT=	LIVE.COM Streaming Media
 
-LICENSE=	GPLv2
+LICENSE=	LGPL21
 
 NO_CDROM=	'dated material'
 
@@ -20,7 +20,6 @@ WRKSRC=		${WRKDIR}/live
 PLIST=		${WRKDIR}/pkg-plist
 
 HAS_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 CONFIGURE_SCRIPT=	genMakefiles
 CONFIGURE_ARGS=		fixed-${OPSYS:L}
@@ -228,35 +227,35 @@ post-build:
 	@${CAT} ${.CURDIR}/pkg-plist >> ${PLIST}
 
 pre-su-install:
-	@${INSTALL_DATADIR} ${PREFIX}/live
-	@${INSTALL_DATADIR} ${PREFIX}/live/groupsock
-	@${INSTALL_DATADIR} ${PREFIX}/live/liveMedia
-	@${INSTALL_DATADIR} ${PREFIX}/live/UsageEnvironment
-	@${INSTALL_DATADIR} ${PREFIX}/live/BasicUsageEnvironment
-	@${INSTALL_DATADIR} ${PREFIX}/live/groupsock/include
-	@${INSTALL_DATADIR} ${PREFIX}/live/liveMedia/include
-	@${INSTALL_DATADIR} ${PREFIX}/live/UsageEnvironment/include
-	@${INSTALL_DATADIR} ${PREFIX}/live/BasicUsageEnvironment/include
+	${INSTALL_DATADIR} ${PREFIX}/live
+	${INSTALL_DATADIR} ${PREFIX}/live/groupsock
+	${INSTALL_DATADIR} ${PREFIX}/live/liveMedia
+	${INSTALL_DATADIR} ${PREFIX}/live/UsageEnvironment
+	${INSTALL_DATADIR} ${PREFIX}/live/BasicUsageEnvironment
+	${INSTALL_DATADIR} ${PREFIX}/live/groupsock/include
+	${INSTALL_DATADIR} ${PREFIX}/live/liveMedia/include
+	${INSTALL_DATADIR} ${PREFIX}/live/UsageEnvironment/include
+	${INSTALL_DATADIR} ${PREFIX}/live/BasicUsageEnvironment/include
 
 do-install:
-	@${INSTALL_PROGRAM} ${WRKSRC}/testProgs/playSIP  ${PREFIX}/bin/
-	@${INSTALL_PROGRAM} ${WRKSRC}/testProgs/openRTSP ${PREFIX}/bin/
-	@${INSTALL_PROGRAM} ${WRKSRC}/testProgs/sapWatch ${PREFIX}/bin/
-	@${INSTALL_DATA} ${WRKSRC}/BasicUsageEnvironment/libBasicUsageEnvironment.a ${PREFIX}/live/BasicUsageEnvironment/
-	@${INSTALL_DATA} ${WRKSRC}/UsageEnvironment/libUsageEnvironment.a           ${PREFIX}/live/UsageEnvironment/
-	@${INSTALL_DATA} ${WRKSRC}/groupsock/libgroupsock.a                         ${PREFIX}/live/groupsock/
-	@${INSTALL_DATA} ${WRKSRC}/liveMedia/libliveMedia.a                         ${PREFIX}/live/liveMedia/
+	${INSTALL_PROGRAM} ${WRKSRC}/testProgs/playSIP  ${PREFIX}/bin/
+	${INSTALL_PROGRAM} ${WRKSRC}/testProgs/openRTSP ${PREFIX}/bin/
+	${INSTALL_PROGRAM} ${WRKSRC}/testProgs/sapWatch ${PREFIX}/bin/
+	${INSTALL_DATA} ${WRKSRC}/BasicUsageEnvironment/libBasicUsageEnvironment.a ${PREFIX}/live/BasicUsageEnvironment/
+	${INSTALL_DATA} ${WRKSRC}/UsageEnvironment/libUsageEnvironment.a           ${PREFIX}/live/UsageEnvironment/
+	${INSTALL_DATA} ${WRKSRC}/groupsock/libgroupsock.a                         ${PREFIX}/live/groupsock/
+	${INSTALL_DATA} ${WRKSRC}/liveMedia/libliveMedia.a                         ${PREFIX}/live/liveMedia/
 .for file in ${BasicUsageEnvironment}
-	@${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/live/BasicUsageEnvironment/include/
+	${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/live/BasicUsageEnvironment/include/
 .endfor
 .for file in ${UsageEnvironment}
-	@${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/live/UsageEnvironment/include/
+	${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/live/UsageEnvironment/include/
 .endfor
 .for file in ${groupsock}
-	@${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/live/groupsock/include/
+	${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/live/groupsock/include/
 .endfor
 .for file in ${liveMedia}
-	@${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/live/liveMedia/include/
+	${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/live/liveMedia/include/
 .endfor
 
 post-install:

@@ -2,7 +2,7 @@
 
 PORTNAME=	texlive
 PORTVERSION=	20120701
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	print
 MASTER_SITES=	ftp://tug.org/historic/systems/texlive/2012/
 PKGNAMESUFFIX=	-base
@@ -25,10 +25,10 @@ LIB_DEPENDS=	icuio:${PORTSDIR}/devel/icu \
 
 USE_TEX=	texlive web2c kpathsea ptexenc texhash-bootstrap
 USE_XZ=		yes
-USE_GMAKE=	yes
+USES=		gmake pkgconfig perl5
 USE_AUTOTOOLS=	autoconf
 USE_GHOSTSCRIPT=yes
-USE_PERL5_RUN=	yes
+USE_PERL5=	run
 USE_LDCONFIG=	yes
 USE_XORG=	x11 xmu xaw
 EXCLUDE_FILES=	${DISTNAME}/texk/web2c \
@@ -85,7 +85,6 @@ CONFIGURE_ARGS= --disable-native-texlive-build \
 CFLAGS+=	-I${LOCALBASE}/include \
 		-I${LOCALBASE}/include/kpathsea \
 		-I${LOCALBASE}/include/ptexenc
-MAKE_JOBS_SAFE=	yes
 PLIST_SUB=	INSTALL_DATA="${INSTALL_DATA}"
 
 NO_MANCOMPRESS=	yes

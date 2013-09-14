@@ -14,8 +14,7 @@ COMMENT=		Full featured replicating WINS server for UNIX
 CONFLICTS=		ja-samba-2.* ja-samba-4.* samba-2.* samba-4.* sharity-light-1.*
 
 MAKE_JOBS_UNSAFE=	yes
-USES=			iconv
-USE_PERL5=		yes
+USES=			iconv perl5
 GNU_CONFIGURE=		yes
 USE_AUTOTOOLS=		autoconf autoheader
 
@@ -43,7 +42,7 @@ CONFIGURE_ARGS+=	--exec-prefix=${PREFIX} \
 
 CONFIGURE_ARGS+=	--disable-reg-gconf --disable-socket-wrapper \
 			--with-readline=/usr --with-included-popt \
-			--with-libiconv=${LOCALBASE} --without-sqlite3 \
+			${ICONV_CONFIGURE_BASE} --without-sqlite3 \
 			--without-pthreads --without-python
 
 USE_RC_SUBR=		smbd4wins

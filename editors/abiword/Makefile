@@ -26,9 +26,8 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 USE_GMAKE=	yes
-USES=		pathfix gettext iconv
+USES=		pathfix gettext iconv pkgconfig
 USE_GNOME=	libxml2 gtk20 desktopfileutils librsvg2 libxslt
-MAKE_JOBS_SAFE=	yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

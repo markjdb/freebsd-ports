@@ -32,14 +32,13 @@ RUN_DEPENDS=	gnome-icon-theme>0:${PORTSDIR}/misc/gnome-icon-theme \
 OPTIONS_DEFINE=	XINERAMA
 OPTIONS_DEFAULT=XINERAMA
 
-USES=		gettext iconv
+USES=		gettext iconv pkgconfig
 USE_GNOME=	gtk20
 USE_XORG=	pixman x11 xau xcb xcomposite xcursor xdamage xdmcp xext xfixes \
 		xrandr xrender
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-inotify
 INSTALLS_ICONS=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

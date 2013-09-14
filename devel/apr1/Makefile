@@ -13,7 +13,6 @@ COMMENT=	Apache Portability Library
 
 LIB_DEPENDS=	expat:${PORTSDIR}/textproc/expat2
 
-MAKE_JOBS_SAFE=	yes
 
 OPTIONS_GROUP=		APR APU
 OPTIONS_GROUP_APR=	THREADS IPV6 DEVRANDOM
@@ -45,7 +44,7 @@ SHLIB_APU_MAJOR=	5
 APR_CONF_ARGS=	--with-installbuilddir=${DATADIR}/build-1
 APU_CONF_ARGS=	--with-apr=${APR_WRKDIR} \
 		--with-expat=${LOCALBASE} \
-		--with-iconv=${LOCALBASE}
+		--with-iconv=${ICONV_PREFIX}
 
 .include <bsd.port.options.mk>
 

@@ -26,6 +26,7 @@ bin/gxl2gv
 bin/gxl2dot
 %%WITH_XPM%%bin/lefty
 %%WITH_XPM%%bin/lneato
+%%WITH_ANN%%bin/mingle
 bin/mm2gv
 bin/neato
 bin/nop
@@ -133,6 +134,10 @@ lib/graphviz/libgvplugin_neato_layout.a
 %%WITH_PANGOCAIRO%%lib/graphviz/libgvplugin_pango.so.6
 %%WITH_PANGOCAIRO%%lib/graphviz/libgvplugin_pango.la
 %%WITH_PANGOCAIRO%%lib/graphviz/libgvplugin_pango.a
+%%WITH_POPPLER%%lib/graphviz/libgvplugin_poppler.a
+%%WITH_POPPLER%%lib/graphviz/libgvplugin_poppler.la
+%%WITH_POPPLER%%lib/graphviz/libgvplugin_poppler.so
+%%WITH_POPPLER%%lib/graphviz/libgvplugin_poppler.so.6
 %%WITH_PANGOCAIRO%%lib/graphviz/libgvplugin_xlib.a
 %%WITH_PANGOCAIRO%%lib/graphviz/libgvplugin_xlib.la
 %%WITH_PANGOCAIRO%%lib/graphviz/libgvplugin_xlib.so
@@ -336,6 +341,7 @@ libdata/pkgconfig/libxdot.pc
 %%PORTDOCS%%%%DOCSDIR%%/html/triangle.gif
 %%PORTDOCS%%%%DOCSDIR%%/html/tripleoctagon.gif
 %%PORTDOCS%%%%DOCSDIR%%/latex_suggestions.txt
+%%PORTDOCS%%%%DOCSDIR%%/pdf/Agraph.pdf
 %%PORTDOCS%%%%DOCSDIR%%/pdf/acyclic.1.pdf
 %%PORTDOCS%%%%DOCSDIR%%/pdf/bcomps.1.pdf
 %%PORTDOCS%%%%DOCSDIR%%/pdf/ccomps.1.pdf
@@ -383,6 +389,7 @@ libdata/pkgconfig/libxdot.pc
 %%PORTDOCS%%%%DOCSDIR%%/pdf/leftyguide.pdf
 %%PORTDOCS%%%%DOCSDIR%%/pdf/libguide.pdf
 %%PORTDOCS%%%%DOCSDIR%%/pdf/lneato.1.pdf
+%%PORTDOCS%%%%DOCSDIR%%/pdf/mingle.1.pdf
 %%PORTDOCS%%%%DOCSDIR%%/pdf/mm2gv.1.pdf
 %%PORTDOCS%%%%DOCSDIR%%/pdf/neato.1.pdf
 %%PORTDOCS%%%%DOCSDIR%%/pdf/neatoguide.pdf

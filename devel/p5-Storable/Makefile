@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Storable
-PORTVERSION=	2.39
+PORTVERSION=	2.45
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,7 +10,8 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	tobez@FreeBSD.org
 COMMENT=	Persistency for perl data structures
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		Storable.3
 

@@ -3,6 +3,7 @@
 
 PORTNAME=	podofo
 PORTVERSION=	0.9.2
+PORTREVISION=	1
 CATEGORIES=	graphics print
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION:R}
 
@@ -12,9 +13,9 @@ COMMENT=	PDF manipulation library and tools
 LICENSE=	GPLv2 LGPL21
 LICENSE_COMB=	multi
 
-LIB_DEPENDS=	idn:${PORTSDIR}/dns/libidn \
-		freetype:${PORTSDIR}/print/freetype2 \
-		fontconfig:${PORTSDIR}/x11-fonts/fontconfig
+LIB_DEPENDS=	libidn.so:${PORTSDIR}/dns/libidn \
+		libfreetype.so:${PORTSDIR}/print/freetype2 \
+		libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig
 
 USES=		cmake
 CMAKE_ARGS=	-DPODOFO_BUILD_SHARED:BOOL=TRUE \
@@ -24,7 +25,6 @@ CMAKE_ARGS=	-DPODOFO_BUILD_SHARED:BOOL=TRUE \
 USE_GCC=	any
 USE_OPENSSL=	yes
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		podofobox.1 podofocountpages.1 podofocrop.1 \
 		podofoencrypt.1 podofoimg2pdf.1 podofoimgextract.1 \
@@ -41,13 +41,13 @@ IMPOSE_CXXFLAGS=	-I${LUA_INCDIR}
 IMPOSE_LDFLAGS=		-L${LUA_LIBDIR}
 
 JPEG_CMAKE_ON=		-DWANT_LIBJPEG:BOOL=TRUE
-JPEG_LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg
+JPEG_LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 PNG_CMAKE_ON=		-DWANT_PNG:BOOL=TRUE
-PNG_LIB_DEPENDS=	png15:${PORTSDIR}/graphics/png
+PNG_LIB_DEPENDS=	libpng15.so:${PORTSDIR}/graphics/png
 
 TIFF_CMAKE_ON=		-DWANT_TIFF:BOOL=TRUE
-TIFF_LIB_DEPENDS=	tiff:${PORTSDIR}/graphics/tiff
+TIFF_LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff
 
 .include <bsd.port.options.mk>
 

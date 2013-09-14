@@ -17,13 +17,10 @@ COMMENT?=	XML parser library for GNOME
 .if !defined(REFERENCE_PORT)
 
 USE_CSTD=	gnu89
-USE_GMAKE=	yes
-MAKE_JOBS_SAFE=	yes
 GNU_CONFIGURE=	yes
-USES=		pathfix iconv
-USE_GNOME?=	pkgconfig
+USES=		pathfix gmake iconv pkgconfig
 USE_LDCONFIG=	yes
-CONFIGURE_ARGS?=--with-iconv=${LOCALBASE} \
+CONFIGURE_ARGS?=--with-iconv=${ICONV_PREFIX} \
 		--with-html-dir=${PREFIX}/share/doc \
 		--with-html-subdir=${PORTNAME} \
 		--with-lzma=/usr \

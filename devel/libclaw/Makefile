@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libclaw
-PORTVERSION=	1.7.3
+PORTVERSION=	1.7.4
 CATEGORIES=	devel
 MASTER_SITES=	SF
 
@@ -16,8 +16,7 @@ BUILD_DEPENDS=	${LOCALBASE}/include/boost/bind.hpp:${PORTSDIR}/devel/boost-libs
 USES=		cmake gettext
 CMAKE_ARGS=	-DCLAW_CMAKE_MODULES_INSTALL_PATH="${DATADIR}/cmake"
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
-USE_GCC=	4.6+
+USE_GCC=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e '/subdirs/ s|doc||' ${WRKSRC}/CMakeLists.txt

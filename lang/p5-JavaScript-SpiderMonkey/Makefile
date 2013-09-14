@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-JavaScript-SpiderMonkey
-# Date created:				25 February 2005
-# Whom:	      				kappa@freebsd.org.ua
-#
+# Created by: kappa@FreeBSD.org.ua
 # $FreeBSD$
-#
 
 PORTNAME=	JavaScript-SpiderMonkey
 PORTVERSION=	0.21
@@ -19,7 +15,8 @@ LIB_DEPENDS=	js.1:${PORTSDIR}/lang/spidermonkey17
 
 TEST_DEPENDS=	p5-Log-Log4perl>=0:${PORTSDIR}/devel/p5-Log-Log4perl
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		JavaScript::SpiderMonkey.3
 

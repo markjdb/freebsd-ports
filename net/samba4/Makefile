@@ -16,11 +16,10 @@ LICENSE=		GPLv3
 
 CONFLICTS?=		*samba3[2-6]-3.*
 
-MAKE_JOBS_SAFE=		yes
 
 SAMBA4_BASENAME=	samba
 SAMBA4_PORTNAME=	${SAMBA4_BASENAME}4
-SAMBA4_VERSION=		4.0.7
+SAMBA4_VERSION=		4.0.8
 SAMBA4_DISTNAME=	${SAMBA4_BASENAME}-${SAMBA4_VERSION:S|.p|pre|:S|.r|rc|:S|.t|tp|:S|.a|alpha|}
 
 WRKSRC?=		${WRKDIR}/${DISTNAME}
@@ -160,7 +159,7 @@ CONFIGURE_ARGS+=	\
 			--with-iconv \
 			--with-sendfile-support \
 			--builtin-libraries=smbclient \
-			--with-libiconv="${LOCALBASE}" \
+			${ICONV_CONFIGURE_BASE} \
 			--with-gettext="${LOCALBASE}"
 
 # for libexecinfo: (so that __builtin_frame_address() finds the top of the stack)
@@ -188,7 +187,7 @@ CONFIGURE_ARGS+=	--enable-debug
 
 # https://bugzilla.samba.org/show_bug.cgi?id=8969
 .if ${PORT_OPTIONS:MDEVELOPER}
-GDB_CMD=		gdb751
+GDB_CMD?=		gdb76
 BUILD_DEPENDS+=		${GDB_CMD}:${PORTSDIR}/devel/gdb
 RUN_DEPENDS+=		${GDB_CMD}:${PORTSDIR}/devel/gdb
 SAMBA4_MODULES+=	auth_skel perfcount_test pdb_test vfs_shadow_copy_test vfs_skel_opaque vfs_skel_transparent vfs_fake_acls

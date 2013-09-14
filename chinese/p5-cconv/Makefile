@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-cconv
-# Date created:		2011-04-28
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	cconv
 PORTVERSION=	0.6.1
@@ -18,7 +14,8 @@ COMMENT=	Perl wrapper for chinese/cconv
 LIB_DEPENDS=	cconv:${PORTSDIR}/chinese/cconv
 
 CFLAGS+=	-I${LOCALBASE}/include
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		${PORTNAME}.3
 

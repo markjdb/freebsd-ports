@@ -1,9 +1,5 @@
-# New ports collection makefile for:	protovis
-# Date created:		2011-04-27
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	protovis
 PORTVERSION=	3.2
@@ -11,7 +7,7 @@ CATEGORIES=	www
 MASTER_SITES=	GOOGLE_CODE
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A JavaScript graphical toolkit for data visualization
+COMMENT=	JavaScript graphical toolkit for data visualization
 
 NO_BUILD=	yes
 USE_ZIP=	yes

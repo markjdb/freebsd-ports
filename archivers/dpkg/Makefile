@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dpkg
-PORTVERSION=	1.16.10
-PORTREVISION=	1
+PORTVERSION=	1.17.1
 CATEGORIES=	archivers sysutils
 MASTER_SITES=	${MASTER_SITE_DEBIAN_POOL}
 DISTNAME=	dpkg_${PORTVERSION}
@@ -18,10 +17,9 @@ RUN_DEPENDS=	gtar:${PORTSDIR}/archivers/gtar \
 		gpatch:${PORTSDIR}/devel/patch \
 		gmd5sum:${PORTSDIR}/sysutils/coreutils
 
-USES=		gmake iconv
 USE_XZ=		yes
 GNU_CONFIGURE=	yes
-USE_PERL5=	yes
+USES=		gmake iconv perl5 pkgconfig
 WRKSRC=		${WRKDIR}/dpkg-${PORTVERSION}
 
 DPKGDIR?=	/var/db/dpkg
@@ -58,7 +56,6 @@ post-patch:
 		${WRKSRC}/scripts/Dpkg/Checksums.pm
 
 post-install:
-	${MV} ${PREFIX}/sbin/install-info ${PREFIX}/sbin/dpkg-install-info
 .for f in available diversions statoverride status
 	${TOUCH} ${DPKGDIR}/${f}
 .endfor

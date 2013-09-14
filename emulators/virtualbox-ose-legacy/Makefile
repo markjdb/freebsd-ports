@@ -35,6 +35,7 @@ RUN_DEPENDS=	/boot/modules/vboxdrv.ko:${PORTSDIR}/emulators/virtualbox-ose-kmod-
 WRKSRC=		${WRKDIR}/VirtualBox-${PORTVERSION}
 ONLY_FOR_ARCHS=	i386 amd64
 FETCH_ARGS=	-pRr
+USES=		iconv pkgconfig
 USE_GCC=	any
 USE_GNOME=	libidl
 USE_BZIP2=	yes
@@ -232,6 +233,9 @@ post-patch:
 		${WRKSRC}/kBuild/sdks/LIBSDL.kmk \
 		${WRKSRC}/src/libs/xpcom18a4/python/gen_python_deps.py
 	@${REINPLACE_CMD} -e 's|\$$KBUILDDIR_BIN/kmk_sed|${LOCALBASE}/bin/kmk_sed|g' ${WRKSRC}/configure
+.if empty(ICONV_LIB)
+	@${REINPLACE_CMD} -e 's|iconv||' ${WRKSRC}/Config.kmk ${WRKSRC}/src/VBox/Runtime/Makefile.kmk
+.endif
 
 pre-build:
 	@${REINPLACE_CMD} -e 's|/bin/bash|/bin/sh|' \

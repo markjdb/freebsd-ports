@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME?=	mysql
-PORTVERSION=	5.1.70
+PORTVERSION=	5.1.71
 PORTREVISION?=	0
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_MYSQL}
@@ -14,7 +14,6 @@ COMMENT?=	Multithreaded SQL database (server)
 
 SLAVEDIRS=	databases/mysql51-client databases/mysql51-scripts
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 CONFIGURE_ARGS=	--localstatedir=/var/db/mysql \
 		--without-debug \

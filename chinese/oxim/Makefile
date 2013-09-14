@@ -19,14 +19,14 @@ GTK2_DESC=	 GTK2 input method module
 CHEWING_DESC=	 Chewing input module
 UNICODE_DESC=	 Unicode input module
 
-USES=		iconv
+USES=		iconv pkgconfig
 USE_XORG=	x11 xft xpm xtst
 WANT_GNOME=	yes
 
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -liconv
+LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
 CONFIGURE_ARGS+=--disable-bimsphone-module \
 		--disable-static \
 		--with-conf-dir=${PREFIX}/etc/${PORTNAME} \

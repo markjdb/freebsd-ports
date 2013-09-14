@@ -19,13 +19,11 @@ LIB_DEPENDS=	aspell:${PORTSDIR}/textproc/aspell \
 		gnome-keyring:${PORTSDIR}/security/gnome-keyring \
 		canberra-gtk:${PORTSDIR}/audio/libcanberra
 
-USE_GMAKE=	yes
 USE_BZIP2=	yes
 INSTALLS_OMF=	yes
 INSTALLS_ICONS=	yes
-USE_PERL5=	yes
 USE_OPENSSL=	yes
-USES=		pathfix gettext iconv
+USES=		pathfix gettext iconv perl5 pkgconfig gmake
 USE_GNOME=	gnomeprefix intlhack libgnomeui gtkhtml3 \
 		libgnomeprintui
 USE_AUTOTOOLS=	libltdl
@@ -35,7 +33,7 @@ CONFIGURE_ARGS=	--enable-threads \
 		--with-ssl \
 		--without-nm \
 		--with-canberra
-CONFIGURE_ENV=	LIBS="-L${LOCALBASE}/lib -liconv ${PTHREAD_LIBS}"
+CONFIGURE_ENV=	LIBS="-L${LOCALBASE}/lib ${ICONV_LIB} ${PTHREAD_LIBS}"
 CPPFLAGS+=	-I${LOCALBASE}/include ${PTHREAD_CFLAGS}
 
 MAN1=		balsa.1

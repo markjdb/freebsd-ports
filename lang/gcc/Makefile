@@ -5,7 +5,7 @@ PORTNAME=	gcc
 PORTVERSION=	4.6.3
 CATEGORIES=	lang java
 MASTER_SITES=	${MASTER_SITE_GCC}
-MASTER_SITE_SUBDIR=	releases/gcc-${VERSIONSTRING}
+MASTER_SITE_SUBDIR=	releases/gcc-${DISTVERSION}
 
 MAINTAINER=	gerald@FreeBSD.org
 COMMENT=	GNU Compiler Collection 4.6
@@ -22,18 +22,16 @@ BUILD_DEPENDS+=	runtest:${PORTSDIR}/misc/dejagnu
 
 CONFLICTS=	gcc-4.6.[4-9]*
 
-# VERSIONSTRING relates to downloads, GCC_VERSION and SUFFIX to names
+# DISTVERSION relates to downloads, GCC_VERSION and SUFFIX to names
 # of executables and directories once installed.
-VERSIONSTRING=	${PORTVERSION}
+DISTVERSION=	${PORTVERSION}
 GCC_VERSION=	${PORTVERSION:C/(.+)\.[0-9]{8}/\1/}
 SUFFIX=		${PORTVERSION:C/([0-9]+).([0-9]+).*/\1\2/}
 ONLY_FOR_ARCHS=	amd64 i386 ia64 powerpc sparc64
+USES=		bison gmake iconv
 USE_BINUTILS=	yes
-USES=		bison iconv
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 USE_PERL5_BUILD=yes
-MAKE_JOBS_SAFE=	yes
 
 PATCH_WRKSRC=	${SRCDIR}
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
@@ -48,13 +46,13 @@ BOOTSTRAP_DESC=		Build using a full bootstrap
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64"
-CONFIGURE_TARGET=	x86_64-portbld-freebsd${OSREL}
+CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:L}${OSREL}
 .else
-CONFIGURE_TARGET=	${ARCH}-portbld-freebsd${OSREL}
+CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:L}${OSREL}
 .endif
 
 LANGUAGES:=	c,c++,objc,fortran
-SRCDIR=		${WRKDIR}/gcc-${VERSIONSTRING}
+SRCDIR=		${WRKDIR}/gcc-${DISTVERSION}
 WRKSRC=		${WRKDIR}/build
 TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
 LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
@@ -73,7 +71,7 @@ CONFIGURE_ARGS+=--disable-nls \
 		--with-gmp=${LOCALBASE} \
 		--with-gxx-include-dir=${TARGLIB}/include/c++/ \
 		--with-ld=${LOCALBASE}/bin/ld \
-		--with-libiconv-prefix=${LOCALBASE} \
+		${ICONV_CONFIGURE_ARG} \
 		--with-pkgversion="FreeBSD Ports Collection" \
 		--with-system-zlib
 MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"

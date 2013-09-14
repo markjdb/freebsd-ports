@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	scipy
-PORTVERSION=	0.11.0
+PORTVERSION=	0.12.0
 CATEGORIES=	science python
 MASTER_SITES=	http://docs.scipy.org/doc/${DISTNAME}/:doc \
 		SF:source
@@ -11,7 +11,7 @@ DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:source \
 		scipy-ref.pdf:doc
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	wen@FreeBSD.org
 COMMENT=	Scientific tools for Python
 
 LICENSE=	BSD

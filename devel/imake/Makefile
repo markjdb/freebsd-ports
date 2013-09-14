@@ -3,6 +3,7 @@
 
 PORTNAME=	imake
 PORTVERSION=	1.0.6
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	devel
 
@@ -14,8 +15,8 @@ RUN_DEPENDS=	gccmakedep:${PORTSDIR}/devel/gccmakedep \
 		makedepend:${PORTSDIR}/devel/makedepend \
 		${LOCALBASE}/lib/X11/config/xorg.cf:${PORTSDIR}/x11/xorg-cf-files
 
-USES=	shebangfix
-USE_PERL5_RUN=	yes
+USES=	shebangfix perl5
+USE_PERL5=	run
 
 SHEBANG_FILES=	mkhtmlindex.pl
 

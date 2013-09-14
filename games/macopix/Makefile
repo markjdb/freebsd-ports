@@ -1,9 +1,5 @@
-# New ports collection makefile for:	macopix
-# Date created:				15 Apr 2003
-# Whom:					Shinya Esu <esu@yk.rim.or.jp>
-#
+# Created by: Shinya Esu <esu@yk.rim.or.jp>
 # $FreeBSD$
-#
 
 PORTNAME=	macopix
 PORTVERSION=	1.7.4
@@ -34,14 +30,13 @@ RESTRICTED_FILES=	\
 		macopix-mascot-HxB-euc-ja-0.30.tar.gz
 
 WANT_GNOME=	yes
-USES=		gettext
-USE_GMAKE=	yes
+USES=		gettext gmake iconv pkgconfig
 GNU_CONFIGURE=	yes
 
 MAN1=		macopix.1
 
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
 
 .if defined(WITH_GNUTLS)
 LIB_DEPENDS+=	gnutls.26:${PORTSDIR}/security/gnutls

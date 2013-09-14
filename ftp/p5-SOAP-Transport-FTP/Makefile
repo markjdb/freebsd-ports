@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-SOAP-Transport-FTP
-# Date created:		2011-08-20
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	SOAP-Transport-FTP
 PORTVERSION=	0.711
@@ -15,9 +11,10 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	FTP Client support for SOAP::Lite
 
 BUILD_DEPENDS=	p5-SOAP-Lite>=0.711:${PORTSDIR}/net/p5-SOAP-Lite
-RUN_DEPENDS=	p5-SOAP-Lite>=0.711:${PORTSDIR}/net/p5-SOAP-Lite
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		SOAP::Transport::FTP.3
 

@@ -17,10 +17,10 @@ BUILD_DEPENDS=	gcj${CSUFF}:${PORTSDIR}/lang/gcc${CSUFF} \
 		gcjh${CSUFF}:${PORTSDIR}/lang/gcc${CSUFF} \
 		cpp${CSUFF}:${PORTSDIR}/lang/gcc${CSUFF}
 
-# Get gcc version suffix without the dot in USE_GCC
+# Get GCC version suffix without the dot in USE_GCC
 CSUFF=		${_USE_GCC:S/.//}
 
-USE_GCC=	4.6+
+USE_GCC=	yes
 USE_GMAKE=	yes
 USES=		iconv
 USE_LDCONFIG=	${PREFIX}/lib/gcc${CSUFF}
@@ -52,7 +52,7 @@ post-patch:
 #
 
 	@${REINPLACE_CMD} -e "s|GCJFLAGS=|GCJFLAGS= -L${LOCALBASE}/lib -Wl,-rpath=${LOCALBASE}/lib/gcc${CSUFF} -w|g" ${WRKSRC}/${MAKEFILE}
-	@${REINPLACE_CMD} -e "s|LDLIBS= -lgcj|LDLIBS= -lgcj ${PTHREAD_CFLAGS} ${PTHREAD_LIBS} -liconv -lz -L${LOCALBASE}/lib -Wl,-rpath=${LOCALBASE}/lib/gcc${CSUFF} -w|g" \
+	@${REINPLACE_CMD} -e "s|LDLIBS= -lgcj|LDLIBS= -lgcj ${PTHREAD_CFLAGS} ${PTHREAD_LIBS} ${ICONV_LIB} -lz -L${LOCALBASE}/lib -Wl,-rpath=${LOCALBASE}/lib/gcc${CSUFF} -w|g" \
 			${WRKSRC}/${MAKEFILE}
 
 do-install:

@@ -91,7 +91,6 @@
     SUBDIR += frontbase-jdbc
     SUBDIR += gadfly
     SUBDIR += gdbm
-    SUBDIR += gdl2
     SUBDIR += geoserver-mysql-plugin
     SUBDIR += gigabase
     SUBDIR += glom
@@ -160,7 +159,16 @@
     SUBDIR += libgda4-mysql
     SUBDIR += libgda4-postgresql
     SUBDIR += libgda4-reference
+    SUBDIR += libgda5
+    SUBDIR += libgda5-bdb
+    SUBDIR += libgda5-jdbc
+    SUBDIR += libgda5-ldap
+    SUBDIR += libgda5-mdb
+    SUBDIR += libgda5-mysql
+    SUBDIR += libgda5-postgresql
+    SUBDIR += libgda5-ui
     SUBDIR += libgdamm
+    SUBDIR += libgdamm5
     SUBDIR += libgnomedb
     SUBDIR += libgnomedb-reference
     SUBDIR += libhsclient
@@ -206,7 +214,6 @@
     SUBDIR += my2cego
     SUBDIR += mydbf2mysql
     SUBDIR += mydumper
-    SUBDIR += mylibrary
     SUBDIR += mysac
     SUBDIR += mysql++1
     SUBDIR += mysql++3
@@ -341,6 +348,7 @@
     SUBDIR += p5-DBIx-Class-AsFdat
     SUBDIR += p5-DBIx-Class-Candy
     SUBDIR += p5-DBIx-Class-Cursor-Cached
+    SUBDIR += p5-DBIx-Class-CustomPrefetch
     SUBDIR += p5-DBIx-Class-DateTime-Epoch
     SUBDIR += p5-DBIx-Class-DeploymentHandler
     SUBDIR += p5-DBIx-Class-DigestColumns
@@ -350,6 +358,7 @@
     SUBDIR += p5-DBIx-Class-EncodedColumn
     SUBDIR += p5-DBIx-Class-Fixtures
     SUBDIR += p5-DBIx-Class-FrozenColumns
+    SUBDIR += p5-DBIx-Class-Helpers
     SUBDIR += p5-DBIx-Class-InflateColumn-Authen-Passphrase
     SUBDIR += p5-DBIx-Class-InflateColumn-FS
     SUBDIR += p5-DBIx-Class-InflateColumn-IP
@@ -369,6 +378,7 @@
     SUBDIR += p5-DBIx-Class-Tree
     SUBDIR += p5-DBIx-Class-Tree-NestedSet
     SUBDIR += p5-DBIx-Class-UUIDColumns
+    SUBDIR += p5-DBIx-Class-VirtualColumns
     SUBDIR += p5-DBIx-Class-WebForm
     SUBDIR += p5-DBIx-Connector
     SUBDIR += p5-DBIx-ContextualFetch
@@ -646,7 +656,6 @@
     SUBDIR += php55-sybase_ct
     SUBDIR += phpminiadmin
     SUBDIR += phpmyadmin
-    SUBDIR += phpmyadmin35
     SUBDIR += phppgadmin
     SUBDIR += postgis
     SUBDIR += postgis20
@@ -660,6 +669,7 @@
     SUBDIR += postgresql-pllua
     SUBDIR += postgresql-plproxy
     SUBDIR += postgresql-plruby
+    SUBDIR += postgresql-plv8js
     SUBDIR += postgresql-relay
     SUBDIR += postgresql-repmgr
     SUBDIR += postgresql84-client
@@ -717,6 +727,7 @@
     SUBDIR += py-MySQLdb51
     SUBDIR += py-MySQLdb55
     SUBDIR += py-PyGreSQL
+    SUBDIR += py-apsw
     SUBDIR += py-bsddb
     SUBDIR += py-bsddb3
     SUBDIR += py-carbon
@@ -738,7 +749,6 @@
     SUBDIR += py-kyotocabinet
     SUBDIR += py-leveldb
     SUBDIR += py-memcached
-    SUBDIR += py-migrate
     SUBDIR += py-mssql
     SUBDIR += py-mysql2pgsql
     SUBDIR += py-odbc
@@ -763,6 +773,7 @@
     SUBDIR += py-south
     SUBDIR += py-sqlalchemy
     SUBDIR += py-sqlalchemy-devel
+    SUBDIR += py-sqlalchemy-migrate
     SUBDIR += py-sqlalchemy06
     SUBDIR += py-sqlite3
     SUBDIR += py-sqlite3dbm
@@ -791,9 +802,11 @@
     SUBDIR += rdb
     SUBDIR += rdfdb
     SUBDIR += recutils
+    SUBDIR += redigo
     SUBDIR += redis
     SUBDIR += redis-devel
     SUBDIR += rrdman
+    SUBDIR += rrdmerge
     SUBDIR += rrdtool
     SUBDIR += rrdtool10
     SUBDIR += rrdtool12

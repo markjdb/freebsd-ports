@@ -1,7 +1,4 @@
-# New ports collection makefile for:	kpackagekit
-# Date created:				11 May 2010
-# Whom:					Alberto Villa <avilla@FreeBSD.org>
-#
+# Created by: Alberto Villa <avilla@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	KPackageKit
@@ -20,11 +17,9 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LIB_DEPENDS=	packagekit-qt.14:${PORTSDIR}/ports-mgmt/packagekit-qt4
 
 USE_BZIP2=	yes
-USE_GNOME=	pkgconfig
 USE_KDE4=	automoc4 kdehier kdelibs kdeprefix
 USE_QT4=	moc_build qmake_build rcc_build uic_build
-MAKE_JOBS_SAFE=	yes
-USES=		cmake gettext
+USES=		cmake gettext pkgconfig
 LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
 

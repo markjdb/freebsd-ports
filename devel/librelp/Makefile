@@ -2,14 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	librelp
-PORTVERSION=	1.0.7
+PORTVERSION=	1.2.0
 CATEGORIES=	devel
 MASTER_SITES=	http://download.rsyslog.com/librelp/
 
 MAINTAINER=	brd@FreeBSD.org
 COMMENT=	Reliable event logging protocol library
 
-USE_GNOME=	gnomehack pkgconfig
+LIB_DEPENDS=	libgnutls.so:${PORTSDIR}/security/gnutls
+
+USES=		pathfix pkgconfig
 USE_AUTOTOOLS=	libtool
 USE_LDCONFIG=	yes
 

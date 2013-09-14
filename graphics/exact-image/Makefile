@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	exact-image
-PORTVERSION=	0.8.8
+PORTVERSION=	0.8.9
 CATEGORIES=	graphics perl5 python
 MASTER_SITES=	http://dl.exactcode.de/oss/${PORTNAME}/ LOCAL/bf
 
@@ -12,24 +12,23 @@ COMMENT=	Fast image processing library
 LICENSE=	GPLv2
 
 BUILD_DEPENDS=	swig>=1.3.32:${PORTSDIR}/devel/swig13
-LIB_DEPENDS=	agg:${PORTSDIR}/graphics/agg \
-		jpeg:${PORTSDIR}/graphics/jpeg \
-		tiff:${PORTSDIR}/graphics/tiff \
-		png15:${PORTSDIR}/graphics/png \
-		gif:${PORTSDIR}/graphics/giflib \
-		jasper:${PORTSDIR}/graphics/jasper \
-		IlmImf:${PORTSDIR}/graphics/OpenEXR \
-		lcms:${PORTSDIR}/graphics/lcms \
-		freetype:${PORTSDIR}/print/freetype2 \
-		expat:${PORTSDIR}/textproc/expat2
+LIB_DEPENDS=	libagg.so:${PORTSDIR}/graphics/agg \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libtiff.so:${PORTSDIR}/graphics/tiff \
+		libpng15.so:${PORTSDIR}/graphics/png \
+		libgif.so:${PORTSDIR}/graphics/giflib \
+		libjasper.so:${PORTSDIR}/graphics/jasper \
+		libIlmImf.so:${PORTSDIR}/graphics/OpenEXR \
+		liblcms.so:${PORTSDIR}/graphics/lcms \
+		libfreetype.so:${PORTSDIR}/print/freetype2 \
+		libexpat.so:${PORTSDIR}/textproc/expat2
 
 CFLAGS+=	-fPIC
 #hack to get custom exactcode configure script to enable tiff support with
 #broken headers on c++ in base system:
 CPPFLAGS+=	-fpermissive -I${LOCALBASE}/include/libpng15
 USE_BZIP2=	yes
-USE_GMAKE=	yes
-USE_PERL5=	yes
+USES=		gmake perl5 pkgconfig
 USE_PYTHON=	2.5+
 USE_XORG=	x11
 USE_EFL=	evas

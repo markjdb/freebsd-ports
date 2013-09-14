@@ -115,13 +115,13 @@ CONFIGURE_ENV +=	SHLIB_${flag}FLAGS="${PICFLAG}"
 
 .if ${PORT_OPTIONS:MMISSING}
 LIB_DEPENDS+=		missing:${PORTSDIR}/math/libmissing
-LIBM=			-L${LOCALBASE}/lib -lmissing
+LIBM=			-lm -L${LOCALBASE}/lib -lmissing
 LIBMH=			"missing_math.h"
 .if defined(LIBRMATH_SLAVEPORT)
 CPPFLAGS+=		-I${LOCALBASE}/include
 .endif
 .else
-LIBM=			-lquadmath
+LIBM=			-lm -lquadmath
 LIBMH=			<quadmath.h>
 .endif
 
@@ -198,6 +198,7 @@ PLIST_SUB+=		LIBR="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MPANGOCAIRO}
+USES+=			pkgconfig
 USE_GNOME+=		pango
 PLIST_SUB+=		PANGOCAIRO=""
 .else

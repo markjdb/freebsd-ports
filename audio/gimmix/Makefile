@@ -1,9 +1,5 @@
-# New ports collection makefile for:   gimmix
-# Date created:                                11 April 2007
-# Whom:                                        Matthieu Guegan <matt.guegan@free.fr>
-#
+# Created by: Matthieu Guegan <matt.guegan@free.fr>
 # $FreeBSD$
-#
 
 PORTNAME=	gimmix
 PORTVERSION=	0.5.7.1
@@ -23,18 +19,17 @@ LICENSE=	GPLv2
 
 OPTIONS_DEFINE=	NLS
 
-.include <bsd.port.options.mk>
-
 USE_GNOME=	gtk20 intltool libglade2
 USE_BZIP2=	yes
 
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
-MAKE_JOBS_SAFE=	yes
+USES=		gmake pkgconfig
 
 MAN1=		gimmix.1
 
 CONFIGURE_ENV=	DATADIRNAME=share
+
+.include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}
 CPPFLAGS+=	-I${LOCALBASE}/include

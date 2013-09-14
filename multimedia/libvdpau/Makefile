@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	libvdpau
-PORTVERSION=	0.6
+PORTVERSION=	0.7
 CATEGORIES=	multimedia
 MASTER_SITES=	http://cgit.freedesktop.org/~aplattner/libvdpau/snapshot/
 
@@ -11,6 +11,7 @@ COMMENT=	VDPAU wrapper and tracing library
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+USES=		pkgconfig
 USE_XZ=		yes
 USE_AUTOTOOLS=	aclocal autoheader automake autoconf libtoolize
 ACLOCAL_ARGS=	-I.

@@ -3,7 +3,7 @@
 
 PORTNAME=	ida
 PORTVERSION=	2.09
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	graphics
 MASTER_SITES=	http://www.kraxel.org/releases/fbida/
 DISTNAME=	fbida-${PORTVERSION}
@@ -26,7 +26,7 @@ USES=		iconv gmake motif perl5
 MAKEFILE=	GNUmakefile
 MAKE_ARGS=	JPEG_VER=80 verbose=yes
 
-LDFLAGS+=	-liconv
+LDFLAGS+=	${ICONV_LIB}
 
 MAN1=		exiftran.1 ida.1
 PORTDOCS=	README TODO INSTALL

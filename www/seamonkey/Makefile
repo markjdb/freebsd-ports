@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	seamonkey
-DISTVERSION=	2.19
+DISTVERSION=	2.20
 PORTREVISION=	1
 CATEGORIES?=	www ipv6
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source
@@ -12,30 +12,28 @@ EXTRACT_ONLY=	${PORTNAME}-${DISTVERSION}.source${EXTRACT_SUFX}
 MAINTAINER=	gecko@FreeBSD.org
 COMMENT=	The open source, standards compliant web browser
 
-BUILD_DEPENDS=	nspr>=4.9.6:${PORTSDIR}/devel/nspr \
-		nss>=3.14.3:${PORTSDIR}/security/nss \
+BUILD_DEPENDS=	nspr>=4.10:${PORTSDIR}/devel/nspr \
+		nss>=3.15:${PORTSDIR}/security/nss \
 		sqlite3>=3.7.16.1:${PORTSDIR}/databases/sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
 		unzip:${PORTSDIR}/archivers/unzip
 
 EM_VERSION=	1.5.2
-L_VERSION=	2.4b1
+L_VERSION=	2.5b1
 
 USE_AUTOTOOLS=	autoconf213:env
 USE_PYTHON_BUILD=-2.7
 OBJDIR_BUILD=	# in-tree build broken after bug 789837
 USE_BZIP2=	yes
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_GECKO=	gecko
 WANT_GNOME=	yes
 USE_QT4=	# empty
 QT_NONSTANDARD=	yes
 WANT_PERL=	yes
-GNU_CONFIGURE=	yes
 ALL_TARGET=	default
 USE_GL=		gl
 USE_DOS2UNIX=	mozilla/media/webrtc/trunk/webrtc/system_wrappers/source/spreadsortlib/spreadsort.hpp
-MAKE_JOBS_SAFE=	yes
 MOZ_PIS_SCRIPTS=	moz_pis_S50cleanhome
 
 MOZ_EXTENSIONS=	default
@@ -54,6 +52,11 @@ CHATZILLA_DESC?=Chatzilla IRC module
 COMPOSER_DESC?=	HTML Composer module
 LDAP_DESC?=	LDAP support for Mailnews
 MAILNEWS_DESC?=	Mail and News modules
+
+# non-client.mk objdir build broken after bug 846540
+.undef GNU_CONFIGURE
+ALL_TARGET=	build
+MAKEFILE=	${WRKSRC}/client.mk
 
 .include "${.CURDIR}/../../www/firefox/Makefile.options"
 
@@ -74,13 +77,15 @@ MOZSRC:=	${WRKSRC}/mozilla
 XPI_LIBDIR=	${PREFIX}/lib/xpi
 
 .if ! ${PORT_OPTIONS:MMAILNEWS}
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-configure.in
 MOZ_OPTIONS+=	--disable-ldap --disable-mailnews
 .else
 # mail and news desired, but not LDAP
 .if ! ${PORT_OPTIONS:MLDAP}
 MOZ_OPTIONS+=	--disable-ldap --enable-mailnews
 .else
+. if ${ARCH} == i386
+USE_GCC?=	yes
+. endif
 MOZ_OPTIONS+=	--enable-ldap --enable-mailnews
 .endif
 .if ${PORT_OPTIONS:MENIGMAIL}
@@ -89,14 +94,14 @@ DISTFILES+=	${EM_DISTFILE}:enigmail
 RUN_DEPENDS+=	gpg:${PORTSDIR}/security/gnupg
 EM_DISTNAME=	enigmail-${EM_VERSION}
 EM_DISTFILE=	${EM_DISTNAME}.tar.gz
-EM_XPI_FILE=	${MOZ_OBJDIR}/mozilla/dist/bin/${EM_DISTNAME}-freebsd-${ARCH:S/amd64/x86_64/}.xpi
+EM_XPI_FILE=	${MOZ_OBJDIR}/mozilla/dist/bin/${EM_DISTNAME}-${OPSYS:L}-${ARCH:S/amd64/x86_64/}.xpi
 EM_ORIG_ID=	{847b3a00-7ab1-11d4-8f02-006008948af5}
 EM_ID=		${PORTNAME}@mozilla-enigmail.org
 EM_ID_RFILES=	${XPI_LIBDIR}/${EM_ID}/install.rdf \
 		${XPI_LIBDIR}/${EM_ID}/components/enigmail.js \
 		${XPI_LIBDIR}/${EM_ID}/modules/enigmailCommon.jsm
-EXTRA_PATCHES+=	${FILESDIR}/extrapatch-enigmail-ipc-src-Makefile \
-		${FILESDIR}/extra-bug886095
+EXTRA_PATCHES+=	${FILESDIR}/extrapatch-enigmail-ipc-src-Makefile
+EXTRA_PATCHES+=	${FILESDIR}/extra-bug886095
 .endif
 .endif
 
@@ -108,7 +113,7 @@ MOZ_OPTIONS+=	--disable-composer
 MOZ_OPTIONS+=	--enable-calendar
 MOZ_MK_OPTIONS+=	MOZ_CO_PROJECT=calendar
 LIGHTNING_DIR=	share/lightning
-XPI_FILE=	${MOZ_OBJDIR}/mozilla/dist/xpi-stage/lightning-${L_VERSION}.en-US.freebsd${OSREL}-${ARCH:S/amd64/x86_64/}.xpi
+XPI_FILE=	${MOZ_OBJDIR}/mozilla/dist/xpi-stage/lightning-${L_VERSION}.en-US.${OPSYS:L}${OSREL}-${ARCH:S/amd64/x86_64/}.xpi
 XPI_ORIG_ID=	{e2fda1a4-762b-4020-b5ad-a41df1933103}
 XPI_ID=		lightning@seamonkey.mozilla.org
 .else

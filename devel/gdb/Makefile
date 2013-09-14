@@ -20,7 +20,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	CONFIGURED_M4=m4 CONFIGURED_BISON=byacc
 CONFIGURE_ARGS=	--program-suffix=${PORTVERSION:S/.//g} \
 		--with-gdb-datadir=${PREFIX}/share/gdb${PORTVERSION:S/.//g} \
-		--with-libiconv-prefix=${LOCALBASE} \
+		${ICONV_CONFIGURE_ARG} \
 		--without-libunwind-ia64 \
 		--enable-targets=all
 CFLAGS:=	${CFLAGS:C/ +$//}	# blanks at EOL creep in sometimes
@@ -31,7 +31,7 @@ VER=	${PORTVERSION:S/.//g}
 PLIST_SUB=	VER=${VER}
 MAN1=	gdb${VER}.1
 
-ONLY_FOR_ARCHS=	i386 amd64	# untested elsewhere, might work
+ONLY_FOR_ARCHS=	i386 amd64 powerpc powerpc64	# untested elsewhere, might work
 
 OPTIONS_DEFINE=	DEBUG EXPAT PYTHON THREADS TUI GDB_LINK
 OPTIONS_SINGLE_READLINE=	BASE_READLINE BUNDLED_READLINE PORT_READLINE

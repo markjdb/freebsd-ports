@@ -16,7 +16,6 @@ WRKSRC=		${WRKDIR}/${PORTNAME}
 
 USES=		iconv
 PLIST_FILES=	bin/obexapp
-MAKE_JOBS_SAFE=	yes
 
 .if !defined(NO_INSTALL_MANPAGES)
 MAN1=		obexapp.1
@@ -26,5 +25,8 @@ MAKE_ENV+=	NO_MAN=yes
 .endif
 
 MAKE_ENV+=	NO_WERROR=yes
+
+post-patch:
+	@${REINPLACE_CMD} -e 's/-liconv/${ICONV_LIB}/' ${WRKSRC}/Makefile
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Compress-Raw-Lzma
-PORTVERSION=	2.061
+PORTVERSION=	2.062
 CATEGORIES=	archivers perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:PMQS
@@ -16,7 +16,8 @@ LICENSE_COMB=	dual
 
 TEST_DEPENDS=	p5-Test-Pod>=1:${PORTSDIR}/devel/p5-Test-Pod
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Compress::Raw::Lzma.3
 

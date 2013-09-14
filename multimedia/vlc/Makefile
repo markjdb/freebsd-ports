@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	vlc
-DISTVERSION=	2.0.7
+DISTVERSION=	2.0.8
 PORTEPOCH=	3
 CATEGORIES=	multimedia audio ipv6 net www
 MASTER_SITES=	http://download.videolan.org/pub/videolan/${PORTNAME}/${DISTVERSION:S/p/-pre/}/ \
@@ -29,7 +29,7 @@ OPTIONS_DEFINE=	A52 AALIB ASS AVAHI CACA DBUS DIRAC DOCS DTS DVDREAD \
 		SAMBA SCHROED SDL SHOUTCAST SKINS STREAM SPEEX SQLITE SVG \
 		TAGLIB THEORA TWOLAME UPNP V4L VAAPI VCD VORBIS \
 		X11 X264 XCB XOSD XVIDEO ZVBI SERVER_ONLY DEBUG \
-		NO_DVD LIBBLURAY SAMPLERATE SIDPLAY
+		GME NO_DVD LIBBLURAY SAMPLERATE SIDPLAY
 OPTIONS_DEFAULT=A52 AVAHI DBUS DTS DVDREAD DVDNAV FAAD FLAC GLX GNUTLS \
 		HTTPD LUA MAD MATROSKA MPEG2 OGG OPUS PNG QT4 REALAUDIO \
 		SDL SKINS STREAM SPEEX TAGLIB THEORA TWOLAME V4L \
@@ -39,6 +39,7 @@ DTS_DESC=	DTS DVD audio decoder
 DVDREAD_DESC=	DVD Playback support
 DVDNAV_DESC=	DVD menu navigation
 FLUID_DESC=	Fluidsynth MIDI support
+GME_DESC=	Game_Music_Emu (libgme) support
 GNOMEVFS_DESC=	Gnome VFS support
 GOOM_DESC=	the Goom visual effect library
 NCURSES_DESC=	ncurses (console) interface
@@ -62,12 +63,10 @@ UNSAFE_PLUGINS_DESC=	Install unsafe, unsupported plugins
 NO_DVD_DESC=	disable DVD specific features
 
 USE_XZ=		yes
-USE_GMAKE=	yes
-USES=		iconv
-USE_PERL5_BUILD=yes
-USE_GL=yes
+USES=		iconv perl5 gmake pkgconfig
+USE_PERL5=	build
+USE_GL=		yes
 USE_CSTD=	gnu99
-MAKE_JOBS_SAFE=	yes
 WANT_GNOME=	yes
 
 FAKEDIR=	${WRKDIR}/fake${PREFIX}
@@ -273,6 +272,13 @@ IGNORE=	GLX option requires XCB option
 .endif
 .else
 CONFIGURE_ARGS+=--disable-glx
+.endif
+
+.if ${PORT_OPTIONS:MGME}
+LIB_DEPENDS+=	gme:${PORTSDIR}/audio/libgme
+CONFIGURE_ARGS+=--enable-gme
+.else
+CONFIGURE_ARGS+=--disable-gme
 .endif
 
 .if ${PORT_OPTIONS:MGNOMEVFS}
@@ -695,7 +701,7 @@ CXX=	clang++
 CPP=	clang-cpp
 .else
 .if ${ARCH} == "i386"
-USE_GCC?=	4.6+ # sse/3dnow detection on i386 needs newer gcc
+USE_GCC?=	yes # sse/3dnow detection on i386 needs newer GCC 
 .endif
 .endif
 
@@ -802,7 +808,7 @@ pre-install:
 .if ${PORT_OPTIONS:MNLS}
 	cd ${FAKEDIR}/share/locale && ${FIND} -s * -type f -o -type l | \
 		${SED} -e 's|^|share/locale/|' >> ${PLIST}
-.for locale in ach an az cgg bn_IN ckb co ff fur gd ia kk km kmr ky lg my oc or_IN ps tet tl zu
+.for locale in ach an az cgg bn_IN ckb co ff fur gd ia kk km kmr kn ky lg my oc or_IN ps tet tl zu
 	${ECHO_CMD} "@dirrmtry share/locale/${locale}/LC_MESSAGES" >> ${PLIST}
 	${ECHO_CMD} "@dirrmtry share/locale/${locale}" >> ${PLIST}
 .endfor

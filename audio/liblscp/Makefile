@@ -1,9 +1,5 @@
-# New ports collection makefile for:	liblscp
-# Date created:		2007-03-06
-# Whom:			trasz <trasz@pin.if.uz.zgora.pl>
-#
+# Created by: trasz <trasz@pin.if.uz.zgora.pl>
 # $FreeBSD$
-#
 
 PORTNAME=	liblscp
 PORTVERSION=	0.5.6
@@ -16,10 +12,8 @@ COMMENT=	Wrapper around the LSCP network protocol
 
 LICENSE=	LGPL21
 
-USES=	pathfix
-USE_GMAKE=	yes
+USES=		gmake pathfix
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 .include <bsd.port.mk>

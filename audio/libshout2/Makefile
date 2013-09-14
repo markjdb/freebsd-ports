@@ -1,9 +1,5 @@
-# New ports collection makefile for:	libshout
-# Date created:		06 Jun 2000
-# Whom:			Zach Zurflu <zach@pabst.bendnet.com>
-#
+# Created by: Zach Zurflu <zach@pabst.bendnet.com>
 # $FreeBSD$
-#
 
 PORTNAME=	libshout2
 PORTVERSION=	2.3.1
@@ -26,10 +22,8 @@ CONFLICTS=	libshout-[0-9]*
 CFLAGS+=	${PTHREAD_CFLAGS} -I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
 LDFLAGS+=	${PTHREAD_LIBS} -L${LOCALBASE}/lib
-MAKE_JOBS_SAFE=	yes
-USE_GMAKE=	yes
-USE_GNOME=	gnomehack pkgconfig
 USE_LDCONFIG=	yes
+USES=		gmake pathfix pkgconfig
 
 DOCSDIR=	${PREFIX}/share/doc/libshout
 

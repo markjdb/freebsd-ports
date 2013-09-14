@@ -11,6 +11,7 @@
     SUBDIR += afnix
     SUBDIR += algol68g
     SUBDIR += alisp
+    SUBDIR += angelscript
     SUBDIR += arena
     SUBDIR += asis
     SUBDIR += asn1c
@@ -96,7 +97,6 @@
     SUBDIR += gcc48
     SUBDIR += gcc49
     SUBDIR += gcl
-    SUBDIR += gdc
     SUBDIR += gforth
     SUBDIR += ghc
     SUBDIR += gjs
@@ -142,7 +142,6 @@
     SUBDIR += kroc
     SUBDIR += kturtle
     SUBDIR += lafontaine
-    SUBDIR += ldc-devel
     SUBDIR += libhx
     SUBDIR += libjit
     SUBDIR += libobjc2
@@ -242,6 +241,7 @@
     SUBDIR += perl5.12
     SUBDIR += perl5.14
     SUBDIR += perl5.16
+    SUBDIR += perl5.18
     SUBDIR += petite-chez
     SUBDIR += pfe
     SUBDIR += phantomjs
@@ -269,7 +269,11 @@
     SUBDIR += py-mx-base
     SUBDIR += py-prolog
     SUBDIR += pypy
+    SUBDIR += pypy-devel
+    SUBDIR += pypy3-devel
     SUBDIR += python
+    SUBDIR += python2
+    SUBDIR += python3
     SUBDIR += python-doc-html
     SUBDIR += python-doc-pdf-a4
     SUBDIR += python-doc-pdf-letter
@@ -280,7 +284,6 @@
     SUBDIR += python31
     SUBDIR += python32
     SUBDIR += python33
-    SUBDIR += q
     SUBDIR += qore
     SUBDIR += qscheme
     SUBDIR += racket

@@ -12,7 +12,7 @@ MAINTAINER=	garga@FreeBSD.org
 COMMENT=	A module with libxcb/libX11 extension/replacement libraries
 
 USE_BZIP2=	yes
-USE_GMAKE=	yes
+USES=		gmake pathfix pkgconfig
 USE_LDCONFIG=	yes
 USE_XORG=	xau xcb xdmcp xorg-macros
 USE_AUTOTOOLS=	libtool

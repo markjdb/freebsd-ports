@@ -3,7 +3,7 @@
 
 PORTNAME=	postgis
 PORTVERSION=	1.5.3
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	databases geography
 MASTER_SITES=	http://postgis.refractions.net/download/ \
  		http://www.postgis.org/download/
@@ -58,7 +58,7 @@ MAKE_ARGS+=	NOPORTDOCS=yes
 .endif
 
 post-extract:
-	@${REINPLACE_CMD} -e 's#@ICONV_LDFLAGS@#-liconv -L${LOCALBASE}/lib#g' \
+	@${REINPLACE_CMD} -e 's#@ICONV_LDFLAGS@#${ICONV_LIB} -L${LOCALBASE}/lib#g' \
 		${WRKSRC}/loader/Makefile.in
 
 post-patch:

@@ -2,19 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	transfig
-PORTVERSION=	3.2.5d
-PORTREVISION=	1
+PORTVERSION=	3.2.5e
 CATEGORIES=	print
 MASTER_SITES=	SF/mcj/mcj-source/
 DISTNAME=	${PORTNAME}.${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
-COMMENT=	Tools to convert Xfig's .fig files
+MAINTAINER=	fbsd-ports@opsec.eu
+COMMENT=	Tools to convert Xfig .fig files
 
 RUN_DEPENDS=	ppmtogif:${PORTSDIR}/graphics/netpbm
-LIB_DEPENDS=	png15:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libpng15.so:${PORTSDIR}/graphics/png
 
-MAKE_JOBS_SAFE=	yes
 
 USES=		imake
 CFLAGS+=	-Wno-return-type

@@ -21,7 +21,6 @@ USE_BZIP2=	YES
 USES=		cmake
 USE_SDL=	sdl
 USE_XORG=	xaw
-MAKE_JOBS_SAFE=	yes
 
 .include <bsd.port.options.mk>
 
@@ -37,10 +36,6 @@ PLIST_SUB+=	BOOSTFALSE=""
 
 .if ${ARCH} == "powerpc"
 BROKEN=		Does not install on powerpc
-.endif
-
-.if ${CXX:M*clang*}
-CMAKE_ARGS+=	-DCMAKE_COMPILER_IS_GNUCXX:BOOL=YES
 .endif
 
 post-patch:

@@ -18,8 +18,7 @@ MAN1=		spek.1
 
 USE_XZ=		yes
 USE_GCC=	4.7+
-USE_GMAKE=	yes
-USES=		gettext
+USES=		gettext gmake
 USE_GNOME=	desktopfileutils intltool
 USE_WX=	2.8+
 WX_UNICODE=	yes
@@ -28,7 +27,6 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	FFMPEG_CFLAGS="-I${LOCALBASE}/include/ffmpeg1" \
 		FFMPEG_LIBS="-lavcodec1 -lavformat1 -lavutil1 -L${LOCALBASE}/lib/ffmpeg1"
 INSTALLS_ICONS=	yes
-MAKE_JOBS_SAFE=	yes
 
 post-install:
 	-@update-desktop-database

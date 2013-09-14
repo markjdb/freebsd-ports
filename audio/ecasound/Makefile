@@ -22,15 +22,13 @@ AUDIOFILE_DESC=	Enable libaudiofile support
 LO_DESC=	Enable liblo support
 OIL_DESC=	Enable liboil support
 
-USES=		readline
-USE_GMAKE=	yes
+USES=		gmake readline
 USE_AUTOTOOLS=	libtool
 CONFIGURE_ARGS=	--disable-liblilv \
 		--disable-rubyecasound \
 		--enable-sys-readline \
 		--disable-arts
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include ${PTHREAD_CFLAGS}
 LDFLAGS+=	-L${LOCALBASE}/lib ${PTHREAD_LIBS}

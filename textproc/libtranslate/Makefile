@@ -17,15 +17,13 @@ PATCH_DIST_STRIP=	-p1
 MAINTAINER=		ports@FreeBSD.org
 COMMENT=		A natural language translation library
 
-USES=        pathfix
+USES=			gmake pathfix pkgconfig
 USE_GNOME=		glib20 intlhack
 GNU_CONFIGURE=		yes
-USE_GMAKE=		yes
 USE_LDCONFIG=		yes
 CPPFLAGS+=		-I${LOCALBASE}/include
 LDFLAGS+=		-L${LOCALBASE}/lib
 CONFIGURE_ARGS=		--with-html-dir=${PREFIX}/share/doc
-MAKE_JOBS_SAFE=		yes
 
 OPTIONS_DEFINE=	GENERIC TALKFILTERS
 OPTIONS_DEFAULT=	GENERIC TALKFILTERS

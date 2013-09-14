@@ -33,7 +33,6 @@
     SUBDIR += asterisk11
     SUBDIR += asterisk14
     SUBDIR += asterisk14-addons
-    SUBDIR += atmsupport
     SUBDIR += avahi
     SUBDIR += avahi-app
     SUBDIR += avahi-autoipd
@@ -117,6 +116,7 @@
     SUBDIR += dosdetector
     SUBDIR += drawterm
     SUBDIR += dropbox-api-command
+    SUBDIR += dropbox-uploader
     SUBDIR += dtcp
     SUBDIR += dtcpclient
     SUBDIR += e169-stats
@@ -164,7 +164,6 @@
     SUBDIR += fsplib
     SUBDIR += ftelnetd
     SUBDIR += g2ipmsg
-    SUBDIR += gatekeeper
     SUBDIR += gateway6
     SUBDIR += get_iplayer
     SUBDIR += gini
@@ -254,7 +253,6 @@
     SUBDIR += ip6_int
     SUBDIR += ipa_ip6fw
     SUBDIR += ipa_ipfw
-    SUBDIR += ipex
     SUBDIR += ipfw-graph
     SUBDIR += ipgrab
     SUBDIR += iplog
@@ -338,7 +336,6 @@
     SUBDIR += libproxy
     SUBDIR += libproxy-gnome
     SUBDIR += libproxy-kde
-    SUBDIR += libproxy-mozjs
     SUBDIR += libproxy-perl
     SUBDIR += libproxy-python
     SUBDIR += libproxy-webkit
@@ -417,7 +414,6 @@
     SUBDIR += netatalk
     SUBDIR += netatalk3
     SUBDIR += netcat
-    SUBDIR += netclasses
     SUBDIR += netdude
     SUBDIR += netembryo
     SUBDIR += netmap
@@ -697,6 +693,7 @@
     SUBDIR += p5-Net-Whois-IP
     SUBDIR += p5-Net-Whois-RIPE
     SUBDIR += p5-Net-Whois-Raw
+    SUBDIR += p5-Net-Works
     SUBDIR += p5-Net-Write
     SUBDIR += p5-Net-XWhois
     SUBDIR += p5-Net-Yadis
@@ -725,6 +722,8 @@
     SUBDIR += p5-POE-Component-Server-Twirc
     SUBDIR += p5-POE-Component-Spread
     SUBDIR += p5-POEx-Role-TCPServer
+    SUBDIR += p5-POSIX-Socket
+    SUBDIR += p5-POSIX-getpeername
     SUBDIR += p5-Parallel-Pvm
     SUBDIR += p5-Phone-Info
     SUBDIR += p5-PlRPC
@@ -874,6 +873,7 @@
     SUBDIR += pload
     SUBDIR += plugdaemon
     SUBDIR += pmf
+    SUBDIR += polyorb
     SUBDIR += poptop
     SUBDIR += portfwd
     SUBDIR += pppd23
@@ -903,6 +903,7 @@
     SUBDIR += py-beanstalkc
     SUBDIR += py-cloudfiles
     SUBDIR += py-dpkt
+    SUBDIR += py-ec2-cli-tools
     SUBDIR += py-eventlet
     SUBDIR += py-gntp
     SUBDIR += py-google
@@ -920,6 +921,7 @@
     SUBDIR += py-ndg_httpsclient
     SUBDIR += py-netaddr
     SUBDIR += py-netifaces
+    SUBDIR += py-netlib
     SUBDIR += py-netstring
     SUBDIR += py-novaclient
     SUBDIR += py-oauth
@@ -1106,7 +1108,6 @@
     SUBDIR += skyfish
     SUBDIR += skystar2
     SUBDIR += sl2tps
-    SUBDIR += slbd
     SUBDIR += slirp
     SUBDIR += slurm
     SUBDIR += smb4k-kde4
@@ -1246,7 +1247,6 @@
     SUBDIR += wired-tracker
     SUBDIR += wireshark
     SUBDIR += wireshark-lite
-    SUBDIR += wizd
     SUBDIR += wmlj
     SUBDIR += wmnd
     SUBDIR += wmnet

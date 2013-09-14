@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gdal
-PORTVERSION=	1.9.2
+PORTVERSION=	1.10.1
 CATEGORIES=	graphics python
 MASTER_SITES=	http://download.osgeo.org/gdal/ \
 		ftp://ftp.remotesensing.org/pub/gdal/ \
@@ -12,7 +12,9 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Python binding for GDAL
 
-LIB_DEPENDS=	gdal:${PORTSDIR}/graphics/gdal
+LICENSE=	MIT
+
+LIB_DEPENDS=	libgdal.so:${PORTSDIR}/graphics/gdal
 
 OPTIONS_DEFINE=	NUMPY
 NUMPY_DESC=	Enable array support via NumPy
@@ -20,7 +22,7 @@ NUMPY_DESC=	Enable array support via NumPy
 PYEASYINSTALL_ARCHDEP=	yes
 PYDISTUTILS_PKGNAME=	${PORTNAME:U}
 USE_PYTHON=	-2.7
-USE_PYDISTUTILS=	easy_install
+USE_PYDISTUTILS=easy_install
 WRKSRC=		${WRKDIR}/${DISTNAME}/swig/python
 
 .include <bsd.port.options.mk>

@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-HTML-Declare
-# Date created:		2010-10-06
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	HTML-Declare
 PORTVERSION=	2.4
@@ -12,12 +8,13 @@ MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A very simple micro language to generate HTML
+COMMENT=	Very simple micro language to generate HTML
 
 BUILD_DEPENDS=	p5-HTML-Parser>=0:${PORTSDIR}/www/p5-HTML-Parser
-RUN_DEPENDS=	p5-HTML-Parser>=0:${PORTSDIR}/www/p5-HTML-Parser
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		HTML::Declare.3
 PLIST_FILES=	%%SITE_PERL%%/HTML/Declare.pm \

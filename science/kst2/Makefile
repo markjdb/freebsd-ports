@@ -3,13 +3,14 @@
 
 PORTNAME=	kst
 DISTVERSION=	2.0.6
+PORTREVISION=	1
 CATEGORIES=	science kde
 MASTER_SITES=	SF/${PORTNAME}/Kst%20${DISTVERSION:C/-r.*//}/
 
 MAINTAINER=	makc@FreeBSD.org
 COMMENT=	Data viewing and plotting tool
 
-LIB_DEPENDS=	gsl.16:${PORTSDIR}/math/gsl
+LIB_DEPENDS=	gsl:${PORTSDIR}/math/gsl
 
 LATEST_LINK=	kst2
 
@@ -17,7 +18,6 @@ USES=		cmake
 USE_QT4=	gui xml designer svg opengl \
 		qmake_build moc_build rcc_build uic_build
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 CMAKE_SOURCE_PATH=	${WRKSRC}/cmake
 CMAKE_ARGS+=	-Dkst_install_prefix=${PREFIX}

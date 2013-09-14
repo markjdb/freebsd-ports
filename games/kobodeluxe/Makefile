@@ -16,11 +16,6 @@ USE_BZIP2=	yes
 USE_SDL=	image sdl
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--sharedstatedir=${SCOREDIR} --enable-oss
-MAKE_JOBS_SAFE=	yes
-
-.if defined(.PARSEDIR)
-USE_GMAKE=	yes
-.endif
 
 MAN6=		kobodl.6
 
@@ -57,6 +52,8 @@ post-patch:
 		s|-lSDL$$||; s|SDL/SDL|SDL|' ${WRKSRC}/configure
 	@${REINPLACE_CMD} -e 's|$$(datadir)/games/kobo-deluxe|${DATADIR}|' \
 		${WRKSRC}/data/Makefile.in
+	@${REINPLACE_CMD} -e 's|pipe2|kobopipe2|g' ${WRKSRC}/enemies.h \
+		${WRKSRC}/enemy.cpp
 
 post-install:
 	${CHGRP} games ${PREFIX}/bin/kobodl

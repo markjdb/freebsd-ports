@@ -2,19 +2,19 @@
 # $FreeBSD$
 
 PORTNAME=	leveldb
-PORTVERSION=	1.12.0
+PORTVERSION=	1.13.0
 CATEGORIES=	databases
 MASTER_SITES=	GOOGLE_CODE
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A fast and lightweight key/value database library by Google
+COMMENT=	Fast and lightweight key/value database library by Google
 
 OPTIONS_DEFINE=	GPERFTOOLS SNAPPY
 OPTIONS_DEFAULT=SNAPPY
 
 LDFLAGS+=	-L${LOCALBASE}/lib
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
+USES=		gmake
 
 PLIST_SUB=	SHLIB_MAJOR=${SHLIB_MAJOR} \
 		SHLIB_MINOR=${SHLIB_MINOR}
@@ -39,11 +39,11 @@ SNAPPY=		0
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|-lpthread|${PTHREAD_LIBS}|' ${WRKSRC}/build_detect_platform
-.if empty(PORT_OPTIONS:MGPERFTOOLS)
+	@${REINPLACE_CMD} -e 's|-lpthread|-pthread|' ${WRKSRC}/build_detect_platform
+.if !${PORT_OPTIONS:MGPERFTOOLS}
 	@${REINPLACE_CMD} -e 's| -ltcmalloc||' ${WRKSRC}/build_detect_platform
 .endif
-.if empty(PORT_OPTIONS:MSNAPPY)
+.if !${PORT_OPTIONS:MSNAPPY}
 	@${REINPLACE_CMD} -e 's| -DSNAPPY||; s| -lsnappy||' ${WRKSRC}/build_detect_platform
 .endif
 

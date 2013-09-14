@@ -210,6 +210,7 @@
     SUBDIR += gnome-spell
     SUBDIR += gnome-translate
     SUBDIR += gnugrep
+    SUBDIR += go-text
     SUBDIR += goldendict
     SUBDIR += google-ctemplate
     SUBDIR += gpp
@@ -668,6 +669,7 @@
     SUBDIR += p5-Pod-Parser
     SUBDIR += p5-Pod-Perldoc
     SUBDIR += p5-Pod-ProjectDocs
+    SUBDIR += p5-Pod-Readme
     SUBDIR += p5-Pod-Simple
     SUBDIR += p5-Pod-Spell
     SUBDIR += p5-Pod-Strip
@@ -723,6 +725,7 @@
     SUBDIR += p5-Spreadsheet-XLSX
     SUBDIR += p5-String-BufferStack
     SUBDIR += p5-String-CamelCase
+    SUBDIR += p5-String-Compare-ConstantTime
     SUBDIR += p5-String-Divert
     SUBDIR += p5-String-Escape
     SUBDIR += p5-String-Flogger
@@ -1172,6 +1175,7 @@
     SUBDIR += py-mako
     SUBDIR += py-markdown
     SUBDIR += py-markdown2
+    SUBDIR += py-openpyxl
     SUBDIR += py-paragrep
     SUBDIR += py-pss
     SUBDIR += py-pyctpp2
@@ -1190,6 +1194,7 @@
     SUBDIR += py-sphinx
     SUBDIR += py-sphinxcontrib-adadomain
     SUBDIR += py-sphinxcontrib-bitbucket
+    SUBDIR += py-sphinxcontrib-httpdomain
     SUBDIR += py-stripogram
     SUBDIR += py-syck
     SUBDIR += py-texttable
@@ -1327,6 +1332,7 @@
     SUBDIR += rubygem-rchardet
     SUBDIR += rubygem-rdiscount
     SUBDIR += rubygem-rdtool
+    SUBDIR += rubygem-redcarpet
     SUBDIR += rubygem-ri_cal
     SUBDIR += rubygem-rttool
     SUBDIR += rubygem-sanitize
@@ -1342,6 +1348,7 @@
     SUBDIR += rubygem-unf_ext
     SUBDIR += rubygem-xml-simple
     SUBDIR += rubygem-xslt
+    SUBDIR += rubygem-ya2yaml
     SUBDIR += rubygem-yard
     SUBDIR += rubygem-zmq
     SUBDIR += rw-aspell
@@ -1499,7 +1506,6 @@
     SUBDIR += words
     SUBDIR += wv
     SUBDIR += wv2
-    SUBDIR += xaira
     SUBDIR += xalan-c
     SUBDIR += xalan-j
     SUBDIR += xerces-c2

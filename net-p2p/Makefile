@@ -63,7 +63,6 @@
     SUBDIR += museekplus
     SUBDIR += napshare
     SUBDIR += ncdc
-    SUBDIR += nicotine-plus
     SUBDIR += opendchub
     SUBDIR += opennap
     SUBDIR += p5-Net-BitTorrent
@@ -84,6 +83,7 @@
     SUBDIR += rtgui
     SUBDIR += rtorrent
     SUBDIR += rtorrent-devel
+    SUBDIR += shx
     SUBDIR += solidcoin
     SUBDIR += squall
     SUBDIR += teknap

@@ -16,13 +16,12 @@ LIB_DEPENDS=	sndfile:${PORTSDIR}/audio/libsndfile \
 		png15:${PORTSDIR}/graphics/png \
 		freetype:${PORTSDIR}/print/freetype2
 
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_OPENAL=	al
 USE_XORG=	x11 xrandr
 USE_GL=		gl glu
 USE_LDCONFIG=	yes
 USE_DOS2UNIX=	Makefile
-MAKE_JOBS_SAFE=	yes
 
 WRKSRC=		${WRKDIR}/SFML-${PORTVERSION}
 

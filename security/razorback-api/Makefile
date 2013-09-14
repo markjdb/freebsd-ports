@@ -25,15 +25,14 @@ OPTIONS_DEFINE=	DEBUG ASSERT CNC_DEBUG STOMP_DEBUG
 CNC_DEBUG_DESC=		Enable Command and Control Debug
 STOMP_DEBUG_DESC=	Enable STOMP Debug
 
-.include <bsd.port.options.mk>
-
-USES=	pathfix
+USES=	pathfix pkgconfig
 USE_AUTOTOOLS=	libtool
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-CFLAGS+=	-Wno-cast-align
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
+
+.include <bsd.port.options.mk>
 
 .if !empty(PORT_OPTIONS:MDEBUG)
 CONFIGURE_ARGS+=--enable-debug
@@ -60,6 +59,10 @@ BROKEN=		does not build when compiled with clang
 .if ${ARCH} == "sparc64"
 BROKEN=		Does not compile on sparc64
 .endif
+
+post-patch:
+	@${REINPLACE_CMD} -e "s/-Werror//g" \
+			  ${WRKSRC}/configure
 
 post-install:
 	@if [ ! -f ${PREFIX}/etc/razorback/api.conf ]; then \

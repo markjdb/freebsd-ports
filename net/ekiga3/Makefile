@@ -20,17 +20,14 @@ BUILD_DEPENDS=	intltoolize:${PORTSDIR}/textproc/intltool \
 CONFLICTS=	ekiga-2.*
 
 USE_GCC=	any
-USE_PERL5=	yes
 USE_AUTOTOOLS=	libtool
 GNU_CONFIGURE=	yes
-USES=		gettext
-USE_GMAKE=	yes
+USES=		gettext gmake perl5 pkgconfig
 USE_XORG=	xv
 USE_GNOME=	gtk20 gnomehack
 DIST_SUBDIR=	gnome2
 INSTALLS_OMF=	yes
 INSTALLS_ICONS=	yes
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		ekiga.1
 

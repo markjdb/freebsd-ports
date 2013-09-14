@@ -20,17 +20,16 @@ NONROOT_DESC=	Use xcdroast w/o being root
 RUN_DEPENDS=	cdrecord:${PORTSDIR}/sysutils/cdrtools
 BUILD_DEPENDS=	cdrecord:${PORTSDIR}/sysutils/cdrtools
 
-USES=		gettext
+USES=		gettext gmake iconv pkgconfig
 GNU_CONFIGURE=	yes
 WANT_GNOME=	yes
-USE_GMAKE=	yes
 
 CONFIGURE_ENV+=	GTK_CONFIG="${GTK_CONFIG}" \
 		GLIB_CONFIG="${GLIB_CONFIG}"
 
 CONFIGURE_ARGS=	--with-cdrtools-prefix=${LOCALBASE} \
 		--with-libintl-prefix=${LOCALBASE} \
-		--with-libiconv-prefix=${LOCALBASE}
+		${ICONV_CONFIGURE_ARG}
 
 MAN1=		xcdroast.1
 

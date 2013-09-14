@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	weechat
-PORTVERSION=	20130514
-PORTREVISION=	1
+PORTVERSION=	20130831
 CATEGORIES=	irc
 MASTER_SITES=	http://perturb.me.uk/distfiles/ \
 		${MASTER_SITE_LOCAL}
@@ -26,7 +25,7 @@ WANT_PERL=	yes
 LIB_DEPENDS+=	curl:${PORTSDIR}/ftp/curl \
 		gcrypt:${PORTSDIR}/security/libgcrypt
 
-GITDESC=	v0.4.1-rc2-2-g0c66b91
+GITDESC=	v0.4.1-191-g410caef
 GITREV!=	echo "${GITDESC}" | sed -E 's/^.*-g(.{7})$$/\1/'
 #GITREV=	01a1316
 WRKSRC=	${WRKDIR}/${PORTNAME}-${GITREV}
@@ -133,8 +132,9 @@ PLIST_SUB+=	LUA="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MDOCUMENTATION}
-BUILD_DEPENDS+=	asciidoc:${PORTSDIR}/textproc/asciidoc
-BUILD_DEPENDS+=	source-highlight>=3.1.5:${PORTSDIR}/textproc/source-highlight
+BUILD_DEPENDS+=	asciidoc:${PORTSDIR}/textproc/asciidoc \
+		source-highlight>=3.1.5:${PORTSDIR}/textproc/source-highlight
+CMAKE_ARGS+=	-DENABLE_DOC=yes
 PLIST_SUB+=	DOCUMENTATION=""
 .else
 CMAKE_ARGS+=	-DENABLE_DOC=no
@@ -158,7 +158,19 @@ PLIST_SUB+=	ICON=""
 PLIST_SUB+=	ICON="@comment "
 .endif
 
-MAN1=	weechat-curses.1
+.if defined(MAINTAINER_MODE)
+BUILD_DEPENDS+=	xsltproc:${PORTSDIR}/textproc/libxslt \
+		docbook-xsl>=0:${PORTSDIR}/textproc/docbook-xsl
+.if empty(PORT_OPTIONS:MDOCUMENTATION)
+BUILD_DEPENDS+=	asciidoc:${PORTSDIR}/textproc/asciidoc \
+		source-highlight>=3.1.5:${PORTSDIR}/textproc/source-highlight
+.endif
+CMAKE_ARGS+=	-DENABLE_MAN=yes
+.else
+CMAKE_ARGS+=	-DENABLE_MAN=no
+.endif
+
+MAN1=	weechat.1
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|$${LIBDIR}/../pkgconfig|$${CMAKE_INSTALL_PREFIX}/libdata/pkgconfig|' ${WRKSRC}/CMakeLists.txt
@@ -185,7 +197,13 @@ pre-configure:
 	@sleep 5
 .endif
 
+post-build:
+.if defined(MAINTAINER_MODE)
+	${CP} ${WRKSRC}/doc/en/weechat.1 ${FILESDIR}/weechat.1.new
+.endif
+
 post-install:
-	${INSTALL_MAN} ${WRKSRC}/doc/weechat-curses.1 ${MAN1PREFIX}/man/man1
+	@PKG_PREFIX=${PREFIX} ${SH} ${PKGINSTALL} ${PKGNAME} POST-INSTALL
+	${INSTALL_MAN} ${FILESDIR}/weechat.1.in ${MAN1PREFIX}/man/man1/weechat.1
 
 .include <bsd.port.mk>

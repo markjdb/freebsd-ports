@@ -3,6 +3,7 @@
 
 PORTNAME=	gromacs
 PORTVERSION=	4.6.3
+PORTREVISION=	1
 CATEGORIES=	science
 MASTER_SITES=	ftp://ftp.gromacs.org/pub/gromacs/
 
@@ -29,7 +30,6 @@ USE_FORTRAN=	yes
 CMAKE_ARGS=	-DBLAS_LIBRARIES:FILEPATH="${BLAS_LIBS}" \
 		-DLAPACK_LIBRARIES:FILEPATH="${LAPACK_LIBS}"
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		do_dssp.1 editconf.1 eneconv.1 g_anadock.1 \
 		g_anaeig.1 g_analyze.1 g_angle.1 g_bar.1 \

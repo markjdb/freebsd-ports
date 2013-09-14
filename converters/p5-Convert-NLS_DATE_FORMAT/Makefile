@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Convert-NLS_DATE_FORMAT
-# Date created:		2011-10-19
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Convert-NLS_DATE_FORMAT
 PORTVERSION=	0.05
@@ -15,7 +11,8 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Convert Oracle NLS_DATE_FORMAT <-> strftime format strings
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Convert::NLS_DATE_FORMAT.3
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	freeipmi
-PORTVERSION=	1.2.9
+PORTVERSION=	1.3.2
 CATEGORIES=	sysutils
 MASTER_SITES=	GNU/${PORTNAME}/ \
 		http://ftp.gluster.com/pub/${PORTNAME}/${PORTVERSION}/
@@ -30,8 +30,8 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 ONLY_FOR_ARCHS=	i386 amd64
 ONLY_FOR_ARCHS_REASON=	"invokes i386 asm"
 USE_AUTOTOOLS=	libtool
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
+USES=		gmake
 
 INFO=		freeipmi-faq
 MAN3=		libfreeipmi.3 libipmiconsole.3 libipmidetect.3 libipmimonitoring.3
@@ -80,7 +80,7 @@ post-patch:
 		-e '/^FREEIPMI_SYSCONFDIR/ s|/freeipmi/$$||' \
 		-e '/FREEIPMI_CONFIG_FILE_DEFAULT_TMP1=/ s|freeipmi.conf|&.sample|' \
 			${WRKSRC}/configure
-.if empty(PORT_OPTIONS:MDOCS)
+.if !${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e '/^install-data-am:/ s|install-docDATA||' \
 		${WRKSRC}/Makefile.in ${WRKSRC}/doc/Makefile.in
 .endif

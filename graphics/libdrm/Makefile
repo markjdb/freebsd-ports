@@ -13,15 +13,15 @@ COMMENT=	Userspace interface to kernel Direct Rendering Module services
 LIB_DEPENDS=	pciaccess:${PORTSDIR}/devel/libpciaccess \
 		pthread-stubs:${PORTSDIR}/devel/libpthread-stubs
 
+USES=		pkgconfig
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 
-MAKE_JOBS_SAFE=	yes
 
 .if defined(WITH_NEW_XORG)
 
-USE_GMAKE=	yes
+USES+=		gmake
 
 OPTIONS_DEFINE=	KMS MANPAGES
 OPTIONS_DEFAULT=KMS

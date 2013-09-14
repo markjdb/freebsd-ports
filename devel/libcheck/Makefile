@@ -8,7 +8,7 @@ MASTER_SITES=	SF/check/check/${PORTVERSION}
 DISTNAME=	check-${PORTVERSION}
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A unit test framework for C
+COMMENT=	Unit test framework for C
 
 LICENSE=	LGPL21
 
@@ -16,9 +16,8 @@ OPTIONS_DEFINE=	DOCS EXAMPLES
 
 CONFIGURE_ENV=	ac_cv_path_AWK_PATH=${AWK}
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
-USES=		pathfix
+USES=		gmake pathfix
 
 INFO=		check
 MAN1=		checkmk.1
@@ -34,10 +33,10 @@ post-patch:
 		-e '/^exampledir = / s|(docdir)/example|(datadir)/examples/${PORTNAME}|' \
 		-e '/^example[a-z]*dir = / s|(docdir)/example/|(exampledir)/|' \
 			${WRKSRC}/doc/Makefile.in
-.if empty(PORT_OPTIONS:MDOCS)
+.if !${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e '/^install-data-am:/ s| install-docDATA||' ${WRKSRC}/Makefile.in
 .endif
-.if empty(PORT_OPTIONS:MEXAMPLES)
+.if !${PORT_OPTIONS:MEXAMPLES}
 	@${REINPLACE_CMD} \
 		-e '/^install-data-am:/ s| install-exampleDATA install-examplesrcDATA||' \
 		-e 's|install-exampletestsDATA ||' \

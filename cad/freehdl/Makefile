@@ -1,9 +1,5 @@
-# New ports collection makefile for:	freehdl
-# Date created:				19 Oct 2006
-# Whom:					lon_kamikaze@gmx.de
-#
+# Created by: lon_kamikaze@gmx.de
 # $FreeBSD$
-#
 
 PORTNAME=	freehdl
 PORTVERSION=	0.0.7
@@ -11,13 +7,11 @@ CATEGORIES=	cad
 MASTER_SITES=	http://freehdl.seul.org/~enaroska/
 
 MAINTAINER=	kamikaze@bsdforen.de
-COMMENT=	A free VHDL simulator
+COMMENT=	Free VHDL simulator
 
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
-USE_PERL5=	yes
-USE_GNOME=	gnomehack \
-		pkgconfig
+USES=		gmake perl5 pkgconfig
+USE_GNOME=	gnomehack
 USE_AUTOTOOLS=	libtool
 HAS_CONFIGURE=	yes
 
@@ -30,7 +24,6 @@ MAN5=		v2cc.libs.5
 INFO=		fire
 
 MANCOMPRESSED=	no
-MAKE_JOBS_SAFE=	yes
 
 PLIST_TMP=	${WRKDIR}/plist_tmp/
 

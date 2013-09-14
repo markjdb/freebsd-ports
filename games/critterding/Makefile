@@ -13,6 +13,7 @@ COMMENT=	Evolving Artificial Life
 LIB_DEPENDS=	freetype:${PORTSDIR}/print/freetype2
 
 USE_BZIP2=	yes
+USES=		pkgconfig
 GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	autoconf:env aclocal:env automake:env libtool
 USE_SDL=	sdl
@@ -21,7 +22,6 @@ CPPFLAGS+=	-I${LOCALBASE}/include -I${LOCALBASE}/include/freetype2
 LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ARGS=	--disable-system-ftgl
 USE_GCC=	yes
-MAKE_JOBS_SAFE=	yes
 
 PORTDOCS=	README AUTHORS Changelog
 

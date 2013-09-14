@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	scintilla
-PORTVERSION=	3.3.3
+PORTVERSION=	3.3.5
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	SF/scintilla/SciTE/${PORTVERSION}
 DISTNAME=	scite${PORTVERSION:S/.//g}
@@ -13,12 +13,10 @@ COMMENT=	Full-featured free source code editing component for GTK+
 
 WRKSRC=		${WRKDIR}/${PORTNAME}/gtk
 
-USES=		iconv
-USE_GMAKE=	yes
+USES=		gmake iconv pkgconfig
 MAKEFILE=	makefile
 USE_LDCONFIG=	yes
 USE_GNOME=	gtk20
-MAKE_JOBS_SAFE=	yes
 MAKE_ENV+=	LDFLAGS="${LDFLAGS}"
 CFLAGS+=	-DPIC ${PICFLAG}
 
@@ -30,8 +28,17 @@ PICFLAG?=	-fPIC
 PICFLAG?=	-fpic
 .endif
 
+CCISCLANG!=     ${CC} --version
+
+.if empty(CCISCLANG:M*clang*)
+CPPSTDRE=	-e 's|--std=c++0x||'
+.else
+CPPSTDRE=	
+.endif
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|[(]CC[)]|(CXX)|g ; s|[(]CCOMP[)]|(CC)|g' \
+		${CPPSTDRE} \
 		${WRKSRC}/makefile
 
 do-install:

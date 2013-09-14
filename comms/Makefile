@@ -63,9 +63,7 @@
     SUBDIR += hamlib
     SUBDIR += hcidump
     SUBDIR += hf
-    SUBDIR += hso-kmod
     SUBDIR += hylafax
-    SUBDIR += ib-kmod
     SUBDIR += ibp
     SUBDIR += java-commapi
     SUBDIR += java-commapi-freebsd
@@ -126,6 +124,7 @@
     SUBDIR += qico
     SUBDIR += qpage
     SUBDIR += qrq
+    SUBDIR += qsstv
     SUBDIR += remserial
     SUBDIR += rtl-sdr
     SUBDIR += rubygem-callsign
@@ -159,7 +158,6 @@
     SUBDIR += unixcw
     SUBDIR += usbmuxd
     SUBDIR += usrp
-    SUBDIR += uticom
     SUBDIR += viewfax
     SUBDIR += vrflash
     SUBDIR += wsjt

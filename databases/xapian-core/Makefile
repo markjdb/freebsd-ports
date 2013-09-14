@@ -9,7 +9,7 @@ MASTER_SITES=	http://oligarchy.co.uk/xapian/${PORTVERSION}/ \
 		LOCAL/sunpoet
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A probabilistic text search database engine
+COMMENT=	Probabilistic text search database engine
 
 LICENSE=	GPLv2
 
@@ -33,12 +33,12 @@ MAN1=		xapian-check.1 \
 
 .include <bsd.port.options.mk>
 
-.if empty(PORT_OPTIONS:MSSE2)
+.if !${PORT_OPTIONS:MSSE2}
 CONFIGURE_ARGS+=--disable-sse
 .endif
 
 post-patch:
-.if empty(PORT_OPTIONS:MDOCS)
+.if !${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e '/^SUBDIRS = / s| docs||' ${WRKSRC}/Makefile.in
 .endif
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mediawiki
-PORTVERSION=	1.20.6
+PORTVERSION=	1.20.7
 CATEGORIES=	www
 MASTER_SITES=	http://dumps.wikimedia.org/mediawiki/${PORTVERSION:R}/
 
@@ -11,9 +11,10 @@ COMMENT=	The wiki engine used by Wikipedia
 
 LICENSE=	GPLv2
 
-CONFLICTS=	mediawiki-1.1[0-9].*
+CONFLICTS=	mediawiki-1.1[0-9].* mediawiki-1.21.*
 
 FETCH_ARGS=	-pr
+NO_LATEST_LINK=	yes
 USE_PHP=	ctype iconv mbstring pcre session xml zlib readline dom
 WANT_PHP_WEB=	yes
 MEDIAWIKIDIR?=	www/mediawiki
@@ -41,7 +42,7 @@ USE_PHP+=	pgsql
 .endif
 
 .if ${PORT_OPTIONS:MSQLITE}
-USE_PHP+=	sqlite
+USE_PHP+=	sqlite3
 .endif
 
 .if ${PORT_OPTIONS:MLDAP}

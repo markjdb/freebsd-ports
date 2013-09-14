@@ -1,7 +1,4 @@
-# New ports collection makefile for:    p5-Lingua-Ispell
-# Date created:                         15 March 2001
-# Whom:                                 -
-#
+# Created by: -
 # $FreeBSD$
 
 PORTNAME=	Lingua-Ispell
@@ -12,13 +9,14 @@ MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A Perl module that encapsulates access to the Ispell program
+COMMENT=	Perl module that encapsulates access to the Ispell program
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/ispell:${PORTSDIR}/textproc/ispell
-RUN_DEPENDS=	${LOCALBASE}/bin/ispell:${PORTSDIR}/textproc/ispell
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
 REINPLACE_ARGS=	-i ''
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Lingua::Ispell.3
 

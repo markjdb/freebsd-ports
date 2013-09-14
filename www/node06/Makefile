@@ -12,6 +12,9 @@ COMMENT=	V8 JavaScript for client and server
 
 LIB_DEPENDS=	execinfo.1:${PORTSDIR}/devel/libexecinfo
 
+DEPRECATED=	Unsupported upstream, not compatible with current
+EXPIRATION_DATE=	2013-10-11
+
 OPTIONS_DEFINE=	SHARED_V8
 SHARED_V8_DESC=	Build with lang/v8
 
@@ -25,7 +28,6 @@ CONFIGURE_ARGS=	--no-ssl2 \
 		--prefix=${PREFIX:S/^${DESTDIR}//} \
 		--without-npm
 HAS_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 ONLY_FOR_ARCHS=	i386 amd64
 USE_GMAKE=	yes
 USE_LDCONFIG=	yes

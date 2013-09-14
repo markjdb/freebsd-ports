@@ -3,7 +3,7 @@
 
 PORTNAME=	xpra
 PORTVERSION=	0.8.8
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	x11
 MASTER_SITES=	http://xpra.org/src/
 
@@ -24,6 +24,7 @@ LIB_DEPENDS+=	avcodec.1:${PORTSDIR}/multimedia/ffmpeg
 MANCOMPRESSED=	no
 MAN1=		xpra.1 xpra_launcher.1 parti.1
 
+USES=		pkgconfig
 USE_BZIP2=	yes
 USE_PYTHON=	yes
 USE_XORG=	x11 xext xtst xfixes xcomposite xdamage

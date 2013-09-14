@@ -17,7 +17,7 @@ OPTIONS_DEFINE=	DOCS
 
 USE_GNOME=	librsvg2
 USE_SDL=	image mixer sdl ttf pango
-USES=		gettext gmake
+USES=		gettext gmake pkgconfig
 MAKE_ARGS=	CPPFLAGS="-I${LOCALBASE}/include" \
 		LDFLAGS="-L${LOCALBASE}/lib" \
 		PREFIX="${PREFIX}" \
@@ -36,7 +36,7 @@ MAN1=		tp-magic-config.1 tuxpaint.1 tuxpaint-import.1
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MDOCS}
+.if ! ${PORT_OPTIONS:MDOCS}
 INSTALL_TARGET=	install-bin install-data install-man install-magic-plugins \
 		install-magic-plugin-dev install-icon install-gettext \
 		install-im install-importscript install-default-config \

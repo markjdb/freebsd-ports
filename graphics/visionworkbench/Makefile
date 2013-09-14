@@ -3,7 +3,7 @@
 
 PORTNAME=	visionworkbench
 PORTVERSION=	2.2.0
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	graphics
 MASTER_SITES=	http://ti.arc.nasa.gov/m/project/nasa-vision-workbench/
 DISTNAME=	VisionWorkbench-${PORTVERSION}
@@ -18,11 +18,11 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 GNU_CONFIGURE=	yes
+USES=		pkgconfig
 USE_QT4=	moc_build qmake_build
 USE_FORTRAN=	yes
 USE_LDCONFIG=	yes
 USE_PYTHON=	2.4+
-MAKE_JOBS_SAFE=	yes
 
 LIB_DEPENDS+=	jpeg.11:${PORTSDIR}/graphics/jpeg
 LIB_DEPENDS+=	png15:${PORTSDIR}/graphics/png

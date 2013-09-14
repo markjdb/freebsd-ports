@@ -4,6 +4,7 @@
 
 PORTNAME=	gsettings-desktop-schemas
 PORTVERSION=	3.6.1
+PORTREVISION=	1
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -16,9 +17,9 @@ LICENSE=	LGPL21
 RUN_DEPENDS=	${LOCALBASE}/etc/fonts/conf.avail/31-cantarell.conf:${PORTSDIR}/x11-fonts/cantarell-fonts
 
 USE_XZ=		yes
-USES=		gettext gmake pathfix pkgconfig
-USE_PERL5_BUILD=	yes
-USE_GNOME=	intltool glib20 introspection:build
+USES=		gettext gmake pathfix perl5 pkgconfig
+USE_PERL5=	build
+USE_GNOME=	intltool glib20 gnomehier introspection:build
 GNU_CONFIGURE=	yes
 
 GLIB_SCHEMAS=	org.gnome.desktop.a11y.applications.gschema.xml \

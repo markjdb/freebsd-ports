@@ -50,7 +50,6 @@
     SUBDIR += automount
     SUBDIR += automounter
     SUBDIR += autopsy
-    SUBDIR += avfs
     SUBDIR += b43-fwcutter
     SUBDIR += backupme
     SUBDIR += backuppc
@@ -78,6 +77,7 @@
     SUBDIR += boxbackup
     SUBDIR += boxbackup-devel
     SUBDIR += brasero
+    SUBDIR += brebis
     SUBDIR += bsd-splash-changer
     SUBDIR += bsdadminscripts
     SUBDIR += bsdconfig
@@ -89,7 +89,6 @@
     SUBDIR += bubblemon-dockapp
     SUBDIR += bubblemon2
     SUBDIR += bulk_extractor
-    SUBDIR += burn
     SUBDIR += busybox
     SUBDIR += busybox-unstable
     SUBDIR += byobu
@@ -214,7 +213,6 @@
     SUBDIR += edid-decode
     SUBDIR += eiciel
     SUBDIR += eject
-    SUBDIR += empower
     SUBDIR += endian
     SUBDIR += entr
     SUBDIR += enteruser
@@ -244,6 +242,7 @@
     SUBDIR += fileprune
     SUBDIR += fileschanged
     SUBDIR += filetype
+    SUBDIR += filewatcherd
     SUBDIR += finfo
     SUBDIR += flasher
     SUBDIR += flashrom
@@ -457,7 +456,6 @@
     SUBDIR += libpcbsd
     SUBDIR += libretto-config
     SUBDIR += libsunacl
-    SUBDIR += libumberlog
     SUBDIR += liburcu
     SUBDIR += libutempter
     SUBDIR += libzeitgeist
@@ -719,6 +717,7 @@
     SUBDIR += pwgen
     SUBDIR += pwsafe
     SUBDIR += py-XenAPI
+    SUBDIR += py-analyzemft
     SUBDIR += py-bcfg2
     SUBDIR += py-danzfs
     SUBDIR += py-drmaa
@@ -897,6 +896,7 @@
     SUBDIR += sysrc
     SUBDIR += system-tools-backends
     SUBDIR += sysupdate
+    SUBDIR += sysvbanner
     SUBDIR += tai64nfrac
     SUBDIR += tarsnap
     SUBDIR += tbku
@@ -1019,6 +1019,7 @@
     SUBDIR += xfburn
     SUBDIR += xfce4-battery-plugin
     SUBDIR += xfce4-cpugraph-plugin
+    SUBDIR += xfce4-diskperf-plugin
     SUBDIR += xfce4-fsguard-plugin
     SUBDIR += xfce4-genmon-plugin
     SUBDIR += xfce4-minicmd-plugin

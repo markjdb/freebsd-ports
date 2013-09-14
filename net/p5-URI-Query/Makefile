@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-URI-Query
-# Date created:		2011-09-23
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	URI-Query
 PORTVERSION=	0.10
@@ -20,7 +16,8 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-URI>=1.31:${PORTSDIR}/net/p5-URI
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		URI::Query.3
 

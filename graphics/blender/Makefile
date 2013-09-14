@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	blender
-PORTVERSION=	2.68
+PORTVERSION=	2.68a
 CATEGORIES=	graphics games
 MASTER_SITES=	http://download.blender.org/source/ \
 		http://mirror.cs.umn.edu/blender.org/source/ \
@@ -20,7 +20,6 @@ USE_GL=		glew
 USES=		cmake:outsource
 USE_PYTHON=	3.3
 
-MAKE_JOBS_SAFE=	yes
 
 CMAKE_ARGS+=	-DWITH_PYTHON_INSTALL:BOOL=OFF \
 		-DWITH_PYTHON_INSTALL_NUMPY:BOOL=OFF

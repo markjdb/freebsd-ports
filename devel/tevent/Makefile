@@ -23,7 +23,6 @@ CONFIGURE_SCRIPT=	${WAF_TOOL} configure
 CONFIGURE_LOG=		bin/config.log
 USES=			pkgconfig
 
-MAKE_JOBS_SAFE=		yes
 
 PKGCONFIGDIR?=		${PREFIX}/libdata/pkgconfig
 PLIST_SUB+=		PKGCONFIGDIR=${PKGCONFIGDIR:S;${PREFIX}/;;}
@@ -78,6 +77,7 @@ INSTALL_TARGET=		install
 IGNORE_NONTHREAD_PYTHON=needs port lang/python${PYTHON_SUFFIX} to be build with THREADS support
 
 post-patch:
+			@${REINPLACE_CMD} -e 's|python|python${PYTHON_VER}|' ${BUILD_WRKSRC}/${WAF_TOOL}
 			@${REINPLACE_CMD} -e 's|%%PKGCONFIGDIR%%|${PKGCONFIGDIR}|g' \
 				${BUILD_WRKSRC}/wscript
 

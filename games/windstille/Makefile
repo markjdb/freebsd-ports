@@ -24,7 +24,9 @@ USE_OPENAL=	al
 USE_GL=		glew
 USE_SDL=	sdl image
 USES=		bison
-MAKE_JOBS_SAFE=	yes
+
+DEPRECATED=	Unplayable, development ceased
+EXPIRATION_DATE=2013-11-12
 
 post-extract:
 	@${RM} -rf ${WRKSRC}/lib ${WRKSRC}/data/music/*

@@ -68,7 +68,6 @@
     SUBDIR += bugmenot-firefox
     SUBDIR += c-icap
     SUBDIR += c-icap-modules
-    SUBDIR += cacheboy15-devel
     SUBDIR += cacheboy16
     SUBDIR += cadaver
     SUBDIR += cakephp11
@@ -264,6 +263,7 @@
     SUBDIR += groupoffice
     SUBDIR += grr
     SUBDIR += gstreamer-plugins-neon
+    SUBDIR += gstreamer1-plugins-neon
     SUBDIR += gtkhtml3
     SUBDIR += guile-www
     SUBDIR += gurlchecker
@@ -273,7 +273,6 @@
     SUBDIR += hastymail2
     SUBDIR += hastymail2-devel
     SUBDIR += havp
-    SUBDIR += helixplugin
     SUBDIR += helma
     SUBDIR += hiawatha
     SUBDIR += hinventory-client
@@ -433,6 +432,7 @@
     SUBDIR += mawstats
     SUBDIR += mediawiki119
     SUBDIR += mediawiki120
+    SUBDIR += mediawiki121
     SUBDIR += mergelog
     SUBDIR += metacafe_dl
     SUBDIR += mgstat
@@ -468,6 +468,7 @@
     SUBDIR += mod_auth_xradius
     SUBDIR += mod_authn_otp
     SUBDIR += mod_authn_sasl
+    SUBDIR += mod_authnz_crowd
     SUBDIR += mod_authnz_external
     SUBDIR += mod_authz_unixgroup
     SUBDIR += mod_backtrace
@@ -527,7 +528,6 @@
     SUBDIR += mod_scgi
     SUBDIR += mod_security
     SUBDIR += mod_setenvifplus
-    SUBDIR += mod_smooth_streaming
     SUBDIR += mod_spdy
     SUBDIR += mod_tidy
     SUBDIR += mod_tsa
@@ -547,11 +547,9 @@
     SUBDIR += monast
     SUBDIR += mongrel2
     SUBDIR += moodle
-    SUBDIR += moodle22
     SUBDIR += moodle23
     SUBDIR += moodle24
     SUBDIR += moodle25
-    SUBDIR += moonshine
     SUBDIR += mozplugger
     SUBDIR += multisort
     SUBDIR += multiwatch
@@ -636,7 +634,6 @@
     SUBDIR += p5-Apache-Session-Wrapper
     SUBDIR += p5-Apache-SessionX
     SUBDIR += p5-Apache-Singleton
-    SUBDIR += p5-Apache2-Scoreboard
     SUBDIR += p5-Apache2-SiteControl
     SUBDIR += p5-ApacheBench
     SUBDIR += p5-App-Nopaste
@@ -814,7 +811,6 @@
     SUBDIR += p5-Catalyst-Plugin-SubRequest
     SUBDIR += p5-Catalyst-Plugin-Textile
     SUBDIR += p5-Catalyst-Plugin-Unicode
-    SUBDIR += p5-Catalyst-Plugin-Unicode-Encoding
     SUBDIR += p5-Catalyst-Plugin-XMLRPC
     SUBDIR += p5-Catalyst-Runtime
     SUBDIR += p5-Catalyst-TraitFor-Controller-DBIC-DoesPaging
@@ -850,11 +846,13 @@
     SUBDIR += p5-Corona
     SUBDIR += p5-Dancer
     SUBDIR += p5-Dancer-Logger-Log4perl
+    SUBDIR += p5-Dancer-Plugin-ExtDirect
     SUBDIR += p5-Dancer-Plugin-Feed
     SUBDIR += p5-Dancer-Plugin-SiteMap
     SUBDIR += p5-Dancer-Plugin-ValidationClass
     SUBDIR += p5-Dancer-Session-Cookie
     SUBDIR += p5-Dancer-Template-Xslate
+    SUBDIR += p5-Dancer2
     SUBDIR += p5-Data-TreeDumper-Renderer-DHTML
     SUBDIR += p5-Data-Validate-URI
     SUBDIR += p5-Emplacken
@@ -1044,6 +1042,7 @@
     SUBDIR += p5-Jemplate
     SUBDIR += p5-Jifty
     SUBDIR += p5-Kwiki
+    SUBDIR += p5-LWP-Authen-Negotiate
     SUBDIR += p5-LWP-Authen-OAuth
     SUBDIR += p5-LWP-Authen-Wsse
     SUBDIR += p5-LWP-ConnCache-MaxKeepAliveRequests
@@ -1482,6 +1481,7 @@
     SUBDIR += py-cherrypy
     SUBDIR += py-cherrypy-old
     SUBDIR += py-clientform
+    SUBDIR += py-cssmin
     SUBDIR += py-cssselect
     SUBDIR += py-cssutils
     SUBDIR += py-django
@@ -1510,13 +1510,16 @@
     SUBDIR += py-django-piston
     SUBDIR += py-django-profiles
     SUBDIR += py-django-registration
+    SUBDIR += py-django-registration-defaults
     SUBDIR += py-django-reversion
     SUBDIR += py-django-sekizai
     SUBDIR += py-django-signals-ahoy
     SUBDIR += py-django-storages
+    SUBDIR += py-django-tables2
     SUBDIR += py-django-tagging
     SUBDIR += py-django-tastypie
     SUBDIR += py-django-threaded-multihost
+    SUBDIR += py-django-tinymce
     SUBDIR += py-django14
     SUBDIR += py-django_compressor
     SUBDIR += py-djangotoolbox
@@ -1648,6 +1651,7 @@
     SUBDIR += py-scgi
     SUBDIR += py-scrapy
     SUBDIR += py-scriptaculous
+    SUBDIR += py-selector
     SUBDIR += py-selenium
     SUBDIR += py-slimmer
     SUBDIR += py-slumber
@@ -1792,6 +1796,7 @@
     SUBDIR += rubygem-raindrops
     SUBDIR += rubygem-ramaze
     SUBDIR += rubygem-redcloth
+    SUBDIR += rubygem-redmine_acts_as_taggable_on
     SUBDIR += rubygem-rest-client
     SUBDIR += rubygem-rfacebook
     SUBDIR += rubygem-rfeedfinder
@@ -2026,6 +2031,7 @@
     SUBDIR += ump
     SUBDIR += usermanager
     SUBDIR += uwsgi
+    SUBDIR += uwsgitop
     SUBDIR += uzbl
     SUBDIR += validator
     SUBDIR += varnish
@@ -2043,8 +2049,6 @@
     SUBDIR += vtiger-customerportal
     SUBDIR += w3m
     SUBDIR += w3m-img
-    SUBDIR += w3m-m17n
-    SUBDIR += w3m-m17n-img
     SUBDIR += w3mir
     SUBDIR += waccess
     SUBDIR += wadcomblog
@@ -2068,8 +2072,6 @@
     SUBDIR += webpy
     SUBDIR += webreport
     SUBDIR += webresolve
-    SUBDIR += webserver
-    SUBDIR += webservices
     SUBDIR += websh
     SUBDIR += webstats
     SUBDIR += webstone

@@ -3,7 +3,7 @@
 #
 
 PORTNAME=	waitress
-PORTVERSION=	0.8.5
+PORTVERSION=	0.8.7
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,7 +12,6 @@ MAINTAINER=	olivierd@FreeBSD.org
 COMMENT=	Python WSGI server
 
 LICENSE=	ZPL21
-LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 USE_PYTHON=	yes
 USE_PYDISTUTILS=	easy_install
@@ -23,9 +22,7 @@ USE_PYDISTUTILS=	easy_install
 .include "${PORTSDIR}/devel/py-virtualenv/files/py3k-fix-pkg-plist.inc"
 .endif
 
-# Avoid to install patch files backup
-post-patch:
-	@cd ${WRKSRC} && \
-		${FIND} . -type f -name '*.orig' -exec ${RM} -f \{\} \;
+pre-patch:
+	@${CP} ${FILESDIR}/MANIFEST.in ${WRKSRC}
 
 .include <bsd.port.post.mk>

@@ -2,7 +2,7 @@
 
 PORTNAME=	llvm
 PORTVERSION=	3.3
-PORTREVISION=	2
+PORTREVISION=	4
 CATEGORIES=	devel lang
 MASTER_SITES=	http://llvm.org/releases/${PORTVERSION}/
 DISTNAME=	${PORTNAME}-${PORTVERSION}.src
@@ -24,7 +24,6 @@ USE_GMAKE=	yes
 USE_LDCONFIG=	${LLVM_PREFIX}/lib
 USE_PERL5=	yes
 USE_PYTHON_BUILD=	yes
-MAKE_JOBS_SAFE=	yes
 
 SUB_FILES=	llvm-wrapper.sh
 SUB_LIST=	LLVM_PREFIX="${LLVM_PREFIX}" LLVM_SUFFIX="${LLVM_SUFFIX}"
@@ -75,6 +74,9 @@ COMMANDS=	bugpoint \
 		macho-dump \
 		opt
 FIRST_COMMAND=	${COMMANDS:C/^/XXXX/1:MXXXX*:C/^XXXX//}
+
+# Enable AMD r600 backend used by the r600/radeonsi graphics/dri gallium drivers
+CONFIGURE_ARGS+=--enable-experimental-targets=R600
 
 .include <bsd.port.options.mk>
 

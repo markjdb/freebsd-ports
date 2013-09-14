@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME?=	mysql
-PORTVERSION=	5.6.12
+PORTVERSION=	5.6.13
 PORTREVISION?=	0
 CATEGORIES=	databases ipv6
 MASTER_SITES=	${MASTER_SITE_MYSQL}
@@ -14,7 +14,6 @@ COMMENT?=	Multithreaded SQL database (server)
 
 SLAVEDIRS=	databases/mysql56-client
 USES=		cmake
-MAKE_JOBS_SAFE=	yes
 
 CMAKE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql" \
 		-DINSTALL_DOCREADMEDIR="share/doc/mysql" \

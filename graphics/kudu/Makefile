@@ -14,11 +14,11 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	gtkglext-x11-1.0:${PORTSDIR}/x11-toolkits/gtkglext
 
+USES=		pkgconfig
 USE_GL=		gl
 USE_PYTHON=	yes
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

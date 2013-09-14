@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Sockets
-PORTVERSION=	2.3.9.7
+PORTVERSION=	2.3.9.9
 CATEGORIES=	net
 MASTER_SITES=	http://www.alhem.net/Sockets/ \
 		http://www.netfence.it/Sockets/
@@ -17,8 +17,8 @@ COMMENT=	A C++ wrapper for BSD-style sockets
 #CFLAGS+=	-I${LOCALBASE}/include
 #LDFLAGS+=	-L${LOCALBASE}/lib
 
-MAKE_JOBS_SAFE=yes
 USE_GMAKE=	yes
+USE_GNOME=	libxml2
 USE_OPENSSL=	yes
 USE_LDCONFIG=	yes
 

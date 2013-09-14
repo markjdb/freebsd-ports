@@ -16,12 +16,11 @@ OPTIONS_DEFINE=	DESKTOP
 OPTIONS_DEFAULT=	DESKTOP
 DESKTOP_DESC=	Desktop integration
 
-MAKE_JOBS_SAFE=	yes
 
 GNU_CONFIGURE=	yes
 WANT_GNOME=	yes
-USES=		iconv
-CONFIGURE_ARGS=	--with-libiconv=${LOCALBASE} \
+USES=		iconv pkgconfig
+CONFIGURE_ARGS=	${ICONV_CONFIGURE_BASE} \
 		--with-libsynce=${LOCALBASE}
 
 MAN1=		triggerconnection.1 ${PORTNAME}.1

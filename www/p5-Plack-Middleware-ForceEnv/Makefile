@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Plack-Middleware-ForceEnv
-# Date created:		2012-04-03
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Plack-Middleware-ForceEnv
 PORTVERSION=	0.02
@@ -15,9 +11,10 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Force set environment variables for testing
 
 BUILD_DEPENDS=	p5-Plack>=0.9925:${PORTSDIR}/www/p5-Plack
-RUN_DEPENDS=	p5-Plack>=0.9925:${PORTSDIR}/www/p5-Plack
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Plack::Middleware::ForceEnv.3
 

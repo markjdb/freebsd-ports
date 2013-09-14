@@ -15,7 +15,6 @@ COMMENT=	GNU editing macros
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-MAKE_JOBS_SAFE=	yes
 
 CONFLICTS=	emacs-19.* emacs-21.* emacs-22.* emacs-23.* \
 		xemacs-[0-9]* xemacs-devel-[0-9]* \
@@ -233,7 +232,7 @@ CONFIGURE_ARGS+=	--without-gnutls
 .endif
 
 .if ${PORT_OPTIONS:MLTO}
-USE_GCC=	4.6+
+USE_GCC=	yes
 CONFIGURE_ARGS+=	--enable-link-time-optimization
 .endif
 

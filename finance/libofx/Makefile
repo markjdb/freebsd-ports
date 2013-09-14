@@ -15,7 +15,7 @@ LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl \
 		osp.5:${PORTSDIR}/textproc/opensp
 
 USE_GCC=	any
-USES=		iconv
+USES=		iconv pkgconfig
 USE_GMAKE=	yes
 USE_AUTOTOOLS=	aclocal autoheader automake autoconf libtool
 ACLOCAL_ARGS=	-I m4
@@ -23,7 +23,6 @@ AUTOMAKE_ARGS=	--add-missing
 CONFIGURE_ARGS=	--disable-doxygen --disable-dot --disable-gengetopt \
 		--with-opensp-includes=${LOCALBASE}/include/OpenSP \
 		--with-opensp-libs=${LOCALBASE}/lib
-MAKE_JOBS_SAFE=	yes
 USE_LDCONFIG=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include

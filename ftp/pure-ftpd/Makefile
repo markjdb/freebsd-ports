@@ -9,15 +9,15 @@ MASTER_SITES=	http://download.pureftpd.org/pub/pure-ftpd/releases/ \
 		SF/pureftpd/Pure-FTPd/${PORTVERSION}
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A small, easy to set up, fast, and very secure FTP server
+COMMENT=	Small, easy to set up, fast, and very secure FTP server
 
 SUB_FILES=	pkg-message
 SUB_LIST=	PAM_DIR=${PAM_DIR} PAM_TARGET=${PAM_TARGET}
 USE_BZIP2=	yes
-USE_PERL5_RUN=	yes
+USE_PERL5=	run
 USE_RC_SUBR=	pure-ftpd
+USES=		perl5
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 CONFIGURE_ARGS=	--with-everything \
 		--with-paranoidmsg \
 		--sysconfdir=${PREFIX}/etc \

@@ -3,7 +3,7 @@
 
 PORTNAME=	gnudatalanguage
 DISTVERSION=	0.9.3
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	science lang
 MASTER_SITES=	SF/${PORTNAME}/gdl/${DISTVERSION}
 .if defined(BUILD_PYTHON_MODULE)
@@ -30,10 +30,10 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	plplotd.11:${PORTSDIR}/math/plplot	\
 		ps.4:${PORTSDIR}/print/pslib		\
-		gsl.16:${PORTSDIR}/math/gsl		\
+		gsl:${PORTSDIR}/math/gsl		\
 		dps.0:${PORTSDIR}/x11/dgs
 
-USE_GCC=	4.6+
+USE_GCC=	yes
 USE_WX=		2.8
 USES=		pkgconfig
 GNU_CONFIGURE=	yes
@@ -87,7 +87,7 @@ USE_PYTHON=	-2.7
 BUILD_DEPENDS+=	${PYNUMPY}
 RUN_DEPENDS+=	${PYNUMPY} \
 		${PYTHON_PKGNAMEPREFIX}matplotlib>0:${PORTSDIR}/math/py-matplotlib
-CONFIGURE_ENV+=	PYTHON_VERSION=${_PYTHON_VERSION}
+CONFIGURE_ENV+=	PYTHON_VERSION=${PYTHON_VER}
 CONFIGURE_ARGS+=--with-python=${PYTHONBASE}
 .else
 CONFIGURE_ARGS+=--with-python=no

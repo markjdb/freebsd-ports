@@ -3,6 +3,7 @@
 
 PORTNAME=	efax-gtk
 PORTVERSION=	3.2.12
+PORTREVISION=	1
 CATEGORIES=	comms
 MASTER_SITES=	SF
 EXTRACT_SUFX=	.src.tgz
@@ -12,16 +13,15 @@ COMMENT=	GUI frontend for efax program
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	sigc-1.2.5:${PORTSDIR}/devel/libsigc++12 \
-		cxx-gtk-utils-2-2.2:${PORTSDIR}/x11-toolkits/c++-gtk-utils
+LIB_DEPENDS=	libsigc-1.2.so:${PORTSDIR}/devel/libsigc++12 \
+		libcxx-gtk-utils-2-2.2.so:${PORTSDIR}/x11-toolkits/c++-gtk-utils
 RUN_DEPENDS=	ggv:${PORTSDIR}/print/ggv
 
 USES=		pkgconfig
 USE_GHOSTSCRIPT_RUN=yes
 USE_GNOME=	gtk20
 GNU_CONFIGURE=	yes
-USE_GCC=	4.4+
-MAKE_JOBS_SAFE=	yes
+USE_GCC=	4.6+
 
 CONFLICTS=	efax-[0-9]*
 

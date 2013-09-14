@@ -3,28 +3,28 @@
 
 PORTNAME=	netsurf
 PORTVERSION=	3.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	www
 MASTER_SITES=	http://download.netsurf-browser.org/netsurf/releases/source-full/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-full-src
 
-MAINTAINER=	pawel@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Lightweight web browser
 
 LICENSE=	GPLv2 MIT
 LICENSE_COMB=	multi
 
-BUILD_DEPENDS=	flex:${PORTSDIR}/textproc/flex
-LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl \
-		mng:${PORTSDIR}/graphics/libmng
+BUILD_DEPENDS=	${LOCALBASE}/bin/flex:${PORTSDIR}/textproc/flex
+LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
+		libmng.so:${PORTSDIR}/graphics/libmng
 
 ALL_TARGET=	#empty
 CFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-lssl
 MAKE_ARGS=	HOST_CC="${CC}" CC="${CC}" CCOPT="" HOST="${OPSYS}" \
 		WARNFLAGS="" Q="" OPTCFLAGS="${CFLAGS}"
-USES=		bison gmake
+USES=		bison gmake pkgconfig
 USE_GNOME=	librsvg2
-MAKE_JOBS_UNSAFE=	yes
 
 NSFB_VERSION=	0.1.0
 WRKSRC=		${WRKDIR}/${PORTNAME}-full-${PORTVERSION}
@@ -33,7 +33,7 @@ DESKTOP_ENTRIES="NetSurf" "${COMMENT}" "" "${PORTNAME}" "" "true"
 
 OPTIONS_DEFINE=	GSTREAMER WEBP
 
-WEBP_LIB_DEPENDS=	webp:${PORTSDIR}/graphics/webp
+WEBP_LIB_DEPENDS=	libwebp.so:${PORTSDIR}/graphics/webp
 
 .include <bsd.port.options.mk>
 

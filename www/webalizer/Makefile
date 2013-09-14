@@ -1,15 +1,15 @@
 # $FreeBSD$
 
 PORTNAME=	webalizer
-PORTVERSION=	2.23.5
-PORTREVISION=	4
+PORTVERSION=	2.23.8
+PORTREVISION=	0
 CATEGORIES+=	www
 MASTER_SITES=	ftp://ftp.mrunix.net/pub/webalizer/:main \
 MASTER_SITES=	ftp://ftp.mrunix.net/pub/webalizer/geodb/:geodb \
 		ftp://ftp.dinoex.de/pub/FreeBSD/distfiles/:main \
 		http://flags.blogpotato.de/zip/:flags
 PKGNAMESUFFIX?=	${WEBALIZER_SUFFIX}${PKGNAMESUFFIX2}
-DISTNAME=	${PORTNAME}-2.23-05-src
+DISTNAME=	${PORTNAME}-2.23-08-src
 DISTFILES=	${DISTNAME}.tgz:main
 
 MAINTAINER?=	dinoex@FreeBSD.org
@@ -45,7 +45,7 @@ LARGE_URL_DESC=Enable URLs longer 512 bytes
 DISTFILES+=	webalizer-flags.tgz:main
 .endif
 .if ${PORT_OPTIONS:MGEODB} || make(makesum) || defined(FETCH_ALL)
-DISTFILES+=	webalizer-geodb-20121201.tgz:geodb
+DISTFILES+=	webalizer-geodb-20130801.tgz:geodb
 .endif
 
 # slave ports override with languages specific gd
@@ -129,7 +129,7 @@ USES+=			iconv
 #	see http://tyche.pu-toyama.ac.jp/~a-urasim/webalizer/
 EXTRA_PATCHES+=		${FILESDIR}/webalizer-a-urasim_2.patch
 CONFIGURE_ARGS+=	--enable-mininls
-CONFIGURE_ENV+=		LIBS="-L${LOCALBASE}/lib -liconv"
+CONFIGURE_ENV+=		LIBS="-L${LOCALBASE}/lib ${ICONV_LIB}"
 CFLAGS+=		-I${LOCALBASE}/include
 .endif
 

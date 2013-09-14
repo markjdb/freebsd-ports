@@ -1,16 +1,12 @@
-# New ports collection makefile for:	linux-ut
-# Date created:		7 Jan 2006
-# Whom:			Sean Farley <sean-freebsd@farley.org>
-#
+# Created by: Sean Farley <sean-freebsd@farley.org>
 # $FreeBSD$
-#
 
 PORTNAME=	linux-ut
 PORTVERSION=	${UTVERSION}
 PORTREVISION=	4
 PORTEPOCH=	1
 CATEGORIES=	games linux
-MASTER_SITES=	http://liflg.holarse.net/files/final/:p436 \
+MASTER_SITES=	http://liflg.holarse-linuxgaming.de/files/final/:p436 \
 		http://www.utpg.org/patches/:p451
 DISTFILES=	${PATCH436FILES} \
 		${PATCH451FILES}

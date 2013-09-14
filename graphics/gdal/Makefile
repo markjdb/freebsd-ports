@@ -2,33 +2,34 @@
 # $FreeBSD$
 
 PORTNAME=	gdal
-PORTVERSION=	1.9.2
+PORTVERSION=	1.10.1
 PORTREVISION=	1
 CATEGORIES=	graphics geography
-MASTER_SITES=	http://download.osgeo.org/gdal/ \
-		ftp://ftp.remotesensing.org/pub/gdal/ \
+MASTER_SITES=	http://download.osgeo.org/gdal/${PORTVERSION}/ \
+		ftp://ftp.remotesensing.org/pub/gdal/${PORTVERSION}/ \
 		LOCAL/sunpoet
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A translator library for geospatial data formats
+COMMENT=	Translator library for raster geospatial data formats
 
 LICENSE=	MIT
 
-OPTIONS_DEFINE=	CFITSIO CURL ECW EXPAT GEOS GEOTIFF GIF HDF5 ICONV JASPER \
-		JPEG KML MYSQL NETCDF ODBC PGSQL PNG PROJ SQLITE TIFF WEBP \
-		XERCES
+OPTIONS_DEFINE=	CFITSIO CURL ECW EXPAT GEOS GEOTIFF GIF GTA HDF5 ICONV JASPER \
+		JPEG KML LIBXML2 MYSQL NETCDF ODBC PCRE PGSQL PNG POPPLER PROJ \
+		SQLITE TIFF WEBP XERCES
 OPTIONS_DEFAULT=GEOTIFF GIF JASPER JPEG PNG TIFF
+PCRE_DESC=	Regular expression support for SQLite
 
-CFLAGS+=	-fPIC ${PTHREAD_CFLAGS}
+CFLAGS+=	-fPIC
 CONFIGURE_ARGS=	--datadir=${DATADIR} \
 		--with-libz=/usr --with-liblzma=yes --with-threads=yes
 GNU_CONFIGURE=	yes
-LDFLAGS+=	-L${LOCALBASE} ${PTHREAD_LIBS}
+LDFLAGS+=	-L${LOCALBASE} -pthread
 MAKE_JOBS_UNSAFE=	yes
 MAKEFILE=	GNUmakefile
 USE_AUTOTOOLS=	libtool
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
+USES=		gmake
 
 SLAVEDIRS=	graphics/p5-Geo-GDAL graphics/php-gdal graphics/py-gdal graphics/ruby-gdal
 
@@ -83,6 +84,13 @@ CONFIGURE_ARGS+=--with-gif=${LOCALBASE}
 CONFIGURE_ARGS+=--with-gif=internal
 .endif
 
+.if ${PORT_OPTIONS:MGTA}
+LIB_DEPENDS+=	gta:${PORTSDIR}/devel/libgta
+CONFIGURE_ARGS+=--with-gta=${LOCALBASE}
+.else
+CONFIGURE_ARGS+=--with-gta=no
+.endif
+
 .if ${PORT_OPTIONS:MHDF5}
 LIB_DEPENDS+=	hdf5.7:${PORTSDIR}/science/hdf5-18
 CONFIGURE_ARGS+=--with-hdf5=${LOCALBASE}
@@ -91,7 +99,7 @@ CONFIGURE_ARGS+=--with-hdf5=no
 .endif
 
 .if ${PORT_OPTIONS:MICONV}
-CONFIGURE_ARGS+=--with-libiconv-prefix=${LOCALBASE}
+CONFIGURE_ARGS+=${ICONV_CONFIGURE_ARG}
 USES+=		iconv
 .else
 CONFIGURE_ARGS+=--with-libiconv-prefix=no
@@ -118,6 +126,13 @@ CONFIGURE_ARGS+=--with-libkml=${LOCALBASE}
 CONFIGURE_ARGS+=--with-libkml=no
 .endif
 
+.if ${PORT_OPTIONS:MLIBXML2}
+LIB_DEPENDS+=	xml2:${PORTSDIR}/textproc/libxml2
+CONFIGURE_ARGS+=--with-xml2=${LOCALBASE}/bin/xml2-config
+.else
+CONFIGURE_ARGS+=--with-xml2=no
+.endif
+
 .if ${PORT_OPTIONS:MMYSQL}
 CONFIGURE_ARGS+=--with-mysql=${LOCALBASE}/bin/mysql_config
 USE_MYSQL=	yes
@@ -139,6 +154,13 @@ CONFIGURE_ARGS+=--with-odbc=${LOCALBASE}
 CONFIGURE_ARGS+=--with-odbc=no
 .endif
 
+.if ${PORT_OPTIONS:MPCRE}
+LIB_DEPENDS+=	pcre:${PORTSDIR}/devel/pcre
+CONFIGURE_ARGS+=--with-pcre=${LOCALBASE}
+.else
+CONFIGURE_ARGS+=--with-pcre=no
+.endif
+
 .if ${PORT_OPTIONS:MPGSQL}
 CONFIGURE_ARGS+=--with-pg=${LOCALBASE}/bin/pg_config
 USE_PGSQL=	yes
@@ -151,6 +173,13 @@ LIB_DEPENDS+=	png15:${PORTSDIR}/graphics/png
 CONFIGURE_ARGS+=--with-png=${LOCALBASE}
 .else
 CONFIGURE_ARGS+=--with-png=internal
+.endif
+
+.if ${PORT_OPTIONS:MPOPPLER}
+LIB_DEPENDS+=	poppler:${PORTSDIR}/graphics/poppler
+CONFIGURE_ARGS+=--with-poppler=${LOCALBASE}
+.else
+CONFIGURE_ARGS+=--with-poppler=no
 .endif
 
 .if ${PORT_OPTIONS:MPROJ}
@@ -192,6 +221,7 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|-lpthread|${PTHREAD_LIBS}|g' ${WRKSRC}/configure
 
 post-install:
+	${TOUCH} ${PREFIX}/lib/gdalplugins/.keepme
 	${INSTALL_DATA} ${WRKSRC}/GDALmake.opt ${DATADIR}/
 
 .include <bsd.port.mk>

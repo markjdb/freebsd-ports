@@ -29,13 +29,12 @@ WIN32_CODECS_DESC=	Enable win32 codecs
 
 USE_XZ=		yes
 USE_XORG=	x11 xext xinerama xscrnsaver xt xtst xv xxf86vm
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-vdr-keys \
 		--disable-nvtvsimple
 MAKE_ENV=	V=1
 INSTALLS_ICONS=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

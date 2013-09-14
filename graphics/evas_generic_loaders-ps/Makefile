@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ps
-PORTVERSION=	1.7.7
+PORTVERSION=	1.7.8
 CATEGORIES=	graphics enlightenment
 MASTER_SITES=	http://download.enlightenment.fr/releases/ \
 		LOCAL/gblach/e17/
@@ -19,6 +19,7 @@ LIB_DEPENDS=	spectre:${PORTSDIR}/print/libspectre
 DIST_SUBDIR=	e17
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
+USES=		pkgconfig
 USE_EFL=	eina
 USE_LDCONFIG=	yes
 

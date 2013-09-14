@@ -13,9 +13,9 @@ LIB_DEPENDS=	purple:${PORTSDIR}/net-im/libpurple
 BUILD_DEPENDS=	pidgin:${PORTSDIR}/net-im/pidgin
 RUN_DEPENDS=	pidgin:${PORTSDIR}/net-im/pidgin
 
-USE_GNOME=	pkgconfig gtk20
+USES=		pkgconfig
+USE_GNOME=	gtk20
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 PLIST_FILES=	lib/pidgin/hotkeys.so \
 		lib/pidgin/hotkeys.la

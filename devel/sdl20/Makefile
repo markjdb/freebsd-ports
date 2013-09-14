@@ -1,23 +1,22 @@
 # $FreeBSD$
 
 PORTNAME=	sdl2
-PORTVERSION=	2.0.p7353
+PORTVERSION=	2.0.0
 CATEGORIES=	devel
-MASTER_SITES=	http://www.libsdl.org/tmp/
-DISTNAME=	SDL-2.0.0-7353
+MASTER_SITES=	http://www.libsdl.org/release/
+DISTNAME=	SDL2-${PORTVERSION}
 
 MAINTAINER=	mva@FreeBSD.org
 COMMENT=	Cross-platform multimedia development API
 
 USES=		pathfix cmake:outsource iconv
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 CMAKE_ARGS+=	-DVIDEO_OPENGLES:BOOL=OFF -DPTHREADS_SEM:BOOL=OFF \
-		-DALTIVEC:BOOL=OFF
+		-DALTIVEC:BOOL=OFF -DARTS:BOOL=OFF
 CMAKE_ENV+=	CFLAGS="-I${LOCALBASE}/include" LDFLAGS="-L${LOCALBASE}/lib"
 
-OPTIONS_DEFINE=		ALSA ARTS ASM DLOPEN ESOUND MMX NAS OSS \
+OPTIONS_DEFINE=		ALSA ASM DLOPEN ESOUND MMX NAS OSS \
 			PULSEAUDIO PTHREADS SSE SDL_ATOMIC SDL_AUDIO \
 			SDL_CPUINFO SDL_EVENTS SDL_FILE SDL_HAPTIC \
 			SDL_JOYSTICK SDL_LOADSO SDL_POWER SDL_RENDER \
@@ -30,7 +29,6 @@ OPTIONS_DEFAULT_i386=	MMX SSE
 OPTIONS_DEFAULT_amd64=	MMX SSE
 
 ALSA_DESC=		Audio output via the ALSA audio architecture
-ARTS_DESC=		Audio output via the aRts audio system
 DLOPEN_DESC=		Use dlopen for loading 3rd party libraries
 ESOUND_DESC=		Audio output via the EsounD sound server
 NAS_DESC=		Audio output via the Network Audio System
@@ -65,15 +63,7 @@ LIB_DEPENDS+=	asound:${PORTSDIR}/audio/alsa-lib
 CMAKE_ARGS+=	-DALSA:BOOL=OFF
 .endif
 
-.if ${PORT_OPTIONS:MARTS}
-.if !${PORT_OPTIONS:MSDL_AUDIO}
-IGNORE=	option ARTS requires SDL_AUDIO
-.endif
-CMAKE_ARGS+=	-DARTS:BOOL=ON -DARTS_SHARED:BOOL=ON
-LIB_DEPENDS+=	artsc:${PORTSDIR}/audio/arts
-.else
 CMAKE_ARGS+=	-DARTS:BOOL=OFF
-.endif
 
 .if ${PORT_OPTIONS:MASM}
 CMAKE_ARGS+=	-DASSEMBLY:BOOL=ON

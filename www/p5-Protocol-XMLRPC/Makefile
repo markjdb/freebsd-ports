@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Protocol-XMLRPC
-# Date created:		2011-09-24
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Protocol-XMLRPC
 PORTVERSION=	0.10
@@ -16,9 +12,10 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	XML-RPC implementation
 
 BUILD_DEPENDS=	p5-XML-LibXML>=0:${PORTSDIR}/textproc/p5-XML-LibXML
-RUN_DEPENDS=	p5-XML-LibXML>=0:${PORTSDIR}/textproc/p5-XML-LibXML
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Protocol::XMLRPC.3 \
 		Protocol::XMLRPC::Client.3 \

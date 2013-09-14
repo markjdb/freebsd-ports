@@ -19,11 +19,8 @@ RUN_DEPENDS=	rpm:${PORTSDIR}/archivers/rpm
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 USE_GNOME=	gtk20
-USE_PERL5=	yes
-USES=		gettext
-USE_GMAKE=	yes
+USES=		gettext pkgconfig perl5 gmake
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 CONFIGURE_ARGS=	--with-wmakerdataprefix="${LOCALBASE}/share" \
 		--with-wmakeretcprefix="${LOCALBASE}/share"
 

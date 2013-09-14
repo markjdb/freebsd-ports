@@ -20,11 +20,10 @@ GH_PROJECT=	OpenXcom
 GH_TAGNAME=	v0.9
 GH_COMMIT=	5c8b540
 
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_SDL=	sdl mixer image gfx
 USE_GL=		gl
-MAKE_JOBS_SAFE=	yes
-USE_GCC=	4.6+
+USE_GCC=	yes
 
 BUILD_WRKSRC=	${WRKSRC}/src
 MAKEFILE=	Makefile.simple

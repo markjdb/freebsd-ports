@@ -20,8 +20,7 @@ LIB_DEPENDS=	goffice-0.10:${PORTSDIR}/devel/goffice010 \
 RUN_DEPENDS=	rarian-sk-config:${PORTSDIR}/textproc/rarian
 
 USE_XZ=		yes
-USES=		desktop-file-utils gettext pathfix shared-mime-info
-USE_GMAKE=	yes
+USES=		desktop-file-utils gettext pathfix shared-mime-info gmake pkgconfig
 USE_GNOME=	gnomehier gnomeprefix intlhack libgsf pygobject3
 USE_PYTHON=	-2.7
 INSTALLS_OMF=	yes
@@ -30,7 +29,6 @@ INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-MAKE_JOBS_SAFE=	yes
 
 GLIB_SCHEMAS=	org.gnome.gnumeric.dialogs.gschema.xml \
 		org.gnome.gnumeric.gschema.xml \
@@ -47,7 +45,7 @@ PERL_DESC=	Support Perl as extension language
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPERL}
-USE_PERL5=		yes
+USES+=			perl5
 PLIST_SUB+=		PERL=""
 .else
 CONFIGURE_ARGS+=	--without-perl

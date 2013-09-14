@@ -3,6 +3,7 @@
 
 PORTNAME=	qmake
 DISTVERSION=	${QT4_VERSION}
+PORTREVISION=	1
 CATEGORIES=	devel
 PKGNAMEPREFIX=	qt4-
 
@@ -16,7 +17,6 @@ REINPLACE_ARGS=	-i ""
 WRKSRC=		${WRKDIR}/${DISTNAME}/${PORTNAME}
 MAKEFILE=	${FILESDIR}/Makefile.bsd
 MAKE_ENV+=	FILESDIR="${FILESDIR}"
-MAKE_JOBS_SAFE=	yes
 TODAY_CMD=	/bin/date +%Y-%m-%d
 
 EXTRACT_AFTER_ARGS= \
@@ -48,6 +48,7 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|@QMAKE_QTOBJS@||g' ${WRKSRC}/Makefile.unix
 
 # FIXME: This is ugly
+	@${RM} ${WRKSRC}/../mkspecs/features/unix/*.orig
 	@${RM} ${WRKSRC}/../mkspecs/freebsd-g++/*.orig
 	@${RM} ${WRKSRC}/../mkspecs/freebsd-g++46/*.orig
 

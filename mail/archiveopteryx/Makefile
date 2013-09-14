@@ -1,29 +1,24 @@
-# New ports collection makefile for:	archiveopteryx
-# Date created:		2010-09-15
-# Whom:			Ashish SHUKLA <ashish@FreeBSD.org>
-#
+# Created by: Ashish SHUKLA <ashish@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	archiveopteryx
 PORTVERSION=	3.1.3
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	mail
-MASTER_SITES=	http://archiveopteryx.org/%SUBDIR%/
-MASTER_SITE_SUBDIR=	download
+MASTER_SITES=	http://archiveopteryx.org/download/
 
 MAINTAINER=	feld@FreeBSD.org
-COMMENT=	An advanced PostgreSQL-based IMAP/POP server
+COMMENT=	Advanced PostgreSQL-based IMAP/POP server
 
 LICENSE=	BSD
 LICENSE_FILE=	${WRKSRC}/bsd.txt
 
 BUILD_DEPENDS=	jam:${PORTSDIR}/devel/jam
 
+USES=	perl5
 USE_BZIP2=	yes
-USE_PERL5_BUILD=	yes
-
-MAKE_JOBS_SAFE=	yes
+USE_PERL5=	build
+USE_PGSQL=	yes
 
 MAN5=	aoxsuper.conf.5 archiveopteryx.conf.5
 MAN8=	aox.8 aoximport.8 archiveopteryx.8 deliver.8 installer.8 logd.8 \
@@ -47,13 +42,14 @@ post-patch:
 		-e 's,%%PREFIX%%,${PREFIX},g'
 
 do-build:
-	@cd ${WRKSRC} && ${JAM} -j${MAKE_JOBS_NUMBER}
+	@cd ${WRKSRC} && ${JAM}
 
 do-install:
 	@cd ${WRKSRC} && ${JAM} install
 
 post-install:
-	@${SH} ${PKGINSTALL} ${PORTNAME} POST-INSTALL
+	${INSTALL} -d -o root -g wheel -m 700 /var/db/aox/jail
+	${INSTALL} -d -o ${USERS} -g ${GROUPS} /var/db/aox/messages
 	@${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.post.mk>

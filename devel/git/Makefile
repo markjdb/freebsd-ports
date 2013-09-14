@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	git
-PORTVERSION=	1.8.3.4
+PORTVERSION=	1.8.4
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE}
 DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX} \
@@ -15,7 +15,6 @@ MAINTAINER=	wxs@FreeBSD.org
 COMMENT?=	Distributed source code management tool
 
 PROJECTHOST=	git-core
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		git.1 \
 		git-add.1 \
@@ -31,6 +30,7 @@ MAN1=		git.1 \
 		git-cat-file.1 \
 		git-check-attr.1 \
 		git-check-ignore.1 \
+		git-check-mailmap.1 \
 		git-check-ref-format.1 \
 		git-checkout-index.1 \
 		git-checkout.1 \
@@ -228,7 +228,7 @@ ALL_TARGET=	all strip
 .if ${PORT_OPTIONS:MP4} || ${PORT_OPTIONS:MCONTRIB}
 USE_PYTHON=	yes
 PLIST_SUB+=	PYTHON_VER=${PYTHON_VER} PYTHON=""
-CONFIGURE_ARGS+=	--with-python=${LOCALBASE}/bin/python
+CONFIGURE_ARGS+=	--with-python=${PYTHON_CMD}
 .else
 CONFIGURE_ARGS+=	--without-python
 PLIST_SUB+=	PYTHON="@comment "
@@ -257,8 +257,8 @@ PLIST_SUB+=	PERLSUB="@comment "
 .if ${PORT_OPTIONS:MICONV}
 USES+=		iconv
 MAKE_ENV+=	NEEDS_LIBICONV=yes \
-		ICONVDIR=${LOCALBASE}
-CONFIGURE_ARGS+=	--with-iconv=${LOCALBASE}
+		ICONVDIR=${ICONV_PREFIX}
+CONFIGURE_ARGS+=	--with-iconv=${ICONV_PREFIX}
 .else
 MAKE_ENV+=	NO_ICONV=1
 .endif

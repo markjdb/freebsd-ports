@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lxpanel
-PORTVERSION=	0.5.12
-PORTREVISION=	1
+PORTVERSION=	0.6.1
 CATEGORIES=	x11
 MASTER_SITES=	SF/lxde/LXPanel%20%28desktop%20panel%29/LXPanel%20${PORTVERSION}/
 
@@ -13,7 +12,7 @@ COMMENT=	Lightweight X11 desktop panel
 LICENSE=	GPLv2 MIT
 LICENSE_COMB=	dual
 
-LIB_DEPENDS=	menu-cache:${PORTSDIR}/x11/menu-cache
+LIB_DEPENDS=	libmenu-cache.so:${PORTSDIR}/x11/menu-cache
 RUN_DEPENDS=	${LOCALBASE}/share/desktop-directories/lxde-audio-video.directory:${PORTSDIR}/x11/lxmenu-data
 
 OPTIONS_DEFINE=	DOCS ALSA NLS
@@ -33,7 +32,7 @@ USE_CSTD=	gnu89
 
 MAN1=		lxpanel.1 lxpanelctl.1
 
-PORTDOCS=	AUTHORS README TODO
+PORTDOCS=	AUTHORS README
 
 .include <bsd.port.options.mk>
 

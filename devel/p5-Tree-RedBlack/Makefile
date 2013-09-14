@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Tree-RedBlack
-# Date created:		2011-09-11
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Tree-RedBlack
 PORTVERSION=	0.5
@@ -14,7 +10,8 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Perl implementation of Red/Black tree, a type of balanced tree
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Tree::Node.3 \
 		Tree::RedBlack.3

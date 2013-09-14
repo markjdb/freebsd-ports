@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	openbox
-PORTVERSION=	3.5.0
-PORTREVISION=	3
+PORTVERSION=	3.5.2
+PORTREVISION=	1
 CATEGORIES=	x11-wm
 MASTER_SITES=	http://openbox.org/dist/openbox/
 
@@ -13,7 +13,7 @@ COMMENT=	Small, fast, standards compliant, extensible window manager
 LICENSE=	GPLv2
 
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_GNOME=	glib20 libxml2 gnomehack ltverhack
 USE_XORG=	xft
 USE_AUTOTOOLS=	libtool
@@ -48,7 +48,7 @@ CONFIGURE_ARGS+=	--disable-pango
 .endif
 
 .if !defined(WITHOUT_STARTUP_NOTIFICATION)
-LIB_DEPENDS+=	startup-notification-1.0:${PORTSDIR}/x11/startup-notification
+LIB_DEPENDS+=	startup-notification-1:${PORTSDIR}/x11/startup-notification
 .else
 CONFIGURE_ARGS+=	--disable-startup-notification
 .endif

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	netatalk
-PORTVERSION=	2.2.4
-PORTREVISION=	1
+PORTVERSION=	2.2.5
 PORTEPOCH=	1
 CATEGORIES=	net print
 MASTER_SITES=	SF
@@ -16,16 +15,13 @@ LIB_DEPENDS=	gcrypt:${PORTSDIR}/security/libgcrypt
 USE_AUTOTOOLS=	libtool
 USE_BDB=	46+
 USE_BZIP2=	yes
-USES=		iconv
+USES=		iconv gmake perl5
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
-USE_PERL5=	yes
-WANT_GNOME=	yes
 USE_RC_SUBR=	netatalk
 
 CONFIGURE_ARGS+=	--with-tcp-wrappers \
 			--with-pkgconfdir=${PREFIX}/etc \
-			--with-libiconv=${LOCALBASE} \
+			${ICONV_CONFIGURE_BASE} \
 			--with-libgcrypt-dir=${LOCALBASE} \
 			--with-uams-path=${PREFIX}/libexec/netatalk-uams \
 			--with-bdb=${LOCALBASE}
@@ -103,7 +99,7 @@ PLIST_SUB+=		TIMELORD="@comment "
 CONFIGURE_ARGS+=	--enable-zeroconf=${LOCALBASE}
 CFLAGS+=		-I${LOCALBASE}/include -L${LOCALBASE}/lib
 LIB_DEPENDS+=		avahi-client.3:${PORTSDIR}/net/avahi-app
-USE_GNOME+=		pkgconfig
+USES+=			pkgconfig
 SUB_LIST+=		ZEROCONF="avahi_daemon"
 .else
 CONFIGURE_ARGS+=	--disable-zerconf

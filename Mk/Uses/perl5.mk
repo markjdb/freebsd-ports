@@ -15,8 +15,8 @@
 #
 # PERL_LEVEL	- Perl version as an integer of the form MNNNPP, where
 #				  M is major version, N is minor version, and P is
-#				  the patch level. E.g., PERL_VERSION=5.14.2 would give
-#				  a PERL_LEVEL of 501402. This can be used in comparisons
+#				  the patch level. E.g., PERL_VERSION=5.14.4 would give
+#				  a PERL_LEVEL of 501404. This can be used in comparisons
 #				  to determine if the version of perl is high enough,
 #				  whether a particular dependency is needed, etc.
 # PERL_ARCH		- Directory name of architecture dependent libraries
@@ -26,7 +26,10 @@
 # SITE_PERL		- Directory name where site specific perl packages go.
 #				  This value is added to PLIST_SUB.
 # USE_PERL5		- If set, this port uses perl5 in one or more of the extract,
-#				  patch, build, install or run phases
+#				  patch, build, install or run phases.
+#				  It can also have configure, modbuild and modbuildtiny when
+#				  the port needs to run Makefile.PL, Build.PL and a
+#				  Module::Build::Tiny flavor of Build.PL.
 
 .if !defined(_INCLUDE_USES_PERL5_MK)
 _INCLUDE_USES_PERL5_MK=	yes
@@ -68,7 +71,9 @@ PERL_ARCH?=		mach
 
 # there must always be a default to prevent dependency failures such
 # as "ports/lang: not found"
-.if    ${PERL_LEVEL} >= 501600
+.if    ${PERL_LEVEL} >= 501800
+PERL_PORT?=	perl5.18
+.elif    ${PERL_LEVEL} >= 501600
 PERL_PORT?=	perl5.16
 .elif  ${PERL_LEVEL} >= 501400
 PERL_PORT?=	perl5.14
@@ -145,11 +150,18 @@ _MANPAGES+=	${P5MAN${sect}:S%^%${PREFIX}/lib/perl5/${PERL_VER}/man/man${sect}/%}
 .endif
 .endfor
 
-.if ${_USE_PERL5:Mmodbuild}
+.if ${_USE_PERL5:Mmodbuild} || ${_USE_PERL5:Mmodbuildtiny}
 _USE_PERL5+=		configure
 CONFIGURE_SCRIPT?=	Build.PL
+.if ${_USE_PERL5:Mmodbuild}
 .if ${PORTNAME} != Module-Build
 BUILD_DEPENDS+=		${SITE_PERL}/Module/Build.pm:${PORTSDIR}/devel/p5-Module-Build
+.endif
+.endif
+.if ${_USE_PERL5:Mmodbuildtiny}
+.if ${PORTNAME} != Module-Build-Tiny
+BUILD_DEPENDS+=		${SITE_PERL}/Module/Build/Tiny.pm:${PORTSDIR}/devel/p5-Module-Build-Tiny
+.endif
 .endif
 ALL_TARGET?=
 PL_BUILD?=		Build
@@ -208,14 +220,14 @@ do-configure:
 	@cd ${CONFIGURE_WRKSRC} && \
 		${SETENV} ${CONFIGURE_ENV} \
 		${PERL5} ./${CONFIGURE_SCRIPT} ${CONFIGURE_ARGS}
-.if !${_USE_PERL5:Mmodbuild}
+.if !${_USE_PERL5:Mmodbuild*}
 	@cd ${CONFIGURE_WRKSRC} && \
 		${PERL5} -pi -e 's/ doc_(perl|site|\$$\(INSTALLDIRS\))_install$$//' Makefile
 .endif # ! modbuild
 .endif # !target(do-configure)
 .endif # configure
 
-.if ${_USE_PERL5:Mmodbuild}
+.if ${_USE_PERL5:Mmodbuild*}
 .if !target(do-build)
 do-build:
 	@(cd ${BUILD_WRKSRC}; ${SETENV} ${MAKE_ENV} ${PERL5} ${PL_BUILD} ${MAKE_ARGS} ${ALL_TARGET})

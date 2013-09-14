@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-AnyEvent-BDB
-# Date created:		2011-06-05
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	AnyEvent-BDB
 PORTVERSION=	1.1
@@ -18,7 +14,8 @@ BUILD_DEPENDS=	p5-AnyEvent>=3.81:${PORTSDIR}/devel/p5-AnyEvent \
 		p5-BDB>=1.5:${PORTSDIR}/databases/p5-BDB
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		AnyEvent::BDB.3
 

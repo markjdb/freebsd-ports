@@ -14,7 +14,7 @@ RUN_DEPENDS=	${LOCALBASE}/sbin/squid:${PORTSDIR}/www/squid
 LIB_DEPENDS+=	pcre:${PORTSDIR}/devel/pcre
 
 USE_RC_SUBR=	dansguardian
-USE_GNOME=	pkgconfig
+USES=		pkgconfig
 
 CONFLICTS=	dansguardian-2.12.*
 LATEST_LINK=	dansguardian
@@ -23,7 +23,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--localstatedir=/var \
 		--with-logdir=/var/log \
 		--with-piddir=/var/run \
-		--with-libiconv=${LOCALBASE} \
+		${ICONV_CONFIGURE_BASE} \
 		--enable-fancydm
 
 MAN8=		dansguardian.8
@@ -96,7 +96,7 @@ PLIST_SUB+=		SCANNERS="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MNTLM}
-CONFIGURE_ARGS+=	--enable-ntlm --with-libiconv=${LOCALBASE}
+CONFIGURE_ARGS+=	--enable-ntlm ${ICONV_CONFIGURE_BASE}
 USES+=			iconv
 PLIST_SUB+=		NTLMCONF=""
 .else
@@ -115,7 +115,7 @@ CONFIGURE_ARGS+=	--with-dgdebug
 .endif
 
 # User needs to manually download the distfile
-.if !(exists(${DISTDIR}/${DISTNAME}${EXTRACT_SUFX})) && !defined(PACKAGE_BUILDING)
+.if !(exists(${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}))
 IGNORE=	commercial source download is restricted.  Please visit and read ${DG_URL} and download ${DISTNAME}${EXTRACT_SUFX} into ${DISTDIR} before running make
 .endif
 

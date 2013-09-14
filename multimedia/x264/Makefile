@@ -36,12 +36,11 @@ WRKSRC=		${WRKDIR}/${DISTNAME}
 USE_GMAKE=	yes
 USE_LDCONFIG=	yes
 HAS_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 OPTIONS_DEFINE=	ASM DEBUG PGO GCC44 GPAC X11_OUTPUT
 OPTIONS_DEFAULT=	ASM PGO GPAC
 ASM_DESC=		Assembly optimizations (devel/binutils)
-GCC44_DESC=		Use gcc 4.4+ (implies WITH_ASM)
+GCC44_DESC=		Use current GCC (implies WITH_ASM)
 GPAC_DESC=		Enable MPEG-4 Output
 X11_OUTPUT_DESC=	Enable X11 Output
 
@@ -54,7 +53,7 @@ PLIST_SUB+=	X264_BUILD=${X264_BUILD}
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGCC44}
-USE_GCC?=	4.4+
+USE_GCC?=	yes
 .endif
 
 .include <bsd.port.pre.mk>

@@ -16,8 +16,9 @@ LIB_DEPENDS=	sigc-2.0.0:${PORTSDIR}/devel/libsigc++20 \
 		vorbisfile.6:${PORTSDIR}/audio/libvorbis \
 		smpeg.1:${PORTSDIR}/multimedia/smpeg
 
+USES=		pkgconfig
 USE_BZIP2=	yes
-USE_GCC=	4.6+
+USE_GCC=	yes
 USE_LDCONFIG=	yes
 USE_LUA=	5.0+
 USE_OPENAL=	al

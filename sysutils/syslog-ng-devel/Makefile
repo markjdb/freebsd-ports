@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	syslog-ng
-PORTVERSION=	3.4.2
+PORTVERSION=	3.4.3
 CATEGORIES=	sysutils
 PKGNAMESUFFIX=	-devel
 DISTVERSION=	$(PORTVERSION:S/a/alpha/:S/b/beta/:S/r/rc/)
@@ -13,6 +13,7 @@ MAINTAINER=	cy@FreeBSD.org
 COMMENT=	A powerful syslogd replacement
 
 CONFLICTS?=	syslog-ng-[0-9]* syslog-ng[0-9]-[0-9]* \
+		syslog-ng[0-9][0-9]-[0-9]* \
 		syslog-ng-devel-[0-9]*
 WRKSRC=		$(WRKDIR)/$(PORTNAME)-$(DISTVERSION)
 
@@ -31,7 +32,6 @@ SMTP_DESC=		Build with SMTP support
 JSON_DESC=		Build with JSON-C support
 GEOIP_DESC=		Build with GeoIP support
 
-.include <bsd.port.options.mk>
 
 LIB_DEPENDS=	evtlog.0:${PORTSDIR}/sysutils/eventlog
 
@@ -39,16 +39,18 @@ MAN1=		loggen.1 pdbtool.1 syslog-ng-ctl.1
 MAN5=		syslog-ng.conf.5
 MAN8=		syslog-ng.8
 
+USES=		gmake pkgconfig
 USE_LDCONFIG=	yes
 USE_RC_SUBR=	syslog-ng
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_GNOME=	glib20 gnomehack
 SUB_FILES=	pkg-message
 
 CONFIGURE_ARGS=	--sysconfdir=${LOCALBASE}/etc --localstatedir=/var/db \
 		--enable-dynamic-linking \
 		--enable-debug
+
+.include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSYS_SSL} || ${PORT_OPTIONS:MPORTS_SSL}
 USE_OPENSSL=		yes
@@ -148,7 +150,6 @@ post-install:
 			${PREFIX}/share/doc/syslog-ng
 	${INSTALL_DATA} ${WRKSRC}/AUTHORS ${PREFIX}/share/doc/syslog-ng
 	${INSTALL_DATA} ${WRKSRC}/COPYING ${PREFIX}/share/doc/syslog-ng
-	${INSTALL_DATA} ${WRKSRC}/ChangeLog ${PREFIX}/share/doc/syslog-ng
 	${INSTALL_DATA} ${WRKSRC}/NEWS ${PREFIX}/share/doc/syslog-ng
 .endif
 	@if [ ! -f ${PREFIX}/etc/syslog-ng.conf.sample ]; then \

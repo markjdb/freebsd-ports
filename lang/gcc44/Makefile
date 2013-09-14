@@ -22,12 +22,9 @@ SUFFIX=		${PORTVERSION:C/([0-9]+).([0-9]+).*/\1\2/}
 LATEST_LINK=	gcc${SUFFIX}${PKGNAMESUFFIX}
 ONLY_FOR_ARCHS=	amd64 i386 sparc64
 USE_BINUTILS=	yes
-USES=		bison iconv
+USES=		bison gmake iconv perl5
 USE_BZIP2=	yes
-USE_GCC=	any
-USE_GMAKE=	yes
-USE_PERL5_BUILD=yes
-MAKE_JOBS_SAFE=	yes
+USE_PERL5=	build
 
 PATCH_WRKSRC=	${SRCDIR}
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
@@ -35,9 +32,9 @@ CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64"
-CONFIGURE_TARGET=	x86_64-portbld-freebsd${OSREL}
+CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:L}${OSREL}
 .else
-CONFIGURE_TARGET=	${ARCH}-portbld-freebsd${OSREL}
+CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:L}${OSREL}
 .endif
 
 SRCDIR=		${WRKDIR}/gcc-${VERSIONSTRING}
@@ -45,7 +42,7 @@ WRKSRC=		${WRKDIR}/build
 TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
 LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
 GNU_CONFIGURE=	yes
-CFLAGS+=	-I${LOCALBASE}/include
+CFLAGS+=	-I${LOCALBASE}/include -fgnu89-inline
 CPPFLAGS+=	-I${LOCALBASE}/include
 CONFIGURE_ARGS+=--disable-bootstrap \
 		--disable-nls \
@@ -57,7 +54,7 @@ CONFIGURE_ARGS+=--disable-bootstrap \
 		--with-gmp=${LOCALBASE} \
 		--with-gxx-include-dir=${TARGLIB}/include/c++/ \
 		--with-ld=${LOCALBASE}/bin/ld \
-		--with-libiconv-prefix=${LOCALBASE} \
+		${ICONV_CONFIGURE_ARG} \
 		--with-pkgversion="FreeBSD Ports Collection" \
 		--with-system-zlib
 MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"

@@ -20,13 +20,12 @@ OPTIONS_DEFINE=	DOCS
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/src
 
-USES=		pkgconfig
+USES=		gmake iconv pkgconfig
 USE_QT4=	gui moc_build qmake_build rcc_build uic_build
 USE_TEX=	latex
-USE_GMAKE=	yes
 MAKE_ENV=	DLL_CFLAGS="-fPIC" \
 		ICONV_CFLAGS="-I${LOCALBASE}/include" \
-		ICONV_LIBS="-L${LOCALBASE}/lib -liconv" \
+		ICONV_LIBS="-L${LOCALBASE}/lib ${ICONV_LIB}" \
 		INSTALL_DIR="${MKDIR}" \
 		INSTALL_FILES="${INSTALL_DATA}" \
 		INSTALL_SCRIPTS="${INSTALL_SCRIPT}" \
@@ -39,7 +38,6 @@ MAKE_ENV=	DLL_CFLAGS="-fPIC" \
 		LUA_LIBS="-L${LOCALBASE}/lib -llua-5.2" \
 		MOC="${MOC}"
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 PLIST_SUB=	VERSION="${PORTVERSION}"
 

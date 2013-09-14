@@ -3,7 +3,7 @@
 
 PORTNAME=	gmt
 PORTVERSION=	4.5.8
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	graphics
 MASTER_SITES=	ftp://falcon.grdl.noaa.gov/pub/${PORTNAME}/	\
 		ftp://ftp.soest.hawaii.edu/${PORTNAME}/		\
@@ -18,6 +18,7 @@ COMMENT=	The Generic Mapping Tools data processing and display software package
 
 WRKSRC=		${WRKDIR}/${PORTNAME:U}${DISTVERSION}
 USES=		gmake
+USE_BZIP2=	yes
 USE_AUTOTOOLS=	autoconf
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--datadir=${DATADIR}

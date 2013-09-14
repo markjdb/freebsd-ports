@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	octave-forge
-PORTVERSION=	20130203
+PORTVERSION=	20130816
+PORTREVISION=	1
 CATEGORIES=	math
 MASTER_SITES=	#none
 DISTFILES=	#none
@@ -13,17 +14,17 @@ COMMENT=	Octave-forge metaport for math/octave
 
 OPTIONS_DEFINE=	ACTUARIAL AD AUDIO BENCHMARK BIM BIOINFO CGI \
 		CIVIL_ENGINEERING COMMUNICATIONS CONTROL DATA_SMOOTHING \
-		DATABASE DATAFRAME DICOM ECONOMETRICS ENGINE ES FENV FITS \
+		DATABASE DATAFRAME DICOM ECONOMETRICS ENGINE FENV FITS \
 		FINANCIAL FL_CORE FPL FUZZY_LOGIC_TOOLKIT GA GEOMETRY GENERAL \
 		GENERATE_HTML GNUPLOT GSL IDENT IMAGE INFORMATIONTHEORY \
-		INTEGRATION IO IRSA JAVA LINEAR_ALGEBRA LSSA MAPPING \
+		INTEGRATION IO IRSA LINEAR_ALGEBRA LSSA MAPPING \
 		MECHANICS MISCELLANEOUS MISSING_FUNCTIONS MSH MULTICORE NAN \
-		NCARRAY NLWING2 NNET NURBS OCS OCT2MAT OCTCDF OCTCLIP OCTGPR \
-		OCTPROJ ODEBVP ODEPKG OPTIM OPTIMINTERP OUTLIERS PARALLEL \
-		PDB PLOT PT_BR QUATERNION QUEUEING SECS1D SECS2D SECS3D \
-		SIGNAL SIMP SOCKETS SPECFUN SPECIAL_MATRIX SPLINE_GCVSPL \
-		SPLINES STATISTICS STRINGS STRUCT SYMBAND SYMBOLIC \
-		TCL_OCTAVE TSA VIDEO XRAYLIB ZENITY
+		NCARRAY NETCDF NLWING2 NNET NURBS OCS OCT2MAT OCTCDF OCTCLIP \
+		OCTGPR OCTPROJ ODEBVP ODEPKG OPTIM OPTIMINTERP OUTLIERS \
+		PARALLEL PDB PLOT PT_BR QUATERNION QUEUEING SECS1D SECS2D \
+		SECS3D SIGNAL SIMP SOCKETS SPECFUN SPECIAL_MATRIX \
+		SPLINE_GCVSPL SPLINES STATISTICS STRINGS STRUCT SYMBAND \
+		SYMBOLIC TCL_OCTAVE TSA VIDEO XRAYLIB ZENITY
 
 ACTUARIAL_DESC=		Install package: actuarial
 AD_DESC=		Install package: ad
@@ -41,7 +42,6 @@ DATAFRAME_DESC=		Install package: dataframe
 DICOM_DESC=		Install package: dicom
 ECONOMETRICS_DESC=	Install package: econometrics
 ENGINE_DESC=		Install package: engine
-ES_DESC=		Install package: es
 FENV_DESC=		Install package: fenv
 FITS_DESC=		Install package: fits
 FINANCIAL_DESC=		Install package: financial
@@ -60,7 +60,6 @@ INFORMATIONTHEORY_DESC=	Install package: informationtheory
 INTEGRATION_DESC=	Install package: integration
 IO_DESC=		Install package: io
 IRSA_DESC=		Install package: irsa
-JAVA_DESC=		Install package: java
 LINEAR_ALGEBRA_DESC=	Install package: linear-algebra
 LSSA_DESC=		Install package: lssa
 MAPPING_DESC=		Install package: mapping
@@ -71,6 +70,7 @@ MSH_DESC=		Install package: msh
 MULTICORE_DESC=		Install package: multicore
 NAN_DESC=		Install package: nan
 NCARRAY_DESC=		Install package: ncarray
+NETCDF_DESC=		Install package: netcdf
 NLWING2_DESC=		Install package: nlwing2
 NNET_DESC=		Install package: nnet
 NURBS_DESC=		Install package: nurbs
@@ -112,7 +112,7 @@ VIDEO_DESC=		Install package: video
 XRAYLIB_DESC=		Install package: xraylib
 ZENITY_DESC=		Install package: zenity
 
-OPTIONS_DEFAULT=	${OPTIONS_DEFINE:NES:NJAVA}
+OPTIONS_DEFAULT=	${OPTIONS_DEFINE}
 
 .include <bsd.port.options.mk>
 
@@ -163,9 +163,6 @@ RUN_DEPENDS+=	${TARBALLS_DIR}/econometrics.tar.gz:${PORTSDIR}/math/octave-forge-
 .endif
 .if ${PORT_OPTIONS:MENGINE}
 RUN_DEPENDS+=	${TARBALLS_DIR}/engine.tar.gz:${PORTSDIR}/math/octave-forge-engine
-.endif
-.if ${PORT_OPTIONS:MES}
-RUN_DEPENDS+=	${TARBALLS_DIR}/es.tar.gz:${PORTSDIR}/math/octave-forge-es
 .endif
 .if ${PORT_OPTIONS:MFENV}
 RUN_DEPENDS+=	${TARBALLS_DIR}/fenv.tar.gz:${PORTSDIR}/math/octave-forge-fenv
@@ -221,9 +218,6 @@ RUN_DEPENDS+=	${TARBALLS_DIR}/io.tar.gz:${PORTSDIR}/math/octave-forge-io
 .if ${PORT_OPTIONS:MIRSA}
 RUN_DEPENDS+=	${TARBALLS_DIR}/irsa.tar.gz:${PORTSDIR}/math/octave-forge-irsa
 .endif
-.if ${PORT_OPTIONS:MJAVA}
-RUN_DEPENDS+=	${TARBALLS_DIR}/java.tar.gz:${PORTSDIR}/math/octave-forge-java
-.endif
 .if ${PORT_OPTIONS:MLINEAR_ALGEBRA}
 RUN_DEPENDS+=	${TARBALLS_DIR}/linear-algebra.tar.gz:${PORTSDIR}/math/octave-forge-linear-algebra
 .endif
@@ -253,6 +247,9 @@ RUN_DEPENDS+=	${TARBALLS_DIR}/nan.tar.gz:${PORTSDIR}/math/octave-forge-nan
 .endif
 .if ${PORT_OPTIONS:MNCARRAY}
 RUN_DEPENDS+=	${TARBALLS_DIR}/ncarray.tar.gz:${PORTSDIR}/math/octave-forge-ncarray
+.endif
+.if ${PORT_OPTIONS:MNETCDF}
+RUN_DEPENDS+=	${TARBALLS_DIR}/netcdf.tar.gz:${PORTSDIR}/math/octave-forge-netcdf
 .endif
 .if ${PORT_OPTIONS:MNLWING2}
 RUN_DEPENDS+=	${TARBALLS_DIR}/nlwing2.tar.gz:${PORTSDIR}/math/octave-forge-nlwing2

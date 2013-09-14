@@ -19,11 +19,11 @@ LIB_DEPENDS=	pcre:${PORTSDIR}/devel/pcre \
 
 USE_BZIP2=	yes
 USE_GMAKE=	yes
-USES=		pathfix gettext
+USES=		pathfix gettext iconv pkgconfig
 USE_GNOME=	intlhack
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -lgnuregex
+LDFLAGS+=	-L${LOCALBASE}/lib -lgnuregex ${ICONV_LIB}
 
 OPTIONS_DEFINE=	GTKSPELL GTK3
 OPTIONS_DEFAULT=GTKSPELL

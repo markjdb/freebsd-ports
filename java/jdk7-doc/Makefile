@@ -19,7 +19,7 @@ IGNORE=		port only installs documentation
 
 WRKSRC=		${WRKDIR}/docs
 JDK_VERSION=	7
-JDK_UPDATE_VER=	6
+JDK_UPDATE_VER=	25
 DOWNLOAD_URL=	http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 NO_BUILD=	yes
@@ -28,8 +28,8 @@ PORTDOCS=	*
 
 .include <bsd.port.pre.mk>
 
-.if !exists(${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}) && !defined(PACKAGE_BUILDING)
-IGNORE=You must manually fetch ${DISTNAME}${EXTRACT_SUFX} from ${DOWNLOAD_URL} by selecting the \"Download\" link for the \"Java SE 7 Documentation\", place it in ${DISTDIR} and then run make again
+.if !exists(${DISTDIR}/${DISTNAME}${EXTRACT_SUFX})
+IGNORE=You must manually fetch ${DISTNAME}${EXTRACT_SUFX} from ${DOWNLOAD_URL} by selecting the "Download" link for the "Java SE 7 Documentation", place it in ${DISTDIR} and then run make again
 .endif
 
 do-install:

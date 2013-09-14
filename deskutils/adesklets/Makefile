@@ -21,8 +21,7 @@ USE_PYTHON=	yes
 USE_GMAKE=	yes
 USE_BZIP2=	yes
 USE_EFL=	imlib2
-USES=		iconv
-WANT_PERL=	yes
+USES=		iconv gmake
 
 MAN1=		adesklets.1 \
 		adesklets_checkin.1 \
@@ -33,10 +32,10 @@ INFO=		adesklets \
 
 SUB_FILES=	pkg-message
 INSTALLS_EGGINFO=	yes
-LDFLAGS+=	-liconv
+LDFLAGS+=	${ICONV_LIB}
 
 .if !defined(WITHOUT_PERL)
-USE_PERL5=	yes
+USES+=		perl5
 PLIST_SUB+=	PERL=""
 .else
 CONFIGURE_ARGS+=	--without-perl-support

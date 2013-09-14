@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Tie-File
-# Date created:				17 June 2003
-# Whom:	      				Yen-Ming Lee <leeym@FreeBSD.org>
-#
+# Created by: Yen-Ming Lee <leeym@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Tie-File
 PORTVERSION=	0.98
@@ -14,7 +10,8 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Access the lines of a disk file via a Perl array
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Tie::File.3
 

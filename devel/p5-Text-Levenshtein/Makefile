@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Text-Levenshtein
-# Date created:		2011-10-15
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Text-Levenshtein
 PORTVERSION=	0.05
@@ -12,9 +8,10 @@ MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	An implementation of the Levenshtein edit distance
+COMMENT=	Implementation of the Levenshtein edit distance
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Text::Levenshtein.3
 

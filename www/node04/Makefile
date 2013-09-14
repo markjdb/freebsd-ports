@@ -1,9 +1,5 @@
-# New ports collection makefile for:		node
-# Date created:					2010-04-12
-# Whom:						Jin-Sih Lin <linpct@gmail.com>
-#
+# Created by: Jin-Sih Lin <linpct@gmail.com>
 # $FreeBSD$
-#
 
 PORTNAME=	node
 PORTVERSION=	0.4.12
@@ -17,17 +13,19 @@ COMMENT=	V8 JavaScript for client and server
 
 LIB_DEPENDS=	execinfo.1:${PORTSDIR}/devel/libexecinfo
 
+DEPRECATED=	Unsupported upstream, not compatible with current
+EXPIRATION_DATE=	2013-10-11
+
 MAN1=		node.1
 
 HAS_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 USE_PYTHON=	yes
-USE_GNOME=	pkgconfig
+USES=		pkgconfig
 
 CONFLICTS=	node-0.[0-35-9]* node-devel-0.[0-9]*
 
 ONLY_FOR_ARCHS=	i386 amd64
-MAKE_JOBS_SAFE=	yes
 CONFIGURE_ARGS=	--prefix=${PREFIX_RELDEST}
 PREFIX_RELDEST=	${PREFIX:S,^${DESTDIR},,}
 NO_LATEST_LINK=	yes

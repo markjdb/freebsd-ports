@@ -18,7 +18,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 ONLY_FOR_ARCHS=	i386 amd64
 ONLY_FOR_ARCHS_REASON=	requires VESA support in kernel
 
-MAKE_JOBS_SAFE=	yes
 MAKEFILE=	${FILESDIR}/BSDmakefile
 MAKE_ENV+=	VERSION=${PORTVERSION} GUNZIP=${GUNZIP_CMD:N-*}
 PLIST_SUB+=	TERMCAP_ADD_RECORD="@exec ${TERMCAP_ADD_RECORD:S,^${PREFIX},%D,}" \
@@ -55,20 +54,10 @@ MAN1=		${PORTNAME}.1
 MAN5=		${PORTNAME}.conf.5
 .endif
 
-.if !${PORT_OPTIONS:MICONV}
-MAKE_ENV+=	WITHOUT_ICONV=
-.endif
-
-.if !exists(/usr/include/iconv.h)
-. if ${PORT_OPTIONS:MICONV}
-.  if !defined(NO_SHARED)
+.if ${PORT_OPTIONS:MICONV}
 USES+=		iconv
-.  else
-BUILD_DEPENDS+=	${LOCALBASE}/lib/libiconv.a:${PORTSDIR}/converters/libiconv
-.  endif
-. else
-BUILD_DEPENDS+=	${LOCALBASE}/include/iconv.h:${PORTSDIR}/converters/libiconv
-. endif
+.else
+MAKE_ENV+=	WITHOUT_ICONV=
 .endif
 
 .if ${PORT_OPTIONS:MPNG}

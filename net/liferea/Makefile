@@ -16,7 +16,7 @@ LIB_DEPENDS=	webkitgtk-1.0:${PORTSDIR}/www/webkit-gtk2 \
 		json-glib-1.0:${PORTSDIR}/devel/json-glib
 
 USE_BZIP2=	yes
-USES=		gmake pathfix
+USES=		gmake pathfix pkgconfig
 USE_GNOME=	gnomeprefix gconf2
 USE_AUTOTOOLS=	libtool
 USE_SQLITE=	3
@@ -24,7 +24,6 @@ GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ARGS=	--disable-libnotify --disable-libindicate
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		liferea.1
 MANLANG=	"" pl

@@ -12,6 +12,7 @@ MASTER_SITE_SUBDIR=	sources/${PORTNAME}/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 MAINTAINER=	mono@FreeBSD.org
 COMMENT=	Personal photo management to the GNOME desktop
 
+BROKEN=		Does not build with latest Mono
 LIB_DEPENDS=	lcms.1:${PORTSDIR}/graphics/lcms \
 		exif.12:${PORTSDIR}/graphics/libexif \
 		gphoto2.2:${PORTSDIR}/graphics/libgphoto2
@@ -29,8 +30,7 @@ USE_BZIP2=	yes
 USE_SQLITE=	yes
 USE_GNOME=	gnomehack gnomeprefix intlhack gnomedesktopsharp20
 GNU_CONFIGURE=	yes
-USES=		gettext
-USE_GMAKE=	yes
+USES=		gettext gmake pkgconfig
 INSTALLS_ICONS=	yes
 INSTALLS_OMF=	yes
 USE_LDCONFIG=	yes

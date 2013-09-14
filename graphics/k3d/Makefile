@@ -37,7 +37,7 @@ USE_BZIP2=	yes
 USE_GL=		glu
 USE_GNOME=	gtksourceview2
 USE_DOS2UNIX=	*.hpp
-USE_GCC=	4.6+
+USE_GCC=	yes
 USE_PYTHON=	yes
 USES=		cmake:outsource gettext
 CMAKE_ARGS=	-DK3D_INTL_INCLUDE_DIRS:STRING="-I${LOCALBASE}/include" \
@@ -48,7 +48,6 @@ CMAKE_ARGS=	-DK3D_INTL_INCLUDE_DIRS:STRING="-I${LOCALBASE}/include" \
 		-DK3D_BUILD_INOTIFY_MODULE:BOOL=OFF \
 		-DK3D_BUILD_OPENCASCADE_MODULE:BOOL=OFF
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		k3d.1 k3d-renderframe.1 k3d-renderjob.1 k3d-sl2xml.1 \
 		k3d-uuidgen.1

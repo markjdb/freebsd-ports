@@ -2,15 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	i3
-DISTVERSION=	4.5.1
-PORTREVISION=	1
+DISTVERSION=	4.6
 CATEGORIES=	x11-wm
-MASTER_SITES=	http://i3wm.org/downloads/ \
-		${MASTER_SITE_LOCAL}
-MASTER_SITE_SUBDIR=	dhn
+MASTER_SITES=	http://i3wm.org/downloads/
 
 MAINTAINER=	bapt@FreeBSD.org
-COMMENT=	An improved dynamic tiling window manager
+COMMENT=	Improved dynamic tiling window manager
 
 LICENSE=	BSD
 
@@ -27,10 +24,10 @@ RUN_DEPENDS=	p5-IPC-Run>=0:${PORTSDIR}/devel/p5-IPC-Run \
 		p5-Try-Tiny>=0:${PORTSDIR}/lang/p5-Try-Tiny \
 		p5-AnyEvent-I3>=0:${PORTSDIR}/devel/p5-AnyEvent-I3
 
-USE_PERL5_RUN=	yes
 USE_XORG=	x11 xcb xcursor
-USES=		pkgconfig iconv gmake
+USES=		pkgconfig iconv gmake perl5
 USE_BZIP2=	yes
+USE_PERL5=	run
 MAKE_JOBS_UNSAFE=	yes
 
 PLIST_FILES=	bin/i3 \
@@ -73,6 +70,7 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/|${PREFIX}/|g' ${WRKSRC}/man/i3-input.1
 	@${REINPLACE_CMD} -e 's|.SILENT||g' ${WRKSRC}/common.mk
 	@${REINPLACE_CMD} -e 's|-Iinclude|-Iinclude -Isrc|g' \
+			  -e 's|-liconv|${ICONV_LIB}|' \
 			  -e 's|/usr/local|${LOCALBASE}|g' ${WRKSRC}/common.mk
 
 do-install:

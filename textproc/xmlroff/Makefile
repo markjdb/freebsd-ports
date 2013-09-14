@@ -16,7 +16,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LIB_DEPENDS=	cairo:${PORTSDIR}/graphics/cairo
 
 USE_AUTOTOOLS=	libtool
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_GNOME=	gnomehack libgnomeprint libxslt \
 		libxml2 gtk20 glib20 pango
 USE_LDCONFIG=	yes
@@ -25,7 +25,6 @@ CONFIGURE_ARGS=	--disable-gtk-doc \
 		--with-html-dir=${PREFIX}/share/doc
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-MAKE_JOBS_SAFE=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|glib/.*\.h>|glib.h>|g' \

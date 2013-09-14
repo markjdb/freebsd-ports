@@ -33,7 +33,6 @@ USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-silent-rules
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -103,7 +102,7 @@ PLIST_SUB+=	AGENT="@comment "
 USE_RC_SUBR+=	nxhttpd
 CONFIGURE_ARGS+=	--with-nxhttpd
 PLIST_SUB+=	NXHTTPD=""
-LIB_DEPENDS+=	gd.4:${PORTSDIR}/graphics/gd
+LIB_DEPENDS+=	gd:${PORTSDIR}/graphics/gd
 USE_PERL5=	yes
 .else
 PLIST_SUB+=	NXHTTPD="@comment "

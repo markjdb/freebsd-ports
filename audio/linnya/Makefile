@@ -16,14 +16,12 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	herenvarno
 GH_COMMIT=	90cf6b8
 
-USES=		pkgconfig
+USES=		gmake pkgconfig
 USE_AUTOTOOLS=	libtoolize libtool
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_GNOME=	gtk30
 USE_SQLITE=	3
 USE_GSTREAMER=	good mp3
-MAKE_JOBS_SAFE=	yes
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libaacs
-PORTVERSION=	0.3.0
-PORTREVISION=	1
+PORTVERSION=	0.6.0
 CATEGORIES=	multimedia
 MASTER_SITES=	ftp://ftp.videolan.org/pub/videolan/${PORTNAME}/${PORTVERSION}/ \
 		http://blu.opsec.eu/
@@ -12,20 +11,18 @@ MAINTAINER=	kamikaze@bsdforen.de
 COMMENT=	Advanced Access Content System implementation
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/flex:${PORTSDIR}/textproc/flex
-LIB_DEPENDS=	gcrypt:${PORTSDIR}/security/libgcrypt \
-		gpg-error.0:${PORTSDIR}/security/libgpg-error
+LIB_DEPENDS=	libgcrypt.so:${PORTSDIR}/security/libgcrypt \
+		libgpg-error.so:${PORTSDIR}/security/libgpg-error
 
 USE_BZIP2=	yes
 USE_LDCONFIG=	yes
 USE_AUTOTOOLS=	autoconf aclocal automake libtool
 USES=		bison gettext iconv
 
-MAKE_JOBS_SAFE=	yes
 HAS_CONFIGURE=	yes
 CONFIGURE_ENV+=	LEX="${LOCALBASE}/bin/flex"
 CONFIGURE_ARGS+=	--prefix="${PREFIX}" \
-		--disable-debug \
-		--disable-optimizations
+		--disable-debug
 # Evil hack, necessitating another evil hack in the plist target.
 MAKE_ARGS+=	pkgconfigdir="${PREFIX}/libdata/pkgconfig" \
 		CFLAGS=${CFLAGS:Q}

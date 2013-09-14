@@ -171,6 +171,7 @@
     SUBDIR += gpa
     SUBDIR += gpasman
     SUBDIR += gpass
+    SUBDIR += gpgdir
     SUBDIR += gpgme
     SUBDIR += gringotts
     SUBDIR += gsasl
@@ -369,7 +370,6 @@
     SUBDIR += openvpn-auth-radius
     SUBDIR += openvpn-beta
     SUBDIR += openvpn-devel
-    SUBDIR += openvpn22
     SUBDIR += ophcrack
     SUBDIR += opieprint
     SUBDIR += orthrus
@@ -507,11 +507,13 @@
     SUBDIR += p5-Crypt-UnixCrypt_XS
     SUBDIR += p5-Crypt-X509
     SUBDIR += p5-Crypt-xDBM_File
+    SUBDIR += p5-CryptX
     SUBDIR += p5-Dancer-Plugin-Passphrase
     SUBDIR += p5-Data-Entropy
     SUBDIR += p5-Data-Password
     SUBDIR += p5-Digest
     SUBDIR += p5-Digest-Adler32
+    SUBDIR += p5-Digest-Bcrypt
     SUBDIR += p5-Digest-BubbleBabble
     SUBDIR += p5-Digest-CRC
     SUBDIR += p5-Digest-Crc32
@@ -888,7 +890,6 @@
     SUBDIR += secpanel
     SUBDIR += sectok
     SUBDIR += secure_delete
-    SUBDIR += sfs
     SUBDIR += sguil-client
     SUBDIR += sguil-sensor
     SUBDIR += sguil-server

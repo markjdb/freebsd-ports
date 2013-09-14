@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	4.8.1.20130418
+PORTVERSION=	4.8.2.s20130822
 CATEGORIES=	lang java
 MASTER_SITES=	${MASTER_SITE_GCC}
-MASTER_SITE_SUBDIR=	snapshots/${VERSIONSTRING}
-DISTNAME=	gcc-${VERSIONSTRING}
+MASTER_SITE_SUBDIR=	snapshots/${DISTVERSION}
 
 MAINTAINER=	gerald@FreeBSD.org
 COMMENT=	GNU Compiler Collection 4.8
@@ -21,34 +20,37 @@ RUN_DEPENDS+=	${LOCALBASE}/bin/as:${PORTSDIR}/devel/binutils
 BUILD_DEPENDS+=	runtest:${PORTSDIR}/misc/dejagnu
 .endif
 
-# VERSIONSTRING relates to downloads, GCC_VERSION and SUFFIX to names
-# of executables and directories once installed.
-VERSIONSTRING=	${PORTVERSION:C/([0-9]+\.[0-9]+).*\.([0-9]+)/\1-\2/}
-GCC_VERSION=	${PORTVERSION:C/(.+)\.[0-9]{8}/\1/}
+# DISTVERSION relates to downloads, GCC_VERSION and SUFFIX to names
+# of executables and directories once installed.  A PORTVERSION of
+# 4.Y.2.s20130808 results in values of 4.Y-20130808, 4.Y.2, and 4Y
+# for these three.
+DISTVERSION=	${PORTVERSION:C/([0-9]+\.[0-9]+).*\.s([0-9]+)/\1-\2/}
+GCC_VERSION=	${PORTVERSION:C/(.+)\.s[0-9]{8}/\1/}
 SUFFIX=		${PORTVERSION:C/([0-9]+).([0-9]+).*/\1\2/}
 LATEST_LINK=	gcc${SUFFIX}${PKGNAMESUFFIX}
 ONLY_FOR_ARCHS=	amd64 i386 powerpc powerpc64 sparc64
+USES=		bison gmake iconv
 USE_BINUTILS=	yes
-USES=		bison iconv
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 USE_PERL5_BUILD=yes
-MAKE_JOBS_SAFE=	yes
 
 PATCH_WRKSRC=	${SRCDIR}
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 
+OPTIONS_DEFINE=		BOOTSTRAP
 OPTIONS_DEFINE_i386=	JAVA
 OPTIONS_DEFINE_amd64=	JAVA
+OPTIONS_DEFAULT=	BOOTSTRAP
 OPTIONS_DEFAULT_i386=	JAVA
 OPTIONS_DEFAULT_amd64=	JAVA
+BOOTSTRAP_DESC=		Build using a full bootstrap
 
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64"
-CONFIGURE_TARGET=	x86_64-portbld-freebsd${OSREL}
+CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:L}${OSREL}
 .else
-CONFIGURE_TARGET=	${ARCH}-portbld-freebsd${OSREL}
+CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:L}${OSREL}
 .endif
 
 .if ${ARCH} == powerpc64
@@ -56,12 +58,17 @@ CONFIGURE_ENV+=	UNAME_m="powerpc64"
 .endif
 
 LANGUAGES:=	c,c++,objc,fortran
-SRCDIR=		${WRKDIR}/gcc-${VERSIONSTRING}
+SRCDIR=		${WRKDIR}/gcc-${DISTVERSION}
 WRKSRC=		${WRKDIR}/build
 TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
 LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
 GNU_CONFIGURE=	yes
 CFLAGS+=	-I${LOCALBASE}/include
+.if empty(PORT_OPTIONS:MBOOTSTRAP)
+CONFIGURE_ARGS+=--disable-bootstrap
+.else
+ALL_TARGET=	bootstrap-lean
+.endif
 CONFIGURE_ARGS+=--disable-nls \
 		--libdir=${TARGLIB} \
 		--libexecdir=${LIBEXEC} \
@@ -70,11 +77,10 @@ CONFIGURE_ARGS+=--disable-nls \
 		--with-gmp=${LOCALBASE} \
 		--with-gxx-include-dir=${TARGLIB}/include/c++/ \
 		--with-ld=${LOCALBASE}/bin/ld \
-		--with-libiconv-prefix=${LOCALBASE} \
+		${ICONV_CONFIGURE_ARG} \
 		--with-pkgversion="FreeBSD Ports Collection" \
 		--with-system-zlib
 MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
-ALL_TARGET=	bootstrap-lean
 USE_LDCONFIG=	${TARGLIB}
 PLIST_SUB=	GCC_VERSION=${GCC_VERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \

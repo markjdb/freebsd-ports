@@ -3,7 +3,7 @@
 
 PORTNAME=	openjdk6
 PORTVERSION=	b27
-PORTREVISION?=	6
+PORTREVISION?=	7
 CATEGORIES=	java devel
 MASTER_SITES=	http://download.java.net/openjdk/jdk6/promoted/${PORTVERSION}/ \
 		http://download.java.net/jaxp/openjdk/jdk6/:jaxp \
@@ -239,6 +239,13 @@ post-patch:
 .if ${PORT_OPTIONS:MPOLICY}
 	@${REINPLACE_CMD} 's|build-policy install-limited|build-policy install-unlimited|' \
 		${WRKSRC}/jdk/make/javax/crypto/Makefile
+.endif
+.if empty(ICONV_LIB)
+	@${REINPLACE_CMD} 's| -liconv||' \
+		${WRKSRC}/Makefile \
+		${WRKSRC}/jdk/make/sun/splashscreen/Makefile \
+		${WRKSRC}/jdk/make/java/npt/Makefile \
+		${WRKSRC}/jdk/make/java/instrument/Makefile
 .endif
 
 post-build:

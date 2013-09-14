@@ -62,7 +62,7 @@ CC=	clang
 CXX=	clang++
 GYP_DEFINES+=	clang=1
 .else
-USE_GCC?=	4.6+
+USE_GCC?=	yes
 GYP_DEFINES+=	gcc_version=${CXX:S/g++//}
 .endif
 
@@ -74,7 +74,6 @@ BUILDTYPE=	Debug
 .endif
 
 MAKE_ENV+=	BUILDTYPE=${BUILDTYPE}
-MAKE_JOBS_SAFE=	yes
 CFLAGS+=	-Wno-error
 
 SUB_FILES+=	mod_spdy.conf

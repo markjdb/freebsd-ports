@@ -22,11 +22,10 @@ MAKE_ARGS+=	pkgconfigdir=${PREFIX}/libdata/pkgconfig
 CONFIGURE_ARGS=	CPPFLAGS="-I${LOCALBASE}/include" \
 		--with-libev \
 		LDFLAGS="-L${LOCALBASE}/lib -lintl"
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_GNOME=	glib20 intltool
 USE_LDCONFIG=	yes
 USE_RUBY=	yes
-MAKE_JOBS_SAFE=	yes
 
 .include <bsd.port.options.mk>
 

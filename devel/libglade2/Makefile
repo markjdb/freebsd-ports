@@ -20,9 +20,8 @@ USE_BZIP2=	yes
 
 RUN_DEPENDS=	xmlcatmgr:${PORTSDIR}/textproc/xmlcatmgr
 
-USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
-USES=		pathfix
+USES=		pathfix gmake pkgconfig
 USE_GNOME=	libxml2 gtk20 referencehack
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--with-html-dir=${PREFIX}/share/doc \

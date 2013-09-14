@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ethumb
-PORTVERSION=	1.7.7
+PORTVERSION=	1.7.8
 CATEGORIES=	graphics enlightenment
 MASTER_SITES=	http://download.enlightenment.fr/releases/ \
 		LOCAL/gblach/e17/
@@ -17,7 +17,7 @@ LIB_DEPENDS=	exif:${PORTSDIR}/graphics/libexif
 DIST_SUBDIR=	e17
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
-USES=		pathfix
+USES=		pathfix pkgconfig
 USE_EFL=	eina evas ecore edje libtool_hack
 USE_EFL_ECORE=	evas file x11 input_evas
 USE_LDCONFIG=	yes
@@ -33,20 +33,20 @@ ETHUMBD_DESC=	Build ethumbd daemon (requires dbus)
 
 .if ${PORT_OPTIONS:MEMOTION}
 USE_EFL+=	emotion
-CONFIGURE_ARGS+=	--enable-emotion
+CONFIGURE_ARGS+=--enable-emotion
 PLIST_SUB+=	EMOTION=""
 .else
-CONFIGURE_ARGS+=	--disable-emotion
+CONFIGURE_ARGS+=--disable-emotion
 PLIST_SUB+=	EMOTION="@comment "
 .endif
 
 .if ${PORT_OPTIONS:METHUMBD}
 USE_EFL+=	edbus
 PLIST_SUB+=	ETHUMBD=""
-CONFIGURE_ARGS+=	--enable-ethumbd
+CONFIGURE_ARGS+=--enable-ethumbd
 .else
 PLIST_SUB+=	ETHUMBD="@comment "
-CONFIGURE_ARGS+=	--disable-ethumbd
+CONFIGURE_ARGS+=--disable-ethumbd
 .endif
 
 .include <bsd.port.mk>

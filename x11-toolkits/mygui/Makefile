@@ -17,11 +17,10 @@ RUN_DEPENDS=	${LOCALBASE}/lib/libOgreMain.so:${PORTSDIR}/graphics/ogre3d \
 		${LOCALBASE}/lib/libOIS.so:${PORTSDIR}/devel/ois
 
 USE_ZIP=	yes
-USES=		cmake
+USES=		cmake pkgconfig
 CMAKE_ARGS=	-DMYGUI_BUILD_DEMOS=OFF -DMYGUI_BUILD_DOCS=OFF
-MAKE_JOBS_SAFE=	yes
 USE_LDCONFIG=	yes
-USE_GCC=	4.6+
+USE_GCC=	yes
 USE_DOS2UNIX=	*.cpp *.h
 
 post-patch:

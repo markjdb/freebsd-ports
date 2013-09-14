@@ -3,7 +3,7 @@
 
 PORTNAME=	bogofilter
 PORTVERSION=	1.2.4
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES?=	mail
 MASTER_SITES=	SF/bogofilter/bogofilter-current/bogofilter-${PORTVERSION}
 
@@ -43,7 +43,7 @@ BF_CPPFLAGS?=		-I${BDB_INCLUDE_DIR} -I${LOCALBASE}/include
 CONFIGURE_ARGS+=	--sysconfdir=${PREFIX}/etc
 .if ${PORT_OPTIONS:MUNICODE}
 CONFIGURE_ARGS+=	--enable-unicode
-BF_LIBS+=		-liconv
+BF_LIBS+=		${ICONV_LIB}
 .endif
 .if ${PORT_OPTIONS:MGSL}
 LIB_DEPENDS+=		libgsl.so:${PORTSDIR}/math/gsl

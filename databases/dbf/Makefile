@@ -18,11 +18,10 @@ WRKSRC=		${WRKDIR}/lib${PORTNAME}
 USE_ZIP=	yes
 USES=        pathfix
 USE_GNOME=	intltool
-USE_GCC=	4.6+
+USE_GCC=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ac_cv_prog_DOC_TO_MAN=""
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 .include <bsd.port.options.mk>
 

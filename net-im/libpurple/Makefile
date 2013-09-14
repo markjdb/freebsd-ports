@@ -13,7 +13,7 @@ MAINTAINER?=	marcus@FreeBSD.org
 COMMENT?=	Backend library for the Pidgin multi-protocol messaging client
 
 USE_BZIP2=	yes
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_GNOME?=	gnomeprefix gnomehack intlhack glib20 libxml2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS?=--disable-gtkui \
@@ -29,7 +29,7 @@ CPPFLAGS+=	-I${LOCALBASE}/include ${PTHREAD_CFLAGS}
 .if !defined(PIDGIN_SLAVE)
 # Pidgin slave ports that require the following functionality, must explicitly
 # set these macros themselves.
-USES=		gettext iconv
+USES+=		gettext iconv
 USE_LDCONFIG=	yes
 WANT_GNOME=	yes
 USE_PYTHON=	yes
@@ -311,7 +311,7 @@ post-patch:
 		-e 's|%%LOCALBASE%%|${LOCALBASE}|g' \
 		-e 's|-lpanel |-lpanel -lncurses|g' \
 		-e 's|-lpthread|${PTHREAD_LIBS:S/"//g}|g' \
-		-e 's|-lsilc -lsilcclient ${PTHREAD_LIBS} $$LIBDL|-lsilc -lsilcclient ${PTHREAD_LIBS} -liconv|' \
+		-e 's|-lsilc -lsilcclient ${PTHREAD_LIBS} $$LIBDL|-lsilc -lsilcclient ${PTHREAD_LIBS} ${ICONV_LIB}|' \
 		-e 's|TCL_VERSION found but 8.3 required|TCL_VERSION found but ${TCLTK_VER} required|g' \
 		-e 's|TCL_MINOR_VERSION" -ne 3|TCL_MINOR_VERSION" -ne ${TCLTK_VER:E}|' \
 			${WRKSRC}/configure

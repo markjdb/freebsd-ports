@@ -11,12 +11,12 @@
 # or `x11/nvidia-driver-304' slave ports.
 
 PORTNAME=	nvidia-driver
-DISTVERSION?=	310.44
+DISTVERSION?=	319.32
 # Always try to set PORTREVISION as it can be overridden by the slave ports
-PORTREVISION?=	1
+PORTREVISION?=	0
 CATEGORIES=	x11 kld
 MASTER_SITES=	${MASTER_SITE_NVIDIA}
-# MASTER_SITE_SUBDIR it set later because it depends on NVVERSION
+# MASTER_SITE_SUBDIR has to be set later because it depends on NVVERSION
 DISTNAME=	NVIDIA-FreeBSD-x86${ARCH_SUFX}-${DISTVERSION}
 
 MAINTAINER=	danfe@FreeBSD.org
@@ -38,7 +38,8 @@ USE_LDCONFIG=	yes
 # fixed upstream (across all versions, including legacy ones), use this
 # hack below to universally set NVIDIA_ROOT.  Also provide X11BASE value
 # since it is going away from `Mk/bsd.port.mk' as deprecated.
-MAKE_ENV=	NVIDIA_ROOT=${WRKSRC} X11BASE=${LOCALBASE}
+MAKE_ENV=	NVIDIA_ROOT=${WRKSRC} X11BASE=${LOCALBASE} \
+		SYSDIR=${SRC_BASE}/sys
 SUB_FILES=	pkg-deinstall pkg-install pkg-message
 DOCSDIR=	${PREFIX}/share/doc/NVIDIA_GLX-1.0
 MODULESDIR=	lib/xorg/modules
@@ -64,18 +65,22 @@ EXTRA_PATCHES=	${FILESDIR}/legacy-patch-nvidia.lib.mk
 
 # Fix recent arbitrary memory access vulnerability in legacy drivers
 .if ${NVVERSION} <= 1905300
-. if ${NVVERSION} != 1731435
+.  if ${NVVERSION} != 1731435
 EXTRA_PATCHES+=	${FILESDIR}/security-patch-CVE-2012-0946
-. endif
+.  endif
 EXTRA_PATCHES+=	${FILESDIR}/security-patch-CVE-2012-4225
 .endif
 
-OPTIONS_DEFINE=	FREEBSD_AGP ACPI_PM LINUX DOCS
+OPTIONS_DEFINE=	ACPI_PM LINUX DOCS
 OPTIONS_DEFAULT=	LINUX
 
-FREEBSD_AGP_DESC=	Use FreeBSD AGP GART driver
 ACPI_PM_DESC=		ACPI Power Management support
 LINUX_DESC=		Linux compatibility support
+
+.if ${NVVERSION} < 3101400
+OPTIONS_DEFINE+=	FREEBSD_AGP
+FREEBSD_AGP_DESC=	Use FreeBSD AGP GART driver
+.endif
 
 .if ${NVVERSION} >= 1952200
 OPTIONS_DEFINE+=	WBINVD
@@ -102,8 +107,8 @@ IGNORE=		requires fairly recent FreeBSD-STABLE, or FreeBSD-CURRENT
 .endif
 
 .if ${NVVERSION} < 1952200
-# ABI version is hardcoded inside the binary, so better be explicit here
-LIB_DEPENDS=	m.3:${PORTSDIR}/misc/compat5x
+# ABI version is hardcoded inside the binary, so specify it explicitly
+LIB_DEPENDS=	libm.so.3:${PORTSDIR}/misc/compat5x
 .endif
 
 post-patch: .SILENT
@@ -144,11 +149,29 @@ post-patch: .SILENT
 	${REINPLACE_CMD} -E 's/(VM_OBJECT_)(UN)?(LOCK)/\1W\2\3/' \
 		${WRKSRC}/src/nvidia_subr.c
 .endif
+# Adjust kmem(9) calls after FreeBSD src SVN r254025
+.if ${OSVERSION} > 1000040
+	${REINPLACE_CMD} -e '/kmem_/s/kernel_map/kernel_arena/' \
+		${WRKSRC}/src/nvidia_subr.c
+.endif
+# Adopt to cap_rights_t type change in FreeBSD src SVN r255219
+.if ${OSVERSION} > 1000052
+	${REINPLACE_CMD} -e 's/u_long cmd;/& cap_rights_t rights;/ ; \
+		s/CAP_IOCTL/cap_rights_init(\&rights, &)/' \
+			${WRKSRC}/src/nvidia_linux.c
+.endif
+# Argument count of vm_map_find() changed in FreeBSD src SVN r255426
+.if ${OSVERSION} > 1000054
+	${REINPLACE_CMD} -e 's/virtual_address, size,/& 0,/' \
+		${WRKSRC}/src/nvidia_subr.c
+.endif
 # Fix stack buffer overflow in nvidia_sysctl_bus_type()
+.if ${NVVERSION} < 3192300
 	${REINPLACE_CMD} -E '/bus_type\[4\]/d ; \
 		s/sprintf\(bus_type, (".+")/return SYSCTL_OUT(req, \1, sizeof(\1)/ ; \
 		/return SYSCTL_OUT\(req, bus_type/d' \
 			${WRKSRC}/src/nvidia_sysctl.c
+.endif
 # Process OPTIONS
 .if ${PORT_OPTIONS:MFREEBSD_AGP}
 	${REINPLACE_CMD} -E 's/undef (NV_SUPPORT_OS_AGP)/define \1/' \

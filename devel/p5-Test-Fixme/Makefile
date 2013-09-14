@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Test-Fixme
-PORTVERSION=	0.09
+PORTVERSION=	0.10
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -13,7 +13,8 @@ COMMENT=	Check code for FIXMEs
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Test::Fixme.3
 

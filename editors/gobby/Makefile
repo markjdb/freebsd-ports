@@ -20,9 +20,8 @@ OPTIONS_DEFINE=	GTKSPELL NLS
 GTKSPELL_DESC=	Enable GtkSpell support
 
 USE_GNOME=	gnomehack gtksourceview2 intltool
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 INSTALLS_ICONS=	yes
 
 MAN1=		${PORTNAME}.1

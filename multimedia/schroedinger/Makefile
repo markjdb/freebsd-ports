@@ -19,9 +19,9 @@ LICENSE_FILE_MPL=	${WRKSRC}/COPYING.MPL
 LIB_DEPENDS=	orc-0.4:${PORTSDIR}/devel/orc
 BUILD_DEPENDS=	orc>=0.4.16:${PORTSDIR}/devel/orc
 
+USES=		pkgconfig
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|^pkgconfigdir=.*|pkgconfigdir="\\$${prefix}/libdata/pkgconfig"|' \

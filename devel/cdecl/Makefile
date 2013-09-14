@@ -12,14 +12,13 @@ COMMENT=	Explains complicated C/C++ declarations in plain English
 
 USE_CSTD=	c89
 
-USE_GCC=	any
+USES=		readline
 ALL_TARGET=	${PORTNAME}
 MAN1=		cdecl.1
 MLINKS=		cdecl.1 c++decl.1
 PORTDOCS=	testset testset++
 PLIST_FILES=	bin/cdecl bin/c++decl
 
-MAKE_JOBS_SAFE=	yes
 
 CONFLICTS=	cutils-[0-9]*
 

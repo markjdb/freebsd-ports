@@ -21,10 +21,10 @@ GNU_CONFIGURE=	yes
 USES=		pathfix pkgconfig iconv ncurses
 USE_GMAKE=	yes
 USE_LDCONFIG=	yes
-CONFIGURE_ARGS+=--with-libiconv-prefix=${LOCALBASE}
+CONFIGURE_ARGS+=${ICONV_CONFIGURE_ARG}
 USE_PERL5_BUILD=yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -liconv
+LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
 MAN1=	cd-drive.1 cd-info.1 iso-read.1 iso-info.1 cd-read.1
 
 INFO=		libcdio

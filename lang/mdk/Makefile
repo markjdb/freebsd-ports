@@ -15,10 +15,8 @@ OPTIONS_DEFINE=	GLADE GUILE
 OPTIONS_DEFAULT=GLADE GUILE
 
 USE_GNOME=	glib20 intltool
-USES=		gettext ncurses readline
-USE_GMAKE=	yes
+USES=		gettext ncurses readline gmake pkgconfig
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

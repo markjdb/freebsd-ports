@@ -13,7 +13,6 @@ LIB_DEPENDS=	png15:${PORTSDIR}/graphics/png
 
 USE_GNOME=	gtk20 desktopfileutils
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 CONFIGURE_ARGS=	--docdir="${DOCSDIR}" \
 		--htmldir="${DOCSDIR}/html" \
 		--with-htmldir="${DOCSDIR}/html" \
@@ -22,11 +21,10 @@ CFLAGS+=	-I${LOCALBASE}/include
 CPPFLAGS+=	${CFLAGS}
 LDFLAGS+=	-L${LOCALBASE}/lib
 MAKE_ARGS+=	top_builddir="${WRKSRC}"
-MAKE_JOBS_SAFE=	yes
 
 PORTDOCS=	*
 MAN1=		geeqie.1
-USES=		gettext
+USES=		gettext gmake pkgconfig
 
 OPTIONS_DEFINE=	EXIV2 LCMS LIRC GPS DOCS
 OPTIONS_DEFAULT=EXIV2 LCMS

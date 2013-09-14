@@ -3,6 +3,7 @@
 
 PORTNAME=	http-analyze
 PORTVERSION=	2.4.4
+PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	ftp://ftp.rent-a-guru.de/pub/
 DIST_SUBDIR=	${PORTNAME}
@@ -25,7 +26,6 @@ MAKE_ARGS=	HA_BINDIR="${PREFIX}/bin" HA_LIBDIR="${DATADIR}" \
 		DEFINES="-DBSD -Dunix" OPTIM="${CFLAGS}" \
 		CC="${CC}"
 ALL_TARGET=	${PORTNAME}
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	$$(gdlib-config --includes)
 LDFLAGS+=	$$(gdlib-config --ldflags) $$(gdlib-config --libs)

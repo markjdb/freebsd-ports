@@ -3,7 +3,7 @@
 
 PORTNAME=	vdr-plugin-epgsearch
 PORTVERSION=	1.0.1s20120322
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	multimedia
 MASTER_SITES=	http://winni.vdr-developer.org/epgsearch/downloads/beta/:beta \
 		LOCAL/nox/:snapshot
@@ -15,10 +15,10 @@ COMMENT=	Video Disk Recorder - EPG search plugin
 LIB_DEPENDS+=	pcre:${PORTSDIR}/devel/pcre \
 		tre:${PORTSDIR}/textproc/libtre
 
+USES=		pkgconfig
 USE_BZIP2=	yes
 PATCH_STRIP=	-p1
 PORTDOCS=	COPYING README HISTORY
-MAKE_JOBS_SAFE=	yes
 WRKSRC=		${WRKDIR}/vdr-plugin-${PLUGIN}
 MAKE_ARGS+=	INCLUDES="-I$(LOCALBASE)/include -I$(LOCALBASE)/include/vdr -I${WRKSRC}"
 

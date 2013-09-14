@@ -15,9 +15,8 @@ LICENSE=	GPLv2 # (or later)
 
 LIB_DEPENDS=	sane:${PORTSDIR}/graphics/sane-backends
 
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

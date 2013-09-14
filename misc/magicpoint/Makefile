@@ -3,7 +3,7 @@
 
 PORTNAME=	magicpoint
 PORTVERSION=	1.13a
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES?=	misc
 MASTER_SITES=	ftp://sh.wide.ad.jp/WIDE/free-ware/mgp/
 
@@ -83,7 +83,7 @@ post-patch:
 		${WRKSRC}/configure
 
 post-configure:
-	(cd ${CONFIGURE_WRKSRC} && ${SETENV} ${MAKE_ENV} ${XMKMF})
+	(cd ${CONFIGURE_WRKSRC} && ${SETENV} ${MAKE_ENV} ${XMKMF} ${XMKMF_ARGS})
 	cd ${WRKSRC}/contrib/xmindpath && \
 		${SH} ${CONFIGURE_SCRIPT} --prefix=${PREFIX}
 

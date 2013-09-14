@@ -16,3 +16,12 @@ sbin/recorder
 @dirrm libexec/aox
 @dirrm libdata/aox
 @dirrm %%ETCDIR%%
+@dirrmtry /var/db/aox/jail/messages
+@dirrmtry /var/db/aox/jail/var/run
+@dirrmtry /var/db/aox/jail/var
+@dirrmtry /var/db/aox/jail
+@dirrmtry /var/db/aox/messages
+@dirrmtry /var/db/aox
+@dirrmtry /var/run/aox
+@exec install -d -o root -g wheel -m 700 /var/db/aox/jail
+@exec install -d -o %%USERS%% -g %%GROUPS%% /var/db/aox/messages

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libxul
-DISTVERSION=	17.0.7
+DISTVERSION=	17.0.8
 CATEGORIES?=	www devel
 MASTER_SITES=	MOZILLA/firefox/releases/${DISTVERSION}esr/source
 DISTNAME=	firefox-${DISTVERSION}esr.source
@@ -29,9 +29,8 @@ WANT_PERL=	yes
 ALL_TARGET=	default
 GNU_CONFIGURE=	yes
 USE_BZIP2=	yes
-USE_GMAKE=	yes
+USES=		pkgconfig gmake
 USE_GL=		gl
-MAKE_JOBS_SAFE=	yes
 MAKE_ENV=	SKIP_GRE_REGISTRATION=1 mozappdir=${PREFIX}/lib/${MOZILLA}
 LDFLAGS+=	-Wl,-rpath,${PREFIX}/lib/${MOZ_RPATH}
 USE_LDCONFIG=	${PREFIX}/lib/${MOZILLA}

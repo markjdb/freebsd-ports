@@ -3,6 +3,7 @@
 
 PORTNAME=	apcupsd
 PORTVERSION=	3.14.10
+PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}%20-%20Stable/${PORTVERSION}:src_sf \
 		http://T32.TecNik93.com/FreeBSD/ports/${PORTNAME}/sources/:src_bk \
@@ -76,7 +77,7 @@ CONFIGURE_ARGS+=	--enable-net \
 
 .if ${PORT_OPTIONS:MCGI}
 CONFIGURE_ARGS+=	--enable-cgi --with-cgi-bin=${ETCDIR}/cgi
-LIB_DEPENDS+=		gd.4:${PORTSDIR}/graphics/gd
+LIB_DEPENDS+=		gd:${PORTSDIR}/graphics/gd
 PLIST_SUB+=		CGI=""
 .else
 PLIST_SUB+=		CGI="@comment "

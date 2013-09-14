@@ -23,11 +23,11 @@ LIB_DEPENDS=	lua-5.1:${PORTSDIR}/lang/lua \
 		physfs.1:${PORTSDIR}/devel/physfs
 RUN_DEPENDS=	zip:${PORTSDIR}/archivers/zip
 
+USES=		pkgconfig
 USE_SDL=	sdl sound
 USE_GL=		glu
 GNU_CONFIGURE=	yes
 ALL_TARGET=	${PORTNAME}
-MAKE_JOBS_SAFE=	yes
 
 PLIST_FILES=	bin/${PORTNAME} \
 		share/applications/${PORTNAME}.desktop \

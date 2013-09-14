@@ -16,10 +16,8 @@ LIB_DEPENDS=	gimp-2.0:${PORTSDIR}/graphics/gimp-app \
 
 GNU_CONFIGURE=	yes
 USE_BZIP2=	yes
-USE_GMAKE=	yes
-USES=		gettext
+USES=		gettext gmake pkgconfig
 USE_GNOME=	gtk20
-MAKE_JOBS_SAFE=	yes
 
 PLUGIN_DIR?=	libexec/gimp/2.2/plug-ins
 PLIST_SUB=	PLUGIN_DIR=${PLUGIN_DIR}

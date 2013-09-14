@@ -1,9 +1,5 @@
-# New ports collection makefile for:	ANSIScreen
-# Date created:				06 July 2003
-# Whom:	      				Adam Weinberger <adamw@FreeBSD.org>
-#
+# Created by: Adam Weinberger <adamw@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Term-ANSIScreen
 PORTVERSION=	1.50
@@ -15,7 +11,8 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Term::ANSIColor clone with screen mode support
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Term::ANSIScreen.3
 

@@ -22,8 +22,7 @@ DSSI_DESC=	DSSI Plugin
 LO_DESC=	Open Sound Control support via LibLO
 
 USE_BZIP2=	yes
-USES=		cmake
-MAKE_JOBS_SAFE=	yes
+USES=		cmake pkgconfig
 
 PORTDOCS=	*
 PORTEXAMPLES=	*

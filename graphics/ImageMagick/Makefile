@@ -3,6 +3,7 @@
 PORTNAME=	ImageMagick
 PORTREVISION=	1
 DISTVERSION=	6.8.0-7
+PORTREVISION=	1
 CATEGORIES=	graphics perl5
 MASTER_SITES=	http://www.imagemagick.org/download/ \
 		http://servingzone.com/mirrors/ImageMagick/ \
@@ -32,7 +33,7 @@ COMMENT=	Image processing tools
 
 LICENSE=	AL2
 
-USES=		pkgconfig pathfix perl5
+USES=		pkgconfig:both pathfix perl5
 USE_XZ=		yes
 USE_PERL5=	run build patch
 WANT_GNOME=	yes
@@ -42,7 +43,6 @@ USE_AUTOTOOLS=	libltdl
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-shared --without-dps --without-lcms
 USE_GMAKE=	yes
-MAKE_JOBS_SAFE=	yes
 USE_LDCONFIG=	yes
 
 MAN1=		ImageMagick.1 Magick++-config.1 Magick-config.1 Wand-config.1 \

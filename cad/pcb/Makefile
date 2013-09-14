@@ -3,7 +3,7 @@
 
 PORTNAME=	pcb
 PORTVERSION=	20110918
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	cad
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -19,7 +19,7 @@ RUN_DEPENDS=	m4>=1.4.11:${PORTSDIR}/devel/m4 \
 BUILD_DEPENDS:=	${RUN_DEPENDS}
 
 USE_AUTOTOOLS=	autoconf
-USES=		gmake
+USES=		gmake pkgconfig
 USE_TK_RUN=	yes
 INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes
@@ -27,7 +27,6 @@ CONFIGURE_ENV+=	INSTALL_DATA="${BSD_INSTALL_DATA}"
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-pthread -L${LOCALBASE}/lib
 CONFIGURE_ARGS= --docdir=${DOCSDIR}
-MAKE_JOBS_SAFE=	yes
 
 PORTDOCS= pcb.html pcb.pdf refcard.pdf pad.png puller.png thermal.png	\
 	examples tutorial gcode.png gcode_control_img.png		\
@@ -46,7 +45,7 @@ NONE_DESC=	No GUI support
 .if ${PORT_OPTIONS:MNLS}
 CONFIGURE_ARGS+= \
 	--enable-nls \
-	--with-libiconv-prefix=${LOCALBASE} \
+	${ICONV_CONFIGURE_ARG} \
 	--with-libintl-prefix=${LOCALBASE}
 USES+=		gettext iconv
 .for L in fr nl ru

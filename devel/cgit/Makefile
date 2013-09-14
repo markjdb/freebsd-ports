@@ -27,13 +27,13 @@ CFLAGS+=	-I${LOCALBASE}/include
 MAKE_ARGS+=	CGIT_SCRIPT_PATH=${WWWDIR} \
 		CGIT_CONFIG=${PREFIX}/etc/cgitrc NO_GETTEXT=1
 LDFLAGS+=	-L${LOCALBASE}/lib
-MAKE_JOBS_SAFE=	yes
 
 SUB_FILES=	pkg-message
 SUB_LIST+=	PORTNAME=${PORTNAME}
 PLIST_SUB+=	PORTNAME=${PORTNAME} WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 
 .include <bsd.port.options.mk>
+.include <bsd.port.pre.mk>
 
 post-extract:
 	@${RMDIR} ${WRKSRC}/git
@@ -45,6 +45,11 @@ post-patch:
 		${WRKSRC}/git/Makefile
 	@${REINPLACE_CMD} -e 's,/usr,${PREFIX},g' \
 		-e 's,-Igit,-I.,g' ${WRKSRC}/Makefile
+.if empty(ICONV_LIB)
+	@${REINPLACE_CMD} -e '/NEEDS_LIBICONV = YesPlease/d' \
+		-e '/OLD_ICONV = YesPlease/d' \
+		${WRKSRC}/git/config.mak.uname
+.endif
 
 post-install:
 	@${MKDIR} /var/cache/${PORTNAME}
@@ -55,4 +60,4 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}rc.5.txt ${DOCSDIR}/
 .endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

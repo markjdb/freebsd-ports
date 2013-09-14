@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	qemu
-PORTVERSION=	1.5.2
+PORTVERSION=	1.6.0
+PORTREVISION=	1
 CATEGORIES=	emulators
 MASTER_SITES=	http://wiki.qemu.org/download/:release \
 		LOCAL/nox:snapshot
@@ -17,7 +18,7 @@ LIB_DEPENDS=	pixman-1:${PORTSDIR}/x11/pixman
 
 HAS_CONFIGURE=	yes
 USE_BZIP2=	yes
-USES=		gmake pkgconfig
+USES=		gmake pkgconfig bison
 USE_PERL5_BUILD=	yes
 USE_PYTHON_BUILD=	-2.7
 USE_GNOME+=	glib20
@@ -27,10 +28,9 @@ MAN1=		qemu.1 qemu-img.1
 MAN8=		qemu-nbd.8
 ONLY_FOR_ARCHS=	amd64 i386 powerpc # XXX someone wants to debug sparc64 hosts?
 CONFLICTS_INSTALL=	qemu-[0-9]*
-MAKE_JOBS_SAFE=	yes
 
 OPTIONS_DEFINE=	SAMBA X11 GTK2 OPENGL GNUTLS SASL JPEG PNG CURL \
-		CDROM_DMA PCAP USBREDIR GNS3 X86_TARGETS BSD_USER \
+		CDROM_DMA PCAP USBREDIR GNS3 X86_TARGETS \
 		STATIC_LINK DOCS
 SAMBA_DESC=		samba dependency (for -smb)
 GNUTLS_DESC=		gnutls dependency (vnc encryption)

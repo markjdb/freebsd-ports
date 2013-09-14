@@ -18,8 +18,8 @@ LATEST_LINK=	gnome-sharp20
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-USE_GMAKE=	yes
-USE_PERL5_RUN=	yes
+USES=		gmake perl5 pkgconfig
+USE_PERL5=	run
 USE_GNOME=	gnomehack gnomepanel gtksharp20 librsvg2 vte libgnomeprintui \
 		libgnomeui
 MAKE_JOBS_UNSAFE=	yes

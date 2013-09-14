@@ -19,9 +19,8 @@ LIB_DEPENDS=	boost_thread:${PORTSDIR}/devel/boost-libs \
 
 USE_SDL=	image mixer net ttf
 USE_GNOME=	pango desktopfileutils
-MAKE_JOBS_SAFE=	yes
 USE_BZIP2=	yes
-USES=		cmake
+USES=		cmake pkgconfig
 CMAKE_ARGS=	-DMANDIR="man"
 
 MAN6=		wesnoth.6

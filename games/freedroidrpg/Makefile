@@ -14,8 +14,8 @@ USE_SDL=	sdl image mixer gfx
 GNU_CONFIGURE=	yes
 USE_GMAKE=	yes
 USE_LUA=	5.1+
-MAKE_JOBS_SAFE=	yes
 CONFIGURE_ENV=	LUA_CFLAGS="-I${LUA_INCDIR}" LUA_LIBS="-L${LUA_LIBDIR} -llua"
+USE_GCC=	any # doesn't build with clang
 
 MAN6=		freedroidRPG.6
 

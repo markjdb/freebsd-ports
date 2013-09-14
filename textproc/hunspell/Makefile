@@ -14,9 +14,8 @@ COMMENT=	Improved spell-checker for Hungarian and other languages
 LICENSE=	GPLv2 LGPL21 MPL
 LICENSE_COMB=	dual
 
-CONFIGURE_ARGS=	--disable-nls --with-libiconv-prefix=${LOCALBASE} --with-readline --with-ui
+CONFIGURE_ARGS=	--disable-nls ${ICONV_CONFIGURE_ARG} --with-readline --with-ui
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 USES=		pathfix iconv ncurses readline
 USE_LDCONFIG=	yes
 

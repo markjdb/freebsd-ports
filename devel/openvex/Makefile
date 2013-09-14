@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	openvex
-PORTVERSION=	0.5.1
+PORTVERSION=	0.5.2
 CATEGORIES=	devel
 MASTER_SITES=	http://acadix.biz/Ports/distfiles/ \
 		http://personalpages.tds.net/~jwbacon/Ports/distfiles/
@@ -29,11 +29,8 @@ post-patch:
 	@${REINPLACE_CMD} -E 's/cd (.+)(;| &&) make/$$(MAKE) -C \1/' \
 		${WRKSRC}/Advanced/Makefile ${WRKSRC}/Beginner/Makefile \
 		${WRKSRC}/HiBob/Makefile ${WRKSRC}/Makefile
-# Apparently the workaround for bug in pic18f8520.h is no longer needed and
-# breaks the build now; disable it for the time being
-	@${REINPLACE_CMD} -e 's/ifdef SDCC/if 0/' ${WRKSRC}/Lib/timer.h
 
 post-build:
-	${MAKE} -C ${WRKSRC} clean
+	@(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} clean)
 
 .include <bsd.port.mk>

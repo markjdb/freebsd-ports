@@ -8,14 +8,15 @@ MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A lightweight field hash implementation
+COMMENT=	Lightweight field hash implementation
 
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
 TEST_DEPENDS=	p5-Test-LeakTrace>=0.07:${PORTSDIR}/devel/p5-Test-LeakTrace
 
-PERL_MODBUILD=	yes
+USE_PERL5=	modbuild
+USES=		perl5
 
 MAN3=		Hash::FieldHash.3
 

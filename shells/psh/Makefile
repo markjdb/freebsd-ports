@@ -11,8 +11,8 @@ MASTER_SITE_SUBDIR=	CPAN:GREGOR
 MAINTAINER=	garga@FreeBSD.org
 COMMENT=	New shell made entirely out of a Perl script
 
-PERL_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 SUB_FILES=	pkg-install pkg-deinstall
 

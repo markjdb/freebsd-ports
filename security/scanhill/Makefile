@@ -14,7 +14,6 @@ WRKSRC=		${WRKDIR}/${PORTNAME}
 
 GNU_CONFIGURE=	yes
 USES=		iconv
-MAKE_JOBS_SAFE=	yes
 
 PORTDOCS=	README.txt INSTALL.txt mysql.sql
 
@@ -26,6 +25,9 @@ OPTIONS_DEFINE=	MYSQL DOCS
 CONFIGURE_ARGS+=	--enable-mysql
 USE_MYSQL=		yes
 .endif
+
+post-patch:
+	@${REINPLACE_CMD} -e 's/-liconv/${ICONV_LIB}/' ${WRKSRC}/configure
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/scanhill ${PREFIX}/bin

@@ -1,9 +1,5 @@
-# New ports collection makefile for:   xarchiver
-# Date created:        27 Mart 2008
-# Whom:            Andreev Maxim
-#
+# Created by: Andreev Maxim
 # $FreeBSD$
-#
 
 PORTNAME=	xarchiver
 PORTVERSION=	0.5.2
@@ -11,14 +7,14 @@ PORTREVISION=	6
 CATEGORIES=	archivers
 MASTER_SITES=	SF
 
-MAINTAINER=	andreevmaxim@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Desktop-agnostic GTK+2 frontend to various archiving tools
 
 RUN_DEPENDS=	xdg-open:${PORTSDIR}/devel/xdg-utils
 
+USES=		gmake pkgconfig desktop-file-utils
 USE_BZIP2=	yes
-USE_GMAKE=	yes
-USE_GNOME=	glib20 gtk20 intltool pkgconfig desktopfileutils
+USE_GNOME=	glib20 gtk20 intltool
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 

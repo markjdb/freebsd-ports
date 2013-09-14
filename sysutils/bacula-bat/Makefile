@@ -3,12 +3,14 @@
 
 PORTNAME=	bacula
 PKGNAMESUFFIX=	-bat
+PORTREVISION=	4
 
 COMMENT=	Network backup solution (GUI)
 
 LIB_DEPENDS+=	qwt.5:${PORTSDIR}/x11-toolkits/qwt5 \
 		bac:${PORTSDIR}/sysutils/bacula-client
 
+USES=		pkgconfig
 USE_QT4=	qmake_build uic_build moc_build rcc_build
 WITH_BAT=	yes
 

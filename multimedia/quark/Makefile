@@ -15,14 +15,12 @@ LIB_DEPENDS=	xine.2:${PORTSDIR}/multimedia/libxine
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=        pathfix gettext
+USES=		pathfix gettext gmake pkgconfig
 USE_GNOME=	gnomeprefix gnomevfs2
-USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-MAKE_JOBS_SAFE=	yes
 
 PORTDOCS=	AUTHORS COPYING INSTALL README
 GCONF_SCHEMAS=	quark.schemas strange-quark.schemas

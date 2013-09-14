@@ -502,7 +502,6 @@
     SUBDIR += mp3splt
     SUBDIR += mp3splt-gtk
     SUBDIR += mp3stat
-    SUBDIR += mp3towav-bundle
     SUBDIR += mp3unicode
     SUBDIR += mp3val
     SUBDIR += mp3wrap
@@ -643,7 +642,6 @@
     SUBDIR += py-xmms2
     SUBDIR += pysol-sound-server
     SUBDIR += pytone
-    SUBDIR += q-audio
     SUBDIR += qjackctl
     SUBDIR += qmpdclient
     SUBDIR += qsampler

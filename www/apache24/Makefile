@@ -14,7 +14,6 @@ LIB_DEPENDS=	expat:${PORTSDIR}/textproc/expat2 \
 		apr-1:${PORTSDIR}/devel/apr1 \
 		pcre:${PORTSDIR}/devel/pcre
 
-MAKE_JOBS_SAFE=	yes
 
 LATEST_LINK?=	apache24
 
@@ -75,7 +74,7 @@ CONFIGURE_ARGS=	--prefix=${PREFIX_RELDEST} \
 		--with-port=${WITH_HTTP_PORT} \
 		--with-sslport=${WITH_SSL_PORT} \
 		--with-expat=${LOCALBASE} \
-		--with-iconv=${LOCALBASE} \
+		--with-iconv=${ICONV_PREFIX} \
 		--enable-http \
 		--with-pcre=${LOCALBASE} \
 		--with-apr=${APR_CONFIG} \

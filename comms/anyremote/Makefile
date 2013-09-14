@@ -11,10 +11,11 @@ COMMENT=	Remote control service over Bluetooth, infrared, or TCP/IP networking
 
 LICENSE=	GPLv2
 
+USES=		pkgconfig
 USE_GNOME=	glib20
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -liconv
+LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
 
 OPTIONS_DEFINE=	DOCS DBUS X11
 OPTIONS_DEFAULT=	DBUS X11

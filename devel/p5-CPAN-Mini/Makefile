@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	CPAN-Mini
-PORTVERSION=	1.111011
+PORTVERSION=	1.111013
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:RJBS
@@ -17,7 +17,8 @@ RUN_DEPENDS=	p5-File-HomeDir>=0.57:${PORTSDIR}/devel/p5-File-HomeDir \
 BUILD_DEPENDS:=	${RUN_DEPENDS}
 TEST_DEPENDS=	p5-Test-Simple>=0.96:${PORTSDIR}/devel/p5-Test-Simple
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN1=	minicpan.1
 MAN3=	CPAN::Mini.3 CPAN::Mini::App.3

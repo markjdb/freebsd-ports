@@ -26,7 +26,6 @@ USES=		pkgconfig gettext iconv gmake
 DIST_SUBDIR=	vdr
 USE_BZIP2=	yes
 PORTDOCS=	COPYING INSTALL MANUAL README HISTORY
-MAKE_JOBS_SAFE=	yes
 MAN1=		vdr.1
 MAN5=		vdr.5
 MANCOMPRESSED=	yes
@@ -79,7 +78,8 @@ ALL_TARGET=	vdr plugins
 
 post-patch:
 # clang doesn't know -MG:
-	@${REINPLACE_CMD} '/^MAKEDEP.*-MM/s/-MG[[:space:]]*$$/# -MG/' \
+	@${REINPLACE_CMD} -e '/^MAKEDEP.*-MM/s/-MG[[:space:]]*$$/# -MG/' \
+			-e '/^LIBS/s/-liconv/${ICONVLIB}/' \
 		${WRKSRC}/Makefile ${WRKSRC}/libsi/Makefile \
 		${WRKSRC}/PLUGINS/src/*/Makefile
 	@[ ! -f ${WRKSRC}/s2apiwrapper.c ] || \

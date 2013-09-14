@@ -19,8 +19,9 @@ OPTIONS_DEFAULT=	X11
 
 WRKSRC=		${WRKDIR}/mpeg2
 
+USES=		pkgconfig
+
 MAKE_ARGS=	CC="${CC}" CFLAGS="${CFLAGS}"
-MAKE_JOBS_SAFE=	yes
 
 DATADIR=	${PREFIX}/share/mpeg2
 

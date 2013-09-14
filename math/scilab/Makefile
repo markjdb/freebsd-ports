@@ -21,12 +21,10 @@ EXTRACT_DEPENDS+=	${UNZIP_CMD}:${PORTSDIR}/archivers/unzip
 LIB_DEPENDS=	xml2.5:${PORTSDIR}/textproc/libxml2 \
 		pcre.3:${PORTSDIR}/devel/pcre
 
-MAKE_JOBS_SAFE=	yes
 
 USE_FORTRAN=	yes
-USES=		gettext
+USES=		gettext gmake pkgconfig
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include

@@ -24,11 +24,9 @@ LIB_DEPENDS=	vorbisfile:${PORTSDIR}/audio/libvorbis \
 USE_BZIP2=	yes
 USE_GL=		gl glu glut
 USE_OPENAL=	al alut
-USES=		cmake gettext
-USE_GMAKE=	yes
+USES=		cmake gettext gmake pkgconfig
 USE_SDL=	sdl
 USE_DOS2UNIX=	lib/irrlicht/source/Irrlicht/Makefile
-MAKE_JOBS_SAFE=	yes
 
 WRKSRC=		${WRKDIR}/SuperTuxKart-${PORTVERSION}
 

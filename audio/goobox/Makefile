@@ -4,7 +4,7 @@
 
 PORTNAME=	goobox
 PORTVERSION=	2.2.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	audio gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -20,9 +20,8 @@ LIB_DEPENDS=	discid:${PORTSDIR}/audio/libdiscid \
 RUN_DEPENDS=	${LOCALBASE}/share/icons/gnome/index.theme:${PORTSDIR}/misc/gnome-icon-theme
 
 USE_XORG=	x11
-USES=		gettext
+USES=		gettext gmake pkgconfig
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 USE_GNOME=	gnomeprefix gnomehack intlhack gtk20 gconf2 desktopfileutils
 USE_GSTREAMER=	cdparanoia gconf core gio
 GNU_CONFIGURE=	yes

@@ -14,10 +14,9 @@ LICENSE=	GPLv2
 
 OPTIONS_DEFINE=	EXAMPLES
 
+USES=		gmake
 USE_XORG=	ice sm x11 xext xpm
-USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 CONFIGURE_ARGS=	--disable-dummy-driver
 
 MAN1=		wmnd.1

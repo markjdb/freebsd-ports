@@ -18,6 +18,7 @@ INSTALL_WRKSRC=	${WRKSRC}/${PORTNAME}
 ALL_TARGET=	${PORTNAME}
 
 MAN1=		spim.1
+MANCOMPRESSED=	no
 PORTDOCS=	cycle.ps.gz spim.ps.gz SPIM.html
 PLIST_FILES=	bin/spim %%DATADIR%%/exceptions.s
 PLIST_DIRS=	%%DATADIR%%
@@ -33,7 +34,7 @@ MAN1+=		xspim.1
 
 post-build:
 .if ${PORT_OPTIONS:MGUI}
-	@(cd ${WRKSRC}/xspim && ${SETENV} ${MAKE_ENV} ${XMKMF} && \
+	@(cd ${WRKSRC}/xspim && ${SETENV} ${MAKE_ENV} ${XMKMF} ${XMKMF_ARGS} && \
 		${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_FLAGS} ${MAKEFILE})
 .endif
 

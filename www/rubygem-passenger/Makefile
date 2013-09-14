@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	passenger
-PORTVERSION=	4.0.10
+PORTVERSION=	4.0.17
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 PKGNAMEPREFIX=	rubygem-
@@ -26,7 +26,7 @@ RUBYGEM_AUTOPLIST=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MAPACHE22}
-USE_APACHE_RUN=	22+
+USE_APACHE=	22+
 .endif
 
 .if ${PORT_OPTIONS:MNGINX}
@@ -79,7 +79,7 @@ post-install:
 		s!#{PlatformInfo.debugging_cflags}!${CFLAGS}!g; \
 		s!-O2!!g; \
 		s! -feliminate-unused-debug-symbols -feliminate-unused-debug-types!!g; \
-		190,192s!true!false!' \
+		199,201s!true!false!' \
 		${PREFIX}/${GEM_LIB_DIR}/build/basics.rb
 .if ${PORT_OPTIONS:NDEBUG}
 	@${REINPLACE_CMD} \

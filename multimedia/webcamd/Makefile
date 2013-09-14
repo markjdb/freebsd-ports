@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	webcamd
-PORTVERSION=	3.10.0.7
+PORTVERSION=	3.11.0.2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
@@ -17,10 +17,10 @@ LIB_DEPENDS=	v4l1.0:${PORTSDIR}/multimedia/libv4l \
 
 LICENSE=	GPLv2
 
+USES=		pkgconfig
 USE_RC_SUBR=	webcamd
 USE_BZIP2=	yes
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 MANCOMPRESSED=	yes
 MAN4=		a800.4 ce6230.4 dtv5100.4 gl861.4 mr800.4 pwcusb.4 sq905c.4 \
 		usbvision.4 af9005.4 cinergy.4 dw2102.4 gp8psk.4 \
@@ -37,12 +37,17 @@ MAN8=		webcamd.8
 
 LIBDIR=		${PREFIX}/lib
 
-OPTIONS_DEFINE=	HAL DEBUG VT_CLIENT VT_SERVER
-OPTIONS_DEFAULT=HAL
+OPTIONS_DEFINE=	DEBUG HAL VT_CLIENT VT_SERVER DVB INPUT RADIO WEBCAM
+OPTIONS_DEFAULT=DVB HAL INPUT RADIO WEBCAM
 HAL_DESC=	Build with HAL and DBUS support
 DEBUG_DESC=	Build with debugging support
 VT_CLIENT_DESC=	Build with vTuner client support
 VT_SERVER_DESC=	Build with vTuner server support
+
+DVB_DESC=	Build with USB DVB support (DVB-X, analog TV, ...)
+INPUT_DESC=	Build with USB input support (tablet, joystick, IR, ...)
+RADIO_DESC=	Build with USB radio support
+WEBCAM_DESC=	Build with USB webcam support (UVC, gspca, ...)
 
 USERS=		webcamd
 GROUPS=		webcamd
@@ -53,6 +58,22 @@ LIBCUSE=${LIBDIR}/libcuse4bsd.so
 
 MAKE_ARGS+=" HAVE_MAN=YES"
 MAKE_ARGS+=" PTHREAD_LIBS=${PTHREAD_LIBS}"
+
+.if ${PORT_OPTIONS:MDVB}
+MAKE_ARGS+=" HAVE_DVB_DRV=YES"
+.endif
+
+.if ${PORT_OPTIONS:MINPUT}
+MAKE_ARGS+=" HAVE_INPUT_DRV=YES"
+.endif
+
+.if ${PORT_OPTIONS:MRADIO}
+MAKE_ARGS+=" HAVE_RADIO_DRV=YES"
+.endif
+
+.if ${PORT_OPTIONS:MWEBCAM}
+MAKE_ARGS+=" HAVE_WEBCAM_DRV=YES"
+.endif
 
 .if ${PORT_OPTIONS:MHAL}
 MAKE_ARGS+=" HAVE_HAL=YES"
@@ -84,7 +105,7 @@ IGNORE=		requires FreeBSD 8.0-RELEASE or later
 #
 do-configure:
 	${MAKE} -C${WRKSRC}/tools/linux_make
-	${MAKE} configure -C${WRKSRC}
+	${MAKE} ${MAKE_ARGS} configure -C${WRKSRC}
 
 post-patch:
 	@cd ${WRKSRC}/patches; ${SH} ./do_patch.sh

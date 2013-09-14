@@ -12,7 +12,7 @@ MAINTAINER=	vd@FreeBSD.org
 COMMENT=	Library for keyword extraction
 
 USE_GNOME=	glib20 gtk20
-USES=	pathfix
+USES=		pathfix pkgconfig
 USE_PYTHON=	yes
 USE_AUTOTOOLS=	libltdl
 GNU_CONFIGURE=	yes
@@ -37,6 +37,7 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|-lpthread|${PTHREAD_LIBS}|g' \
 		${WRKSRC}/src/plugins/Makefile.*
 	@${REINPLACE_CMD} -e 's|-lc_r|${PTHREAD_LIBS}|g' \
+		-e 's|-lstdc++||g' \
 		${WRKSRC}/configure
 
 check: build install

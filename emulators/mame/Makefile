@@ -45,7 +45,6 @@ MAKE_ENV=	NOWERROR=1 OPTIMIZE=0 USE_NETWORK=1 \
 		OPT_FLAGS="${CXXFLAGS}" GCC_LDFLAGS="${LDFLAGS}" \
 		TARGET="${PORTNAME}"
 MAKEFILE=	makefile
-MAKE_JOBS_SAFE=	yes
 
 SUB_FILES=	pkg-message
 
@@ -92,7 +91,7 @@ CC=		/usr/bin/clang
 CPP=		/usr/bin/clang-cpp
 CXX=		/usr/bin/clang++
 .else
-USE_GCC=	4.6+
+USE_GCC=	yes
 .endif
 
 .if ${ARCH} == "ia64" || ${ARCH} == "powerpc" || ${ARCH} == "sparc64"

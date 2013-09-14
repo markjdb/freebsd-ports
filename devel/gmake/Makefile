@@ -24,8 +24,8 @@ OPTIONS_DEFINE=	NLS
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}
-USES+=		gettext
-CONFIGURE_ARGS+=--with-libiconv-prefix=${LOCALBASE} \
+USES+=		gettext iconv
+CONFIGURE_ARGS+=${ICONV_CONFIGURE_ARG} \
 		--with-libintl-prefix=${LOCALBASE}
 PLIST_SUB=	NLS=""
 .else
@@ -42,6 +42,8 @@ INFO=		make
 .endif
 
 post-patch:
+	@${REINPLACE_CMD} -e '/no-print-dir/s/@itemx/@item/' \
+		${WRKSRC}/doc/make.texi
 	@${RM} ${WRKSRC}/doc/make.info*
 
 # joerg@freebsd.org says our getloadavg() no longer requires setgid kmem

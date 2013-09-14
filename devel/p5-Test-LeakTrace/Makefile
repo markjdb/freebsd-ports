@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Test-LeakTrace
-# Date created:		2011-08-01
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Test-LeakTrace
 PORTVERSION=	0.14
@@ -14,7 +10,8 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Traces memory leaks
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Test::LeakTrace.3 \
 		Test::LeakTrace::JA.3 \

@@ -1,9 +1,5 @@
-# New ports collection makefile for:	py-cconv
-# Date created:		2011-04-28
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	cconv
 PORTVERSION=	0.5.0
@@ -19,7 +15,7 @@ LIB_DEPENDS=	cconv:${PORTSDIR}/chinese/cconv
 
 CFLAGS+=	-I${LOCALBASE}/include
 USE_PYTHON=	yes
-USE_PYDISTUTILS=	yes
+USE_PYDISTUTILS=yes
 
 PLIST_FILES=	%%PYTHON_SITELIBDIR%%/${PORTNAME}.so
 

@@ -5,13 +5,89 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20130904:
+  AFFECTS: 10-CURRENT users with any port depending on converters/libiconv
+  AUTHOR: madpilot@FreeBSD.org
+
+  10-CURRENT after r254273 (committed on August 13, 2013) has an
+  implementation of iconv enabled by default in libc.
+
+  Due to this change some major overhauling of the ports tree has
+  been necessary to move the ports to using that implementation.
+
+  People using pkgng binary packages should have little problems,
+  "pkg upgrade" will update all sofware to not depend on libivconv
+  anymore, once updated packages are available. Please make sure to
+  perform a "pkg autoremove" after that and check that libiconv is
+  correctly removed by it.
+
+  If you are using ports the update requires some manual intervention.
+  The following procedure should be followed:
+
+  # pkg query %ro libiconv >ports_to_update
+  # pkg delete -f libiconv
+  # cat ports_to_update | xargs portmaster
+
+  or:
+
+  # pkg query %ro libiconv >ports_to_update
+  # pkg delete -f libiconv
+  # cat ports_to_update | xargs portupgrade -f
+
+20130831:
+  AFFECTS: users of graphics/gdal
+  AUTHOR: sunpoet@FreeBSD.org
+
+  Due to the changes in gdal.h, please deinstall gdal first while updating
+  from 1.9.x to 1.10.x.
+
+20130830:
+  AFFECTS: users of mail/meta1
+  AUTHOR: dinoex@FreeBSD.org
+
+  The on disk format has changed.
+  Please make sure the queue is empty before you update.
+
+20130817:
+  AFFECTS: users of lang/python*
+  AUTHOR: mva@FreeBSD.org
+
+  The lang/python* ports do not install links to 2to3, idle, pydoc, python
+  and other binaries anymore. Those were moved into the lang/python2 and
+  lang/python3 ports respectively. This change brings us closer to the goal
+  of making Python ports usable with different Python versions at the same
+  time.
+
+  If you have lang/python2* or lang/python3* installed, please also install
+  the associated lang/python2 or lang/python3 port.
+
+  1. update lang/python2* and/or lang/python3*
+  2. install lang/python2 and/or lang/python3
+  3. install/update lang/python
+
+20130816:
+  AFFECTS: users of graphics/opendx and math/octave-forge-octcdf
+  AUTHOR: stephen@FreeBSD.org
+
+  These two ports have changed the science/netcdf dependency to
+  science/netcdf4.  It is recommended that the science/netcdf package
+  be deinstalled before rebuilding these ports, otherwise you are likely
+  to face port conflicts when building future ports.
+
+20130806:
+  AFFECTS: users of devel/eric4
+  AUTHOR: bsam@FreeBSD.org
+
+  Since PKGVERSION=4.5.13_1 the default file destination has changed from
+  ${PYTHON_SITELIBDIR}/eric4 to ${DATADIR}.
+
 20130731:
   AFFECTS: users of glib20
   AUTHOR: kwm@FreeBSD.org
 
   The devel/gio-fam-backend port was removed in the glib 2.36 update.
   Since the gio-fam-backend port was used in USE_GNOME=glib20, all
-  dependencies need to be rebuilt. The removal of gio-fam-backend isn't 
+  dependencies need to be rebuilt. The removal of gio-fam-backend isn't
   critical, glib20 using programs should work just fine if the port is still
   installed. It is not clear however, if glib20 will use the new kqueue
   backend or the old fam backend.
@@ -1679,9 +1755,8 @@ you update your ports collection, before attempting any port upgrades.
   AUTHOR: gecko@FreeBSD.org
 
   When using Firefox or SeaMonkey compiled with ALSA option ON it may
-  crash on assert in cubeb_refill_stream as described in ports/170473.
-  To fix either set media.use_cubeb -> false in about:config or rebuild
-  audio/alsa-plugins with ARIFF_OSS option disabled (default).
+  crash on assert in alsa_refill_stream as described in ports/170473.
+  To workaround disable ARIFF_OSS in audio/alsa-plugins or use PULSEAUDIO.
 
 20121010:
   AFFECTS: users of CURRENT (OSVERSION >= 1000017)

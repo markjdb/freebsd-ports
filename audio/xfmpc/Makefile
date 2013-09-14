@@ -15,11 +15,9 @@ COMMENT=	Graphical MPD client focusing on low footprint
 
 LIB_DEPENDS=	mpd:${PORTSDIR}/audio/libmpd
 
-MAKE_JOBS_SAFE=	yes
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 INSTALLS_ICONS=	yes
-USES=		gettext pkgconfig
+USES=		gettext gmake pkgconfig
 GNU_CONFIGURE=	yes
 USE_GNOME=	gtk20 intltool intlhack
 USE_XFCE=	configenv libmenu libutil

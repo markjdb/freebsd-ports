@@ -19,10 +19,9 @@ BUILD_DEPENDS+=	chrpath:${PORTSDIR}/devel/chrpath
 PROJECTHOST=	eiskaltdc
 
 USE_XZ=		yes
-USE_GCC=	4.6+
+USE_GCC=	yes
 USES=		cmake gettext
 USE_OPENSSL=	yes
-MAKE_JOBS_SAFE=	yes
 
 OPTIONS_DEFINE=	XMLRPC
 OPTIONS_DEFAULT=	XMLRPC

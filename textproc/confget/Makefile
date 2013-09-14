@@ -15,7 +15,7 @@ OPTIONS_DEFINE=	EXAMPLES PCRE
 OPTIONS_DEFAULT=PCRE
 
 MAKE_ENV=	CFLAGS_CONF=-DHAVE_FGETLN
-USE_GMAKE=	yes
+USES=		gmake
 
 MAN1=		confget.1
 MANCOMPRESSED=	yes
@@ -35,7 +35,7 @@ MAKE_ENV+=	PCRE_CFLAGS="" PCRE_LIBS=""
 .endif
 
 post-patch:
-.if empty(PORT_OPTIONS:MEXAMPLES)
+.if !${PORT_OPTIONS:MEXAMPLES}
 	@${REINPLACE_CMD} -e '/^install:/ s| install-examples||' ${WRKSRC}/Makefile
 .endif
 

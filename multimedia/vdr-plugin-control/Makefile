@@ -20,12 +20,12 @@ COMMENT=	Video Disk Recorder - telnet control plugin
 PATCH_STRIP=	-p1
 HAVE_CONFIGURE=	yes
 PORTDOCS=	COPYING README HISTORY
-MAKE_JOBS_SAFE=	yes
 WRKSRC=		${WRKDIR}/${PLUGIN}-${DISTVERSION:S/a45/a/}
 
 .include	"${.CURDIR}/../vdr/Makefile.plugins"
 
 post-patch: post-patch-plugin
+	${RM} ${WRKSRC}/vdr-plugin-${PLUGIN}-${DISTVERSION:S/a45/a/}/debian/patches/90*
 	for i in ${WRKSRC}/vdr-plugin-${PLUGIN}-${DISTVERSION:S/a45/a/}/debian/patches/*.dpatch; do \
 		${PATCH} -d ${WRKSRC} `${SED} -n '/^#PATCHOPTIONS:/{s///;p;q;}' $$i` --forward --quiet <$$i ;\
 	done

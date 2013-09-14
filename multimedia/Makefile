@@ -164,6 +164,7 @@
     SUBDIR += libdc1394
     SUBDIR += libdca
     SUBDIR += libdv
+    SUBDIR += libdvbcsa
     SUBDIR += libdvbpsi
     SUBDIR += libdvdcss
     SUBDIR += libdvdnav
@@ -191,7 +192,6 @@
     SUBDIR += libxspf
     SUBDIR += linux-f10-libtheora
     SUBDIR += linux-f10-libv4l
-    SUBDIR += linux-gspca-kmod
     SUBDIR += linux-huludesktop
     SUBDIR += linux-ov511-kmod
     SUBDIR += linux-realplayer
@@ -221,7 +221,6 @@
     SUBDIR += mmsrip
     SUBDIR += motion
     SUBDIR += mp3cd
-    SUBDIR += mp4split
     SUBDIR += mp4v2
     SUBDIR += mpeg2codec
     SUBDIR += mpeg2play
@@ -268,6 +267,7 @@
     SUBDIR += photofilmstrip
     SUBDIR += pitivi
     SUBDIR += playd
+    SUBDIR += plexmediaserver
     SUBDIR += podcastdl
     SUBDIR += podcatcher
     SUBDIR += poe
@@ -321,6 +321,7 @@
     SUBDIR += smtube
     SUBDIR += spigot
     SUBDIR += spook
+    SUBDIR += spotify-websocket-api
     SUBDIR += streamanalyze
     SUBDIR += subtitlecomposer-kde4
     SUBDIR += subtitleeditor
@@ -386,6 +387,7 @@
     SUBDIR += xanim
     SUBDIR += xawtv
     SUBDIR += xbmc
+    SUBDIR += xbmc-addon-pvr
     SUBDIR += xbmc-addon-xvdr
     SUBDIR += xbmc-pvr
     SUBDIR += xfce4-media

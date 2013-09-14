@@ -16,7 +16,7 @@ LICENSE=	MIT
 RUN_DEPENDS=	xmessage:${PORTSDIR}/x11/xmessage
 
 USE_XORG=	xextproto xft xpm xrandr
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 WANT_GNOME=	yes
 GNU_CONFIGURE=	yes
 
@@ -79,7 +79,7 @@ CONFIGURE_ARGS+=	--enable-xinerama
 
 .if ${PORT_OPTIONS:MNLS}
 USES+=			iconv
-CONFIGURE_ENV=		LIBS="-L${LOCALBASE}/lib -liconv"
+CONFIGURE_ENV=		LIBS="-L${LOCALBASE}/lib ${ICONV_LIB}"
 CPPFLAGS+=		-I${LOCALBASE}/include
 CONFIGURE_ARGS+=	--enable-nls
 PLIST_SUB+=		NLS=""

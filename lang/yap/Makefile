@@ -9,6 +9,8 @@ MASTER_SITES=	http://www.dcc.fc.up.pt/~vsc/Yap/
 MAINTAINER=	danilogondolfo@gmail.com
 COMMENT=	High-performance Prolog compiler
 
+PORTSCOUT=	limit:^6\.2\.
+
 OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.options.mk>

@@ -4,7 +4,7 @@
 PORTNAME=	mapnik
 PORTVERSION=	2.2.0
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	graphics geography
 MASTER_SITES=	http://mapnik.s3.amazonaws.com/dist/v${PORTVERSION}/
 
@@ -27,7 +27,6 @@ USE_GNOME=	libxml2
 USE_PYTHON=	2.6+
 USE_LDCONFIG=	yes
 USE_SCONS=	yes
-MAKE_JOBS_SAFE=	yes
 WARNING_CXXFLAGS?=	-w
 
 INPUT_PLUGINS=	geojson python raster shape

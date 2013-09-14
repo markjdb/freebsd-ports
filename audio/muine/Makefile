@@ -11,6 +11,8 @@ MASTER_SITES=	GNOME
 MAINTAINER=	cy@FreeBSD.org
 COMMENT=	Mono based Gnome audio player
 
+IGNORE=		Fails to run
+
 LIB_DEPENDS=	FLAC:${PORTSDIR}/audio/flac \
 		id3tag.0:${PORTSDIR}/audio/libid3tag \
 		gdbm:${PORTSDIR}/databases/gdbm \
@@ -19,9 +21,8 @@ BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/ndesk-dbus-glib-1.0.pc:${PORTSDIR}
 		${LOCALBASE}/libdata/pkgconfig/taglib-sharp.pc:${PORTSDIR}/audio/taglib-sharp
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USE_GMAKE=	yes
-USES=		gettext shebangfix
-USE_GNOME=	gnomeprefix gnomehack intltool libgnomeui gnomesharp20
+USES=		gettext gmake pathfix shebangfix
+USE_GNOME=	gnomeprefix intltool libgnomeui gnomesharp20
 USE_GSTREAMER=	gconf
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes

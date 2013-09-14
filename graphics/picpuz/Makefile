@@ -1,21 +1,18 @@
-# New ports collection makefile for: graphics/picpuz
-# Date created:		04 Jan 2010
-# Whom:			Stas Timokhin <devel@stasyan.com>
-#
+# Created by: Stas Timokhin <devel@stasyan.com>
 # $FreeBSD$
-#
 
 PORTNAME=	picpuz
 PORTVERSION=	2.1.1
 PORTREVISION=	5
 CATEGORIES=	graphics games
-MASTER_SITES=	http://kornelix.squarespace.com/storage/downloads/
+MASTER_SITES=	http://kornelix.squarespace.com/storage/downloads/ \
+		http://www.stasyan.com/devel/distfiles/
 
 MAINTAINER=	devel@stasyan.com
 COMMENT=	Jigsaw puzzle program
 
-USE_GMAKE=	yes
-USE_GNOME=	gtk20 pkgconfig
+USES=		gmake pkgconfig
+USE_GNOME=	gtk20
 
 ALL_TARGET=	#
 #RUN_DEPENDS+=	xdg-desktop-menu:${PORTSDIR}/devel/xdg-utils

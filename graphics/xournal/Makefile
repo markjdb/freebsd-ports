@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	poppler-glib:${PORTSDIR}/graphics/poppler-glib
 
-MAKE_JOBS_SAFE=	yes
+USES=		pkgconfig
 USE_GNOME=	desktopfileutils libgnomecanvas
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--docdir="${DOCSDIR}"

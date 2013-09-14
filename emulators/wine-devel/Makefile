@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-DISTVERSION=	1.6-rc5
+DISTVERSION=	1.7.1
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	SF/${PORTNAME}/Source \
@@ -19,11 +19,11 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/flex:${PORTSDIR}/textproc/flex
 LIB_DEPENDS=	fontconfig:${PORTSDIR}/x11-fonts/fontconfig \
 		freetype:${PORTSDIR}/print/freetype2 \
 		jpeg:${PORTSDIR}/graphics/jpeg \
-		lcms:${PORTSDIR}/graphics/lcms \
+		lcms2:${PORTSDIR}/graphics/lcms2 \
 		png15:${PORTSDIR}/graphics/png \
 		xml2:${PORTSDIR}/textproc/libxml2
 
-CONFLICTS_INSTALL=	wine-1.4*
+CONFLICTS_INSTALL=	i386-wine-* wine-1.4* wine-1.6*
 
 LATEST_LINK?=	wine-devel
 CPPFLAGS+=	-I${LOCALBASE}/include

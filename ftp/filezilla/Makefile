@@ -21,11 +21,10 @@ LIB_DEPENDS=	gcrypt:${PORTSDIR}/security/libgcrypt \
 		idn:${PORTSDIR}/dns/libidn \
 		tinyxml:${PORTSDIR}/textproc/tinyxml
 
-MAKE_JOBS_SAFE=	yes
 
 INSTALLS_ICONS=	yes
 USE_BZIP2=	yes
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_SQLITE=	3
 USE_WX=		2.8
 WX_CONF_ARGS=	relative

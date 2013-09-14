@@ -16,7 +16,7 @@ LICENSE=	GPLv2
 PLIST_FILES=	bin/sipp
 MAN1=		sipp.1
 
-USE_GMAKE=	yes
+USES=		gmake
 CPP=		${CXX}
 MAKE_ENV+=	CCLINK="${CXX}"
 CPPFLAGS+=	${CXXFLAGS}
@@ -31,7 +31,7 @@ PCAPPLAY_DESC=	RTP play support
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGSL}
-LIB_DEPENDS+=	gsl.16:${PORTSDIR}/math/gsl
+LIB_DEPENDS+=	gsl:${PORTSDIR}/math/gsl
 
 MAKE_ENV+=	EXTRACPPFLAGS=-DHAVE_GSL \
 		EXTRACFLAGS=-DHAVE_GSL \

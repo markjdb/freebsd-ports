@@ -3,7 +3,7 @@
 
 PORTNAME=	lua
 PORTVERSION=	5.1.5
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	lang
 MASTER_SITES=	http://www.lua.org/ftp/ \
 		ftp://ftp.ntua.gr/pub/lang/lua/ \
@@ -22,7 +22,6 @@ LUA_COMPS=	# only define variables
 ALL_TARGET=	freebsd
 USES=		pkgconfig
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 MAKE_ENV=	LUA_SONAME="liblua-${LUA_VER}.so.${LUA_VER_SH}"
 # Overriding __MAKE_CONF makes sure that we don't re-parse
 # /etc/make.conf during do-build, which would jeopardize the build
@@ -33,7 +32,7 @@ MAKE_ENV=	LUA_SONAME="liblua-${LUA_VER}.so.${LUA_VER_SH}"
 MAKE_ARGS=	__MAKE_CONF=${NONEXISTENT}
 # liblua.so requires libm, so make sure it has an explicit dependency
 # so that applications need not second-guess lua's dependencies.
-LDFLAGS+=	-lm
+LDFLAGS+=	-lm -pthread
 
 MAN1=		lua-${LUA_VER}.1 luac-${LUA_VER}.1
 DOCSDIR=	${PREFIX}/share/doc/${LUA_SUBDIR}

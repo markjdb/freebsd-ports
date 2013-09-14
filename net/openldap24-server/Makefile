@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=		openldap
-DISTVERSION=		2.4.35
+DISTVERSION=		2.4.36
 PORTREVISION=		${OPENLDAP_PORTREVISION}
 CATEGORIES=		net databases
 MASTER_SITES=		ftp://ftp.OpenLDAP.org/pub/OpenLDAP/%SUBDIR%/ \
@@ -44,7 +44,6 @@ LICENSE_PERMS=		dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 LATEST_LINK?=		${PKGNAMEPREFIX}openldap24${PKGNAMESUFFIX}
 USE_OPENSSL=		yes
-MAKE_JOBS_SAFE=		yes
 USE_AUTOTOOLS=		libtool
 .if !defined(CLIENT_ONLY)
 USERS=			ldap
@@ -57,7 +56,7 @@ BROKEN=			incompatible OpenLDAP version: ${WANT_OPENLDAP_VER}
 .endif
 
 PORTREVISION_CLIENT=	0
-PORTREVISION_SERVER=	0
+PORTREVISION_SERVER=	1
 OPENLDAP_SHLIB_MAJOR=	8
 
 OPTIONS_DEFINE=	FETCH
@@ -502,6 +501,10 @@ PLIST_SUB+=		SHLIB_MAJOR=${OPENLDAP_SHLIB_MAJOR}
 post-patch:
 	@${REINPLACE_CMD} -e 's,%LOCALSTATEDIR%/run/,${LDAP_RUN_DIR}/,g' \
 		${SED_MODULES} ${WRKSRC}/servers/slapd/slapd.conf
+	@${REINPLACE_CMD} -e 's,^OPT =.*,OPT = ${CFLAGS},g' \
+		-e 's,^CC =.*,CC = ${CC},g' \
+		${SED_MODULES} ${WRKSRC}/contrib/slapd-modules/*/Makefile \
+		${WRKSRC}/contrib/slapd-modules/*/*/Makefile
 .if defined(CONFIGURE_SED)
 	@${REINPLACE_CMD} -E ${CONFIGURE_SED} \
 		${CONFIGURE_WRKSRC}/${CONFIGURE_SCRIPT}

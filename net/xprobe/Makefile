@@ -1,9 +1,5 @@
-# Ports collection makefile for:  xprobe
-# Date created:			  23 Aug 2001
-# Whom:				  Kris Kennaway <kris@FreeBSD.org>
-#
+# Created by: Kris Kennaway <kris@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	xprobe2
 PORTVERSION=	0.3
@@ -15,7 +11,6 @@ COMMENT=	ICMP active OS fingerprint scanner
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	INSTALL=${INSTALL}
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		xprobe2.1
 

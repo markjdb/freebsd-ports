@@ -3,6 +3,7 @@
 
 PORTNAME=	tinker
 PORTVERSION=	6.2.06
+PORTREVISION=	1
 CATEGORIES=	biology
 MASTER_SITES=	http://dasher.wustl.edu/tinker/downloads/
 
@@ -23,7 +24,6 @@ MAKE_ENV=	HAVE_G2C=yes
 MAKEFILE=	${WRKSRC}/make/Makefile
 ALL_TARGET=	all listing
 INSTALL_TARGET=	rename
-MAKE_JOBS_SAFE=	yes
 
 SUB_FILES=	pkg-message
 

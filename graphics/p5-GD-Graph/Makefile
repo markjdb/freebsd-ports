@@ -2,12 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	GD-Graph
-PORTVERSION=	1.44.01
-DISTVERSION=	${PORTVERSION:C/\.(..)$/_\1/}
-PORTREVISION=	5
+PORTVERSION=	1.48
 CATEGORIES=	graphics perl5
 MASTER_SITES=	CPAN
-MASTER_SITE_SUBDIR=	CPAN:BWARFIELD
 PKGNAMEPREFIX=	p5-
 DISTNAME=	GDGraph-${DISTVERSION}
 
@@ -28,4 +25,10 @@ MAN3=		GD::Graph.3 \
 		GD::Graph::colour.3 \
 		GD::Graph::hbars.3
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${PERL_LEVEL} < 501400
+BUILD_DEPENDS+=	p5-ExtUtils-MakeMaker>=6.58:${PORTSDIR}/devel/p5-ExtUtils-MakeMaker
+.endif
+
+.include <bsd.port.post.mk>

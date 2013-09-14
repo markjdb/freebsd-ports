@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libpst
-PORTVERSION=	0.6.60
+PORTVERSION=	0.6.61
 CATEGORIES=	mail converters
 MASTER_SITES=	http://www.five-ten-sg.com/libpst/packages/ \
 		http://fossies.org/unix/privat/
@@ -15,10 +15,9 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	gsf-1:${PORTSDIR}/devel/libgsf
 
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
-USES=		iconv pathfix
+USES=		iconv pathfix gmake pkgconfig
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -liconv
+LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
 CONFIGURE_ARGS+=	--disable-python --enable-libpst-shared
 USE_LDCONFIG=	yes
 

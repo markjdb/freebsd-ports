@@ -23,13 +23,12 @@ LINUX_DESC=	Install Linux binary too (linux-w_scan)
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
 PATCH_STRIP=	-lp1
-USES+=		gettext
+USES+=		gettext iconv
 CPPFLAGS+=	-I"${LOCALBASE}/include"
-LDFLAGS+=	-L"${LOCALBASE}/lib\ -liconv"
+LDFLAGS+=	-L"${LOCALBASE}/lib\ ${ICONV_LIB}"
 PORTDOCS=	COPYING ChangeLog README
 PLIST_FILES=	bin/${PORTNAME}
 MAN1=		w_scan.1
-MAKE_JOBS_SAFE=	yes
 WRKSRC=		${WRKDIR}
 
 .if ${PORT_OPTIONS:MLINUX}

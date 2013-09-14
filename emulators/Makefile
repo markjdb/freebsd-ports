@@ -56,6 +56,7 @@
     SUBDIR += hfs
     SUBDIR += higan
     SUBDIR += hugo
+    SUBDIR += i386-wine
     SUBDIR += i386-wine-devel
     SUBDIR += ia64sim
     SUBDIR += ines
@@ -185,7 +186,6 @@
     SUBDIR += x48
     SUBDIR += xbraitenberg
     SUBDIR += xcpc
-    SUBDIR += xgngeo
     SUBDIR += xhomer
     SUBDIR += xmame
     SUBDIR += xmess

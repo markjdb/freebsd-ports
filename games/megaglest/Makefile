@@ -24,14 +24,13 @@ RUN_DEPENDS=	${DATADIR}/tutorials/2_basic_tutorial/2_basic_tutorial.xml:${PORTSD
 SUB_FILES=	pkg-message
 
 USE_XZ=		yes
-USES=		cmake
+USES=		cmake pkgconfig
 USE_DOS2UNIX=	yes
 USE_GL=		glew gl glu
 USE_LUA=	5.1
 USE_OPENAL=	al alut
 USE_SDL=	yes
 USE_WX=		2.8+
-MAKE_JOBS_SAFE=	yes
 
 CFLAGS+=	-I${LOCALBASE}/include/libpng15
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}

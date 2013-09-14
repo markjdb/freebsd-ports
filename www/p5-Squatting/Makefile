@@ -1,12 +1,8 @@
-# New ports collection makefile for:	www/p5-Squatting
-# Date created:				07 July 2008
-# Whom:					Anton Berezin <tobez@FreeBSD.org>
-#
+# Created by: Anton Berezin <tobez@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Squatting
-PORTVERSION=	0.81
+PORTVERSION=	0.82
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:BEPPU
@@ -28,7 +24,8 @@ COMMON_DEPENDS=	p5-Continuity>=0.991:${PORTSDIR}/www/p5-Continuity \
 BUILD_DEPENDS=	${COMMON_DEPENDS}
 RUN_DEPENDS=	${COMMON_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN1=	squatting.1
 MAN3=	\
@@ -46,7 +43,6 @@ MAN3=	\
 	Squatting::With::Coro::Debug.3 \
 	Squatting::With::Log.3 \
 	Squatting::With::MockRequest.3 \
-	Squatting::With::Mount.3 \
-	Squatting::With::PerHostConfig.3
+	Squatting::With::Mount.3
 
 .include <bsd.port.mk>

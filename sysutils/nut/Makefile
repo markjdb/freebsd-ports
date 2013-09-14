@@ -14,9 +14,8 @@ COMMENT=	Network UPS Tools
 
 USE_AUTOTOOLS=	autoconf
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
-USE_GNOME=	pkgconfig
+USES=		gmake pkgconfig
 
 NUT_USER?=	uucp
 NUT_GROUP?=	uucp
@@ -73,7 +72,7 @@ CONFIGURE_ARGS=	--sysconfdir=${PREFIX}/etc/nut \
 		--with-dev
 
 .if ${PORT_OPTIONS:MCGI}
-LIB_DEPENDS+=	gd.4:${PORTSDIR}/graphics/gd
+LIB_DEPENDS+=	gd:${PORTSDIR}/graphics/gd
 MAN5+=		hosts.conf.5 upsset.conf.5 upsstats.html.5
 MAN8+=		upsset.cgi.8 upsstats.cgi.8 upsimage.cgi.8
 CGIDIR?=	${PREFIX}/www/cgi-bin/${PORTNAME}

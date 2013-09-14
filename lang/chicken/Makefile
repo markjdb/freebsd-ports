@@ -2,14 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	chicken
-PORTVERSION=	4.8.0.3
+PORTVERSION=	4.8.0.4
 CATEGORIES=	lang scheme
 MASTER_SITES=	http://code.call-cc.org/releases/4.8.0/
 
 MAINTAINER=	vmagerya@gmail.com
 COMMENT=	A Scheme-to-C compiler
 
-MAKE_JOBS_SAFE=	yes
 
 USE_GMAKE=	yes
 MAKEFILE=	GNUmakefile

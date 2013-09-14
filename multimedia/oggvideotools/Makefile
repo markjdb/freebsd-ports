@@ -3,6 +3,7 @@
 
 PORTNAME=	oggvideotools
 PORTVERSION=	0.8a
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${DISTNAME}
 
@@ -19,7 +20,6 @@ LIB_DEPENDS=	gd:${PORTSDIR}/graphics/gd \
 USE_SDL=	sdl
 USES=		cmake pkgconfig
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 LDFLAGS+=	-L${LOCALBASE}/lib
 

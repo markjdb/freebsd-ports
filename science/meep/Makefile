@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	meep
-PORTVERSION=	1.1.1
-PORTREVISION=	4
+PORTVERSION=	1.2
 CATEGORIES=	science
 MASTER_SITES=	http://ab-initio.mit.edu/meep/
 
@@ -15,16 +14,15 @@ BUILD_DEPENDS+=	bash:${PORTSDIR}/shells/bash \
 		gsed:${PORTSDIR}/textproc/gsed
 LIB_DEPENDS+=	guile.21:${PORTSDIR}/lang/guile \
 		blas.2:${PORTSDIR}/math/blas \
-		ctl.4:${PORTSDIR}/science/libctl \
-		hdf5.0:${PORTSDIR}/science/hdf5
+		ctl.5:${PORTSDIR}/science/libctl \
+		hdf5.7:${PORTSDIR}/science/hdf5-18
 RUN_DEPENDS+=	harminv:${PORTSDIR}/science/harminv
 
 USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
-USES=		pathfix
 USE_FORTRAN=	yes
-USE_GCC=	4.6+
-USES=		gettext iconv
+USE_GCC=	yes
+USES=		gettext iconv pathfix
 USE_AUTOTOOLS+=	libltdl
 CPPFLAGS+=	-I${LOCALBASE}/include
 LD_LIBRARY_PATH=	-L${LOCALBASE}/lib -L/usr/lib

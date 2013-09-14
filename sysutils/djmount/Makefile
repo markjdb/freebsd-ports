@@ -11,13 +11,11 @@ MAINTAINER=	eric@camachat.org
 COMMENT=	Mount UPnP A/V Media
 
 LIB_DEPENDS=	upnp.9:${PORTSDIR}/devel/upnp
-BUILD_DEPENDS=	iconv:${PORTSDIR}/converters/libiconv
 
 PLIST_FILES=	bin/${PORTNAME}
 GNU_CONFIGURE=	yes
-USES=		fuse
-USE_GNOME=	pkgconfig
-CONFIGURE_ARGS=	--with-libiconv-prefix=${LOCALBASE} \
+USES=		fuse iconv:build pkgconfig
+CONFIGURE_ARGS=	${ICONV_CONFIGURE_ARG} \
 		--with-fuse-prefix=${LOCALBASE} \
 		--with-external-libupnp --with-libupnp-prefix=${LOCALBASE}
 

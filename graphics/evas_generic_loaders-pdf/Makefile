@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pdf
-PORTVERSION=	1.7.7
+PORTVERSION=	1.7.8
 CATEGORIES=	graphics enlightenment
 MASTER_SITES=	http://download.enlightenment.fr/releases/ \
 		LOCAL/gblach/e17/
@@ -16,6 +16,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	poppler:${PORTSDIR}/graphics/poppler
 
+USES=		pkgconfig
 DIST_SUBDIR=	e17
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes

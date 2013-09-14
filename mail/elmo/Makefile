@@ -15,9 +15,9 @@ CONFLICTS=	elmo-devel-[0-9]*
 OPTIONS_DEFINE=	NLS
 
 GNU_CONFIGURE=	yes
-USES=		iconv shebangfix
+USES=		iconv shebangfix perl5
 USE_OPENSSL=	yes
-USE_PERL5_RUN=	yes
+USE_PERL5=	run
 SHEBANG_FILES=	src/elmoconf.pl
 
 LICENSE=	GPLv2
@@ -25,7 +25,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		elmo.1 elmoconf.pl.1
 

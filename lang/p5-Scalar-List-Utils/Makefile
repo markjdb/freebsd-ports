@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Scalar-List-Utils
-PORTVERSION=	1.27
+PORTVERSION=	1.32
 PORTEPOCH=	1
 CATEGORIES=	lang perl5
 MASTER_SITES=	CPAN
@@ -14,7 +14,8 @@ COMMENT=	Perl subroutines that would be nice to have in the perl core
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		List::Util.3 Scalar::Util.3 List::Util::XS.3
 

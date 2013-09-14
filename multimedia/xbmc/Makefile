@@ -2,6 +2,7 @@
 
 PORTNAME=	xbmc
 DISTVERSION=	12.2
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://mirrors.xbmc.org/releases/source/
 
@@ -62,7 +63,6 @@ USE_SDL=	image sdl
 USE_PYTHON=	-2.7
 USE_JAVA=	yes
 JAVA_BUILD=	jre
-MAKE_JOBS_SAFE=	yes
 NOPRECIOUSMAKEVARS=	yes
 INSTALLS_ICONS=	yes
 ONLY_FOR_ARCHS=	i386 amd64

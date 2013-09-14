@@ -18,7 +18,7 @@ EXTRACT_ONLY=	${LLVM_SOURCE}
 MAINTAINER=	brooks@FreeBSD.org
 COMMENT=	C, Objective-C, and C++ compiler
 
-CONFLICTS=	clang-[23]* clang31-*
+CONFLICTS=	clang-3.[012]* clang31-*
 
 CLANG_NAME=	clang-${PORTVERSION}
 CLANG_RELEASE=	${PORTVERSION:C/\.r[0-9]*//}
@@ -42,7 +42,6 @@ USE_GMAKE=	yes
 USE_LDCONFIG=	yes
 USE_PERL5=	yes
 USE_PYTHON=	yes
-MAKE_JOBS_SAFE=	yes
 
 MAKE_ARGS=	CLANG_TBLGEN=${WRKSRC}/${RELTYPE}/bin/clang-tblgen \
 		LLVMIncDir=${LOCALBASE}/include \

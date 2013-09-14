@@ -18,7 +18,7 @@ LICENSE=	GPLv3
 LIB_DEPENDS=	png15:${PORTSDIR}/graphics/png
 
 USE_BZIP2=	yes
-USE_GMAKE=	yes
+USES=		gmake
 USE_GCC=	yes
 GNU_CONFIGURE=	yes
 
@@ -27,7 +27,6 @@ MAN8=		xttpd.8
 
 CPPFLAGS+=	-I../${TCD_DISTNAME} -I${LOCALBASE}/include/libpng15
 LDFLAGS+=	-L../${TCD_DISTNAME}/.libs -L${LOCALBASE}/lib
-MAKE_JOBS_SAFE=	yes
 
 TCD_DISTNAME=	libtcd-2.2.5
 HARM_DISTNAME=	harmonics-dwf-20121224

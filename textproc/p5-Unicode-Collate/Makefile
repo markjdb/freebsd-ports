@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Unicode-Collate
-PORTVERSION=	0.98
+PORTVERSION=	0.99
 CATEGORIES=	textproc converters perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:SADAHIRO
@@ -14,7 +14,8 @@ COMMENT=	Unicode Collation Algorithm
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Unicode::Collate.3 \
 		Unicode::Collate::CJK::Big5.3 \

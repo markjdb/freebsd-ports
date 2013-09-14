@@ -22,15 +22,13 @@ LIB_DEPENDS=	enchant:${PORTSDIR}/textproc/enchant \
 		soup-2.4:${PORTSDIR}/devel/libsoup
 
 USE_XZ=		yes
+USE_PYTHON_BUILD=	yes
 USE_GSTREAMER=	yes
-MAKE_JOBS_SAFE=	yes
 USE_XORG=	xt
-USES=		bison pkgconfig gettext
-USE_GMAKE=	yes
+USES=		bison gmake pkgconfig gettext perl5
 USE_AUTOTOOLS=	libtool
 USE_GNOME=	gtk20 libxslt ltverhack
 USE_SQLITE=	yes
-USE_PERL5=	yes
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ac_cv_path_FLEX="${LOCALBASE}/bin/flex" \
@@ -65,6 +63,12 @@ CONFIGURE_ARGS+=--disable-webgl
 CONFIGURE_ARGS+=--enable-debug
 .else
 CONFIGURE_ARGS+=--disable-debug
+.endif
+
+CCISCLANG!=     ${CC} --version
+
+.if !empty(CCISCLANG:M*clang*)
+CPPFLAGS+=	-Wno-c++11-extensions
 .endif
 
 .include <bsd.port.pre.mk>

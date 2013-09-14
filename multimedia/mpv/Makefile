@@ -18,7 +18,7 @@ BUILD_DEPENDS=	ffmpeg1:${PORTSDIR}/multimedia/ffmpeg1 \
 RUN_DEPENDS=	ffmpeg1:${PORTSDIR}/multimedia/ffmpeg1
 
 USE_XZ=		yes
-USES=		gmake iconv
+USES=		gmake iconv pkgconfig
 USE_XORG=	x11 xv xxf86vm
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--prefix=${PREFIX} \
@@ -47,7 +47,6 @@ IN_DESC=	Input
 VO_DESC=	Video Output
 AO_DESC=	Audio Output
 
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		mpv.1
 MANCOMPRESSED=	no

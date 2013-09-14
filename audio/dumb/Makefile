@@ -10,7 +10,7 @@ MASTER_SITES=	SF
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	IT, XM, S3M, and MOD player library
 
-USE_GMAKE=	yes
+USES=		gmake
 
 OPTIONS_DEFINE=	ALLEGRO
 ALLEGRO_DESC=	Enable allegro support
@@ -21,6 +21,7 @@ ALLEGRO_DESC=	Enable allegro support
 LIB_DEPENDS+=	alleg:${PORTSDIR}/devel/allegro
 PLIST_SUB+=	ALLEGRO=""
 MAKE_ARGS=	_PORT_ALLEGRO_CFLAGS="`allegro-config --cflags`"
+MAKE_ARGS+=	LINK_ALLEGRO="-lm -L${LOCALBASE}/lib -lalleg"
 PKGNAMESUFFIX=	-allegro
 CONFLICTS=	dumb-[0-9]*
 .else

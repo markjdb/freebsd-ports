@@ -3,7 +3,7 @@
 
 PORTNAME=	sarg
 PORTVERSION=	2.3.6
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	www
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -18,10 +18,9 @@ OPTIONS_DEFAULT=GD PHP NLS PCRE LDAP ICONV
 
 PHP_DESC=	Install PHP for reporting generating
 
+USES=		gmake
 USE_AUTOTOOLS=	autoconf aclocal
-USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ARGS=	CPPFLAGS=-I${LOCALBASE}/include \
 		--sysconfdir="${ETCDIR}" \
@@ -30,7 +29,7 @@ CONFIGURE_ARGS=	CPPFLAGS=-I${LOCALBASE}/include \
 
 MAN1=		sarg.1
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}
 PLIST_SUB+=	NLS=""
@@ -73,7 +72,7 @@ CONFIGURE_ARGS+=--without-ldap
 .if ${PORT_OPTIONS:MICONV}
 CONFIGURE_ARGS+=--with-iconv
 USES+=	iconv
-EXTRA_LDFLAGS+=	-liconv
+EXTRA_LDFLAGS+=	${ICONV_LIB}
 .else
 CONFIGURE_ARGS+=--without-iconv
 .endif
@@ -93,4 +92,4 @@ post-patch:
 pre-configure:
 	@(cd ${WRKSRC} && ${AUTORECONF})
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

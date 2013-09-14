@@ -10,11 +10,9 @@ MASTER_SITES=	GNOME
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	C++ wrapper for ATK API library
 
-USES=		pathfix pkgconfig
+USES=		gmake pathfix pkgconfig
 USE_XZ=		yes
 USE_LDCONFIG=	yes
-USE_GMAKE=	yes
-MAKE_JOBS_SAFE=	yes
 USE_GNOME=	atk glibmm
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include

@@ -1,9 +1,5 @@
-# New ports collection makefile for: 	gjiten
-# Date created: 			2012-09-03
-# Whom: 				Stephane Lapie <stephane.lapie@darkbsd.org>
-#
+# Created by: Stephane Lapie <stephane.lapie@darkbsd.org>
 # $FreeBSD$
-#
 
 PORTNAME=	gjiten
 PORTVERSION=	2.6
@@ -18,7 +14,7 @@ UTF8_DESC=	Use UTF-8 edict dictionaries
 KANJIPAD_DESC=	Use Kanjipad
 
 USE_GNOME=	gtk20 gconf2 libglade libgnomeui
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 INSTALLS_OMF=	yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -46,7 +42,7 @@ RUN_DEPENDS+=	${EDICT_FILE}:${PORTSDIR}/japanese/edict-utf-8
 EDICT_DIR=	${LOCALBASE}/share/dict/edict
 EDICT_FILE=	${EDICT_DIR}/edict
 RUN_DEPENDS+=	${EDICT_FILE}:${PORTSDIR}/japanese/edict
-BUILD_DEPENDS+=	${LOCALBASE}/bin/iconv:${PORTSDIR}/converters/libiconv
+USES+=		iconv:build
 .endif
 
 DICTIONARIES=	kanjidic edict compdic
@@ -72,7 +68,7 @@ post-install:
 .endfor
 .else
 .for f in ${DICTIONARIES}
-	${LOCALBASE}/bin/iconv -c -f EUC-JP -t UTF-8 ${EDICT_DIR}/${f} > ${GJITEN_DICS}/${f}
+	${ICONV_CMD} -c -f EUC-JP -t UTF-8 ${EDICT_DIR}/${f} > ${GJITEN_DICS}/${f}
 .endfor
 .endif
 	-@update-desktop-database

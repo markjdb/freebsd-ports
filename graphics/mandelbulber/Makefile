@@ -13,12 +13,11 @@ COMMENT=	3D Mandelbrot fractal renderer
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_GNOME=	glib20 gtk20
 BUILD_WRKSRC=	${WRKSRC}/makefiles
 MAKEFILE=	makefile
 CXXFLAGS+=	-DSHARED_DIR=\\\"${DATADIR}\\\"
-MAKE_JOBS_SAFE=	yes
 
 PLIST_FILES=	bin/${PORTNAME} share/applications/${PORTNAME}.desktop
 PLIST_DIRSTRY=	share/applications

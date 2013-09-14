@@ -3,7 +3,7 @@
 
 PORTNAME=	nip2
 PORTVERSION=	7.26.3
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	graphics
 MASTER_SITES=	http://www.vips.ecs.soton.ac.uk/supported/${PORTVERSION:R}/
 
@@ -14,12 +14,10 @@ LIB_DEPENDS=	vips.3[0-9]:${PORTSDIR}/graphics/vips	\
 		gsl:${PORTSDIR}/math/gsl	\
 		xml2:${PORTSDIR}/textproc/libxml2
 
-USES=		bison
-USE_GMAKE=	yes
-USE_GNOME=	gnomemimedata glib20 pkgconfig gtk20
+USES=		bison gmake pkgconfig
+USE_GNOME=	gnomemimedata glib20 gtk20
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--mandir=${PREFIX}/man
-MAKE_JOBS_SAFE=	yes
 # This port has no man-pages. It installs a number of HTML files,
 # which are available through the GUI's Help. For this reason, they
 # are always installed, regardless of the NOPORTDOCS setting.

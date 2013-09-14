@@ -3,7 +3,7 @@
 #    $MCom: ports/multimedia/gstreamer1-libav/Makefile,v 1.4 2013/01/15 21:43:45 kwm Exp $
 
 PORTNAME=	gstreamer1-libav
-PORTVERSION=	1.0.7
+PORTVERSION=	1.0.10
 CATEGORIES=	multimedia
 MASTER_SITES=	http://gstreamer.freedesktop.org/src/gst-libav/
 DISTNAME=	gst-libav-${PORTVERSION}
@@ -15,7 +15,7 @@ LICENSE=	GPLv2
 
 BUILD_DEPENDS=	yasm:${PORTSDIR}/devel/yasm \
 		orc>=0.4.16:${PORTSDIR}/devel/orc
-LIB_DEPENDS=	orc-0.4:${PORTSDIR}/devel/orc
+LIB_DEPENDS=	liborc-0.4.so:${PORTSDIR}/devel/orc
 
 USE_XZ=		yes
 USE_GMAKE=	yes
@@ -28,11 +28,8 @@ LIBAV_CONFIG=	--cc=${CC} \
 		--enable-pic
 LDFLAGS+=	-Wl,-Bsymbolic
 CFLAGS+=	-fno-force-addr
-#CONFIGURE_ENV=	PKG_CONFIG=${PKG_CONFIG}
 
 PLIST_SUB=	VERSION="${GST1_VERSION}"
-
-#PKG_CONFIG?="${LOCALBASE}/bin/pkg-config"
 
 # sse hardware vector support
 .if defined(MACHINE_CPU) && (${MACHINE_CPU:Msse} == "sse" || ${MACHINE_CPU:Mamd64} == "amd64")

@@ -3,6 +3,7 @@
 
 PORTNAME=	publican
 PORTVERSION=	2.8
+PORTREVISION=	1
 CATEGORIES=	textproc perl5
 MASTER_SITES=	http://pkgs.fedoraproject.org/repo/pkgs/publican/Publican-${PORTVERSION}.tar.gz/1ddcf8e93e96d0e49868f21df41b53a4/
 DISTNAME=	Publican-${PORTVERSION}
@@ -11,7 +12,8 @@ MAINTAINER=	doceng@FreeBSD.org
 COMMENT=	Single source publishing tool based on DocBook XML.
 
 USE_JAVA=	yes
-PERL_MODBUILD=	yes
+USES=		perl5
+USE_PERL5=	modbuild
 
 MAKE_JOBS_UNSAFE=	yes
 

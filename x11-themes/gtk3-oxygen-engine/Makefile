@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	oxygen
-PORTVERSION=	1.1.4
+PORTVERSION=	1.2.0
 CATEGORIES=	x11-themes
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR=	stable/${PORTNAME}-gtk3/${PORTVERSION}/src/
@@ -21,14 +21,5 @@ LIB_DEPENDS=	cairo:${PORTSDIR}/graphics/cairo \
 USE_BZIP2=	yes
 USE_GNOME=	gtk30
 USES=		cmake:outsource pkgconfig
-MAKE_JOBS_SAFE=	yes
 
-.include <bsd.port.pre.mk>
-
-# FreeBSD SVN r205606 was only MFC'ed to 8.1+, so we need to match
-# the old function signature on previous versions.
-.if ${OSVERSION} < 801000
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-demo-oxygengtkdeco_main.cpp
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

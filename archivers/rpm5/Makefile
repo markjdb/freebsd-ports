@@ -32,9 +32,9 @@ USE_AUTOTOOLS=	libtool
 LIBTOOLFILES=	configure db3/configure db/dist/configure \
 		file/configure xar/configure
 CONFIGURE_ARGS=	--without-js
-USE_GMAKE=	yes
+USES=		gmake perl5
+USE_PERL5=	build
 USE_LDCONFIG=	yes
-USE_PERL5_BUILD=yes
 LATEST_LINK=	rpm5
 CONFLICTS=	rpm-3.* rpm-4.*
 
@@ -55,7 +55,7 @@ CONFIGURE_ARGS+=--without-lua \
 .if ${PORT_OPTIONS:MPERL}
 CONFIGURE_ARGS+=--with-perl
 CONFIGURE_ENV+=	__PERL=${PERL}
-USE_PERL5=	yes
+USE_PERL5+=	run
 PLIST_SUB+=	PERL=""
 .else
 CONFIGURE_ARGS+=--without-perl

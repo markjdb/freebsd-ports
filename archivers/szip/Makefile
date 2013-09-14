@@ -12,8 +12,7 @@ DISTNAME=	sz${PORTVERSION:S/.//}_src
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast compression utility
 
-USE_GMAKE=	yes
-MAKE_JOBS_SAFE=	yes
+USES=		gmake
 
 WRKSRC=		${WRKDIR}
 

@@ -93,7 +93,6 @@
     SUBDIR += dcdflib
     SUBDIR += diehard
     SUBDIR += dieharder
-    SUBDIR += dislin
     SUBDIR += djbfft
     SUBDIR += drgeo
     SUBDIR += dynare
@@ -141,6 +140,7 @@
     SUBDIR += ggobi
     SUBDIR += giacxcas
     SUBDIR += givaro
+    SUBDIR += gkmap
     SUBDIR += glgraph
     SUBDIR += glm
     SUBDIR += glpk
@@ -221,7 +221,6 @@
     SUBDIR += libflame
     SUBDIR += libjbigi
     SUBDIR += liblbfgs
-    SUBDIR += libmath++
     SUBDIR += libmissing
     SUBDIR += libneural
     SUBDIR += libocas
@@ -238,7 +237,6 @@
     SUBDIR += ltl
     SUBDIR += ltl2ba
     SUBDIR += lybniz
-    SUBDIR += matharray
     SUBDIR += mathomatic
     SUBDIR += matio
     SUBDIR += matlab-R2012a-installer
@@ -290,7 +288,6 @@
     SUBDIR += octave-forge-dicom
     SUBDIR += octave-forge-econometrics
     SUBDIR += octave-forge-engine
-    SUBDIR += octave-forge-es
     SUBDIR += octave-forge-fenv
     SUBDIR += octave-forge-financial
     SUBDIR += octave-forge-fits
@@ -309,7 +306,6 @@
     SUBDIR += octave-forge-integration
     SUBDIR += octave-forge-io
     SUBDIR += octave-forge-irsa
-    SUBDIR += octave-forge-java
     SUBDIR += octave-forge-linear-algebra
     SUBDIR += octave-forge-lssa
     SUBDIR += octave-forge-mapping
@@ -320,6 +316,7 @@
     SUBDIR += octave-forge-multicore
     SUBDIR += octave-forge-nan
     SUBDIR += octave-forge-ncarray
+    SUBDIR += octave-forge-netcdf
     SUBDIR += octave-forge-nlwing2
     SUBDIR += octave-forge-nnet
     SUBDIR += octave-forge-nurbs
@@ -609,6 +606,7 @@
     SUBDIR += sdpa-gmp
     SUBDIR += sdpara
     SUBDIR += sedumi
+    SUBDIR += sfft
     SUBDIR += simd-viterbi
     SUBDIR += slatec
     SUBDIR += slgrace

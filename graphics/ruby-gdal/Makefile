@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gdal
-PORTVERSION=	1.9.2
+PORTVERSION=	1.10.1
 CATEGORIES=	graphics ruby
 MASTER_SITES=	http://download.osgeo.org/gdal/ \
 		ftp://ftp.remotesensing.org/pub/gdal/ \
@@ -15,14 +15,14 @@ COMMENT=	Ruby binding for GDAL
 LICENSE=	MIT
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/swig2.0:${PORTSDIR}/devel/swig20
-LIB_DEPENDS=	gdal:${PORTSDIR}/graphics/gdal
+LIB_DEPENDS=	libgdal.so:${PORTSDIR}/graphics/gdal
 
 LIBTOOLFILES=	# empty
 MAKE_ARGS=	USER_DEFS=-fPIC
 MAKEFILE=	GNUmakefile
 USE_AUTOTOOLS=	libtool
-USE_GMAKE=	yes
 USE_RUBY=	yes
+USES=		gmake
 WRKSRC=		${WRKDIR}/${DISTNAME}/swig/ruby
 
 post-patch:

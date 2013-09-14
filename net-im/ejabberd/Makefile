@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ejabberd
-PORTVERSION=	2.1.11
+PORTVERSION=	2.1.13
 CATEGORIES=	net-im
 MASTER_SITES=	http://www.process-one.net/downloads/ejabberd/${PORTVERSION}/
 EXTRACT_SUFX=	.tgz
@@ -21,8 +21,7 @@ USERS=		ejabberd
 GROUPS=		${USERS}
 
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
-USES=		iconv
+USES=		iconv gmake pkgconfig
 USE_RC_SUBR=	${PORTNAME}
 NOPRECIOUSMAKEVARS=	yes
 

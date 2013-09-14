@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Image-Base
-# Date created:		2011-09-23
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Image-Base
 PORTVERSION=	1.17
@@ -16,7 +12,8 @@ COMMENT=	Base class for loading, manipulating, and saving images
 
 LICENSE=	LGPL3
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Image::Base.3
 

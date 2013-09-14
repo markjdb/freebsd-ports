@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lftp
-PORTVERSION=	4.4.7
+PORTVERSION=	4.4.9
 CATEGORIES=	ftp ipv6
 MASTER_SITES=	http://ftp.yars.free.net/pub/source/lftp/ \
 		http://ftp.yars.free.net/pub/source/lftp/old/ \
@@ -28,7 +28,6 @@ GNU_CONFIGURE=	yes
 # but is missing the required POSIX_FADV_* macros
 CONFIGURE_ENV=	i_cv_posix_fallocate_works=no \
 		LIBS="-L${LOCALBASE}/lib"
-MAKE_JOBS_SAFE=	yes
 
 PORTDOCS=	AUTHORS BUGS ChangeLog FAQ FEATURES INSTALL \
 		MIRRORS NEWS README README.debug-levels README.modules \

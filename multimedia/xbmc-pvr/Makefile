@@ -3,7 +3,7 @@
 
 PORTNAME=	xbmc
 PORTVERSION=	70
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	multimedia
 MASTER_SITES=	LOCAL/nox
 PKGNAMESUFFIX=	-pvr-ppa-odk
@@ -51,8 +51,7 @@ LIB_DEPENDS=	asound:${PORTSDIR}/audio/alsa-lib	\
 		ass:${PORTSDIR}/multimedia/libass \
 		wavpack:${PORTSDIR}/audio/wavpack \
 		yajl:${PORTSDIR}/devel/yajl \
-		plist:${PORTSDIR}/devel/libplist \
-		iconv:${PORTSDIR}/converters/libiconv
+		plist:${PORTSDIR}/devel/libplist
 
 RUN_DEPENDS=	${LOCALBASE}/lib/alsa-lib/libasound_module_pcm_oss.so:${PORTSDIR}/audio/alsa-plugins \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
@@ -63,7 +62,7 @@ RUN_DEPENDS=	${LOCALBASE}/lib/alsa-lib/libasound_module_pcm_oss.so:${PORTSDIR}/a
 GITHASH=	9023e39
 WRKSRC=		${WRKDIR}/opdenkamp-${PORTNAME}-${GITHASH}
 FETCH_ARGS=	-Fpr
-USES=		pkgconfig
+USES=		iconv pkgconfig
 USE_GMAKE=	yes
 USE_AUTOTOOLS=	autoconf libtool automake libltdl
 GNU_CONFIGURE=	yes
@@ -72,7 +71,6 @@ USE_GL=		glu
 USE_SDL=	image mixer sdl
 USE_MYSQL=	yes
 USE_PYTHON=	2.5-2.7
-MAKE_JOBS_SAFE=	yes
 NOPRECIOUSMAKEVARS=	yes
 INSTALLS_ICONS=	yes
 ONLY_FOR_ARCHS=	i386 amd64

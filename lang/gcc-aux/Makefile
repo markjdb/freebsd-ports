@@ -24,15 +24,15 @@ FULL_GNATGCC=		NOT_SET
 OS_LABEL4VERS=		[${OPSYS}]
 GARCH=			${ARCH:S/amd64/x86_64/}
 
-OPTIONS_DEFINE= 	ADA CXX FORT OBJC STATIC TESTSUITE NLS
+OPTIONS_DEFINE=	ADA CXX FORT OBJC STATIC TESTSUITE NLS
 OPTIONS_DEFAULT=	ADA CXX FORT OBJC
 NO_OPTIONS_SORT=	yes
 
 ADA_DESC=		Build Ada language
 CXX_DESC=		Build C++ language
 FORT_DESC=		Build Fortran language
-OBJC_DESC=      	Build Objective-C language
-STATIC_DESC=    	Build with no shared libraries other than libc
+OBJC_DESC=		Build Objective-C language
+STATIC_DESC=	Build with no shared libraries other than libc
 TESTSUITE_DESC=		Activate test support
 
 USES+=		perl5
@@ -197,7 +197,7 @@ ADA_CONFIG_ARGS+=	--with-system-zlib
 ADA_CONFIG_ARGS+=	--with-gmp=${PREFIX}
 ADA_CONFIG_ARGS+=	--with-mpfr=${PREFIX}
 ADA_CONFIG_ARGS+=	--with-mpc=${PREFIX}
-ADA_CONFIG_ARGS+=	--with-libiconv-prefix=${PREFIX}
+ADA_CONFIG_ARGS+=	${ICONV_CONFIGURE_ARG}
 ADA_CONFIG_ARGS+=	--enable-shared
 ADA_CONFIG_ARGS+=	--enable-threads=posix
 ADA_CONFIG_ARGS+=	--disable-bootstrap

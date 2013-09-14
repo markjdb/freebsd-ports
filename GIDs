@@ -90,6 +90,7 @@ agk:*:172:
 polipo:*:173:
 flowtools:*:174:
 twms:*:175:
+gdnsd:*:179:
 rt:*:180:
 nagios:*:181:
 noc:*:182:
@@ -258,5 +259,8 @@ ossec:*:966:
 kippo:*:969:
 colord:*:970:
 shibd:*:971:
+plex:*:972:
+boinc:*:973:
+radicale:*:974:
 nogroup:*:65533:
 nobody:*:65534:

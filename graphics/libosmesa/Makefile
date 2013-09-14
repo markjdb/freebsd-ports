@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	libosmesa
-PORTVERSION=	9.1.5
+PORTVERSION=	9.2.0
 CATEGORIES=	graphics
-MASTER_SITES=	ftp://ftp.freedesktop.org/pub/mesa/${PORTVERSION}/
+MASTER_SITES=	ftp://ftp.freedesktop.org/pub/mesa/${PORTVERSION:R}/
 DISTNAME=	MesaLib-${PORTVERSION}
 
 MAINTAINER=	gahr@FreeBSD.org
@@ -45,7 +45,7 @@ CC=	/usr/bin/clang
 CXX=	/usr/bin/clang++
 CPP=	/usr/bin/clang-cpp
 .else
-USE_GCC=4.6+
+USE_GCC=yes
 .endif
 .endif
 

@@ -26,7 +26,6 @@
     SUBDIR += bible_names-fpw
     SUBDIR += bookview
     SUBDIR += bugzilla
-    SUBDIR += bugzilla3
     SUBDIR += bugzilla42
     SUBDIR += bugzilla44
     SUBDIR += calligra-l10n
@@ -44,7 +43,6 @@
     SUBDIR += dbskkd-cdb
     SUBDIR += ddskk
     SUBDIR += devil-fpw
-    SUBDIR += dvi2dvi
     SUBDIR += dvi2tty
     SUBDIR += dvipsk
     SUBDIR += e2ps
@@ -316,8 +314,6 @@
     SUBDIR += tegaki-recognize
     SUBDIR += tegaki-zinnia-japanese
     SUBDIR += tex-ptex
-    SUBDIR += texfamily
-    SUBDIR += texfamily-vfn2a
     SUBDIR += texinfo
     SUBDIR += tgif
     SUBDIR += tiarra

@@ -1,10 +1,6 @@
-# New ports collection makefile for:	gnomespell
-# Date created:				29 December 2001
-# Whom:					Maxim Sobolev <sobomax@FreeBSD.org>
-#
+# Created by: Maxim Sobolev <sobomax@FreeBSD.org>
 # $FreeBSD$
 #   $MCom: ports/textproc/gnome-spell/Makefile,v 1.13 2007/10/15 17:17:18 mezz Exp $
-#
 
 PORTNAME=	gnome-spell
 PORTVERSION=	1.0.8
@@ -19,10 +15,8 @@ COMMENT=	A GNOME/Bonobo component for spell checking
 LIB_DEPENDS=	aspell.16:${PORTSDIR}/textproc/aspell
 
 USE_BZIP2=	yes
-USE_PERL5=	yes
-USE_GMAKE=	yes
 USE_GNOME=	gnomeprefix gnomehack intlhack libgnomeui
-USES=		gettext
+USES=		gettext gmake pkgconfig perl5
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

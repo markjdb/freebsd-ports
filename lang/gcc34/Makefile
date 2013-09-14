@@ -22,7 +22,6 @@ USES=		bison iconv
 USE_BZIP2=	yes
 USE_GMAKE=	yes
 USE_PERL5_BUILD=yes
-MAKE_JOBS_SAFE=	yes
 
 PATCH_WRKSRC=	${SRCDIR}
 CONFIGURE_SCRIPT=	../${SRCDIR:C/${WRKDIR}//}/configure
@@ -36,9 +35,9 @@ BROKEN=		Does not compile on FreeBSD 10.0 and later
 .endif
 
 .if ${ARCH} == "amd64"
-CONFIGURE_TARGET=	x86_64-portbld-freebsd${OSREL}
+CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:L}${OSREL}
 .else
-CONFIGURE_TARGET=	${ARCH}-portbld-freebsd${OSREL}
+CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:L}${OSREL}
 .endif
 
 SRCDIR=		${WRKDIR}/gcc-${VERSIONSTRING}
@@ -47,7 +46,7 @@ TARGLIB=	${PREFIX}/lib/gcc/${CONFIGURE_TARGET}/${PORTVERSION}
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--disable-nls \
 		--with-system-zlib \
-		--with-libiconv-prefix=${LOCALBASE} \
+		${ICONV_CONFIGURE_ARG} \
 		--program-suffix=${SUFFIX} \
 		--libdir=${TARGLIB} \
 		--with-gxx-include-dir=${TARGLIB}/include/c++/

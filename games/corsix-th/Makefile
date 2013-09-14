@@ -14,12 +14,11 @@ COMMENT=	Open source clone of Theme Hospital
 
 LICENSE=	MIT
 
-LIB_DEPENDS=	freetype:${PORTSDIR}/print/freetype2
+LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2
 
-USES=		cmake
+USES=		cmake pkgconfig
 USE_LUA=	yes
 USE_SDL=	mixer
-MAKE_JOBS_SAFE=	yes
 USE_DOS2UNIX=	CMake/FindFFmpeg.cmake \
 		CorsixTH/CMakeLists.txt
 
@@ -39,7 +38,7 @@ CC=		/usr/bin/clang
 CPP=		/usr/bin/clang-cpp
 CXX=		/usr/bin/clang++
 .else
-USE_GCC=	4.6+
+USE_GCC=	yes
 .endif
 .endif
 .else

@@ -24,11 +24,10 @@ CONFIGURE_ENV=	OPENSSL_CFLAGS=-I${OPENSSLINC} OPENSSL_LIBS="-L${OPENSSLLIB} -lss
 		AZLIB_CFLAGS=-I${INCLUDEDIR} ZLIB_LIBS="-L${LIBDIR} -lz" \
 		ac_cv_path_RST2HTML=no
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 USE_GNOME=	libxml2
 USE_OPENSSL=	yes
 USE_XZ=		yes
-USES=		pathfix
+USES=		pathfix pkgconfig
 
 MAN1=		aria2c.1
 MANLANG=	"" pt ru

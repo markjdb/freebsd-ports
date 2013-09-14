@@ -13,12 +13,11 @@ COMMENT=	An authentication module for the Apache 2 webserver with OpenID
 LIB_DEPENDS=	opkele:${PORTSDIR}/devel/libopkele \
 		sqlite3:${PORTSDIR}/databases/sqlite3
 
-MAKE_JOBS_SAFE=	yes
 
 PLIST_FILES=	${APACHEMODDIR}/mod_auth_openid.so
 
 USE_APACHE=	22
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-pcre=${LOCALBASE}
 

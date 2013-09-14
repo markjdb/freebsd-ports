@@ -3,6 +3,7 @@
 
 PORTNAME=	eb
 PORTVERSION=	4.4.3
+PORTREVISION=	1
 CATEGORIES=	japanese
 MASTER_SITES=	ftp://ftp.sra.co.jp/pub/misc/eb/ \
 		ftp://ftp.sra.co.jp/pub/misc/eb/old/eb-${PORTVERSION:C/^([0-9]+)\.([0-9]+).*/\1.\2/}/
@@ -65,8 +66,7 @@ PORTDOCS=	eb-01.html eb-02.html eb-03.html eb-04.html eb-05.html eb-06.html \
 
 USE_AUTOTOOLS=	libtool
 USE_BZIP2=	yes
-USES=		gettext
-USE_PERL5=	yes
+USES=		perl5
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--with-pkgdocdir=${DOCSDIR}
@@ -78,14 +78,15 @@ APPENDIXDIR=	${DATADIR}/appendix
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}
-USES+=		gettext
+USES+=		gettext iconv
 CONFIGURE_ARGS+=	--enable-nls \
 		--with-gettext-includes=${LOCALBASE}/include \
 		--with-gettext-libraries=${LOCALBASE}/lib \
-		--with-iconv-includes=${LOCALBASE}/include \
-		--with-iconv-libraries=${LOCALBASE}/lib
+		--with-iconv-includes=${ICONV_PREFIX}/include \
+		--with-iconv-libraries=${ICONV_PREFIX}/lib
 PLIST_SUB=	NLS=""
 .else
+CONFIGURE_ARGS+=	--disable-nls
 PLIST_SUB=	NLS="@comment "
 .endif
 

@@ -1,9 +1,5 @@
-# New ports collection makefile for:   cmigemo-dict
-# Date created:        22 August 2011
-# Whom:                MANTANI Nobutaka <nobutaka@FreeBSD.org>
-#
+# Created by: MANTANI Nobutaka <nobutaka@FreeBSD.org>
 # $FreeBSD$
-#
 
 CATEGORIES=	japanese
 MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE} \
@@ -22,7 +18,8 @@ LICENSE=	GPLv2
 MASTERDIR=	${.CURDIR}/../../japanese/cmigemo
 PKGDIR=		${.CURDIR}
 
-USE_PERL5=	yes
+USES=		perl5
+USE_PERL5=	patch build run
 
 ALL_TARGET=	gcc-dict
 INSTALL_TARGET=	gcc-install-dict

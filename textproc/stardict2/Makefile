@@ -14,11 +14,9 @@ COMMENT=	Cross-platform and international dictionary written in Gtk2
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	LIBS="-L${LOCALBASE}/lib"
 CPPFLAGS+=	-I${LOCALBASE}/include
-USE_GMAKE=	yes
 USE_BZIP2=	yes
 USE_GNOME=	gnomehack gnomeprefix
-USES=		gettext
-MAKE_JOBS_SAFE=	yes
+USES=		gettext gmake pkgconfig
 LATEST_LINK=	stardict2
 
 OPTIONS_DEFINE=	GNOME

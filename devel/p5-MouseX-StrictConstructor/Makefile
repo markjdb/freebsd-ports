@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-MouseX-StrictConstructor
-# Date created:		2011-05-23
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	MouseX-StrictConstructor
 PORTVERSION=	0.02
@@ -16,9 +12,10 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Make your object constructors blow up on unknown attributes
 
 BUILD_DEPENDS=	p5-Mouse>=0.62:${PORTSDIR}/devel/p5-Mouse
-RUN_DEPENDS=	p5-Mouse>=0.62:${PORTSDIR}/devel/p5-Mouse
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		MouseX::StrictConstructor.3
 

@@ -27,7 +27,6 @@
     SUBDIR += bricons
     SUBDIR += brightside
     SUBDIR += cl-clx
-    SUBDIR += cl-clx-sbcl
     SUBDIR += compositeproto
     SUBDIR += damageproto
     SUBDIR += decurs
@@ -72,7 +71,6 @@
     SUBDIR += gdesklets-tasklist
     SUBDIR += gdkxft
     SUBDIR += gdm
-    SUBDIR += ggiterm
     SUBDIR += glproto
     SUBDIR += gmessage
     SUBDIR += gmrun
@@ -184,6 +182,7 @@
     SUBDIR += libxdg-basedir
     SUBDIR += libxfce4menu
     SUBDIR += libxfce4util
+    SUBDIR += libxkbcommon
     SUBDIR += libxkbfile
     SUBDIR += libxkbui
     SUBDIR += libxklavier
@@ -321,6 +320,7 @@
     SUBDIR += xcb
     SUBDIR += xcb-proto
     SUBDIR += xcb-util
+    SUBDIR += xcb-util-cursor
     SUBDIR += xcb-util-image
     SUBDIR += xcb-util-keysyms
     SUBDIR += xcb-util-renderutil
@@ -366,6 +366,7 @@
     SUBDIR += xfce4-taskmanager
     SUBDIR += xfce4-terminal
     SUBDIR += xfce4-verve-plugin
+    SUBDIR += xfce4-whiskermenu-plugin
     SUBDIR += xfce4-wmdock-plugin
     SUBDIR += xfce4-xfapplet-plugin
     SUBDIR += xfd

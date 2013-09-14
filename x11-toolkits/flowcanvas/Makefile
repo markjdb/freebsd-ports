@@ -18,10 +18,10 @@ LIB_DEPENDS=	boost_date_time:${PORTSDIR}/devel/boost-libs \
 		gnomecanvasmm-2.6:${PORTSDIR}/graphics/libgnomecanvasmm26 \
 		gtkmm-2.4:${PORTSDIR}/x11-toolkits/gtkmm24
 
+USES=		pkgconfig
 USE_BZIP2=	yes
 USE_PYTHON_BUILD=yes
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 CFLAGS+=	-I${LOCALBASE}/include
 

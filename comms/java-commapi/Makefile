@@ -1,7 +1,5 @@
 # Created by: Ari Suutari <ari.suutari@syncrontech.com>
-#
 # $FreeBSD$
-#
 
 PORTNAME=	java-commapi
 PORTVERSION=	2.0.3
@@ -33,7 +31,7 @@ PLIST_FILES+=	%%JAVA_HOME%%/jre/lib/ext/comm.jar
 
 .include <bsd.port.pre.mk>
 
-.if !exists(${DISTPATH}) && !defined(PACKAGE_BUILDING)
+.if !exists(${DISTPATH})
 IGNORE=You must manually fetch ${DISTDESCR} (${DISTFILE}) from ${DOWNLOAD_URL}, place it in ${DISTDIR} and then run make again
 .endif
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	String-ToIdentifier-EN
-PORTVERSION=	0.10
+PORTVERSION=	0.11
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -20,7 +20,8 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-Test-Pod>=1.14:${PORTSDIR}/devel/p5-Test-Pod \
 		p5-Test-Pod-Coverage>=1.04:${PORTSDIR}/devel/p5-Test-Pod-Coverage
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		String::ToIdentifier::EN.3 \
 		String::ToIdentifier::EN::Unicode.3

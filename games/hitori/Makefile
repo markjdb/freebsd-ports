@@ -22,9 +22,8 @@ LIB_DEPENDS=	cairo:${PORTSDIR}/graphics/cairo
 
 USE_XZ=		yes
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_GNOME=	glib20 gtk30
-MAKE_JOBS_SAFE=	yes
 INSTALLS_ICONS=	yes
 
 PORTDOCS=	AUTHORS ChangeLog MAINTAINERS NEWS README

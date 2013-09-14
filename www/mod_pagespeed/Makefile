@@ -24,12 +24,11 @@ LIB_DEPENDS=	png15:${PORTSDIR}/graphics/png \
 		opencv_legacy:${PORTSDIR}/graphics/opencv \
 		execinfo:${PORTSDIR}/devel/libexecinfo
 
+USES=		gmake pkgconfig
 USE_XZ=		yes
 USE_BINUTILS=	yes
 USE_APACHE=	22
 USE_PYTHON=	2.6+
-USE_GMAKE=	yes
-MAKE_JOBS_SAFE=	yes
 
 # debugging
 #MAKE_ENV+=     V=1
@@ -61,7 +60,7 @@ GYP_DEFINES+=	\
 .include <bsd.port.pre.mk>
 
 # testing
-#USE_GCC=	4.6+
+#USE_GCC=	yes
 #.if ${OSVERSION} > 1000000
 #CC=		clang
 #CXX=		clang++

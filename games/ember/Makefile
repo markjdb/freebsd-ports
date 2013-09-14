@@ -36,10 +36,9 @@ USE_LDCONFIG=	YES
 USE_LUA=	5.1
 LUA_COMPS=	toluaxx
 USE_OPENAL=	al alut
-USES=	pathfix
+USES=	pathfix pkgconfig
 USE_BZIP2=	YES
 CPPFLAGS+=	-DBR_NO_MACROS
-MAKE_JOBS_SAFE=	yes
 
 .include <bsd.port.options.mk>
 

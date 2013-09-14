@@ -14,10 +14,9 @@ LIB_DEPENDS=	popt:${PORTSDIR}/devel/popt
 
 OPTIONS_DEFINE=	DOCS
 
+USES=		gmake pkgconfig
 USE_GNOME=	gtk20
-USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ARGS=	--disable-stlport

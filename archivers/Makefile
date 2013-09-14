@@ -70,6 +70,7 @@
     SUBDIR += linux-f10-ucl
     SUBDIR += linux-f10-upx
     SUBDIR += lrzip
+    SUBDIR += lz4
     SUBDIR += lzip
     SUBDIR += lzlib
     SUBDIR += lzma
@@ -87,6 +88,7 @@
     SUBDIR += ocaml-bz2
     SUBDIR += ocaml-zip
     SUBDIR += p5-Archive-Any
+    SUBDIR += p5-Archive-Any-Lite
     SUBDIR += p5-Archive-Any-Plugin-Rar
     SUBDIR += p5-Archive-Extract
     SUBDIR += p5-Archive-Extract-Libarchive
@@ -217,6 +219,7 @@
     SUBDIR += xpk
     SUBDIR += xz
     SUBDIR += zip
+    SUBDIR += zip-ada
     SUBDIR += zipmix
     SUBDIR += zipper
     SUBDIR += zoo

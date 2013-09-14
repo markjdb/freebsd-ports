@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libX11
-PORTVERSION=	1.6.0
+PORTVERSION=	1.6.1
 PORTEPOCH=	1
 CATEGORIES=	x11
 
@@ -11,11 +11,12 @@ COMMENT=	X11 library
 
 LICENSE=	MIT
 
+USES=		perl5
 XORG_CAT=	lib
 USE_XORG=	bigreqsproto xau xcmiscproto xdmcp xextproto xtrans \
 		kbproto:both inputproto xf86bigfontproto xproto:both \
 		xcb
-USE_PERL5_BUILD=yes
+USE_PERL5=	build
 
 CONFIGURE_ARGS+=	--datadir=${PREFIX}/lib \
 			--without-xmlto \

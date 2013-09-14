@@ -10,11 +10,9 @@ MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 MAINTAINER=	makc@FreeBSD.org
 COMMENT=	Conway's Game of Life and other cellular automata
 
-USES=		cmake:outsource
-USE_PERL5=	yes
+USES=		cmake:outsource perl5
 USE_PYTHON=	2.7+
 USE_WX=		2.8+
-MAKE_JOBS_SAFE=	yes
 
 DESKTOP_ENTRIES=	"Golly" "${COMMENT}" "${PREFIX}/share/pixmaps/golly.xpm" \
 			"${PREFIX}/bin/golly" "Education;" "true"

@@ -3,7 +3,7 @@
 
 PORTNAME=	xastir
 PORTVERSION=	2.0.4
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	comms hamradio
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-stable/${PORTNAME}-${PORTVERSION}
 
@@ -18,7 +18,6 @@ LIB_DEPENDS=	tiff:${PORTSDIR}/graphics/tiff \
 
 GNU_CONFIGURE=	yes
 USES=		gettext gmake motif
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		xastir.1 \
 		callpass.1 \

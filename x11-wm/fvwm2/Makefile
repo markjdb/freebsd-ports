@@ -3,7 +3,7 @@
 
 PORTNAME=	fvwm
 PORTVERSION=	2.6.5
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	x11-wm
 MASTER_SITES=	ftp://ftp.fvwm.org/pub/fvwm/version-2/ \
 		http://www.fvwm.org/generated/icon_download/
@@ -23,7 +23,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	X_CFLAGS=-I${LOCALBASE}/include
 CONFIGURE_ARGS= --mandir=${MANPREFIX}/man
 USE_AUTOTOOLS=	autoconf
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_XORG=	xpm xft
 USE_BZIP2=	yes
 WANT_GNOME=	yes
@@ -48,8 +48,8 @@ DISTFILES+=	${FVWM_ICONS}.tar.bz2
 CONFIGURE_ARGS+=	--disable-iconv
 .else
 USES+=			iconv
-CONFIGURE_ARGS+=	--with-iconv-library=${LOCALBASE}/lib \
-			--with-iconv-includes=${LOCALBASE}/include
+CONFIGURE_ARGS+=	--with-iconv-library=${ICONV_PREFIX}/lib \
+			--with-iconv-includes=${ICONV_PREFIX}/include
 .endif
 
 .if ${PORT_OPTIONS:MSTROKE}

@@ -2,15 +2,21 @@
 
 PREFIX?=	/usr/local
 LOCALBASE?=	/usr/local
-BINDIR?=	${PREFIX}/bin
-MANDIR?=	${PREFIX}/man/man
+DESTDIR=	${PREFIX}
+.if ${.CURDIR:T} == addr6
+BINDIR?=	/bin
+.else
+BINDIR?=	/sbin
+.endif
+MANDIR?=	/man/man
 NO_MANCOMPRESS=
 
 .PATH: ${.CURDIR}/../tools ${.CURDIR}/../manuals
 
 PROG=	${.CURDIR:T}
 MAN=	${PROG}.1
-LDADD=	-lpcap -lm
-CFLAGS+=	-DIPV6TOOLKITCONF=\"${PREFIX}/etc/ipv6toolkit.conf\"
+LDADD=	-lpcap -lm ${WRKSRC}/libipv6/libipv6.a
+CFLAGS+=-I${.CURDIR}/../tools \
+	-DIPV6TOOLKITCONF=\"${PREFIX}/etc/ipv6toolkit.conf\"
 
 .include <bsd.prog.mk>

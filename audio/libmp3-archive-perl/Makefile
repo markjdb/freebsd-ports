@@ -1,9 +1,5 @@
-# New ports collection makefile for:	libmp3-archive-perl
-# Date created:		2010-07-06
-# Whom:			Sunpoet Po-Chuan Hsieh <sunpoet@sunpoet.net>
-#
+# Created by: Sunpoet Po-Chuan Hsieh <sunpoet@sunpoet.net>
 # $FreeBSD$
-#
 
 PORTNAME=	libmp3-archive-perl
 PORTVERSION=	0.9
@@ -14,7 +10,8 @@ MASTER_SITES=	http://erislabs.net/ianb/projects/${PORTNAME}/ \
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Perl module to manipulate filenames containing music metadata
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		MP3::Archive::Config.3 MP3::Archive::Format.3 MP3::Archive.3
 

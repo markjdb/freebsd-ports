@@ -1,17 +1,16 @@
 # $FreeBSD$
 
 PORTNAME=	jabber
-PORTVERSION=	1.7.1
-PORTREVISION=	1
+PORTVERSION=	1.8.0
 CATEGORIES=	net-im
 
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Jabber (XMPP) plugin for Licq
 
+LICENSE=	GPLv2
+
 LIB_DEPENDS=	gloox:${PORTSDIR}/net-im/gloox \
 		boost_regex:${PORTSDIR}/devel/boost-libs
-
-LICENSE=	GPLv2
 
 USES=		cmake
 DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}

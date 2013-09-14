@@ -1,18 +1,17 @@
 # $FreeBSD$
 
 PORTNAME=	sdl2_mixer
-PORTVERSION=	2.0.p2
+PORTVERSION=	2.0.0
 CATEGORIES=	audio
-MASTER_SITES=	http://www.libsdl.org/tmp/SDL_mixer/release/
-DISTNAME=	SDL2_mixer-2.0.0
+MASTER_SITES=	http://www.libsdl.org/projects/SDL_mixer/release/
+DISTNAME=	SDL2_mixer-${PORTVERSION}
 
 MAINTAINER=	mva@FreeBSD.org
 COMMENT=	A sample multi-channel audio mixer library
 
 LICENSE=	ZLIB
 
-USES=		pathfix pkgconfig:build
-USE_GMAKE=	yes
+USES=		gmake pathfix pkgconfig
 USE_SDL=	sdl2
 GNU_CONFIGURE=	yes
 LDFLAGS+=	-L${LOCALBASE}/lib

@@ -13,10 +13,11 @@ COMMENT=	Binaural beat generator
 LICENSE=	GPLv2 LGPL21
 LICENSE_COMB=	multi
 
-LIB_DEPENDS=	portaudio:${PORTSDIR}/audio/portaudio2 \
+LIB_DEPENDS=	portaudio.2:${PORTSDIR}/audio/portaudio2 \
 		sndfile:${PORTSDIR}/audio/libsndfile
 
 GNU_CONFIGURE=	yes
+USES=		pkgconfig
 USE_CSTD=	gnu89
 USE_GNOME=	libglade2 desktopfileutils
 

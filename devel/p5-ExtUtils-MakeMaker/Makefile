@@ -2,13 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	ExtUtils-MakeMaker
-PORTVERSION=	6.66
+PORTVERSION=	6.76
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Designed to write a Makefile for an extension module
+
+LICENSE=	ART10 GPLv1
+LICENSE_COMB=	dual
 
 USES=		perl5
 USE_PERL5=	configure
@@ -34,8 +37,13 @@ RUN_DEPENDS+=	p5-ExtUtils-Manifest>=1.58:${PORTSDIR}/devel/p5-ExtUtils-Manifest 
 .endif
 
 .if ${PERL_LEVEL} < 501600
-BUILD_DEPENDS+=	p5-CPAN-Meta>=2.112150:${PORTSDIR}/devel/p5-CPAN-Meta
-RUN_DEPENDS+=	p5-CPAN-Meta>=2.112150:${PORTSDIR}/devel/p5-CPAN-Meta
+BUILD_DEPENDS+=	p5-CPAN-Meta>=2.113640:${PORTSDIR}/devel/p5-CPAN-Meta
+RUN_DEPENDS+=	p5-CPAN-Meta>=2.113640:${PORTSDIR}/devel/p5-CPAN-Meta
+.endif
+
+.if ${PERL_LEVEL} < 501800
+BUILD_DEPENDS+=	p5-CPAN-Meta-Requirements>=2.121:${PORTSDIR}/devel/p5-CPAN-Meta-Requirements
+RUN_DEPENDS+=	p5-CPAN-Meta-Requirements>=2.121:${PORTSDIR}/devel/p5-CPAN-Meta-Requirements
 .endif
 
 post-patch:

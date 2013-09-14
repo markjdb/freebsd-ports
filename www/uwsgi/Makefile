@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	uwsgi
-PORTVERSION=	1.9.14
+PORTVERSION=	1.9.15
 CATEGORIES=	www python
 MASTER_SITES=	http://projects.unbit.it/downloads/
 
@@ -12,7 +12,6 @@ COMMENT=	Developer-friendly WSGI server which uses uwsgi protocol
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-MAKE_JOBS_SAFE=	yes
 
 USE_PYTHON=	yes
 USE_RC_SUBR=	uwsgi

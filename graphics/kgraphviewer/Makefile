@@ -1,9 +1,4 @@
-# New ports collection makefile for:	kgraphviewer
-# Date created:		2008-09-01
-# Whom:			Max Brazhnikov <makc@FreeBSD.org>
-#
 # $FreeBSD$
-#
 
 PORTNAME=	kgraphviewer
 PORTVERSION=	${APP_VER}.${EXTRA_VER}
@@ -19,11 +14,21 @@ COMMENT=	GraphViz dot graph viewer for KDE
 
 LIB_DEPENDS=	gvc:${PORTSDIR}/graphics/graphviz
 
+# Several problems at once here:
+# - The port does not include graphviz's include directory, assuming it is
+#   always in the compiler's default path (ie. /usr/include).
+# - The port includes <graphviz/foo.h>, while code is expected to include
+#   <foo.h> instead, and pass -I${LOCALBASE}/graphviz instead of just
+#   -I${LOCALBASE} to the compiler.
+# - The code in the development repository does a better job at fixing the
+#   problems above, but it still relies on the deprecated libgraph library that
+#   graphics/graphviz in ports does not install anymore.
+BROKEN=		does not build
+
 USE_BZIP2=	yes
 USE_KDE4=	kdelibs pimlibs kdeprefix kdehier automoc4
 USE_QT4=	corelib qmake_build moc_build rcc_build uic_build
 USES=		cmake
-MAKE_JOBS_SAFE=	yes
 
 APP_VER=	2.0.2
 EXTRA_VER=	4.4.0

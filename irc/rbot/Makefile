@@ -1,18 +1,14 @@
-# New ports collection makefile for:	rbot
-# Date created:		14 Apr 2002
-# Whom:			David Bushong <david+ports@bushong.net>
-#
+# Created by: David Bushong <david+ports@bushong.net>
 # $FreeBSD$
-#
 
 PORTNAME=	rbot
 PORTVERSION=	0.9.15
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	irc ruby
 MASTER_SITES=	http://ruby-rbot.org/download/
 EXTRACT_SUFX=	.tgz
 
-MAINTAINER=	yzlin@FreeBSD.org
+MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	Ruby IRC bot similar to infobot
 
 RUN_DEPENDS=	${RUBY_SITEARCHLIBDIR}/bdb.so:${PORTSDIR}/databases/ruby-bdb \
@@ -27,16 +23,16 @@ SUB_FILES=	pkg-message
 
 PORTDOCS=	REQUIREMENTS ChangeLog
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
 pre-install:
 	${RM} ${WRKSRC}/bin/svnwatch-postcommit-hook
 
 post-install:
-.if !defined(NOPORTDOCS)
+.if ${PORT_OPTIONS:MDOCS}
 	${INSTALL} -d ${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${DOCSDIR}
 .endif
 	@${CAT} ${PKGMESSAGE}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

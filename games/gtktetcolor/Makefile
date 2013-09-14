@@ -14,11 +14,9 @@ COMMENT=	Game for GNOME that resembles well-known Tetris and Columns
 LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
 
-USES=        pathfix
+USES=        pathfix gmake pkgconfig
 USE_GNOME=	gnomeprefix intlhack libgnomeui
-USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
-MAKE_JOBS_SAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

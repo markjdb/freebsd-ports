@@ -18,7 +18,7 @@ LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg \
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-silent-rules --enable-extras
-USES=		gettext
+USES=		gettext pkgconfig
 USE_GMAKE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -104,7 +104,7 @@ post-patch:
 .endfor
 
 pre-build:
-	@${INSTALL_SCRIPT} ${LOCALBASE}/share/glib-2.0/gettext/mkinstalldirs \
+	@${INSTALL_SCRIPT} ${LOCALBASE}/share/icu/50.1.2/mkinstalldirs \
 		${WRKSRC}
 
 post-install:

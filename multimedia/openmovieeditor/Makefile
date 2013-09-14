@@ -19,13 +19,13 @@ LIB_DEPENDS=	samplerate:${PORTSDIR}/audio/libsamplerate \
 		avcodec:${PORTSDIR}/multimedia/ffmpeg \
 		jack:${PORTSDIR}/audio/jack \
 		fltk:${PORTSDIR}/x11-toolkits/fltk \
-		portaudio:${PORTSDIR}/audio/portaudio2
+		portaudio.2:${PORTSDIR}/audio/portaudio2
 BUILD_DEPENDS=	${LOCALBASE}/lib/libmpeg3.a:${PORTSDIR}/multimedia/libmpeg3 \
 		${LOCALBASE}/lib/libquicktime/lqt_lame.so:${PORTSDIR}/multimedia/libquicktime-lame
 RUN_DEPENDS=	${LOCALBASE}/lib/libquicktime/lqt_lame.so:${PORTSDIR}/multimedia/libquicktime-lame
 
+USES=		gmake pkgconfig
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_GL=		yes
 USE_GNOME=	glib20
 CONFIGURE_ARGS=	CPPFLAGS="-I${WRKSRC}/src/tinyxml -I${LOCALBASE}/include/portaudio2 -I${LOCALBASE}/include" \

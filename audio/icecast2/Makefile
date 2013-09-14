@@ -1,51 +1,55 @@
-# New ports collection makefile for: icecast
-# Date created:         28 Jan 1999
-# Whom:                 Chip Marshall <chip@eboai.org>
-#
+# Created by: Chip Marshall <chip@eboai.org>
 # $FreeBSD$
-#
 
 PORTNAME=	icecast2
-PORTVERSION=	2.3.2
-PORTREVISION=	10
+PORTVERSION=	2.3.3
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	audio net ipv6
-MASTER_SITES=	http://downloads.xiph.org/releases/icecast/ \
-		http://svn.xiph.org/releases/icecast/
-DISTNAME=	icecast-${PORTVERSION}
+MASTER_SITES=	http://downloads.xiph.org/releases/icecast/:source \
+		http://svn.xiph.org/releases/icecast/:source \
+		LOCAL/sunpoet:source \
+		http://www.icecast.org/:icon
+DISTFILES=	icecast-${PORTVERSION}${EXTRACT_SUFX}:source \
+		favicon.ico:icon
+DIST_SUBDIR=	icecast
+EXTRACT_ONLY=	icecast-${PORTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	A streaming mp3/ogg-vorbis audio server
-
-LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl \
-		shout.5:${PORTSDIR}/audio/libshout2 \
-		speex.1:${PORTSDIR}/audio/speex \
-		theora.0:${PORTSDIR}/multimedia/libtheora \
-		vorbis.4:${PORTSDIR}/audio/libvorbis \
-		xslt.2:${PORTSDIR}/textproc/libxslt
+COMMENT=	Streaming mp3/ogg-vorbis audio server
 
 LICENSE=	GPLv2
 
-USE_GMAKE=	yes
-GNU_CONFIGURE=	yes
-USE_RC_SUBR=	icecast2
-SUB_FILES+=	pkg-message
-CONFIGURE_ENV=	OGG_PREFIX=${LOCALBASE}
-CFLAGS+=	-I${LOCALBASE}/include
+LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
+		libshout.so:${PORTSDIR}/audio/libshout2 \
+		libspeex.so:${PORTSDIR}/audio/speex \
+		libtheora.so:${PORTSDIR}/multimedia/libtheora \
+		libvorbis.so:${PORTSDIR}/audio/libvorbis \
+		libxslt.so:${PORTSDIR}/textproc/libxslt
 
-DOCSDIR=	${PREFIX}/share/doc/icecast
+OPTIONS_DEFINE=	DOCS
+
+CFLAGS+=	-I${LOCALBASE}/include
+CONFIGURE_ENV=	OGG_PREFIX=${LOCALBASE}
+GNU_CONFIGURE=	yes
+USE_RC_SUBR=	${PORTNAME}
+USES=		gmake
 WRKSRC=		${WRKDIR}/icecast-${PORTVERSION}
 
-.include <bsd.port.pre.mk>
+DATADIR=	${PREFIX}/share/icecast
+DOCSDIR=	${PREFIX}/share/doc/icecast
+PORTDOCS=	*
+SUB_FILES=	pkg-message
 
-.if defined(NOPORTDOCS)
+.include <bsd.port.options.mk>
+
 post-patch:
-	${REINPLACE_CMD} \
-		-e 's|SUBDIRS = src conf debian doc web admin win32 examples|SUBDIRS = src conf debian web admin win32 examples # doc|' \
-		-e 's| install-exec-am install-data-am| install-exec-am|' ${WRKSRC}/Makefile.in
+.if !${PORT_OPTIONS:MDOCS}
+	${REINPLACE_CMD} -e '/^SUBDIRS = / s| doc||; s| install-exec-am install-data-am| install-exec-am|' ${WRKSRC}/Makefile.in
 .endif
 
 post-install:
+	${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/favicon.ico ${DATADIR}/web/
 	@${CAT} ${PKGMESSAGE}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

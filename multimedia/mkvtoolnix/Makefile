@@ -22,7 +22,6 @@ LIB_DEPENDS=	vorbis:${PORTSDIR}/audio/libvorbis \
 
 USES=		pkgconfig gettext iconv
 USE_XZ=		yes
-USE_GCC=	4.6+
 GNU_CONFIGURE=	yes
 USE_RAKE=	yes
 USE_RUBY=	yes
@@ -35,13 +34,17 @@ CONFIGURE_ARGS=	--disable-qt \
 		--with-boost-filesystem=boost_filesystem \
 		--with-boost-system=boost_system \
 		--with-boost-regex=boost_regex
-MAKE_JOBS_SAFE=	yes
 
 MANLANG=	"" ja zh_CN nl uk
 MAN1=		mkvextract.1 mkvinfo.1 mkvmerge.1 mkvpropedit.1
 
 OPTIONS_DEFINE=	WXGTK FLAC CURL
 OPTIONS_DEFAULT=WXGTK FLAC CURL
+
+_CCVERSION=	${CC} --version
+.if !${_CCVERSION:MCLANG} || ${OSVERSION} < 1000054
+USE_GCC=	yes
+.endif
 
 .include <bsd.port.pre.mk>
 

@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	putty
-PORTVERSION=	0.62
-PORTREVISION=	3
+PORTVERSION=	0.63
 CATEGORIES=	security ipv6
 MASTER_SITES=	http://the.earth.li/~sgtatham/putty/%SUBDIR%/ \
 		ftp://ftp.chiark.greenend.org.uk/users/sgtatham/putty-latest/
@@ -13,7 +12,7 @@ MASTER_SITE_SUBDIR=	${PORTVERSION}
 MAINTAINER=	mandree@FreeBSD.org
 COMMENT=	Secure shell and telnet client
 
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 WRKSRC=		${WRKDIR}/${DISTNAME}/unix
 MAKEFILE=	Makefile.gtk
 

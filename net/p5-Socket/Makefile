@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Socket
-PORTVERSION=	2.010
+PORTVERSION=	2.012
 CATEGORIES=	net perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:PEVANS
@@ -14,7 +14,8 @@ COMMENT=	Networking constants and support functions
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-PERL_CONFIGURE=	yes
+USE_PERL5=	configure
+USES=		perl5
 
 MAN3=		Socket.3
 

@@ -3,6 +3,7 @@
 
 PORTNAME=	fceux
 PORTVERSION=	2.2.1.1
+PORTREVISION=	1
 CATEGORIES=	emulators
 MASTER_SITES=	SF/fceultra/Source%20Code/${PORTVERSION:R}%20src/
 DISTNAME=	${PORTNAME}-${PORTVERSION}.src
@@ -109,7 +110,7 @@ CC=		/usr/bin/clang
 CXX=		/usr/bin/clang++
 CPP=		/usr/bin/clang-cpp
 .else
-USE_GCC=	4.6+
+USE_GCC=	yes
 .endif
 .endif
 

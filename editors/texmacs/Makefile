@@ -14,7 +14,6 @@ COMMENT=	WYSIWYG scientific text editor
 
 LIB_DEPENDS=	guile.21:${PORTSDIR}/lang/guile
 
-MAKE_JOBS_SAFE=	yes
 
 USE_PYTHON=	yes
 USE_TEX=	tex
@@ -57,7 +56,7 @@ CONFIGURE_ARGS+=	--without-gs
 
 .if ${PORT_OPTIONS:MICONV}
 USES+=			iconv
-CONFIGURE_ARGS+=	--with-iconv="${LOCALBASE}"
+CONFIGURE_ARGS+=	--with-iconv
 .else
 CONFIGURE_ARGS+=	--without-iconv
 .endif

@@ -18,8 +18,7 @@ BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/eigen2.pc:${PORTSDIR}/math/eigen2 
 
 CONFLICTS=	kdeedu-4.[0-6].*
 
-# Keep USE_GCC in sync with science/avogadro.
-USE_GCC=	4.4+
+USE_GCC=	yes
 USE_KDE4=	kdehier kdelibs kdeprefix automoc4
 USES=		cmake:outsource
 USE_OCAML=	yes
@@ -28,7 +27,6 @@ USE_QT4=	corelib declarative designer opengl script xml \
 		moc_build qmake_build rcc_build uic_build
 USE_XZ=		yes
 USE_LDCONFIG=	yes
-MAKE_JOBS_SAFE=	yes
 
 MAN1=		kalzium.1
 

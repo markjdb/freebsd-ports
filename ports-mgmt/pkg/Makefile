@@ -2,7 +2,7 @@
 
 PORTNAME=	pkg
 DISTVERSION=	1.1.4
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://files.etoilebsd.net/pkg/ \
 		http://mirror.shatow.net/freebsd/${PORTNAME}/ \
@@ -15,7 +15,6 @@ LICENSE=	BSD
 
 USE_XZ=		yes
 
-MAKE_JOBS_SAFE=	yes
 # Disable CCACHE support because of the chicken/egg problem pkg should always
 # With no dependency at all
 NO_CCACHE=	yes

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ffmpeg
-PORTVERSION=	1.2.2
+PORTVERSION=	1.2.3
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	http://ffmpeg.org/releases/
 PKGNAMESUFFIX=	1
@@ -26,7 +26,6 @@ CONFIGURE_LOG=	config.err
 USES=		pkgconfig
 USE_BZIP2=	yes
 USE_GMAKE=	yes
-MAKE_JOBS_SAFE=	yes
 WANT_SDL=	yes
 USE_PERL5_BUILD=	yes
 
