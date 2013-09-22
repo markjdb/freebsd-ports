@@ -11,9 +11,10 @@ COMMENT=	Parallel Distributed Shell
 
 LICENSE=	GPLv2
 
+USES=		perl5
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
-USE_PERL5_BUILD=yes
+USE_PERL5=	build
 
 OPTIONS_DEFINE=		SSH DSHGROUPS NETGROUP READLINE RSH
 OPTIONS_DEFAULT=	SSH DSHGROUPS
@@ -21,6 +22,7 @@ DSHGROUPS_DESC=		DSH groups supprt
 NETGROUP_DESC=		NIS Netgroup support
 RSH_DESC=		RSH support
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSSH}

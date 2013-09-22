@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	opendnssec
-PORTVERSION=	1.4.1
+PORTVERSION=	1.4.2
 CATEGORIES=	dns
 MASTER_SITES=	http://dist.opendnssec.org/source/
 
@@ -15,7 +15,7 @@ LIB_DEPENDS=	ldns:${PORTSDIR}/dns/ldns
 GNU_CONFIGURE=	yes
 USE_RC_SUBR=	opendnssec
 USE_GNOME=	libxml2
-USE_PERL5=	yes
+USES=		perl5
 USE_OPENSSL=	yes
 USE_LDCONFIG=	yes
 
@@ -35,6 +35,7 @@ OPTIONS_DEFINE=		SOFTHSM MYSQL
 SOFTHSM_DESC=		SoftHSM cryptographic store for PKCS \#11 interface
 OPTIONS_DEFAULT=	MYSQL
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMYSQL}

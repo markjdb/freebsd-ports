@@ -9,6 +9,7 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	An sid and spf milter for Sendmail
 
 RESTRICTED=	may incorporate intellectual property, possible patent issues
+NO_STAGE=	yes
 
 WCONF=		${WRKSRC}/devtools/Site
 MAN8=		sid-filter.8

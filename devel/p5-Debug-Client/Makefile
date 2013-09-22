@@ -20,10 +20,12 @@ TEST_DEPENDS=	p5-File-HomeDir>=1.00:${PORTSDIR}/devel/p5-File-HomeDir \
 		p5-Test-Class>=0.38:${PORTSDIR}/devel/p5-Test-Class \
 		p5-Test-Deep>=0.110:${PORTSDIR}/devel/p5-Test-Deep
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		Debug::Client.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} < 501400

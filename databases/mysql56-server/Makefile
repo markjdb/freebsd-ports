@@ -42,7 +42,8 @@ CMAKE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql" \
 USE_MYSQL=	yes
 WANT_MYSQL_VER=	56
 
-USE_PERL5_RUN=	yes
+USES+=		perl5
+USE_PERL5=	run
 
 LATEST_LINK=	mysql56-server
 
@@ -66,6 +67,7 @@ MAN8=		mysqld.8
 
 CMAKE_ARGS+=	-DWITH_EMBEDDED_SERVER="ON"
 
+NO_STAGE=	yes
 post-install:
 .if !defined(PACKAGE_BUILDING)
 	@${CAT} ${PKGMESSAGE}

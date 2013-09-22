@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Parallel-ForkManager
-PORTVERSION=	1.04
+PORTVERSION=	1.05
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -18,4 +18,5 @@ USE_PERL5=	configure
 
 MAN3=		Parallel::ForkManager.3
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	viewvc
-PORTVERSION=	1.1.20
+PORTVERSION=	1.1.21
 CATEGORIES=	devel python
 MASTER_SITES=	http://www.viewvc.org/ \
 		LOCAL/ohauer
@@ -38,6 +38,7 @@ SUB_LIST=	INSTDIR="${PREFIX}/${INSTDIR}" \
 INSTDIR?=	${PORTNAME}
 PLIST_SUB=	INSTDIR=${INSTDIR}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 # standalone script is usefull even if a webserver was choosen.

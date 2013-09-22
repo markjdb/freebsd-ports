@@ -29,6 +29,7 @@ PORTDOCS=	readme.txt license.txt
 OPTIONS_DEFINE=	SERVER
 SERVER_DESC=	Build dedicated server only
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${ARCH} == "ia64"
@@ -59,7 +60,7 @@ post-patch:
 	@${REINPLACE_CMD} -e '/aDirs\[\]/,/}/ s|"/.*"|"${DATADIR}"|' \
 		${WRKSRC}/src/engine/shared/storage.cpp
 	@${REINPLACE_CMD} -e 's|gcc|${CC}|; s|g++|${CXX}|' \
-		${BAM_WRKSRC}/src/driver_gcc.lua
+		${BAM_WRKSRC}/src/driver_gcc.lua ${WRKSRC}/configure.lua
 
 # build bam executable - teeworlds own build system
 pre-build:

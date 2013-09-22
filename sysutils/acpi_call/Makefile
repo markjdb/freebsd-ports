@@ -1,9 +1,5 @@
-# New ports collection makefile for:	acpi_call
-# Date created:				15 Oct 2011
-# Whom:					Maxim Ignatenko
-#
+# Created by: Maxim Ignatenko
 # $FreeBSD$
-#
 
 PORTNAME=	acpi_call
 PORTVERSION=	1.0.1
@@ -16,6 +12,9 @@ COMMENT=	Kernel module for calling ACPI methods from userspace
 
 LICENSE=	BSD
 
+SSP_UNSAFE=	kernel module does not support ssp
+
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 KMODDIR?=	/boot/modules

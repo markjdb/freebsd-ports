@@ -19,10 +19,11 @@ PORTAUDIT_DESC=		Enable portaudit check
 PORTUPGRADE_DESC=	Enable portupgrade check
 PORTUPGRADE_DEVEL_DESC=	Use portupgrade-devel
 
-USE_PERL5=	yes
+USES=		perl5
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ! ${PORT_OPTIONS:MPORTUPGRADE} && ! ${PORT_OPTIONS:MPORTAUDIT} && ! ${PORT_OPTIONS:MPORTAUDIT_DEVEL}

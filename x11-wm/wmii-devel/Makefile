@@ -7,14 +7,15 @@ CATEGORIES=	x11-wm
 MASTER_SITES=	http://dl.suckless.org/wmii/
 DISTNAME=	wmii+ixp-${DISTVERSION}
 EXTRACT_SUFX=	.tbz
+PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Dynamic, minimalist window manager for X11
 
 LIB_DEPENDS=	ixp:${PORTSDIR}/devel/libixp
 
+USES=		pkgconfig
 CONFLICTS=	wmii-3.6*
-LATEST_LINK=	${PORTNAME}-devel
 
 USE_BZIP2=	yes
 USE_XORG=	x11 xext xrandr xrender xinerama xft
@@ -28,6 +29,7 @@ MAN1=		wimenu.1 wmii9menu.1 wmii.1 wmiir.1
 
 OPTIONS_DEFINE=	DOCS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 post-patch: .SILENT

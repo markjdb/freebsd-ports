@@ -12,6 +12,8 @@ COMMENT=	Web Based Postgres Administration
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 USE_BZIP2=	YES
 .if !defined(WITHOUT_PHP_DEPENDS)
 USE_PHP=	pgsql pcre session

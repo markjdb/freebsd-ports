@@ -24,13 +24,12 @@ RUN_DEPENDS=	p5-Cache-Cache>=0:${PORTSDIR}/devel/p5-Cache-Cache \
 
 DISTINFO_FILE=	${MUNIN_DISTINFO}
 EXTRA_PATCHES+=	${MUNIN_PATCHES}
-USES=		shebangfix
-USE_PERL5=	yes
-USE_GMAKE=	yes
+USES=		gmake perl5 shebangfix
 PKGMESSAGE=	${WRKDIR}/pkg-message
 REINPLACE_ARGS=	-i ""
 SHEBANG_FILES=	node/sbin/munin-node
 
+NO_STAGE=	yes
 .include "${.CURDIR}/../munin-common/munin.mk"
 
 ALL_TARGET=	build-node build-plugins
@@ -43,8 +42,8 @@ SNMP_DESC=	Include support for SNMP plugins
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSNMP}
-BUILD_DEPENDS+= p5-Net-SNMP>=0:${PORTSDIR}/net-mgmt/p5-Net-SNMP
-RUN_DEPENDS+= p5-Net-SNMP>=0:${PORTSDIR}/net-mgmt/p5-Net-SNMP
+BUILD_DEPENDS+=	p5-Net-SNMP>=0:${PORTSDIR}/net-mgmt/p5-Net-SNMP
+RUN_DEPENDS+=	p5-Net-SNMP>=0:${PORTSDIR}/net-mgmt/p5-Net-SNMP
 .endif
 
 MAN1=		munin-node-configure.1 \

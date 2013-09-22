@@ -1,4 +1,4 @@
-# Created by: Joerg Wunsch <joerg@freebsd.org>
+# Created by: Joerg Wunsch <joerg@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	gcc
@@ -32,12 +32,13 @@ CONFIGURE_WRKSRC=	${BUILD_WRKSRC}
 INSTALL_WRKSRC=		${BUILD_WRKSRC}
 CONFIGURE_SCRIPT=	../gcc-${PORTVERSION}/configure
 
-USE_PERL5_BUILD=	yes
+USE_PERL5=	build
 USE_BZIP2=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-USES=		bison gettext gmake
+USES=		bison gettext gmake perl5
 GNU_CONFIGURE=	yes
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if (${ARCH} == "amd64")

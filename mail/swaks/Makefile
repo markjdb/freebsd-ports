@@ -16,8 +16,10 @@ PERL_NET_DNS_DESC=	Add MX lookup support
 PERL_NET_SSLEAY_DESC=	Add TLS support
 PERL_AUTHEN_NTLM_DESC=	Add support for AUTH NTLM
 
-USE_PERL5_RUN=	yes
+USES=		perl5
+USE_PERL5=	run
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MPERL_NET_DNS}

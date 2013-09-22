@@ -1,9 +1,5 @@
-# New ports collection makefile for:	silc-toolkit
-# Date created:				2003.12.15
-# Whom:					Evgueni V. Gavrilov <aquatique@rusunix.org>
-#
+# Created by: Evgueni V. Gavrilov <aquatique@rusunix.org>
 # $FreeBSD$
-#
 
 PORTNAME=	silc
 PORTVERSION=	1.1.10
@@ -24,11 +20,10 @@ COMMENT=	Secure Internet Live Conferencing (SILC) network toolkit
 
 CONFLICTS=	silc-client-1.1.* silc-irssi-client-1.1.*
 
+USES=		gmake perl5
 USE_AUTOTOOLS=	libtool
 USE_BZIP2=	yes
-USE_PERL5=	yes
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 CONFIGURE_ARGS=	--with-etcdir=${PREFIX}/etc/${PORTNAME}${PKGNAMESUFFIX} \
 		--with-simdir=${PREFIX}/lib/silcsim \
 		--with-helpdir=${PREFIX}/share/${PORTNAME}${PKGNAMESUFFIX}/help \
@@ -47,6 +42,7 @@ PLIST_SUB+=	PORTDOCS="@comment "
 CONFIGURE_ARGS+=	--without-pthreads
 .endif
 
+NO_STAGE=	yes
 pre-everything::
 .ifndef(WITHOUT_IPV6)
 	@${ECHO_MSG} '===> Define WITHOUT_IPV6 to disable IPv6 support'

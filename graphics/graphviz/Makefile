@@ -16,6 +16,8 @@ LIB_DEPENDS+=	jpeg:${PORTSDIR}/graphics/jpeg \
 		expat:${PORTSDIR}/textproc/expat2 \
 		gd:${PORTSDIR}/${GD_PORT}
 
+NO_STAGE=	yes
+
 USES=		bison gmake pkgconfig
 USE_AUTOTOOLS=	libltdl libtool
 WANT_GNOME=	yes
@@ -334,7 +336,7 @@ CONFIGURE_ENV+=		SWIG="/nonexistent"
 .if ${PORT_OPTIONS:MPERL}
 CONFIGURE_ARGS+=	--enable-perl
 PLIST_SUB+=		WITH_PERL=""
-USE_PERL5=	yes
+USES+=			perl5
 MAN3+=			gv.3perl
 .else
 CONFIGURE_ARGS+=	--disable-perl

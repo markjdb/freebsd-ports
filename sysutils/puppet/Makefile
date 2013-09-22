@@ -1,8 +1,8 @@
-# Created by:	Tomoyuki Sakurai <cherry@trombik.mine.nu>
+# Created by: Tomoyuki Sakurai <cherry@trombik.mine.nu>
 # $FreeBSD$
 
 PORTNAME=	puppet
-PORTVERSION=	3.2.4
+PORTVERSION=	3.3.0
 CATEGORIES=	sysutils
 MASTER_SITES=	http://downloads.puppetlabs.com/puppet/
 
@@ -49,6 +49,7 @@ PACKAGE_ORIGIN_DESC=	Use port origin as package name
 PACKAGE_ROOT_DESC=	Use PACKAGEROOT insted of PACKAGESITE
 PATCHES_DESC=           Optional exclusive patches
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMONGREL}

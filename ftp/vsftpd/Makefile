@@ -14,6 +14,8 @@ COMMENT=	A FTP daemon that aims to be "very secure"
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 ALL_TARGET=	vsftpd
 MAN5=		vsftpd.conf.5
 MAN8=		vsftpd.8

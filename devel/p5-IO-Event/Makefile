@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	IO-Event
-PORTVERSION=	0.812
+PORTVERSION=	0.813
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -28,6 +28,7 @@ USES=		perl5
 MAN3=		IO::Event.3 \
 		IO::Event::Callback.3
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MANYEVENT}

@@ -12,10 +12,9 @@ MAINTAINER=	glarkin@FreeBSD.org
 COMMENT=	A database optimized for Cloud and Net applications
 
 USE_GCC=	4.2+
-USE_PERL5=	yes
+USES=		gmake perl5
 USE_PYTHON=	yes
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_LDCONFIG=	${PREFIX}/lib/drizzle
 
 BROKEN=		fails to build
@@ -55,6 +54,7 @@ MAN8=	drizzled.8
 
 USE_RC_SUBR=	drizzle-server
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${ARCH} == "i386"

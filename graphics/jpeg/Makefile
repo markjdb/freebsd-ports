@@ -17,8 +17,9 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	IJG's jpeg compression utilities
 
 CONFLICTS=	libjpeg-turbo-[0-9]*
-WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION2}
+NO_STAGE=	yes
 
+WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION2}
 DISTVERSION2=	8d
 USE_AUTOTOOLS=	libtool
 USE_LDCONFIG=	yes

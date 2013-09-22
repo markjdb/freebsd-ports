@@ -23,7 +23,7 @@ OPTIONS_DEFINE=	CLAMAV EXAMPLES DOCS
 OPTIONS_DEFAULT=	CLAMAV
 CLAMAV_DESC=	Enable Clamav
 
-USE_PERL5=	yes
+USES=		perl5
 GNU_CONFIGURE=	yes
 
 MAILUSER?=		mailnull
@@ -49,6 +49,7 @@ SUB_FILES=	pkg-message
 
 CONFIG_FILES=	mimedefang-filter sa-mimedefang.cf mimedefang-ip-key
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if !exists( /usr/include/libmilter/mfapi.h )

@@ -23,6 +23,7 @@ OPTIONS_DEFINE=	IPV6 PACKTERTC
 PACKTERTC_DESC=	Install Packter TC
 OPTIONS_DEFAULT=	IPV6
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MIPV6}
@@ -32,7 +33,8 @@ CONFIGURE_ARGS+=	--disable-ipv6
 .endif
 
 .if ${PORT_OPTIONS:MPACKTERTC}
-USE_PERL5_RUN=	yes
+USES+=		perl5
+USE_PERL5=	run
 RUN_DEPENDS+=	p5-XML-Pastor>=0:${PORTSDIR}/devel/p5-XML-Pastor
 PLIST_SUB+=	PACKTERTC=""
 .else

@@ -11,12 +11,14 @@ MASTER_SITE_SUBDIR=	games/xpuzzles
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	X-based rubik's cube(tm)
 
+NO_STAGE=	yes
+
 WRKSRC=		${WRKDIR}/xrubik
 USES=		imake
 USE_XORG=	xt sm ice xext x11
-MAN1=		xrubik.1
 XFREE86_HTML_MAN=	no
 NO_INSTALL_MANPAGES=	yes
+MAN1=		xrubik.1
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/xrubik ${PREFIX}/bin

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	portupgrade
-PORTVERSION=	2.4.11
+PORTVERSION=	2.4.11.2
 PORTEPOCH=	2
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	SF/portupgrade/pkgtools/dist/ \
@@ -19,6 +19,7 @@ OPTIONS_DEFINE=	DOCS
 
 CONFLICTS_INSTALL=	portupgrade-devel-*
 
+NO_STAGE=	yes
 DIST_SUBDIR=	${PORTNAME}
 USE_BZIP2=	yes
 USE_RUBY=	yes
@@ -59,11 +60,6 @@ INSTALL_TARGET+=	install-doc
 .if ${RUBY_VER} != 2.0
 # For PKG_DBDRIVER={bdb_btree,bdb_hash}
 RUN_DEPENDS+=	${RUBY_SITEARCHLIBDIR}/bdb.so:${PORTSDIR}/databases/ruby-bdb
-.endif
-
-# parsedate is needed for date globbing
-.if ${RUBY_VER} == 1.9
-RUN_DEPENDS+=	${RUBY_SITELIBDIR}/parsedate.rb:${PORTSDIR}/devel/ruby-date2
 .endif
 
 # Need to install working script(1)

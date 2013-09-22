@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	uwsgi
-PORTVERSION=	1.9.15
+PORTVERSION=	1.9.16
 CATEGORIES=	www python
 MASTER_SITES=	http://projects.unbit.it/downloads/
 
@@ -16,9 +16,12 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USE_PYTHON=	yes
 USE_RC_SUBR=	uwsgi
 
+LDFLAGS+=	"-L${LOCALBASE}/lib"
+
 PLIST_FILES=	bin/uwsgi \
 		%%PYTHON_SITELIBDIR%%/uwsgidecorators.py
 
+NO_STAGE=	yes
 post-patch:
 	${REINPLACE_CMD} -e 's|python|${PYTHON_CMD}|' ${WRKSRC}/Makefile
 

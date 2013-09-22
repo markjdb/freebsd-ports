@@ -1,4 +1,3 @@
-# Created by: Jun Kuriyama <kuriyama@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	relayd
@@ -33,7 +32,12 @@ GROUPS=		_relayd
 OPTIONS_DEFINE=	LIBEVENT_STATIC
 LIBEVENT_STATIC_DESC=	Build with static libevent
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
+
+.if ${OSVERSION} > 1000017
+BROKEN=		needs fixing with recent pf changes
+.endif
 
 .if ${PORT_OPTIONS:MLIBEVENT_STATIC}
 BUILD_DEPENDS=	${LOCALBASE}/lib/libevent.a:${PORTSDIR}/devel/libevent

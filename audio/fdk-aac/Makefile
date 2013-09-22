@@ -1,4 +1,4 @@
-# Created by:	Martin Matuska <mm@FreeBSD.org>
+# Created by: Martin Matuska <mm@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	fdk-aac
@@ -6,7 +6,7 @@ PORTVERSION=	0.1.2
 CATEGORIES=	audio
 MASTER_SITES=	SF/opencore-amr/${PORTNAME}
 
-MAINTAINER=	mm@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Port of the Fraunhofer FDK AAC Codec Library
 
 NOT_FOR_ARCHS=		sparc64
@@ -18,6 +18,7 @@ LICENSE_FILE=	${WRKSRC}/NOTICE
 LICENSE_PERMS=	dist-mirror pkg-mirror auto-accept
 
 GNU_CONFIGURE=	yes
+NO_STAGE=	yes
 CONFIGURE_ENV+=	LIBS="-lm"
 
 post-patch:

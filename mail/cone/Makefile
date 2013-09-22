@@ -5,6 +5,7 @@ PORTNAME=	cone
 PORTVERSION=	0.90
 PORTREVISION=	1
 CATEGORIES=	mail
+NO_STAGE=	yes
 # This is for beta versions, leave it in please:
 #MASTER_SITES=	http://www.courier-mta.org/beta/${PORTNAME}/ \
 #		http://www.lerctr.org/~ler/
@@ -19,12 +20,10 @@ BUILD_DEPENDS=	gpgv:${PORTSDIR}/security/gnupg1
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USE_FAM=	yes
-USES=		gettext iconv ncurses
+USES=		gettext gmake iconv ncurses perl5
 USE_GNOME=	libxml2
 
 USE_BZIP2=	yes
-USE_PERL5=	yes
-USE_GMAKE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	-C --without-db --with-certdb=${PREFIX}/share/cone/rootcerts --prefix=${PREFIX} --exec-prefix=${PREFIX}

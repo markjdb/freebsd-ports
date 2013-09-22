@@ -10,6 +10,8 @@ MASTER_SITE_SUBDIR=	system/fido
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	FidoNet(tm) support package for UN*X platform
 
+NO_STAGE=	yes
+
 MAN3=		parsedate.3
 MAN8=		ifmail.8 iftoss.8
 IFMAIL_RUNAS?=	ifmail

@@ -17,6 +17,7 @@ LICENSE=	BSD GPLv2
 LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKDIR}/Quantis-${DISTVERSION}/License.txt
 
+SSP_UNSAFE=	kernel module does not support ssp
 USE_ZIP=	yes
 EXTRACT_BEFORE_ARGS=	-aqo
 
@@ -31,6 +32,7 @@ PLIST_FILES=	"@cwd ${KMODDIR}" \
 		"@unexec kldxref ${KMODDIR}" \
 		"@cwd ${PREFIX}"
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if !exists(${SRC_BASE}/sys/Makefile)

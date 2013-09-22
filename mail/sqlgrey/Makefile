@@ -13,7 +13,8 @@ RUN_DEPENDS=	p5-Net-Server>=0:${PORTSDIR}/net/p5-Net-Server \
 		p5-IO-Multiplex>=0:${PORTSDIR}/devel/p5-IO-Multiplex \
 		p5-Pod-Parser>=0:${PORTSDIR}/textproc/p5-Pod-Parser
 
-USE_PERL5_RUN=	yes
+USES=		perl5
+USE_PERL5=	run
 USE_RC_SUBR=	sqlgrey
 NO_BUILD=	yes
 
@@ -35,6 +36,7 @@ MAN1=	sqlgrey.1
 OPTIONS_DEFINE=	PGSQL MYSQL SQLITE STATS DOCS
 STATS_DESC=	Depend on Date::Calc for logstats.pl script
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

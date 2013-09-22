@@ -16,7 +16,7 @@ BUILD_DEPENDS=	exctags:${PORTSDIR}/devel/ctags \
 
 PATCH_STRIP=	-p1
 
-USE_PERL5=	yes
+USES=		perl5
 NO_BUILD=	yes
 
 OPTIONS_DEFINE=	DOCS
@@ -42,6 +42,7 @@ PLIST_SUB+=	LXRTOPDIR=${LXRTOPDIR:S!^${PREFIX}/!!}
 SUB_LIST+=	LXRDIR=${LXRDIR}
 SUB_FILES+=	upgrade-0.9.10-postgres upgrade-0.9.10-mysql
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPGSQL}

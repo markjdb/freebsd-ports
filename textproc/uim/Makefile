@@ -17,8 +17,8 @@ USE_LDCONFIG=	yes
 WANT_GNOME=	yes
 USE_GNOME+=	glib20 intltool
 USE_AUTOTOOLS=	libtool
-USES=		gettext gmake iconv pkgconfig
-USE_PERL5_BUILD=yes
+USES=		gettext gmake iconv pkgconfig perl5
+USE_PERL5=	build
 GNU_CONFIGURE=	yes
 
 .if !defined(WITHOUT_X11)
@@ -54,6 +54,7 @@ PLIST_SUB+=	X11="@comment "
 PLIST_SUB+=	X11=""
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "ia64"

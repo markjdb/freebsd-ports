@@ -40,6 +40,7 @@ WMS_DESC=		Web map service server and client support
 WFS_DESC=		Web feature service support
 MAPSERV_DESC=		Mapserv cgi interface support
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMAPSERV}
@@ -149,10 +150,10 @@ PLIST_SUB+=		PHP="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MPERL}
-USE_PERL5=yes
-PLIST_SUB+=		PERL=""
+USES+=		perl5
+PLIST_SUB+=	PERL=""
 .else
-PLIST_SUB+=		PERL="@comment "
+PLIST_SUB+=	PERL="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MCURL}

@@ -1,10 +1,9 @@
 # Created by: Vincent Tantardini <vinc@freebsd-fr.org>
 # $FreeBSD$
-#
 
 PORTNAME=	cacti
 PORTVERSION=	0.8.8b${PATCHLEVEL}
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	net-mgmt www
 MASTER_SITES=	http://www.cacti.net/downloads/
 DISTNAME=	${PORTNAME}-${SITEDISTVERSION}
@@ -43,6 +42,7 @@ PLIST_SUB+=	CACTIDIR=${CACTIDIR}
 SUB_LIST+=	CACTIDIR=${CACTIDIR} CACTIUSER=${CACTIUSER} \
 		CACTIGROUP=${CACTIGROUP}
 
+NO_STAGE=	yes
 post-patch:
 	@${FIND} ${WRKSRC} -name \*.orig -delete; \
 	${MV} ${WRKSRC}/include/config.php ${WRKSRC}/include/config.php.orig

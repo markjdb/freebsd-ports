@@ -1,7 +1,5 @@
-# Created by:                 Sergey Matveychuk <sem@FreeBSD.org>
-#
+# Created by: Sergey Matveychuk <sem@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	quagga
 PORTVERSION=	0.99.17.12
@@ -19,10 +17,10 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 CONFLICTS=	openbgpd-[0-9]* openospfd-[0-9]* zebra-0* quagga-[0-9]*
 
+USES=			gmake perl5
 USE_AUTOTOOLS=		libtool autoheader
-USE_GMAKE=		yes
 USE_LDCONFIG=		yes
-USE_PERL5_BUILD=	yes
+USE_PERL5=		build
 BUILD_DEPENDS+=		gawk:${PORTSDIR}/lang/gawk
 LIB_DEPENDS+=		gcrypt:${PORTSDIR}/security/libgcrypt
 CONFIGURE_ARGS+=	--with-libgcrypt
@@ -44,6 +42,7 @@ TCPSOCKETS_DESC=	Use TCP/IP sockets for protocol daemons
 DLMALLOC_DESC=		Use dlmalloc (makes bgpd much faster)
 NO_BGP_ANNOUNCE_DESC=	Turn off BGP route announcement
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 CFLAGS+=	-I${LOCALBASE}/include

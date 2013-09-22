@@ -23,12 +23,11 @@ CONFLICTS=		heimdal-[0-9]* srp-[0-9]*
 
 LATEST_LINK=		${PORTNAME}-19
 KERBEROSV_URL=		http://web.mit.edu/kerberos/
-USE_GMAKE=		yes
-USE_PERL5_BUILD=	yes
+USE_PERL5=		build
 USE_LDCONFIG=		yes
 USE_CSTD=		gnu99
 USE_AUTOTOOLS=		libtool
-USES=		gettext
+USES=		gettext gmake perl5
 CONFIGURE_ARGS?=	--enable-shared --without-system-verto
 CONFIGURE_ENV=		INSTALL="${INSTALL}" YACC="${YACC}"
 MAKE_ARGS=		INSTALL="${INSTALL}"
@@ -48,6 +47,7 @@ LDFLAGS+=		-L${LOCALBASE}/lib
 
 USE_OPENSSL=		yes
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MDNS_FOR_REALM}

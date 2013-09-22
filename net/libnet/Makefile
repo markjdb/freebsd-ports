@@ -13,6 +13,7 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	A C library for creating IP packets
 
 LATEST_LINK=	${PORTNAME}${SHORT_VER}
+NO_STAGE=	yes
 
 USE_AUTOTOOLS=	libtool
 USE_LDCONFIG=	yes

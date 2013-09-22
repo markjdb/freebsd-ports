@@ -17,8 +17,9 @@ COMMENT=	WWW CGI script to browse CVS repository trees
 CONFLICTS=	cvsweb-3.*
 
 NO_BUILD=	yes
-USE_PERL5=	yes
+USES=		perl5
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 # Specify where your repository belongs.

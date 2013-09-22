@@ -2,6 +2,7 @@
 
 PORTNAME=	pkg
 DISTVERSION=	1.1.4
+PORTREVISION=	1
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://files.etoilebsd.net/pkg/ \
 		http://mirror.shatow.net/freebsd/${PORTNAME}/ \
@@ -64,6 +65,7 @@ MLINKS=	pkg-delete.8 pkg-remove.8 \
 	pkg-lock.8 pkg-unlock.8 \
 	pkg.8 pkg-static.8
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if defined(WITH_PKGNG)

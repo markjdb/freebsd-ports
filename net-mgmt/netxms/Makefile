@@ -26,10 +26,8 @@ BROKEN=		Does not fetch
 
 NO_PACKAGE=	yes
 
-USE_PERL5=	yes
 USE_OPENSSL=	yes
-USES=		iconv
-USE_GMAKE=	yes
+USES=		iconv gmake perl5
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-silent-rules
 USE_LDCONFIG=	yes
@@ -40,6 +38,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 NETXMS_OWN=	netxms
 NETXMS_GRP=	netxms
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 SUB_FILES=	pkg-install	pkg-deinstall
@@ -103,7 +102,6 @@ USE_RC_SUBR+=	nxhttpd
 CONFIGURE_ARGS+=	--with-nxhttpd
 PLIST_SUB+=	NXHTTPD=""
 LIB_DEPENDS+=	gd:${PORTSDIR}/graphics/gd
-USE_PERL5=	yes
 .else
 PLIST_SUB+=	NXHTTPD="@comment "
 .endif

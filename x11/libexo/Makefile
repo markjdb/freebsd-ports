@@ -1,6 +1,5 @@
 # Created by: Matt Lancereau
 # $FreeBSD$
-#
 
 PORTNAME=	libexo
 PORTVERSION=	0.10.2
@@ -23,18 +22,17 @@ DOCSDIR=	${PREFIX}/share/doc/${PORTNAME:S/lib//}
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 USE_GNOME=	glib20 gtk20 intltool intlhack
 USE_LDCONFIG=	yes
-USE_PERL5=	yes
 USE_XFCE=	configenv libmenu libutil
 USE_XORG=	x11
-USES=		desktop-file-utils pathfix pkgconfig
+USES=		desktop-file-utils gmake pathfix perl5 pkgconfig
 
 OPTIONS_DEFINE=	DOCS NLS
 
 MAN1=		exo-csource.1 exo-open.1
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

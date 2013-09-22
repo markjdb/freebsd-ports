@@ -1,10 +1,5 @@
-# ex:ts=8
-# Ports collection makefile for:	hydra
-# Date created:			Apr 2, 2003
-# Whom:				ijliao
-#
+# Created by: ijliao
 # $FreeBSD$
-#
 
 PORTNAME=	hydra
 PORTVERSION=	0.1.8
@@ -12,15 +7,16 @@ PORTREVISION=	8
 CATEGORIES=	www
 MASTER_SITES=	http://mirror.inerd.com/FreeBSD/distfiles/${PORTNAME}/ \
 		ftp://ftp.hellug.gr/pub/software/hydra/
+PKGNAMESUFFIX=	-web
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	A high performance multi-threaded web server
+COMMENT=	High performance multi-threaded web server
 
-LIB_DEPENDS=	gnutls.26:${PORTSDIR}/security/gnutls
+LIB_DEPENDS=	libgnutls.so:${PORTSDIR}/security/gnutls
 
 USE_RC_SUBR=	hydra
 
-NO_LATEST_LINK=	yes
+CONFLICTS_INSTALL=	hydra-[0-9]*
 GNU_CONFIGURE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -32,6 +28,7 @@ SUB_FILES=	pkg-deinstall
 PLIST_SUB=	LOGDIR=${LOGDIR}
 SUB_LIST=	LOGDIR=${LOGDIR}
 
+NO_STAGE=	yes
 post-patch:
 .for f in src/defines.h examples/hydra.conf
 	@${REINPLACE_CMD} -e "s,%%PREFIX%%,${PREFIX},g" \

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	entangle
-DISTVERSION=	0.5.2
+DISTVERSION=	0.5.3
 CATEGORIES=	graphics
 MASTER_SITES=	http://entangle-photo.org/download/sources/
 
@@ -38,6 +38,7 @@ OPTIONS_SUB=	yes
 NLS_USES=	gettext
 NLS_CONFIGURE_OFF=	--disable-nls
 
+NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e '/checking for GUDEV/,+93d' ${WRKSRC}/configure
 	@${REINPLACE_CMD} -e 's,_udev,,' \

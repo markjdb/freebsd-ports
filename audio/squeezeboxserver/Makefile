@@ -1,4 +1,3 @@
-# Created by: Brooks Davis <brooks@freebsd.org>
 # $FreeBSD$
 
 PORTNAME=	squeezeboxserver
@@ -43,8 +42,9 @@ RUN_DEPENDS+=	p5-DBIx-Class>=0:${PORTSDIR}/databases/p5-DBIx-Class \
 RUN_DEPENDS+=	p5-Package-DeprecationManager>=0.10:${PORTSDIR}/devel/p5-Package-DeprecationManager
 
 USERS=		${SLIMUSER}
+NO_STAGE=	yes
 GROUPS=		${SLIMGROUP}
-USE_PERL5=	yes
+USES=		perl5
 
 .include <bsd.port.pre.mk>
 

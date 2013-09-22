@@ -20,6 +20,7 @@ LIB_DEPENDS=	libgtkglext-x11-1.0.so:${PORTSDIR}/x11-toolkits/gtkglext \
 		libmhash.so:${PORTSDIR}/security/mhash \
 		libpng15.so:${PORTSDIR}/graphics/png
 
+SSP_UNSAFE=	yes
 USES=		pkgconfig
 USE_ZIP=	yes
 USE_GNOME=	gtk20 libxml2
@@ -32,6 +33,7 @@ WRKSRC=		${WRKDIR}/GPL/GtkRadiant
 
 SUB_FILES=	${PORTNAME}
 
+NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e 's/-ldl//' ${WRKSRC}/SConscript
 	@${GREP} -Rl 'defined[[:blank:]]*([[:blank:]]*__linux__[[:blank:]]*) || defined[[:blank:]]*([[:blank:]]*__APPLE__[[:blank:]]*)' ${WRKSRC} | \

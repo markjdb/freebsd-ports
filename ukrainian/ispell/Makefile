@@ -13,12 +13,12 @@ BUILD_DEPENDS=  buildhash:${PORTSDIR}/textproc/ispell
 
 MAKE_JOBS_UNSAFE=	yes
 
-USES=		gmake
+USES=		gmake perl5
 USE_BZIP2=	YES
 ALL_TARGET=	koi
-USE_PERL5=	yes
 
 # Still need gmake for other reasons :-\
+NO_STAGE=	yes
 #post-patch:
 #	${PERL} -pi -e 's,\$$\(MAKE\) -C (\w+),cd \1 && make,g' \
 #		${WRKSRC}/Makefile.in

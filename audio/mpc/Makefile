@@ -17,6 +17,7 @@ OPTIONS_DEFINE=	EXAMPLES DOCS ICONV
 OPTIONS_DEFAULT=	ICONV
 
 USES=		pkgconfig
+NO_STAGE=	yes
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -33,12 +34,13 @@ PLIST_FILES=	bin/${PORTNAME}
 
 .if ${PORT_OPTIONS:MICONV}
 USES+=		iconv
+LDFLAGS+=	${ICONV_LIB}
 .else
 CONFIGURE_ARGS+=--disable-iconv
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|-lintl|-l${ICONV_LIB}|g' ${WRKSRC}/configure
+	@${REINPLACE_CMD} -e 's|-lintl|${ICONV_LIB}|g' ${WRKSRC}/configure
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/src/${PORTNAME} ${PREFIX}/bin

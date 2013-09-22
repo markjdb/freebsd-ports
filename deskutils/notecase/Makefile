@@ -3,7 +3,7 @@
 
 PORTNAME=	notecase
 PORTVERSION=	1.9.8
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	deskutils textproc
 MASTER_SITES=	SF
 DISTNAME=	${PORTNAME}-${PORTVERSION}_src
@@ -22,6 +22,7 @@ DOS2UNIX_REGEX=	.*\.(c|h|cpp)
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

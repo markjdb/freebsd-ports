@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	rsyslog
-PORTVERSION=	7.3.15
+PORTVERSION=	7.5.3
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.rsyslog.com/files/download/rsyslog/
 
@@ -14,16 +14,14 @@ USE_LDCONFIG=	yes
 LIB_DEPENDS=	ee:${PORTSDIR}/devel/libee \
 		estr:${PORTSDIR}/devel/libestr \
 		json.0:${PORTSDIR}/devel/json-c \
-		sysinfo:${PORTSDIR}/devel/libsysinfo \
 		uuid:${PORTSDIR}/misc/e2fsprogs-libuuid
 
-BUILD_DEPENDS=	libgcrypt-config:${PORTSDIR}/security/libgcrypt \
-		rst2man:${PORTSDIR}/textproc/py-docutils
+BUILD_DEPENDS=	libgcrypt-config:${PORTSDIR}/security/libgcrypt
 
-PORTSCOUT=	limit:^7\.3
+PORTSCOUT=	limit:^7\.5
 PORTDOCS=	*
 PORTEXAMPLES=	*
-LATEST_LINK=	rsyslog-devel
+PKGNAMESUFFIX=	-devel
 
 OPTIONS_DEFINE=	DBI DOCS GNUTLS GSSAPI MYSQL PGSQL RELP RFC3195 SNMP
 
@@ -38,6 +36,7 @@ SNMP_DESC=	SNMP trap sender for rsyslog
 
 USES=		pkgconfig
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDBI}
@@ -126,7 +125,7 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-patch-mysql-microseconds
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-sane-hostname
 .endif
 
-CONFLICTS=	rsyslog-[56].[0-9]*
+CONFLICTS=	rsyslog6-* rsyslog-[0-9].*
 CFLAGS+=	-I${LOCALBASE}/include
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -141,7 +140,7 @@ CONFIGURE_ARGS+=--enable-rtinst --enable-debug
 CPPFLAGS+=-march=i686
 .endif
 
-CONFIGURE_ENV+=	LIBESTR_CFLAGS="${CFLAGS}" LIBESTR_LIBS="${LDFLAGS} -lestr" LIBEE_CFLAGS="${CFLAGS}" LIBEE_LIBS="${LDFLAGS} -lee -lsysinfo -lkvm"
+CONFIGURE_ENV+=	LIBESTR_CFLAGS="${CFLAGS}" LIBESTR_LIBS="${LDFLAGS} -lestr" LIBEE_CFLAGS="${CFLAGS}" LIBEE_LIBS="${LDFLAGS} -lee -lkvm"
 CFLAGS+=	${CPPFLAGS}
 
 MAN8=	rsyslogd.8
@@ -150,7 +149,7 @@ MAN5=	rsyslog.conf.5
 USE_RC_SUBR=	${PORTNAME}d
 SUB_FILES=	pkg-message
 
-CONFIGURE_ARGS+=	--enable-imfile --enable-mail --enable-imdiag --enable-impstats --enable-omstdout
+CONFIGURE_ARGS+=	--enable-imfile --enable-mail --enable-imdiag --enable-impstats --enable-omstdout --enable-cached-man-pages
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/lib/rsyslog/|${PREFIX}/lib/rsyslog/|'\
@@ -171,9 +170,5 @@ post-install:
 	@${INSTALL_DATA} ${WRKSRC}/doc/rsyslog-example.conf ${EXAMPLESDIR}
 .endif
 	@${CAT} ${PKGMESSAGE}
-
-.if ${OSVERSION} < 700042
-USE_GCC=	4.2+
-.endif
 
 .include <bsd.port.post.mk>

@@ -1,9 +1,5 @@
-# New ports collection makefile for:	formication
-# Date created:		2004-01-25
-# Whom:			Michael Ranner <mranner@inode.at>
-#
+# Created by: Michael Ranner <mranner@inode.at>
 # $FreeBSD$
-#
 
 PORTNAME=	formication
 PORTVERSION=	1.0.b1
@@ -15,8 +11,9 @@ MASTER_SITES=	http://www.ranner.eu/stuff/ \
 MAINTAINER=	michael@ranner.eu
 COMMENT=	Formular processing tool written in perl
 
+USES=		perl5
 USE_APACHE_RUN=	22+
-USE_PERL5_RUN=	yes
+USE_PERL5=	run
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
@@ -24,6 +21,7 @@ PORTDOCS=	BLURB COPYING feedback.fcn feedback.html formication.txt
 PLIST_FILES=	www/cgi-bin/formication.pl
 SUB_FILES+=	pkg-message
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 PLIST_DIRSTRY=	www/cgi-bin

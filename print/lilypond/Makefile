@@ -39,11 +39,11 @@ INFO=		lilypond-notation \
 		music-glossary \
 		internals
 
-USES=		bison:build gettext gmake pkgconfig
+USES=		bison:build gettext gmake pkgconfig perl5
 USE_GHOSTSCRIPT=9
 USE_TEX=	latex
 USE_PYTHON=	yes
-USE_PERL5_BUILD=yes
+USE_PERL5=	build
 USE_GNOME=	pango
 USE_GCC=	any
 
@@ -62,6 +62,7 @@ NOCCACHE=	yes
 
 PLIST_SUB=	PORTVERSION=${PORTVERSION}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}

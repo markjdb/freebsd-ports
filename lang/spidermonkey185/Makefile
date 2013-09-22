@@ -17,13 +17,11 @@ LIB_DEPENDS=		nspr4:${PORTSDIR}/devel/nspr
 
 CONFLICTS=		njs-[0-9]*
 
-#USES=			pkgconfig:build
+USES=			gmake pathfix perl5 pkgconfig
 USE_AUTOTOOLS=		autoconf213:env
 GNU_CONFIGURE=		yes
-USE_GMAKE=		yes
-USE_GNOME=		gnomehack
 USE_LDCONFIG=		yes
-USE_PERL5_BUILD=	yes
+USE_PERL5=		build
 USE_PYTHON_BUILD=	2.5-2.7
 
 WRKSRC=			${WRKDIR}/js-${PORTVERSION}/js/src
@@ -32,6 +30,7 @@ CONFIGURE_ARGS=		--with-pthreads \
 			--with-system-nspr
 
 # This comes from bsd.gecko.mk, fixes linking issues on 9.0 and higher.
+NO_STAGE=	yes
 post-configure:
 	${ECHO_CMD} "fenv.h" >> ${WRKSRC}/config/system-headers
 	${ECHO_CMD} "pthread_np.h" >> ${WRKSRC}/config/system-headers

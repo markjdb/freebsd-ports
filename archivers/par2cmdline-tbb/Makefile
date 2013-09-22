@@ -15,13 +15,13 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	tbb:${PORTSDIR}/devel/tbb
 
+NO_STAGE=	yes
 ONLY_FOR_ARCHS=	i386 amd64 ia64
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib -pthread
 USE_AUTOTOOLS=	aclocal automake autoconf
 AUTOMAKE_ARGS=	--add-missing
-USE_GCC=	4.2+
 
 PORTDOCS=	README
 CONFLICTS=	par2cmdline-[0-9]*

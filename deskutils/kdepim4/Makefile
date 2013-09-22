@@ -20,8 +20,7 @@ LIB_DEPENDS=	gpgme:${PORTSDIR}/security/gpgme \
 BUILD_DEPENDS=	xsltproc:${PORTSDIR}/textproc/libxslt
 RUN_DEPENDS=	${KDE4_PREFIX}/bin/accountwizard:${PORTSDIR}/deskutils/kdepim4-runtime
 
-LATEST_LINK=	${PORTNAME}4
-CONFLICTS_INSTALL=	kdepim-4.4.*
+CONFLICTS_INSTALL=	kdepim44-4.*
 
 USE_XZ=		yes
 USE_GNOME=	libxml2
@@ -35,6 +34,7 @@ USE_QT4=	corelib dbus declarative designer_build gui network opengl \
 USE_XORG=	x11 xscrnsaver
 CMAKE_ARGS+=	-DKDEPIM_BUILD_MOBILE:BOOL=FALSE
 USE_GMAKE=	yes
+NO_STAGE=	yes
 # Avoids Clang error:
 # https://git.reviewboard.kde.org/r/108617
 CXXFLAGS+=	-Wno-error=return-type

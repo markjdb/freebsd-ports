@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ec2-scripts
-PORTVERSION=	1.4
+PORTVERSION=	1.5
 CATEGORIES=	sysutils
 MASTER_SITES=	http://freebsd-ec2-dist.s3.amazonaws.com/
 EXTRACT_SUFX=	.tgz
@@ -20,6 +20,7 @@ RC_SCRIPTS=	ec2_bootmail ec2_ephemeralswap ec2_fetchkey	\
 PLIST_FILES+=	etc/rc.d/$i
 .endfor
 
+NO_STAGE=	yes
 post-install:
 	@for i in ${RC_SCRIPTS}; do	\
 		${INSTALL_SCRIPT} ${WRKSRC}/$${i} ${PREFIX}/etc/rc.d/$${i}; \

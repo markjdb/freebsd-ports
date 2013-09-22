@@ -31,7 +31,7 @@ ONLY_FOR_ARCHS=	i386 amd64
 
 JDK_VERSION=		7
 JDK_INTERNAL_VERSION=	1.7.0
-JDK_UPDATE_VERSION=	25
+JDK_UPDATE_VERSION=	40
 DL_JDK_VERSION=		${JDK_INTERNAL_VERSION}_${JDK_UPDATE_VERSION}
 DOWNLOAD_URL=		http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
@@ -39,6 +39,7 @@ APP_HOME=	${PREFIX}/${PKGNAMEPREFIX}${PORTNAME}${JDK_INTERNAL_VERSION}
 SCRIPT_FILES=	bin/jcontrol jre/bin/jcontrol
 BIN_DIRS=	bin jre/bin
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if !exists(${DISTDIR}/${DISTNAME}${EXTRACT_SUFX})

@@ -17,6 +17,7 @@ USE_BZIP2=	yes
 CONFIGURE_WRKSRC=	${WRKSRC}/src/enet
 BUILD_WRKSRC=	${WRKSRC}/src
 WRKSRC=		${WRKDIR}/${PORTNAME}
+USE_XORG=	x11
 
 ALL_TARGET=	libenet ${BINARIES}
 
@@ -31,6 +32,7 @@ FLAVOR_DESC=	Executable Selections
 
 OPTIONS_DEFAULT=	CLIENT DEDICATED OPTIMIZED_CFLAGS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${ARCH} == "ia64" || ${ARCH} == "powerpc" || ${ARCH} == "sparc64"

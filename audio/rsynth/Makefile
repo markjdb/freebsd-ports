@@ -13,6 +13,8 @@ COMMENT=	Speech synthesizer
 LIB_DEPENDS=	gdbm:${PORTSDIR}/databases/gdbm	\
 		audio:${PORTSDIR}/audio/nas
 
+NO_STAGE=	yes
+
 GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	autoconf
 

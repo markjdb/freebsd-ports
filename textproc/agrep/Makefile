@@ -14,6 +14,7 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Approximate grep (fast approximate pattern-matching tool)
 
 NO_CDROM=	no redistribution for profit
+NO_STAGE=	yes
 
 ALL_TARGET=
 MAKE_ARGS=	CFLAGS="${CFLAGS}"

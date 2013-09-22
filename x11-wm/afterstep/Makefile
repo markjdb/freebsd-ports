@@ -14,14 +14,16 @@ COMMENT=	Window manager originally based on the Bowman NeXTstep clone
 
 RUN_DEPENDS=	asclock:${PORTSDIR}/x11-clocks/asclock
 
+CONFLICTS?=	afterstep-2*
+PORTSCOUT=	limit:^1\.[0-9.]*$$
 NO_LATEST_LINK=	yes
+NO_STAGE=	yes
+
 USE_XORG=	xpm xext x11
 USES=		imake
 INSTALL_TARGET=	install install.man
 MANCOMPRESSED=	yes
 MAN1=		afterstep.1 Animate.1 Audio.1 Auto.1 Banner.1 Pager.1 Wharf.1
-CONFLICTS?=	afterstep-2*
-PORTSCOUT=	limit:^1\.[0-9.]*$$
 CFLAGS+=	-Wno-return-type
 USE_CSTD=	gnu89
 

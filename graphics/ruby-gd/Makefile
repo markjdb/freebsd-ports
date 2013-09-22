@@ -16,6 +16,8 @@ COMMENT=	Ruby extension library to use Thomas Boutell's gd library
 
 LIB_DEPENDS=	freetype:${PORTSDIR}/print/freetype2
 
+NO_STAGE=	yes
+
 USE_RUBY=	yes
 USE_RUBY_EXTCONF=	yes
 

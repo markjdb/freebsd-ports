@@ -26,10 +26,11 @@ DOS2UNIX_REGEX=	.*\.(c|cpp|h)
 USE_XORG=	x11 xext
 USE_GL=		gl glu
 USE_SDL=	sdl
-USES=		cmake
+USES=		cmake pkgconfig
 CMAKE_ARGS+=	-DVERSION:STRING="${PORTVERSION}" -DSYSCONFDIR:STRING="${PREFIX}/etc"
 SVN_REV=	1001
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MASM}

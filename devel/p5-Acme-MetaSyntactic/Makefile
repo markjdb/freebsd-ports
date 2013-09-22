@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Acme-MetaSyntactic
-PORTVERSION=	1.010
+PORTVERSION=	1.011
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -30,6 +30,7 @@ MAN3=		Acme::MetaSyntactic.3 \
 		Test::MetaSyntactic.3 \
 		eta.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} < 501400

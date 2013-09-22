@@ -2,10 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	irssi
-PORTVERSION=	20120624
-PORTREVISION=	1
+PORTVERSION=	20130915
 CATEGORIES=	irc
-MASTER_SITES=	http://bsdcrew.de/distfiles/
+MASTER_SITES=	http://mirror.shatow.net/freebsd/${PORTNAME}/ \
+		http://bsdcrew.de/distfiles/ \
+		http://mirror.irssi.org/snapshots/
 PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	miwi@FreeBSD.org
@@ -16,9 +17,7 @@ LIB_DEPENDS=	glib-2.0:${PORTSDIR}/devel/glib20
 CONFLICTS=	irssi-0.8*
 
 GNU_CONFIGURE=	yes
-USES=		pkgconfig
-USE_GMAKE=	yes
-WANT_PERL=	yes
+USES=		pkgconfig gmake
 
 MAN1=		irssi.1
 
@@ -27,8 +26,9 @@ SOCKS_DESC=	Socks proxy support
 BOT_DESC=	Bot support
 OPTIONS_DEFAULT=	PERL IPV6 SSL
 
-WRKSRC=		${WRKDIR}/${PORTNAME}-0.8.15-svn
+WRKSRC=		${WRKDIR}/${PORTNAME}-0.8.16-rc1
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 # Process options.
@@ -40,7 +40,7 @@ CONFIGURE_ARGS+=	--disable-ssl
 .endif
 
 .if ${PORT_OPTIONS:MPERL}
-USE_PERL5=	yes
+USES+=		perl5
 CONFIGURE_ARGS+=	--with-perl-lib=site
 PLIST_SUB+=	WITH_PERL=""
 .else

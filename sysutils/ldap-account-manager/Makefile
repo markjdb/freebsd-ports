@@ -1,9 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	ldap-account-manager
-PORTVERSION=	4.2.1
+PORTVERSION=	4.3
 CATEGORIES=	sysutils www
 MASTER_SITES=	SF/${SHORTNAME}/LAM/${PORTVERSION}
+
+USE_BZIP2=	yes
 
 MAINTAINER=	basil@vpm.net.ua
 COMMENT=	Webfrontend for managing accounts stored in an OpenLDAP server
@@ -14,8 +16,7 @@ RUN_DEPENDS=	p5-Quota>=0:${PORTSDIR}/sysutils/p5-Quota \
 		p5-perl-ldap>=0:${PORTSDIR}/net/p5-perl-ldap
 
 NO_BUILD=	yes
-USES=		gettext
-USE_PERL5=	yes
+USES=		gettext perl5
 USE_PHP=	gettext hash iconv ldap mcrypt pcre session simplexml spl xml json zip
 WANT_PHP_WEB=	yes
 DEFAULT_PHP_VER=	5
@@ -27,6 +28,7 @@ WWWDIR?=	${PREFIX}/www/${SHORTNAME}
 PLIST_SUB=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 SUB_FILES=	pkg-message
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 do-install:

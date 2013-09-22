@@ -18,14 +18,15 @@ COMMENT=	GNU Compiler Collection 3.4
 
 SUFFIX=		34
 LATEST_LINK=	gcc${SUFFIX}${PKGNAMESUFFIX}
-USES=		bison iconv
+USES=		bison gmake iconv perl5
 USE_BZIP2=	yes
-USE_GMAKE=	yes
-USE_PERL5_BUILD=yes
+USE_PERL=	build
+SSP_UNSAFE=	yes
 
 PATCH_WRKSRC=	${SRCDIR}
 CONFIGURE_SCRIPT=	../${SRCDIR:C/${WRKDIR}//}/configure
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 DEPRECATED=	Superseded by GCC 4.6 and later, kept for the sake of two obsolete ports

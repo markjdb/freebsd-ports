@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmc2
-PORTVERSION=	0.39
+PORTVERSION=	0.40
 CATEGORIES=	emulators
 MASTER_SITES=	SF
 
@@ -33,6 +33,7 @@ DESKTOP_ENTRIES="QMC2 (MAME)" "MAME frontend" "${DATADIR}/img/mame.png" \
 		"QMC2 (MESS)" "MESS frontend" "${DATADIR}/img/mess.png" \
 		"${PORTNAME}-sdlmess" "Game;Emulator;Qt;" "true"
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 post-extract:

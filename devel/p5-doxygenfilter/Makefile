@@ -1,9 +1,5 @@
-# New ports collection makefile for:	doxygenfilter
-# Date created:		Tue Oct 28 07:38:51 UTC 2008
-# Whom:			Sergei Golyashov <svvord@mail.ru>
-#
+# Created by: Sergei Golyashov <svvord@mail.ru>
 # $FreeBSD$
-#
 
 PORTNAME=	doxygenfilter
 PORTVERSION=	1.10
@@ -17,10 +13,12 @@ COMMENT=	Input filter for Doxygen enabling support for Perl code documentation
 
 RUN_DEPENDS=	${LOCALBASE}/bin/doxygen:${PORTSDIR}/devel/doxygen
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		DoxyGen::Filter.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-install:

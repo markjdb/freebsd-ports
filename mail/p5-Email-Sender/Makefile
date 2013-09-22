@@ -1,9 +1,5 @@
-# New ports collection makefile for:	mail/p5-Email-Sender
-# Date created:				23 June 2009
-# Whom:					Bill Brinzer <bill.brinzer@gmail.com>
-#
+# Created by: Bill Brinzer <bill.brinzer@gmail.com>
 # $FreeBSD$
-#
 
 PORTNAME=	Email-Sender
 PORTVERSION=	0.120001
@@ -28,7 +24,8 @@ TEST_DEPENDS=	p5-Capture-Tiny>=0.08:${PORTSDIR}/devel/p5-Capture-Tiny \
 		p5-Sub-Override>=0:${PORTSDIR}/devel/p5-Sub-Override \
 		p5-Test-MockObject>=0:${PORTSDIR}/devel/p5-Test-MockObject
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=	Email::Sender.3 \
 	Email::Sender::Failure.3 \
@@ -55,6 +52,7 @@ MAN3=	Email::Sender.3 \
 	Email::Sender::Transport::Wrapper.3 \
 	Email::Sender::Util.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} < 501400

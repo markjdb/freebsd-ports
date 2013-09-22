@@ -12,13 +12,13 @@ COMMENT=	Batch SMTP support for sendmail, incoming and outgoing
 
 CONFLICTS=	smail-3.*
 
-USES=		shebangfix
-USE_PERL5=	yes
+USES=		shebangfix perl5
 WRKSRC=		${WRKDIR}/${PORTNAME}
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--redo
 SHEBANG_FILES=	configure
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 RUN_DEPENDS=	${LOCALBASE}/bin/uux:${PORTSDIR}/net/freebsd-uucp

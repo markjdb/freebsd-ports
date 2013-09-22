@@ -1,13 +1,15 @@
---- Makefile.in.orig	Sat Apr 22 16:06:54 2006
-+++ Makefile.in	Thu Jun 22 09:39:04 2006
-@@ -427,10 +427,6 @@
- SOURCES += $(OPAL_SRCDIR)/lids/vpblid.cxx
- endif
+--- Makefile.in.orig	2013-07-11 10:39:04.000000000 +0200
++++ Makefile.in	2013-07-11 10:39:56.000000000 +0200
+@@ -666,12 +666,6 @@
  
--ifdef HAS_SANGOMA
--SOURCES += $(OPAL_SRCDIR)/lids/sangomalid.cxx
--endif
--
- 
- ##################
- # Software codecs
+ install:
+ 	mkdir -p $(DESTDIR)$(libdir); chmod 755 $(DESTDIR)$(libdir)
+-	( if test -e $(OPAL_LIBDIR)/$(LIB_FILENAME_STATIC) ; then \
+-	  $(INSTALL) -m 755 $(OPAL_LIBDIR)/$(LIB_FILENAME_STATIC) $(DESTDIR)$(libdir) ; \
+-	fi )
+-	( if test -e $(OPAL_LIBDIR)/$(DEBUG_LIB_FILENAME_STATIC) ; then \
+-	  $(INSTALL) -m 755 $(OPAL_LIBDIR)/$(DEBUG_LIB_FILENAME_STATIC) $(DESTDIR)$(libdir) ; \
+-	fi )
+ 	( if test -e $(OPAL_LIBDIR)/$(LIB_FILENAME_SHARED_PAT) ; then \
+ 	  $(INSTALL) -m 755 $(OPAL_LIBDIR)/$(LIB_FILENAME_SHARED_PAT) $(DESTDIR)$(libdir) ; \
+ 	  ln -snf $(LIB_FILENAME_SHARED_PAT) $(DESTDIR)$(libdir)/$(LIB_FILENAME_SHARED) ; \

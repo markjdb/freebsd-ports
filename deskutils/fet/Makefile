@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	fet
-PORTVERSION=	5.18.2
-PORTREVISION=	1
+PORTVERSION=	5.19.3
 CATEGORIES=	deskutils kde
 MASTER_SITES=	http://lalescu.ro/liviu/fet/download/ \
 		http://lalescu.ro/liviu/fet/download/old/ \
@@ -32,6 +31,7 @@ DESKTOP_ENTRIES="FET" \
 		"Education;Qt;" \
 		true
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}
@@ -50,6 +50,7 @@ do-configure:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/fet ${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/fet-cl ${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/doc/fet.1 ${MANPREFIX}/man/man1
 .if ${PORT_OPTIONS:MEXAMPLES}
 	${MKDIR} ${EXAMPLESDIR}

@@ -14,8 +14,8 @@ COMMENT=	Performance and information monitoring tool
 
 SUB_FILES=	pkg-message
 
-USE_PERL5_BUILD=	yes
-
+USES=		perl5
+USE_PERL5=	build
 MAKE_JOBS_UNSAFE=	yes
 
 # Synonym for WITHOUT_SYMUX
@@ -52,6 +52,7 @@ SUBDIR+=	client
 
 MAKE_ARGS+=	SUBDIR="${SUBDIR}" RRDDIR="${LOCALBASE}"
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-extract:

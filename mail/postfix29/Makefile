@@ -31,8 +31,9 @@ NO_LATEST_LINK=	yes
 
 USERS=		postfix
 GROUPS=		mail maildrop postfix
+USES=		perl5
+USE_PERL5=	build
 USE_SUBMAKE=	yes
-USE_PERL5_BUILD=yes
 SCRIPTS_ENV+=	POSTFIX_DEFAULT_MTA="${POSTFIX_DEFAULT_MTA}"
 
 OPTIONS_DEFINE=	PCRE SASL2 TLS BDB MYSQL PGSQL SQLITE OPENLDAP LDAP_SASL \
@@ -65,6 +66,7 @@ RG2_DESC=	Kerberos network authentication protocol type
 
 OPTIONS_DEFAULT=	PCRE
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 MAN1=	postalias.1 postcat.1 postconf.1 postdrop.1 postfix.1 postkick.1 \

@@ -1,9 +1,5 @@
-# New ports collection makefile for:   skyfish
-# Date created:        23 May 2008
-# Whom:                Nsand <nsand@sura.ru>
-#
+# Created by: Nsand <nsand@sura.ru>
 # $FreeBSD$
-#
 
 PORTNAME=	skyfish
 PORTVERSION=	0.91
@@ -13,6 +9,9 @@ MASTER_SITES=	ftp://ftp.lissyara.su/users/nsand/skyfish/
 MAINTAINER=	nsand@sura.ru
 COMMENT=	Grabbing TCP streams from network interface (SAT internet)
 
+SSP_UNSAFE=	kernel module does not support ssp
+
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 SYSDIR?=	${SRC_BASE}/sys

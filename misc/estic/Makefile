@@ -1,9 +1,9 @@
-# Created by: Julian Stacey <jhs@freebsd.org>
+# Created by: Julian Stacey <jhs@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=		estic
 PORTVERSION=		1.61
-PORTREVISION=	1
+PORTREVISION=		1
 CATEGORIES=		misc comms
 MASTER_SITES=		${MASTER_SITE_LOCAL}
 MASTER_SITE_SUBDIR=	dinoex
@@ -13,21 +13,23 @@ DISTFILES=		estic-1.60-sources.zip estic-1.61-patch-from-1.60.zip
 MAINTAINER=		dinoex@FreeBSD.org
 COMMENT=		Controller for ISDN TK-Anlage (PBX) made by Istec
 
-USE_ZIP=		yes
-NO_WRKSUBDIR=		yes
+NO_STAGE=	yes
+
+USE_ZIP=	yes
+NO_WRKSUBDIR=	yes
 
 .if defined(WITHOUT_X11)
-NOX11_SUFFIX?=		-nox11
+NOX11_SUFFIX?=	-nox11
 X_OR_NOT=
-PLIST_SUB+=		WITHOUT_X=""
-PLIST_SUB+=		WITH_X="@comment "
+PLIST_SUB+=	WITHOUT_X=""
+PLIST_SUB+=	WITH_X="@comment "
 .else
-USE_XORG=		x11
+USE_XORG=	x11
 X_OR_NOT=-x
-PLIST_SUB+=		WITHOUT_X="@comment "
-PLIST_SUB+=		WITH_X=""
+PLIST_SUB+=	WITHOUT_X="@comment "
+PLIST_SUB+=	WITH_X=""
 .endif
-AUTHOR=			"Ullrich von Bassewitz" <uz@ibb.schwaben.com>
+AUTHOR=		"Ullrich von Bassewitz" <uz@ibb.schwaben.com>
 
 # Personal Preferences, Where to install.
 PBX_VAR=${PREFIX}/var/log/pbx

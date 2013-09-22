@@ -10,7 +10,8 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	kuriyama@FreeBSD.org
 COMMENT=	Perl module bundle for Plack
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=	Task::Plack.3
 
@@ -32,6 +33,7 @@ SQUATTING_DESC=		Squatting::On
 CGIAPP_DESC=		CGI::Application::PSGI
 #OPTIONS:=${OPTIONS:C/off/on/g}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MFASTCGI}

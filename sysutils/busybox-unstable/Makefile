@@ -28,9 +28,10 @@ IGNORE=		is older than stable version. Use sysutils/busybox
 PORTSCOUT=	skipv:1.21.1
 
 MAKE_ARGS+=	SKIP_STRIP=y CC="${CC}" HOSTCC="${CC}" CXX="${CXX}" HOSTCXX="${CXX}"
+USES=		gmake
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 # avoid clang, breaks in findutils/find.c l. 752+,
+NO_STAGE=	yes
 # uses a GCC extension/invalid C code:
 USE_GCC?=	4.2+
 
@@ -39,8 +40,9 @@ PLIST_FILES=	bin/busybox
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
-USE_PERL5_BUILD=	yes
-PORTDOCS=		*
+USES+=		perl5
+USE_PERL5=	build
+PORTDOCS=	*
 .endif
 
 post-patch:

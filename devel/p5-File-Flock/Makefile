@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	File-Flock
-PORTVERSION=	2013.09
+PORTVERSION=	2013.11
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -27,4 +27,5 @@ MAN3=		File::Flock.3 \
 		File::Flock::Forking.3 \
 		File::Flock::Subprocess.3
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

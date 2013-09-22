@@ -16,10 +16,8 @@ LIB_DEPENDS=	ssh2:${PORTSDIR}/security/libssh2
 
 CONFLICTS=	mc-light-4*
 
-USES=		pkgconfig
-USE_GMAKE=	yes
+USES=		gmake perl5 pkgconfig
 USE_GNOME=	glib20
-USE_PERL5=	yes
 USE_XZ=		yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ZIP=${UNZIP_CMD} UNZIP=${UNZIP_CMD}
@@ -33,6 +31,7 @@ SUBSHELL_DESC=	Build with subshell support
 
 OPTIONS_DEFAULT=	SLANG ICONV NLS EDIT X11 SUBSHELL SMB
 
+NO_STAGE=	yes
 post-patch:
 	${REINPLACE_CMD} -e 's/SUBDIRS = intl/SUBDIRS =/' ${WRKSRC}/Makefile.in
 	${REINPLACE_CMD} -e 's/saved_CPPFLAGS="-ltermcap/saved_CPPFLAGS="/' ${WRKSRC}/configure

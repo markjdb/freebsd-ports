@@ -12,6 +12,8 @@ COMMENT=	A file corruption detection and repair program
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 ALL_TARGET=	zidrav
 MAN1=		zidrav.1
 PLIST_FILES=	bin/zidrav

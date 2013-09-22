@@ -25,10 +25,12 @@ USE_BINUTILS=	yes
 USES=		bison gmake iconv perl5
 USE_BZIP2=	yes
 USE_PERL5=	build
+SSP_UNSAFE=	yes
 
 PATCH_WRKSRC=	${SRCDIR}
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64"

@@ -4,7 +4,7 @@
 
 PORTNAME=	upower
 PORTVERSION=	0.9.7
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	sysutils
 MASTER_SITES=	http://upower.freedesktop.org/releases/
 
@@ -43,4 +43,5 @@ MAN7=		UPower.7
 MAN8=		upowerd.8
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

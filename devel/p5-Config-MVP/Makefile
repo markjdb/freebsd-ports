@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Config-MVP
-PORTVERSION=	2.200004
+PORTVERSION=	2.200006
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -14,6 +14,7 @@ LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-Class-Load>=0.17:${PORTSDIR}/devel/p5-Class-Load \
+		p5-Module-Runtime>=0:${PORTSDIR}/devel/p5-Module-Runtime \
 		p5-Moose>=0.91:${PORTSDIR}/devel/p5-Moose \
 		p5-MooseX-OneArgNew>=0:${PORTSDIR}/devel/p5-MooseX-OneArgNew \
 		p5-Params-Util>=0:${PORTSDIR}/devel/p5-Params-Util \
@@ -23,7 +24,8 @@ BUILD_DEPENDS=	p5-Class-Load>=0.17:${PORTSDIR}/devel/p5-Class-Load \
 		p5-Tie-IxHash>=0:${PORTSDIR}/devel/p5-Tie-IxHash \
 		p5-Try-Tiny>=0:${PORTSDIR}/lang/p5-Try-Tiny
 RUN_DEPENDS:=	${BUILD_DEPENDS}
-TEST_DEPENDS=	p5-Test-Fatal>=0:${PORTSDIR}/devel/p5-Test-Fatal
+TEST_DEPENDS=	p5-Capture-Tiny>=0:${PORTSDIR}/devel/p5-Capture-Tiny \
+		p5-Test-Fatal>=0:${PORTSDIR}/devel/p5-Test-Fatal
 
 USES=		perl5
 USE_PERL5=	configure
@@ -40,6 +42,7 @@ MAN3=		Config::MVP.3 \
 		Config::MVP::Section.3 \
 		Config::MVP::Sequence.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} < 501400

@@ -19,7 +19,6 @@ OPTIONS_DEFINE=	NLS A4SIZE DOCS
 A4SIZE_DESC=	Set default paper size to A4
 
 USES=		imake
-USE_GCC=	any
 PORTDOCS=	HISTORY README
 USE_XORG=	x11 xext xt sm ice
 MAKE_ENV=	PTHREAD_LIBS="${PTHREAD_LIBS}"
@@ -27,6 +26,7 @@ CFLAGS+=	${PTHREAD_CFLAGS}
 
 MAN1=		tgif.1
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}

@@ -21,8 +21,7 @@ BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash \
 RUN_DEPENDS:=	${BUILD_DEPENDS} \
 		formail:${PORTSDIR}/mail/procmail
 
-USE_GMAKE=	yes
-USE_PERL5=	yes
+USES=		gmake perl5
 
 OPTIONS_DEFINE=	RPMBUILD DOCS NLS
 RPMBUILD_DESC=	rpmbuild support
@@ -35,6 +34,7 @@ CONFIGURE_ARGS=	--with-sed=${LOCALBASE}/bin/gsed \
 MAN1=		guards.1 quilt.1
 PORTDOCS=	README README.MAIL quilt.pdf
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MRPMBUILD}

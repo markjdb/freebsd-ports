@@ -14,6 +14,8 @@ COMMENT=	A multi purpose wrapper plugin for Nagios
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 USES=		shebangfix perl5
 USE_PERL5=	run
 NO_BUILD=	yes

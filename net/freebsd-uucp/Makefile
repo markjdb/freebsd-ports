@@ -12,6 +12,8 @@ PKGNAMESUFFIX?=	${PAM_SUFFIX}${PKGNAMESUFFIX2}
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	FreeBSD-modified Taylor UUCP (unix-to-unix copy program)
 
+NO_STAGE=	yes
+
 USE_BZIP2=	yes
 MANCOMPRESSED=	yes
 

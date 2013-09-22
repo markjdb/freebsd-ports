@@ -1,9 +1,5 @@
-# New ports collection makefile for:	OSSP uuid
-# Date created:				12 February 2004
-# Whom:					Kimura Fuyuki <fuyuki@nigredo.org>
-#
+# Created by: Kimura Fuyuki <fuyuki@nigredo.org>
 # $FreeBSD$
-#
 
 PORTNAME=	uuid
 PORTVERSION=	1.6.2
@@ -27,7 +23,7 @@ MAN1=	uuid-config.1 uuid.1
 MAN3=	uuid.3 uuid++.3
 
 .if defined(WITH_PERL)
-USE_PERL5=	yes
+USES+=		perl5
 CONFIGURE_ENV+=	PERL=${PERL5}
 CONFIGURE_ARGS+=	--with-perl
 PLIST_SUB+=	WITH_PERL=''
@@ -37,6 +33,7 @@ MAN3PREFIX=	${PREFIX}/lib/perl5/${PERL_VER}
 PLIST_SUB+=	WITH_PERL='@comment '
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64" || ${ARCH} == "ia64"

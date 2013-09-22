@@ -12,7 +12,8 @@ EXTRACT_ONLY=	# empty
 MAINTAINER=	doceng@FreeBSD.org
 COMMENT=	The "meta-port" for the FreeBSD Documentation Project
 
-USE_PERL5_RUN=	yes
+USES=		perl5
+USE_PERL5=	run
 
 # This dependency list should be kept in sync with the list of
 # required ports in src/release/Makefile.inc.docports.
@@ -46,6 +47,7 @@ OPTIONS_DEFAULT=	X11 OPENJADE CJK SVN IGOR
 OPTIONS_DEFAULT+=	JADETEX
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSVN}

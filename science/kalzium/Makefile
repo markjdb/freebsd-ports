@@ -20,7 +20,7 @@ CONFLICTS=	kdeedu-4.[0-6].*
 
 USE_GCC=	yes
 USE_KDE4=	kdehier kdelibs kdeprefix automoc4
-USES=		cmake:outsource
+USES=		cmake:outsource pkgconfig
 USE_OCAML=	yes
 NO_OCAML_RUNDEPENDS=	yes
 USE_QT4=	corelib declarative designer opengl script xml \
@@ -30,4 +30,5 @@ USE_LDCONFIG=	yes
 
 MAN1=		kalzium.1
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

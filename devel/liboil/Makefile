@@ -7,7 +7,7 @@ PORTVERSION=	0.3.17
 CATEGORIES=	devel
 MASTER_SITES=	http://liboil.freedesktop.org/download/
 
-MAINTAINER=	mm@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Library of optimized inner loops
 
 LICENSE=	BSD
@@ -26,6 +26,7 @@ _COMPILER_VERSION!=	${CC} --version
 CFLAGS+=	-fheinous-gnu-extensions
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-patch:

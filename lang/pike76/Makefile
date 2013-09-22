@@ -83,15 +83,14 @@ CONFIGURE_ARGS+=	--without-debug \
 
 MAKE_ARGS=	CONFIGUREARGS="${CONFIGURE_ARGS}"
 
-USES=		bison gettext
-USE_GMAKE=	yes
+USES=		bison gettext gmake perl5
 
 # Allow building Embedded Perl
 CONFIGURE_ARGS+=	--with-perl
-USE_PERL5=	YES
 
 PLIST_FILES=	bin/pike bin/pike76 bin/hilfe
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 ONLY_FOR_ARCHS=	i386 amd64

@@ -17,6 +17,7 @@ RUN_DEPENDS=	${LOCALBASE}/lib/libIrrlicht.so:${PORTSDIR}/x11-toolkits/irrlicht
 
 USE_LUA=	5.1+
 USE_SCONS=	yes
+USE_DOS2UNIX=	src/engine/save.h
 
 CPPPATH=	${LOCALBASE}/include ${LUA_INCDIR}
 LIBPATH=	${LOCALBASE}/lib ${LUA_LIBDIR}
@@ -30,6 +31,7 @@ PLIST_FILES=	bin/${PORTNAME}
 
 DATA_DIRS=	art campaigns collision fonts levels meshes scenes scripts textures
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 post-patch:

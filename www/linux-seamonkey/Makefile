@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	seamonkey
-PORTVERSION=	2.20
+DISTVERSION=	2.21
 CATEGORIES=	www
-MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${PORTVERSION}/linux-i686/en-US
+MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/linux-i686/en-US
 
 MAINTAINER=	gecko@FreeBSD.org
 COMMENT=	The open source, standards compliant web browser
@@ -13,5 +13,6 @@ USE_BZIP2=	yes
 
 USE_LINUX_APPS=	dbusglib dbuslibs alsalib alsa-plugins-oss
 
+NO_STAGE=	yes
 .include "${.CURDIR}/Makefile.common"
 .include <bsd.port.mk>

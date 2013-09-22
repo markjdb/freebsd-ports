@@ -27,7 +27,7 @@ USE_GSTREAMER=	yes
 #USE_GCC=	4.6+
 USE_PYTHON=	yes
 USE_BZIP2=	yes
-USES+=		bison perl5 gmake
+USES+=		bison perl5 gmake pkgconfig
 USE_PERL5=	build
 WITHOUT_CPU_CFLAGS=	true
 MAKE_JOBS_SAFE=	yes
@@ -37,6 +37,7 @@ OPTIONS_DEFAULT=GCONF GNOMEVFS
 GNOMEVFS_DESC=	Enable GNOME Virtual File System
 CCACHE_DESC=	Mimimize compile time of C/C++ programs
 
+NO_STAGE=	yes
 .include "${.CURDIR}/files/Makefile.localized"
 
 .include <bsd.port.options.mk>

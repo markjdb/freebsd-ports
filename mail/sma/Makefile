@@ -10,6 +10,8 @@ MASTER_SITE_SUBDIR=	dinoex
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Program that analyses Sendmail log entries
 
+NO_STAGE=	yes
+
 MAN8=		sma.8
 DOCSFILES=	BUGS COPYRIGHT HISTORY README TODO
 SAMPLEFILES=	sma.conf

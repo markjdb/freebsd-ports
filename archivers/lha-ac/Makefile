@@ -14,6 +14,7 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Archive files using LZSS and Huffman compression (.lzh files)
 
 CONFLICTS=	lha-1*
+NO_STAGE=	yes
 
 MAN1=		lha.1
 MANLANG=	ja

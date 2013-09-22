@@ -15,9 +15,7 @@ LIB_DEPENDS=	expat.6:${PORTSDIR}/textproc/expat2 \
 		btparse.0:${PORTSDIR}/textproc/btparse \
 		dbi.1:${PORTSDIR}/databases/libdbi
 
-USE_GMAKE=	yes
-USES=		iconv
-USE_PERL5=	yes
+USES=		gmake iconv perl5
 HAS_CONFIGURE=	yes
 ALL_TARGET=
 
@@ -47,6 +45,7 @@ MAN1=	bib2ris.1 bib2ris-utf8.1 db2ris.1 eenc.1 en2ris.1 marc2ris.1 med2ris.1 \
 #MAN7=	RefDB.7
 MAN8=	refdb.8 refdb.sh.8 refdb-init.8
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 .include <bsd.port.options.mk>
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	portupgrade
-PORTVERSION=	20130718
+PORTVERSION=	20130921
 PORTEPOCH=	3
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	GH \
@@ -17,10 +17,11 @@ LICENSE=	BSD
 
 CONFLICTS_INSTALL=	portupgrade-[0-9]*
 
+NO_STAGE=	yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	freebsd
 GH_PROJECT=	portupgrade
-GH_COMMIT=	633cdd7
+GH_COMMIT=	452ad6a
 GH_TAGNAME=	${GH_COMMIT}
 
 DIST_SUBDIR=	${PORTNAME}
@@ -59,11 +60,6 @@ INSTALL_TARGET+=	install-doc
 # Reported that ruby-bdb is BROKEN with 2.0
 .if ${RUBY_VER} != 2.0
 RUN_DEPENDS+=	${RUBY_SITEARCHLIBDIR}/bdb.so:${PORTSDIR}/databases/ruby-bdb
-.endif
-
-# parsedate is needed for date globbing
-.if ${RUBY_VER} == 1.9
-RUN_DEPENDS+=	${RUBY_SITELIBDIR}/parsedate.rb:${PORTSDIR}/devel/ruby-date2
 .endif
 
 # Need to install working script(1)

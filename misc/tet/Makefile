@@ -23,6 +23,7 @@ PLIST=			${WRKDIR}/PLIST
 
 TET_CONFIG_TARGET?=	inet	# options are `lite', `xti' and `inet'
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
@@ -34,6 +35,10 @@ BUILD_DEPENDS+=		unzip:${PORTSDIR}/archivers/unzip
 # Set @cwd in the package list to ${TET_ROOT}
 PKG_ARGS=		-v -c -${COMMENT:Q} -d ${DESCR} -f ${TMPPLIST} \
 			-p ${TET_ROOT} -o ${CATEGORIES}/${PORTNAME}
+
+.if !defined(TET_ROOT)
+IGNORE=		Requires TET_ROOT be set for build
+.endif
 
 do-extract:
 .if !defined(TET_ROOT)

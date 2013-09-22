@@ -10,8 +10,8 @@ MASTER_SITES=	http://kiza.kcore.de/media/software/snownews/
 MAINTAINER=	clsung@FreeBSD.org
 COMMENT=	A text mode RSS newsreader
 
-USE_PERL5_BUILD=yes
-USES=		gmake iconv
+USES=		gmake iconv perl5
+USE_PERL5=	build
 USE_GNOME=	libxml2
 HAS_CONFIGURE=	yes
 
@@ -19,6 +19,7 @@ OPTIONS_DEFINE=	OPML NLS
 OPTIONS_DEFAULT=	OPML
 OPML_DESC=		Outline Processor Markup Support
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}

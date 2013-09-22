@@ -1,9 +1,5 @@
-# New ports collection makefile for:	graid5
-# Date created:				09 Nov 2010
-# Whom:					Lev Serebryakov <lev@FreeBSD.org>
-#
+# Created by: Lev Serebryakov <lev@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	graid5
 PORTVERSION=	${MAINVERSION}.${VERSIONDATE}
@@ -14,6 +10,7 @@ MASTER_SITES=	http://lev.serebryakov.spb.ru/download/graid5/
 MAINTAINER=	lev@FreeBSD.org
 COMMENT=	RAID5 geom class
 
+SSP_UNSAFE=	kernel module does not support ssp
 USE_BZIP2=	yes
 
 NO_PACKAGE=	should be recompiled for a particular FreeBSD kernel
@@ -34,6 +31,7 @@ MAKE_ENV+=	SYSDIR=${SYSDIR}
 MANCOMPRESSED=	yes
 MAN8=		${PORTNAME}.8
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if !exists(${SRC_BASE}/sys/Makefile)

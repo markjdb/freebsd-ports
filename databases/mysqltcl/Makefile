@@ -9,9 +9,9 @@ MASTER_SITES=	http://www.xdobry.de/mysqltcl/
 MAINTAINER=	tcltk@FreeBSD.org
 COMMENT=	TCL module for accessing MySQL databases based on msqltcl
 
+USES+=		tcl
 USE_LDCONFIG=	yes
 USE_MYSQL=	yes
-USE_TCL=	84+
 USE_DOS2UNIX=	generic/mysqltcl.c
 
 MANN=		mysqltcl.n
@@ -26,4 +26,5 @@ CONFIGURE_ARGS+=--with-tcl=${TCL_LIBDIR} \
 PLIST_SUB+=	LIB_DIR=${PORTNAME}-${PORTVERSION} \
 		LIB_NAME=libmysqltcl${PORTVERSION}.so
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

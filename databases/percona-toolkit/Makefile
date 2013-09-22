@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	percona-toolkit
-PORTVERSION=	2.2.3
+PORTVERSION=	2.2.4
 CATEGORIES=	databases
 MASTER_SITES=	http://www.percona.com/downloads/percona-toolkit/${PORTVERSION}/
 
@@ -51,4 +51,5 @@ MAN1=	percona-toolkit.1 \
 	pt-variable-advisor.1 \
 	pt-visual-explain.1
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

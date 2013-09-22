@@ -1,7 +1,4 @@
-# New ports collection makefile for: rsyslog4-dbi
-# Date created:     29 December 2008
-# Whom:             Cristiano Rolim Pereira <cristianorolim@hotmail.com>
-#
+# Created by: Cristiano Rolim Pereira <cristianorolim@hotmail.com>
 # $FreeBSD$
 
 COMMENT=	LibDBI output module for rsyslog
@@ -15,6 +12,7 @@ CONFIGURE_ARGS+=--enable-libdbi
 PLIST_FILES+=	lib/rsyslog/omlibdbi.la \
 		lib/rsyslog/omlibdbi.so
 
+NO_STAGE=	yes
 do-install:
 	@${INSTALL_PROGRAM} \
 		${WRKSRC}/plugins/omlibdbi/.libs/omlibdbi.so ${PREFIX}/lib/rsyslog

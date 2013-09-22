@@ -24,7 +24,7 @@ RUN_DEPENDS=	p5-Net-IP-Match-XS>=0:${PORTSDIR}/net-mgmt/p5-Net-IP-Match-XS \
 		p5-Crypt-CBC>=0:${PORTSDIR}/security/p5-Crypt-CBC \
 		p5-Proc-PID-File>=0:${PORTSDIR}/devel/p5-Proc-PID-File
 
-USE_PERL5=	yes
+USES=		perl5
 
 DIST_SUBDIR=	${PORTNAME}
 WRKSRC=		${WRKDIR}
@@ -32,6 +32,7 @@ WRKSRC=		${WRKDIR}
 OPTIONS_DEFINE=	ENCRYPT
 ENCRYPT_DESC=	Encrypt destination URL in redirection
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MENCRYPT}

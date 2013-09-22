@@ -1,9 +1,5 @@
-# New ports collection makefile for:	llvm
-# Date created:		20 Nov 2005
-# Whom:			Hye-Shik Chang
-#
+# Created by: Hye-Shik Chang
 # $FreeBSD$
-#
 
 PORTNAME=	llvm
 DISTVERSION=	3.4.r${SVN_REV}
@@ -17,11 +13,10 @@ COMMENT=	Low Level Virtual Machine
 
 CONFLICTS=	llvm-2* llvm-3.[012]* llvm31-[3]*
 
+USES=		gmake perl5
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_BZIP2=	yes
 USE_LDCONFIG=	yes
-USE_PERL5=	yes
 USE_PYTHON=	yes
 
 # Suggested tweaks from http://llvm.org/docs/Packaging.html
@@ -43,6 +38,7 @@ OPTIONS_DEFAULT=	CMAKE MANPAGES
 LLVM_RELEASE=	${PORTVERSION:C/\.r[0-9]*//}
 PLIST_SUB+=	LLVM_RELEASE=${LLVM_RELEASE}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MASSERTS}

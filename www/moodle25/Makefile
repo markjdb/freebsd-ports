@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	moodle
-PORTVERSION=	2.5.1
+PORTVERSION=	2.5.2
 CATEGORIES=	www
 MASTER_SITES=	SF/moodle/Moodle/stable25/
 EXTRACT_SUFX=	.tgz
@@ -25,6 +25,7 @@ OPTIONS_DEFAULT=MYSQL
 MSSQL_DESC=	MS SQL Server support
 MIMETEX_DESC=	mimeTeX filter functionality support
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMYSQL}

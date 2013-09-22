@@ -16,11 +16,13 @@ CONFLICTS=	xview-clients-3.2.1.4.19*
 
 LIB_DEPENDS=	xview.3:${PORTSDIR}/x11-toolkits/xview
 
+MAKE_JOBS_UNSAFE=	yes
 WRKSRC=		${WRKDIR}/props
 USES=		imake
 USE_XORG=	x11 xext
 MAKE_ARGS=	INFOFILES=""
 
+NO_STAGE=	yes
 post-install:
 		${MKDIR} ${PREFIX}/lib/X11/locale/C/props; \
 		${INSTALL_DATA} ${WRKSRC}/C/* ${PREFIX}/lib/X11/locale/C/props

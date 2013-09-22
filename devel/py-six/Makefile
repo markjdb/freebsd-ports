@@ -19,4 +19,12 @@ PLIST_FILES=	%%PYTHON_SITELIBDIR%%/six.py \
 		%%PYTHON_SITELIBDIR%%/six.pyc \
 		%%PYTHON_SITELIBDIR%%/six.pyo
 
-.include <bsd.port.mk>
+NO_STAGE=	yes
+.include <bsd.port.pre.mk>
+
+post-install:
+.if ${PYTHON_REL} >= 320
+.include "${PORTSDIR}/devel/py-virtualenv/files/py3k-fix-pkg-plist.inc"
+.endif
+
+.include <bsd.port.post.mk>

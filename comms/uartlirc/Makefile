@@ -1,9 +1,5 @@
-# New ports collection makefile for:	uarlirc
-# Date created:				Sun May 13 17:39:40 CEST 2012
-# Whom:					nox@FreeBSD.org
-#
+# Created by: nox@FreeBSD.org
 # $FreeBSD$
-#
 
 PORTNAME=	uartlirc
 PORTVERSION=	0.3
@@ -17,11 +13,14 @@ EXTRACT_SUFX=	.shar
 MAINTAINER=	nox@FreeBSD.org
 COMMENT=	Driver for "homebrew" serial LIRC receivers
 
+SSP_UNSAFE=	kernel module does not support ssp
+
 WRKSRC=		${WRKDIR}/${PORTNAME}
 EXTRACT_CMD=	${SH}
 EXTRACT_BEFORE_ARGS=
 EXTRACT_AFTER_ARGS=
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 PLIST_FILES+=	"@cwd /"

@@ -18,7 +18,6 @@ USE_LDCONFIG=	yes
 USES=		cmake iconv
 CMAKE_ARGS+=	-DENABLE_GUILE=no
 CFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
-WANT_PERL=	yes
 
 LIB_DEPENDS+=	curl:${PORTSDIR}/ftp/curl \
 		gcrypt:${PORTSDIR}/security/libgcrypt
@@ -38,6 +37,7 @@ TCL_DESC=	Tcl scripting support
 COLOR256_DESC=	Use ncurses port for 256 color support
 ICON_DESC=	Desktop icon
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MCHARSET}
@@ -91,7 +91,7 @@ CMAKE_ARGS+=	-DENABLE_GNUTLS=no
 .endif
 
 .if ${PORT_OPTIONS:MPERL}
-USE_PERL5=	yes
+USES+=		perl5
 PLIST_SUB+=	PERL=""
 .else
 CMAKE_ARGS+=	-DENABLE_PERL=no

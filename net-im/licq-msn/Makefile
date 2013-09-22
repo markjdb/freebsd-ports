@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	boost_regex:${PORTSDIR}/devel/boost-libs
 
+NO_STAGE=	yes
+
 USES=		cmake
 DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 

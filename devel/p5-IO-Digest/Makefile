@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	IO-Digest
-PORTVERSION=	0.10
+PORTVERSION=	0.11
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -19,4 +19,5 @@ USE_PERL5=	configure
 
 MAN3=		IO::Digest.3
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

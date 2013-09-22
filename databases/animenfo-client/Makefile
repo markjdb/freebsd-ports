@@ -13,6 +13,8 @@ COMMENT=	AnimeNfo client
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 USE_GMAKE=	yes
 PLIST_FILES=	bin/animenfo-client
 

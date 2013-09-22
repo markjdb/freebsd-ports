@@ -4,7 +4,7 @@
 PORTNAME=	iet
 PORTVERSION=	1.4.20.2
 PORTREVISION=	6
-CATEGORIES=	net
+CATEGORIES=	net kld
 MASTER_SITES=	SF/iscsitarget/iscsitarget/${PORTVERSION}/
 DISTNAME=	iscsitarget-${PORTVERSION}
 
@@ -18,6 +18,7 @@ COMMENT=	The iSCSI Enterprise Target
 
 LICENSE=	GPLv2
 
+SSP_UNSAFE=	kernel module does not support ssp
 BUILD_WRKSRC=	${WRKSRC}/freebsd
 INSTALL_WRKSRC=	${BUILD_WRKSRC}
 
@@ -33,6 +34,7 @@ MAKE_ENV+=	KMODDIR=${KMODDIR} DATADIR=${DATADIR} SYSDIR="${SRC_BASE}/sys"
 
 IET_CONF_FILES=	ietd.conf initiators.allow initiators.deny targets.allow
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if !exists(${SRC_BASE}/sys/Makefile)

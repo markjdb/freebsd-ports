@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Module-CoreList
-PORTVERSION=	2.97
+PORTVERSION=	2.99
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -18,6 +18,7 @@ USE_PERL5=	configure
 
 MAN3=		Module::CoreList.3 Module::CoreList::Utils.3
 
+NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e '/EXE_FILES/d' ${WRKSRC}/Makefile.PL
 

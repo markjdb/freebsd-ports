@@ -1,4 +1,4 @@
-# Created by: Chuck Robey <chuckr@freebsd.org>
+# Created by: Chuck Robey <chuckr@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	a2ps
@@ -16,7 +16,10 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	paper:${PORTSDIR}/print/libpaper
 
-USE_PERL5=	yes
+PORTSCOUT=	skipv:4.14
+NO_STAGE=	yes
+
+USES=		perl5
 USE_CSTD=	gnu89
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
@@ -25,7 +28,6 @@ MAN1=		a2ps.1 ogonkify.1 card.1 psmandup.1 fixps.1 pdiff.1 psset.1 \
 INFO=		a2ps ogonkify regex
 WRKSRC=		${WRKDIR}/${PORTNAME}-4.13
 I18N_PACKAGE=	i18n-fonts-0.1
-PORTSCOUT=	skipv:4.14
 
 STRIP=
 CONFIGURE_ARGS=	--with-medium=libpaper --sharedstatedir=${PREFIX}/share \

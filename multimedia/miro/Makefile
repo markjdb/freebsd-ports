@@ -32,10 +32,9 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}bsddb>0:${PORTSDIR}/databases/py-bsddb \
 BUILD_WRKSRC=	${WRKSRC}/linux
 INSTALL_WRKSRC=	${WRKSRC}/linux
 
-USE_GMAKE=	yes
 USE_GNOME=	gconf2 gtk20
 USE_GSTREAMER=	python gconf
-USES=		gettext
+USES=		gettext gmake pkgconfig
 USE_PYTHON=	2.5+
 USE_PYDISTUTILS=	yes
 USE_LDCONFIG=	yes
@@ -47,6 +46,7 @@ MAN1=		miro.1 miro.real.1
 
 CPPFLAGS+=	-I${LOCALBASE}/include ${PTHREAD_CFLAGS}
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .SILENT:

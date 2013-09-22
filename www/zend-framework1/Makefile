@@ -6,6 +6,7 @@ PORTVERSION=	1.12.0
 PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	http://packages.zendframework.com/releases/${DISTNAME}/
+PKGNAMESUFFIX=	1
 
 MAINTAINER=	wg@FreeBSD.org
 COMMENT=	Framework for developing PHP web applications
@@ -16,8 +17,6 @@ NO_BUILD=	yes
 USE_PHP=	spl
 WANT_PHP_WEB=	yes
 USES=		gettext
-
-LATEST_LINK=	${PORTNAME}1
 
 CONFLICTS=	ZendFramework-2.*
 
@@ -35,6 +34,7 @@ SQLITE_DESC=	Enable SQLite v3 PDO support
 REQPHP_DESC=	Install required PHP dependencies
 OPTPHP_DESC=	Install optional PHP dependencies
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

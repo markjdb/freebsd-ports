@@ -11,6 +11,7 @@ MASTER_SITES=	${MASTER_SITE_LOCAL:S!$!skv/!} \
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Detailed process memory display
 
+SSP_UNSAFE=	kernel module does not support ssp
 NO_PACKAGE=	Depends on kernel
 
 KMODDIR=	/boot/modules
@@ -23,6 +24,7 @@ MAKE_ENV+=	KMODDIR=${KMODDIR}
 MAN8=		pmap.8
 MANCOMPRESSED=	maybe
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 pre-fetch:

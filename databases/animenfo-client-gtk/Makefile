@@ -14,6 +14,8 @@ COMMENT=	AnimeNfo client with GTK support
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 USES=		pkgconfig gettext
 USE_GMAKE=	yes
 USE_GNOME=	gtk20

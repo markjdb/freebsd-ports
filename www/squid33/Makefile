@@ -1,45 +1,8 @@
 # Created by: Thomas-Martin Seck <tmseck@FreeBSD.org>
 # $FreeBSD$
-#
-# Note:
-# Starting with Squid 3.1 SQUID_LANGUAGES and SQUID_DEFAULT_LANG are no longer
-# available and will be ignored.
-#
-# SQUID_CONFIGURE_ARGS
-#   Additional configuration options.
-#
-#   To enable them, use e.g
-#   `make SQUID_CONFIGURE_ARGS="--enable-ntml-fail-open" install'
-#
-#   The list below may be incomplete, please see the configure script
-#   in the Squid source distribution for the complete list of additional
-#   options.
-#   Note that you probably do not need to worry about these options in most
-#   cases, they are included in case you want to experiment with them.
-#
-#    --enable-xmalloc-statistics
-#     Show malloc statistics in status page
-#    --enable-cachemgr-hostname=some.hostname
-#     Make cachemgr.cgi default to this host
-#    --disable-unlinkd
-#     Do not use "unlinkd"
-#    --with-aufs-threads=N_THREADS
-#     Tune the number of worker threads for the aufs object
-#    --with-filedescriptors=N
-#     Force Squid to use N filedescriptors.
-#    --enable-ntlm-fail-open
-#     Enable NTLM fail open, where a helper that fails one of the
-#     Authentication steps can allow Squid to still authenticate the user
-#    --enable-x-accelerator-vary
-#     Enable support for the X-Accelerator-Vary HTTP header. Can be used
-#     to indicate variance within an accelerator setup. Typically used
-#     together with other code that adds custom HTTP headers to the
-#     requests.
-#
 
 PORTNAME=	squid
 PORTVERSION=	3.3.${SQUID_STABLE_VER}
-PORTREVISION=	1
 CATEGORIES=	www ipv6
 MASTER_SITES=	ftp://ftp.squid-cache.org/pub/%SUBDIR%/ \
 		http://mirrors.ccs.neu.edu/Squid/ \
@@ -68,14 +31,7 @@ PATCH_SITES=	http://www.squid-cache.org/%SUBDIR%/ \
 		http://www1.jp.squid-cache.org/%SUBDIR%/ \
 		http://www2.tw.squid-cache.org/%SUBDIR%/
 PATCH_SITE_SUBDIR=	Versions/v3/${PORTVERSION:R}/changesets
-PATCHFILES=	squid-3.3-12594.patch \
-		squid-3.3-12595.patch \
-		squid-3.3-12596.patch \
-		squid-3.3-12597.patch \
-		squid-3.3-12598.patch \
-		squid-3.3-12599.patch \
-		squid-3.3-12600.patch \
-		squid-3.3-12601.patch
+PATCHFILES=	#empty
 
 MAINTAINER=	tmseck@FreeBSD.org
 COMMENT=	HTTP Caching Proxy
@@ -85,12 +41,12 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LATEST_LINK=	squid33
 
-SQUID_STABLE_VER=	8
+SQUID_STABLE_VER=	9
 
 CONFLICTS_INSTALL=	squid-2.[0-9].* squid-3.[!3].* cacheboy-[0-9]* lusca-head-[0-9]*
+USES=		perl5
 GNU_CONFIGURE=	yes
 USE_BZIP2=	yes
-USE_PERL5=	yes
 USE_RC_SUBR=	squid
 
 USERS=		squid
@@ -110,6 +66,7 @@ OPTIONS_DEFINE=	ARP_ACL AUTH_KERB AUTH_LDAP AUTH_NIS AUTH_SASL AUTH_SMB \
 		LARGEFILE SNMP SSL SSL_CRTD STACKTRACES STRICT_HTTP \
 		TP_IPF TP_IPFW TP_PF VIA_DB WCCP WCCPV2 DOCS EXAMPLES
 
+NO_STAGE=	yes
 # TODO:
 # add an option for external_acl/session (requires some kind of external
 # Berkeley DB support, unsure which one)

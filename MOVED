@@ -2607,7 +2607,6 @@ editors/openoffice.org-2|editors/openoffice.org-3|2011-09-20|Unsupported upstrea
 devel/monodevelop-boo||2011-09-21|Removed
 www/ruby-http-access||2011-09-22|Has expired: Deprecated upstream, please use www/rubygem-httpclient
 sysutils/wots||2011-09-22|Has expired: No more public distfiles
-sysutils/gpart||2011-09-22|Has expired: Upstream disappeared
 sysutils/plod||2011-09-22|Has expired: No more public distfiles
 sysutils/checkservice||2011-09-22|Has expired: BROKEN for more than 6 months
 security/nsm-console||2011-09-22|Has expired: BROKEN for more than 6 months
@@ -4937,3 +4936,14 @@ misc/kde4-l10n-mai||2013-09-10|No longer part of KDE4
 misc/kde4-l10n-mk||2013-09-10|No longer part of KDE4
 misc/kde4-l10n-ml||2013-09-10|No longer part of KDE4
 devel/deputy||2013-09-13|Obsolete
+textproc/liblinebreak|textproc/libunibreak|2013-09-14|Project was superceded by libunibreak
+sysutils/daemontools53|sysutils/daemontool|2013-09-16|sysutils/daemontools is more recent
+audio/ices0|audio/ices|2013-09-16|Unsupported version, consider using audio/ices
+irc/xchat1|irc/xchat|2013-09-16|Unsupported upstream, consider using irc/xchat
+japanese/xchat|irc/xchat|2013-09-16|Unsupported upstream, consider using irc/xchat
+www/autoindex|www/autoindex2|2013-09-16|Does not work with any of the supported PHP versions
+textproc/rotix||2013-09-20|Has expired: no longer maintained upstream
+devel/ptlib26|devel/ptlib|2013-09-20|Removed old version, update to new version and moved port
+net/opal3|net/opal|2013-09-20|Removed old version, update to new version and moved port
+net/ekiga|net-im/ekiga|2013-09-20|Removed old version, update to new version and moved port
+net/ekiga3|net-im/ekiga|2013-09-20|Removed old version, update to new version and moved port

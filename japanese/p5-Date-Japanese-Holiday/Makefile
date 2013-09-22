@@ -1,9 +1,4 @@
-# New ports collection makefile for:	p5-Date-Japanese-Holiday
-# Date created:		Mar 29, 2005
-# Whom:			kuriyama@FreeBSD.org
-#
 # $FreeBSD$
-#
 
 PORTNAME=	Date-Japanese-Holiday
 PORTVERSION=	0.05
@@ -19,10 +14,12 @@ RUN_DEPENDS=	p5-Date-Calc>5.3:${PORTSDIR}/devel/p5-Date-Calc \
 		p5-Time-modules>0.01:${PORTSDIR}/devel/p5-Time-modules
 BUILD_DEPENDS:=	${RUN_DEPENDS}
 
-PERL_CONFIGURE=	YES
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		Date::Japanese::Holiday.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 PKGNAMEPREFIX:=	${PKGNAMEPREFIX}p5-

@@ -30,9 +30,10 @@ RUN_DEPENDS+=	enscript:${PORTSDIR}/print/enscript-${PAPERSIZE}
 LATEST_LINK=	cvsweb3
 CONFLICTS=	cvsweb-2.*
 
+USES=		perl5
 NO_BUILD=	yes
-USE_PERL5=	yes
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 # Specify where your repository belongs.

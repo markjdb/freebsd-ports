@@ -18,8 +18,9 @@ LICENSE_PERMS=	${_LICENSE_PERMS_DEFAULT}
 RUN_DEPENDS=	p5-Digest-HMAC>=0:${PORTSDIR}/security/p5-Digest-HMAC
 
 NO_PACKAGE=	complicated (de)installation paradigm
+USES=		perl5
 USE_ZIP=	yes
-USE_PERL5_RUN=	yes
+USE_PERL5=	run
 NO_BUILD=	yes
 WWWDOCROOT?=	www
 YABBSUBDIR?=	yabb
@@ -37,6 +38,7 @@ ISOFILES=	Admin/ManageTemplates.pl Admin/ModuleChecker.pl Languages/English/Admi
 		Templates/blue_1/AdminCentre.template Templates/default/AdminCentre.template \
 		Templates/yabb21/AdminCentre.template Templates/yabb25/AdminCentre.template
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-extract:

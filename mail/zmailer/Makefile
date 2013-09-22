@@ -15,10 +15,11 @@ CONFLICTS=	courier-0.* postfix-1.* postfix-2.* sendmail-8.* sendmail-*-8.* smail
 OPTIONS_DEFINE=	SSL
 OPTIONS_DEFAULT=SSL
 
+USES=		perl5 pkgconfig
 GNU_CONFIGURE=	yes
-USE_PERL5=	yes
 MAKE_JOBS_UNSAFE=
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if !${PORT_OPTIONS:MSSL}

@@ -10,6 +10,8 @@ MASTER_SITES=	http://ohse.de/uwe/releases/
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Receive/Send files via X/Y/ZMODEM protocol.  (unrestrictive)
 
+NO_STAGE=	yes
+
 GNU_CONFIGURE=	yes
 ALL_TARGET=	all # vcheck
 MAN1=		lrz.1 lsz.1

@@ -18,6 +18,7 @@ LIB_DEPENDS=	boost_thread:${PORTSDIR}/devel/boost-libs \
 		nspr4:${PORTSDIR}/devel/nspr
 
 CONFLICTS=	gnash-devel-[0-9]*
+NO_STAGE=	yes
 
 USE_BZIP2=	yes
 USES=		gmake pkgconfig

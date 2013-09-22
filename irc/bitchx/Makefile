@@ -12,9 +12,9 @@ MAINTAINER?=	dan.mashal@gmail.com
 COMMENT?=	Feature-rich scriptable IRC client
 
 WRKSRC=		${WRKDIR}/${DISTNAME:C,-final$,,}
-USE_PERL5=	yes
+
+USES=		gmake perl5
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 CONFIGURE_ARGS+=--exec-prefix="${PREFIX}/share" \
 		--bindir="${PREFIX}/bin" \
 		--datadir="${PREFIX}/share" \
@@ -34,6 +34,7 @@ PLUGINS_DESC=	Build a handful of BitchX plugins
 
 OPTIONS_DEFAULT=PLUGINS SSL
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MIPV6}

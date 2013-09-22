@@ -1,6 +1,5 @@
 # Created by: Oliver Lehmann <oliver@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	mousepad
 PORTVERSION=	0.3.0
@@ -14,15 +13,14 @@ COMMENT=	Simple text editor for the Xfce Desktop
 
 GNU_CONFIGURE=	yes
 USE_BZIP2=	yes
-USE_GMAKE=	yes
-USES=	desktop-file-utils gettext pathfix pkgconfig
+USES=	desktop-file-utils gettext gmake pathfix pkgconfig perl5
 USE_GNOME=	glib20 gtk20 intltool intlhack gtksourceview2
 USE_XFCE=	configenv
-USE_PERL5=	yes
 
 OPTIONS_DEFINE=	DBUS
 OPTIONS_DEFAULT=	DBUS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDBUS}

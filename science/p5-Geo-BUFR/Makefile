@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Geo-BUFR
-PORTVERSION=	1.24
+PORTVERSION=	1.25
 CATEGORIES=	science perl5 geography
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:PSANNES
@@ -31,4 +31,5 @@ MAN3=		Geo::BUFR.3 \
 		Geo::bufrread.3 \
 		Geo::bufrresolve.3
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

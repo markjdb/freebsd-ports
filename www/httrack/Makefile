@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	httrack
-PORTVERSION=	3.47.26
+PORTVERSION=	3.47.27
 CATEGORIES=	www
 MASTER_SITES=	http://download.httrack.com/ \
 		http://mirror.httrack.com/historical/ \
@@ -25,6 +25,7 @@ USES=		gmake iconv
 
 MAN1=		htsserver.1 httrack.1 proxytrack.1 webhttrack.1
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 post-patch:

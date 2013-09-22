@@ -19,8 +19,8 @@ RUN_DEPENDS=	${LOCALBASE}/bin/${LISPPORT} \
 		${LOCALBASE}/bin/bash:${PORTSDIR}/shells/bash
 
 USE_TK =		84+
-USE_GMAKE=		yes
-USE_PERL5_BUILD=	yes
+USES=			gmake perl5
+USE_PERL5=		build
 USE_PYTHON_BUILD=	yes
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--prefix=${PREFIX} \
@@ -46,6 +46,7 @@ CMUCL_DESC=	Build with CMU Common Lisp
 GCL_DESC=	Build with GNU Common Lisp
 SBCL_DESC=	Build with Steel Bank Common Lisp
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 # Lisp to build with. Define only ONE of these!

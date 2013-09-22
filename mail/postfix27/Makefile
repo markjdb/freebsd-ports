@@ -30,8 +30,9 @@ CONFLICTS=	courier-0.* postfix-1.* postfix-2.[0-689].* postfix-base-2.[0-689].* 
 USERS=		postfix
 GROUPS=		mail maildrop postfix
 NO_LATEST_LINK=	yes
+USES=		perl5
+USE_PERL5=	build
 USE_SUBMAKE=	yes
-USE_PERL5_BUILD=yes
 SCRIPTS_ENV+=	POSTFIX_DEFAULT_MTA="${POSTFIX_DEFAULT_MTA}"
 
 OPTIONS_DEFINE=	PCRE SASL2 TLS BDB MYSQL PGSQL OPENLDAP CDB NIS VDA TEST SPF INST_BASE
@@ -61,6 +62,7 @@ RG2_DESC=	Kerberos network authentication protocol type
 
 OPTIONS_DEFAULT=	PCRE
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 MAN1=	postalias.1 postcat.1 postconf.1 postdrop.1 postfix.1 postkick.1 \

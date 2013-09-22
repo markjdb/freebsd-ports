@@ -14,8 +14,8 @@ LIB_DEPENDS=	gd:${PORTSDIR}/graphics/gd
 RUN_DEPENDS=	p5-GD>=0:${PORTSDIR}/graphics/p5-GD \
 		mrtg:${PORTSDIR}/net-mgmt/mrtg
 
+USES=		perl5
 NO_BUILD=	yes
-USE_PERL5=	yes
 
 OPTIONS_DEFINE=	WGET
 WGET_DESC=	WGET support
@@ -27,6 +27,7 @@ CONFIGURE_ARGS=	--with-gd-lib=${LOCALBASE}/lib \
 
 SUB_FILES=	pkg-message
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MWGET}

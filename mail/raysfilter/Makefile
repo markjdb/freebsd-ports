@@ -10,6 +10,8 @@ DISTNAME=	rays-filter-${PORTVERSION}
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	A configurable filter for Sendmail Milter
 
+NO_STAGE=	yes
+
 CTARGETS+=	rays-filter
 CFLAGS+=	-Wall ${PTHREAD_CFLAGS:S=""==}
 LIBS+=		${PTHREAD_LIBS}

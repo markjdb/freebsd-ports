@@ -27,7 +27,7 @@ USE_GL=		yes
 USE_WX=		2.8
 WX_UNICODE=	yes
 USE_GNOME=	atk	# Required by libwx_gtk2_aui-2.8.so
-#TODO	Add support for Python.
+USE_PYTHON=     yes
 
 #OPTIONS=	GTA2CORE "Apply additional Openmoko GTA2_CORE patches" off
 
@@ -39,12 +39,17 @@ EXTRAS2RM=	linux-non_unicode linux wings3d LINUX.README	\
 		contrib_makefiles.txt running_kicad_under_W98.txt
 USES=		cmake gettext
 CMAKE_ARGS=	-DLOCALBASE="${LOCALBASE}" \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DKICAD_TESTING_VERSION=ON \
 		-DCMAKE_INCLUDE_PATH="${LOCALBASE}/include" \
 		-DwxWidgets_CONFIG_EXECUTABLE="${WX_CONFIG}"
 
-
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
+
+BUILD_DEPENDS=	wxgtk2-2.8-config:${PORTSDIR}/x11-toolkits/wxgtk28 \
+		bzr:${PORTSDIR}/devel/bzr \
+		${LOCALBASE}/lib/${PYTHON_VERSION}/site-packages/bzrlib/plugins/bzrtools/bzrtools.py:${PORTSDIR}/devel/bzrtools
 
 #.if !defined(WITHOUT_GTA2CORE)
 #PATCH_STRIP=	-p1
@@ -136,8 +141,8 @@ PLIST_FILE_LIST=	bin/freeroute.jnlp \
 			bin/eeschema \
 			bin/gerbview \
 			bin/kicad \
-			bin/minizip \
 			bin/pcbnew \
+			bin/pl_editor \
 			bin/bitmap2component \
 			bin/pcb_calculator \
 			share/mimelnk/application/x-kicad-schematic.desktop \

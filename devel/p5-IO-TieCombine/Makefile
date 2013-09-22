@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-IO-TieCombine
-# Date created:		2008-11-23
-# Whom:			Martin Wilke <miwi@FreeBSD.org>
-#
+# Created by: Martin Wilke <miwi@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	IO-TieCombine
 PORTVERSION=	1.002
@@ -14,12 +10,14 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	miwi@FreeBSD.org
 COMMENT=	Perl 5 module to produce tied separate but combined variables
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=	IO::TieCombine.3 \
 	IO::TieCombine::Handle.3 \
 	IO::TieCombine::Scalar.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} < 501400

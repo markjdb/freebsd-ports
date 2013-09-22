@@ -16,7 +16,7 @@ RUN_DEPENDS=	net-snmp>=0:${PORTSDIR}/net-mgmt/net-snmp \
 
 WRKSRC=		${WRKDIR}/${PORTNAME}_${PORTVERSION}
 
-USE_PERL5=	yes
+USES=		perl5
 
 USE_RC_SUBR=	snmptt
 
@@ -25,6 +25,7 @@ SCRIPTS=	snmptt snmptt-net-snmp-test snmpttconvert \
 DOCS=		faqs.html index.html layout1.css snmptt.html \
 		snmpttconvert.html snmpttconvertmib.html
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 do-build:

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME?=	wireshark
-PORTVERSION=	1.10.1
+PORTVERSION=	1.10.2
 CATEGORIES=	net ipv6
 MASTER_SITES=	http://www.wireshark.org/download/src/ \
 		http://ftp.uni-kl.de/pub/wireshark/src/ \
@@ -19,11 +19,10 @@ COMMENT?=	Powerful network analyzer/capture tool
 
 DATADIR_NAME=	wireshark
 
-USE_PERL5_BUILD=yes
+USE_PERL5=	build
 USE_PYTHON_BUILD=yes
-USES=		iconv gettext pkgconfig
+USES=		iconv gettext pkgconfig gmake perl5
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 WANT_GNOME=	yes
 USE_OPENSSL=	yes
 CONFIGURE_ENV=	LIBS="${WIRESHARK_LIBS}"
@@ -60,6 +59,7 @@ RTP_DESC=		Enable support for playing back RTP streams
 ADNS_DESC=		Enable asynchronous DNS lookup support
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MX11}

@@ -23,12 +23,13 @@ USE_PYTHON_BUILD=	yes
 
 OPTIONS_DEFINE=	PERL PHP PYTHON
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if !empty(PORT_OPTIONS:MPERL)
 CONFIGURE_ARGS+=	--enable-perl
 PLIST_SUB+=	WITH_PERL=""
-USE_PERL5=	yes
+USES+=		perl5
 .else
 CONFIGURE_ARGS+=	--disable-perl
 PLIST_SUB+=	WITH_PERL="@comment "

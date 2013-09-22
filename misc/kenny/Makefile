@@ -17,6 +17,7 @@ PROJECTHOST=	ak-various-projects
 CONFLICTS=	filters-*
 
 USES=		perl5
+USE_PERL5=	extract build run
 EXTRACT_CMD=	${GZCAT}
 EXTRACT_BEFORE_ARGS=
 EXTRACT_AFTER_ARGS=	> ${WRKDIR}/${PORTNAME}
@@ -28,6 +29,7 @@ PLIST_FILES=	bin/kenny
 
 POD2MAN?=	${LOCALBASE}/bin/pod2man
 
+NO_STAGE=	yes
 post-extract:
 	@${REINPLACE_CMD} -e 's|/usr/bin/perl|${PERL}|' ${WRKSRC}/${PORTNAME}
 	@${POD2MAN} ${WRKDIR}/${PORTNAME} > ${WRKDIR}/${PORTNAME}.1

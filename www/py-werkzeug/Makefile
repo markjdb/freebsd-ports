@@ -1,9 +1,8 @@
 # Created by: Moggie <moggie@elasticmind.net>
 # $FreeBSD$
-#
 
 PORTNAME=	werkzeug
-PORTVERSION=	0.9.3
+PORTVERSION=	0.9.4
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -22,6 +21,7 @@ PYDISTUTILS_NOEGGINFO=	yes
 
 EXAMPLESDIR=	${PREFIX}/share/examples/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .include <bsd.port.pre.mk>

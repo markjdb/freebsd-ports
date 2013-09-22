@@ -16,13 +16,14 @@ LIB_DEPENDS=	animorph:${PORTSDIR}/graphics/animorph \
 USES=		gmake pkgconfig
 GNU_CONFIGURE=	yes
 USE_GL=		glut
-USE_GCC=	any # Animation.cpp:94:26: error: variable length array of non-POD element type 'Animorph::BodySettings'
+USE_GCC=	yes # Animation.cpp:94:26: error: variable length array of non-POD element type 'Animorph::BodySettings'
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 PORTDOCS=	*
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 post-patch:

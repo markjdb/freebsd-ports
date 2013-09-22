@@ -17,14 +17,13 @@ LIB_DEPENDS=	canberra:${PORTSDIR}/audio/libcanberra \
 		gtkimageview:${PORTSDIR}/x11-toolkits/gtkimageview
 
 USE_BZIP2=	yes
-USES=		gmake pkgconfig
+USES=		gmake pkgconfig tcl
 USE_GNOME=	gtk20 libglade2
-USE_TCL=	84+
 USE_LDCONFIG=	yes
 CFLAGS+=	-I${TCL_INCLUDEDIR} -L${TCL_LIBDIR}
 
 BASE_VERSION=	0.9.96
-NIGHTLY_BUILD=	31-01-13
+NIGHTLY_BUILD=	31-08-13
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${BASE_VERSION}
 BUILD_WRKSRC=	${WRKSRC}/src
@@ -35,6 +34,7 @@ PLIST_FILES=	${BASEDIR}/${PORTNAME}.so \
 		${BASEDIR}/pkgIndex.tcl
 PLIST_DIRS=	${BASEDIR}
 
+NO_STAGE=	yes
 post-patch:
 	${REINPLACE_CMD} -e 's|tclsh|${TCLSH}|; \
 	    s|%%LOCALBASE%%|${LOCALBASE}|; \

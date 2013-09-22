@@ -15,6 +15,8 @@ LIB_DEPENDS=	fontconfig:${PORTSDIR}/x11-fonts/fontconfig \
 		freetype:${PORTSDIR}/print/freetype2
 
 CONFLICTS?=	open-motif-*
+NO_STAGE=	yes
+
 USE_BZIP2=	yes
 USE_AUTOTOOLS=	automake:env autoconf libtool
 USE_XORG=	sm ice xt xp xext x11 xextproto xrender xft

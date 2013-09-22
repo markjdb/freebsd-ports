@@ -42,7 +42,8 @@ PGSQL_DESC=	Use PostgreSQL backend (experimental)
 ORACLE_DESC=	Use Oracle backend (experimental)
 EXTRAS_DESC=	Extra dependencies for util scripts
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 SUB_LIST+=	PERL="${PERL}"
 
 MAN1=		pandora_server.1
@@ -58,6 +59,7 @@ MAN3=		PandoraFMS::Core.3 \
 SUB_FILES=	pkg-message 199.clean-pandoradb
 USE_RC_SUBR=	${PORTNAME}
 
+NO_STAGE=	yes
 .include "${.CURDIR}/bsd.pandora.mk"
 
 PORTDOCS+=	README

@@ -87,10 +87,12 @@ UNHANDLED_HACK_DESC=	Display passive checks in unhandled queries
 IDOUTILS_DESC=		Enable Icinga Data Objects support
 APACHE_DESC=		Depend on Apache and install webconfig
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MEMBEDDED_PERL}
-USE_PERL5_BUILD=	yes
+USES+=			perl5
+USE_PERL5=		build
 CONFIGURE_ARGS+=	--enable-embedded-perl \
 		--with-perlcache
 PLIST_SUB+=	EMBEDDED_PERL=""

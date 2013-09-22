@@ -16,6 +16,8 @@ COMMENT=	NNTP with NOV support
 
 BUILD_DEPENDS=	${LOCALBASE}/lib/libcnews.a:${PORTSDIR}/news/cnews
 
+NO_STAGE=	yes
+
 NO_WRKSUBDIR=	yes
 MAN1=		nntpxmit.1
 MAN8=		nntpd.8c acttimes.8c

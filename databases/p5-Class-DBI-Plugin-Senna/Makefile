@@ -1,9 +1,4 @@
-# New ports collection makefile for:	Class-DBI-Plugin-Senna
-# Date created:		18 Feb 2006
-# Whom:			Jun Kuriyama <kuriyama@FreeBSD.org>
-#
 # $FreeBSD$
-#
 
 PORTNAME=	Class-DBI-Plugin-Senna
 PORTVERSION=	0.01
@@ -17,9 +12,11 @@ COMMENT=	Add Instant Fulltext Search Capability With Senna to Class::DBI
 BUILD_DEPENDS=	p5-Class-DBI>=0:${PORTSDIR}/databases/p5-Class-DBI \
 	p5-Senna>=0:${PORTSDIR}/textproc/p5-Senna
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 MAN3=		Class::DBI::Plugin::Senna.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == ia64

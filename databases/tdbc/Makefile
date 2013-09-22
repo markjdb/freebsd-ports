@@ -12,7 +12,7 @@ COMMENT=	The common database access interface for Tcl
 
 OPTIONS_DEFINE=	MYSQL PGSQL SQLITE ODBC
 
-USE_TCL=	86
+USES+=		tcl:86
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS+=--with-tcl=${TCL_LIBDIR} --with-tcloo=${TCL_LIBDIR} \
 		--prefix=${PREFIX} --exec-prefix=${PREFIX} \
@@ -32,6 +32,7 @@ MANN=	tdbc.n \
 	tdbc_statement.n \
 	tdbc_tokenize.n
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 #

@@ -23,6 +23,7 @@ EXAMPLESDIR?=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 GD_PORT?=	graphics/gd
 
 CONFLICTS=	geolizer-2*
+NO_STAGE=	yes
 
 .if defined(BATCH)
 # no cosmetique spaces allowed

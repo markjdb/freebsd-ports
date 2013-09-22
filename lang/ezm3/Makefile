@@ -1,9 +1,5 @@
-# New ports collection makefile for:	ezm3
-# Date created:		1 Jan 2002
-# Whom:			John Polstra <jdp@FreeBSD.org>
-#
+# Created by: John Polstra <jdp@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	ezm3
 PORTVERSION=	1.2
@@ -17,6 +13,8 @@ DIST_SUBDIR=	ezm3
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Easier, more portable Modula-3 distribution for building CVSup
+
+NO_STAGE=	yes
 
 USE_BZIP2=	yes
 USE_GMAKE=	yes

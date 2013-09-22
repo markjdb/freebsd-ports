@@ -20,8 +20,8 @@ LATEST_LINK=	${PORTNAME}22
 PERLMAN=	${SITE_PERL_REL:S/site_perl\///}
 
 USE_RC_SUBR=	imapd
+USES=		perl5
 USE_OPENSSL=	yes
-USE_PERL5=	yes
 USE_BDB=	yes
 INVALID_BDB_VER=2 45+
 GNU_CONFIGURE=	yes
@@ -51,6 +51,7 @@ NNTP_DESC=		Enable NNTP support
 SNMP_5_DESC=		Enable SNMP support
 PASS8BITHACK_DESC=	Add pass8bit option (not recommended)
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} >= 501400

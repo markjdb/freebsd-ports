@@ -18,6 +18,7 @@ USE_ZIP=	yes
 USE_DOS2UNIX=	yes
 USES=		gmake
 ALL_TARGET=	#
+USE_XORG=	x11
 
 CFLAGS+=	-fsigned-char
 WRKSRC=		${WRKDIR}/${PORTNAME}_source/src
@@ -36,6 +37,7 @@ FLAVOR_DESC=	Clients and servers
 CLIENT_DESC=	Build client
 SERVER_DESC=	Build dedicated server
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MCLIENT}

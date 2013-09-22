@@ -12,10 +12,11 @@ COMMENT=	Quickly find out which ports contributed to a file tree
 
 LICENSE=	GPLv3
 
+USES=		perl5
 NO_BUILD=	yes
-USE_PERL5=	yes
 PLIST_FILES=	bin/${PORTNAME}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

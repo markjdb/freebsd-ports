@@ -1,4 +1,3 @@
-# Created by: Brooks Davis <brooks@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	ca_root_nss
@@ -14,7 +13,8 @@ COMMENT=	The root certificate bundle from the Mozilla Project
 OPTIONS_DEFINE=	ETCSYMLINK
 ETCSYMLINK_DESC=	Add symlink to /etc/ssl/cert.pem
 
-USE_PERL5_BUILD=	yes
+USES=		perl5
+USE_PERL5=	build
 NO_WRKSUBDIR=	yes
 
 CERTDIR?=	share/certs
@@ -32,6 +32,7 @@ BUNDLE_PROCESSOR=	MAca-bundle.pl
 SUB_FILES=	MAca-bundle.pl
 SUB_LIST=	VERSION_NSS=${VERSION_NSS}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:METCSYMLINK}

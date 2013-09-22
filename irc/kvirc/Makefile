@@ -23,10 +23,10 @@ CONFLICTS_INSTALL=	kvirc-qt4-4.*
 
 USE_BZIP2=	yes
 USE_OPENSSL=	yes
-USE_PERL5_BUILD=	yes
+USE_PERL5=	build
 USE_QT4=	moc_build qmake_build rcc_build uic_build \
 		dbus gui network sql xml
-USES=		cmake gettext
+USES=		cmake gettext perl5
 CMAKE_ARGS=	-DWANT_ESD=no -DWANT_DOXYGEN=no \
 		-DMANDIR=${MANPREFIX}
 INSTALLS_ICONS=	yes
@@ -50,6 +50,7 @@ WEBKIT_DESC=	Build with QtWebkit support
 
 PLIST_SUB+=	VER="${PORTVERSION:R}"
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if defined(PKGNAMESUFFIX)
@@ -97,7 +98,7 @@ PLIST_SUB+=	PYTHON="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MPERL}
-USE_PERL5_RUN=	yes
+USE_PERL5+=	run
 PLIST_SUB+=	PERL=""
 .else
 CMAKE_ARGS+=	-DWANT_PERL=no

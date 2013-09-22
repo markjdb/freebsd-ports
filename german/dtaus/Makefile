@@ -10,6 +10,8 @@ COMMENT=	Belegloser DatenTraegerAUStausch
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 ALL_TARGET=	dtaus
 PLIST_FILES=	bin/dtaus
 

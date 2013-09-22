@@ -1,9 +1,5 @@
-# New ports collection makefile for:	wqy font
-# Date created:		11 May 2005
-# Whom:			Dryice Liu <dryice@liu.com.cn>
-#
+# Created by: Dryice Liu <dryice@liu.com.cn>
 # $FreeBSD$
-#
 
 PORTNAME=	wqy-fonts
 PORTVERSION=	20100803
@@ -29,7 +25,8 @@ BUILD_DEPENDS=	bdftopcf:${PORTSDIR}/x11-fonts/bdftopcf \
 		fc-cache:${PORTSDIR}/x11-fonts/fontconfig
 
 USE_XORG=	x11
-USE_PERL5_BUILD=	yes
+USES=		perl5
+USE_PERL5=	build
 
 FONTSDIR=	lib/X11/fonts/wqy
 CONFDDIR=	etc/fonts/conf.d
@@ -42,6 +39,7 @@ PLIST_SUB=	FONTSDIR=${FONTSDIR} \
 SUB_FILES=	pkg-message
 SUB_LIST=	FONTSDIR=${PREFIX}/${FONTSDIR}
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if !defined(NOPORTDOCS)

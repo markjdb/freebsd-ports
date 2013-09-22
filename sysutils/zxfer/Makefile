@@ -7,7 +7,7 @@ PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	GOOGLE_CODE
 
-MAINTAINER=	ivannashdreckman@fastmail.fm
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Easily and reliably transfer ZFS filesystems
 
 LICENSE=	BSD
@@ -22,6 +22,7 @@ PLIST_FILES=	sbin/zxfer
 MAN8=		zxfer.8
 MANCOMPRESSED=	yes
 
+NO_STAGE=	yes
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/zxfer ${PREFIX}/sbin
 	${INSTALL_MAN} ${WRKSRC}/zxfer.8.gz ${MAN8PREFIX}/man/man8

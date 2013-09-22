@@ -58,6 +58,7 @@ GNU_CONFIGURE=	yes
 CPPFLAGS+=	-D_PATH_DHCLIENT_SCRIPT='\"${PREFIX}/sbin/dhclient-script\"' -D_PATH_DHCLIENT_CONF='\"${PREFIX}/etc/dhclient.conf\"' -D_PATH_DHCPD_CONF='\"${PREFIX}/etc/dhcpd.conf\"'
 SCRIPTS_ENV+=	PKG_PREFIX=${PREFIX}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${SUBSYS} == client
@@ -110,7 +111,8 @@ PLIST_SUB+=		SCHEMA_DIR="${SCHEMA_DIR:S,^${PREFIX}/,,}" LDAP=""
 PORTDOCS+=		README.ldap LICENSE.ldap
 LDAP_SCRIPT=		${WRKDIR}/${LDAPPATCHDIST}/dhcpd-conf-to-ldap
 LDAP_SCHEMA=		${WRKDIR}/${LDAPPATCHDIST}/dhcp.schema
-USE_PERL5_RUN=		yes
+USES+=			perl5
+USE_PERL5=		run
 USE_OPENLDAP=		yes
 USE_AUTOTOOLS=		aclocal libtoolize autoconf autoheader automake
 LIBTOOLIZE_ARG=		--copy --force

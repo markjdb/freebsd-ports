@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	displayquota
-PORTVERSION=	0.3.5
+PORTVERSION=	0.3.6
 DISTVERSIONSUFFIX=	-tb
 CATEGORIES=	mail
 
@@ -20,5 +20,6 @@ XPI_DIRS=	defaults/preferences \
 		defaults \
 		chrome
 
+NO_STAGE=	yes
 .include "${.CURDIR}/../../www/xpi-adblock/Makefile.xpi"
 .include <bsd.port.mk>

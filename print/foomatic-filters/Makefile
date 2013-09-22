@@ -13,8 +13,8 @@ COMMENT=	Foomatic wrapper scripts
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+USES=		perl5
 USE_AUTOTOOLS=	autoheader
-USE_PERL5=	yes
 USE_GHOSTSCRIPT=yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ac_cv_path_A2PS=${LOCALBASE}/bin/a2ps \
@@ -44,6 +44,7 @@ MPAGE_DESC=		Print multiple pages per sheet of paper
 
 MAN1=		foomatic-rip.1
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MCUPS_IMAGE}

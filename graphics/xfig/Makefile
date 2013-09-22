@@ -21,9 +21,10 @@ WRKSRC=		${WRKDIR}/${PORTNAME}.${PORTVERSION}
 
 USES=		imake
 USE_XORG=	ice sm x11 xaw xext xi xmu xpm xt
+USE_CSTD=	gnu89
+CFLAGS+=	-Wno-return-type
 MAN1=		xfig.1
 MANCOMPRESSED=	yes
-USE_GCC=	any
 
 MAKE_ENV+=	DOCSDIR=${DOCSDIR} CHMOD=${CHMOD} TAR=${TAR}
 MAKE_ARGS+=	INSTALLFLAGS="${COPY}" \
@@ -35,6 +36,7 @@ OPTIONS_DEFINE=	GHOSTSCRIPT I18N DOCS
 OPTIONS_DEFAULT=	GHOSTSCRIPT I18N
 I18N_DESC=	I18N support and Japanese docs
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

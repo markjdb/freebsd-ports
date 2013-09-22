@@ -15,6 +15,8 @@ COMMENT=	The Linux pwc webcam driver ported to FreeBSD
 
 CONFLICTS=	pwcview-[0-9]*
 
+SSP_UNSAFE=	kernel module does not support ssp
+
 MAN4=		pwc.4
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
@@ -25,6 +27,7 @@ OPTIONS_DEFAULT=	PROGRAMS
 PROGRAMS_DESC=	Build the programs
 MMAP_DESC=	Enable mmap support (MAY CRASH YOUR SYSTEM)
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 EXTRA_PATCHES=	${FILESDIR}/extra-patch-Makefile.kld \

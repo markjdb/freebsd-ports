@@ -1,9 +1,5 @@
-# New ports collection makefile for:	inn
-# Date created:		20 Oct 1994 (1.4), 18 Dec 1996 (1.5.1), 14 Feb 1999 (2.2)
-# Whom:			torstenb
-#
+# Created by: torstenb
 # $FreeBSD$
-#
 
 PORTNAME?=	inn
 PORTVERSION?=	2.5.2
@@ -28,8 +24,7 @@ SUB_FILES=	pkg-install
 
 LATEST_LINK=	${PORTNAME}${PKGNAMESUFFIX}
 
-USE_GMAKE=	yes
-USE_PERL5=	yes
+USES=		gmake perl5
 
 CONFLICTS?=	inn-stable-[0-9]* inn-current-[0-9]*
 
@@ -49,6 +44,7 @@ GNUPG_DESC=		GnuPG support (for pgpverify control message)
 
 VARBASE?=	/var
 
+NO_STAGE=	yes
 .include "Makefile.layout"
 
 HAS_CONFIGURE=		yes

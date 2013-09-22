@@ -14,8 +14,7 @@ BUILD_DEPENDS=	p5-XML-Parser>=0:${PORTSDIR}/textproc/p5-XML-Parser
 
 USE_GMAKE=	yes
 USE_AUTOTOOLS=	libtool
-USES=		gettext iconv
-USE_PERL5=	yes
+USES=		gettext iconv perl5
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -25,6 +24,7 @@ USE_LDCONFIG=	yes
 OPTIONS_DEFINE=	MAN
 MAN_DESC=	Build and install manpages
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMAN}

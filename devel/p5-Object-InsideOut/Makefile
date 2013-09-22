@@ -19,12 +19,14 @@ BUILD_DEPENDS=	p5-Data-Dumper>=2.131:${PORTSDIR}/devel/p5-Data-Dumper \
 		p5-Want>=0.21:${PORTSDIR}/devel/p5-Want
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		Bundle::Object::InsideOut.3 \
 		Object::InsideOut.3 \
 		Object::InsideOut::Metadata.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} < 501400

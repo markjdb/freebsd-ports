@@ -1,9 +1,5 @@
-# New ports collection makefile for:	llvm
-# Date created:		20 Nov 2005
-# Whom:			Hye-Shik Chang
-#
+# Created by: Hye-Shik Chang
 # $FreeBSD$
-#
 
 PORTNAME=	llvm31
 PORTVERSION=	3.1
@@ -24,11 +20,10 @@ BUILD_DEPENDS+=	f2c:${PORTSDIR}/lang/f2c
 
 CONFLICTS=	llvm-[3]* llvm-devel-[23]* llvm29-*
 
+USES=		gmake perl5
 GNU_CONFIGURE=	yes
 USE_GCC=	4.2+
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
-USE_PERL5=	yes
 USE_PYTHON_BUILD=	yes
 
 # Suggested tweaks from http://llvm.org/docs/Packaging.html
@@ -50,6 +45,7 @@ MAN1=		bugpoint.1 lit.1 llc.1 lli.1 llvm-ar.1 llvm-as.1 \
 
 PLIST_SUB+=		PORTVERSION=${PORTVERSION}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if defined(MAINTAINER_MODE)

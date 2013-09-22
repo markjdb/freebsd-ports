@@ -14,7 +14,7 @@ LIB_DEPENDS=	gc-threaded.1:${PORTSDIR}/devel/boehm-gc-threaded
 
 ONLY_FOR_ARCHS=	i386 amd64
 
-USES=		gmake
+USES=		gmake pkgconfig
 USE_AUTOTOOLS=	libtool:env
 USE_DOS2UNIX=	yes
 MAKE_JOBS_UNSAFE=	yes
@@ -29,6 +29,7 @@ OPTIONS_SINGLE_MYSQL=	MYSQL4 MYSQL5
 MYSQL4_DESC=		Build against MySQL 4.1
 MYSQL5_DESC=		Build against MySQL 5.1
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 CFLAGS+=	-I${LOCALBASE}/include

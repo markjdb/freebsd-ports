@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Ubic
-# Date created:		21 Sep 2011
-# Whom:			Dmitry Yashin <dmitry@yashin.su>
-#
+# Created by: Dmitry Yashin <dmitry@yashin.su>
 # $FreeBSD$
-#
 
 PORTNAME=	Ubic
 PORTVERSION=	1.44
@@ -29,7 +25,8 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-Test-Class>=0:${PORTSDIR}/devel/p5-Test-Class \
 		p5-Test-Fatal>=0:${PORTSDIR}/devel/p5-Test-Fatal
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 REINPLACE_ARGS=	-i ''
 
 MAN1=		ubic.1 \
@@ -87,6 +84,7 @@ MAN3=		Ubic.3 \
 		Ubic::UA.3 \
 		Ubic::Watchdog.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-patch:

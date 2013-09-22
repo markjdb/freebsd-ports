@@ -13,6 +13,7 @@ COMMENT?=	Utilities & library to manipulate ext2/3/4 filesystems
 LICENSE=	GPLv2
 
 PATCH_STRIP=	-p1
+USES=		gmake pkgconfig
 USE_GMAKE=	yes
 USE_CSTD=	gnu99
 USE_LDCONFIG=	yes
@@ -37,6 +38,7 @@ MAN8=		badblocks.8 debugfs.8 dumpe2fs.8 e2fsck.8 e2image.8 e2label.8 \
 		findfs.8 blkid.8 logsave.8 fsck_ext2fs.8 e2freefrag.8
 PORTDOCS=	COPYING RELEASE-NOTES
 
+NO_STAGE=	yes
 post-extract:
 	@${CHMOD} u+w ${WRKSRC}/po/*.po ${WRKSRC}/po/*.pot \
 		${WRKSRC}/${CONFIGURE_SCRIPT}
@@ -52,9 +54,9 @@ MAKE_ARGS+=	V=1
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}
-USES+=		gettext
+USES+=		gettext iconv:build
 PLIST_SUB=	NLS=""
-. if ${OSVERSION} >= 1000043
+. if empty(ICONV_LIB)
 libintl=	"${LOCALBASE}/lib/libintl.a"
 . else
 libintl=	"${LOCALBASE}/lib/libintl.a ${LOCALBASE}/lib/libiconv.a"

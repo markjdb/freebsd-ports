@@ -1,9 +1,5 @@
-# New ports collection makefile for:	Sendmail::Milter
-# Date created:				25 March 2003
-# Whom:					Maxim Sobolev <sobomax@FreeBSD.org>
-#
+# Created by: Maxim Sobolev <sobomax@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	Sendmail-Milter
 PORTVERSION=	0.18
@@ -14,10 +10,12 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	marc@pilgerer.org
 COMMENT=	Module to write mail filters in Perl using sendmail's mail filter API
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		Sendmail::Milter.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if exists(${PERL5})

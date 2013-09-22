@@ -17,6 +17,8 @@ LIB_DEPENDS=	gnutls-openssl:${PORTSDIR}/security/gnutls
 LICENSE=	BSD
 LICENSE_FILE=	${WRKSRC}/doc/LICENSE
 
+NO_STAGE=	yes
+
 USE_RC_SUBR=	sixxs-aiccu
 USE_GMAKE=	yes
 

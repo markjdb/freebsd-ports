@@ -195,7 +195,6 @@ MAKE_ENV+=	V=1
 MAKE_ARGS+=	prefix="${PREFIX}"
 USE_OPENSSL=	yes
 USE_RC_SUBR=	git_daemon
-WANT_PERL=	yes
 
 CONFIGURE_ARGS=	--enable-pthreads=-pthread
 
@@ -210,6 +209,7 @@ CVS_DESC=	Enable CVS support
 HTMLDOCS_DESC=	Install additional documentation
 ETCSHELLS_DESC=	Modify /etc/shells
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}
@@ -235,7 +235,7 @@ PLIST_SUB+=	PYTHON="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MPERL}
-USE_PERL5=	yes
+USES+=		perl5
 MAKE_ENV+=	PERL_PATH=${PERL}
 BUILD_DEPENDS+=	p5-Error>=0:${PORTSDIR}/lang/p5-Error
 RUN_DEPENDS+=	p5-Error>=0:${PORTSDIR}/lang/p5-Error \

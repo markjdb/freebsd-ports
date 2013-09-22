@@ -13,6 +13,8 @@ DISTNAME=	${PORTNAME}
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	The classic cat-and-mouse
 
+NO_STAGE=	yes
+
 NO_WRKSUBDIR=	yes
 USES=		imake
 USE_XORG=	x11

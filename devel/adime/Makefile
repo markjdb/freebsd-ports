@@ -10,10 +10,11 @@ MASTER_SITES=	SF
 MAINTAINER=	eadler@FreeBSD.org
 COMMENT=	Generate Allegro dialogs in a very simple way
 
-LIB_DEPENDS=	alleg:${PORTSDIR}/devel/allegro
+LIB_DEPENDS=	liballeg.so:${PORTSDIR}/devel/allegro
 
 USES=	gmake
 
+NO_STAGE=	yes
 .include "Makefile.man"
 
 MAKEFILE=	makefile

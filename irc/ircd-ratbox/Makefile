@@ -60,6 +60,7 @@ OPTIONS_EXCLUDE=	NLS EXAMPLES
 
 #----------------------------------------------------------------------
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MOPENSSL}
@@ -99,7 +100,8 @@ PLIST_SUB+=		SERVICES="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MSHORTCUTS}
-USE_PERL5_BUILD=	yes
+USES+=			perl5
+USE_PERL5=		build
 PLIST_SUB+=		SHORTCUTS=""
 .else
 PLIST_SUB+=		SHORTCUTS="@comment "

@@ -21,8 +21,8 @@ RUST_TARGET=	x86_64-unknown-freebsd
 ONLY_FOR_ARCHS=	amd64
 HAS_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-USE_GMAKE=	yes
-USE_PERL5_BUILD=	yes
+USES=		gmake perl5
+USE_PERL5=	build
 USE_PYTHON_BUILD=	2.6-2.7
 
 MAKE_JOBS_UNSAFE=	yes
@@ -33,6 +33,7 @@ OPTIONS_DEFINE=		RUSTPKG
 RUSTPKG_DESC=		Build with package manager
 OPTIONS_DEFAULT=	RUSTPKG
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} < 900044

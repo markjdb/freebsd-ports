@@ -13,7 +13,9 @@ COMMENT=	Web Based Email Client and Scheduler
 USE_PHP=	ctype imap openssl pgsql pcre posix session tokenizer xml zlib
 .endif
 
-NO_BUILD=	YES
+NO_STAGE=	yes
+NO_BUILD=	yes
+
 TWIG?=		www/twig
 PLIST_SUB+=	TWIG=${TWIG}
 ROOTFILES=	index.php test.php goto.php

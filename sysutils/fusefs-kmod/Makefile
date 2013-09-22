@@ -17,6 +17,8 @@ COMMENT=	Kernel module for fuse
 
 BUILD_DEPENDS=	fusefs-libs>2.4.1:${PORTSDIR}/sysutils/fusefs-libs
 
+SSP_UNSAFE=	kernel module does not support ssp
+
 USE_RC_SUBR=	fusefs
 KMODDIR?=	${PREFIX}/modules
 PLIST_SUB=	KMODDIR=${KMODDIR}
@@ -29,6 +31,7 @@ DISABLE_SIZE=	yes
 OPTIONS_DEFINE=	AUTOSETUP DOCS
 AUTOSETUP_DESC=	Automatic global config file setup
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

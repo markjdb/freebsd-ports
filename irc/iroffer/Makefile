@@ -1,4 +1,4 @@
-# Created by: Donald Burr <dburr@FreeBSD.ORG>
+# Created by: Donald Burr <dburr@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	iroffer
@@ -13,9 +13,11 @@ COMMENT=	An IRC "bot" that makes sharing files via DCC extremely easy
 
 LICENSE=	GPLv2
 
+CONFLICTS=	iroffer-lamm-1.* iroffer-dinoex-3.*
+NO_STAGE=	yes
+
 HAS_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	Configure
-CONFLICTS=	iroffer-lamm-1.* iroffer-dinoex-3.*
 
 post-patch:
 	${REINPLACE_CMD} -e 's|cctype="gcc"|cctype="${CC}"|' \

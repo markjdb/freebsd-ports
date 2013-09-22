@@ -13,6 +13,7 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Calculates 'eMule' hashes or producing ed2k:// file links
 
 CONFLICTS=	amule-*
+NO_STAGE=	yes
 
 NO_WRKSUBDIR=	yes
 MAKEFILE=	/dev/null

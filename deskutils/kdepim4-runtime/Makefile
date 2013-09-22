@@ -17,7 +17,7 @@ LIB_DEPENDS=	boost_thread:${PORTSDIR}/devel/boost-libs \
 BUILD_DEPENDS=	xsltproc:${PORTSDIR}/textproc/libxslt
 
 CONFLICTS=		akonadi-google-0.*
-CONFLICTS_INSTALL=	kdepim-runtime-4.4.*
+CONFLICTS_INSTALL=	kdepim-runtime44-4.*
 
 USE_XZ=		yes
 USE_GNOME=	libxml2
@@ -31,6 +31,7 @@ USE_LDCONFIG=	yes
 MAKE_ENV=	XDG_CONFIG_HOME=/dev/null
 CMAKE_ARGS=	-DKDEPIM_MOBILE_UI:BOOL=OFF
 
+NO_STAGE=	yes
 post-patch:
 	${GREP} -H -r "#include <q" ${WRKSRC} | ${CUT} -d: -f1 | uniq | \
 		${XARGS} ${REINPLACE_CMD} -f ${FILESDIR}/qt3to4headers.txt

@@ -18,8 +18,7 @@ USES=		cmake:outsource
 CMAKE_ENV+=	PKG_CONFIG_LIBDIR="${LOCALBASE}/libdata"
 NO_BUILD=	yes
 
-LATEST_LINK=	${PORTNAME}3
-
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTNAME}-ffa86ffb5570
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

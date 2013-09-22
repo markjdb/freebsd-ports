@@ -62,10 +62,8 @@ AUTOMAKE_ARGS=	--add-missing
 USE_BZIP2=	yes
 USE_GCC=	any
 USE_FAM=	yes
-USES=		gettext pkgconfig
-USE_GMAKE=	yes
+USES=		gettext pkgconfig gmake perl5
 USE_OPENSSL=	yes
-USE_PERL5=	yes
 USE_SUBMAKE=	yes
 
 USE_RC_SUBR=	courier
@@ -135,6 +133,7 @@ WEBMAILRSENT_DESC=	enable Autorename Sent folder
 SYSTEMALIASES_DESC=	symlink system /etc/aliases
 EMPTYALIASES_DESC=	create empty aliases file
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 .include "${.CURDIR}/Makefile.doc"
 .include "${.CURDIR}/Makefile.man"

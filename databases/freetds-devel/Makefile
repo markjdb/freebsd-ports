@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	freetds
-PORTVERSION=	0.91
-PORTREVISION=	4
+PORTVERSION=	0.92.79
 PORTEPOCH=	1
 CATEGORIES=	databases
 MASTER_SITES=	ftp://ftp.freetds.org/pub/freetds/stable/
@@ -45,6 +44,7 @@ MSDBLIB_DESC=	MS SQL Server compatibility (breaks databases/sybtcl)
 
 CONFLICTS=	freetds-0.64.[0-9]
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MOPENSSL}

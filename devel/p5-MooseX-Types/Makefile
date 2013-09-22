@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	MooseX-Types
-PORTVERSION=	0.37
+PORTVERSION=	0.38
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:ETHER
@@ -38,4 +38,5 @@ MAN3=		MooseX::Types.3 \
 		MooseX::Types::Util.3 \
 		MooseX::Types::Wrapper.3
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

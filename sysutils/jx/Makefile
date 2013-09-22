@@ -9,8 +9,9 @@ MASTER_SITES=	http://legh.ru/wp-content/uploads/jx/
 MAINTAINER=	legh@legh.ru
 COMMENT=	Wrapper to jexec with more feature in interpreting jail id
 
+USES=		perl5
 NO_BUILD=	yes
-USE_PERL5_RUN=	yes
+USE_PERL5=	run
 
 PLIST_FILES=	bin/${PORTNAME}
 
@@ -20,6 +21,7 @@ MANCOMPRESSED=	yes
 OPTIONS_DEFINE=	CONFIG
 CONFIG_DESC=	Enable custom config (recuire Config::General)
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MCONFIG}

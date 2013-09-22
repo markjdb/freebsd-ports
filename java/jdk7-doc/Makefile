@@ -19,13 +19,14 @@ IGNORE=		port only installs documentation
 
 WRKSRC=		${WRKDIR}/docs
 JDK_VERSION=	7
-JDK_UPDATE_VER=	25
+JDK_UPDATE_VER=	40
 DOWNLOAD_URL=	http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 NO_BUILD=	yes
 USE_ZIP=	yes
 PORTDOCS=	*
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if !exists(${DISTDIR}/${DISTNAME}${EXTRACT_SUFX})

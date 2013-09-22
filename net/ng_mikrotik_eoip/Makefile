@@ -12,6 +12,8 @@ COMMENT=	Netgraph node for Mikrotik EoIP tunneling
 
 LICENSE=	BSD
 
+SSP_UNSAFE=	kernel module does not support ssp
+
 OPTIONS_DEFINE=	PTABLE	
 PTABLE_DESC=	Use O(1) lookup for tunnel hooks
 # This option enables usage of static pointer table to find needed decimal-named hook,
@@ -22,6 +24,7 @@ KMODDIR?=	/boot/modules
 PLIST_SUB+=	KMODDIR=${KMODDIR} \
 		PORTNAME=${PORTNAME}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if !exists(${SRC_BASE}/sys/sys/module.h)

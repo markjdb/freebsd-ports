@@ -37,6 +37,7 @@
     SUBDIR += avahi-app
     SUBDIR += avahi-autoipd
     SUBDIR += avahi-gtk
+    SUBDIR += avahi-gtk3
     SUBDIR += avahi-header
     SUBDIR += avahi-libdns
     SUBDIR += avahi-qt4
@@ -123,8 +124,6 @@
     SUBDIR += easysoap
     SUBDIR += echoping
     SUBDIR += ecore-con
-    SUBDIR += ekiga
-    SUBDIR += ekiga3
     SUBDIR += empty
     SUBDIR += enet
     SUBDIR += entitymib
@@ -460,7 +459,6 @@
     SUBDIR += onioncat
     SUBDIR += online-desktop
     SUBDIR += opal
-    SUBDIR += opal3
     SUBDIR += openafs
     SUBDIR += openam
     SUBDIR += openbgpd
@@ -534,6 +532,7 @@
     SUBDIR += p5-Net
     SUBDIR += p5-Net-AMQP
     SUBDIR += p5-Net-APNS
+    SUBDIR += p5-Net-APNs-Extended
     SUBDIR += p5-Net-ARP
     SUBDIR += p5-Net-Address-Ethernet
     SUBDIR += p5-Net-Address-IPv4-Local

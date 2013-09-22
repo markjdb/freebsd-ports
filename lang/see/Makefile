@@ -22,13 +22,15 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 LATEST_LINK=	${PORTNAME}${PKGNAMESUFFIX}
 
 USE_LDCONFIG=	yes
-USE_PERL5_BUILD=yes
+USES=		perl5
+USE_PERL5=	build
 GNU_CONFIGURE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include ${PTHREAD_CFLAGS}
 LDFLAGS+=	-L${LOCALBASE}/lib ${PTHREAD_LIBS}
 
-.include <bsd.port.pre.mk>
+NO_STAGE=	yes
+.include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMULTIPLE_THREADS}
 CFLAGS+=	-DMULTIPLE_THREADS
@@ -64,4 +66,4 @@ post-install:
 .endfor
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

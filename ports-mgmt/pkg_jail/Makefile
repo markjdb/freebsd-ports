@@ -9,6 +9,7 @@ DISTFILES=	# empty
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Manage your own package jail
 
+NO_STAGE=	yes
 NO_BUILD=	yes
 
 PLIST_FILES=	bin/pkg_jail bin/pkg_update

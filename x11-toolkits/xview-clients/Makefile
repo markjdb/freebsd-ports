@@ -17,6 +17,7 @@ COMMENT=	OpenLook applications and man pages
 
 CONFLICTS=	props-1.0
 
+MAKE_JOBS_UNSAFE=	yes
 PATCH_DEPENDS=	${NONEXISTENT}:${PORTSDIR}/x11-toolkits/xview:patch
 CONFIGURE_DEPENDS=	${NONEXISTENT}:${PORTSDIR}/x11-toolkits/xview:configure
 LIB_DEPENDS=	xview.3:${PORTSDIR}/x11-toolkits/xview
@@ -30,6 +31,7 @@ MAN1=		clock.1 cmdtool.1 olwm.1 olwmslave.1 props.1 shelltool.1 \
 		textedit.1
 MANCOMPRESSED=	yes
 
+NO_STAGE=	yes
 do-install:
 	@cd ${WRKSRC}/clients; ${MAKE} install install.man
 

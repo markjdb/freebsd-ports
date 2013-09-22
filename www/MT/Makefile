@@ -30,6 +30,7 @@ PGSQL_DESC=		PostgreSQL database support[obsolete]
 SQLITE_DESC=		SQLite3 database support[obsolete]
 SQLITE2_DESC=		SQLite2 database support[obsolete]
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 DATADIR=	www/data
@@ -45,7 +46,8 @@ SUB_LIST+=	DATADIR=${DATADIR}\
 		WWWOWN=${WWWOWN}\
 		WWWGRP=${WWWGRP}
 
-USE_PERL5_RUN=	yes
+USES=		perl5
+USE_PERL5=	run
 NO_BUILD=	yes
 MT_DOCS_URL?=	http://www.movabletype.org/documentation/
 MT_UPGRADE_URL?=http://www.movabletype.org/documentation/installation/upgrade-movable-type.html

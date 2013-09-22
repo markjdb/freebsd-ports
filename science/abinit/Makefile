@@ -1,9 +1,5 @@
-# New ports collection makefile for:	abinit
-# Date Created:				18 March 2004
-# Whom:					NAKATA Maho <maho@FreeBSD.org>
-#
+# Created by: NAKATA Maho <maho@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	abinit
 PORTVERSION=	5.7.3
@@ -18,10 +14,10 @@ BUILD_DEPENDS=	${PYTHON_SITELIBDIR}/numarray/__init__.py:${PORTSDIR}/math/py-num
 LIB_DEPENDS=	netcdff.4:${PORTSDIR}/science/netcdf3-ftn	\
 		gsl:${PORTSDIR}/math/gsl
 
+USES=		gmake perl5
 USE_FORTRAN=	yes
-USE_GMAKE=	yes
 USE_PYTHON=	yes
-USE_PERL5_BUILD=yes
+USE_PERL5=	build
 USE_AUTOTOOLS=	autoconf automake
 CONFIGURE_ENV=	WGET=${TRUE}
 CONFIGURE_ARGS=	--disable-wannier90 --disable-bigdft --disable-etsf-io	\
@@ -38,6 +34,7 @@ BUILD_DEPENDS+= gm4:${PORTSDIR}/devel/m4		\
 USE_GHOSTSCRIPT_BUILD=	yes
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "ia64" || ${ARCH} == "powerpc" || ${ARCH} == "sparc64"

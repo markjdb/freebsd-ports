@@ -18,7 +18,6 @@ LIB_DEPENDS=	png15:${PORTSDIR}/graphics/png \
 
 USES=		imake
 USE_XORG=	xi
-USE_GCC=	any
 WRKSRC=		${WRKDIR}/xli-${XLI_SNAPVER}
 
 MAN1=		xli.1 xlito.1
@@ -27,4 +26,5 @@ PLIST_FILES=	bin/xli bin/xlito bin/xview bin/xsetbg lib/X11/app-defaults/Xli
 
 XLI_SNAPVER=	2006-11-10
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

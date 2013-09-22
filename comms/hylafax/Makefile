@@ -1,4 +1,4 @@
-# Created by: Julian Stacey <jhs@freebsd.org>
+# Created by: Julian Stacey <jhs@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	hylafax
@@ -15,6 +15,7 @@ LIB_DEPENDS=	tiff:${PORTSDIR}/graphics/tiff \
 		jbig:${PORTSDIR}/graphics/jbigkit
 
 MAKE_JOBS_UNSAFE=	yes
+NO_STAGE=	yes
 
 USE_GHOSTSCRIPT=yes
 HAS_CONFIGURE=	yes

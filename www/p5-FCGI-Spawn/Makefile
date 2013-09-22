@@ -17,7 +17,8 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-Test-Most>0:${PORTSDIR}/devel/p5-Test-Most \
 		p5-Test-Strict>0:${PORTSDIR}/devel/p5-Test-Strict
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 USE_RC_SUBR+=	fcgi_spawn
 
@@ -28,6 +29,7 @@ OPTIONS_DEFINE=	MYSQL PGSQL
 MYSQL_DESC=	MySQL dependency to run on RC start
 PGSQL_DESC=	PgSQL dependency to run on RC start
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMYSQL}

@@ -9,6 +9,8 @@ DISTNAME=	${PORTNAME}_${PORTVERSION}
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Searches for files with equal content
 
+NO_STAGE=	yes
+
 USE_ZIP=	yes
 MAKE_FLAGS=
 MAKEFILE=

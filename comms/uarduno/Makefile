@@ -11,10 +11,13 @@ COMMENT=	FreeBSD Kernel Driver for the Arduino Uno USB interface
 
 NO_PACKAGE=	You must (re)build this port with your kernel source
 
+SSP_UNSAFE=	kernel module does not support ssp
+
 # need to enforce installation into kernel module directory
 MAKE_ENV+=	KMODDIR=${KMODDIR}
 PREFIX=		${KMODDIR}
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 SRCPREFIX?=	${SRC_BASE}

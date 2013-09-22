@@ -1,7 +1,4 @@
-# New ports collection makefile for:	x264
-# Date created:		2005-01-11
-# Whom:			Michael Johnson <ahze@FreeBSD.org>
-#
+# Created by: Michael Johnson <ahze@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	x264
@@ -15,7 +12,7 @@ DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 DIST_SUBDIR=	x264
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
-MAINTAINER=	mm@FreeBSD.org
+MAINTAINER=	koobs@FreeBSD.org
 COMMENT?=	Library and tool for encoding H.264/AVC video streams
 
 LICENSE=	GPLv2
@@ -50,6 +47,7 @@ CONFIGURE_ARGS+=	--extra-cflags="${CPPFLAGS} ${CFLAGS} -fPIC -I${LOCALBASE}/incl
 
 PLIST_SUB+=	X264_BUILD=${X264_BUILD}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGCC44}

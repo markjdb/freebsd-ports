@@ -14,8 +14,7 @@ BUILD_DEPENDS=	bison:${PORTSDIR}/devel/bison \
 		swig:${PORTSDIR}/devel/swig13
 LIB_DEPENDS=	GeoIP:${PORTSDIR}/net/GeoIP
 
-USE_PERL5=	yes
-USES=		cmake
+USES=		cmake perl5
 CONFIGURE_WRKSRC=	${WRKSRC}/build
 BUILD_WRKSRC=	${CONFIGURE_WRKSRC}
 INSTALL_WRKSRC=	${CONFIGURE_WRKSRC}
@@ -27,6 +26,7 @@ LBL_CF_DESC=	Unix time to formated time/date filter support
 BROCCOLI_DESC=	Build support for libbroccoli communications
 OPTIONS_EXCLUDE=NLS DOCS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MBROCCOLI}

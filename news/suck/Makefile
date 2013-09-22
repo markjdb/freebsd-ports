@@ -14,6 +14,7 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Receives/sends news to/from localhost via NNTP
 
 CONFLICTS?=	suckblow-1.*
+NO_STAGE=	yes
 
 USES=		gmake
 GNU_CONFIGURE=	yes

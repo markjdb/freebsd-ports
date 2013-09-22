@@ -21,10 +21,12 @@ CONFIGURE_ENV=	TARGET_BIN=${PREFIX}/bin \
 
 PORTDOCS=	*
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
-.if ! ${PORT_OPTIONS:MDOCS}
 post-patch:
+	@${REINPLACE_CMD} -e 's|gcc|${CC}|' ${WRKSRC}/configure
+.if ! ${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e '/TARGET_DOC/ d' ${WRKSRC}/mkfiles/Makefile.main
 .endif
 

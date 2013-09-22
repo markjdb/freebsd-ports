@@ -2077,6 +2077,7 @@
     SUBDIR += p5-HOP-Stream
     SUBDIR += p5-Hash-AsObject
     SUBDIR += p5-Hash-AutoHash
+    SUBDIR += p5-Hash-AutoHash-Args
     SUBDIR += p5-Hash-Case
     SUBDIR += p5-Hash-Diff
     SUBDIR += p5-Hash-FieldHash
@@ -2260,6 +2261,7 @@
     SUBDIR += p5-Method-Signatures-Simple
     SUBDIR += p5-Mixin-Linewise
     SUBDIR += p5-Mknod
+    SUBDIR += p5-Mo
     SUBDIR += p5-Mock-Quick
     SUBDIR += p5-Module-Build
     SUBDIR += p5-Module-Build-Convert
@@ -3364,7 +3366,6 @@
     SUBDIR += pth-hard
     SUBDIR += pthsem
     SUBDIR += ptlib
-    SUBDIR += ptlib26
     SUBDIR += ptmalloc
     SUBDIR += ptmalloc2
     SUBDIR += pty
@@ -3721,6 +3722,7 @@
     SUBDIR += py-rtree
     SUBDIR += py-ruledispatch
     SUBDIR += py-sanetime
+    SUBDIR += py-sdl2
     SUBDIR += py-serpent
     SUBDIR += py-setproctitle
     SUBDIR += py-setuptools-git

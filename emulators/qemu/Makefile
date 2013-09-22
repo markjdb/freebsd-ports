@@ -15,8 +15,8 @@ COMMENT=	QEMU CPU Emulator
 
 HAS_CONFIGURE=	yes
 USE_GCC=	any
-USE_GMAKE=	yes
-USE_PERL5_BUILD=	yes
+USES=		gmake perl5
+USE_PERL5=	build
 PATCH_STRIP=	-p1
 MAKE_ENV+=	BSD_MAKE="${MAKE}"
 MAN1=		qemu.1 qemu-img.1
@@ -38,6 +38,7 @@ ADD_AUDIO_DESC=		Emulate more audio hardware (experimental!)
 ALL_TARGETS_DESC=	Also build non-x86 targets
 OPTIONS_DEFAULT=	SDL GNUTLS CURL PCAP GNS3 CDROM_DMA ALL_TARGETS
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if empty(PORT_OPTIONS:MALL_TARGETS)

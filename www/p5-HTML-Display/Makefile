@@ -1,12 +1,8 @@
-# New ports collection makefile for:	p5-HTML-Display
-# Date created:				24 Oct 2007
-# Whom:					Rong-En Fan <rafan@FreeBSD.org>
-#
+# Created by: Rong-En Fan <rafan@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	HTML-Display
-PORTVERSION=	0.39
+PORTVERSION=	0.40
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -37,5 +33,10 @@ MAN3=	HTML::Display.3 \
 	HTML::Display::Win32.3 \
 	HTML::Display::Win32::IE.3 \
 	HTML::Display::Win32::OLE.3
+
+NO_STAGE=	yes
+
+regression-test:
+	@${MAKE} test -C ${WRKSRC}
 
 .include <bsd.port.mk>

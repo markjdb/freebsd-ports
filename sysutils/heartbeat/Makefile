@@ -62,6 +62,7 @@ LDIRECTORD_DESC=	Enable Linux Director Daemon
 APCSNMP_DESC=		Enable APC SNMP Stonith Device
 DRAC3_DESC=		Enable Dell DRACIII Stonith Device
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if !defined(BATCH)
@@ -80,7 +81,8 @@ PLIST_SUB+=		MGMT="@comment "
 .if ${PORT_OPTIONS:MLDIRECTORD}
 RUN_DEPENDS+=		p5-libwww>=0:${PORTSDIR}/www/p5-libwww \
 			p5-Mail-Tools>=0:${PORTSDIR}/mail/p5-Mail-Tools
-USE_PERL5_RUN=		yes
+USES+=			perl5
+USE_PERL5=		run
 PLIST_SUB+=		LDIRECTORD=""
 MAN8+=			ldirectord.8
 .else

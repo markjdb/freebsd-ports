@@ -35,7 +35,7 @@ CONFLICTS_INSTALL= \
 		ghostscript[789]-[0-9]* \
 		ghostscript[789]-nox11-[0-9]*
 
-USES=		gmake
+USES=		gmake pkgconfig:build
 USE_BZIP2=	yes
 WANT_GNOME=	yes
 USE_LDCONFIG=	yes
@@ -93,6 +93,7 @@ MLINKS=		gslp.1 gsbj.1 \
 
 EXCLUDE_DIRS=	freetype jbig2dec jpeg expat jasper lcms libpng tiff zlib
 
+NO_STAGE=	yes
 .include "Makefile.drivers"
 .include <bsd.port.options.mk>
 

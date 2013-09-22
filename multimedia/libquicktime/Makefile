@@ -7,7 +7,7 @@ PORTREVISION?=	4
 CATEGORIES=	multimedia
 MASTER_SITES=	SF
 
-MAINTAINER=	mm@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	A library for reading and writing quicktime files
 
 .if !defined(_BUILDING_LIBQUICKTIME_PLUGINS)
@@ -45,6 +45,7 @@ CONFIGURE_ARGS+=	--without-x --enable-gpl --without-doxygen
 OPTIONS_DEFINE=	OPTIMIZED_CFLAGS
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ! ${PORT_OPTIONS:MOPTIMIZED_CFLAGS}

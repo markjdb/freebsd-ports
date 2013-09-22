@@ -16,8 +16,9 @@ LICENSE=	GPLv2
 
 NSS_LDAP_VERSION=265
 
+USES=		gmake perl5
+USE_PERL5=	build
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_AUTOTOOLS=	automake aclocal autoconf autoheader
 AUTOMAKE_ARGS=	--add-missing
 USE_LDCONFIG=	yes
@@ -40,6 +41,7 @@ MAN5=	nss_ldap.5
 
 SUB_FILES=	pkg-message
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MKERBEROS}

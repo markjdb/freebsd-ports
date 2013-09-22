@@ -1,4 +1,4 @@
-# Created by: fjoe@FreeBSD.ORG
+# Created by: fjoe@FreeBSD.org
 # $FreeBSD$
 
 PORTNAME=	wx
@@ -21,7 +21,6 @@ LIB_DEPENDS+=	png15:${PORTSDIR}/graphics/png\
 
 USES+=		iconv gmake pkgconfig
 USE_BZIP2=	yes
-USE_GCC=	any
 USE_XORG=	x11 sm xxf86vm xinerama
 USE_GL=		glu
 USE_GNOME=	gtk20
@@ -48,6 +47,7 @@ OPTIONS_DEFINE=	GSTREAMER MSPACK
 OPTIONS_DEFAULT=	GSTREAMER MSPACK
 MSPACK_DESC=	MS archives support
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGSTREAMER}

@@ -1,6 +1,4 @@
-# ex:ts=8
-# Created by:	David O'Brien <obrien@cs.ucdavis.edu>
-# Created:	Sat June 29, 1996
+# Created by: David O'Brien <obrien@cs.ucdavis.edu>
 # $FreeBSD$
 
 PORTNAME?=	vim
@@ -34,6 +32,7 @@ MAINTAINER?=	obrien@FreeBSD.org
 COMMENT?=	Vi "workalike", with many additional features
 
 SLAVEDIRS=	editors/vim-lite
+NO_STAGE=	yes
 
 .if !defined(LITE)
 .if defined(WITH_OPTIONS) || defined(WITH_VIM_OPTIONS)
@@ -109,7 +108,7 @@ MAKE_ARGS+=	CONF_OPT_LUA_PREFIX="--with-lua-prefix=${LOCALBASE}"
 .endif
 
 .if ${PORT_OPTIONS:MPERL}
-USE_PERL5=	yes
+USES=	perl5
 MAKE_ARGS+=	CONF_OPT_PERL="--enable-perlinterp"
 .endif
 

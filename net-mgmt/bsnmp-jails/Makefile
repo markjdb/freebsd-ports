@@ -11,6 +11,8 @@ COMMENT=	A bsnmpd module to measure statistics about jails
 LICENSE=	BSD
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+NO_STAGE=	yes
+
 GNU_CONFIGURE=	yes
 
 MAN8=		bsnmp-jails.8

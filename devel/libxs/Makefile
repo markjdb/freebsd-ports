@@ -22,6 +22,7 @@ OPTIONS_RADIO=		PGM
 OPTIONS_RADIO_PGM=	INTERNAL EXTERNAL
 OPTIONS_DEFAULT=PLUGINS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDEBUG}
@@ -75,7 +76,7 @@ CONFIGURE_ARGS+=	--without-documentation
 
 .if ${PORT_OPTIONS:MINTERNAL}
 CONFIGURE_ARGS+=	--with-pgm
-USE_PERL5=		yes
+USES+=			perl5
 CFLAGS+=		-fPIC
 .endif
 

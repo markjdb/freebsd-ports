@@ -1,9 +1,5 @@
-# New ports collection makefile for: rsyslog4-gssapi
-# Date created:     29 December 2008
-# Whom:             Cristiano Rolim Pereira <cristianorolim@hotmail.com>
-#
+# Created by: Cristiano Rolim Pereira <cristianorolim@hotmail.com>
 # $FreeBSD$
-#
 
 COMMENT=	GSS API input/output module for rsyslog
 MASTERDIR=	${.CURDIR}/../rsyslog6
@@ -19,6 +15,7 @@ PLIST_FILES+=	lib/rsyslog/imgssapi.la \
 		lib/rsyslog/omgssapi.la \
 		lib/rsyslog/omgssapi.so
 
+NO_STAGE=	yes
 do-install:
 	@${INSTALL_PROGRAM} \
 		${WRKSRC}/plugins/omgssapi/.libs/omgssapi.so ${PREFIX}/lib/rsyslog

@@ -27,10 +27,12 @@ USE_SDL=	sdl image ttf
 USE_GL=		gl
 USE_OPENAL=	yes
 USE_LUA=	5.1
-USE_GCC=	any # problems in luabind; recheck with next update
+USE_GCC=	yes # problems in luabind; recheck with next update
+LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB} -lintl
 
 PORTDOCS=	*
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

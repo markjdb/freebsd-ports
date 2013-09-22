@@ -20,8 +20,10 @@ BUILD_DEPENDS=	p5-CSS-DOM>=0:${PORTSDIR}/www/p5-CSS-DOM \
 		p5-constant-lexical>0:${PORTSDIR}/devel/p5-constant-lexical
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 .include "${MASTERDIR}/Makefile.man"
 .include <bsd.port.post.mk>

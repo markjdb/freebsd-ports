@@ -1,14 +1,11 @@
-# New ports collection makefile for:	bddsolve
-# Date created:				11 May 2010
-# Whom:					Ed Schouten <ed@FreeBSD.org>
-#
+# Created by: Ed Schouten <ed@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	bddsolve
-PORTVERSION=	1.02
+PORTVERSION=	1.03
 CATEGORIES=	science
-MASTER_SITES=	http://www.win.tue.nl/~wieger/bddsolve/
+MASTER_SITES=	http://www.win.tue.nl/~wieger/bddsolve/_downloads/
+DISTNAME=	${PORTNAME}-source-${PORTVERSION}
 
 MAINTAINER=	ed@FreeBSD.org
 COMMENT=	BDD-based satisfiability and reachability solver
@@ -17,9 +14,9 @@ LIB_DEPENDS+=	bdd:${PORTSDIR}/science/buddy \
 		boost_program_options:${PORTSDIR}/devel/boost-libs
 
 USE_ZIP=	yes
-USE_GCC=	4.2+
 NO_WRKSUBDIR=	yes
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "powerpc"

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	POE-Test-Loops
-PORTVERSION=	1.352
+PORTVERSION=	1.353
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:RCAPUTO
@@ -20,4 +20,5 @@ USE_PERL5=	configure
 MAN1=		poe-gen-tests.1
 MAN3=		POE::Test::Loops.3
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

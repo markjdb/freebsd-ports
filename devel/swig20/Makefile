@@ -13,7 +13,6 @@ LICENSE=	GPLv3
 
 LIB_DEPENDS=	pcre:${PORTSDIR}/devel/pcre
 
-LATEST_LINK?=	swig2
 USE_AUTOTOOLS=	autoconf:env libtool
 
 MAN1=		ccache-swig${VER}.1
@@ -31,6 +30,7 @@ WANT_LUA_VER=	5.0+
 
 CONFIGURE_ARGS+=--program-suffix=${VER}
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${HAVE_LUA:Mlua-5.*} != ""

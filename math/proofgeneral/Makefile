@@ -20,10 +20,10 @@ BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash
 RUN_DEPENDS=	${LOCALBASE}/share/icons/hicolor/index.theme:${PORTSDIR}/misc/hicolor-icon-theme
 
 USE_EMACS=	yes
-USE_GMAKE=	yes
 INSTALLS_ICONS=	yes
-USE_PERL5=	yes
+USES=		gmake perl5
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${EMACS_NAME} == xemacs

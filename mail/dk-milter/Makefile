@@ -9,6 +9,8 @@ MASTER_SITES=	SF/${PORTNAME}/DomainKeys%20Milter/${PORTVERSION}
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Domainkeys milter for Sendmail
 
+NO_STAGE=	yes
+
 USE_RC_SUBR=	milter-dk
 USE_OPENSSL=	yes
 

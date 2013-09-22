@@ -16,8 +16,8 @@ OPTIONS_DEFINE=	TCMALLOC DOCS EXAMPLES
 TCMALLOC_DESC=	Use Google's TCMalloc
 
 USE_BZIP2=	yes
-USES=		cmake:outsource
-USE_PERL5_BUILD=	yes
+USES=		cmake:outsource perl5
+USE_PERL5=	build
 CMAKE_ARGS=	-DFCS_WITH_TEST_SUITE:BOOL=OFF
 USE_LDCONFIG=	yes
 
@@ -29,6 +29,7 @@ MAN6=		fc-solve-board_gen.6 fc-solve.6 \
 		make_pysol_freecell_board.py.6 \
 		pi-make-microsoft-freecell-board.6
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MTCMALLOC}

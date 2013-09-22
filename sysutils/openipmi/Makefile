@@ -42,6 +42,7 @@ GDBM_DESC=	Local SDR caching on startup
 GLIB12_DESC=	Simply OS handler for glib 1.2
 GLIB20_DESC=	Simply OS handler for glib 2.0
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if exists(${LOCALBASE}/lib/libgdbm.so.3)
@@ -78,7 +79,7 @@ PLIST_SUB+=		TKINTER="@comment "
 
 .if ${PORT_OPTIONS:MPERL}
 WITH_SWIG=		yes
-USE_PERL5=		yes
+USES+=			perl5
 CONFIGURE_ARGS+=	--with-perl
 PLIST_SUB+=		PERL=""
 .else

@@ -124,6 +124,7 @@ OPENLDAP_PKGFILESUFX=
 
 CONFIGURE_SED=		-e 's,-kthread,${PTHREAD_LIBS},g' -e 's,uuid/uuid.h,xxuuid/uuid.h,g'
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if defined(CLIENT_ONLY)
@@ -408,7 +409,7 @@ PLIST_SUB+=		BACK_SOCK="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MPERL}
-USE_PERL5=		yes
+USES+=			perl5
 CONFIGURE_ARGS+=	--enable-perl=${BACKEND_ENABLE}
 CONFIGURE_ENV+=		PERLBIN="${PERL}"
 PLIST_SUB+=		BACK_PERL=${BACKEND_PLIST}

@@ -23,6 +23,8 @@ LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg \
 		png15:${PORTSDIR}/graphics/png \
 		jasper:${PORTSDIR}/graphics/jasper
 
+NO_STAGE=	yes
+
 USES=		imake
 USE_XORG=	xext x11 xt
 .if !defined(NOMAN)

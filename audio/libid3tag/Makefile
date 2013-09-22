@@ -13,6 +13,8 @@ COMMENT=	ID3 tags library (part of MAD project)
 LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
 
+NO_STAGE=	yes
+
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 USES=		pkgconfig

@@ -1,4 +1,4 @@
-# Created by:	Brian Gardner <brian@experts-exchange.com>
+# Created by: Brian Gardner <brian@experts-exchange.com>
 # $FreeBSD$
 
 PORTNAME=	openjdk6
@@ -53,8 +53,9 @@ FASTDEBUG_DESC=	Include fastdebug build
 TEST_DESC=	Add support for running regression test
 .endif
 
-USES=		gmake motif
+USES=		gmake iconv motif
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 .include "${.CURDIR}/../openjdk6/Makefile.icedtea"
 

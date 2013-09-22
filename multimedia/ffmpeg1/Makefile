@@ -7,7 +7,7 @@ CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	http://ffmpeg.org/releases/
 PKGNAMESUFFIX=	1
 
-MAINTAINER=	mm@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Realtime audio/video encoder/converter and streaming server
 
 LICENSE=		GPLv2 LGPL21
@@ -23,11 +23,10 @@ LATEST_LINK=	ffmpeg${PKGNAMESUFFIX}
 
 HAS_CONFIGURE=	yes
 CONFIGURE_LOG=	config.err
-USES=		pkgconfig
+USES=		gmake pkgconfig perl5
+USE_PERL5=	build
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 WANT_SDL=	yes
-USE_PERL5_BUILD=	yes
 
 OPTIONS_DEFINE=	AACPLUS ALSA AMR_NB AMR_WB ASS CDIO CELT DEBUG FAAC \
 		FDK_AAC FFSERVER FONTCONFIG FREETYPE FREI0R GNUTLS GSM ICONV \
@@ -58,6 +57,7 @@ MAN1=		ffmpeg${FFMPEG_SUFFIX}.1 ffprobe${FFMPEG_SUFFIX}.1
 USE_LDCONFIG=	${PREFIX}/lib/ffmpeg${FFMPEG_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${PKGNAMESUFFIX}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 # ssl

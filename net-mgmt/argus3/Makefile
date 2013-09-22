@@ -19,11 +19,11 @@ OPTIONS_DEFAULT=SASL MANPAGES
 
 USE_RC_SUBR=	argus
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
-USES=		bison
+USES=		bison perl5
 GNU_CONFIGURE=	true
-USE_PERL5=	yes
 
 .if ${PORT_OPTIONS:MSASL}
 PKGNAMESUFFIX+=	-sasl

@@ -16,15 +16,17 @@ OPTIONS_DEFINE=	DOCS
 CONFLICTS=	moreutils-parallel-[0-9]*
 
 CONFIGURE_ARGS=	--docdir="${DOCSDIR}"
+
+USES=		perl5
 GNU_CONFIGURE=	yes
 USE_BZIP2=	yes
-USE_PERL5=	yes
 
 MAN1=		parallel.1 parallel_tutorial.1 sem.1 sql.1 niceload.1
 PLIST_FILES=	bin/parallel bin/sem bin/sql bin/niceload
 PORTDOCS=	parallel.html parallel_tutorial.html sem.html sql.html niceload.html \
 		parallel.texi parallel_tutorial.texi sem.texi sql.texi niceload.texi
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

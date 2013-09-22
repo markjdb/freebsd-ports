@@ -1,9 +1,5 @@
-# Ports collection makefile for:  ipplan
-# Date created:			  26 Nov 2004
-# Whom:				  Maxim Tuliuk <mt@primats.org.ua>
-#
+# Created by: Maxim Tuliuk <mt@primats.org.ua>
 # $FreeBSD$
-#
 
 PORTNAME=	ipplan
 PORTVERSION=	4.92b
@@ -15,7 +11,8 @@ COMMENT=	IP address management and tracking
 
 RUN_DEPENDS=	nmap:${PORTSDIR}/security/nmap
 
-USE_PERL5_RUN=	yes
+USES=		perl5
+USE_PERL5=	run
 USE_PHP=	gettext pcre xml zlib
 
 NO_BUILD=	yes
@@ -38,6 +35,7 @@ USE_PHP+=	pgsql
 USE_PHP+=	snmp
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-patch:

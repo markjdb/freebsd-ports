@@ -301,6 +301,14 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #                         passed to the compiler by setting DEBUG_FLAGS. It is
 #                         set to "-g" at default.
 #
+# WITH_SSP_PORTS
+# 				- If set, SSP_FLAGS (defaults to -fstack-protector)
+#				  is added to CFLAGS and the necessary flags
+#				  are added to LDFLAGS. Note that SSP_UNSAFE
+#				  can be used in Makefiles by port maintainers
+#				  if a port breaks with it (it should be
+#				  extremely rare).
+#
 # USE_BZIP2		- If set, this port tarballs use bzip2, not gzip, for
 #				  compression.
 # USE_LHA		- If set, this port distfile uses lha for compression
@@ -1290,11 +1298,7 @@ STRIP=	#none
 # Start of pre-makefile section.
 .if !defined(AFTERPORTMK) && !defined(INOPTIONSMK)
 
-.if defined(_PREMKINCLUDED)
-check-makefile::
-	@${ECHO_MSG} "${PKGNAME}: Makefile error: you cannot include bsd.port[.pre].mk twice"
-	@${FALSE}
-.endif
+.include "${PORTSDIR}/Mk/bsd.sanity.mk"
 
 _PREMKINCLUDED=	yes
 
@@ -1390,8 +1394,6 @@ PKGCOMPATDIR?=		${LOCALBASE}/lib/compat/pkg
 .if defined(USE_GNUSTEP)
 .include "${PORTSDIR}/Mk/bsd.gnustep.mk"
 .endif
-
-.include "${PORTSDIR}/Mk/bsd.perl.mk"
 
 .if defined(USE_PHP)
 .include "${PORTSDIR}/Mk/bsd.php.mk"
@@ -1567,6 +1569,10 @@ CFLAGS:=	${CFLAGS:C/${_CPUCFLAGS}//}
 STRIP_CMD=	${TRUE}
 DEBUG_FLAGS?=	-g
 CFLAGS:=		${CFLAGS:N-O*:N-fno-strict*} ${DEBUG_FLAGS}
+.endif
+
+.if defined(WITH_SSP) || defined(WITH_SSP_PORTS)
+.include "${PORTSDIR}/Mk/bsd.ssp.mk"
 .endif
 
 .if defined(NOPORTDOCS)
@@ -1955,8 +1961,6 @@ RUN_DEPENDS+=	${_GL_${_component}_RUN_DEPENDS}
 .if defined(USE_SDL) || defined(WANT_SDL)
 .include "${PORTSDIR}/Mk/bsd.sdl.mk"
 .endif
-
-.include "${PORTSDIR}/Mk/bsd.perl.mk"
 
 .if defined(USE_PHP)
 .include "${PORTSDIR}/Mk/bsd.php.mk"
@@ -6499,6 +6503,45 @@ install-license:
 	@${DO_NADA}
 .endif
 
+.if defined(WARNING)
+WARNING_WAIT?=	10
+show-warnings:
+	@${ECHO_MSG} "/!\\ WARNING /!\\"
+.for m in ${WARNING}
+	@${ECHO_MSG} "${m}"
+.endfor
+	@${ECHO_MSG}
+	@sleep ${WARNING_WAIT}
+
+check-makefile:: show-warnings
+.endif
+
+.if defined(DEVELOPER)
+.if defined(DEV_WARNING)
+DEV_WARNING_WAIT?=	10
+show-dev-warnings:
+	@${ECHO_MSG} "/!\\ ${PKGNAME}: Makefile warnings, please consider fixing /!\\"
+	@${ECHO_MSG}
+.for m in ${DEV_WARNING}
+	@${ECHO_MSG} "${m}"
+.endfor
+	@${ECHO_MSG}
+	@sleep ${DEV_WARNING_WAIT}
+check-makefile:: show-dev-warnings
+.endif
+
+.if defined(DEV_ERROR)
+show-dev-errors:
+	@${ECHO_MSG} "/!\\ ${PKGNAME}: Makefile errors /!\\"
+	@${ECHO_MSG}
+.for m in ${DEV_ERROR}
+	@${ECHO_MSG} "${m}"
+.endfor
+	@${ECHO_MSG}
+	@${FALSE}
+check-makefile:: show-dev-errors
+.endif
+.endif #DVELOPER
 .endif
 # End of post-makefile section.
 

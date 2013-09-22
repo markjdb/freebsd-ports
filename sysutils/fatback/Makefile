@@ -11,7 +11,6 @@ MAINTAINER=	ehaupt@FreeBSD.org
 COMMENT=	Recover deleted files from FAT filesystems
 
 GNU_CONFIGURE=	yes
-USE_GCC=	any
 
 MAN1=		fatback.1
 INFO=		fatback-manual
@@ -20,7 +19,11 @@ EXTRACT_AFTER_ARGS=	--exclude 'getopt*'	\
 
 OPTIONS_DEFINE=	DOCS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
+
+post-patch:
+	@${REINPLACE_CMD} -e "s/-Werror//g" ${WRKSRC}/Makefile.in
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${PREFIX}/bin

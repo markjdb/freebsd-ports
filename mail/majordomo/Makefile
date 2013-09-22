@@ -13,8 +13,7 @@ EXTRACT_SUFX=	.tgz
 MAINTAINER=	anders@FreeBSD.org
 COMMENT=	A mailing list manager
 
-USES=		shebangfix
-USE_PERL5=	yes
+USES=		shebangfix perl5
 
 SHEBANG_FILES=	contrib/sequencer
 
@@ -26,6 +25,7 @@ PKGMESSAGE=	${FILESDIR}/post-install-notes
 
 DOCSDIR=	${PREFIX}/${PORTNAME}/doc
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 pre-fetch:

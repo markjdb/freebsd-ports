@@ -16,9 +16,8 @@ LIB_DEPENDS=	plot.4:${PORTSDIR}/graphics/plotutils \
 OPTIONS_DEFINE=	GUI PGSQL
 
 USE_GNOME=	libxml2
-USE_PERL5_BUILD=yes
-USES=		iconv
-USE_GMAKE=	yes
+USE_PERL5=	build
+USES=		iconv gmake perl5
 USE_AUTOTOOLS=	libtool
 USE_LDCONFIG=	yes
 
@@ -27,6 +26,7 @@ INFO=		pspp pspp-dev
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}

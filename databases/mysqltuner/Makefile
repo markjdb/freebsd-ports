@@ -1,9 +1,5 @@
-# New ports collection makefile for:   mysqltuner
-# Date created:		09 September 2008
-# Whom:			Wen heping <wenheping@gmail.com>
-#
+# Created by: Wen heping <wenheping@gmail.com>
 # $FreeBSD$
-#
 
 PORTNAME=	mysqltuner
 PORTVERSION=	1.2.0
@@ -17,13 +13,15 @@ COMMENT=	A Script Assist You with MySQL Configuration
 LICENSE=	GPLv3
 
 FETCH_ARGS=	-pRr
-USE_PERL5=	yes
+
+USES=		perl5
 NO_BUILD=	yes
 
 PLIST_FILES=	bin/${PORTNAME}.pl
 
 PORTDOCS=	README
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 do-install:
 	@${CP} ${WRKSRC}/${PORTNAME}.pl ${PREFIX}/bin/${PORTNAME}.pl

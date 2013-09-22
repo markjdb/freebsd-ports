@@ -20,8 +20,8 @@ RUN_DEPENDS=	xorg-fonts>=7.2:${PORTSDIR}/x11-fonts/xorg-fonts \
 LICENSE=	GPLv2
 
 GNU_CONFIGURE=	yes
+USES=		perl5
 USE_XORG=	x11 xext xpm xext xtst sm ice inputproto
-WANT_PERL=	yes
 
 WRKSRC=		${WRKDIR}/${DISTNAME}/unix
 PLIST=		${WRKDIR}/pkg-plist
@@ -40,6 +40,7 @@ MAN1=		vncviewer.1 \
 PREFIX=${REALVNC_BASE}
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "arm"
@@ -57,7 +58,6 @@ RUN_DEPENDS+=	xauth:${PORTSDIR}/x11/xauth \
 		${PREFIX}/lib/X11/fonts/misc/6x13-ISO8859-1.pcf.gz:${PORTSDIR}/x11-fonts/xorg-fonts-miscbitmaps \
 		${LOCALBASE}/lib/X11/fonts/misc/fonts.alias:${PORTSDIR}/x11-fonts/font-alias
 
-USE_PERL5=	yes
 
 EXTRA_PATCHES+=	${WRKSRC}/xc.patch \
 		${PATCHDIR}/vnc.def-patch \

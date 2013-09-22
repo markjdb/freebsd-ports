@@ -17,7 +17,7 @@ RUN_DEPENDS=	p5-libwww>=0:${PORTSDIR}/www/p5-libwww \
 		p5-TimeDate>=0:${PORTSDIR}/devel/p5-TimeDate
 
 NO_BUILD=	yes
-USE_PERL5=	yes
+USES=		perl5
 
 PORTDOCS=	*
 PLIST_FILES=	bin/dailystrips \
@@ -28,6 +28,7 @@ PLIST_DIRS=	share/dailystrips
 
 PORTSCOUT=	limit:^1\.0\.
 
+NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} 's|^#!/usr/bin/perl|#!${PERL}|; \
 		s!/usr/share/dailystrips/strips.def!${DATADIR}/strips.def!' \

@@ -16,7 +16,6 @@ LICENSE=		GPLv3
 
 CONFLICTS?=		*samba3[2-6]-3.*
 
-
 SAMBA4_BASENAME=	samba
 SAMBA4_PORTNAME=	${SAMBA4_BASENAME}4
 SAMBA4_VERSION=		4.0.8
@@ -67,11 +66,11 @@ CONFIGURE_ENV+=		PTHREAD_CFLAGS="${PTHREAD_CFLAGS}" \
 			PTHREAD_LDFLAGS="${PTHREAD_LIBS}"
 
 USE_PYTHON_BUILD=	-2.7
-USE_PERL5_BUILD=	yes
+USE_PERL5=		build
 
 USE_GCC=		4.2+
 USE_PYTHON=		yes
-USES=			pkgconfig gettext iconv
+USES=			pkgconfig gettext iconv perl5
 USE_LDCONFIG=		${SAMBA4_LIBDIR}
 
 PKGCONFIGDIR?=		${PREFIX}/libdata/pkgconfig
@@ -145,6 +144,7 @@ NSUPDATE_DESC=		Use internal DNS with NSUPDATE utility
 
 OPTIONS_DEFAULT+=	NSUPDATE
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 # !SAMBA4_SUBPORT
@@ -388,10 +388,8 @@ CONFIGURE_ENV+=		NOCOLOR=yes
 MAKE_ENV+=		NOCOLOR=yes
 
 .if !defined(DISABLE_MAKE_JOBS) && !defined(MAKE_JOBS_UNSAFE)
-.if defined(MAKE_JOBS_SAFE) || defined(FORCE_MAKE_JOBS)
 CONFIGURE_ARGS+=	--jobs=${MAKE_JOBS_NUMBER}
 _MAKE_JOBS+=		--jobs=${MAKE_JOBS_NUMBER}
-.endif
 .endif
 
 MAN1+=			dbwrap_tool.1 findsmb.1 gentest.1 locktest.1 \

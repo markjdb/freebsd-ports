@@ -13,13 +13,15 @@ COMMENT=	Hide and store warnings while running test scripts
 
 TEST_DEPENDS=	p5-Test-Tester>=0.10.7:${PORTSDIR}/devel/p5-Test-Tester
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=		Test::NoWarnings.3
 
 OPTIONS_DEFINE=	DEVEL_STACKTRACE
 DEVEL_STACKTRACE_DESC=	Stack trace support
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDEVEL_STACKTRACE}

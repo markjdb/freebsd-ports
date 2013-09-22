@@ -10,9 +10,10 @@ MASTER_SITES=	http://roxirc.lighter.net/download/
 MAINTAINER=	tcltk@FreeBSD.org
 COMMENT=	A tcl/tk irc client
 
-USE_TK=		yes
+USES+=		tk:run
 NO_BUILD=	yes
 
+NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} 's|if \[ -x .*|${WISH} "$$0" "$$@"|' ${WRKSRC}/roxirc
 

@@ -1,9 +1,5 @@
-# New ports collection makefile for:	net-mgmt/netdot
-# Date created:				16 January 2012
-# Whom:					Nick Hilliard
-#
+# Created by: Nick Hilliard
 # $FreeBSD$
-#
 
 PORTNAME=	netdot
 PORTVERSION=	1.0.4
@@ -44,9 +40,8 @@ RUN_DEPENDS=	p5-libapreq2>=0:${PORTSDIR}/www/p5-libapreq2 \
 		rrdtool:${PORTSDIR}/databases/rrdtool \
 		netdisco-mibs>=0:${PORTSDIR}/net-mgmt/netdisco-mibs
 
+USES=		gmake perl5
 NO_BUILD=	yes
-USE_PERL5=	yes
-USE_GMAKE=	yes
 USE_MYSQL=	yes
 
 SUB_FILES=	pkg-message pkg-install
@@ -58,6 +53,7 @@ SUB_LIST=	WWWDIR="${WWWDIR}"	\
 
 PKG_PREFIX=${PREFIX} ${SH} ${PKGINSTALL} ${PKGNAME} POST-INSTALL
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 INSTALL_TARGET=	install		\

@@ -1,7 +1,4 @@
-# New ports collection makefile for:    ourmon
-# Date created: 01 May 2005
-# Whom:         Charlie Schluting <manos@cs.pdx.edu>
-#
+# Created by: Charlie Schluting <manos@cs.pdx.edu>
 # $FreeBSD$
 
 PORTNAME=	ourmon
@@ -20,8 +17,8 @@ BUILD_DEPENDS=	${LOCALBASE}/lib/libpcap.a:${PORTSDIR}/net/libpcap \
 RUN_DEPENDS=	rrdtool:${PORTSDIR}/databases/rrdtool
 
 WRKSRC=			${WRKDIR}/mrourmon
+USES=			perl5
 USE_APACHE_RUN=		22+
-USE_PERL5=		yes
 NO_BUILD=		yes
 NO_INSTALL_MANPAGES=	yes
 IS_INTERACTIVE=		yes
@@ -30,6 +27,7 @@ SUB_FILES=	pkg-message
 
 USE_RC_SUBR=	ourmon
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 pre-everything::

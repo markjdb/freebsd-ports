@@ -1,9 +1,5 @@
-# New ports collection makefile for:	py-statgrab
-# Date created:		20 March 2004
-# Whom:			Tim Bishop <tim@bishnet.net>
-#
+# Created by: Tim Bishop <tim@bishnet.net>
 # $FreeBSD$
-#
 
 PORTNAME=	statgrab
 PORTVERSION=	0.5
@@ -22,8 +18,10 @@ COMMENT=	A set of Python bindings for libstatgrab
 LIB_DEPENDS=	statgrab.8:${PORTSDIR}/devel/libstatgrab
 
 DIST_SUBDIR=	i-scream
+USES=		pkgconfig
 USE_PYTHON=	yes
 USE_PYDISTUTILS=	yes
 PYDISTUTILS_PKGNAME=	pystatgrab
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

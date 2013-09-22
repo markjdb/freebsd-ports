@@ -1,9 +1,5 @@
-# Ports collection makefile for:	dahdi
-# Date created:				3 Mar 2010
-# Whom:					Maxim Khon <fjoe@FreeBSD.org>
-#
+# Created by: Maxim Khon <fjoe@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	dahdi-kmod26
 PORTVERSION=	${DAHDI_VERSION:S/-/./g}
@@ -21,6 +17,8 @@ MAINTAINER=	fjoe@FreeBSD.org
 COMMENT=	Digium/Asterisk Hardware Device Interface
 
 RUN_DEPENDS=	${LOCALBASE}/sbin/dahdi_cfg:${PORTSDIR}/misc/dahdi
+
+SSP_UNSAFE=	kernel module does not support ssp
 
 DAHDI_VERSION=		2.6.1-r10738
 DAHDI_TOOLS_VERSION=	2.4.0-rc1
@@ -52,6 +50,7 @@ GROUPS=		dahdi
 ONLY_FOR_ARCHS=	i386 amd64 sparc64
 CONFLICTS=	zaptel-[0-9]* dahdi-kmod-*
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} < 703000 || (${OSVERSION} >= 800000 && ${OSVERSION} < 800108)

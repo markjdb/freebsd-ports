@@ -21,9 +21,9 @@ SVNVERSION=	0.11_trunk_2979
 
 NO_LATEST_LINK=	yes
 
+USES=		perl5
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
-USE_PERL5=	yes
 USE_AUTOTOOLS=	autoconf aclocal autoheader
 ACLOCAL_ARGS+=	-I ${WRKSRC}/infrastructure/m4
 
@@ -41,6 +41,7 @@ CLIENT_DESC=		Install the bbackupd client
 SERVER_DESC=		Install the bbstored server
 GNUREADLINE_DESC=	Enable the use of GNU readline
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGNUREADLINE}

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	Wand
-PORTVERSION=	0.3.3
+PORTVERSION=	0.3.5
 CATEGORIES=	graphics python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -16,6 +16,7 @@ USE_PYDISTUTILS=	easy_install
 
 PLIST_FILES=	%%PYTHON_SITELIBDIR%%/%%PYEASYINSTALL_EGG%%
 
+NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e "s|cmdclass={'upload_doc': upload_doc}||" \
 		${WRKSRC}/setup.py

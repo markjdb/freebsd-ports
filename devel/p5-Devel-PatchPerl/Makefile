@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Devel-PatchPerl
-PORTVERSION=	1.10
+PORTVERSION=	1.12
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:BINGOS
@@ -25,4 +25,5 @@ MAN3=		Devel::PatchPerl.3 \
 		Devel::PatchPerl::Hints.3 \
 		Devel::PatchPerl::Plugin.3
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

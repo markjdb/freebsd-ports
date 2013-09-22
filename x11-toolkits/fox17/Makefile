@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	fox
-PORTVERSION=	1.7.41
+PORTVERSION=	1.7.42
 PORTREVISION=	1
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	http://ftp.fox-toolkit.org/pub/ \
@@ -40,6 +40,7 @@ MAN1=		reswrap-17.1 shutterbug-17.1 adie-17.1 PathFinder-17.1 \
 MAN_REPLACE+=	s|${man1:S/-17//}|${man1}|;
 .endfor
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MJPEG}

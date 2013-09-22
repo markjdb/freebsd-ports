@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	fbreader
-PORTVERSION=	0.12.10
-PORTREVISION=	3
+PORTVERSION=	0.99.4
 DISTVERSIONPREFIX=	sources-
 CATEGORIES=	deskutils
-MASTER_SITES=	http://www.fbreader.org/files/sources/ \
+MASTER_SITES=	http://www.fbreader.org/files/desktop/ \
 		http://old.fbreader.org/
 EXTRACT_SUFX=	.tgz
 
@@ -14,9 +13,9 @@ MAINTAINER=	fluffy@FreeBSD.org
 COMMENT=	Powerful e-book reader
 
 LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl \
-		expat.6:${PORTSDIR}/textproc/expat2 \
-		fribidi.3:${PORTSDIR}/converters/fribidi \
-		linebreak.2:${PORTSDIR}/textproc/liblinebreak
+		expat:${PORTSDIR}/textproc/expat2 \
+		fribidi:${PORTSDIR}/converters/fribidi \
+		unibreak:${PORTSDIR}/textproc/libunibreak
 
 .if defined(WITH_GTK2)
 UI=		gtk
@@ -33,7 +32,7 @@ STATUS=		debug
 STATUS=		release
 .endif
 
-USES=		iconv gmake
+USES=		iconv gmake pkgconfig
 USE_SQLITE=	yes
 USE_LDCONFIG=	yes
 
@@ -48,6 +47,7 @@ MAKE_ENV+=	TARGET_ARCH=desktop UI_TYPE=${UI} TARGET_STATUS=${STATUS} \
 		LD="${CXX}"
 MAKE_ARGS+=	MAKE=${GMAKE} LIBDIR=${PREFIX}/lib
 
+NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e '/^CFLAGS/s,-pipe.*$$,${CFLAGS} -DDO_ICONV_CAST -DLIBICONV_PLUG,' \
 		-e '/^CC/d;/^LD/d;/QTINCLUDE/s,-I.*$$,-I${QT_INCDIR},;s,libpng ,libpng15 ,' \

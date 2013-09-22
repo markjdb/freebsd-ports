@@ -159,7 +159,6 @@
     SUBDIR += dae
     SUBDIR += daedalus
     SUBDIR += daemontools
-    SUBDIR += daemontools53
     SUBDIR += dar
     SUBDIR += dc3dd
     SUBDIR += dcfldd
@@ -342,6 +341,7 @@
     SUBDIR += gnomebaker
     SUBDIR += goaccess
     SUBDIR += gosa
+    SUBDIR += gpart
     SUBDIR += gpkgdep
     SUBDIR += gpte
     SUBDIR += graid5
@@ -509,6 +509,7 @@
     SUBDIR += memtest86
     SUBDIR += memtest86+
     SUBDIR += metalog
+    SUBDIR += mfid
     SUBDIR += mgeupsd
     SUBDIR += minirsyslogd
     SUBDIR += mixer
@@ -533,6 +534,7 @@
     SUBDIR += mount.app
     SUBDIR += mountsmb2
     SUBDIR += mpiexec
+    SUBDIR += mptd
     SUBDIR += msktutil
     SUBDIR += msyslog
     SUBDIR += mtpfs

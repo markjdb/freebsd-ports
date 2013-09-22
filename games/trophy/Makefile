@@ -14,6 +14,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	clanCore:${PORTSDIR}/devel/clanlib1
 
+USES=		pkgconfig
+
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV+=	LIBS="-L${LOCALBASE}/lib"
 CPPFLAGS+=	-I${LOCALBASE}/include ${PTHREAD_CFLAGS}
@@ -25,6 +27,7 @@ PORTDOCS=	AUTHORS COPYING ChangeLog README TODO
 
 OPTIONS_DEFINE=	DOCS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 pre-configure:

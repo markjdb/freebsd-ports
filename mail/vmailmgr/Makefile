@@ -20,15 +20,16 @@ MAN7=	vmailmgr.7
 MAN8=	vmailmgrd.8
 
 # get python paths (PYTHON_SITELIBDIR) in case we install the python API
-USE_GMAKE=			yes
+USES=			gmake perl5
 USE_AUTOTOOLS=		autoconf autoheader automake aclocal
-USE_PYTHON=			yes
-USE_PERL5_BUILD=	yes
+USE_PYTHON=		yes
+USE_PERL5=		build
 AUTOMAKE_ARGS+=		--add-missing -Wno-portability
 
 OPTIONS_DEFINE=		PYTHONLIBS
 PYTHONLIBS_DESC=	Install the Python API
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if defined(PREFIX)

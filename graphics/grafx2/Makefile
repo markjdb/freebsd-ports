@@ -15,7 +15,6 @@ LIB_DEPENDS=	X11:${PORTSDIR}/x11/libX11 \
 		png15:${PORTSDIR}/graphics/png
 
 USES=		gmake pkgconfig
-USE_GCC=	any
 USE_SDL=	sdl image
 
 WRKSRC=		${WRKDIR}/${PORTNAME}/src
@@ -25,6 +24,7 @@ OPTIONS_DEFINE=	TTF LUA
 TTF_DESC=	True Type font support
 OPTIONS_DEFAULT=TTF
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MTTF}

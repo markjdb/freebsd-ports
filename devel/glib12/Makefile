@@ -6,6 +6,7 @@ PORTVERSION=	1.2.10
 PORTREVISION=	13
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
+PKGNAMESUFFIX=	12
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Some useful routines of C programming (previous stable version)
@@ -19,6 +20,7 @@ CONFIGURE_ARGS=	--includedir=${PREFIX}/include/glib12
 MAN1=		glib-config.1
 INFO=		glib
 
+NO_STAGE=	yes
 post-install:
 	${LN} -sf ${PREFIX}/bin/glib-config ${PREFIX}/bin/glib12-config
 .for lib in glib gmodule gthread

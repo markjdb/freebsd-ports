@@ -18,6 +18,8 @@ RUN_DEPENDS=	newsp:${PORTSDIR}/print/mp-letter
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 USES=		imake
 USE_XORG=	xmu xpm xt sm ice xext x11
 MAKE_FLAGS=	BINDIR=${PREFIX}/bin MANDIR=${PREFIX}/man/man1 CC="${CC}" \

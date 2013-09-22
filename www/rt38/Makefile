@@ -1,5 +1,6 @@
 # $FreeBSD$
 
+NO_STAGE=	yes
 # TODO:
 # o etc/rt38 files permissions
 # o GRANTS
@@ -40,7 +41,7 @@ BUILD_DEPENDS+=	${CORE_DEPS} \
 
 RUN_DEPENDS+=	${BUILD_DEPENDS}
 
-USE_PERL5=	yes
+USES=		perl5
 USE_AUTOTOOLS=	autoconf
 
 .include <bsd.port.options.mk>

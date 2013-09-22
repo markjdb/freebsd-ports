@@ -1,9 +1,5 @@
-# New ports collection makefile for:	FuzzyOcr
-# Date Created:				2006-11-03
-# Whom:					Shaun Amott <shaun@FreeBSD.org>
-#
+# Created by: Shaun Amott <shaun@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	FuzzyOcr
 DISTVERSION=	3.6.0
@@ -27,7 +23,7 @@ RUN_DEPENDS=	giftopnm:${PORTSDIR}/graphics/netpbm			\
 		p5-MLDBM-Sync>=0:${PORTSDIR}/databases/p5-MLDBM-Sync \
 		p5-String-Approx>=0:${PORTSDIR}/devel/p5-String-Approx
 
-USE_PERL5=	yes
+USES=		perl5
 NO_BUILD=	yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
@@ -55,6 +51,7 @@ PLIST_FILES=	%%SITE_PERL%%/${SA_PLUGINDIR}/FuzzyOcr.pm		\
 		%%EXAMPLESDIR%%/FuzzyOcr.preps %%EXAMPLESDIR%%/FuzzyOcr.mysql
 PLIST_DIRS=	%%EXAMPLESDIR%% %%SITE_PERL%%/${SA_PLUGINDIR}/FuzzyOcr
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 #.if defined(WITH_OCRAD)

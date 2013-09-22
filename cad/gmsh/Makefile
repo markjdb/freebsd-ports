@@ -32,6 +32,8 @@ USE_GMAKE=	yes
 USE_GL=		yes
 ALL_TARGET=	all
 
+MAKE_JOBS_UNSAFE=	yes
+
 MAN1=		gmsh.1
 
 CMAKE_ARGS+=	-DCMAKE_SKIP_RPATH:BOOL=YES
@@ -122,6 +124,7 @@ CONFLICTS=	gmsh-occ-2.*
 
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 pre-everything::

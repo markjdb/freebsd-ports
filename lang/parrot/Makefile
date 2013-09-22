@@ -33,9 +33,8 @@ CONFIGURE_SCRIPT=	Configure.pl
 INSTALL_TARGET=	install-dev
 MAKE_JOBS_UNSAFE=	yes
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
-USES=		bison perl5
+USES=		bison gmake perl5
 
 MAN1=		ops2c.1 \
 		parrot.1 \
@@ -53,6 +52,7 @@ PARROT_DOCS=		${PARROT_SHARE_DIR}
 PLIST_SUB+=	PARROT_VER="${PORTVERSION}" \
 		PARROT_DOCS="${PARROT_DOCS}"
 
+NO_STAGE=	yes
 .include "${.CURDIR}/Makefile.common"
 .include <bsd.port.pre.mk>
 

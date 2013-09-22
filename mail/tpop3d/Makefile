@@ -31,6 +31,7 @@ MBOXINDICES_DESC=	Save Mbox indices
 DRAC_DESC=		DRAC RFC for POP-before-SMTP relaying
 FIX_PERLAUTH_DESC=	Only try it if perl-auth coredumps
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 # MySQL authentication
@@ -56,7 +57,7 @@ CONFIGURE_ARGS+=	--enable-auth-ldap --with-openldap-root=${LOCALBASE}
 
 # Perl authentication
 .if ${PORT_OPTIONS:MPERLAUTH}
-USE_PERL5=		yes
+USES+=			perl5
 CONFIGURE_ARGS+=	--enable-auth-perl
 .endif
 

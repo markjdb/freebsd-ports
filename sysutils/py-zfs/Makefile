@@ -1,13 +1,9 @@
-# New ports collection makefile for:	pyzfs
-# Date created:				11 July 2010
-# Whom:					Martin Matuska <mm@FreeBSD.org>
-#
+# Created by: Martin Matuska <mm@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	zfs
 PORTVERSION=	1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	sysutils python
 MASTER_SITES=	# none
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -41,6 +37,10 @@ PYFILES=	__init__.py \
 IGNORE=	requires ZFS v15 or higher sources with pyzfs (in ${SRCDIR})
 .endif
 
+.if !exists(${SRCDIR}/cddl/contrib/opensolaris/lib/libzfs_core/common/libzfs_core.h)
+MAKEFILE=	${FILESDIR}/Makefile.lib.v28
+.endif
+
 .if exists(${SRCDIR}/cddl/contrib/opensolaris/lib/pyzfs/common/holds.py) && \
 exists(${SRCDIR}/cddl/contrib/opensolaris/lib/pyzfs/common/table.py)
 PYFILES+=	holds.py \
@@ -52,6 +52,7 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-patch-util.py \
 PLIST_SUB+=	V28="@comment "
 .endif
 
+NO_STAGE=	yes
 do-extract:
 	@${MKDIR} ${WRKSRC}
 	@${CP} ${SRCDIR}/cddl/contrib/opensolaris/cmd/pyzfs/pyzfs.py \

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	parent
-PORTVERSION=	0.225
+PORTVERSION=	0.228
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:CORION
@@ -16,6 +16,7 @@ USE_PERL5=	configure
 
 MAN3=		parent.3
 
+NO_STAGE=	yes
 regression-test:
 	cd ${WRKSRC} && ${MAKE} test
 

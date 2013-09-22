@@ -17,10 +17,8 @@ LIB_DEPENDS+=	krb5support:${PORTSDIR}/security/krb5 \
 
 RESTRICTED=	Requires manual distfile fetch
 WRKSRC=		${WRKDIR}/condor-${PORTVERSION}
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
-USES=		cmake
-USE_PERL5=	yes
+USES=		cmake gmake perl5
 USE_PGSQL=	server
 CXXFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-rpath=${LOCALBASE}/lib:/usr/lib:/lib
@@ -103,6 +101,7 @@ MAN1=	\
 	uniq_pid_midwife.1 \
 	uniq_pid_undertaker.1
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if !exists(${DISTDIR}/${DISTNAME}${EXTRACT_SUFX})

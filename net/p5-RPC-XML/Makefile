@@ -13,11 +13,9 @@ COMMENT=	XML-RPC client and server library for Perl
 
 BUILD_DEPENDS=	p5-XML-Parser>=2.31:${PORTSDIR}/textproc/p5-XML-Parser \
 		p5-libwww>=5.834:${PORTSDIR}/www/p5-libwww
-RUN_DEPENDS=	p5-XML-Parser>=2.31:${PORTSDIR}/textproc/p5-XML-Parser \
-		p5-libwww>=5.834:${PORTSDIR}/www/p5-libwww
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USE_GMAKE=	yes
-USES=		perl5
+USES=		gmake perl5
 USE_PERL5=	configure
 
 MAN1=		make_method.1
@@ -32,4 +30,5 @@ MAN3=		Apache::RPC::Server.3 \
 		RPC::XML::Procedure.3 \
 		RPC::XML::Server.3
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

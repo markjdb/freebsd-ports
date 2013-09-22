@@ -2,6 +2,7 @@
 
 PORTNAME=	python2
 PORTVERSION=	${PYTHON_MAJOR_VER}
+PORTREVISION=	1
 CATEGORIES=	lang python ipv6
 MASTER_SITES=	# empty
 DISTFILES=	# empty
@@ -11,7 +12,7 @@ MAINTAINER=	python@FreeBSD.org
 COMMENT=	The "meta-port" for version 2 of the Python interpreter
 
 USE_PYTHON_RUN=	yes
-PYTHON_VERSION=	${PYTHON_DEFAULT_VERSION}
+PYTHON_VERSION=	${PYTHON2_DEFAULT_VERSION}
 NO_BUILD=	yes
 PYTHON_NO_DEPENDS=	yes
 
@@ -24,6 +25,7 @@ PLIST_FILES=	bin/2to3-${PYTHON_MAJOR_VER} \
 		bin/python-shared${PYTHON_MAJOR_VER}-config \
 		bin/smtpd${PYTHON_MAJOR_VER}.py
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 RUN_DEPENDS+=	${PYTHON_CMD}:${PYTHON_PORTSDIR}

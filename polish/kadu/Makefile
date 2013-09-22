@@ -54,7 +54,12 @@ GG_EMOTS_DESC=	Install GG-compatible emoticons
 GG_EMOTS_DISTFILES=	${GG6_EMOTS_DISTFILE}:additions \
 			${GG7_EMOTS_DISTFILE}:additions
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
+
+.if ${OSVERSION} > 1000051
+LDFLAGS+=	-lexecinfo
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|' \

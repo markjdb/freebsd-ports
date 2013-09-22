@@ -30,6 +30,8 @@ BUILD_DEPENDS=	p5-Class-Accessor>=0:${PORTSDIR}/devel/p5-Class-Accessor \
 		p5-UNIVERSAL-require>=0:${PORTSDIR}/devel/p5-UNIVERSAL-require
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
+PORTSCOUT=	skipv:1.20271
+
 USES=		perl5
 USE_PERL5=	configure
 
@@ -39,6 +41,7 @@ MAN3=		Net::IMAP::Simple.3 \
 OPTIONS_DEFINE=	SX
 SX_DESC=	Simple protocol extensions (use Parse::RecDescent)
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSX}

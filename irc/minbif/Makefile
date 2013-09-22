@@ -24,7 +24,7 @@ PLUGINS_DESC=	Compile additional libpurple-plugins
 USE_RC_SUBR=	minbif
 USE_GNOME=	glib20
 USE_EFL=	imlib2
-USES=		cmake
+USES=		cmake pkgconfig
 CMAKE_ARGS=	-DENABLE_IMLIB:BOOL=ON
 
 CFLAGS+=	${PTHREAD_CFLAGS} -DX_DISPLAY_MISSING
@@ -42,6 +42,7 @@ PLIST_FILES=	bin/minbif %%ETCDIR%%/minbif.conf-dist \
 		%%ETCDIR%%/minbif.motd-dist
 PLIST_DIRS=	%%ETCDIR%%
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MCACA}

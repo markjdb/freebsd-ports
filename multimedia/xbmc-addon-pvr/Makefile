@@ -13,6 +13,7 @@ COMMENT=	XBMC PVR addons for various backends
 BUILD_DEPENDS+=	xbmc:${PORTSDIR}/multimedia/xbmc
 RUN_DEPENDS+=	xbmc:${PORTSDIR}/multimedia/xbmc
 
+USES=		pkgconfig
 USE_GL=		gl
 USE_AUTOTOOLS=	libtoolize aclocal libtool automake autoconf
 MAKE_JOBS_SAFE=	yes
@@ -23,6 +24,7 @@ REINPLACE_ARGS=	-i ''
 CFLAGS+=	"-I${LOCALBASE}/include"
 LDFLAGS+=	"-L${LOCALBASE}/lib"
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-patch:

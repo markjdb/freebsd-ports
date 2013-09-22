@@ -65,8 +65,10 @@ OPTIONS_DEFAULT+=	ICU PCRE_PORT THREADS
 .if !defined(LIBR_SLAVEPORT)
 RUN_DEPENDS+=		${LOCALBASE}/bin/gsed:${PORTSDIR}/textproc/gsed
 USE_LDCONFIG=		${PREFIX}/lib/R/lib
+NO_STAGE=	yes
 #now only used to build the R.1 manpage:
-USE_PERL5_BUILD=	yes
+USES+=			perl5
+USE_PERL5=		build
 
 MAN1=			R.1 Rscript.1
 

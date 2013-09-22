@@ -11,6 +11,9 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	A sendmail milter API implementation
 
 LIB_DEPENDS=	pcre:${PORTSDIR}/devel/pcre
+
+NO_STAGE=	yes
+
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 

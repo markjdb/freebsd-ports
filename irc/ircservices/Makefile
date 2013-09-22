@@ -1,9 +1,5 @@
-# New ports collection makefile for:	ircservices
-# Date created:         Sun Oct 27 11:49:48 CET 2002
-# Whom:                 Alex Dupre <sysadmin@alexdupre.com>
-#
+# Created by: Alex Dupre <sysadmin@alexdupre.com>
 # $FreeBSD$
-#
 
 PORTNAME=	ircservices
 PORTVERSION=	5.1.18
@@ -15,9 +11,9 @@ MASTER_SITES=	http://www.ircservices.za.net/download/ \
 MAINTAINER=	bu7cher@yandex.ru
 COMMENT=	A system of IRC services for IRC networks
 
-USE_PERL5_BUILD=yes
+USES=		gmake perl5
+USE_PERL5=	build
 HAS_CONFIGURE=	yes
-USE_GMAKE=	yes
 USE_RC_SUBR=	ircservices
 
 DIST_SUBDIR=	${PORTNAME}
@@ -25,6 +21,7 @@ CONFIGURE_ARGS=	-bindest ${PREFIX}/sbin -datdest ${PREFIX}/etc/ircservices -cfla
 
 IRCSERVICES_LANG?=	EN_US
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} > 700042

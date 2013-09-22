@@ -1,9 +1,5 @@
-# New ports collection makefile for:	smbftpd
-# Date created:		2006-01-22
-# Whom:			Jui-Nan Lin <jnlin@csie.nctu.edu.tw>
-#
+# Created by: Jui-Nan Lin <jnlin@csie.nctu.edu.tw>
 # $FreeBSD$
-#
 
 PORTNAME=	smbftpd
 PORTVERSION=	2.4
@@ -24,9 +20,10 @@ HAS_CONFIGURE=	yes
 MAKE_ENV=	OSTYPE=FreeBSD
 CONFIGURE_ARGS=	"--prefix=${PREFIX}"
 
-USE_PERL5=	yes
+USES=		perl5
 USE_RC_SUBR=	${PORTNAME}
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MMYSQL}

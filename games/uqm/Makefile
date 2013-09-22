@@ -17,7 +17,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	vorbis:${PORTSDIR}/audio/libvorbis \
 		mikmod:${PORTSDIR}/audio/libmikmod
 
-USE_GMAKE=	yes
+USES=		gmake pkgconfig
 USE_SDL=	image sdl
 NO_INSTALL_MANPAGES=	yes
 DATAVERSION=	0.7.0
@@ -32,6 +32,7 @@ OPTIONS_GROUP_REMIXES+=REMIXPACK${i}
 REMIXPACK${i}_DESC=	UQM Remix Pack ${i} add-on
 .endfor
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MVOICE}

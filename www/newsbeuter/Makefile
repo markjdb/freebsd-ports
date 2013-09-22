@@ -17,13 +17,14 @@ LIB_DEPENDS=	stfl.1:${PORTSDIR}/devel/stfl \
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		gettext ncurses gmake pkgconfig
-USE_PERL5_BUILD=yes
+USES=		gettext ncurses gmake pkgconfig perl5
+USE_PERL5=	build
 USE_SQLITE=	yes
 USE_GNOME=	libxml2
 
 MAN1=	newsbeuter.1 podbeuter.1
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-patch:

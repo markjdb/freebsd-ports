@@ -13,9 +13,8 @@ BUILD_DEPENDS=	expect:${PORTSDIR}/lang/expect-devel
 RUN_DEPENDS=	expect:${PORTSDIR}/lang/expect-devel \
 		p5-LockFile-Simple>=0:${PORTSDIR}/devel/p5-LockFile-Simple
 
-USE_PERL5=	yes
+USES=		gmake perl5
 SUB_FILES=	pkg-message
-USE_GMAKE=	yes
 GNU_CONFIGURE=	yes
 
 CONFIGURE_ARGS=	--localstatedir=${PREFIX}/var/${PORTNAME}/ \
@@ -47,6 +46,7 @@ OPTIONS_DEFAULT=
 
 SVN_DESC=		Use Subversion instead of CVS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSVN}

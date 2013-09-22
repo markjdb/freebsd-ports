@@ -1,9 +1,5 @@
-# New ports collection makefile for:   userfw
-# Date created:        10 Mar 2012
-# Whom:                Maxim Ignatenko
-#
+# Created by: Maxim Ignatenko
 # $FreeBSD$
-#
 
 PORTNAME=	userfw
 PORTVERSION=	0.1.3
@@ -17,6 +13,7 @@ COMMENT=	Modular packet filter
 
 LICENSE=	BSD
 
+SSP_UNSAFE=	kernel module does not support ssp
 USE_XZ=		yes
 USES=		cmake:outsource
 USE_LDCONFIG=	yes
@@ -24,6 +21,7 @@ USE_LDCONFIG=	yes
 KMODDIR?=	/boot/modules
 PLIST_SUB+=	KMODDIR=${KMODDIR}
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} < 800000

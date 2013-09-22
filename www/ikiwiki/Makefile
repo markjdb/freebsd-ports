@@ -33,9 +33,8 @@ RUN_DEPENDS:=	${BUILD_DEPENDS} \
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
 LICENSE=	GPLv2
-PERL_CONFIGURE=	yes
-USE_GMAKE=	yes
-USES=		gettext
+USES=		gettext perl5 gmake
+USE_PERL5=	configure
 
 OPTIONS_DEFINE=	PO4A SEARCH W3M
 OPTIONS_DEFAULT=	PO4A SEARCH
@@ -48,6 +47,7 @@ MAN8=		ikiwiki-mass-rebuild.8
 PORTDOCS=	CHANGELOG NEWS README
 PORTEXAMPLES=	*
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPO4A}

@@ -17,7 +17,7 @@ SLAVEDIRS=	misc/amanda25-client
 
 LATEST_LINK=	${PORTNAME}${PKGNAMESUFFIX}
 USE_AUTOTOOLS=	autoconf
-USE_GMAKE=	yes
+USES=		gmake
 USE_OPENSSL=	yes
 PATCH_STRIP=
 CONFIGURE_ARGS=	--libexecdir=${PREFIX}/libexec/amanda \
@@ -26,7 +26,6 @@ CONFIGURE_ARGS=	--libexecdir=${PREFIX}/libexec/amanda \
 		--disable-libtool --prefix=${PREFIX} \
 		--with-user=${AMANDA_USER} --with-group=${AMANDA_GROUP}
 USE_LDCONFIG=	yes
-WANT_PERL=	yes
 
 SAMBA_PORT?=	net/samba36
 
@@ -73,6 +72,7 @@ OPTIONS_DEFINE+=	DUMP_SNAPSHOT
 DUMP_SNAPSHOT_DESC=	Use snapshot by using dump -L
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSSH}
@@ -119,7 +119,7 @@ post-patch:
 		${WRKSRC}/server-src/amcrypt-ossl.sh.in \
 		${WRKSRC}/server-src/amcrypt-ossl-asym.sh.in
 
-USE_PERL5=	yes
+USES+=		perl5
 
 BUILD_DEPENDS+=	${LOCALBASE}/sbin/amrecover:${PORTSDIR}/misc/amanda25-client
 RUN_DEPENDS+=	${LOCALBASE}/sbin/amrecover:${PORTSDIR}/misc/amanda25-client

@@ -17,6 +17,7 @@ SLAVEPORT=	qt4
 QT_NONSTANDARD=	yes
 USE_QT4=	moc_build qmake_build rcc_build uic_build gui dbus network
 USE_GNOME=	desktopfileutils
+QMAKE_LFLAGS=	-lcrypto -L${LOCALBASE}/lib ${ICONV_LIB}
 
 EXTRA_CONF_ARGS=--disable-cli \
 		--disable-daemon \
@@ -30,6 +31,7 @@ post-patch: general-patch
 	@${REINPLACE_CMD} -e 's|/share/man|/man|g ; /PKGCONFIG/s| openssl||g' \
 		${WRKSRC}/qt/qtr.pro
 
+NO_STAGE=	yes
 post-build:
 	@(cd ${WRKSRC}/qt ; ${QMAKE} ${QMAKEFLAGS} qtr.pro ; ${GMAKE})
 

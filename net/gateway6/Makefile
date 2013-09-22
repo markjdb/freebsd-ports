@@ -1,9 +1,5 @@
-# New ports collection makefile for:   gateway6
-# Date created:        11 Jul 2007
-# Whom:                Michael Scholz (mike@fth-devel.net)
-#
+# Created by: Michael Scholz (mike@fth-devel.net)
 # $FreeBSD$
-#
 
 PORTNAME=	gateway6
 PORTVERSION=	6.0
@@ -17,6 +13,9 @@ MAINTAINER=	mike@fth-devel.net
 COMMENT=	Gateway6 Tunnel Setup Protocol Client - Free IPv6 tunnel
 
 CONFLICTS=	freenet6-[0-9]*
+
+DEPRECATED=	Unsupported upstream, consider using net/gogoc
+EXPIRATION_DATE=	2013-12-31
 
 USE_RC_SUBR=	gateway6
 WRKSRC=		${WRKDIR}/gw6c-6_0_1
@@ -34,11 +33,12 @@ GW6C_DATA=	\
 PKGMESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message
 
-USE_GMAKE=	yes
-USE_PERL5_BUILD=yes
+USES=		gmake perl5
+USE_PERL5=	build
 MAKE_JOBS_UNSAFE=yes
 MAKE_ARGS=	target=freebsd installdir=${PREFIX}
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-install:

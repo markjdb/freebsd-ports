@@ -15,6 +15,8 @@ LIB_DEPENDS=	lzo2:${PORTSDIR}/archivers/lzo2
 
 LICENSE=	GPLv3
 
+NO_STAGE=	yes
+
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include

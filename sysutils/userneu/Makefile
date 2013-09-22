@@ -1,9 +1,5 @@
-# New ports collection makefile for:	userneu
-# Date created:		7 August 2003
-# Whom:			Andreas Fehlner (fehlner@gmx.de)
-#
+# Created by: Andreas Fehlner (fehlner@gmx.de)
 # $FreeBSD$
-#
 
 PORTNAME=	userneu
 PORTVERSION=	1.38
@@ -21,7 +17,8 @@ RUN_DEPENDS=	\
     p5-Crypt-PasswdMD5>=0:${PORTSDIR}/security/p5-Crypt-PasswdMD5 \
     p5-Crypt-RandPasswd>=0:${PORTSDIR}/security/p5-Crypt-RandPasswd
 
-USE_PERL5_RUN=	yes
+USES=		perl5
+USE_PERL5=	run
 NO_BUILD=	yes
 
 CONFLICTS=	userneu-devel-[0-9]*
@@ -32,6 +29,7 @@ DOCS=		BUGS CHANGES CREDITS REQUIREMENTS TODO \
 		doc/README doc/INSTALL doc/userneu.pod doc/userquick.pod
 EXAMPLES=	list-sample
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 do-install:

@@ -15,11 +15,13 @@ USE_RC_SUBR=	httpry
 OPTIONS_DEFINE=	EXTRASCRIPTS
 EXTRASCRIPTS_DESC=	Install additional scripts
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MEXTRASCRIPTS}
 PLIST_SUB=	EXTRASCRIPTS=""
-USE_PERL5_RUN=	yes
+USES+=		perl5
+USE_PERL5=	run
 RUN_DEPENDS=	p5-DBI>=0:${PORTSDIR}/databases/p5-DBI
 .else
 PLIST_SUB=	EXTRASCRIPTS="@comment "

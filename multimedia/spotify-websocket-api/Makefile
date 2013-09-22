@@ -3,7 +3,7 @@
 
 PORTNAME=	SpotifyWebsocketAPI
 PORTVERSION=	0.2
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	multimedia python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -27,6 +27,7 @@ PORTEXAMPLES=	blocking.py nonblocking.py decode_mercury.py play.py \
 
 CLIENTFILES=	respotify.py respotify-helper.py
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}requests>=1.1.0:${PORTSDIR}/www/py-requests \

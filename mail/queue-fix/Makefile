@@ -12,7 +12,7 @@ MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	Repairs or generates a qmail queue structure
 
 USES=		qmail:run
-
+NO_STAGE=	yes
 
 PREFIX?=	${QMAIL_PREFIX}
 
@@ -40,6 +40,10 @@ PATCH_SITES+=		http://www.qmail.org/
 PATCHFILES+=		queue-fix-todo.patch
 PATCH_DIST_STRIP+=	-p1
 .endif
+
+post-patch:
+	${ECHO_CMD} "${CC} ${CFLAGS}" > ${WRKSRC}/conf-cc
+	${ECHO_CMD} "${CC} ${STRIP} ${LDFLAGS}" > ${WRKSRC}/conf-ld
 
 do-install:
 	@${MKDIR} ${PREFIX}/bin

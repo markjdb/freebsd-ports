@@ -15,6 +15,9 @@ LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg \
 		png15:${PORTSDIR}/graphics/png \
 		tiff:${PORTSDIR}/graphics/tiff
 
+MAKE_JOBS_UNSAFE=	yes
+NO_STAGE=	yes
+
 USE_GHOSTSCRIPT_RUN=	yes
 USE_XORG=	xt sm ice xext x11
 USE_GMAKE=	yes
@@ -23,7 +26,6 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	libtool
 WRKSRC=		${WRKDIR}/${PORTNAME}-0.5.9
-MAKE_JOBS_UNSAFE=	yes
 
 MAN1=		dgs.1 dpsnx.agent.1
 MANN=		dpsexec.man makepsres.man xepsf.man

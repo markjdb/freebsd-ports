@@ -18,13 +18,15 @@ SQL_ABSTRACT_DESC=	Generate SQL from Perl data structures
 DBIX_XHTML_TABLE_DESC=	Create XHTML tables from SQL queries
 TEXT_TABLE_DESC=	Create plain text table from data
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 MAN3=	DBIx::Simple.3 \
 	DBIx::Simple::Examples.3 \
 	DBIx::Simple::Comparison.3 \
 	DBIx::Simple::Result::RowObject.3
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSQL_INTERP}

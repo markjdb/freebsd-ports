@@ -16,6 +16,8 @@ LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg
 
 LICENSE=	MIT
 
+NO_STAGE=	yes
+
 USE_AUTOTOOLS=	libtool
 USE_ZIP=	yes
 USE_GNOME=	lthack

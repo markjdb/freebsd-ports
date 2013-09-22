@@ -22,8 +22,8 @@ BUILD_DEPENDS=	${FLEX}:${PORTSDIR}/textproc/flex \
 CONFLICTS=	amule-devel-[0-9]*
 
 USE_BZIP2=	yes
-USES=		bison pkgconfig
-USE_GMAKE=	yes
+USES=		bison gmake pkgconfig perl5
+USE_PERL5=	build
 USE_WX=		2.8
 WX_CONF_ARGS=	absolute
 GNU_CONFIGURE=	yes
@@ -61,6 +61,7 @@ PORTDOCS=	ABOUT-NLS Changelog EC_Protocol.txt INSTALL README TODO \
 
 FLEX?=		${LOCALBASE}/bin/flex
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if empty(PORT_OPTIONS:MDEBUG)

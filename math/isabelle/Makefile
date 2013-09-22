@@ -29,8 +29,9 @@ HOL_TLA_DESC=		Build optional heap: TLA
 HOL_HOL4_DESC=		Build optional heap: HOL4
 EMACS_PKG_DESC=		Build with Emacs Packages
 
-USE_PERL5=	yes
+USES=		perl5
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
@@ -39,10 +40,10 @@ DISTFILES=	${DISTNAME}.tar.gz \
 .endif
 
 .if ${PORT_OPTIONS:MEMACS_PKG}
-	USE_EMACS=	yes # for EMACS_SITE_LISPDIR
-	EMACS_NO_BUILD_DEPENDS=yes
-	EMACS_NO_RUN_DEPENDS=yes
-	RUN_DEPENDS+=	proofgeneral:${PORTSDIR}/math/proofgeneral
+USE_EMACS=	yes # for EMACS_SITE_LISPDIR
+EMACS_NO_BUILD_DEPENDS=yes
+EMACS_NO_RUN_DEPENDS=yes
+RUN_DEPENDS+=	proofgeneral:${PORTSDIR}/math/proofgeneral
 .else
 .endif
 

@@ -17,6 +17,7 @@ LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg \
 		freetype:${PORTSDIR}/print/freetype2
 
 CONFLICTS=	bazaar-1.*
+NO_STAGE=	yes
 
 USE_XZ=		yes
 USES=		pkgconfig
@@ -24,7 +25,6 @@ GNU_CONFIGURE=	yes
 GNU_CONFIGURE_ENV=	PKG_CONFIG_LIBDIR=${LOCALBASE}/libdata/pkgconfig
 GNU_CONFIGURE_ARGS=
 USE_LDCONFIG=	yes
-WANT_PERL=	yes
 
 OPTIONS_DEFINE=	FONTCONFIG ICONV VPX XPM
 OPTIONS_DEFAULT=FONTCONFIG
@@ -76,7 +76,8 @@ GNU_CONFIGURE_ARGS+=	--with-xpm=no
 #       koi9x15.bdf koi12x24.bdf koi10x20.bdf"
 #
 .if defined(GD_FONTS)
-USE_PERL5_BUILD=	yes
+USES+=		perl5
+USE_PERL5=	build
 WRKFONTS=	${WRKSRC}/src
 .endif
 

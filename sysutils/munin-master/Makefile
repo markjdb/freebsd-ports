@@ -41,10 +41,11 @@ RUN_DEPENDS=	munin-common>=0:${PORTSDIR}/sysutils/munin-common \
 		p5-Date-Manip>=0:${PORTSDIR}/devel/p5-Date-Manip \
 		p5-FCGI>=0:${PORTSDIR}/www/p5-FCGI
 
-USE_PERL5=	yes
-USE_GMAKE=	yes
+USES=		gmake perl5
+
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
+NO_STAGE=	yes
 .include "${.CURDIR}/../munin-common/munin.mk"
 
 EXTRA_PATCHES=	${MUNIN_PATCHES}

@@ -20,11 +20,10 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-qt
 INSTALL_WRKSRC=	${WRKDIR}/${PORTNAME}-${DISTVERSION}
 
 WKQTVERSION=		6053b687
-USES=			pkgconfig
+USES=			pkgconfig gmake perl5
 USE_XORG=		x11 xext xrender
-USE_PERL5_BUILD=	yes
+USE_PERL5=		build
 USE_LDCONFIG=		yes
-USE_GMAKE=		yes
 HAS_CONFIGURE=		yes
 
 OPTIONS_DEFINE=	BUNDLED_LIBS
@@ -50,6 +49,7 @@ CONFIGURE_ARGS=	-prefix ${WRKDIR}/wkqt \
 
 MAKE_ARGS+=	INSTALL_ROOT="${PREFIX}"
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} < 800000

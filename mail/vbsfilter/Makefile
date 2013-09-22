@@ -13,6 +13,8 @@ COMMENT=	A vbs-attachment filter for Sendmail Milter
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 USE_RC_SUBR=	vbsfilter
 PLIST_FILES=	libexec/vbsfilter
 

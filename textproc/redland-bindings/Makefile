@@ -16,10 +16,13 @@ GNU_CONFIGURE=	yes
 OPTIONS_DEFINE=	PERL PHP PYTHON RUBY
 OPTIONS_DEFAULT=PYTHON
 
+USES=		pkgconfig
+
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPERL}
-USE_PERL5=	yes
+USES+=		perl5
 CONFIGURE_ARGS+=--with-perl
 PLIST_SUB+=	WITH_PERL=""
 MANPREFIX=	${LOCALBASE}/lib/perl5/${PERL_VER}

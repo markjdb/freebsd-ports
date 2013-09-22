@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	tinymce
-PORTVERSION=	4.0.5
+PORTVERSION=	4.0.6
 CATEGORIES=	www
 MASTER_SITES=	http://download.moxiecode.com/${PORTNAME}/ \
 		LOCAL/sunpoet
@@ -19,6 +19,7 @@ NO_BUILD=	yes
 USE_ZIP=	yes
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
+NO_STAGE=	yes
 do-install:
 	cd ${WRKSRC}/ && ${COPYTREE_SHARE} . ${WWWDIR}/
 	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${WWWDIR}/

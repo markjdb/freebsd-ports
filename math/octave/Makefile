@@ -1,4 +1,4 @@
-# Created by: chuckr@freebsd.org
+# Created by: chuckr@FreeBSD.org
 # $FreeBSD$
 
 PORTNAME=	octave
@@ -32,10 +32,9 @@ LIB_DEPENDS=	GraphicsMagick:${PORTSDIR}/graphics/GraphicsMagick \
 		umfpack.1:${PORTSDIR}/math/suitesparse \
 		glpk:${PORTSDIR}/math/glpk
 
-USES=		charsetfix pkgconfig
+USES=		charsetfix gmake perl5 pkgconfig
 USE_BZIP2=	yes
-USE_PERL5_BUILD=yes
-USE_GMAKE=	yes
+USE_PERL5=	build
 USE_TEX=	dvipsk:build
 GNU_CONFIGURE=	yes
 #USE_AUTOTOOLS=	autoconf
@@ -43,6 +42,7 @@ GNU_CONFIGURE=	yes
 INFO=		octave liboctave OctaveFAQ
 MAN1=		octave.1 mkoctfile.1 octave-config.1
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if exists(${LOCALBASE}/lib/libopenblas.so)

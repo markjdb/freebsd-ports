@@ -8,6 +8,7 @@ MASTER_SITES=	http://launchpad.net/mysql-${PORTNAME}/trunk/1.6-r1/+download/
 DISTNAME=	${PORTNAME}.sh
 EXTRACT_SUFX=
 EXTRACT_ONLY=
+DIST_SUBDIR=	${PORTNAME}/${DISTVERSION}
 
 MAINTAINER=	joehorn@gmail.com
 COMMENT=	MySQL performance tuning primer script
@@ -20,11 +21,7 @@ USE_MYSQL=	yes
 
 PLIST_FILES=	bin/${PORTNAME}
 
-pre-fetch:
-	@if [ -f ${DISTDIR}/${PORTNAME}.sh ]; then \
-		${RM} ${DISTDIR}/${PORTNAME}.sh; \
-	fi
-
+NO_STAGE=	yes
 do-install:
 	@${CP} ${DISTDIR}/${PORTNAME}.sh \
 		${PREFIX}/bin/${PORTNAME}

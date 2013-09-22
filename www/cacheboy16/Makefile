@@ -14,8 +14,8 @@ COMMENT=	HTTP Caching Proxy (Squid Derivative) - Development Release
 
 CONFLICTS=	squid-[0-9]* cacheboy*
 LATEST_LINK=	cacheboy16
+USES=		perl5
 GNU_CONFIGURE=	yes
-USE_PERL5=	yes
 USE_RC_SUBR=	squid
 
 SQUID_UID?=	squid
@@ -111,6 +111,7 @@ CONFIGURE_ARGS=	--bindir=${PREFIX}/sbin  \
 		--disable-linux-tproxy \
 		--disable-epoll
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${OSVERSION} >= 800037

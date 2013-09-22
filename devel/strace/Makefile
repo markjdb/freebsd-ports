@@ -12,9 +12,8 @@ COMMENT=	System call tracer
 
 LICENSE=	BSD
 
-USES=		shebangfix
+USES=		shebangfix perl5	# perl5 for strace-graph
 USE_BZIP2=	yes
-USE_PERL5=	yes # for strace-graph
 GNU_CONFIGURE=	yes
 ONLY_FOR_ARCHS=	i386
 
@@ -23,6 +22,7 @@ SHEBANG_FILES=	strace-graph
 MAN1=		strace.1
 PLIST_FILES=	bin/strace bin/strace-graph
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

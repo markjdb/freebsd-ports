@@ -25,7 +25,8 @@ RUN_DEPENDS=	p5-POE>=1.311:${PORTSDIR}/devel/p5-POE \
 BUILD_DEPENDS:=	${RUN_DEPENDS}
 TEST_DEPENDS=	p5-Test-Differences>=0:${PORTSDIR}/devel/p5-Test-Differences
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 PORTEXAMPLES=	*
 
@@ -66,6 +67,7 @@ MAN3=		POE::Component::IRC.3 \
 		POE::Filter::IRC.3 \
 		POE::Filter::IRC::Compat.3
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 post-install:

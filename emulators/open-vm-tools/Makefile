@@ -24,6 +24,8 @@ USES=			pkgconfig
 USE_LDCONFIG=		yes
 CPPFLAGS+=		-Wno-deprecated-declarations
 
+SSP_UNSAFE=		kernel module does not support ssp
+
 CONFIGURE_ARGS+=	--without-procps --sysconfdir=${LOCALBASE}/etc
 .if defined(WITHOUT_X11)
 LIB_DEPENDS+=		glib-2.0:${PORTSDIR}/devel/glib20
@@ -74,6 +76,7 @@ LIB_DEPENDS+=		icuuc:${PORTSDIR}/devel/icu
 
 USE_RC_SUBR=		vmware-guestd vmware-kmod
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "sparc64"

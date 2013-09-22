@@ -10,12 +10,15 @@ DISTNAME=	${PORTNAME}_${PORTVERSION:S/./_/g}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	A chromatogram trace viewer
 
+BROKEN=		fails to checksum
+
 USE_LINUX?=	yes
 ONLY_FOR_ARCHS=	i386
 NO_BUILD=	yes
 SUB_FILES=	pkg-message
 STRIP=
 
+NO_STAGE=	yes
 do-install:
 .if !defined(NOPORTDOCS)
 	@${MKDIR} ${DOCSDIR}

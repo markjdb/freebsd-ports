@@ -17,7 +17,7 @@ LATEST_LINK=	${PORTNAME}13
 GNU_CONFIGURE=	yes
 USE_RC_SUBR=	opendnssec
 USE_GNOME=	libxml2
-USE_PERL5=	yes
+USES=		perl5
 USE_OPENSSL=	yes
 USE_LDCONFIG=	yes
 
@@ -36,6 +36,7 @@ SOFTHSM_DESC=		SoftHSM cryptographic store for PKCS \#11 interface
 AUDITOR_DESC=		Build with Auditor
 OPTIONS_DEFAULT=	AUDITOR
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMYSQL}

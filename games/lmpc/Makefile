@@ -14,10 +14,10 @@ COMMENT=	Tool to manipulate some FPS games demo recordings
 
 LICENSE=	GPLv2
 
-USES=		gmake
+USES=		gmake perl5
 MAKE_JOBS_UNSAFE=	yes
 GNU_CONFIGURE=	yes
-USE_PERL5_BUILD=	yes
+USE_PERL5=	build
 
 PORTSCOUT=	limit:.*[0-9]$$		# letter-suffixed files are binaries
 
@@ -29,6 +29,7 @@ PLIST_FILES=	${SCRIPTS:S,^,bin/,} ${PROGRAMS:S,^,bin/,}
 
 OPTIONS_DEFINE=	DOCS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${ARCH} != "i386"

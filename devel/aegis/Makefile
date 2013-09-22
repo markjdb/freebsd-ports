@@ -1,9 +1,5 @@
-# New ports collection makefile for:	aegis
-# Date created:				2007-12-20
-# Whom:					alepulver
-#
+# Created by: alepulver
 # $FreeBSD$
-#
 
 PORTNAME=	aegis
 PORTVERSION=	4.24.3
@@ -17,9 +13,8 @@ COMMENT=	Transaction-based software configuration management system
 LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl
 RUN_DEPENDS=	tkdiff:${PORTSDIR}/textproc/tkdiff
 
-USES=		gettext
+USES=		gettext perl5
 USE_GNOME=	libxml2
-USE_PERL5=	yes
 USE_TK=		yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	"-I${LOCALBASE}/include"
@@ -53,6 +48,7 @@ MAN5=	aecattr.5 aecstate.5 aedir.5 aefattr.5 aefstate.5 aegis.5 \
 PORTDATA=	*
 PORTDOCS=	*
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-patch:

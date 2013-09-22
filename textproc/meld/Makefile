@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	meld
-PORTVERSION=	1.7.5
+PORTVERSION=	1.8.0
 CATEGORIES=	textproc devel python
 MASTER_SITES=	GNOME
 
@@ -25,6 +25,7 @@ PYGNOMEDESKTOP_DESC=	Code syntax highlighting (many dependencies)
 
 NLS_USES=	gettext
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 post-patch:

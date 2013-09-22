@@ -1,6 +1,5 @@
 # Created by: TAKAHASHI Kaoru <kaoru@kaisei.org>
 # $FreeBSD$
-#
 
 PORTNAME=	FormValidator-Lite
 PORTVERSION=	0.37
@@ -24,7 +23,8 @@ TEST_DEPENDS=	p5-Text-TestBase>0:${PORTSDIR}/textproc/p5-Text-TestBase \
 		p5-Test-Requires>=0.05:${PORTSDIR}/devel/p5-Test-Requires \
 		p5-YAML>=0:${PORTSDIR}/textproc/p5-YAML
 
-PERL_MODBUILD=	yes
+USES=		perl5
+USE_PERL5=	modbuild
 
 MAN3=		FormValidator::Lite.3 \
 		FormValidator::Lite::Constraint.3 \
@@ -39,6 +39,7 @@ MAN3=		FormValidator::Lite.3 \
 		FormValidator::Lite::Messages::en.3 \
 		FormValidator::Lite::Messages::ja.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} < 501400

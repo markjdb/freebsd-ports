@@ -1,9 +1,4 @@
-# New ports collection makefile for:	p5-Test-MockObject
-# Date Created:				16 Jul, 2003
-# Whom:					Jun Kuriyama <kuriyama@FreeBSD.org>
-#
 # $FreeBSD$
-#
 
 PORTNAME=	Test-MockObject
 PORTVERSION=	1.20120301
@@ -22,11 +17,13 @@ RUN_DEPENDS=	p5-UNIVERSAL-can>=1.20110617:${PORTSDIR}/devel/p5-UNIVERSAL-can \
 TEST_DEPENDS=	p5-Test-Exception>=0.31:${PORTSDIR}/devel/p5-Test-Exception \
 		p5-Test-Warn>=0.23:${PORTSDIR}/devel/p5-Test-Warn
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 INSTALL_TARGET=	pure_install
 
 MAN3=		Test::MockObject.3 Test::MockObject::Extends.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} < 501400

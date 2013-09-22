@@ -1,9 +1,5 @@
-# New ports collection makefile for:	grzip
-# Date created:		02 February 2007
-# Whom:			Andrew Pantyukhin <infofarmer@FreeBSD.org>
-#
+# Created by: Andrew Pantyukhin <infofarmer@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	grzip
 PORTVERSION=	0.3.0
@@ -14,6 +10,7 @@ MASTER_SITES=	ftp://ftp.ac-grenoble.fr/ge/compression/ CENKES
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Efficient file compressor
 
+NO_STAGE=	yes
 USE_BZIP2=	yes
 USES=		gettext
 USE_LDCONFIG=	yes

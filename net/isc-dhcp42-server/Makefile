@@ -16,7 +16,7 @@ COMMENT?=	The ISC Dynamic Host Configuration Protocol server
 
 LICENSE=	ISCL
 
-USE_GMAKE=	yes
+USES=		gmake
 
 PATCHLEVEL=	P1
 PORTREVISION_SERVER=	0
@@ -61,6 +61,7 @@ GNU_CONFIGURE=	yes
 CPPFLAGS+=	-D_PATH_DHCLIENT_SCRIPT='\"${PREFIX}/sbin/dhclient-script\"' -D_PATH_DHCLIENT_CONF='\"${PREFIX}/etc/dhclient.conf\"' -D_PATH_DHCPD_CONF='\"${PREFIX}/etc/dhcpd.conf\"'
 SCRIPTS_ENV+=	PKG_PREFIX=${PREFIX}
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${SUBSYS} == client
@@ -138,7 +139,7 @@ PLIST_SUB+=	IPV6="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MBIND_SYMBOLS}
-USE_PERL5=	yes
+USES+=		perl5
 .else
 EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-bind__Makefile
 .endif

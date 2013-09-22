@@ -14,8 +14,8 @@ COMMENT=	Client for Cisco 3000 VPN Concentrator
 LIB_DEPENDS=	gcrypt:${PORTSDIR}/security/libgcrypt
 RUN_DEPENDS=	vpnc-script:${PORTSDIR}/sysutils/vpnc-scripts
 
-USES=		shebangfix gmake
-USE_PERL5_BUILD=yes
+USES=		shebangfix gmake perl5
+USE_PERL5=	build
 USE_RC_SUBR=	vpnc
 
 ALL_TARGET=	all
@@ -33,6 +33,7 @@ CISCOVERSION_DESC=	Mask linux presentation string
 
 OPTIONS_DEFAULT=DECRYPT
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDECRYPT}

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	tvbrowser
-PORTVERSION=	3.3.1
+PORTVERSION=	3.3.2
 CATEGORIES=	misc java
 MASTER_SITES=	SF/${PORTNAME}/TV-Browser%20Releases%20%28Java%206%20and%20higher%29/${PORTVERSION}/
 DISTNAME=	${PORTNAME}_${PORTVERSION}_bin
@@ -17,6 +17,7 @@ USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 SUB_FILES=	tvbrowser
 
+NO_STAGE=	yes
 do-install:
 	@${MKDIR} ${PREFIX}/share/applications/
 	@${REINPLACE_CMD} -e "s/${PORTNAME}\.sh/${PORTNAME}/" ${WRKSRC}/${PORTNAME}.desktop

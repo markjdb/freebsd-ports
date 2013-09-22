@@ -11,8 +11,8 @@ MASTER_SITE_SUBDIR=	${PORTNAME}
 MAINTAINER=	gahr@FreeBSD.org
 COMMENT=	The GNU spreadsheet for X11 and terminals
 
-USE_PERL5_BUILD=	yes
-USES=		bison
+USE_PERL5=	build
+USES=		bison perl5
 USE_AUTOTOOLS=	autoconf213
 CONFIGURE_ENV=	LIBS="-L${LOCALBASE}/lib"
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -23,6 +23,7 @@ PORTDOCS=	AUTHORS FAQ
 
 OPTIONS_DEFINE=	MOTIF NLS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMOTIF}

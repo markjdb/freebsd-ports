@@ -1,9 +1,4 @@
-# New ports collection makefile for:	libalkimia
-# Date created:				2011-02-28
-# Whom:					Jason E. Hale <bsdkaffee@gmail.com>
-#
 # $FreeBSD$
-#
 
 PORTNAME=	libalkimia
 PORTVERSION=	4.3.2
@@ -20,7 +15,7 @@ LICENSE=	LGPL21
 LIB_DEPENDS=	gmp.10:${PORTSDIR}/math/gmp
 
 USE_BZIP2=	yes
-USES=		cmake
+USES=		cmake pkgconfig
 USE_KDE4=	automoc4 kdeprefix kdelibs
 USE_QT4=	qmake_build moc_build rcc_build uic_build
 
@@ -28,6 +23,7 @@ USE_LDCONFIG=	yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
+NO_STAGE=	yes
 post-patch:
 
 	@${REINPLACE_CMD} -e 's|pkgconfig|../libdata/pkgconfig|' \

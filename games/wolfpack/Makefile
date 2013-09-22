@@ -12,8 +12,8 @@ MAINTAINER=	johans@FreeBSD.org
 COMMENT=	Long term multiplayer strategy game
 
 MAKEFILE=	GNUmakefile
-USE_GMAKE=	yes
-USE_PERL5_BUILD=	yes
+USES=		gmake perl5
+USE_PERL5=	build
 GNU_CONFIGURE=	yes
 BINDIR=		${PREFIX}/lib/${PORTNAME}
 VARDIR=		${PREFIX}/var/${PORTNAME}
@@ -30,6 +30,7 @@ SUB_FILES+=	pkg-message
 MAN6=		empire.6 emp_server.6 empdump.6 empsched.6 \
 		fairland.6 files.6 pconfig.6
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-patch:

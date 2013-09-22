@@ -12,6 +12,7 @@ COMMENT=	Network Traffic Accounting and Monitoring Software
 
 LIB_DEPENDS=	pcap.1:${PORTSDIR}/net/libpcap
 
+SSP_UNSAFE=	kernel module does not support ssp
 USE_SUBMAKE=	yes
 SUB_FILES=	pkg-message
 USE_RC_SUBR=	netams
@@ -44,6 +45,7 @@ USERCGI=	.htaccess config.cgi netams_api.pl russian.res \
 IMAGES=		logo_sm.jpg admintool-logo.gif showtable-logo.gif rrdgraph-logo.gif
 MAN8=		netams.8 flowprobe.8 netamsctl.8
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MPOSTGRESQL}

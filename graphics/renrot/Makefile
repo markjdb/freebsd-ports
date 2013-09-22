@@ -14,7 +14,8 @@ LICENSE=	ART20
 BUILD_DEPENDS=	p5-Image-ExifTool>=0:${PORTSDIR}/graphics/p5-Image-ExifTool
 RUN_DEPENDS:=	${BUILD_DEPENDS} jpegtran:${PORTSDIR}/graphics/jpeg
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 OPTIONS_DEFINE=	IMAGEMAGICK DOCS
 IMAGEMAGICK_DESC=	Image::Magick Perl module support
@@ -22,6 +23,7 @@ IMAGEMAGICK_DESC=	Image::Magick Perl module support
 MAN1=		${PORTNAME}.1
 PORTDOCS=	AUTHORS README README.russian ChangeLog NEWS TODO
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MIMAGEMAGICK}

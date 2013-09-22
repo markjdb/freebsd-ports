@@ -9,6 +9,8 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	VM Back Command Line Tools for VMware
 
 ONLY_FOR_ARCHS=	i386
+NO_STAGE=	yes
+
 WRKSRC=		${WRKDIR}/${PORTNAME}/src
 USES=		iconv
 

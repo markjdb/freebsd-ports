@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	beautifulsoup
-PORTVERSION=	4.1.3
-PORTREVISION=	1
+PORTVERSION=	4.3.1
 CATEGORIES=	www python
-MASTER_SITES=	http://www.crummy.com/software/BeautifulSoup/bs4/download/
+MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	beautifulsoup4-${PORTVERSION}
 
@@ -16,6 +15,7 @@ USE_PYTHON=	yes
 USE_PYDISTUTILS=	yes
 PYDISTUTILS_PKGNAME=	beautifulsoup4
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PYTHON_REL} >= 320

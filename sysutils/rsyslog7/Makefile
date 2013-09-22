@@ -34,6 +34,7 @@ UUID_DESC=	Support for generating a UUID per log message
 
 USES=		pkgconfig
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDBI}
@@ -127,7 +128,7 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-patch-mysql-microseconds
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-sane-hostname
 .endif
 
-CONFLICTS=	rsyslog-[56].[0-9]*
+CONFLICTS=	rsyslog6-[1-9]* rsyslog-devel-[0-9]*
 CFLAGS+=	-I${LOCALBASE}/include
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -173,9 +174,5 @@ post-install:
 	@${INSTALL_DATA} ${WRKSRC}/doc/rsyslog-example.conf ${EXAMPLESDIR}
 .endif
 	@${CAT} ${PKGMESSAGE}
-
-.if ${OSVERSION} < 700042
-USE_GCC=	4.2+
-.endif
 
 .include <bsd.port.post.mk>

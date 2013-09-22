@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Data-Random
-PORTVERSION=	0.08
+PORTVERSION=	0.09
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -16,7 +16,7 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-YAML-Tiny>=0:${PORTSDIR}/textproc/p5-YAML-Tiny
 
 OPTIONS_DEFINE=	DATE_CALC GD
-OPTIONS_DEFAULT=	DATE_CALC
+OPTIONS_DEFAULT=DATE_CALC
 DATE_CALC_DESC=	Support for rand_date()
 GD_DESC=	Support for rand_image()
 
@@ -25,6 +25,7 @@ USE_PERL5=	configure
 
 MAN3=		Data::Random.3 Data::Random::WordList.3
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDATE_CALC}

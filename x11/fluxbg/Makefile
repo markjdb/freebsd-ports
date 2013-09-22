@@ -7,25 +7,28 @@ PORTREVISION=	12
 CATEGORIES=	x11
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	jgh@FreeBSD.org
 COMMENT=	Background changer for fluxbox/blackbox
 
-LIB_DEPENDS=	gtkmm-2.0:${PORTSDIR}/x11-toolkits/gtkmm20
+LIB_DEPENDS=	libgtkmm-2.0.so:${PORTSDIR}/x11-toolkits/gtkmm20
+RUN_DEPENDS=	fbsetbg:${PORTSDIR}/x11-wm/fluxbox
 
 GNU_CONFIGURE=	yes
-USES=	pathfix pkgconfig
+USES=		pathfix pkgconfig
+PLIST_FILES=	bin/fluxbg \
+		bin/fluxbgd \
+		bin/fluxbg_conf
+SUB_FILES=	pkg-message
+SUB_LIST=	PORTNAME=${PORTNAME}
 
-.include <bsd.port.pre.mk>
-
-.if !exists(${LOCALBASE}/bin/fbsetbg)
-RUN_DEPENDS=	fbsetbg:${PORTSDIR}/x11-wm/fluxbox
-.endif
-
+NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g ; \
 		s|/usr/X11R6|${LOCALBASE}|g' ${WRKSRC}/src/fluxbg_conf.cc
 
 post-install:
+	@${ECHO_CMD}
 	@${CAT} ${PKGMESSAGE}
+	@${ECHO_CMD}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

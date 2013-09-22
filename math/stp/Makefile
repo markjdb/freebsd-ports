@@ -12,10 +12,9 @@ COMMENT=	A Decision Procedure for Bitvectors and Arrays
 
 LICENSE=	MIT
 
-USES=		bison
+USES=		bison gmake perl5
 USE_BZIP2=	yes
-USE_GMAKE=	yes
-USE_PERL5_BUILD=	yes
+USE_PERL5=	build
 
 CONFIGURE_SCRIPT=	scripts/configure
 CONFIGURE_ARGS=		--with-prefix=${PREFIX} \
@@ -29,6 +28,7 @@ PLIST_FILES=	bin/stp \
 		lib/libstp.a
 PLIST_DIRS=	include/stp
 
+NO_STAGE=	yes
 post-patch:
 	@${ECHO_CMD} ${PORTVERSION} > ${WRKSRC}/src/main/versionString.stamp
 	@${REINPLACE_CMD} -e 's/bash/sh/' ${WRKSRC}/scripts/Makefile.common

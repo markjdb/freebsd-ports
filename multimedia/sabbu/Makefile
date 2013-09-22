@@ -12,6 +12,8 @@ COMMENT=	Program used to time subtitles
 LIB_DEPENDS=	avcodec:${PORTSDIR}/multimedia/ffmpeg \
 		sndfile:${PORTSDIR}/audio/libsndfile
 
+NO_STAGE=	yes
+
 USES=		pkgconfig iconv
 USE_BZIP2=	yes
 USE_GMAKE=	yes

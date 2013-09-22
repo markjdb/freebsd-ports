@@ -16,6 +16,8 @@ LICENSE_FILE=	${WRKSRC}/COPYRIGHT
 LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg \
 		jbig:${PORTSDIR}/graphics/jbigkit
 
+NO_STAGE=	yes
+
 USE_LDCONFIG=	yes
 USE_AUTOTOOLS=	libtool
 CONFIGURE_ARGS+=	--with-jpeg-include-dir=${LOCALBASE}/include \

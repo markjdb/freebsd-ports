@@ -15,6 +15,8 @@ BUILD_DEPENDS=	${CNEWSWRK}/conf/substitutions:${PORTSDIR}/${CNEWS_PORT}:configur
 BUILD_DEPENDS+=	${LOCALBASE}/lib/libcnews.a:${PORTSDIR}/${CNEWS_PORT} \
 		gpgv:${PORTSDIR}/security/gnupg1
 
+NO_STAGE=	yes
+
 WRKSRC=		${WRKDIR}/c-nocem
 CNEWS_PORT?=	news/cnews
 #CNEWSWRK?=	${WRKDIRPREFIX}${PORTSDIR}/${CNEWS_PORT}/work

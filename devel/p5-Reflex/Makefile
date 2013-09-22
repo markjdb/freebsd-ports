@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-Reflex
-# Date created:				2011-03-16
-# Whom:					Jase Thew <freebsd@beardz.net>
-#
+# Created by: Jase Thew <freebsd@beardz.net>
 # $FreeBSD$
-#
 
 PORTNAME=	Reflex
 PORTVERSION=	0.099
@@ -23,7 +19,8 @@ BUILD_DEPENDS=	p5-POE>=1.294:${PORTSDIR}/devel/p5-POE \
 		p5-MooseX-Role-Parameterized>=0.23:${PORTSDIR}/devel/p5-MooseX-Role-Parameterized
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
@@ -104,6 +101,7 @@ MAN3=		MooseX::Role::Reactive.3 \
 		Reflex::UdpPeer.3 \
 		Reflex::Wakeup.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-extract:

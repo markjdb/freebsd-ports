@@ -39,6 +39,7 @@ OPTIONS_DEFAULT=	ICONV MYSQL SYSLOG
 CONFLICTS=	sphinxsearch-devel-[0-9]* dpsearch-[0-9]* rdb-[0-9]* \
 		swish++-[0-9]* xaira-[0-9]*
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 # The port will successfully compile with both PGSQL and MYSQL support
@@ -65,6 +66,7 @@ CONFIGURE_ARGS+=	--without-pgsql
 .if ${PORT_OPTIONS:MICONV}
 CONFIGURE_ARGS+=	--with-iconv
 USES+=			iconv
+LDFLAGS+=		${ICONV_LIB}
 .else
 CONFIGURE_ARGS+=	--without-iconv
 .endif

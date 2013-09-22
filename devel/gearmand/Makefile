@@ -30,10 +30,9 @@ USERS=		gearmand
 GROUPS=		gearmand
 
 FETCH_ARGS=	-pRr
-USE_PERL5_BUILD=yes
+USE_PERL5=	build
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
-USES=	pathfix
+USES=		pathfix gmake perl5
 USE_LDCONFIG=	yes
 USE_PYTHON_BUILD=yes
 USE_RC_SUBR=	gearmand
@@ -211,6 +210,7 @@ MAN3=	gearman_actions_t.3 \
 	libgearman.3
 MAN8=	gearmand.8
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 # Workaround for missing sigignore that wasn't introduced until

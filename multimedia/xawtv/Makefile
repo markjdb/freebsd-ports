@@ -19,10 +19,9 @@ OPTIONS_DEFINE_i386=	MMX
 OPTIONS_DEFAULT=	AALIB
 ZVBI_DESC=	Enable libzvbi support
 
-USES=		gmake iconv motif
+USES=		gmake iconv motif perl5
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
-USE_PERL5=	yes
 USE_XORG=	x11 xaw
 CONFIGURE_ENV=	LIBS="-L${PREFIX}/lib -L${LOCALBASE}/lib"
 CFLAGS+=	-I${WRKSRC}/common
@@ -39,6 +38,7 @@ MAN1=		alevtd.1 dump-mixers.1 fbtv.1 mtt.1 motv.1 ntsc-cc.1 pia.1 \
 MAN5=		xawtvrc.5
 MAN8=		v4l-conf.8
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MAALIB}

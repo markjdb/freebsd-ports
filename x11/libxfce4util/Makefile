@@ -13,15 +13,14 @@ COMMENT=	Extension library for the Xfce desktop environment
 
 GNU_CONFIGURE=	yes
 USE_BZIP2=	yes
-USE_GMAKE=	yes
 USE_GNOME=	glib20 intltool intlhack
-USE_PERL5=	yes
 USE_LDCONFIG=	yes
 USE_XFCE=	configenv
-USES=		pathfix pkgconfig
+USES=		gmake pathfix perl5 pkgconfig
 
 OPTIONS_DEFINE=		NLS DOCS
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}

@@ -16,8 +16,7 @@ COMMENT=	A cryptographically secure anonymous remailer
 
 LIB_DEPENDS=	pcre:${PORTSDIR}/devel/pcre
 
-USES=		ncurses
-USE_PERL5=	yes
+USES=		ncurses perl5
 USE_OPENSSL=	yes
 .if !exists(/usr/include/openssl/idea.h)
 WITH_OPENSSL_PORT=	yes
@@ -33,6 +32,7 @@ WRKDIST=	${WRKDIR}/${PORTNAME}-${PORTVERSION}
 MIXMASTER_FILES=	${WRKDIST}/conf/* ${WRKDIST}/README ${WRKDIR}/allpingers.txt
 MIXMASTER_SCRIPTS=	${WRKDIR}/mixmaster-update.pl
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-patch:

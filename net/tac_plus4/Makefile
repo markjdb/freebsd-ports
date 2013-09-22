@@ -10,9 +10,9 @@ DISTNAME=	tacacs+-F4.0.4.26
 MAINTAINER=	marcus@FreeBSD.org
 COMMENT=	The Cisco remote authentication/authorization/accounting server
 
-USE_PERL5_BUILD=yes
 GNU_CONFIGURE=	yes
-USES=		bison
+USES=		bison perl5
+USE_PERL5=	build
 USE_RC_SUBR=	tac_plus
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--with-groupid=$$(/usr/bin/id -g tacacs 2>/dev/null || echo '559') \
@@ -23,6 +23,7 @@ MAN8=		tac_plus.8 tac_pwd.8
 
 CONFLICTS=	ru-tac+ia-[0-9]* tac_plus-libradius-[0-9]*
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64"

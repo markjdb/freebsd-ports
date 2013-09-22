@@ -1,9 +1,5 @@
-# New ports collection makefile for:	jailadmin
-# Date created:				02 Apr 2004
-# Whom:					Kirk Strauser <kirk@strauser.com>
-#
+# Created by: Kirk Strauser <kirk@strauser.com>
 # $FreeBSD$
-#
 
 PORTNAME=	jailadmin
 PORTVERSION=	1.8
@@ -15,10 +11,11 @@ DISTNAME=	jailadmin-${PORTVERSION}
 MAINTAINER=	kirk@strauser.com
 COMMENT=	A system for managing a set of named jails
 
-USE_PERL5=	yes
+USES=		perl5
 
 PORTDOCS=	INSTALL README
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if defined(WITH_SNMP)

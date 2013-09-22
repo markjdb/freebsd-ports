@@ -15,6 +15,8 @@ RUN_DEPENDS=	xchat:${PORTSDIR}/irc/xchat
 
 LICENSE=	GPLv2
 
+NO_STAGE=	yes
+
 USE_RUBY=	yes
 USE_LIBRUBY=	yes
 WRKSRC=		${WRKDIR}/${DISTNAME}/src

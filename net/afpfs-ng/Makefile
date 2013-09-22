@@ -19,7 +19,7 @@ ACLOCAL_ARGS=	-I.
 AUTOMAKE_ARGS=	--add-missing
 USE_LDCONFIG=	yes
 
-CFLAGS+=	-D_FILE_OFFSET_BITS=64 -I${LOCALBASE}/include
+CFLAGS+=	-D_FILE_OFFSET_BITS=64 -I${LOCALBASE}/include -Wno-return-type
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 MAN1=		afpcmd.1 afpgetstatus.1
@@ -32,6 +32,7 @@ FUSE_CONFIGURE_ENABLE=	fuse
 GCRYPT_LIB_DEPENDS=	libgcrypt.so:${PORTSDIR}/security/libgcrypt
 GCRYPT_CONFIGURE_ENABLE=gcrypt
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MFUSE}

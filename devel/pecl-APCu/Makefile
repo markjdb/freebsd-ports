@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	APCu
-PORTVERSION=	4.0.1
+PORTVERSION=	4.0.2
 CATEGORIES=	devel
 MASTER_SITES=	http://pecl.php.net/get/
 PKGNAMEPREFIX=	pecl-
@@ -25,4 +25,5 @@ PHP_MODNAME=	${PORTNAME:L}
 IGNORE_WITH_PHP=4 52
 WRKSRC=		${WRKDIR}/${PORTNAME:L}-${PORTVERSION}
 
+NO_STAGE=	yes
 .include <bsd.port.mk>

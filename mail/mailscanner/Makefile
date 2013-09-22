@@ -40,7 +40,7 @@ CONFLICTS=	MailScanner-devel-[0-9]*
 
 PATCHLEVEL=	2
 
-USE_PERL5=	yes
+USES=		perl5
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-install-${PORTVERSION}
 SUB_FILES=	MailScanner.8 pkg-message pkg-install pkg-deinstall
@@ -62,6 +62,7 @@ BDC_DESC=		Install BitDefender
 
 OPTIONS_DEFAULT=	SPAMASSASSIN CLAMAV
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSPAMASSASSIN}

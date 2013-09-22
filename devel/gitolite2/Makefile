@@ -16,7 +16,7 @@ RUN_DEPENDS=	git>=0:${PORTSDIR}/devel/git
 LATEST_LINK=	gitolite2
 CONFLICTS=	gitolite-[^2]*
 
-USE_PERL5=	yes
+USES=		perl5
 
 SUB_FILES=	pkg-message
 
@@ -24,6 +24,7 @@ OPTIONS_DEFINE=	GITUSER
 
 GITUSER_DESC=	Create git user as gitolite provider
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGITUSER}

@@ -10,6 +10,7 @@ MAINTAINER=	naddy@FreeBSD.org
 COMMENT=	IETF audio codec
 
 USES=		pathfix
+NO_STAGE=	yes
 USE_AUTOTOOLS=	libtool
 USE_LDCONFIG=	yes
 
@@ -21,10 +22,10 @@ CONFIGURE_ARGS=	--enable-custom-modes \
 regression-test: build
 	@cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE} check
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
 .if ${ARCH} == "arm"
 CONFIGURE_ARGS+=--enable-fixed-point
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

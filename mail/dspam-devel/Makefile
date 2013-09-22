@@ -87,7 +87,7 @@ WEBUI_DESC=	Install WebUI, pulls in Apache or see below
 OPTIONS_DEFAULT=	SYSLOG DEBUG DAEMON CLAMAV CLAMAV_LOCAL MYSQL55 \
 		PGSQL SQLITE3 HASH
 
-USE_PERL5=	yes
+USES=		perl5
 USE_AUTOTOOLS=	libtool
 .ifdef(SNAP_DATE)
 USE_AUTOTOOLS+=	autoconf:env automake
@@ -125,6 +125,7 @@ DSPAM_HOME_OWNER?=	${DSPAM_OWNER}
 DSPAM_HOME_GROUP?=	${DSPAM_GROUP}
 DSPAM_HOME_MODE?=	0770
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 CONFIGURE_ARGS+=	--sysconfdir=${DSPAM_ETC}
@@ -402,7 +403,6 @@ RUN_DEPENDS+=	p5-GD-Graph3d>=0:${PORTSDIR}/graphics/p5-GD-Graph3d
 RUN_DEPENDS+=	p5-GD-TextUtil>=0:${PORTSDIR}/graphics/p5-GD-TextUtil
 CONFIGURE_ARGS+=--enable-logging
 CONFIGURE_ARGS+=--enable-user-logging
-USE_PERL5=	yes
 PLIST_SUB+=	WebUI=""
 _SED_SCRIPT+=	-e 's/%%WebUI%%//g'
 _SED_SCRIPT+=	-e 's,%%WWWDIR%%,${WWWDIR},g'

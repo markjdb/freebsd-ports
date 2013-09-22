@@ -12,6 +12,8 @@ COMMENT=	Milter plugin to sendmail for regular expression filtering
 LICENSE=	BSD
 LICENSE_FILE=	${FILESDIR}/COPYRIGHT
 
+NO_STAGE=	yes
+
 MAILUSER?=	mailnull
 MAN8=		milter-regex.8
 PLIST_FILES=	libexec/milter-regex

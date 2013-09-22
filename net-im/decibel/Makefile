@@ -1,7 +1,4 @@
-# New ports collection Makefile for:	decibel
-# Date created:				2008-02-10
-# Whom:					arved
-#
+# Created by: arved
 # $FreeBSD$
 
 PORTNAME=	decibel
@@ -17,8 +14,9 @@ LIB_DEPENDS=	QtTapioca.0:${PORTSDIR}/net-im/tapioca-qt
 
 USE_QT4=	xml dbus gui qtestlib qmake_build moc_build uic_build rcc_build
 USE_LDCONFIG=	yes
-USES=		cmake
+USES=		cmake pkgconfig
 
+NO_STAGE=	yes
 post-patch:
 	${REINPLACE_CMD} -e \
 		"s,$${LIB_INSTALL_DIR}/pkgconfig,data/pkgconfig,g"\

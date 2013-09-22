@@ -42,8 +42,8 @@ PORTSCOUT=	limit:^[0-9]+(\.[0-9]+)*$$
 
 USERS=		sympa
 GROUPS=		sympa
+USES=		perl5
 GNU_CONFIGURE=	yes
-USE_PERL5=	yes
 ICONSDIR?=	www/icons
 CONFIGURE_ARGS+=--bindir=${PREFIX}/libexec/${PORTNAME}	\
 		--libexecdir=${PREFIX}/libexec/${PORTNAME} \
@@ -86,6 +86,7 @@ OPTIONS_SET+=	${option}
 .  endfor
 .endif
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}

@@ -15,7 +15,7 @@ AVCODEC_DESC=	LAVC codec support
 
 GNU_CONFIGURE=	yes
 USE_GL=		gl
-USE_PERL5=	yes
+USES=		perl5
 USE_AUTOTOOLS=	libltdl
 USE_LDCONFIG=	${PREFIX}/lib ${PREFIX}/lib/${PORTNAME}
 
@@ -35,6 +35,7 @@ MAN7=	bugle-camera.7 bugle-checks.7 bugle-eps.7 bugle-error.7 \
 	bugle-stats_nv.7 bugle-stats_primitives.7 bugle-trace.7 \
 	bugle-unwindstack.7 bugle-wireframe.7
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MAVCODEC}

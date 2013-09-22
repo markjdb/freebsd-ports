@@ -25,7 +25,7 @@ USE_OPENAL=	al
 USE_LUA=	5.1
 USE_SDL=	sdl ttf net
 USE_GL=		yes
-USE_GCC=	4.2+
+USE_GCC=	yes # problems in luabind
 USES=		gettext
 
 CONFIGURE_ARGS=	--datadir=${DATADIR}
@@ -39,6 +39,7 @@ PORTDOCS=	MANUAL
 OPTIONS_DEFINE=	EDITOR DOCS
 EDITOR_DESC=	Enable editor
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MEDITOR}

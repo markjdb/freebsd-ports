@@ -16,12 +16,12 @@ LICENSE=	GPLv2
 
 CONFLICTS=	openbgpd-[0-9]* openospfd-[0-9]* zebra-0* quagga-re-[0-9]*
 
-USES=		gmake
+USES=		gmake perl5
 USE_AUTOTOOLS=	libtool autoheader aclocal
 ACLOCAL_ARGS=	-I${LOCALBASE}/share/aclocal
 BUILD_DEPENDS+=	gawk:${PORTSDIR}/lang/gawk
 USE_LDCONFIG=	yes
-USE_PERL5_BUILD=yes
+USE_PERL5=	build
 FETCH_ARGS=	-Fpr
 
 MAN1=		vtysh.1
@@ -40,6 +40,7 @@ DLMALLOC_DESC=		Use dlmalloc (makes bgpd much faster)
 NO_BGP_ANNOUNCE_DESC=	Turn off BGP route announcement
 OSPF_NEXTHOP_DESC=	Set ip next-hop in OSPF route maps
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 CFLAGS+=	-I${LOCALBASE}/include

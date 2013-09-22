@@ -1,9 +1,5 @@
-# New ports collection makefile for:	Ruby-MySQL
-# Date created:		7 Aug 2000
-# Whom:			Akinori MUSHA aka knu <knu@idaemons.org>
-#
+# Created by: Akinori MUSHA aka knu <knu@idaemons.org>
 # $FreeBSD$
-#
 
 PORTNAME=	mysql
 PORTVERSION=	2.8.2
@@ -17,6 +13,8 @@ DIST_SUBDIR=	ruby
 
 MAINTAINER=	knu@FreeBSD.org
 COMMENT=	Ruby module for accessing MySQL databases with a C API like interface
+
+NO_STAGE=	yes
 
 USE_MYSQL=	yes
 USE_RUBY=	yes

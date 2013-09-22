@@ -29,7 +29,8 @@ USE_GMAKE=	yes
 USE_LDCONFIG=	yes
 WRKSRC=		${WRKDIR}/GotoBLAS2
 
-USE_PERL5_BUILD=	yes
+USES=		gmake perl5
+USE_PERL5=	build
 USE_FORTRAN=	yes
 GOTOLIBS=	libgoto2 libgoto2p
 GOTOFILES=	${GOTOLIBS:S|$|.so|} ${GOTOLIBS:S|$|.so.1|} ${GOTOLIBS:S|$|.a|}
@@ -50,6 +51,7 @@ INTERFACE64_DESC=	Use 8 byte integers on 64-bit architectures
 OPENMP_DESC=		Use OpenMP for threading
 #		QUAD_PRECISION	"Support IEEE quad precision (experimental)" off
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 MAXTHREADS?=	8

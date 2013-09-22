@@ -3,6 +3,7 @@
 
 # $FreeBSD$
 #
+NO_STAGE=	yes
 # Tunables not (yet) configurable via 'make config':
 # SQUID_{U,G}ID
 #   Which user/group Squid should run as (default: squid/squid).
@@ -87,8 +88,8 @@ MAINTAINER=	adrian@FreeBSD.org
 COMMENT=	HTTP Caching Proxy (Squid Derivative) - Stable Release
 
 CONFLICTS=	squid-[0-9]* cacheboy*
+USES=		perl5
 GNU_CONFIGURE=	yes
-USE_PERL5=	yes
 USE_RC_SUBR=	squid
 
 SQUID_UID?=	squid

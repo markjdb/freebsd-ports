@@ -11,8 +11,9 @@ EXTRACT_SUFX=	.tgz
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	PGP International version - improved for use in IN-CA
 
-WRKSRC=		${WRKDIR}/pgp263in/src
+NO_STAGE=	yes
 
+WRKSRC=		${WRKDIR}/pgp263in/src
 MAKEFILE=	makefile
 ALL_TARGET=	freebsd-${ARCH} OS_CFLAGS="${CFLAGS}"
 PGPLIB=		${PREFIX}/lib/pgpin

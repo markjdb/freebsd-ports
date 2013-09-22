@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-DISTVERSION=	1.7.1
+DISTVERSION=	1.7.2
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	SF/${PORTNAME}/Source \
@@ -69,6 +69,7 @@ MONO_DESC=	Bundle Mono MSI package for Wine
 
 PORTDATA=	fonts/ generic.ppd l_intl.nls wine.inf
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MCUPS}

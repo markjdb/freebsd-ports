@@ -24,9 +24,12 @@ DESKTOP_ENTRIES="Ri-li" \
 		"Game;ArcadeGame;" \
 		false
 
+NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e 's|-lSDL |`${SDL_CONFIG} --libs`|' ${WRKSRC}/configure
 	@${REINPLACE_CMD} -e 's| gentoo||' ${WRKSRC}/Makefile.in
 	@${REINPLACE_CMD} -e '/strcpy.*DefPath/ s|.*|strcpy(DefPath,"${DATADIR}/");|' ${WRKSRC}/src/main.cc
+	@${REINPLACE_CMD} -e '/include/ s|iostream.h|iostream|' ${WRKSRC}/src/*.cc
+	@${REINPLACE_CMD} -e 's|cerr|std::&|g; s|endl|std::&|g' ${WRKSRC}/src/*.cc
 
 .include <bsd.port.mk>

@@ -1,9 +1,5 @@
-# New ports collection makefile for:   silo
-# Date created:        26 October 2003
-# Whom:                DoubleF <doublef@tele-kom.ru>
-#
+# Created by: DoubleF <doublef@tele-kom.ru>
 # $FreeBSD$
-#
 
 PORTNAME=	silo
 PORTVERSION=	1.0
@@ -11,12 +7,16 @@ PORTREVISION=	9
 CATEGORIES=	x11
 MASTER_SITES=	http://doublef.nm.ru/silo/sources/
 
-MAINTAINER=	doublef@tele-kom.ru
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	A simple X11 launcher extensible in any programming language
+
+DEPRECATED=	Upstream has disappeared
+EXPIRATION_DATE=	2013-10-18
 
 USE_BZIP2=	yes
 USE_XORG=	xpm x11
 
+NO_STAGE=	yes
 pre-everything::
 .if defined(WITHOUT_IMLIB)
 	@${ECHO_CMD} "Disabling Imlib support; only XPM images are supported"

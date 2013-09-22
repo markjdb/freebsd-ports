@@ -1,4 +1,3 @@
-# Created by: Thomas Abthorpe <thomas@goodking.ca>
 # $FreeBSD$
 
 PORTNAME=	secure_login
@@ -7,7 +6,7 @@ PORTREVISION=	1
 DISTNAME=	${PORTNAME}-${PORTVERSION}-1.2.8
 DIST_SUBDIR=	squirrelmail
 
-MAINTAINER=	tabthorpe@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	This plugin will automatically turn on SSL security during login
 
 LICENSE=	GPLv2
@@ -15,5 +14,6 @@ LICENSE=	GPLv2
 USES=		perl5
 USE_PERL5=	run
 
+NO_STAGE=	yes
 .include "${.CURDIR}/../squirrelmail/bsd.squirrelmail.mk"
 .include <bsd.port.mk>

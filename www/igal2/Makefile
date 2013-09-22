@@ -15,12 +15,13 @@ OPTIONS_DEFINE=	EXIF
 EXIF_DESC=	Support EXIF data (-e option)
 
 CONFLICTS=	igal-1.*
-USE_PERL5=	yes
+USES=		perl5
 NO_BUILD=	yes
 
 MAN1=		igal2.1
 MANCOMPRESSED=	no
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MEXIF}

@@ -12,8 +12,7 @@ COMMENT=	A collection of utility modules for Tcl
 
 OPTIONS_DEFINE=	DOCS MANPAGES
 
-USE_TCL=	84+
-
+USES+=		tcl
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV+=	ac_cv_path_tclsh="${TCLSH}"
 ALL_TARGET=	all
@@ -24,6 +23,7 @@ INSTALL_ARGS=	-pkgs -pkg-path ${PREFIX}/lib/tcllib \
 		-apps -app-path ${PREFIX}/bin \
 		-no-wait -no-gui -no-examples
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 #

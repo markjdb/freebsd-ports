@@ -17,7 +17,7 @@ RUN_DEPENDS=	p5-DBI>=1.48:${PORTSDIR}/databases/p5-DBI
 
 USE_ZIP=	yes
 USE_MYSQL=	yes
-USE_PERL5=	yes
+USES=		perl5
 USE_PHP=	session mysql zlib ftp
 
 NO_BUILD=	yes
@@ -26,6 +26,7 @@ WRKSRC=		${WRKDIR}/msd${PORTVERSION}
 OPTIONS_DEFINE=	APACHE LIGHTTPD
 OPTIONS_DEFAULT=	APACHE
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MAPACHE}

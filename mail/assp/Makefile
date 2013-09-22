@@ -11,9 +11,10 @@ DISTNAME=	${PORTNAME:U}_${PORTVERSION}_Install
 MAINTAINER=	rnejdl@ringofsaturn.com
 COMMENT=	Anti-Spam SMTP Proxy
 
+USES=		perl5
 USE_ZIP=	yes
 NO_BUILD=	yes
-USE_PERL5_RUN=	yes
+USE_PERL5=	run
 
 MAN8=		assp.8 assplog.8
 
@@ -55,6 +56,7 @@ OPTIONS_DEFAULT=	EMVALID SPF SRS SEND FBACKW CLAMAV DNSBL MATCHRE SENDERB MIMEMO
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/ASSP_1.9.9_13227_install/${PORTNAME:U}
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 RUN_DEPENDS+=	p5-Net-DNS>=0.68:${PORTSDIR}/dns/p5-Net-DNS \

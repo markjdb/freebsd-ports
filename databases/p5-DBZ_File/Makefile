@@ -1,9 +1,5 @@
-# New ports collection makefile for:	p5-DBZ_File
-# Date created:				May 26th 2000
-# Whom:					Yen-Ming Lee <leeym@FreeBSD.org>
-#
+# Created by: Yen-Ming Lee <leeym@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	DBZ_File
 PORTVERSION=	1.1
@@ -15,13 +11,15 @@ DISTNAME=	${PORTNAME}_${PORTVERSION}
 MAINTAINER=	leeym@FreeBSD.org
 COMMENT=	Perl module to access a DBZ database
 
-PERL_CONFIGURE=	yes
+USES=		perl5
+USE_PERL5=	configure
 CONFIGURE_ARGS=	DEFINE="-I${FILESDIR}" POLLUTE=1
 
 WRKSRC=		${WRKDIR}/DBZ_File
 
 MAN3=		DBZ_File.3
 
+NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 .if ${PERL_LEVEL} > 501400
 BROKEN=	POLLUTE=1 is gone, does not compile, has not been released since 1997

@@ -1,9 +1,5 @@
-# New ports collection makefile for:	smb_auth
-# Date created:				13 January 2000
-# Whom:					Maxim Sobolev <sobomax@FreeBSD.org>
-#
+# Created by: Maxim Sobolev <sobomax@FreeBSD.org>
 # $FreeBSD$
-#
 
 PORTNAME=	smb_auth
 PORTVERSION=	0.05
@@ -18,6 +14,8 @@ COMMENT=	A proxy authentication module against an SMB server
 .if !defined(WITHOUT_REGISTER_SAMBA)
 RUN_DEPENDS=	${LOCALBASE}/sbin/smbd:${PORTSDIR}/${SAMBA_PORT}
 .endif
+
+NO_STAGE=	yes
 
 ALL_TARGET=	smb_auth
 SAMBA_PORT?=	net/samba36
