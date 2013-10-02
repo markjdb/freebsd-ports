@@ -19,8 +19,7 @@ USE_BZIP2=	yes
 
 CONFLICTS_INSTALL=	pkg-config-*
 
-NO_STAGE=	yes
 post-install:
-	${LN} -sf ${PREFIX}/bin/pkgconf ${PREFIX}/bin/pkg-config
+	${LN} -sf pkgconf ${STAGEDIR}${PREFIX}/bin/pkg-config
 
 .include <bsd.port.mk>

@@ -3,7 +3,7 @@
 
 PORTNAME=	qemu
 PORTVERSION=	1.6.0
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	emulators
 MASTER_SITES=	http://wiki.qemu.org/download/:release \
 		LOCAL/nox:snapshot
@@ -14,13 +14,12 @@ DIST_SUBDIR=	qemu/${PORTVERSION}
 MAINTAINER=	nox@FreeBSD.org
 COMMENT=	QEMU CPU Emulator - development version
 
-LIB_DEPENDS=	pixman-1:${PORTSDIR}/x11/pixman
-
 HAS_CONFIGURE=	yes
 USE_BZIP2=	yes
 USES=		gmake pkgconfig bison perl5
 USE_PERL5=	build
 USE_PYTHON_BUILD=	-2.7
+USE_XORG=	pixman
 USE_GNOME+=	glib20
 PATCH_STRIP=	-p1
 MAKE_ENV+=	BSD_MAKE="${MAKE}"
@@ -64,6 +63,10 @@ CONFIGURE_ARGS+=	--enable-nptl --target-list=i386-softmmu,x86_64-softmmu,i386-bs
 CONFIGURE_ARGS+=	--target-list=i386-softmmu,x86_64-softmmu
 .endif
 .else
+# clang seems to build a broken mips-softmmu target (qemu segfaults
+# at boot)  Feel free to debug :)  Some info is here:
+#	http://people.freebsd.org/~nox/tmp/qemu-1.6.0-mips-softmmu-crash.txt
+USE_GCC=	any
 .if empty(PORT_OPTIONS:MBSD_USER)
 CONFIGURE_ARGS+=	--disable-bsd-user
 .else

@@ -13,7 +13,7 @@ DISTNAME=	${PORTNAME}-${PORTVERSION:R}-${PORTVERSION:E}
 MAINTAINER=	garga@FreeBSD.org
 COMMENT=	A SLang-based text editor
 
-LIB_DEPENDS=	slang:${PORTSDIR}/devel/libslang2
+LIB_DEPENDS=	libslang.so:${PORTSDIR}/devel/libslang2
 
 CONFLICTS=	jed-devel-[0-9]*
 
@@ -30,7 +30,7 @@ MAKE_JOBS_UNSAFE=	yes
 CONFIGURE_ENV+=	JED_ROOT=${PREFIX}/lib/jed
 
 PORTDOCS=	*
-MAKE_ENV+=	DEST_DOC_DIR=${DOCSDIR}
+MAKE_ENV+=	DEST_DOC_DIR=${STAGEDIR}${DOCSDIR}
 .if empty(PORT_OPTIONS:MDOCS)
 MAKE_ENV+=	JED_DOC_FILES="" \
 		JED_DOC_TXT_FILES="" \
@@ -39,9 +39,7 @@ MAKE_ENV+=	JED_DOC_FILES="" \
 .endif
 
 ALL_TARGET=	all getmail
-MAN1=		jed.1 rgrep.1
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MX11}
@@ -79,8 +77,8 @@ post-configure:
 		${WRKSRC}/src/Makefile
 
 post-install:
-	${INSTALL_DATA} ${WRKSRC}/lib/vms_shell.com ${PREFIX}/lib/jed/lib
-	${INSTALL_DATA} ${WRKSRC}/lib/README ${PREFIX}/lib/jed/lib
-	${INSTALL_DATA} ${WRKSRC}/lib/jed.conf ${PREFIX}/lib/jed/lib
+	${INSTALL_DATA} ${WRKSRC}/lib/vms_shell.com ${STAGEDIR}${PREFIX}/lib/jed/lib
+	${INSTALL_DATA} ${WRKSRC}/lib/README ${STAGEDIR}${PREFIX}/lib/jed/lib
+	${INSTALL_DATA} ${WRKSRC}/lib/jed.conf ${STAGEDIR}${PREFIX}/lib/jed/lib
 
 .include <bsd.port.post.mk>

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	plone.app.caching
-PORTVERSION=	1.1.3
+PORTVERSION=	1.1.6
 CATEGORIES=	www python zope
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -34,9 +34,10 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dateutil>=0:${PORTSDIR}/devel/py-dateutil \
 
 DIST_SUBDIR=	zope
 USE_PYTHON=	yes
-USE_PYDISTUTILS=	easy_install
+USE_PYDISTUTILS=easy_install
 USE_ZIP=	yes
-USE_ZOPE=	yes
+USES=		zope
 
 NO_STAGE=	yes
+
 .include <bsd.port.mk>

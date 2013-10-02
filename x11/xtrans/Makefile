@@ -8,13 +8,10 @@ CATEGORIES=	x11
 MAINTAINER=	x11@FreeBSD.org
 COMMENT=	Abstract network code for X
 
-CONFLICTS=	libXtrans
-
 LICENSE=	MIT
 
 XORG_CAT=	lib
 
 CONFIGURE_ARGS+=--disable-docs --without-xmlto
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

@@ -17,9 +17,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	${LOCALBASE}/include/fftw3.h:${PORTSDIR}/math/fftw3 \
 		${NONEXISTENT}:${PORTSDIR}/astro/boinc-setiathome-v7:patch
 RUN_DEPENDS=	boinc_client:${PORTSDIR}/net/boinc-client
-LIB_DEPENDS=	fftw3f:${PORTSDIR}/math/fftw3-float
+LIB_DEPENDS=	libfftw3f.so:${PORTSDIR}/math/fftw3-float
 
-NO_STAGE=	yes
 USES=		gmake pkgconfig
 USE_XZ=		yes
 USE_AUTOTOOLS=	autoconf:env automake:env libtool
@@ -32,6 +31,8 @@ CFLAGS+=	-O2 -I${LOCALBASE}/include/boinc -I${LOCALBASE}/include \
 CFLAGS+=	-march=${CPUTYPE}
 .endif
 
+NEED_ROOT=	yes
+
 # these must match settings in ${PORTSDIR}/net/boinc-client/Makefile
 BOINC_CLIENT_USER?=	boinc
 BOINC_CLIENT_GROUP?=	nobody
@@ -43,7 +44,7 @@ X11_DESC=	Build screensaver (requires net/boinc-client with X11)
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MX11}
-LIB_DEPENDS+=	jpeg:${PORTSDIR}/graphics/jpeg
+LIB_DEPENDS+=	libjpeg.so:${PORTSDIR}/graphics/jpeg
 USE_GL=		gl glu glut
 USE_XORG=	ice sm x11 xau xcb xext xi xdamage xdmcp xfixes xmu xt xxf86vm
 BUILD_DEPENDS+=	${LOCALBASE}/lib/libboinc_graphics2.a:${PORTSDIR}/net/boinc-client
@@ -84,18 +85,17 @@ pre-configure:
 	(cd ${WRKSRC} ; ./_autosetup)
 
 do-install:
-	${INSTALL} -d -o ${BOINC_CLIENT_USER} -g ${BOINC_CLIENT_GROUP} ${BOINC_CLIENT_HOME}/projects
 	${INSTALL} -d -o ${BOINC_CLIENT_USER} -g ${BOINC_CLIENT_GROUP} \
-	    ${BOINC_CLIENT_HOME}/projects/${SETI_SITE}
+	    ${STAGEDIR}${BOINC_CLIENT_HOME}/projects
+	${INSTALL} -d -o ${BOINC_CLIENT_USER} -g ${BOINC_CLIENT_GROUP} \
+	    ${STAGEDIR}${BOINC_CLIENT_HOME}/projects/${SETI_SITE}
 	${INSTALL_PROGRAM} -o ${BOINC_CLIENT_USER} -g ${BOINC_CLIENT_GROUP} \
-	    ${WRKSRC}/${AP_BINARY} ${BOINC_CLIENT_HOME}/projects/${SETI_SITE}/
+	    ${WRKSRC}/${AP_BINARY} \
+	    ${STAGEDIR}${BOINC_CLIENT_HOME}/projects/${SETI_SITE}/
 .if ${PORT_OPTIONS:MX11}
 	${INSTALL_PROGRAM} -o ${BOINC_CLIENT_USER} -g ${BOINC_CLIENT_GROUP} \
-	    ${WRKSRC}/ap_graphics ${BOINC_CLIENT_HOME}/projects/${SETI_SITE}/
+	    ${WRKSRC}/ap_graphics \
+	    ${STAGEDIR}${BOINC_CLIENT_HOME}/projects/${SETI_SITE}/
 .endif
-
-post-install:
-	@PKG_PREFIX=${PREFIX} ${SH} ${PKGINSTALL} ${PKGNAME} POST-INSTALL
-	@${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libvirt
-PORTVERSION=	1.1.2
+PORTVERSION=	1.1.3
 CATEGORIES=	devel
 MASTER_SITES=	http://libvirt.org/sources/ \
 		ftp://libvirt.org/libvirt/
@@ -42,8 +42,10 @@ CONFIGURE_ARGS=	--without-sasl \
 		--with-ssh2
 
 # workaround to override pkg-config calls
+# random_data fix can be removed when 8.x is eol
 CONFIGURE_ENV=	SSH2_LIBS="-L${LOCALBASE}/lib -lssh2 -lssl" \
-		SSH2_CFLAGS="-I${LOCLABASE}/include"
+		SSH2_CFLAGS="-I${LOCLABASE}/include" \
+		ac_cv_type_struct_random_data=""
 
 # limit production release x.x.x
 PORTSCOUT=	limit:\d+\.\d+\.\d+$$
@@ -59,13 +61,13 @@ PLIST_SUB=	PORTVERSION="-${PORTVERSION}" \
 		SHLIB_VER=${SHLIB_VER}
 PORTDOCS=	*
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
-MAN1=		virsh.1 virt-pki-validate.1 virt-xml-validate.1 virt-host-validate.1
-MAN8=		libvirtd.8 virtlockd.8
-
 post-patch:
+.if ${OSVERSION} < 900000
+	@${REINPLACE_CMD} -e 's|-Wmissing-include-dirs||' \
+		${WRKSRC}/configure
+.endif
 	@${MV} ${WRKSRC}/daemon/libvirtd.conf ${WRKSRC}/daemon/libvirtd.conf.sample
 	@${REINPLACE_CMD} -e 's|libvirtd\.conf|libvirtd.conf.sample|' \
 		${WRKSRC}/daemon/Makefile.in
@@ -82,17 +84,17 @@ post-patch:
 
 post-install:
 	@for configuration in libvirt libvirtd ${QEMU_CONFIG}; do \
-	if [ ! -e "${ETCDIR}/$${configuration}.conf" ]; then \
-			${ECHO_MSG} "	Installing local configuration file: ${ETCDIR}/$${configuration}.conf"; \
-			${CP} ${ETCDIR}/$${configuration}.conf.sample ${ETCDIR}/$${configuration}.conf; \
+	if [ ! -e "${STAGEDIR}${ETCDIR}/$${configuration}.conf" ]; then \
+			${ECHO_MSG} "	Installing local configuration file: ${STAGEDIR}${ETCDIR}/$${configuration}.conf"; \
+			${CP} ${STAGEDIR}${ETCDIR}/$${configuration}.conf.sample ${STAGEDIR}${ETCDIR}/$${configuration}.conf; \
 		else \
-			${ECHO_MSG} "	Preserving local configuration file: ${ETCDIR}/$${configuration}.conf"; \
+			${ECHO_MSG} "	Preserving local configuration file: ${STAGEDIR}${ETCDIR}/$${configuration}.conf"; \
 	fi; \
 	done
 .if ${PORT_OPTIONS:MDOCS}
-	@${MKDIR} ${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for doc in AUTHORS ChangeLog INSTALL NEWS README TODO
-	${INSTALL_DATA} ${WRKSRC}/${doc} ${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/${doc} ${STAGEDIR}${DOCSDIR}
 .endfor
 .endif
 

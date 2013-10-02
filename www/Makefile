@@ -1419,6 +1419,7 @@
     SUBDIR += php52-tidy
     SUBDIR += php53-session
     SUBDIR += php53-tidy
+    SUBDIR += php55-opcache
     SUBDIR += php55-session
     SUBDIR += php55-tidy
     SUBDIR += phpbb
@@ -1463,7 +1464,6 @@
     SUBDIR += py-Products.CMFPlone
     SUBDIR += py-Products.PloneLDAP
     SUBDIR += py-Products.TinyMCE
-    SUBDIR += py-Products.kupu
     SUBDIR += py-WebError
     SUBDIR += py-WebFlash
     SUBDIR += py-WebTest
@@ -1560,6 +1560,7 @@
     SUBDIR += py-paste
     SUBDIR += py-pastedeploy
     SUBDIR += py-pastescript
+    SUBDIR += py-plone.alterego
     SUBDIR += py-plone.app.blob
     SUBDIR += py-plone.app.caching
     SUBDIR += py-plone.app.collection
@@ -1569,6 +1570,7 @@
     SUBDIR += py-plone.app.contentrules
     SUBDIR += py-plone.app.controlpanel
     SUBDIR += py-plone.app.customerize
+    SUBDIR += py-plone.app.dexterity
     SUBDIR += py-plone.app.discussion
     SUBDIR += py-plone.app.folder
     SUBDIR += py-plone.app.form
@@ -1577,7 +1579,6 @@
     SUBDIR += py-plone.app.iterate
     SUBDIR += py-plone.app.jquery
     SUBDIR += py-plone.app.jquerytools
-    SUBDIR += py-plone.app.kss
     SUBDIR += py-plone.app.layout
     SUBDIR += py-plone.app.ldap
     SUBDIR += py-plone.app.linkintegrity
@@ -1588,6 +1589,7 @@
     SUBDIR += py-plone.app.registry
     SUBDIR += py-plone.app.search
     SUBDIR += py-plone.app.testing
+    SUBDIR += py-plone.app.textfield
     SUBDIR += py-plone.app.theming
     SUBDIR += py-plone.app.upgrade
     SUBDIR += py-plone.app.users
@@ -1597,27 +1599,36 @@
     SUBDIR += py-plone.app.workflow
     SUBDIR += py-plone.app.z3cform
     SUBDIR += py-plone.autoform
+    SUBDIR += py-plone.batching
+    SUBDIR += py-plone.behavior
     SUBDIR += py-plone.browserlayer
     SUBDIR += py-plone.cachepurging
     SUBDIR += py-plone.caching
     SUBDIR += py-plone.contentrules
+    SUBDIR += py-plone.dexterity
     SUBDIR += py-plone.fieldsets
     SUBDIR += py-plone.folder
+    SUBDIR += py-plone.formwidget.namedfile
     SUBDIR += py-plone.i18n
     SUBDIR += py-plone.indexer
     SUBDIR += py-plone.intelligenttext
     SUBDIR += py-plone.locking
     SUBDIR += py-plone.memoize
+    SUBDIR += py-plone.namedfile
     SUBDIR += py-plone.outputfilters
     SUBDIR += py-plone.portlet.collection
     SUBDIR += py-plone.portlet.static
     SUBDIR += py-plone.portlets
     SUBDIR += py-plone.registry
     SUBDIR += py-plone.resource
+    SUBDIR += py-plone.resourceeditor
+    SUBDIR += py-plone.rfc822
     SUBDIR += py-plone.scale
+    SUBDIR += py-plone.schemaeditor
     SUBDIR += py-plone.stringinterp
     SUBDIR += py-plone.subrequest
     SUBDIR += py-plone.supermodel
+    SUBDIR += py-plone.synchronize
     SUBDIR += py-plone.testing
     SUBDIR += py-plone.theme
     SUBDIR += py-plone.transformchain
@@ -1690,6 +1701,7 @@
     SUBDIR += quickie
     SUBDIR += quixote
     SUBDIR += qupzilla
+    SUBDIR += radicale
     SUBDIR += red5
     SUBDIR += redaxo
     SUBDIR += redmine
@@ -1750,6 +1762,7 @@
     SUBDIR += rubygem-faraday_middleware
     SUBDIR += rubygem-feed-normalizer
     SUBDIR += rubygem-feedzirra
+    SUBDIR += rubygem-geminabox
     SUBDIR += rubygem-haml
     SUBDIR += rubygem-haml-coderay
     SUBDIR += rubygem-hpricot
@@ -1785,6 +1798,7 @@
     SUBDIR += rubygem-rabbirack
     SUBDIR += rubygem-rack
     SUBDIR += rubygem-rack-cache
+    SUBDIR += rubygem-rack-contrib
     SUBDIR += rubygem-rack-mount
     SUBDIR += rubygem-rack-openid
     SUBDIR += rubygem-rack-protection
@@ -1808,6 +1822,7 @@
     SUBDIR += rubygem-selenium-webdriver
     SUBDIR += rubygem-simple-rss
     SUBDIR += rubygem-sinatra
+    SUBDIR += rubygem-sinatra-r18n
     SUBDIR += rubygem-sinatra-respond_to
     SUBDIR += rubygem-staticmatic
     SUBDIR += rubygem-taggable
@@ -2037,7 +2052,6 @@
     SUBDIR += varnish
     SUBDIR += varnish-libvmod-header
     SUBDIR += varnish-nagios
-    SUBDIR += varnish2
     SUBDIR += vdr-plugin-live
     SUBDIR += vdradmin-am
     SUBDIR += vee

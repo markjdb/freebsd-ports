@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gpsprune
-PORTVERSION=	14
+PORTVERSION=	15.1
 CATEGORIES=	astro java
 MASTER_SITES=	http://activityworkshop.net/software/${PORTNAME}/ \
 		http://mirror.amdmi3.ru/distfiles/
@@ -16,7 +16,6 @@ COMMENT=	Application for viewing, editing, and converting GPS coordinate data
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
 
-NO_STAGE=	yes
 USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 
@@ -35,8 +34,8 @@ RUN_DEPENDS+=	java3d>=1.5.2:${PORTSDIR}/java/java3d
 .endif
 
 do-install:
-	${MKDIR} ${JAVAJARDIR}/
-	${INSTALL_DATA} ${DISTDIR}/${DISTNAME} ${JAVAJARDIR}/
-	${INSTALL_SCRIPT} ${WRKDIR}/gpsprune.sh ${PREFIX}/bin/gpsprune
+	${MKDIR} ${STAGEDIR}${JAVAJARDIR}/
+	${INSTALL_DATA} ${DISTDIR}/${DISTNAME} ${STAGEDIR}${JAVAJARDIR}/
+	${INSTALL_SCRIPT} ${WRKDIR}/gpsprune.sh ${STAGEDIR}${PREFIX}/bin/gpsprune
 
 .include <bsd.port.mk>

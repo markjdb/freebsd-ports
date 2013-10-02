@@ -9,9 +9,6 @@ MASTER_SITES=	http://poppler.freedesktop.org/
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Poppler encoding data
 
-NO_BUILD=	yes
-
-NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/local|${PREFIX}|' ${WRKSRC}/Makefile
 

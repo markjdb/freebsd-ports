@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	hgtools
-PORTVERSION=	3.0.2
+PORTVERSION=	4.0
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -16,7 +16,10 @@ USE_ZIP=	yes
 USE_PYTHON=	yes
 USE_PYDISTUTILS=	easy_install
 
-PLIST_FILES=	%%PYTHON_SITELIBDIR%%/%%PYEASYINSTALL_EGG%%
-
 NO_STAGE=	yes
+
+post-patch:
+	@${REINPLACE_CMD} 's/license="GPL2",/license="GPL2", zip_safe=False,/' \
+		${WRKSRC}/setup.py
+
 .include <bsd.port.mk>

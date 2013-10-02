@@ -23,10 +23,11 @@ OPTIONS_DEFAULT=	POSIXGROUP_PATCH
 
 DIST_SUBDIR=	zope
 USE_PYTHON=	-2.7
-USE_PYDISTUTILS=	easy_install
-#USE_ZOPE=	yes
+USE_PYDISTUTILS=easy_install
+#USES=		zope
 
 NO_STAGE=	yes
+
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPOSIXGROUP_PATCH}

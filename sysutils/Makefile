@@ -453,7 +453,6 @@
     SUBDIR += libfvde
     SUBDIR += libgksu
     SUBDIR += libieee1284
-    SUBDIR += libpcbsd
     SUBDIR += libretto-config
     SUBDIR += libsunacl
     SUBDIR += liburcu
@@ -464,6 +463,7 @@
     SUBDIR += lineakd
     SUBDIR += linrename
     SUBDIR += linux-afaapps
+    SUBDIR += linux-crashplan
     SUBDIR += linux-f10-procps
     SUBDIR += linux-megamgr
     SUBDIR += linux-nero
@@ -643,10 +643,12 @@
     SUBDIR += pam_mount
     SUBDIR += parallel
     SUBDIR += password-store
+    SUBDIR += patchelf
     SUBDIR += pax-utils
     SUBDIR += pbimaker
-    SUBDIR += pbreg
     SUBDIR += pc-sysinstall
+    SUBDIR += pcbsd-utils
+    SUBDIR += pcbsd-utils-qt4
     SUBDIR += pcfclock
     SUBDIR += pciutils
     SUBDIR += pcpustat
@@ -711,7 +713,6 @@
     SUBDIR += pstree
     SUBDIR += ptools
     SUBDIR += puppet
-    SUBDIR += puppet26
     SUBDIR += puppet27
     SUBDIR += puppet-lint
     SUBDIR += pv
@@ -982,7 +983,6 @@
     SUBDIR += vstrip
     SUBDIR += vttest
     SUBDIR += wait_on
-    SUBDIR += warden
     SUBDIR += watchdog
     SUBDIR += watchfolder
     SUBDIR += watchmen

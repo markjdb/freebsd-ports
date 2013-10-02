@@ -79,6 +79,10 @@ DEV_ERROR+=	"USE_GETTEXT is unsupported, replaced by USES=gettext"
 DEV_ERROR+=	"USE_GNOME=pkgconfig is unsupported, please use USES=pkgconfig"
 .endif
 
+.if defined(USE_ZOPE) && ${USE_ZOPE} == yes
+DEV_ERROR+=	"USE_ZOPE=yes is unsupported, please use USES=zope instead"
+.endif
+
 .if defined(USE_GNOME) && ${USE_GNOME:Mgnomehack}
 DEV_WARNING+=	"USE_GNOME=gnomehack is deprecated, please use USES=pathfix"
 .endif
@@ -94,6 +98,18 @@ DEV_WARNING+=	"Please use the new format for LIB_DEPENDS, see handbook for detai
 .if defined(USE_TCL) || defined(USE_TCL_BUILD) || defined(USE_TCL_RUN) || defined(USE_TCL_WRAPPER) || \
    defined(USE_TK)  || defined(USE_TK_BUILD)  || defined(USE_TK_RUN)  || defined(USE_TK_WRAPPER)
 DEV_WARNING+=	"USE_TCL and USE_TK are deprecated, please use USES=tcl or USES=tk"
+.endif
+
+.if !defined(NO_STAGE)
+.for a in 1 2 3 4 5 6 7 8 9 L N
+.if defined(MAN${a})
+DEV_WARNING+=	"MAN${a} macros are deprecated when using stage directory"
+.endif
+.endfor
+.endif
+
+.if !defined(NO_STAGE) && defined(MLINKS)
+DEV_WARNING+=	"MLINKS macros are deprecated when using stage directory"
 .endif
 
 .if defined(_PREMKINCLUDED)

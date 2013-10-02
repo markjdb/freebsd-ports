@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	poudriere
-PORTVERSION=	3.0.99.20130915
+PORTVERSION=	3.0.99.20131001
+PORTREVISION=	1
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://fossil.etoilebsd.net/poudriere/tarball/ \
 		LOCAL/bdrewery/${PORTNAME}/
@@ -14,20 +15,20 @@ COMMENT=	Port build and test system
 
 LICENSE=	BSD
 
-FSL_CHKIN=	0eb89d4f74
-
-MANCOMPRESSED=	yes
-MAN8=	poudriere.8
+FSL_CHKIN=	4ee8a6ce8b
 
 OPTIONS_DEFINE=	ZSH
 
 CONFLICTS_INSTALL=	poudriere-[0-9]*
+
+USES=		uidfix
 
 PLIST_FILES=	etc/poudriere.conf.sample \
 		etc/poudriere.d/hooks/bulk.sh.sample \
 		etc/poudriere.d/hooks/pkgbuild.sh.sample \
 		etc/rc.d/poudriere \
 		bin/poudriere \
+		man/man8/poudriere.8.gz \
 		libexec/poudriere/cpdup \
 		libexec/poudriere/dirwatch \
 		libexec/poudriere/dirempty \
@@ -89,7 +90,6 @@ PLIST_DIRS=	libexec/poudriere \
 		share/poudriere/html \
 		share/poudriere
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MZSH}

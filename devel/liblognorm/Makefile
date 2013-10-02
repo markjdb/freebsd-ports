@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	liblognorm
-PORTVERSION=	0.3.5
+PORTVERSION=	0.3.7
 CATEGORIES=	devel net security
 MASTER_SITES=	http://www.liblognorm.com/download/files/download/
 
@@ -18,7 +18,6 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 
 # Try to fix parallel (-jX) builds
-NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e \
 		'/^lognormalizer_DEPENDENCIES/s,=,= $$(lib_LTLIBRARIES),' \

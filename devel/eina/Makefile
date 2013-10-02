@@ -21,7 +21,6 @@ USE_LDCONFIG=	yes
 
 CONFIGURE_ARGS=	--enable-amalgamation
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MEXAMPLES}
@@ -33,10 +32,5 @@ CONFIGURE_ARGS+=--disable-install-examples
 post-patch:
 	@${REINPLACE_CMD} -e 's|= \$$(datadir)/\$$(PACKAGE)/examples|= $$(datadir)/examples/$$(PACKAGE)|' \
 		${WRKSRC}/src/examples/Makefile.in
-
-post-install:
-.if empty(PORT_OPTIONS:MEXAMPLES)
-	@${RMDIR} ${EXAMPLESDIR}
-.endif
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ev
-PORTVERSION=	0.2.4
+PORTVERSION=	0.2.10
 CATEGORIES=	devel
 MASTER_SITES=	http://pecl.php.net/get/
 PKGNAMEPREFIX=	pecl-
@@ -21,5 +21,4 @@ USE_PHPEXT=	yes
 PHP_MODNAME=	ev
 IGNORE_WITH_PHP=52 53
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

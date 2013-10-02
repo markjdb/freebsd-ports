@@ -152,14 +152,16 @@ _INCLUDE_USES_PERL5_POST_MK=	yes
 PLIST_SUB+=	PERL_VERSION=${PERL_VERSION} \
 		PERL_VER=${PERL_VER} \
 		PERL_ARCH=${PERL_ARCH} \
+		PERL5_MAN3=lib/perl5/${PERL_VER}/man/man3 \
 		SITE_PERL=${SITE_PERL_REL}
 
 # handle perl5 specific manpages
-.for sect in 1 2 3 4 5 6 7 8 9
+.for sect in 3
 .if defined(P5MAN${sect})
 _MANPAGES+=	${P5MAN${sect}:S%^%${PREFIX}/lib/perl5/${PERL_VER}/man/man${sect}/%}
 .endif
 .endfor
+MANDIRS+=	${PREFIX}/lib/perl5/${PERL_VER}
 
 .if ${_USE_PERL5:Mmodbuild} || ${_USE_PERL5:Mmodbuildtiny}
 _USE_PERL5+=		configure

@@ -1933,6 +1933,7 @@
     SUBDIR += p5-Exporter-Easy
     SUBDIR += p5-Exporter-Lite
     SUBDIR += p5-Exporter-Tidy
+    SUBDIR += p5-Exporter-Tiny
     SUBDIR += p5-ExtUtils-AutoInstall
     SUBDIR += p5-ExtUtils-CBuilder
     SUBDIR += p5-ExtUtils-CChecker
@@ -2366,6 +2367,7 @@
     SUBDIR += p5-MooseX-Params-Validate
     SUBDIR += p5-MooseX-RelatedClassRoles
     SUBDIR += p5-MooseX-Role-Loggable
+    SUBDIR += p5-MooseX-Role-Matcher
     SUBDIR += p5-MooseX-Role-Parameterized
     SUBDIR += p5-MooseX-Role-Strict
     SUBDIR += p5-MooseX-Role-WithOverloading
@@ -2731,6 +2733,7 @@
     SUBDIR += p5-Term-Query
     SUBDIR += p5-Term-RawInput
     SUBDIR += p5-Term-ReadKey
+    SUBDIR += p5-Term-ReadLine-Perl
     SUBDIR += p5-Term-ReadLine-Zoid
     SUBDIR += p5-Term-ReadPassword
     SUBDIR += p5-Term-Screen
@@ -2742,6 +2745,8 @@
     SUBDIR += p5-Term-VT102
     SUBDIR += p5-Term-VT102-Boundless
     SUBDIR += p5-Term-Visual
+    SUBDIR += p5-Test-Able
+    SUBDIR += p5-Test-Able-Runner
     SUBDIR += p5-Test-Aggregate
     SUBDIR += p5-Test-Assertions
     SUBDIR += p5-Test-Base
@@ -3450,7 +3455,6 @@
     SUBDIR += py-anyjson
     SUBDIR += py-apipkg
     SUBDIR += py-application
-    SUBDIR += py-archetypes.kss
     SUBDIR += py-archetypes.querywidget
     SUBDIR += py-archetypes.referencebrowserwidget
     SUBDIR += py-archetypes.schemaextender
@@ -3519,7 +3523,6 @@
     SUBDIR += py-durus
     SUBDIR += py-dynrules
     SUBDIR += py-eggtestinfo
-    SUBDIR += py-elementtree
     SUBDIR += py-epsilon
     SUBDIR += py-event
     SUBDIR += py-experimental.cssselect
@@ -3596,7 +3599,6 @@
     SUBDIR += py-kjbuckets
     SUBDIR += py-kqueue
     SUBDIR += py-krosspython
-    SUBDIR += py-kss-core
     SUBDIR += py-levenshtein
     SUBDIR += py-liblarch
     SUBDIR += py-libplist
@@ -4187,6 +4189,7 @@
     SUBDIR += rubygem-pry-remote-em
     SUBDIR += rubygem-ptreloaded
     SUBDIR += rubygem-pygments.rb
+    SUBDIR += rubygem-r18n-core
     SUBDIR += rubygem-racc
     SUBDIR += rubygem-railsless-deploy
     SUBDIR += rubygem-rainbow
@@ -4356,6 +4359,7 @@
     SUBDIR += strace
     SUBDIR += streamhtmlparser
     SUBDIR += stringencoders
+    SUBDIR += stxxl
     SUBDIR += styx
     SUBDIR += subclipse
     SUBDIR += subcommander2

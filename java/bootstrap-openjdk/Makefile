@@ -30,9 +30,8 @@ PLIST_SUB=	ARCH=${ARCH} JDK_NAME=${JDK_NAME} JDK_ROOT=${JDK_ROOT}
 USE_XZ=		yes
 WRKSRC=		${WRKDIR}/${JDK_ROOT}
 
-INSTALLDIR=	${PREFIX}/${JDK_ROOT}
+INSTALLDIR=	${STAGEDIR}${PREFIX}/${JDK_ROOT}
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} >= 900010
@@ -47,11 +46,7 @@ PLIST_SUB+=	CLIENTVM="@comment "
 
 do-install:
 	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${INSTALLDIR}
-	@${CHOWN} ${BINOWN}:${BINGRP} ${INSTALLDIR}/bin/* ${INSTALLDIR}/jre/bin/*
-	@${CHMOD} ${BINMODE} ${INSTALLDIR}/bin/* ${INSTALLDIR}/jre/bin/*
-
-post-install:
-	@${CAT} ${PKGMESSAGE}
+	@cd ${WRKSRC} && ${COPYTREE_BIN} "bin jre/bin" ${INSTALLDIR}
 
 update:
 	@${MAKE} -f ${.CURDIR}/Makefile.update \

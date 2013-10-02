@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	xorg-macros
-PORTVERSION=	1.17
+PORTVERSION=	1.17.1
 CATEGORIES=	devel x11
 DISTNAME=	util-macros-$(PORTVERSION)
 
@@ -19,5 +19,4 @@ PLIST_FILES=	share/aclocal/xorg-macros.m4 \
 
 PLIST_DIRS=	share/util-macros
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

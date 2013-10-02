@@ -3,7 +3,7 @@
 
 PORTNAME=	abcde
 PORTVERSION=	2.5.4
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	GOOGLE_CODE
 
@@ -19,11 +19,7 @@ RUN_DEPENDS=	cd-discid:${PORTSDIR}/audio/cd-discid \
 		oggenc:${PORTSDIR}/audio/vorbis-tools \
 		bash:${PORTSDIR}/shells/bash
 
-NO_STAGE=	yes
 NO_BUILD=	yes
-MAN1=		abcde.1 cddb-tool.1
-
-PLIST_FILES=	bin/abcde bin/cddb-tool etc/abcde.conf.sample
 
 OPTIONS_DEFINE=	CDDA2WAV DAGRAB EJECT FLAC MPP NORMALIZE REPLAYGAIN SPEEX
 
@@ -80,11 +76,12 @@ post-patch:
 		${WRKSRC}/abcde
 
 do-install:
-	${INSTALL_SCRIPT} ${WRKSRC}/abcde ${PREFIX}/bin
-	${INSTALL_SCRIPT} ${WRKSRC}/cddb-tool ${PREFIX}/bin
-	${INSTALL_DATA} ${WRKSRC}/abcde.conf ${PREFIX}/etc/abcde.conf.sample
-	${INSTALL_MAN} ${WRKSRC}/abcde.1 ${PREFIX}/man/man1
-	${INSTALL_MAN} ${WRKSRC}/cddb-tool.1 ${PREFIX}/man/man1
+	${INSTALL_SCRIPT} ${WRKSRC}/abcde ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_SCRIPT} ${WRKSRC}/cddb-tool ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_DATA} ${WRKSRC}/abcde.conf \
+		${STAGEDIR}${PREFIX}/etc/abcde.conf.sample
+	${INSTALL_MAN} ${WRKSRC}/abcde.1 ${STAGEDIR}${PREFIX}/man/man1
+	${INSTALL_MAN} ${WRKSRC}/cddb-tool.1 ${STAGEDIR}${PREFIX}/man/man1
 
 post-install:
 	@${ECHO_MSG} ""

@@ -12,7 +12,6 @@ MAINTAINER=	multimedia@FreeBSD.org
 COMMENT=	MPEG-2 and MPEG-4 AAC audio decoder
 
 USES=		gmake
-NO_STAGE=	yes
 USE_BZIP2=	yes
 USE_DOS2UNIX=	yes
 USE_AUTOTOOLS=	aclocal autoheader automake autoconf libtool
@@ -21,10 +20,6 @@ AUTOMAKE_ARGS=	--add-missing
 CPPFLAGS+=	-I${LOCALBASE}/include ${PTHREAD_CFLAGS}
 LDFLAGS+=	-L${LOCALBASE}/lib ${PTHREAD_LIBS}
 USE_LDCONFIG=	yes
-
-MAN1=		faad.1
-
-.include <bsd.port.pre.mk>
 
 post-extract:
 	@${LN} -sf faad.man ${WRKSRC}/frontend/faad.1
@@ -44,4 +39,4 @@ post-patch:
 pre-configure:
 	@cd ${WRKSRC}; ${SETENV} ${AUTOTOOLS_ENV} ${LIBTOOLIZE} --automake
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

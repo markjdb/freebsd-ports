@@ -31,7 +31,8 @@ DIST_SUBDIR=	zope
 USE_PYTHON=	-2.7
 USE_PYDISTUTILS=easy_install
 USE_ZIP=	yes
-#USE_ZOPE=	yes
+#USES=		zope
 
 NO_STAGE=	yes
+
 .include <bsd.port.mk>

@@ -203,6 +203,7 @@
     SUBDIR += drcreep
     SUBDIR += drm
     SUBDIR += dsnake
+    SUBDIR += duckmaze
     SUBDIR += duel
     SUBDIR += duke3d-data
     SUBDIR += dungeon
@@ -1054,6 +1055,7 @@
     SUBDIR += xfrisk
     SUBDIR += xgalaga
     SUBDIR += xgalaga++
+    SUBDIR += xgalaga-sdl
     SUBDIR += xglk
     SUBDIR += xgospel
     SUBDIR += xhexagons

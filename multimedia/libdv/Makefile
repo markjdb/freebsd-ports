@@ -3,7 +3,7 @@
 
 PORTNAME=	libdv
 PORTVERSION=	1.0.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	multimedia
 MASTER_SITES=	SF
 
@@ -12,8 +12,8 @@ COMMENT=	Quasar DV codec (libdv): software codec for DV video encoding format
 
 LICENSE=	LGPL21
 
-LIB_DEPENDS=	jpeg.11:${PORTSDIR}/graphics/jpeg \
-		popt.0:${PORTSDIR}/devel/popt
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpopt.so:${PORTSDIR}/devel/popt
 
 USES=	pkgconfig pathfix
 GNU_CONFIGURE=	yes
@@ -23,14 +23,11 @@ CPPFLAGS+=	-I${LOCALBASE}/include ${PTHREAD_CFLAGS}
 LDFLAGS+=	-L${LOCALBASE}/lib ${PTHREAD_LIBS}
 USE_LDCONFIG=	yes
 
-MAN1=	dubdv.1 dvconnect.1 encodedv.1
-
 PORTDOCS=	AUTHORS COPYING COPYRIGHT ChangeLog NEWS README \
 		README.dvconnect README.encoder TODO
 
 OPTIONS_DEFINE=	SDL DOCS
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 # XXX - work around compiler bug
@@ -61,9 +58,9 @@ post-patch:
 
 post-install:
 .if ${PORT_OPTIONS:MDOCS}
-	@${MKDIR} ${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for doc in ${PORTDOCS}
-	@${INSTALL_DATA} ${WRKSRC}/${doc} ${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/${doc} ${STAGEDIR}${DOCSDIR}
 .endfor
 .endif
 

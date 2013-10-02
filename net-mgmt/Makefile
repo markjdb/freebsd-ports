@@ -84,6 +84,7 @@
     SUBDIR += hawk
     SUBDIR += horde3-nic
     SUBDIR += icinga
+    SUBDIR += icli
     SUBDIR += icmpmonitor
     SUBDIR += icmpquery
     SUBDIR += ifgraph
@@ -262,6 +263,7 @@
     SUBDIR += pixilate
     SUBDIR += pmacct
     SUBDIR += pnp
+    SUBDIR += pnp-icinga
     SUBDIR += portmon
     SUBDIR += py-flowtools
     SUBDIR += py-ipcalc

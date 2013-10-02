@@ -14,7 +14,7 @@ RUN_DEPENDS=	\
 	p5-HTML-Parser>=0:${PORTSDIR}/www/p5-HTML-Parser \
 	convert:${PORTSDIR}/graphics/ImageMagick \
 	p5-Text-Iconv>=0:${PORTSDIR}/converters/p5-Text-Iconv \
-	p5-Text-Iconv>=0:${PORTSDIR}/textproc/p5-Text-Unaccent \
+	p5-Text-Unaccent>=0:${PORTSDIR}/textproc/p5-Text-Unaccent \
 	p5-TimeDate>=0:${PORTSDIR}/devel/p5-TimeDate \
 	p5-HTML-Clean>0:${PORTSDIR}/www/p5-HTML-Clean \
 	p5-HTML-Template>=0:${PORTSDIR}/www/p5-HTML-Template \
@@ -38,7 +38,6 @@ DOC_EXTS=	html sgml xml
 
 MAN1=	bins-edit-gui.1 bins.1 bins_edit.1
 
-NO_STAGE=	yes
 post-patch::
 # perl PREFIX safeness
 	@${FIND} ${WRKSRC} -type f | \
@@ -54,12 +53,12 @@ do-install:
 
 post-install:
 .for file in ${BINS_SCRIPTS}
-	@${INSTALL_SCRIPT} ${WRKSRC}/${file} ${PREFIX}/bin
+	@${INSTALL_SCRIPT} ${WRKSRC}/${file} ${STAGEDIR}${PREFIX}/bin
 .endfor
 .ifndef(NOPORTDOCS)
-	@${MKDIR} ${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for ext in ${DOC_EXTS}
-	@${INSTALL_DATA} ${WRKSRC}/doc/*.${ext} ${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/doc/*.${ext} ${STAGEDIR}${DOCSDIR}
 .endfor
 .endif
 
@@ -86,7 +85,7 @@ pre-everything::
 .if !defined(WITH_I18N)
 	@${ECHO_MSG} '===>'
 	@${ECHO_MSG} '===> Define WITH_I18N to enable localization support.'
-	@${ECHO_MSG} '===>   Support for languages other than english.'
+	@${ECHO_MSG} '===> Support for languages other than english.'
 .endif
 	@${ECHO_MSG} '===>'
 

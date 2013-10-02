@@ -3,7 +3,7 @@
 
 PORTNAME=	tcl
 PORTVERSION=	8.4.20
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	lang tcl
 MASTER_SITES=	${MASTER_SITE_TCLTK} \
@@ -23,6 +23,7 @@ TCLMAN_DESC=	Install Tcl function manpages
 
 WRKSRC=		${WRKDIR}/${PORTNAME}${PORTVERSION}/unix
 
+NO_STAGE=	yes
 ALL_TARGET=	all
 INSTALL_TARGET=	install install-libraries
 
@@ -44,7 +45,6 @@ MAKE_ENV=	SHORT_TCL_VER="${SHORT_TCL_VER}" \
 PLIST_SUB=	TCL_VER=${TCL_VER} \
 		SHORT_TCL_VER=${SHORT_TCL_VER}
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MTCLMAN}

@@ -14,38 +14,26 @@ SHAREOWN=		www
 SHAREGRP=		www
 
 OPTIONS_DEFINE=		APACHE
+OPTIONS_SUB=		yes
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MAPACHE}
 USE_APACHE_RUN=		22+
 CONFDIR=		${PREFIX}/${CONFDIR_REL}
 CONFDIR_REL=		${APACHEETCDIR}/Includes
-PLIST_SUB+=		NOAPACHE="" CONFDIR=${CONFDIR_REL}
+PLIST_SUB+=		CONFDIR=${CONFDIR_REL}
 
 CONF=			dojo.conf
 SUB_FILES+=		pkg-message ${CONF}
-.else
-PLIST_SUB+=		NOAPACHE="@comment "
 .endif
 
 do-install:
-	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${WWWDIR}
+	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR}
 
 .if ${PORT_OPTIONS:MAPACHE}
-post-install:
-	@if [ -d "${CONFDIR}" ]; then \
-	  ${CP} ${WRKDIR}/${CONF} ${CONFDIR}/dojo.conf; \
-	else \
-	  ${ECHO_MSG} "" ; \
-	  ${ECHO_MSG} "Please check your Apache 2.x installation -" ; \
-	  ${ECHO_MSG} "${CONFDIR} doesn't exist," ; \
-	  ${ECHO_MSG} "so I cannot install ${CONF} there!" ; \
-	  ${ECHO_MSG} "" ; \
-	  ${FALSE} ; \
-	fi
-	@${CAT} ${PKGMESSAGE}
+	@${MKDIR} ${STAGEDIR}${CONFDIR}
+	${CP} ${WRKDIR}/${CONF} ${STAGEDIR}${CONFDIR}/dojo.conf
 .endif
 
 .include <bsd.port.mk>

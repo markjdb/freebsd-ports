@@ -19,11 +19,6 @@ CMAKE_ARGS+=	-DWITHOUT_SERVER=1
 
 USE_LDCONFIG=	${PREFIX}/lib/mysql
 
-MAN1=		msql2mysql.1 mysql.1 mysql_config.1 mysql_find_rows.1 \
-		mysql_waitpid.1 mysqlaccess.1 mysqladmin.1 mysqlbinlog.1 \
-		mysqlcheck.1 mysqldump.1 mysqlimport.1 mysqlshow.1 mysqlslap.1
-
 CLIENT_ONLY=	yes
 
-NO_STAGE=	yes
 .include "${MASTERDIR}/Makefile"

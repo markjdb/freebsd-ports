@@ -3,6 +3,7 @@
 
 PORTNAME=	xorg-cf-files
 PORTVERSION=	1.0.5
+PORTREVISION=	1
 CATEGORIES=	x11
 
 MAINTAINER=	x11@FreeBSD.org
@@ -12,7 +13,6 @@ LICENSE=	MIT
 
 XORG_CAT=	util
 
-NO_STAGE=	yes
 post-patch:
 		@${REINPLACE_CMD} 's|\(define ExtraXaw[^ ]*\) [$$].*|\1 /**/|' \
 			${WRKSRC}/X11.tmpl
