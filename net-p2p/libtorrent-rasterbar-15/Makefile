@@ -10,8 +10,9 @@ PROJECTHOST=	libtorrent
 MAINTAINER=	ports@FreeBSD.org
 COMMENT?=	C++ library implementing a BitTorrent client
 
+DEPRECATED=	Unusable, development ceased
+EXPIRATION_DATE=2013-12-13
 BROKEN=		Does not build with recent boost
-
 
 CONFLICTS+=	libtorrent-rasterbar-0.1[46789].*
 

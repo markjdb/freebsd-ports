@@ -39,6 +39,7 @@
     SUBDIR += agg
     SUBDIR += alpng
     SUBDIR += amide
+    SUBDIR += ampasACES-container
     SUBDIR += ampasCTL
     SUBDIR += animorph
     SUBDIR += aoi
@@ -139,7 +140,6 @@
     SUBDIR += ecore-sdl
     SUBDIR += edje
     SUBDIR += edje_viewer
-    SUBDIR += electriceyes
     SUBDIR += electrix
     SUBDIR += enblend
     SUBDIR += ender
@@ -230,7 +230,6 @@
     SUBDIR += frei0r-plugins
     SUBDIR += frei0r-plugins-gavl
     SUBDIR += frei0r-plugins-opencv
-    SUBDIR += frontline
     SUBDIR += ftgl
     SUBDIR += fujiplay
     SUBDIR += fusefs-gphotofs
@@ -276,13 +275,13 @@
     SUBDIR += gimp-save-for-web
     SUBDIR += gimpfx-foundry
     SUBDIR += giram
-    SUBDIR += gkrellkam
     SUBDIR += gkrellkam2
     SUBDIR += gle
     SUBDIR += gle-graphics
     SUBDIR += glew
     SUBDIR += glexcess
     SUBDIR += glfw
+    SUBDIR += glfw-devel
     SUBDIR += glide3
     SUBDIR += glitz
     SUBDIR += gliv
@@ -292,8 +291,6 @@
     SUBDIR += gmt
     SUBDIR += gnash
     SUBDIR += gnofract4d
-    SUBDIR += gnomecanvas
-    SUBDIR += gnomeiconedit
     SUBDIR += gnustep-slideshow
     SUBDIR += gnustep-slideshowkit
     SUBDIR += gocr
@@ -548,7 +545,6 @@
     SUBDIR += libwmf
     SUBDIR += libwmf-nox11
     SUBDIR += libwpg
-    SUBDIR += libwpg01
     SUBDIR += linplasma
     SUBDIR += linux-XnViewMP
     SUBDIR += linux-adobesvg
@@ -870,6 +866,7 @@
     SUBDIR += py-stl
     SUBDIR += py-wand
     SUBDIR += py-webcolors
+    SUBDIR += py3-cairo
     SUBDIR += pygts
     SUBDIR += pymorph
     SUBDIR += pyro
@@ -910,7 +907,6 @@
     SUBDIR += ruby-imlib2
     SUBDIR += ruby-ming
     SUBDIR += ruby-opengl
-    SUBDIR += ruby-pgplot
     SUBDIR += ruby-rmagick
     SUBDIR += ruby-rsvg2
     SUBDIR += ruby-svg
@@ -923,6 +919,7 @@
     SUBDIR += rubygem-dragonfly
     SUBDIR += rubygem-exifr
     SUBDIR += rubygem-ezprint
+    SUBDIR += rubygem-fastimage
     SUBDIR += rubygem-gd2
     SUBDIR += rubygem-gdk_pixbuf2
     SUBDIR += rubygem-geokit
@@ -939,7 +936,6 @@
     SUBDIR += rubygem-rmagick
     SUBDIR += rubygem-rsvg2
     SUBDIR += rubygem-scruffy
-    SUBDIR += rubygem-turing
     SUBDIR += rubyphoto
     SUBDIR += s10sh
     SUBDIR += sage

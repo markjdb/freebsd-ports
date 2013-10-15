@@ -11,9 +11,9 @@ COMMENT=	A Branch-And-CUt System
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	Clp:${PORTSDIR}/math/coinmp
+LIB_DEPENDS=	libClp.so:${PORTSDIR}/math/coinmp
 
-USE_GCC=	4.4+
+USE_GCC=	yes
 USES=		gmake perl5
 USE_PERL5=	build
 USE_LDCONFIG=	yes
@@ -21,7 +21,6 @@ ALL_TARGET=	abacus
 
 WRKSRC=		${WRKDIR}
 
-NO_STAGE=	yes
 post-patch:
 	${REINPLACE_CMD} -e '\
 	    s|%%LOCALBASE%%|${LOCALBASE}|g; \
@@ -30,9 +29,9 @@ post-patch:
 	    ${WRKSRC}/Makefile
 
 do-install:
-	${INSTALL_DATA} ${WRKSRC}/lib/linux20-gcc44/libabacus-osi.a ${PREFIX}/lib/libabacus-osi.a
-	${INSTALL_DATA} ${WRKSRC}/lib/linux20-gcc44/libabacus-osi.so ${PREFIX}/lib/libabacus-osi.so.1
-	${LN} -sf libabacus-osi.so.1 ${PREFIX}/lib/libabacus-osi.so
-	cd ${WRKSRC}/Include && ${COPYTREE_SHARE} abacus ${PREFIX}/include
+	${INSTALL_DATA} ${WRKSRC}/lib/linux20-gcc44/libabacus-osi.a ${STAGEDIR}${PREFIX}/lib/libabacus-osi.a
+	${INSTALL_DATA} ${WRKSRC}/lib/linux20-gcc44/libabacus-osi.so ${STAGEDIR}${PREFIX}/lib/libabacus-osi.so.1
+	${LN} -sf libabacus-osi.so.1 ${STAGEDIR}${PREFIX}/lib/libabacus-osi.so
+	cd ${WRKSRC}/Include && ${COPYTREE_SHARE} abacus ${STAGEDIR}${PREFIX}/include
 
 .include <bsd.port.mk>

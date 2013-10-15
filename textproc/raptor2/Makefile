@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	raptor2
-PORTVERSION=	2.0.9
-PORTREVISION=	1
+PORTVERSION=	2.0.10
 CATEGORIES=	textproc
 MASTER_SITES=	http://download.librdf.org/source/ \
 		SF/librdf/${PORTNAME}/${PORTVERSION}
@@ -28,8 +27,4 @@ CONFIGURE_ARGS=	--with-xml2-config=${LOCALBASE}/bin/xml2-config \
 
 USE_LDCONFIG=	yes
 
-MAN1=		rapper.1
-MAN3=		libraptor2.3
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

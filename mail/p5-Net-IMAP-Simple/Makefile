@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Net-IMAP-Simple
-PORTVERSION=	1.2201
+PORTVERSION=	1.2203
 CATEGORIES=	mail perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:JETTERO
@@ -30,33 +30,20 @@ BUILD_DEPENDS=	p5-Class-Accessor>=0:${PORTSDIR}/devel/p5-Class-Accessor \
 		p5-UNIVERSAL-require>=0:${PORTSDIR}/devel/p5-UNIVERSAL-require
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
+OPTIONS_DEFINE=	SX
+OPTIONS_SUB=	yes
+SX_DESC=	Simple protocol extensions (use Parse::RecDescent)
+
 PORTSCOUT=	skipv:1.20271
 
 USES=		perl5
 USE_PERL5=	configure
 
-MAN3=		Net::IMAP::Simple.3 \
-		Net::IMAP::Simple::PipeSocket.3
-
-OPTIONS_DEFINE=	SX
-SX_DESC=	Simple protocol extensions (use Parse::RecDescent)
-
-NO_STAGE=	yes
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MSX}
-CONFIGURE_ENV+=	WITH_SX="true"
-.endif
+SX_BUILD_DEPENDS=	p5-Parse-RecDescent>=0:${PORTSDIR}/devel/p5-Parse-RecDescent
+SX_CONFIGURE_ENV=	WITH_SX=true
+SX_RUN_DEPENDS=		p5-Parse-RecDescent>=0:${PORTSDIR}/devel/p5-Parse-RecDescent
 
 .include <bsd.port.pre.mk>
-
-.if ${PORT_OPTIONS:MSX}
-PLIST_SUB+=	WITH_SX=""
-MAN3+=		Net::IMAP::SimpleX.3
-RUN_DEPENDS+=	p5-Parse-RecDescent>=0:${PORTSDIR}/devel/p5-Parse-RecDescent
-.else
-PLIST_SUB+=	WITH_SX="@comment "
-.endif
 
 .if ${PERL_LEVEL} < 501400
 TEST_DEPENDS+=	p5-Test-Simple>=0.98:${PORTSDIR}/devel/p5-Test-Simple

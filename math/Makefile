@@ -44,6 +44,7 @@
     SUBDIR += R-cran-xts
     SUBDIR += R-cran-zoo
     SUBDIR += aamath
+    SUBDIR += abacus
     SUBDIR += abakus
     SUBDIR += abs
     SUBDIR += add
@@ -81,6 +82,7 @@
     SUBDIR += chaco
     SUBDIR += chryzodus
     SUBDIR += clarence
+    SUBDIR += clasp
     SUBDIR += clipper
     SUBDIR += cln
     SUBDIR += cloog
@@ -231,7 +233,6 @@
     SUBDIR += libtommath
     SUBDIR += libtsnnls
     SUBDIR += linpack
-    SUBDIR += linux-relview
     SUBDIR += lll_spect
     SUBDIR += lp_solve
     SUBDIR += lrng
@@ -241,7 +242,6 @@
     SUBDIR += mathomatic
     SUBDIR += matio
     SUBDIR += matlab-R2012a-installer
-    SUBDIR += matrices
     SUBDIR += matrix
     SUBDIR += maxima
     SUBDIR += mbasecalc
@@ -249,6 +249,7 @@
     SUBDIR += metis-edf
     SUBDIR += metis4
     SUBDIR += mingw32-libgmp
+    SUBDIR += minisat
     SUBDIR += miracl
     SUBDIR += moo
     SUBDIR += mpc
@@ -359,6 +360,7 @@
     SUBDIR += octave-forge-video
     SUBDIR += octave-forge-xraylib
     SUBDIR += octave-forge-zenity
+    SUBDIR += ogdf
     SUBDIR += oleo
     SUBDIR += open-axiom
     SUBDIR += openblas
@@ -641,13 +643,6 @@
     SUBDIR += units
     SUBDIR += unixstat
     SUBDIR += unuran
-    SUBDIR += vtk
-    SUBDIR += vtk-data
-    SUBDIR += vtk-examples
-    SUBDIR += vtk-headers
-    SUBDIR += vtk-java
-    SUBDIR += vtk-python
-    SUBDIR += vtk-tcl
     SUBDIR += vtk5
     SUBDIR += vtk5-data
     SUBDIR += wcalc

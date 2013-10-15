@@ -3,7 +3,7 @@
 
 PORTNAME=	gnustep-app
 PORTVERSION=	2.0.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	x11 gnustep
 MASTER_SITES=	# empty
 DISTFILES=	# empty
@@ -47,7 +47,6 @@ USE_GNUSTEP_SYSTEM_APPS+=	\
 	SystemPreferences:deskutils/systempreferences \
 	WrapperFactory:deskutils/gnustep-wrapper \
 	GRubik:games/grubik \
-	ClipBook:deskutils/gworkspace-clipbook \
 	MDFinder:deskutils/gworkspace-gwmetadata \
 
 USE_GNUSTEP_LOCAL_APPS+=	\

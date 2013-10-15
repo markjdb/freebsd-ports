@@ -158,7 +158,6 @@
     SUBDIR += gensig
     SUBDIR += getlive
     SUBDIR += getmail
-    SUBDIR += gkrellmmailwatch
     SUBDIR += gkrellmmailwatch2
     SUBDIR += gld
     SUBDIR += gmail-notify
@@ -258,7 +257,6 @@
     SUBDIR += mairix
     SUBDIR += majordomo
     SUBDIR += masqmail
-    SUBDIR += mavbiff
     SUBDIR += mb2md
     SUBDIR += mbox2imap
     SUBDIR += mbox2mdir
@@ -288,7 +286,6 @@
     SUBDIR += ml
     SUBDIR += mlmmj
     SUBDIR += mls
-    SUBDIR += mmc
     SUBDIR += mmr
     SUBDIR += movemail
     SUBDIR += mpop

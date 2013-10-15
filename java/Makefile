@@ -85,7 +85,6 @@
     SUBDIR += javamail
     SUBDIR += javavmwrapper
     SUBDIR += jaxen
-    SUBDIR += jboss2
     SUBDIR += jboss5
     SUBDIR += jboss7
     SUBDIR += jboss71
@@ -123,8 +122,6 @@
     SUBDIR += mx4j
     SUBDIR += netbeans
     SUBDIR += netbeans-devel
-    SUBDIR += netbeans55
-    SUBDIR += netbeans61
     SUBDIR += netcomponents
     SUBDIR += netrexx
     SUBDIR += netty

@@ -48,7 +48,6 @@
     SUBDIR += gngeo
     SUBDIR += gns3
     SUBDIR += gnuboy
-    SUBDIR += gsnes9x
     SUBDIR += gxemul
     SUBDIR += gxmame
     SUBDIR += hatari
@@ -71,10 +70,8 @@
     SUBDIR += lib765
     SUBDIR += libdsk
     SUBDIR += libspectrum
-    SUBDIR += linux-ePSXe
     SUBDIR += linux-geepee32
     SUBDIR += linux-peops-softgpu
-    SUBDIR += linux-peops-spu
     SUBDIR += linux-pete-mesagpu
     SUBDIR += linux-pete-xgl2gpu
     SUBDIR += linux-systemsimcell
@@ -114,6 +111,7 @@
     SUBDIR += mupen64plus-ui-console
     SUBDIR += mupen64plus-video-arachnoid
     SUBDIR += mupen64plus-video-glide64
+    SUBDIR += mupen64plus-video-glide64mk2
     SUBDIR += mupen64plus-video-rice
     SUBDIR += mupen64plus-video-z64
     SUBDIR += nonpareil
@@ -171,7 +169,6 @@
     SUBDIR += virtualbox-ose-kmod-legacy
     SUBDIR += virtualbox-ose-legacy
     SUBDIR += visualboyadvance-m
-    SUBDIR += visualos
     SUBDIR += vmips
     SUBDIR += vmsbackup
     SUBDIR += vmw

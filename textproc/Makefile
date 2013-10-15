@@ -225,7 +225,6 @@
     SUBDIR += gu-aspell
     SUBDIR += gutenmark
     SUBDIR += gv-aspell
-    SUBDIR += gxmlviewer
     SUBDIR += heirloom-doctools
     SUBDIR += hevea
     SUBDIR += hgrep
@@ -389,11 +388,9 @@
     SUBDIR += libuninameslist
     SUBDIR += libvisio
     SUBDIR += libwpd
-    SUBDIR += libwpd08
     SUBDIR += libwps
     SUBDIR += libxdiff
     SUBDIR += libxml
-    SUBDIR += libxml++
     SUBDIR += libxml++26
     SUBDIR += libxml++26-reference
     SUBDIR += libxml2
@@ -405,7 +402,6 @@
     SUBDIR += link-grammar
     SUBDIR += linux-f10-aspell
     SUBDIR += linux-f10-expat
-    SUBDIR += linux-f10-libxml
     SUBDIR += linux-f10-libxml2
     SUBDIR += linux-f10-scim-gtk
     SUBDIR += linux-f10-scim-libs
@@ -1266,10 +1262,8 @@
     SUBDIR += rtfx
     SUBDIR += rubber
     SUBDIR += ruby-amatch
-    SUBDIR += ruby-amrita
     SUBDIR += ruby-deplate
     SUBDIR += ruby-diff
-    SUBDIR += ruby-erbscan
     SUBDIR += ruby-escape
     SUBDIR += ruby-format
     SUBDIR += ruby-hikidoc
@@ -1279,7 +1273,6 @@
     SUBDIR += ruby-htmlsplit
     SUBDIR += ruby-htree
     SUBDIR += ruby-liquid
-    SUBDIR += ruby-mwdom
     SUBDIR += ruby-rd-mode.el
     SUBDIR += ruby-rdtool
     SUBDIR += ruby-rss
@@ -1289,8 +1282,6 @@
     SUBDIR += ruby-xmlconfigfile
     SUBDIR += ruby-xmlparser
     SUBDIR += ruby-xmlscan
-    SUBDIR += ruby-xmlscan-old
-    SUBDIR += ruby-xslt
     SUBDIR += rubygem-albino
     SUBDIR += rubygem-augeas
     SUBDIR += rubygem-charlock_holmes
@@ -1306,11 +1297,9 @@
     SUBDIR += rubygem-fast_xs
     SUBDIR += rubygem-fast_xs073
     SUBDIR += rubygem-ferret
-    SUBDIR += rubygem-formosa
     SUBDIR += rubygem-heredoc_unindent
     SUBDIR += rubygem-hikidoc
     SUBDIR += rubygem-htmlentities
-    SUBDIR += rubygem-htmltools
     SUBDIR += rubygem-ini
     SUBDIR += rubygem-itextomml
     SUBDIR += rubygem-jsmin

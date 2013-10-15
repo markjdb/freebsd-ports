@@ -87,6 +87,10 @@ DEV_ERROR+=	"USE_ZOPE=yes is unsupported, please use USES=zope instead"
 DEV_WARNING+=	"USE_GNOME=gnomehack is deprecated, please use USES=pathfix"
 .endif
 
+.if defined(USE_GNOME) && ${USE_GNOME:Mdesktopfileutils}
+DEV_WARNING+=	"USE_GNOME=desktopfileutils is deprecated, please use USES=desktop-file-utils"
+.endif
+
 #.if defined(USE_GNOME) && ${USE_GNOME:Mltverhack*}
 #DEV_WARNING+=	"USE_GNOME=ltverhack is now useless LIB_DEPENDS can properly handle all kind of library version"
 #.endif
@@ -98,6 +102,10 @@ DEV_WARNING+=	"Please use the new format for LIB_DEPENDS, see handbook for detai
 .if defined(USE_TCL) || defined(USE_TCL_BUILD) || defined(USE_TCL_RUN) || defined(USE_TCL_WRAPPER) || \
    defined(USE_TK)  || defined(USE_TK_BUILD)  || defined(USE_TK_RUN)  || defined(USE_TK_WRAPPER)
 DEV_WARNING+=	"USE_TCL and USE_TK are deprecated, please use USES=tcl or USES=tk"
+.endif
+
+.if defined(USE_SCONS)
+DEV_WARNING+=	"USE_SCONS=yes is deprecated, please use USES=scons"
 .endif
 
 .if !defined(NO_STAGE)

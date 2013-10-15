@@ -3,8 +3,9 @@
 
 PORTNAME=	ffmpeg
 PORTVERSION=	0.7.15
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=	1
+PORTREVISION=	2
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	http://ffmpeg.org/releases/
 
@@ -355,7 +356,7 @@ CONFIGURE_ARGS+=	--disable-libvpx
 
 # x264
 .if ${PORT_OPTIONS:MX264}
-LIB_DEPENDS+=	x264.125:${PORTSDIR}/multimedia/x264
+LIB_DEPENDS+=	x264:${PORTSDIR}/multimedia/x264
 CONFIGURE_ARGS+=	--enable-libx264
 .else
 CONFIGURE_ARGS+=	--disable-libx264
@@ -421,7 +422,7 @@ post-install:
 .endif
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for FILE in ${DOC_FILES}
-	${INSTALL_DATA} ${WRKSRC}/${FILE} ${STGAEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/${FILE} ${STAGEDIR}${DOCSDIR}
 .endfor
 .for FILE in ${DOC_DOCFILES}
 	${INSTALL_DATA} ${WRKSRC}/doc/${FILE} ${STAGEDIR}${DOCSDIR}

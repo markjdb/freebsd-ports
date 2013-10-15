@@ -88,7 +88,6 @@
     SUBDIR += gtweakui
     SUBDIR += gucharmap
     SUBDIR += gworkspace
-    SUBDIR += gworkspace-clipbook
     SUBDIR += gworkspace-gwmetadata
     SUBDIR += gxmessage
     SUBDIR += gxneur
@@ -139,10 +138,12 @@
     SUBDIR += ljclive
     SUBDIR += ljit
     SUBDIR += logjam
+    SUBDIR += lxshortcut
     SUBDIR += mcal
     SUBDIR += mdh
     SUBDIR += mencal
     SUBDIR += menumaker
+    SUBDIR += mirall
     SUBDIR += moregroupware
     SUBDIR += mrundlg
     SUBDIR += msynctool

@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	homebank
-PORTVERSION=	4.5.3
+PORTVERSION=	4.5.4
+PORTREVISION=	1
 CATEGORIES=	finance
 MASTER_SITES=	http://homebank.free.fr/public/
 
@@ -29,16 +30,11 @@ OPTIONS_DEFAULT=OFX
 OFX_LIB_DEPENDS=	libofx.so:${PORTSDIR}/finance/libofx
 OFX_CONFIGURE_OFF=	--without-ofx
 
-NO_STAGE=	yes
-.include <bsd.port.options.mk>
-
 post-extract:
 	@${CHMOD} ${BINMODE} ${WRKSRC}/install-sh
 
 post-install:
-.if ${PORT_OPTIONS:MDOCS}
-	@${MKDIR} ${DOCSDIR}
-	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${DOCSDIR}
-.endif
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

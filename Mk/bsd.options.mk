@@ -93,13 +93,17 @@
 # ${opt}_CMAKE_OFF			When option is disabled, it will add its content to
 #							the CMAKE_ARGS.
 #
+# ${opt}_USE=	FOO=bar		When option is enabled, it will  enable
+#							USE_FOO+= bar
+#
 # For each of CFLAGS CPPFLAGS CXXFLAGS LDFLAGS CONFIGURE_ENV MAKE_ARGS MAKE_ENV
-# USES DISTFILES PLIST_FILES PLIST_DIRS PLIST_DIRSTRY, defining
-# ${opt}_${variable} will add it to the actual variable when the option is enabled.
+# ALL_TARGET INSTALL_TARGET USES DISTFILES PLIST_FILES PLIST_DIRS PLIST_DIRSTRY
+# EXTRA_PATCHES PATCHFILES PATCH_SITES CATEGORIES, defining ${opt}_${variable}
+# will add its content to the actual variable when the option is enabled.
 #
 # For each of the depends target PKG EXTRACT PATCH FETCH BUILD LIB RUN,
-# defining ${opt}_${deptype}_DEPENDS will add it to the actual dependency when
-# the option is enabled.
+# defining ${opt}_${deptype}_DEPENDS will add its content to the actual
+# dependency when the option is enabled.
 
 ##
 # Set all the options available for the ports, beginning with the
@@ -366,7 +370,7 @@ WITH_${opt}:=  true
 .endfor
 ###
 
-.for opt in ${COMPLETE_OPTIONS_LIST}
+.for opt in ${COMPLETE_OPTIONS_LIST} ${OPTIONS_SLAVE}
 # PLIST_SUB
 PLIST_SUB?=
 .  if defined(OPTIONS_SUB)
@@ -380,6 +384,12 @@ PLIST_SUB:=	${PLIST_SUB} ${opt}="@comment "
 .  endif
 
 .  if ${PORT_OPTIONS:M${opt}}
+.    if defined(${opt}_USE)
+.      for option in ${${opt}_USE}
+_u=		${option:C/=.*//g}
+USE_${_u:U}+=	${option:C/.*=//g}
+.      endfor
+.    endif
 .    if defined(${opt}_CONFIGURE_ENABLE)
 CONFIGURE_ARGS+=	--enable-${${opt}_CONFIGURE_ENABLE}
 .    endif
@@ -393,7 +403,8 @@ CONFIGURE_ARGS+=	${${opt}_CONFIGURE_ON}
 CMAKE_ARGS+=	${${opt}_CMAKE_ON}
 .    endif
 .    for flags in CFLAGS CPPFLAGS CXXFLAGS LDFLAGS CONFIGURE_ENV MAKE_ARGS MAKE_ENV \
-                  USES DISTFILES PLIST_FILES PLIST_DIRS PLIST_DIRSTRY
+                  ALL_TARGET INSTALL_TARGET USES DISTFILES PLIST_FILES PLIST_DIRS PLIST_DIRSTRY \
+                  EXTRA_PATCHES PATCHFILES PATCH_SITES CATEGORIES
 .      if defined(${opt}_${flags})
 ${flags}+=	${${opt}_${flags}}
 .      endif

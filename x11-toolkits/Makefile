@@ -10,7 +10,6 @@
     SUBDIR += blt
     SUBDIR += bwidget
     SUBDIR += c++-gtk-utils
-    SUBDIR += easygtk
     SUBDIR += eel
     SUBDIR += elementary
     SUBDIR += fl_editor
@@ -70,7 +69,6 @@
     SUBDIR += gtksourceview3-reference
     SUBDIR += gtksourceviewmm3
     SUBDIR += gtkunique
-    SUBDIR += guile-gtk
     SUBDIR += hippo-canvas
     SUBDIR += hs-GLURaw
     SUBDIR += hs-GLUT
@@ -231,7 +229,6 @@
     SUBDIR += ruby-gtksourceview2
     SUBDIR += ruby-pango
     SUBDIR += ruby-poppler
-    SUBDIR += ruby-tk
     SUBDIR += ruby-vte
     SUBDIR += rubygem-gdk3
     SUBDIR += rubygem-gtk2

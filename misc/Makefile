@@ -274,7 +274,6 @@
     SUBDIR += metromap
     SUBDIR += mime-support
     SUBDIR += mirmon
-    SUBDIR += misterproper
     SUBDIR += mmv
     SUBDIR += mshell
     SUBDIR += mtail
@@ -402,7 +401,6 @@
     SUBDIR += ruby-progressbar
     SUBDIR += ruby-vpim
     SUBDIR += rubygem-mime-types
-    SUBDIR += rubygem-ohcount
     SUBDIR += rubygem-rabbit
     SUBDIR += rubygem-vpim
     SUBDIR += saaghar

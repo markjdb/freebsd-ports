@@ -3,7 +3,7 @@
 
 PORTNAME=	postgresql
 PORTREVISION=	0
-PKGNAMESUFFIX=	-client
+PKGNAMESUFFIX?=	${DISTVERSION:R:S/.//}${COMPONENT}
 
 COMMENT=	PostgreSQL database (client)
 
@@ -15,6 +15,7 @@ BUILD_DIRS=	config src/include src/interfaces src/port \
 INSTALL_DIRS=	${BUILD_DIRS}
 
 CLIENT_ONLY=	yes
+COMPONENT=	-client
 USE_LDCONFIG=	yes
 USES=		pkgconfig
 

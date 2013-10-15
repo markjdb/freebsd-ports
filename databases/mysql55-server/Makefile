@@ -7,7 +7,7 @@ PORTREVISION?=	0
 CATEGORIES=	databases ipv6
 MASTER_SITES=	${MASTER_SITE_MYSQL}
 MASTER_SITE_SUBDIR=	MySQL-5.5
-PKGNAMESUFFIX?=	-server
+PKGNAMESUFFIX?=	55-server
 
 MAINTAINER=	ale@FreeBSD.org
 COMMENT?=	Multithreaded SQL database (server)
@@ -15,7 +15,7 @@ COMMENT?=	Multithreaded SQL database (server)
 LICENSE=	GPLv2
 
 SLAVEDIRS=	databases/mysql55-client
-USES=		cmake
+USES=		cmake shebangfix
 NO_OPTIONS_SORT=yes
 
 OPTIONS_DEFINE=	SSL FASTMTX
@@ -42,6 +42,8 @@ CMAKE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql" \
 		-DWITH_LIBEDIT=0 \
 		-DWITH_LIBWRAP=1
 
+SHEBANG_FILES=	scripts/*.pl* scripts/*.sh
+
 .ifdef USE_MYSQL
 .error You have `USE_MYSQL' variable defined either in environment or in make(1) arguments. Please undefine and try again.
 .endif
@@ -61,9 +63,7 @@ CMAKE_ARGS+=	-DWITH_FAST_MUTEXES=1
 USE_MYSQL=	yes
 WANT_MYSQL_VER=	55
 
-LATEST_LINK=	mysql55-server
-
-CONFLICTS_INSTALL=	mysql-server-[34].* mysql-server-5.[0-46-9].* mariadb-server-5.* percona-server-5.*
+CONFLICTS_INSTALL=	mysql5.[0-46-9]-server-* mysql[0-46-9][0-9]-server-* mariadb[0-9][0-9]-server-* percona[0-9][0-9]-server-*
 
 USE_RC_SUBR=	mysql-server
 

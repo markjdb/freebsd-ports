@@ -2,12 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	vcalendar
-PORTREVISION=	0
+PORTREVISION=	2
 
 COMMENT=	vCalendar plugin for Claws Mail
 
+EXTRA_PATCHES=	${FILESDIR}/patch-src__plugins__vcalendar__vcal_meeting_gtk.c
+
 CLAWS_PLUGINS_BUILD=	vcalendar
 
-NO_STAGE=	yes
 .include "../claws-mail/Makefile.claws"
 .include <bsd.port.mk>

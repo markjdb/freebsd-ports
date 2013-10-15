@@ -6,6 +6,10 @@ STAGEDIR?=	${WRKDIR}/stage
 DESTDIRNAME?=	DESTDIR
 
 MAKE_ARGS+=	${DESTDIRNAME}=${STAGEDIR}
+QA_ENV+=		STAGEDIR=${STAGEDIR} PREFIX=${PREFIX} \
+		LOCALBASE=${LOCALBASE} \
+		USESDESKTOPFILEUTILS=${USES:Mdesktop-file-utils} \
+		USESSHAREDMIMEINFO=${USES:Mshared-mime-info}
 
 .if !target(stage-dir)
 stage-dir:
@@ -72,10 +76,11 @@ add-plist-info:
 
 .if !target(makeplist)
 makeplist: stage
-	@{ ${ECHO_CMD} "#mtree"; ${CAT} ${MTREE_FILE}; } | ${TAR} tf - | \
+	@if [ -n "${MTREE_FILE}" ]; then \
+	{ ${ECHO_CMD} "#mtree"; ${CAT} ${MTREE_FILE}; } | ${TAR} tf - | \
 		awk '{ sub(/^\.$$/, "", $$1); \
-		if ($$1 == "") print "${PREFIX}"; else print "${PREFIX}/"$$1; }' \
-		> ${WRKDIR}/.mtree
+		if ($$1 == "") print "${PREFIX}"; else print "${PREFIX}/"$$1; }' ; \
+	fi > ${WRKDIR}/.mtree
 	@a=${PREFIX}; \
 		while :; do \
 			a=$${a%/*} ; \
@@ -119,10 +124,11 @@ check-orphans: stage
 		*) ${ECHO_CMD} $$cwd/$$line ;; \
 		esac ; \
 	done < ${TMPPLIST} > ${WRKDIR}/.expanded-plist
-	@{ ${ECHO_CMD} "#mtree"; ${CAT} ${MTREE_FILE}; } | ${TAR} tf - | \
+	@if [ -n "${MTREE_FILE}" ]; then \
+		{ ${ECHO_CMD} "#mtree"; ${CAT} ${MTREE_FILE}; } | ${TAR} tf - | \
 		awk '{ sub(/^\.$$/, "", $$1); \
-		if ($$1 == "") print "${PREFIX}"; else print "${PREFIX}/"$$1; }' \
-		> ${WRKDIR}/.mtree
+		if ($$1 == "") print "${PREFIX}"; else print "${PREFIX}/"$$1; }' ; \
+	fi > ${WRKDIR}/.mtree
 	@a=${PREFIX}; \
 		while :; do \
 			a=$${a%/*} ; \
@@ -150,4 +156,10 @@ check-orphans: stage
 		-e "s,\(.*\)${EXAMPLESDIR},%%PORTEXAMPLES%%\1%%EXAMPLESDIR%%,g" \
 		-e "s,${DATADIR},%%DATADIR%%,g" \
 		-e "s,${PREFIX}/,,g" | ${GREP} -v "^@dirrmtry share/licenses" || ${TRUE}
+.endif
+
+.if !target(stage-qa)
+stage-qa:
+	@${ECHO_CMD} "====> Running Q/A tests" ; \
+	${SETENV} ${QA_ENV} ${SH} ${SCRIPTSDIR}/qa.sh
 .endif

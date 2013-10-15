@@ -91,8 +91,8 @@
     SUBDIR += bomber
     SUBDIR += bomberclone
     SUBDIR += bomberinstinct
-    SUBDIR += bombermaze
     SUBDIR += bombherman
+    SUBDIR += bombz
     SUBDIR += bomns
     SUBDIR += boswars
     SUBDIR += bovo
@@ -316,7 +316,6 @@
     SUBDIR += glchess
     SUBDIR += glest
     SUBDIR += glest-data
-    SUBDIR += glife
     SUBDIR += glightoff
     SUBDIR += glmaze
     SUBDIR += glob2
@@ -327,7 +326,6 @@
     SUBDIR += gmines
     SUBDIR += gnake
     SUBDIR += gnarr
-    SUBDIR += gnmm
     SUBDIR += gno3dtet
     SUBDIR += gnome-games
     SUBDIR += gnome-games-extra-data
@@ -335,7 +333,6 @@
     SUBDIR += gnomebreakout
     SUBDIR += gnomechess
     SUBDIR += gnomekiss
-    SUBDIR += gnomermind
     SUBDIR += gnomesudoku
     SUBDIR += gnono
     SUBDIR += gnubg
@@ -391,6 +388,7 @@
     SUBDIR += hlstats
     SUBDIR += hlstatsx
     SUBDIR += hohlin
+    SUBDIR += hoichess
     SUBDIR += holotz-castle
     SUBDIR += icbm3d
     SUBDIR += icebreaker
@@ -485,6 +483,7 @@
     SUBDIR += lbreakout
     SUBDIR += lbreakout2
     SUBDIR += ldmud
+    SUBDIR += legend-of-edgar
     SUBDIR += legends
     SUBDIR += legesmotus
     SUBDIR += lexter
@@ -553,10 +552,12 @@
     SUBDIR += lmpc
     SUBDIR += lolcat
     SUBDIR += lordsawar
+    SUBDIR += lostfeathers
     SUBDIR += lpairs
     SUBDIR += lskat
     SUBDIR += ltris
     SUBDIR += lucidlife
+    SUBDIR += lugaru
     SUBDIR += luola
     SUBDIR += lwjgl
     SUBDIR += macopix
@@ -612,10 +613,8 @@
     SUBDIR += nelly
     SUBDIR += nethack32
     SUBDIR += nethack33
-    SUBDIR += nethack33-gnome
     SUBDIR += nethack33-nox11
     SUBDIR += nethack34
-    SUBDIR += nethack34-gnome
     SUBDIR += nethack34-nox11
     SUBDIR += netherearth
     SUBDIR += netpanzer
@@ -831,7 +830,6 @@
     SUBDIR += rt2-demo
     SUBDIR += rtb
     SUBDIR += rubix
-    SUBDIR += ruby-exmars
     SUBDIR += sampsvr
     SUBDIR += sarien
     SUBDIR += sauerbraten
@@ -878,6 +876,7 @@
     SUBDIR += sol
     SUBDIR += solarconquest
     SUBDIR += solarwolf
+    SUBDIR += solarus
     SUBDIR += sopwith
     SUBDIR += spacejunk
     SUBDIR += speak
@@ -1008,6 +1007,7 @@
     SUBDIR += whichwayisup
     SUBDIR += widelands
     SUBDIR += windstille
+    SUBDIR += wizznic
     SUBDIR += wmeyes
     SUBDIR += wmfortune
     SUBDIR += wmminichess

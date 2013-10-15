@@ -24,7 +24,7 @@ post-patch:
 do-build:
 	${CC} ${CFLAGS} -DDATADIR="\"${DATADIR}\"" \
 		`${SDL_CONFIG} --cflags --libs` \
-		-I${LOCALBASE}/include -L${LOCALBASE}/lib -lGL -lGLU \
+		-I${LOCALBASE}/include -L${LOCALBASE}/lib -lGL -lGLU -lm \
 		-o ${WRKSRC}/apool ${WRKSRC}/*.c
 
 do-install:

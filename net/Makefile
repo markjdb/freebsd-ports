@@ -113,7 +113,6 @@
     SUBDIR += dictd
     SUBDIR += dictd-database
     SUBDIR += dimes
-    SUBDIR += diradmin
     SUBDIR += dosdetector
     SUBDIR += drawterm
     SUBDIR += dropbox-api-command
@@ -146,6 +145,7 @@
     SUBDIR += freenx
     SUBDIR += freeradius-client
     SUBDIR += freeradius2
+    SUBDIR += freeradius3
     SUBDIR += freerdp
     SUBDIR += freeswitch
     SUBDIR += freeswitch-core
@@ -175,7 +175,6 @@
     SUBDIR += gnome-mud
     SUBDIR += gnome-netstatus
     SUBDIR += gnome-nettool
-    SUBDIR += gnome-vnc
     SUBDIR += gnu-dico
     SUBDIR += gnu-radius
     SUBDIR += go.net
@@ -197,6 +196,7 @@
     SUBDIR += gstreamer1-plugins-libmms
     SUBDIR += gtic
     SUBDIR += gtk-vnc
+    SUBDIR += gtknetcat
     SUBDIR += gupnp
     SUBDIR += gupnp-av
     SUBDIR += gupnp-igd
@@ -429,7 +429,6 @@
     SUBDIR += ng_daphne
     SUBDIR += ng_mikrotik_eoip
     SUBDIR += ngrep
-    SUBDIR += ngrep-lib
     SUBDIR += nifmon
     SUBDIR += nload
     SUBDIR += nocatsplash

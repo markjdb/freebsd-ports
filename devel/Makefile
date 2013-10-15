@@ -134,7 +134,6 @@
     SUBDIR += boehm-gc
     SUBDIR += boehm-gc-redirect
     SUBDIR += boehm-gc-threaded
-    SUBDIR += bonobo
     SUBDIR += boost-all
     SUBDIR += boost-docs
     SUBDIR += boost-jam
@@ -410,6 +409,7 @@
     SUBDIR += eric4
     SUBDIR += eris
     SUBDIR += esdl
+    SUBDIR += etcd
     SUBDIR += etl
     SUBDIR += eventxx
     SUBDIR += evolution-gconf-tools
@@ -489,7 +489,6 @@
     SUBDIR += gaul
     SUBDIR += gazpacho
     SUBDIR += gccmakedep
-    SUBDIR += gconf
     SUBDIR += gconf2
     SUBDIR += gconf2-reference
     SUBDIR += gconfmm
@@ -851,7 +850,6 @@
     SUBDIR += hub
     SUBDIR += hwloc
     SUBDIR += hyena
-    SUBDIR += hypersrc
     SUBDIR += ice
     SUBDIR += icmake
     SUBDIR += icu
@@ -1005,7 +1003,6 @@
     SUBDIR += libghthash
     SUBDIR += libgii
     SUBDIR += libgit2
-    SUBDIR += libglade
     SUBDIR += libglade-java
     SUBDIR += libglade2
     SUBDIR += libglade2-reference
@@ -1058,6 +1055,7 @@
     SUBDIR += liboil
     SUBDIR += libol
     SUBDIR += libole2
+    SUBDIR += libolecf
     SUBDIR += liboobs
     SUBDIR += liboop
     SUBDIR += libopendaap
@@ -1142,7 +1140,6 @@
     SUBDIR += linux-f10-allegro
     SUBDIR += linux-f10-dbus-glib
     SUBDIR += linux-f10-dbus-libs
-    SUBDIR += linux-f10-libglade
     SUBDIR += linux-f10-libglade2
     SUBDIR += linux-f10-libsigc++20
     SUBDIR += linux-f10-ncurses-base
@@ -1290,7 +1287,6 @@
     SUBDIR += npth
     SUBDIR += nspr
     SUBDIR += nxt-python
-    SUBDIR += oaf
     SUBDIR += obby
     SUBDIR += obfuscatejs
     SUBDIR += ocaml-annexlib
@@ -1907,6 +1903,7 @@
     SUBDIR += p5-Dist-Joseki
     SUBDIR += p5-Dist-Metadata
     SUBDIR += p5-Dist-Zilla
+    SUBDIR += p5-Doxygen-Filter-Perl
     SUBDIR += p5-DynaLoader-Functions
     SUBDIR += p5-EV
     SUBDIR += p5-Env-PS1
@@ -3002,7 +2999,6 @@
     SUBDIR += p5-constant-def
     SUBDIR += p5-constant-lexical
     SUBDIR += p5-cpan-listchanges
-    SUBDIR += p5-doxygenfilter
     SUBDIR += p5-enum
     SUBDIR += p5-ex-lib
     SUBDIR += p5-experimental
@@ -3274,7 +3270,6 @@
     SUBDIR += performance
     SUBDIR += perlconsole
     SUBDIR += perltidy
-    SUBDIR += pharmacy
     SUBDIR += php-java-bridge
     SUBDIR += php-libawl
     SUBDIR += php-xdebug
@@ -3347,7 +3342,6 @@
     SUBDIR += poco-ssl
     SUBDIR += popt
     SUBDIR += poslib
-    SUBDIR += ppl
     SUBDIR += premake
     SUBDIR += premake4
     SUBDIR += preps-gui
@@ -3576,7 +3570,6 @@
     SUBDIR += py-icalendar
     SUBDIR += py-ice
     SUBDIR += py-icu
-    SUBDIR += py-importlib
     SUBDIR += py-iniparse
     SUBDIR += py-initgroups
     SUBDIR += py-instant
@@ -3660,7 +3653,6 @@
     SUBDIR += py-protobuf
     SUBDIR += py-protocols
     SUBDIR += py-protocols-devel
-    SUBDIR += py-psyco
     SUBDIR += py-ptrace
     SUBDIR += py-pudb
     SUBDIR += py-px
@@ -3949,6 +3941,7 @@
     SUBDIR += rbtools
     SUBDIR += rclint
     SUBDIR += rcs
+    SUBDIR += rcs57
     SUBDIR += re2
     SUBDIR += re2c
     SUBDIR += readline
@@ -3988,43 +3981,32 @@
     SUBDIR += ruby-date2
     SUBDIR += ruby-dialogs
     SUBDIR += ruby-event-loop
-    SUBDIR += ruby-fam
     SUBDIR += ruby-fastri
     SUBDIR += ruby-flexmock
-    SUBDIR += ruby-gemfinder
     SUBDIR += ruby-gems
-    SUBDIR += ruby-gettext
     SUBDIR += ruby-gio2
     SUBDIR += ruby-glib2
     SUBDIR += ruby-intl
     SUBDIR += ruby-io-reactor
-    SUBDIR += ruby-jttui
     SUBDIR += ruby-korundum
     SUBDIR += ruby-krossruby
     SUBDIR += ruby-langscan
     SUBDIR += ruby-locale
     SUBDIR += ruby-locale2
     SUBDIR += ruby-memoize
-    SUBDIR += ruby-mmap
     SUBDIR += ruby-multi
     SUBDIR += ruby-ncurses
     SUBDIR += ruby-property
     SUBDIR += ruby-qtruby
-    SUBDIR += ruby-racc
     SUBDIR += ruby-rbbr
     SUBDIR += ruby-rbison
     SUBDIR += ruby-rbprof
-    SUBDIR += ruby-rcov
     SUBDIR += ruby-robjectteam
     SUBDIR += ruby-rreadline
-    SUBDIR += ruby-rudl
     SUBDIR += ruby-sdl
     SUBDIR += ruby-setup.rb
-    SUBDIR += ruby-sexp
-    SUBDIR += ruby-slang
     SUBDIR += ruby-statgrab
     SUBDIR += ruby-subversion
-    SUBDIR += ruby-sysvipc
     SUBDIR += ruby-tzfile
     SUBDIR += ruby-wirble
     SUBDIR += rubygem-abstract
@@ -4107,7 +4089,6 @@
     SUBDIR += rubygem-gemcutter
     SUBDIR += rubygem-georuby
     SUBDIR += rubygem-getopt
-    SUBDIR += rubygem-getopt-declare
     SUBDIR += rubygem-gettext
     SUBDIR += rubygem-gibbler
     SUBDIR += rubygem-gio2
@@ -4169,7 +4150,6 @@
     SUBDIR += rubygem-multi_json
     SUBDIR += rubygem-murmurhash3
     SUBDIR += rubygem-mutter
-    SUBDIR += rubygem-ncurses
     SUBDIR += rubygem-needle
     SUBDIR += rubygem-nice-ffi
     SUBDIR += rubygem-notify
@@ -4177,7 +4157,6 @@
     SUBDIR += rubygem-orm_adapter
     SUBDIR += rubygem-paint
     SUBDIR += rubygem-paperclip
-    SUBDIR += rubygem-parsetree
     SUBDIR += rubygem-piston
     SUBDIR += rubygem-pkg-config
     SUBDIR += rubygem-platform
@@ -4206,7 +4185,6 @@
     SUBDIR += rubygem-require_all
     SUBDIR += rubygem-rgl
     SUBDIR += rubygem-ripper
-    SUBDIR += rubygem-rparsec
     SUBDIR += rubygem-rr
     SUBDIR += rubygem-rscm
     SUBDIR += rubygem-rspec
@@ -4231,7 +4209,6 @@
     SUBDIR += rubygem-runt
     SUBDIR += rubygem-ruport
     SUBDIR += rubygem-safe_yaml
-    SUBDIR += rubygem-sdl
     SUBDIR += rubygem-sequel
     SUBDIR += rubygem-sequel3
     SUBDIR += rubygem-sexp_processor
@@ -4286,7 +4263,6 @@
     SUBDIR += rubygem-yajl-ruby077
     SUBDIR += rubygem-yui-compressor
     SUBDIR += rubygem-zentest
-    SUBDIR += rubygem-zoom
     SUBDIR += rudeconfig
     SUBDIR += rudiments
     SUBDIR += runsnakerun
@@ -4305,6 +4281,7 @@
     SUBDIR += sdl_console
     SUBDIR += sdl_sge
     SUBDIR += sdlmm
+    SUBDIR += sdlskk
     SUBDIR += sdts++
     SUBDIR += sedsed
     SUBDIR += seed
@@ -4449,7 +4426,7 @@
     SUBDIR += ustl
     SUBDIR += uthash
     SUBDIR += valgrind
-    SUBDIR += valgrind-snapshot
+    SUBDIR += valgrind-devel
     SUBDIR += valide
     SUBDIR += varconf
     SUBDIR += vera++

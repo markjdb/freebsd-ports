@@ -1,10 +1,11 @@
+# Created by: Florent Thoumie <flz@FreeBSD.org>
 # $FreeBSD$
 
 #TODO eadler: s/python/python2/g on a number of files, chromium does not build with python3
 
 PORTNAME=	chromium
 DISTVERSIONPREFIX=	courgette-redacted-
-DISTVERSION=	29.0.1547.76
+DISTVERSION=	30.0.1599.69
 CATEGORIES=	www
 MASTER_SITES=	http://commondatastorage.googleapis.com/chromium-browser-official/:testdata \
 		http://download.goodking.org/downloads/:browser \
@@ -19,7 +20,7 @@ LICENSE=	BSD LGPL21 MPL
 LICENSE_COMB=	multi
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION}
-CFLAGS+=	-fno-stack-protector
+CFLAGS+=	-fno-stack-protector -Wno-unknown-warning-option
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/gperf:${PORTSDIR}/devel/gperf \
 		bash:${PORTSDIR}/shells/bash \
@@ -28,8 +29,7 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/gperf:${PORTSDIR}/devel/gperf \
 		ninja:${PORTSDIR}/devel/ninja \
 		v4l_compat>=1.0.20110603:${PORTSDIR}/multimedia/v4l_compat
 
-LIB_DEPENDS=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo \
-		libcairo.so:${PORTSDIR}/graphics/cairo \
+LIB_DEPENDS=	libcairo.so:${PORTSDIR}/graphics/cairo \
 		libdbus-1.so:${PORTSDIR}/devel/dbus \
 		libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib \
 		libasound.so:${PORTSDIR}/audio/alsa-lib \
@@ -46,12 +46,13 @@ RUN_DEPENDS=	${LOCALBASE}/lib/alsa-lib/libasound_module_pcm_oss.so:${PORTSDIR}/a
 
 ONLY_FOR_ARCHS=	i386 amd64
 USE_XZ=		yes
-USES=		bison desktop-file-utils pkgconfig perl5
+USES=		bison desktop-file-utils pkgconfig perl5 shebangfix
 USE_PERL5=	build
 USE_PYTHON_BUILD=	2.6-2.7
 USE_XORG=	scrnsaverproto x11 xproto xscrnsaver xtst
 USE_GNOME=	glib20 gtk20 dconf libxslt
 
+SHEBANG_FILES=	chrome/tools/build/linux/chrome-wrapper
 NINJA_TARGETS=	chrome
 
 # See build/common.gypi for all the available variables.
@@ -139,9 +140,14 @@ CXX=		clang++
 .endif
 GYP_DEFINES+=	clang=1
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-clang
-.if ${OSVERSION} >= 1000054
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++
+CONFIGURE_ENV+=	AR=/usr/bin/ar
 .endif
+
+.if ${OSVERSION} >= 1000052 && !exists(${LOCALBASE}/include/execinfo.h)
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-fixup-execinfo
+.endif
+.if ${OSVERSION} < 1000052
+LIB_DEPENDS+=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo
 .endif
 
 .if ${PORT_OPTIONS:MTEST}
@@ -155,7 +161,7 @@ TEST_TARGETS=	base_unittests \
 		sql_unittests \
 		net_unittests \
 		content_unittests
-EXCLUDED_TESTS=
+EXCLUDED_TESTS=	GpuDriverBugListTest.CurrentDriverBugListValidation
 NINJA_TARGETS+=	${TEST_TARGETS}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:browser \
 		${PORTNAME}-${DISTVERSION}-testdata${EXTRACT_SUFX}:testdata
@@ -202,7 +208,7 @@ post-patch:
 		${WRKSRC}/third_party/libvpx/libvpx.gyp \
 		${WRKSRC}/crypto/crypto.gyp \
 		${WRKSRC}/v8/tools/gyp/v8.gyp \
-		${WRKSRC}/v8/build/common.gypi
+		${WRKSRC}/v8/build/toolchain.gypi
 	@${REINPLACE_CMD} -e "s|/usr/bin/gcc|${CC}|" \
 		${WRKSRC}/third_party/WebKit/Source/core/core.gypi
 	@${REINPLACE_CMD} -e "s|'../courgette/courgette.gyp:courgette_lib',||" \

@@ -298,9 +298,7 @@
     SUBDIR += rscheme
     SUBDIR += rubinius
     SUBDIR += ruby-doc-stdlib
-    SUBDIR += ruby-lua4
     SUBDIR += ruby-man
-    SUBDIR += ruby-mode.el
     SUBDIR += ruby-programmingruby
     SUBDIR += ruby-reference
     SUBDIR += ruby-usersguide
@@ -380,6 +378,7 @@
     SUBDIR += xotcl
     SUBDIR += yabasic
     SUBDIR += yap
+    SUBDIR += yap-devel
     SUBDIR += yorick
     SUBDIR += ypsilon
 

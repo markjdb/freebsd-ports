@@ -6,9 +6,7 @@ DISTVERSION=	2.2.1
 CATEGORIES=	net
 MASTER_SITES=	ftp://ftp.freeradius.org/pub/freeradius/%SUBDIR%/ \
 		ftp://ftp.ntua.gr/pub/net/radius/freeradius/%SUBDIR%/ \
-		ftp://ftp.uk.freeradius.org/pub/radius/%SUBDIR%/ \
 		http://ftp.cc.uoc.gr/mirrors/ftp.freeradius.org/%SUBDIR%/ \
-		http://freeradius.portal-to-web.de/%SUBDIR%/ \
 		http://mirrors.rit.edu/zi/
 MASTER_SITE_SUBDIR=	. old
 DISTNAME=	freeradius-server-${DISTVERSION}
@@ -40,7 +38,7 @@ PLIST_SUB=	PORTVERSION=${DISTVERSION} LIBVER=0${PORTVERSION:C/\./0/g}
 
 OPTIONS_DEFINE=	USER KERBEROS HEIMDAL HEIMDAL_PORT LDAP MYSQL \
 		PGSQL UNIXODBC FIREBIRD PERL PYTHON OCI8 RUBY DHCP \
-		EXPERIMENTAL UDPFROMTO DEVELOPER EDIR
+		EXPERIMENTAL UDPFROMTO DEVELOPER EDIR SSL_PORT
 OPTIONS_DEFAULT=USER PERL PYTHON
 
 DHCP_DESC=		With DHCP support (EXPERIMENTAL)
@@ -54,6 +52,7 @@ EXPERIMENTAL_DESC=	Build experimental modules
 UDPFROMTO_DESC=		Compile in UDPFROMTO support
 DEVELOPER_DESC=		Enable developer options
 EDIR_DESC=		Enable eDirectory support (implies LDAP)
+SSL_PORT_DESC=		Use OpenSSL from the ports collection
 
 NO_STAGE=	yes
 .include <bsd.port.options.mk>
@@ -256,6 +255,10 @@ CFLAGS!=	${ECHO} ${CFLAGS} | ${SED} -Ee 's:-O[0-9]?[[:space:]]*::g'
 # Compile in UDPFROMTO support
 .if ${PORT_OPTIONS:MUDPFROMTO}
 CONFIGURE_ARGS+=--with-udpfromto
+.endif
+
+.if ${PORT_OPTIONS:MSSL_PORT}
+WITH_OPENSSL_PORT=yes
 .endif
 
 .include <bsd.port.pre.mk>

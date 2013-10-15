@@ -31,6 +31,7 @@
     SUBDIR += courier-authlib-pgsql
     SUBDIR += courier-authlib-userdb
     SUBDIR += courier-authlib-usergdbm
+    SUBDIR += cppdb
     SUBDIR += credis
     SUBDIR += cyrus-imspd
     SUBDIR += dalmp
@@ -54,7 +55,6 @@
     SUBDIR += dbf
     SUBDIR += dbf2mysql
     SUBDIR += dbh
-    SUBDIR += dbh10
     SUBDIR += dbow
     SUBDIR += dbtool
     SUBDIR += dbview
@@ -96,7 +96,6 @@
     SUBDIR += glom
     SUBDIR += gnats4
     SUBDIR += gnatsweb4
-    SUBDIR += gnome-db
     SUBDIR += godis
     SUBDIR += gomysql
     SUBDIR += gosqlite3
@@ -139,7 +138,6 @@
     SUBDIR += libdbi
     SUBDIR += libdbi-drivers
     SUBDIR += libdrizzle
-    SUBDIR += libgda
     SUBDIR += libgda2
     SUBDIR += libgda2-reference
     SUBDIR += libgda3
@@ -200,7 +198,6 @@
     SUBDIR += mdbtools
     SUBDIR += mdcached
     SUBDIR += memcached
-    SUBDIR += memcached12
     SUBDIR += memcachedb
     SUBDIR += memcacheq
     SUBDIR += mergeant
@@ -813,7 +810,6 @@
     SUBDIR += rrdtool10
     SUBDIR += rrdtool12
     SUBDIR += ruby-bdb
-    SUBDIR += ruby-bdb1
     SUBDIR += ruby-cdb
     SUBDIR += ruby-dbd_mysql
     SUBDIR += ruby-dbd_odbc
@@ -823,7 +819,6 @@
     SUBDIR += ruby-dbi
     SUBDIR += ruby-frontbase
     SUBDIR += ruby-gdbm
-    SUBDIR += ruby-interbase
     SUBDIR += ruby-memcache
     SUBDIR += ruby-msql
     SUBDIR += ruby-mysql

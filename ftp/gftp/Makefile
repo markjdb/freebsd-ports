@@ -41,7 +41,6 @@ USE_GNOME+=	gtk20
 CONFIGURE_ENV+=	_GTHREAD_LIBS="-lgthread-2.0"
 .else
 CONFIGURE_ARGS+=--disable-gtkport
-PKGNAMESUFFIX=	-nox11
 USE_GNOME+=	glib20
 PLIST_SUB+=	NOX11:="@comment "
 .endif
@@ -57,15 +56,6 @@ PLIST_SUB+=	NLS="@comment "
 .endif
 
 .include <bsd.port.pre.mk>
-
-.if ${HAVE_GNOME:Mgnomelibs}!="" && ! ${PORT_OPTIONS:MGTK2}
-USE_GNOME+=	gnomeprefix gnomelibs
-PKGNAMESUFFIX+=	-gnome
-PLIST_SUB+=	MYGNOME=""
-MAKE_ENV=	HAVE_GNOME=1
-.else
-PLIST_SUB+=	MYGNOME="@comment "
-.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|-lpthread|${PTHREAD_LIBS}|g ; \

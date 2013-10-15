@@ -14,15 +14,11 @@ COMMENT=	A table/matrix widget extension to Tk
 LICENSE=	BSD
 LICENSE_FILE=	${WRKSRC}/license.txt
 
-USE_TK=		84+
+USES+=		tk
 
 GNU_CONFIGURE=	yes
-PORTDOCS=	*
 
 PLIST_SUB=	DISTNAME=${DISTNAME}
-
-NO_STAGE=	yes
-.include <bsd.port.options.mk>
 
 CONFIGURE_ARGS=	--with-tcl=${TCL_LIBDIR} \
 		--with-tk=${TK_LIBDIR} \
@@ -31,13 +27,6 @@ CONFIGURE_ARGS=	--with-tcl=${TCL_LIBDIR} \
 		--with-x \
 		--prefix=${PREFIX} \
 		--exec-prefix=${PREFIX}
-
-post-patch:
-	${REINPLACE_CMD} -e 's|%%DOCSDIR%%|${DOCSDIR}|' \
-	    ${WRKSRC}/Makefile.in
-.if ${PORT_OPTIONS:MDOCS}
-INSTALL_TARGET=	install install-doc
-.endif
 
 .if defined(MAINTAINER_MODE)
 test: build

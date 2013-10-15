@@ -18,8 +18,8 @@ RUN_DEPENDS=	${LOCALBASE}/share/java/zi:${PORTSDIR}/java/java-zoneinfo
 ONLY_FOR_ARCH=	amd64 i386
 
 DISTINFO_FILE=	${.CURDIR}/distinfo.${ARCH}
-DISTVERSION_amd64=	r316538
-DISTVERSION_i386=	r316538
+DISTVERSION_amd64=	r330107
+DISTVERSION_i386=	r330107
 
 JDK_NAME=	openjdk
 JDK_PORT=	openjdk6
@@ -36,6 +36,9 @@ INSTALLDIR=	${STAGEDIR}${PREFIX}/${JDK_ROOT}
 
 .if ${OSVERSION} >= 900010
 RUN_DEPENDS+=	${LOCALBASE}/lib/compat/libz.so.5:${PORTSDIR}/misc/compat8x
+.endif
+.if ${OSVERSION} >= 1000054
+RUN_DEPENDS+=	${LOCALBASE}/lib/compat/libstdc++.so.6:${PORTSDIR}/misc/compat9x
 .endif
 
 .if ${ARCH} == "i386"

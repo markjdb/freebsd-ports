@@ -5,12 +5,12 @@ PORTNAME=	syslog-ng
 PORTVERSION=	3.3.9
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.balabit.com/downloads/files/syslog-ng/sources/$(PORTVERSION)/source/
+PKGNAMESUFFIX=	33
 DISTFILES=	$(PORTNAME)_$(PORTVERSION).tar.gz
 
 MAINTAINER=	cy@FreeBSD.org
 COMMENT=	A powerful syslogd replacement
 
-LATEST_LINK=	${PORTNAME}
 CONFLICTS?=	syslog-ng-[0-9]* syslog-ng[0-9]-[0-9]* \
 		syslog-ng-devel-[0-9]*
 WRKSRC=		$(WRKDIR)/$(PORTNAME)-$(PORTVERSION)

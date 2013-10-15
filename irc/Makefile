@@ -58,7 +58,6 @@
     SUBDIR += irssi-scripts
     SUBDIR += irssi-xmpp
     SUBDIR += irssistats
-    SUBDIR += keitairc
     SUBDIR += keitairc2
     SUBDIR += konversation-kde4
     SUBDIR += kvirc
@@ -99,6 +98,7 @@
     SUBDIR += psybnc
     SUBDIR += pure-emacs21
     SUBDIR += pure-xemacs21-mule
+    SUBDIR += py-fishcrypt
     SUBDIR += py-gozerbot
     SUBDIR += py-irc
     SUBDIR += py-supybot

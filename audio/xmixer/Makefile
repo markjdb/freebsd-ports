@@ -23,7 +23,6 @@ NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${HAVE_GNOME:Mgtk12}!=""
-PKGNAMESUFFIX=	-gtk
 USE_GNOME+=	gtk12
 PROGRAMS=	xmixer xgmixer
 MLINKS+=	xmixer.1 xgmixer.1
@@ -31,6 +30,7 @@ PLIST_FILES+=	bin/xgmixer
 .else
 USE_XORG=	x11 xt ice xaw
 PROGRAMS=	xmixer
+LDFLAGS+=	-L${LOCALBASE}/lib -lX11
 .endif
 
 post-patch:

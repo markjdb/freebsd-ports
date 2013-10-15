@@ -4,22 +4,19 @@ PORTNAME=	qwt
 PORTVERSION=	6.1.0
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	SF
+PKGNAMESUFFIX=	6
 
 MAINTAINER=	makc@FreeBSD.org
 COMMENT=	Qt Widgets for Technical Applications
 
+USES=		gmake qmake
 USE_QT4=	gui opengl svg xml moc_build qmake_build
 USE_BZIP2=	yes
-USE_GMAKE=	yes
-QMAKE_ARGS+=	-recursive PREFIX=${PREFIX}
-HAS_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-DOCSDIR=	${PREFIX}/share/doc/${LATEST_LINK}
-
-LATEST_LINK=	qwt6
+DOCSDIR=	${PREFIX}/share/doc/qwt6
 
 PORTDOCS=	*
-PLIST_SUB=	INCLUDEDIR=include/${LATEST_LINK} \
+PLIST_SUB=	INCLUDEDIR=include/qwt6 \
 		SHLIB_VER=${PORTVERSION} \
 		SHLIB_SHVER=${PORTVERSION:R} \
 		QT_MKSPECDIR=share/qt4/mkspecs
@@ -29,7 +26,6 @@ STRIP_FILES=	lib/libqwt6.so.${PORTVERSION} \
 
 OPTIONS_DEFINE=	DOCS
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 post-patch:
@@ -38,13 +34,10 @@ post-patch:
 		qwt.prf textengines/textengines.pri && \
 	${REINPLACE_CMD} -e '/INSTALLS.*doc/d' doc/doc.pro
 
-do-configure:
-	(cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ${QMAKE} ${QMAKEFLAGS} ${QMAKE_ARGS})
-
 post-install:
-	${STRIP_CMD} ${STRIP_FILES:S,^,${PREFIX}/,}
+	${STRIP_CMD} ${STRIP_FILES:S,^,${STAGEDIR}${PREFIX}/,}
 .if ${PORT_OPTIONS:MDOCS}
-	(cd ${WRKSRC}/doc/html/ && ${COPYTREE_SHARE} \* ${DOCSDIR})
+	(cd ${WRKSRC}/doc/html/ && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
 .endif
 
 .include <bsd.port.mk>

@@ -38,7 +38,6 @@
     SUBDIR += asql
     SUBDIR += asterisk-stat
     SUBDIR += aswedit
-    SUBDIR += aswiki
     SUBDIR += atutor
     SUBDIR += august
     SUBDIR += autoindex2
@@ -350,7 +349,6 @@
     SUBDIR += http_post
     SUBDIR += httpclient
     SUBDIR += httpcore
-    SUBDIR += httpgrabber
     SUBDIR += httpsqs
     SUBDIR += httptunnel
     SUBDIR += httrack
@@ -388,7 +386,6 @@
     SUBDIR += libapreq2
     SUBDIR += libecap
     SUBDIR += libepc
-    SUBDIR += libghttp
     SUBDIR += libgtkhtml
     SUBDIR += libmicrohttpd
     SUBDIR += libwww
@@ -546,7 +543,6 @@
     SUBDIR += monast
     SUBDIR += mongrel2
     SUBDIR += moodle
-    SUBDIR += moodle23
     SUBDIR += moodle24
     SUBDIR += moodle25
     SUBDIR += mozplugger
@@ -571,8 +567,6 @@
     SUBDIR += nibbleblog
     SUBDIR += node
     SUBDIR += node-devel
-    SUBDIR += node04
-    SUBDIR += node06
     SUBDIR += nostromo
     SUBDIR += notftp
     SUBDIR += npapi-xine
@@ -1002,7 +996,6 @@
     SUBDIR += p5-HTTP-Engine
     SUBDIR += p5-HTTP-Engine-Middleware
     SUBDIR += p5-HTTP-Exception
-    SUBDIR += p5-HTTP-GHTTP
     SUBDIR += p5-HTTP-HeaderParser-XS
     SUBDIR += p5-HTTP-Headers-Fast
     SUBDIR += p5-HTTP-Lite
@@ -1472,7 +1465,6 @@
     SUBDIR += py-apachelog
     SUBDIR += py-beaker
     SUBDIR += py-beautifulsoup
-    SUBDIR += py-beautifulsoup30
     SUBDIR += py-beautifulsoup32
     SUBDIR += py-bjoern
     SUBDIR += py-bleach
@@ -1728,12 +1720,10 @@
     SUBDIR += ruby-amazon
     SUBDIR += ruby-aws
     SUBDIR += ruby-borges
-    SUBDIR += ruby-cruisecontrolrb
     SUBDIR += ruby-div
     SUBDIR += ruby-fcgi
     SUBDIR += ruby-fcgiwrap
     SUBDIR += ruby-google
-    SUBDIR += ruby-nora
     SUBDIR += ruby-wgettsv
     SUBDIR += rubygem-actionpack
     SUBDIR += rubygem-activeresource
@@ -1816,7 +1806,6 @@
     SUBDIR += rubygem-rfeedfinder
     SUBDIR += rubygem-robotex
     SUBDIR += rubygem-robots
-    SUBDIR += rubygem-rubyfulsoup
     SUBDIR += rubygem-scrapi
     SUBDIR += rubygem-scrubyt
     SUBDIR += rubygem-selenium-webdriver
@@ -1824,7 +1813,6 @@
     SUBDIR += rubygem-sinatra
     SUBDIR += rubygem-sinatra-r18n
     SUBDIR += rubygem-sinatra-respond_to
-    SUBDIR += rubygem-staticmatic
     SUBDIR += rubygem-taggable
     SUBDIR += rubygem-thin
     SUBDIR += rubygem-tinyatom

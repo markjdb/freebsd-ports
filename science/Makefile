@@ -50,6 +50,7 @@
     SUBDIR += fastcap
     SUBDIR += fasthenry
     SUBDIR += felt
+    SUBDIR += fisicalab
     SUBDIR += flounder
     SUBDIR += fvcom
     SUBDIR += fvcom-mpi
@@ -91,7 +92,6 @@
     SUBDIR += libsvm-python
     SUBDIR += linsmith
     SUBDIR += massxpert
-    SUBDIR += mayavi
     SUBDIR += mbdyn
     SUBDIR += mcstas
     SUBDIR += medit
@@ -111,7 +111,6 @@
     SUBDIR += nifticlib
     SUBDIR += omnetpp
     SUBDIR += openbabel
-    SUBDIR += ovt
     SUBDIR += p5-Algorithm-SVMLight
     SUBDIR += p5-Chemistry-3DBuilder
     SUBDIR += p5-Chemistry-Bond-Find

@@ -6,16 +6,19 @@ PORTVERSION=	2.1.5
 PORTREVISION?=	1
 CATEGORIES?=	databases
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}-Release/
-PKGNAMESUFFIX?=	-server
+PKGNAMESUFFIX?=	${PORTVERSION:R:S/.//}-server
 DISTNAME=	${PORTNAME:S/f/F/}-${PORTVERSION}.18497-0
 DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	acm@FreeBSD.org
 COMMENT?=	Firebird-2 relational database (server)
 
-LIB_DEPENDS=	icuuc:${PORTSDIR}/devel/icu
+CONFLICTS?=	${PORTNAME}20-client-* \
+		${PORTNAME}25-client-* \
+		${PORTNAME}20-server-* \
+		${PORTNAME}25-server-*
 
-LATEST_LINK=	${PORTNAME}21${PKGNAMESUFFIX}
+LIB_DEPENDS=	icuuc:${PORTSDIR}/devel/icu
 
 USES=		bison
 USE_BZIP2=	yes
@@ -68,7 +71,7 @@ UTIL_BIN=	fb_inet_server fb_lock_print fbstat gbak gdef gfix gsec nbackup
 UDF_SO=		ib_udf.so fbudf.so
 UDF_SQL=	src/extlib/ib_udf2.sql src/extlib/fbudf/fbudf.sql
 
-PKGINSTALL?=	${PKGDIR}/pkg-install${PKGNAMESUFFIX}
+PKGINSTALL?=	${PKGDIR}/pkg-install-server
 .else
 # Client part stuff
 AUTOGENARGS=	--without-editline

@@ -672,8 +672,6 @@
     SUBDIR += ruby-mp3tag
     SUBDIR += ruby-smf
     SUBDIR += ruby-taglib
-    SUBDIR += ruby-vorbisfile
-    SUBDIR += ruby-xmms
     SUBDIR += ruby-xmms2
     SUBDIR += rubygem-librmpd
     SUBDIR += rubygem-ogginfo
@@ -768,7 +766,6 @@
     SUBDIR += tomahawk
     SUBDIR += toolame
     SUBDIR += tosha
-    SUBDIR += tracker
     SUBDIR += trommler
     SUBDIR += tse3
     SUBDIR += tta
@@ -878,7 +875,6 @@
     SUBDIR += xsynth-dssi
     SUBDIR += xvmixer
     SUBDIR += xwave
-    SUBDIR += yamt
     SUBDIR += yell
     SUBDIR += zinf
     SUBDIR += zynaddsubfx

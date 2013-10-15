@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	eGroupware
-PORTVERSION=	1.8.004.20130831
+PORTVERSION=	1.8.005.20131007
 CATEGORIES=	deskutils
 MASTER_SITES=	SF/${PORTNAME:L}/${PORTNAME}-1.8/${PORTNAME}-${PORTVERSION}
 DISTFILES=	${PORTNAME}-${PORTVERSION}.tar.bz2 \
 		${PORTNAME}-egw-pear-${PORTVERSION}.tar.bz2
 
-MAINTAINER=	danilogondolfo@gmail.com
+MAINTAINER=	danilo@FreeBSD.org
 COMMENT=	Web-based GroupWare system
 
 BUILD_DEPENDS=	${PEARDIR}/Auth/SASL.php:${PORTSDIR}/security/pear-Auth_SASL \
@@ -83,7 +83,7 @@ WRKSRC=	${WRKDIR}/egroupware
 EG_DIR=	www/eg
 EG_WWWDIR=	${PREFIX}/${EG_DIR}
 EG_DATA=	www/egdata
-EG_DATADIR=	${PREFIX}/www/egdata
+EG_DATADIR=	${PREFIX}/${EG_DATA}
 
 pre-install:
 	@${FIND} -s -d ${WRKSRC} -type f | ${SED} "s#${WRKSRC}#${EG_DIR}#g" >${PLIST}

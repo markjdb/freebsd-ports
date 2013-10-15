@@ -136,10 +136,8 @@
     SUBDIR += firewalk
     SUBDIR += fl0p
     SUBDIR += flawfinder
-    SUBDIR += flowtag
     SUBDIR += fpc-hash
     SUBDIR += fpc-openssl
-    SUBDIR += fpm
     SUBDIR += fprint_demo
     SUBDIR += fragroute
     SUBDIR += fragrouter
@@ -150,7 +148,6 @@
     SUBDIR += fuzzdb
     SUBDIR += fwanalog
     SUBDIR += fwbuilder
-    SUBDIR += fwbuilder-devel
     SUBDIR += fwipe
     SUBDIR += fwknop
     SUBDIR += fwlogwatch
@@ -786,6 +783,7 @@
     SUBDIR += py-slowaes
     SUBDIR += py-ssh
     SUBDIR += py-sslstrip
+    SUBDIR += py-stem
     SUBDIR += py-tlslite
     SUBDIR += py-trustedpickle
     SUBDIR += py-twistedConch
@@ -846,7 +844,6 @@
     SUBDIR += rifiuti2
     SUBDIR += rkhunter
     SUBDIR += rndpassw
-    SUBDIR += ruby-acl
     SUBDIR += ruby-camellia
     SUBDIR += ruby-crypt
     SUBDIR += ruby-gpgme
@@ -948,7 +945,6 @@
     SUBDIR += starttls
     SUBDIR += stegdetect
     SUBDIR += steghide
-    SUBDIR += stem
     SUBDIR += strobe
     SUBDIR += strongswan
     SUBDIR += stunnel

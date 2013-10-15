@@ -619,7 +619,6 @@ sysutils/puppet-devel||2009-05-01|Has expired: Use sysutils/puppet instead
 sysutils/tua||2009-05-01|Has expired: unmaintained, does not work with current versions of GCC, needs gcc295 which has been failing to build for months
 x11/qrash||2009-05-01|Has expired: unmaintained, does not work with current versions of GCC, needs gcc295 which has been failing to build for months
 textproc/sp||2009-05-03|Has expired: unmaintained, does not work with current versions of GCC, needs gcc295 which has been failing to build for months
-net-mgmt/nrpe||2009-05-04|Has expired: Obsolete version, consider migration to net-mgmt/nrpe2
 www/phpsurveyor|www/limesurvey|2009-05-05|Project was renamed
 devel/oskit||2009-05-07|Has expired: does not work with current versions of GCC, needs gcc295 which has been failing to build for months, no active maintainer
 www/p5-WWW-Nicovideo-Download|www/p5-WWW-NicoVideo-Download|2009-05-07|Directory renamed
@@ -4963,3 +4962,147 @@ net/pcbsd-netmanager||2013-09-26|Obsolete: Use sysutils/pcbsd-utils-qt4 instead
 archivers/ruby-bz2||2013-10-01|Has expired: Does not work with Ruby 1.9
 sysutils/puppet26|sysutils/puppet27|2013-10-01|Has expired: End of Life from april 2013. Upgrade to 2.7 or 3.x.
 www/varnish2|www/varnish|2013-10-01|Has expired: No update since january 2011. Upgrade to Varnish 3.
+databases/dbh10|databases/dbh|2013-10-02|Outdated, not depend on, consider using databases/dbh
+audio/tracker||2013-10-02|No public distfiles available anymore
+chinese/joe2|chinese/joe|2013-10-02|Consider using chinese/joe
+sysutils/rdiff-backup10|sysutils/rdiff-backup|2013-10-02|Outdated, consider using a newer version
+java/jboss2|java/jboss72|2013-10-02|EOL upstream, consider using a newer version.
+ftp/ncftp2|ftp/ncftp3|2013-10-02|Outdated, consider using a newer version
+irc/keitairc|irc/keitairc2|2013-10-02|Outdated, consider using a newer version
+java/netbeans55|java/netbeans|2013-10-02|Outdated, consider using a newer version
+java/netbeans61|java/netbeans|2013-10-02|Outdated, consider using a newer version
+devel/ppl||2013-10-02|expired: fails to build
+devel/py-importlib||2013-10-02|expired: Python 2.6 port will reach it's EoL upstream soon
+graphics/gkrellkam|graphics/gkrellkam2|2013-10-02|Outdated, consider using a newer version
+mail/gkrellmmailwatch|mail/gkrellmmailwatch2|2013-10-02|Outdated, consider using a newer version
+databases/memcached|databases/memcached12|2013-10-02|Unsupported upstream, consider using a newer version
+www/py-beautifulsoup30||2013-10-03|Outdated, consider using a newer version
+comms/umcs784||2013-10-03|Outdated, included in base system as umcs(4)
+graphics/libwpg01|graphics/libwpg|2013-10-04|Outdated, consider using a new version
+textproc/libwpd08|textproc/libwpd|2013-10-04|Outdated, consider using a new version
+net-mgmt/nrpe2|net-mgmt/nrpe|2013-10-04|Reflect the real portname
+cad/gwave||2013-10-05|Depends on guile-gtk which is EOLed
+x11-toolkits/guile-gtk||2013-10-05|EOLed upstream for very long
+textproc/gxmlviewer||2013-10-05|Depends on EOLed gnome1
+comms/mlan|comms/mlan3|2013-10-05|Project is obsoleted by newer API
+graphics/gnomeiconedit||2013-10-05|Depends on EOLed gnome1
+games/glife||2013-10-05|Depends on EOLed gnome1
+emulators/visualos||2013-10-05|Depends on EOLed gnome1
+editors/xmleditor||2013-10-05|Depends on EOLed gnome1
+games/gnmm||2013-10-05|Depends on EOLed gnome1
+games/gnomermind||2013-10-05|Depends on EOLed gnome1
+comms/ghfaxviewer||2013-10-05|Depends on EOLed gnome1
+devel/pharmacy||2013-10-05|Depends on EOLed gnome1
+emulators/gsnes9x||2013-10-05|Depends on EOLed gnome1
+graphics/electriceyes||2013-10-05|Depends on EOLed gnome1
+graphics/frontline||2013-10-05|Depends on EOLed gnome1
+mail/mmc||2013-10-05|Depends on EOLed gnome1
+misc/misterproper||2013-10-05|Depends on EOLed gnome1
+multimedia/gsubedit||2013-10-05|Depends on EOLed gnome1
+net/gnome-vnc||2013-10-05|Depends on EOLed gnome1
+news/grn||2013-10-05|Depends on EOLed gnome1
+security/fpm||2013-10-05|Depends on EOLed gnome1
+sysutils/xsu||2013-10-05|Depends on EOLed gnome1
+securty/fwbuilder-devel||2013-10-05|Appears not to be actively developed any more.
+devel/libglade||2013-10-07|Component of the obsolete gnome1
+databases/gnome-db||2013-10-07|Component of the obsolete gnome1
+databases/libgda||2013-10-07|Component of the obsolete gnome1
+devel/gconf||2013-10-07|Component of the obsolete gnome1
+devel/bonobo||2013-10-07|Component of the obsolete gnome1
+devel/oaf||2013-10-07|Component of the obsolete gnome1
+print/gnome-print||2013-10-07|Component of the obsolete gnome1
+mail/mavbiff||2013-10-07|Obsoleted
+finance/gnofin||2013-10-07|Depends on EOLed gnome1
+x11-toolkits/easygtk||2013-10-07|Depends on EOLed gnome1
+graphics/gnoemcanvas||2013-10-07|Component of the obsolete gnome1
+www/p5-HTTP-GHTTP||2013-10-07|Depends on EOLed gnome1 libraries
+www/libghttp||2013-10-07|Component of the obsolete gnome1
+deskutils/gworkspace-clipbook||2013-10-07|Replaced by tabbed shelf in GWorkspace
+audio/yamt||2013-10-07|Depends on EOLed gnome1 libraries
+astro/nova||2013-10-07|Developement ceased 8 years ago, depends on some gnome1 libraries
+textproc/libxml++||2013-10-07|Component of the obsolete gnome1
+devel/linux-f10-libglade|devel/linux-f10-libglade2|2013-10-07|Unused
+textproc/linux-f10-libxml|textproc/linux-f10-libxml2|2013-10-07|Unused
+www/moodle23||2013-10-08|Has expired: Unmaintained upstream
+sysutils/easypbi||2013-10-08|Obsolete: Use sysutils/pcbsd-utils-qt4 instead
+devel/valgrind-snapshot|devel/valgrind-devel|2013-10-09|Rename to -devel to follow port naming conventions
+devel/p5-doxygenfilter|devel/p5-Doxygen-Filter-Perl|2013-10-09|Project has been taken over by new developer and renamed
+audio/ruby-vorbisfile||2013-10-11|Has expired: Does not work with Ruby 1.9
+audio/ruby-xmms||2013-10-11|Has expired: Does not work with Ruby 1.9
+databases/ruby-interbase||2013-10-11|Has expired: Does not work with Ruby 1.9
+databases/ruby-bdb1||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-fam||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-rcov||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-rudl||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-gemfinder||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-sysvipc||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/rubygem-sdl||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/rubygem-ncurses||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/rubygem-parsetree||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-sexp||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/rubygem-getopt-declare||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-slang||2013-10-11|Has expired: Does not work with Ruby 1.9
+japanese/ruby-slang||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-gettext||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-jttui||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-mmap||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/ruby-racc||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/rubygem-rparsec||2013-10-11|Has expired: Does not work with Ruby 1.9
+devel/rubygem-zoom||2013-10-11|Has expired: Does not work with Ruby 1.9
+games/ruby-exmars||2013-10-11|Has expired: Does not work with Ruby 1.9
+graphics/ruby-pgplot||2013-10-11|Has expired: Does not work with Ruby 1.9
+graphics/rubygem-turing||2013-10-11|Has expired: Does not work with Ruby 1.9
+japanese/ruby-chasen||2013-10-11|Has expired: Does not work with Ruby 1.9
+japanese/ruby-gyokuro||2013-10-11|Has expired: Does not work with Ruby 1.9
+japanese/ruby-rdic||2013-10-11|Has expired
+lang/ruby-mode.el||2013-10-11|Has expired: Does not work with Ruby 1.9
+misc/rubygem-ohcount||2013-10-11|Has expired: Does not work with Ruby 1.9
+net-im/rubygem-xmpp4r||2013-10-11|Has expired: Does not work with Ruby 1.9
+security/ruby-acl||2013-10-11|Has expired: Does not work with Ruby 1.9
+textproc/ruby-xslt||2013-10-11|Has expired: Does not work with Ruby 1.9
+textproc/ruby-erbscan||2013-10-11|Has expired: Does not work with Ruby 1.9
+textproc/ruby-mwdom||2013-10-11|Has expired: Does not work with Ruby 1.9
+textproc/ruby-xmlscan-old||2013-10-11|Has expired: Does not work with Ruby 1.9
+textproc/rubygem-formosa||2013-10-11|Has expired: Does not work with Ruby 1.9
+textproc/rubygem-htmltools||2013-10-11|Has expired: Does not work with Ruby 1.9
+www/ruby-cruisecontrolrb||2013-10-11|Has expired: Does not work with Ruby 1.9
+www/rubygem-rubyfulsoup||2013-10-11|Has expired: Does not work with Ruby 1.9
+x11/ruby-gtktrayicon||2013-10-11|Has expired: Does not work with Ruby 1.9
+net/ngrep-lib||2013-10-11|Obsoleted
+www/node04||2013-10-11|Has expired: Unsupported upstream, not compatible with current
+www/node06||2013-10-11|Has expired: Unsupported upstream, not compatible with current
+math/matrices||2013-10-12|Has expired: Unmaintained upstream
+games/nethack33-gnome|games/nethack33|2013-10-13|Has expired: Uses deprecated gnome 1.x libraries
+games/nethack34-gnome|games/nethack34|2013-10-13|Has expired: Uses deprecated gnome 1.x libraries
+emulators/linux-ePSXe||2013-10-13|Removed, uses Linux GTK1 libraries
+emulators/linux-peops-spu||2013-10-13|Removed, uses Linux GTK1 libraries
+math/linux-relview||2013-10-13|Removed, uses Linux GTK1 libraries
+science/ovt||2013-10-14|Depends on the EOLed vtk4
+math/vtk-data||2013-10-14|Deprecated consider using vtk5
+math/vtk-examples||2013-10-14|Deprecated consider using vtk5
+math/vtk-headers||2013-10-14|Deprecated consider using vtk5
+math/vtk-java||2013-10-14|Deprecated consider using vtk5
+math/vtk-python||2013-10-14|Deprecated consider using vtk5
+math/vtk-tcl||2013-10-14|Deprecated consider using vtk5
+science/mayavi||2013-10-14|Depends on the EOLed vtk4
+www/httpgrabber||2013-10-14|Depended on net/ngrep-lib
+security/stem|security/py-stem|2013-10-14|This is a Python library
+sysutils/gupsc||2013-10-15|Depends on the obsolete gnome1
+net/diradmin||2013-10-15|Depends on the obsolete gnome1
+devel/hypersrc||2013-10-15|Depends on the obsolete gnome1
+x11-themes/gnome-look||2013-10-15|Component of the obsolete gnome1
+x11-themes/thinice||2013-10-15|Component of the obsolete gnome1
+x11-themes/gtk-engines||2013-10-15|Component of the obsolete gnome1
+x11-themes/gtk-engines-collection||2013-10-15|Component of the obsolete gnome1
+devel/getxml||2013-10-15|Depends on EOLed libxml1
+textproc/xls2xml||2013-10-15|Depends on EOLed libxml1
+textproc/cole||2013-10-15|Upstream has disappeared
+www/rubygem-staticmatic||2013-10-15|Has expired: No longer maintained upstream
+www/ruby-nora||2013-10-15|Has expired: Does not work with Ruby 1.9
+www/aswiki||2013-10-15|Removed
+textproc/ruby-amrita||2013-10-15|Has expired: Does not work with Ruby 1.9
+security/flowtag||2013-10-15|Has expired: Does not work with Ruby 1.9
+lang/ruby-lua4||2013-10-15|Has expired: Does not work with Ruby 1.9
+dns/dnsdoctor||2013-10-15|Has expired: Does not work with Ruby 1.9
+devel/py-psyco||2013-10-15|Has expired: only bulds with lang/python26
+x11-toolkits/ruby-tk||2013-10-15|Has expired: Does not work with Ruby 1.9

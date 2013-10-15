@@ -207,7 +207,6 @@
     SUBDIR += dvtm
     SUBDIR += dwatch
     SUBDIR += e2fsprogs
-    SUBDIR += easypbi
     SUBDIR += ec2-scripts
     SUBDIR += edid-decode
     SUBDIR += eiciel
@@ -344,6 +343,7 @@
     SUBDIR += gpart
     SUBDIR += gpkgdep
     SUBDIR += gpte
+    SUBDIR += graffer
     SUBDIR += graid5
     SUBDIR += graphicboot
     SUBDIR += graveman
@@ -356,7 +356,6 @@
     SUBDIR += gstreamer1-plugins-cdio
     SUBDIR += gtk-imonc
     SUBDIR += gtk-send-pr
-    SUBDIR += gupsc
     SUBDIR += hachoir-metadata
     SUBDIR += hachoir-subfile
     SUBDIR += hachoir-urwid
@@ -755,7 +754,6 @@
     SUBDIR += rdate
     SUBDIR += rdiff-backup
     SUBDIR += rdiff-backup-devel
-    SUBDIR += rdiff-backup10
     SUBDIR += rdup
     SUBDIR += readlink
     SUBDIR += recoverdm
@@ -895,6 +893,7 @@
     SUBDIR += syslog-ng
     SUBDIR += syslog-ng-devel
     SUBDIR += syslog-ng2
+    SUBDIR += syslog-ng33
     SUBDIR += syslogger
     SUBDIR += sysrc
     SUBDIR += system-tools-backends
@@ -989,6 +988,7 @@
     SUBDIR += webjob
     SUBDIR += webmin
     SUBDIR += weedit
+    SUBDIR += wemux
     SUBDIR += whatpix
     SUBDIR += whowatch
     SUBDIR += wiimms
@@ -1041,7 +1041,6 @@
     SUBDIR += xosview
     SUBDIR += xsi
     SUBDIR += xstow
-    SUBDIR += xsu
     SUBDIR += xsysstats
     SUBDIR += xvidcap
     SUBDIR += yawho

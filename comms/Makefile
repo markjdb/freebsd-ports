@@ -44,7 +44,6 @@
     SUBDIR += gammu-devel
     SUBDIR += geoid
     SUBDIR += ge-x2212
-    SUBDIR += ghfaxviewer
     SUBDIR += gkermit
     SUBDIR += gmfsk
     SUBDIR += gnocky
@@ -84,7 +83,6 @@
     SUBDIR += lrzsz
     SUBDIR += mgetty+sendfax
     SUBDIR += minicom
-    SUBDIR += mlan
     SUBDIR += mlan3
     SUBDIR += morse
     SUBDIR += nasawash
@@ -154,7 +152,6 @@
     SUBDIR += uartlirc
     SUBDIR += uhso-kmod
     SUBDIR += uird
-    SUBDIR += umcs7840
     SUBDIR += unixcw
     SUBDIR += usbmuxd
     SUBDIR += usrp
