@@ -1,14 +1,11 @@
---- ./lives-plugins/plugins/decoders/asf_decoder.c.orig	2012-06-25 19:53:28.000000000 +0200
-+++ ./lives-plugins/plugins/decoders/asf_decoder.c	2012-06-25 19:57:21.000000000 +0200
-@@ -30,11 +30,6 @@
- #include <fcntl.h>
- #include <unistd.h>
+--- ./lives-plugins/plugins/decoders/asf_decoder.c.orig	2013-12-05 19:16:35.348036750 +0100
++++ ./lives-plugins/plugins/decoders/asf_decoder.c	2013-12-05 19:18:43.232061256 +0100
+@@ -32,7 +32,7 @@
  #include <stdlib.h>
--#ifndef IS_MINGW
+ #include <ctype.h>
+ #ifndef IS_MINGW
 -#ifndef IS_SOLARIS
--#include <endian.h>
--#endif
--#endif
- #include <sys/stat.h>
- 
- const char *plugin_version="LiVES asf/wmv decoder version 1.0";
++#ifndef __FreeBSD__
+ #include <endian.h>
+ #endif
+ #endif

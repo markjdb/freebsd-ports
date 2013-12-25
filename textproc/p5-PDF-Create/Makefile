@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	PDF-Create
-PORTVERSION=	1.06
+PORTVERSION=	1.08
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -12,7 +12,5 @@ COMMENT=	A perl script to convert text files to PDF files
 
 USES=		perl5
 USE_PERL5=	configure
-MAN3=		PDF::Create.3
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

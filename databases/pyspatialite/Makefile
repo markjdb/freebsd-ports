@@ -3,7 +3,7 @@
 
 PORTNAME=	pyspatialite
 PORTVERSION=	3.0.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	databases python
 MASTER_SITES=	CHEESESHOP:pyspatialite \
 		http://www.gaia-gis.it/gaia-sins/libspatialite-sources/:amalgam
@@ -14,7 +14,7 @@ DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:pyspatialite \
 MAINTAINER=	coder@tuxfamily.org
 COMMENT=	DB-API 2.0 interface for SQLite 3.x with Spatialite 3.x
 
-LIB_DEPENDS=	spatialite:${PORTSDIR}/databases/spatialite
+LIB_DEPENDS=	libspatialite.so:${PORTSDIR}/databases/spatialite
 
 USES=		iconv
 USE_PYTHON=	yes

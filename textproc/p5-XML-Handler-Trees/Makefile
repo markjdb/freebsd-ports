@@ -10,13 +10,10 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	PerlSAX handlers for building tree structures
 
-USES=		perl5
+USES=		perl5 dos2unix
 USE_PERL5=	configure
-USE_DOS2UNIX=	Trees.pm
+DOS2UNIX_FILES=	Trees.pm
 
-MAN3=		XML::Handler::Trees.3
-
-NO_STAGE=	yes
 post-extract:
 	@${CHMOD} +w ${WRKSRC}/Trees.pm
 

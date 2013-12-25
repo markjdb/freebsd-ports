@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	rt
-PORTVERSION=	4.0.17
+PORTVERSION=	4.0.18
+PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	http://download.bestpractical.com/pub/rt/release/ \
 		SF/requesttracker/
@@ -9,9 +10,11 @@ MASTER_SITES=	http://download.bestpractical.com/pub/rt/release/ \
 MAINTAINER=	matthew@FreeBSD.org
 COMMENT=	RT is an industrial-grade ticketing system written in Perl
 
-CONFLICTS=	rt-3.8* brlcad-[0-9]*
-LATEST_LINK=	rt40
+CONFLICTS=	rt-3.8* rt42-4.2* brlcad-[0-9]*
+PKGNAMESUFFIX=	40
 NEED_ROOT=	yes
+
+NO_ARCH=	yes
 
 # See doc/web_deployment.pod for info on the choices of webserver /
 # webapp combinations.  Note: if using apache, apache-2.2+ is
@@ -19,7 +22,7 @@ NEED_ROOT=	yes
 # or the builtin webserver with a FCGI handler.
 #
 # The builtin standalone PSGI based webserver is always available, no
-# mater what choice of web deployment platform, or none, that you
+# matter what choice of web deployment platform, or none, that you
 # make.  Best Practical state that this is really only suitable for
 # development usage, although I have heard reports of people using it
 # successfully for medium sized deployments.  If you only want the

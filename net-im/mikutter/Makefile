@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mikutter
-PORTVERSION=	0.2.2.1373
+PORTVERSION=	0.2.2.1430
 CATEGORIES=	net-im ruby
 MASTER_SITES=	http://mikutter.hachune.net/bin/ \
 		LOCAL
@@ -29,15 +29,15 @@ WRKSRC=	${WRKDIR}/${PORTNAME}
 USE_RUBY=	yes
 NO_BUILD=	yes
 
-RUBY_REQUIRE=	Ruby >= 193
 RUBY_SHEBANG_FILES=	mikutter.rb \
 			core/miku/miku.rb \
 			devel/makechi.rb
 
+PORTDOCS=	README
 SUB_FILES=	mikutter.desktop
 SUB_LIST=	RUBY_SITELIBDIR=${RUBY_SITELIBDIR}
 
-PORTDOCS=	README
+REINPLACE_ARGS=	-i ''
 
 OPTIONS_DEFINE=		HTTPCLIENT NOTIFY
 HTTPCLIENT_DESC=	httpclient support
@@ -45,11 +45,7 @@ NOTIFY_DESC=		notify-send support
 
 OPTIONS_DEFAULT=	${OPTIONS_DEFINE}
 
-.include <bsd.port.pre.mk>
-
-.if !defined(RUBY_PROVIDED)
-IGNORE=	requires Ruby 1.9.3 or later
-.endif
+.include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MHTTPCLIENT}
 RUN_DEPENDS+=	rubygem-httpclient>=0:${PORTSDIR}/www/rubygem-httpclient
@@ -69,18 +65,17 @@ do-install:
 	cd ${INSTALL_WRKSRC} \
 		&& ${COPYTREE_SHARE} core ${STAGEDIR}${RUBY_SITELIBDIR}/mikutter \
 		&& ${COPYTREE_SHARE} plugin ${STAGEDIR}${RUBY_SITELIBDIR}/mikutter
-	@${MKDIR} ${STAGEDIR}${PREFIX}/share/applications
 	${INSTALL_DATA} ${WRKDIR}/${SUB_FILES} ${STAGEDIR}${PREFIX}/share/applications/
 .if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${INSTALL_WRKSRC}/${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 .endif
 
-x-generate-plist:
+x-generate-plist: stage
 	${ECHO} bin/mikutter > pkg-plist.new
-	${FIND} ${RUBY_SITELIBDIR}/mikutter -type f | ${SORT} | ${SED} -e 's,${RUBY_SITELIBDIR},%%RUBY_SITELIBDIR%%,' >> pkg-plist.new
+	${FIND} ${STAGEDIR}${RUBY_SITELIBDIR}/mikutter -type f | ${SORT} | ${SED} -e 's,${STAGEDIR}${RUBY_SITELIBDIR},%%RUBY_SITELIBDIR%%,' >> pkg-plist.new
 	${ECHO} share/applications/mikutter.desktop >> pkg-plist.new
-	${ECHO} '@dirrmtry share/applications' >> pkg-plist.new
-	${FIND} ${RUBY_SITELIBDIR}/mikutter -type d -depth | ${SORT} -r | ${SED} -e 's,${RUBY_SITELIBDIR},@dirrm %%RUBY_SITELIBDIR%%,' >> pkg-plist.new
+	${FIND} ${STAGEDIR}${RUBY_SITELIBDIR}/mikutter -type d -depth | ${SORT} -r | ${SED} -e 's,${STAGEDIR}${RUBY_SITELIBDIR},@dirrm %%RUBY_SITELIBDIR%%,' >> pkg-plist.new
+	${REINPLACE_CMD} -E 's|@dirrm (%%RUBY_SITELIBDIR%%/mikutter/plugin)|@dirrmtry \1|' pkg-plist.new
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

@@ -13,7 +13,7 @@ DISTFILES=	${PYTHON_DISTFILE}
 MAINTAINER=	python@FreeBSD.org
 COMMENT=	Standard Python binding to the SQLite3 library
 
-LIB_DEPENDS=	sqlite3:${PORTSDIR}/databases/sqlite3
+LIB_DEPENDS=	libsqlite3.so:${PORTSDIR}/databases/sqlite3
 
 PORTSCOUT=	ignore:1
 
@@ -26,16 +26,9 @@ DISTINFO_FILE=	${PORTSDIR}/lang/python${PYTHON_SUFFIX}/distinfo
 WRKSRC=		${PYTHON_WRKSRC}/Modules
 
 PYDISTUTILS_INSTALLARGS+=	--install-lib ${PYTHON_LIBDIR}/lib-dynload
-PYDISTUTILS_NOEGGINFO=	yes
+PYDISTUTILS_AUTOPLIST=	yes
 
-PLIST_FILES=	%%PYTHON_LIBDIR%%/lib-dynload/_sqlite3.so
-
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
-
-.if ${ARCH} == "arm"
-BROKEN=		Does not install on arm
-.endif
 
 post-extract:
 .if ${PYTHON_REL} < 300

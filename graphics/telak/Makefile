@@ -13,21 +13,19 @@ COMMENT=	Tool to draw pictures on your root window
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl \
-		gcrypt:${PORTSDIR}/security/libgcrypt
+LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
+		libgcrypt.so:${PORTSDIR}/security/libgcrypt
 
 USES=		gmake
 USE_EFL=	imlib2
 
 ALL_TARGET=	${PORTNAME}
 
-PLIST_FILES=	bin/telak
-MAN1=		telak.1
+PLIST_FILES=	bin/telak man/man1/telak.1.gz
 
-NO_STAGE=	yes
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${PREFIX}/bin
-	${INSTALL_MAN} ${WRKSRC}/${PORTNAME}.1 ${MAN1PREFIX}/man/man1
+	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_MAN} ${WRKSRC}/${PORTNAME}.1 ${STAGEDIR}${MAN1PREFIX}/man/man1
 
 post-install:
 	@${CAT} ${PKGMESSAGE}

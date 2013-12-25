@@ -3,7 +3,7 @@
 
 PORTNAME=	openlierox
 DISTVERSION=	0.59_beta10
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/OpenLieroX%20${DISTVERSION:C/_/%20/}
 DISTNAME=	OpenLieroX_${DISTVERSION}.src
@@ -11,10 +11,10 @@ DISTNAME=	OpenLieroX_${DISTVERSION}.src
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Extremely addictive realtime worms shoot-em-up
 
-LIB_DEPENDS=	gd:${PORTSDIR}/graphics/gd \
-		boost_signals:${PORTSDIR}/devel/boost-libs \
-		curl:${PORTSDIR}/ftp/curl \
-   		alut:${PORTSDIR}/audio/freealut
+LIB_DEPENDS=	libgd.so:${PORTSDIR}/graphics/gd \
+		libboost_signals.so:${PORTSDIR}/devel/boost-libs \
+		libcurl.so:${PORTSDIR}/ftp/curl \
+		libalut.so:${PORTSDIR}/audio/freealut
 
 USE_BZIP2=	yes
 USE_SDL=	sdl image
@@ -41,7 +41,6 @@ PORTDATA=	*
 PLIST_FILES=	bin/openlierox \
 		share/applications/openlierox-openlierox.desktop \
 		share/pixmaps/OpenLieroX.svg
-PLIST_DIRSTRY=	share/applications
 
 OPTIONS_DEFINE=	DEDICATED_ONLY DOCS
 DEDICATED_ONLY_DESC=Build dedicated server only
@@ -66,7 +65,6 @@ post-patch:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/openlierox ${PREFIX}/bin/
-	${MKDIR} ${PREFIX}/share/applications
 	${INSTALL_DATA} ${WRKSRC}/share/openlierox-openlierox.desktop \
 		${PREFIX}/share/applications/
 	${INSTALL_DATA} ${WRKSRC}/share/OpenLieroX.svg \

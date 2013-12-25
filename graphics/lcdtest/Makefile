@@ -7,7 +7,7 @@ PORTREVISION=	5
 CATEGORIES=	graphics
 MASTER_SITES=	http://www.brouhaha.com/~eric/software/lcdtest/download/
 
-MAINTAINER=	nemysis@gmx.ch
+MAINTAINER=	nemysis@FreeBSD.org
 COMMENT=	LCD monitor test pattern generator
 
 LICENSE=	GPLv3
@@ -46,7 +46,6 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/src/${PORTNAME} ${PREFIX}/bin/
 	${INSTALL_MAN} ${WRKSRC}/man/${MAN1} ${MAN1PREFIX}/man/man1/
 	${INSTALL_DATA} ${WRKSRC}/desktop/${PORTNAME}.svg ${PREFIX}/share/pixmaps/
-	@${MKDIR} ${PREFIX}/share/applications
 	${INSTALL_DATA} ${WRKSRC}/desktop/${PORTNAME}.desktop ${PREFIX}/share/applications/
 
 .if ${PORT_OPTIONS:MDOCS}

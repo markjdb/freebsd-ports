@@ -15,15 +15,6 @@
     SUBDIR += adplay
     SUBDIR += afsp
     SUBDIR += aften
-    SUBDIR += akode
-    SUBDIR += akode-plugins-ffmpeg
-    SUBDIR += akode-plugins-jack
-    SUBDIR += akode-plugins-mpc
-    SUBDIR += akode-plugins-mpeg
-    SUBDIR += akode-plugins-oss
-    SUBDIR += akode-plugins-pulseaudio
-    SUBDIR += akode-plugins-resampler
-    SUBDIR += akode-plugins-xiph
     SUBDIR += alac
     SUBDIR += alienwah
     SUBDIR += alsa-lib
@@ -235,13 +226,11 @@
     SUBDIR += gnomoradio
     SUBDIR += gnormalize
     SUBDIR += gnuitar
-    SUBDIR += gnump3d
     SUBDIR += gnupod
     SUBDIR += gnustep-cdplayer
     SUBDIR += gogglesmm
     SUBDIR += goobox
     SUBDIR += gqmpeg
-    SUBDIR += gqmpeg-devel
     SUBDIR += gqradio
     SUBDIR += gramofile
     SUBDIR += grip
@@ -286,7 +275,6 @@
     SUBDIR += gstreamer1-plugins-amrnb
     SUBDIR += gstreamer1-plugins-amrwbdec
     SUBDIR += gstreamer1-plugins-cdparanoia
-    SUBDIR += gstreamer1-plugins-celt
     SUBDIR += gstreamer1-plugins-faac
     SUBDIR += gstreamer1-plugins-faad
     SUBDIR += gstreamer1-plugins-flac
@@ -322,6 +310,7 @@
     SUBDIR += hs-OpenAL
     SUBDIR += hs-libmpd
     SUBDIR += hydrogen
+    SUBDIR += icecast-kh
     SUBDIR += icecast2
     SUBDIR += icegenerator
     SUBDIR += ices
@@ -353,6 +342,7 @@
     SUBDIR += kaudiocreator
     SUBDIR += kexis
     SUBDIR += kid3-kde4
+    SUBDIR += kid3-qt4
     SUBDIR += kio-audiocd
     SUBDIR += kmix
     SUBDIR += kscd
@@ -449,7 +439,6 @@
     SUBDIR += linuxsampler
     SUBDIR += liquidsoap
     SUBDIR += listener
-    SUBDIR += liteamp
     SUBDIR += lmms
     SUBDIR += lpac
     SUBDIR += lua51-mpd
@@ -462,6 +451,7 @@
     SUBDIR += malint
     SUBDIR += mangler
     SUBDIR += maplay
+    SUBDIR += mate-media
     SUBDIR += mbox
     SUBDIR += mbrolavox
     SUBDIR += mcplay
@@ -504,7 +494,6 @@
     SUBDIR += mp3unicode
     SUBDIR += mp3val
     SUBDIR += mp3wrap
-    SUBDIR += mpc
     SUBDIR += mpdas
     SUBDIR += mpdbrowser
     SUBDIR += mpdcon
@@ -523,6 +512,7 @@
     SUBDIR += musica
     SUBDIR += musicbox-tag-editor
     SUBDIR += musiccontrol
+    SUBDIR += musicpc
     SUBDIR += musicpd
     SUBDIR += mythplugin-mythmusic
     SUBDIR += napster
@@ -674,8 +664,8 @@
     SUBDIR += ruby-taglib
     SUBDIR += ruby-xmms2
     SUBDIR += rubygem-librmpd
-    SUBDIR += rubygem-ogginfo
     SUBDIR += rubygem-ruby-mp3info
+    SUBDIR += rubygem-ruby-ogginfo
     SUBDIR += rubygem-shout
     SUBDIR += rubyripper
     SUBDIR += s3mod

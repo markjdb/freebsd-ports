@@ -11,7 +11,7 @@ DISTFILES=	${PORTNAME}-${PORTVERSION}.tar.bz2:src \
 		${PORTNAME}-books-${PORTVERSION}.tar.bz2:books \
 		${PORTNAME}-dicts-0.8.2.tar.bz2:dicts
 
-MAINTAINER=	delphij@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Education software to help people to study English
 
 GNU_CONFIGURE=	yes
@@ -28,7 +28,7 @@ XTRACT_AFTER_ARGS+=	--exclude CVS
 NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
-LIB_DEPENDS+=	espeak:${PORTSDIR}/audio/espeak
+LIB_DEPENDS+=	libespeak.so:${PORTSDIR}/audio/espeak
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr|${LOCALBASE}|' ${WRKSRC}/src/readword.cpp

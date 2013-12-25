@@ -1,22 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	bugzilla
-PORTVERSION=	4.2.6
+PORTVERSION=	4.2.7
 CATEGORIES=	russian
 MASTER_SITES=	SF
 MASTER_SITE_SUBDIR=bugzilla-ru/bugzilla-${PORTVERSION:R}-ru/${PORTVERSION}
-DISTNAME=	bugzilla-${PORTVERSION}-ru-20130618
+DISTNAME=	bugzilla-${PORTVERSION}-ru-20131125
 
 MAINTAINER=	bugzilla@FreeBSD.org
 COMMENT=	Russian localization for Bugzilla
 
-RUN_DEPENDS=	bugzilla>=${PORTVERSION}:${PORTSDIR}/devel/bugzilla42
+RUN_DEPENDS=	bugzilla42>=${PORTVERSION}:${PORTSDIR}/devel/bugzilla42
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}.ru
 
 .include "${.CURDIR}/../../devel/bugzilla42/Makefile.common"
-
-LATEST_LINK=	${PKGNAMEPREFIX}bugzilla42
 
 do-install:
 	${MKDIR} ${STAGEDIR}${WWWDIR}

@@ -12,10 +12,10 @@ COMMENT=	Website access log visualization tool
 
 LICENSE=	GPLv3
 
-LIB_DEPENDS=	ftgl:${PORTSDIR}/graphics/ftgl \
-		png15:${PORTSDIR}/graphics/png \
-		jpeg.11:${PORTSDIR}/graphics/jpeg \
-		pcre.3:${PORTSDIR}/devel/pcre
+LIB_DEPENDS=	libftgl.so:${PORTSDIR}/graphics/ftgl \
+		libpng15.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpcre.so:${PORTSDIR}/devel/pcre
 
 GNU_CONFIGURE=	yes
 USES=		pkgconfig
@@ -23,9 +23,4 @@ USE_SDL=	sdl image
 
 CFLAGS+=	-L/usr/local/lib -I/usr/local/include
 
-MANCOMPRESSED=	yes
-
-MAN1=		logstalgia.1
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

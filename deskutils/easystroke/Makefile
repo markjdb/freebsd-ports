@@ -13,9 +13,9 @@ LICENSE=	ISCL
 
 BUILD_DEPENDS=	help2man:${PORTSDIR}/misc/help2man \
 		${LOCALBASE}/include/xorg/xserver-properties.h:${PORTSDIR}/x11-servers/xorg-server
-LIB_DEPENDS=	gtkmm-3:${PORTSDIR}/x11-toolkits/gtkmm30 \
-		dbus-glib:${PORTSDIR}/devel/dbus-glib \
-		boost_serialization:${PORTSDIR}/devel/boost-libs
+LIB_DEPENDS=	libgtkmm-3.so:${PORTSDIR}/x11-toolkits/gtkmm30 \
+		libdbus-glib.so:${PORTSDIR}/devel/dbus-glib \
+		libboost_serialization.so:${PORTSDIR}/devel/boost-libs
 
 MAN1=		easystroke.1
 
@@ -44,17 +44,12 @@ pre-build:
 .endif
 
 do-install:
-	@${MKDIR} ${PREFIX}/bin/
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${PREFIX}/bin/${PORTNAME}
-	@${MKDIR} ${PREFIX}/share/applications/
 	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}.desktop ${PREFIX}/share/applications/
-	@${MKDIR} ${PREFIX}/share/pixmaps/
 	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}.svg ${PREFIX}/share/pixmaps/
-	@${MKDIR} ${PREFIX}/man/man1/
 	${INSTALL_MAN} ${WRKSRC}/${PORTNAME}.1 ${MAN1PREFIX}/man/man1
 
 .if ${PORT_OPTIONS:MNLS}
-	@${MKDIR} ${PREFIX}/share/locale/
 	(cd ${WRKSRC}/po/ && \
 		${COPYTREE_SHARE} \* ${PREFIX}/share/locale/ "-name *.mo")
 .endif

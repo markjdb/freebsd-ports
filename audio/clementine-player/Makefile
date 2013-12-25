@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	clementine
-PORTVERSION=	1.1.1
-PORTREVISION=	2
+PORTVERSION=	1.2.1
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	GOOGLE_CODE
 PKGNAMESUFFIX=	-player
@@ -13,34 +13,38 @@ COMMENT=	Cross-platform music player based on Amarok 1.4
 
 LICENSE=	GPLv3
 
-LIB_DEPENDS=	execinfo:${PORTSDIR}/devel/libexecinfo \
-		tag:${PORTSDIR}/audio/taglib \
-		chromaprint:${PORTSDIR}/audio/chromaprint \
-		protobuf-lite:${PORTSDIR}/devel/protobuf \
-		qjson:${PORTSDIR}/devel/qjson \
-		fftw3:${PORTSDIR}/math/fftw3
+LIB_DEPENDS=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo \
+		libtag.so:${PORTSDIR}/audio/taglib \
+		libchromaprint.so:${PORTSDIR}/audio/chromaprint \
+		libprotobuf.so:${PORTSDIR}/devel/protobuf \
+		libqjson.so:${PORTSDIR}/devel/qjson \
+		libfftw3.so:${PORTSDIR}/math/fftw3
+
 BUILD_DEPENDS=	${LOCALBASE}/include/boost/shared_ptr.hpp:${PORTSDIR}/devel/boost-libs
 
 # avoid clash with x11-wm/clementine
 LATEST_LINK=	${PORTNAME}${PKGNAMESUFFIX}
 PROJECTHOST=	${PORTNAME}${PKGNAMESUFFIX}
 
-USES=		cmake pkgconfig
+USES=		compiler:c++11-lib cmake pkgconfig
 NO_STAGE=	yes
 USE_GL=		glew
 USE_QT4=	dbus gui xml qmake_build uic_build moc_build rcc_build \
 		linguist_build network sql opengl qtestlib corelib webkit
-USE_GCC=	4.2+
 INSTALLS_ICONS=	yes
 USE_GSTREAMER=	gio ogg mp3 flac soup vorbis
 MAKE_JOBS_UNSAFE=	yes
 CONFLICTS_BUILD=	qt-3.*
 
 CMAKE_ARGS+=	-DCMAKE_LIBRARY_PATH:PATH="${LOCALBASE}/lib:${PREFIX}/lib" \
-		-DENABLE_IMOBILEDEVICE=OFF
+		-DENABLE_DBUS=ON -DENABLE_BOX=OFF \
+		-DENABLE_IMOBILEDEVICE=OFF -DENABLE_SPARKLE=OFF \
+		-DENABLE_SOUNDMENU=OFF -DENABLE_UBUNTU_ONE=OFF \
+		-DENABLE_DROPBOX=OFF -DENABLE_SKYDRIVE=OFF
 
 OPTIONS_DEFINE=		AUDIOCD BREAKPAD DEVICEKIT GIO GOOGLE_DRIVE GPOD \
-			LASTFM MTP SPOTIFY VISUALISATION WIIMOTEDEV
+			LASTFM MTP SPOTIFY VISUALISATION WIIMOTEDEV \
+			USE_BUILTIN_TAGLIB MOODBAR
 
 AUDIOCD_DESC=		Devices: Audio CD support
 BREAKPAD_DESC=		Crash reporting
@@ -53,15 +57,29 @@ MTP_DESC=		MTP device support
 SPOTIFY_DESC=		Support for Spotify service
 VISUALISATION_DESC=	Visualisations from projectM
 WIIMOTEDEV_DESC=	Wiimote support
+MOODBAR_DESC=		Moodbar Support
+USE_BUILTIN_TAGLIB=	Use Clementine builtin taglib support
 
-OPTIONS_DEFAULT=	AUDIOCD DEVICEKIT GIO GOOGLE_DRIVE LASTFM MTP SPOTIFY \
-			VISUALISATION WIIMOTEDEV
+OPTIONS_DEFAULT=	AUDIOCD DEVICEKIT GIO LASTFM MTP SPOTIFY VISUALISATION \
+			WIIMOTEDEV MOODBAR
 
 .include <bsd.port.options.mk>
 
+.if ${PORT_OPTIONS:MMOODBAR}
+CMAKE_ARGS+=	-DENABLE_MOODBAR=ON
+.else
+CMAKE_ARGS+=	-DENABLE_MOODBAR=OFF
+.endif
+
+.if ${PORT_OPTIONS:MUSE_BUILTIN_TAGLIB}
+CMAKE_ARGS+=    -DENABLE_USE_BUILTIN_TAGLIB=ON
+.else
+CMAKE_ARGS+=	-DENABLE_USE_BUILTIN_TAGLIB=OFF
+.endif
+
 .if ${PORT_OPTIONS:MAUDIOCD}
 CMAKE_ARGS+=	-DENABLE_AUDIOCD=ON
-LIB_DEPENDS+=	cdio:${PORTSDIR}/sysutils/libcdio
+LIB_DEPENDS+=	libcdio.so:${PORTSDIR}/sysutils/libcdio
 .else
 CMAKE_ARGS+=	-DENABLE_AUDIOCD=OFF
 .endif
@@ -94,30 +112,30 @@ CMAKE_ARGS+=	-DENABLE_GOOGLE_DRIVE=OFF
 
 .if ${PORT_OPTIONS:MGPOD}
 CMAKE_ARGS+=	-DENABLE_LIBGPOD=ON
-LIB_DEPENDS+=	gpod:${PORTSDIR}/audio/libgpod
+LIB_DEPENDS+=	libgpod.so:${PORTSDIR}/audio/libgpod
 .else
 CMAKE_ARGS+=	-DENABLE_LIBGPOD=OFF
 .endif
 
 .if ${PORT_OPTIONS:MLASTFM}
 CMAKE_ARGS+=	-DENABLE_LIBLASTFM=ON
-LIB_DEPENDS+=	lastfm:${PORTSDIR}/audio/liblastfm
+LIB_DEPENDS+=	liblastfm.so:${PORTSDIR}/audio/liblastfm
 .else
 CMAKE_ARGS+=	-DENABLE_LIBLASTFM=OFF
 .endif
 
 .if ${PORT_OPTIONS:MMTP}
 CMAKE_ARGS+=	-DENABLE_LIBMTP=ON
-LIB_DEPENDS+=	mtp:${PORTSDIR}/audio/libmtp
+LIB_DEPENDS+=	libmtp.so:${PORTSDIR}/audio/libmtp
 .else
 CMAKE_ARGS+=	-DENABLE_LIBMTP=OFF
 .endif
 
 .if ${PORT_OPTIONS:MSPOTIFY}
 CMAKE_ARGS+=	-DENABLE_SPOTIFY=ON
-LIB_DEPENDS+=	qca:${PORTSDIR}/devel/qca
+LIB_DEPENDS+=	libqca.so:${PORTSDIR}/devel/qca
 .else
-CMAKE_ARGS+=	-DENABLE_SPOTIFY=OFF
+CMAKE_ARGS+=	-DENABLE_SPOTIFY=OFF -DENABLE_SPOTIFY_BLOB=OFF
 .endif
 
 .if ${PORT_OPTIONS:MVISUALISATION}

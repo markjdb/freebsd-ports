@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	pkg
-DISTVERSION=	1.1.4
-PORTREVISION=	8
+DISTVERSION=	1.2.4
+PORTREVISION=	1
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://files.etoilebsd.net/pkg/ \
 		http://mirror.shatow.net/freebsd/${PORTNAME}/ \
@@ -12,7 +12,7 @@ PKGNAMESUFFIX=	-devel
 MAINTAINER=	portmgr@FreeBSD.org
 COMMENT=	New generation package manager
 
-LICENSE=	BSD
+LICENSE=	BSD2CLAUSE
 
 USE_XZ=		yes
 
@@ -20,53 +20,25 @@ USE_XZ=		yes
 # With no dependency at all
 NO_CCACHE=	yes
 USE_LDCONFIG=	yes
-MANCOMPRESSED=	yes
+USES=		uidfix
+MAKE_ARGS+=	PKG_PORTSDIR=${PORTSDIR}
 
 MAKE_ENV+=	WITHOUT_PROFILE=yes __MAKE_CONF=/dev/null SRCCONF=/dev/null \
 		PORTREVISION=${PORTREVISION}
-USE_STAGE=	yes
+
 # Use a submake as 'deinstall install' needs to reevaluate PKG_CMD
 # so that pkg-static is used from the wrkdir
 USE_SUBMAKE=	yes
 
-MAN8=	pkg.8 \
-	pkg-add.8 \
-	pkg-annotate.8 \
-	pkg-autoremove.8 \
-	pkg-audit.8 \
-	pkg-backup.8 \
-	pkg-check.8 \
-	pkg-clean.8 \
-	pkg-convert.8 \
-	pkg-create.8 \
-	pkg-delete.8 \
-	pkg-fetch.8 \
-	pkg-info.8 \
-	pkg-install.8 \
-	pkg-lock.8 \
-	pkg-query.8 \
-	pkg-register.8 \
-	pkg-repo.8 \
-	pkg-rquery.8 \
-	pkg-search.8 \
-	pkg-set.8 \
-	pkg-shell.8 \
-	pkg-shlib.8 \
-	pkg-stats.8 \
-	pkg-update.8 \
-	pkg-updating.8 \
-	pkg-upgrade.8 \
-	pkg-version.8 \
-	pkg-which.8
-MAN5=	pkg.conf.5 \
-	pkg-repository.5
-MAN3=	pkg_printf.3
-MLINKS=	pkg-delete.8 pkg-remove.8 \
-	pkg-lock.8 pkg-unlock.8 \
-	pkg.8 pkg-static.8
+.if !exists(/usr/include/jail.h)
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-pkg_pkg.8
+.endif
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
+
+.if defined(WITH_DEBUG) && !defined(WITHOUT_DEBUG)
+MAKE_ARGS+=	DEBUG_FLAGS="${DEBUG_FLAGS}"
+.endif
 
 .if defined(WITH_PKGNG)
 .if ${WITH_PKGNG} != devel
@@ -74,6 +46,9 @@ NO_LATEST_LINK=	yes
 .	if !defined(PACKAGE_BUILDING)
 IGNORE=	WITH_PKGNG is not defined to 'devel', this version is the devel one
 .	endif
+.else
+LATEST_LINK=   pkg
+PKGNAMESUFFIX=
 .endif
 .if exists(${LOCALBASE}/sbin/pkg_info) || exists(/usr/sbin/pkg_info)
 NB_OLDPKGS!=	pkg_info 2>/dev/null | wc -l
@@ -114,7 +89,7 @@ LATEST_LINK=	pkg-devel
 PKG_DEPENDS=
 .undef INSTALLS_DEPENDS
 .if !exists(${LOCALBASE}/sbin/pkg)
-PKG_BIN=	${WRKSRC}/pkg-static/pkg-static
+PKG_BIN=	${WRKSRC}/pkg/pkg-static
 .endif
 .endif
 
@@ -123,7 +98,6 @@ PERIODIC_SECURITY=	410.pkg-audit 460.pkg-checksum
 PERIODIC_ALL=		${PERIODIC_DAILY} ${PERIODIC_SECURITY}
 
 post-install:
-	@${INSTALL_DATA} ${WRKSRC}/pkg/pkg.conf.sample ${PREFIX}/etc
-	@${CAT} ${PKGMESSAGE}
+	@${INSTALL_DATA} ${WRKSRC}/pkg/pkg.conf.sample ${STAGEDIR}${PREFIX}/etc
 
 .include <bsd.port.post.mk>

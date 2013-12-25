@@ -3,7 +3,7 @@
 
 PORTNAME=	cas
 PORTVERSION=	3.5.6
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	www devel
 MASTER_SITES=	http://cas.havoc.ru/download/
 
@@ -16,7 +16,6 @@ LIB_DEPENDS=	expat:${PORTSDIR}/textproc/expat2 \
 
 USES=		cmake iconv
 USE_LDCONFIG=	yes
-WITHOUT_NLS=	yes
 
 OPTIONS_DEFINE=	DEBUG_MODE               \
 		ENABLE_OPTIMIZATION      \

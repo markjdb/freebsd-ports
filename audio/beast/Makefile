@@ -3,6 +3,7 @@
 
 PORTNAME=	beast
 PORTVERSION=	0.7.8
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://dist.testbit.eu/beast/%SUBDIR%/
 MASTER_SITE_SUBDIR=	v${PORTVERSION:R}
@@ -12,17 +13,17 @@ COMMENT=	Powerful music composition and modular synthesis application
 
 LICENSE=	LGPL21
 
-LIB_DEPENDS=	asound:${PORTSDIR}/audio/alsa-lib \
-		mad:${PORTSDIR}/audio/libmad \
-		vorbisfile:${PORTSDIR}/audio/libvorbis \
-		guile:${PORTSDIR}/lang/guile
+LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib \
+		libmad.so:${PORTSDIR}/audio/libmad \
+		libvorbisfile.so:${PORTSDIR}/audio/libvorbis \
+		libguile.so:${PORTSDIR}/lang/guile
 RUN_DEPENDS=	xdg-open:${PORTSDIR}/devel/xdg-utils
 
+OPTIONS_DEFINE=		DEBUG
 OPTIONS_DEFINE_i386=	SSE
 
 USE_BZIP2=	yes
-NO_STAGE=	yes
-USES=		gmake pathfix gettext pkgconfig
+USES=		desktop-file-utils gmake gettext pathfix pkgconfig shared-mime-info
 USE_GCC=	yes
 USE_GNOME=	gnomehier libgnomecanvas
 GNU_CONFIGURE=	yes
@@ -37,8 +38,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 PLIST_SUB=	VERSION="${PORTVERSION}"
 
-MAN1=		beast.1 bsescm.1 bsewavetool.1 sfidl.1
-MAN5=		bse.5
+DEBUG_CONFIGURE_ENABLE=	debug
 
 .include <bsd.port.pre.mk>
 
@@ -52,10 +52,6 @@ SSE_FLAGS=	-mmmx -msse
 .else
 PLIST_SUB+=	SSE="@comment "
 SSE_FLAGS=	# none
-.endif
-
-.if empty(PORT_OPTIONS:MDEBUG)
-CONFIGURE_ARGS+=--disable-debug
 .endif
 
 post-patch:
@@ -72,5 +68,8 @@ post-patch:
 	@${REINPLACE_CMD} -e \
 		's|; q|;| ; \
 		 s|-o \(pipefail\)|\1|' ${WRKSRC}/docs/Makefile.in
+	@${REINPLACE_CMD} -e \
+		's|-DG_DISABLE_DEPRECATED||' ${WRKSRC}/bse/Makefile.am \
+		${WRKSRC}/bse/Makefile.in
 
 .include <bsd.port.post.mk>

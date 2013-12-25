@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	mpd2
-PORTVERSION=	0.5.1
+PORTVERSION=	0.5.2
+PORTREVISION=	1
 CATEGORIES=	audio python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	python-${PORTNAME}-${PORTVERSION}
@@ -11,38 +12,40 @@ MAINTAINER=	rene@FreeBSD.org
 COMMENT=	Fork of the Python MPD client library
 
 USE_GITHUB=	yes
-NO_STAGE=	yes
 GH_ACCOUNT=	Mic92
 GH_PROJECT=	python-${PORTNAME}
 GH_TAGNAME=	v${PORTVERSION}
-GH_COMMIT=	f8d5946
+GH_COMMIT=	df508d4
 
 USE_PYTHON=	yes
-USE_PYDISTUTILS=	easy_install
-PYDISTUTILS_PKGNAME=	python_mpd2
+USE_PYDISTUTILS=	yes
+PYDISTUTILS_AUTOPLIST=	yes
+
+NO_ARCH=	yes
 
 OPTIONSFILE=	${PORT_DBDIR}/py-${PORTNAME}/options
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
 DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-PORTDOCS=	commands.rst
+PORTDOCS_1=	index.rst changes.rst
+PORTDOCS_2=	topics/advanced.rst topics/commands.rst \
+		topics/getting-started.rst topics/logging.rst
+PORTDOCS=	${PORTDOCS_1} ${PORTDOCS_2}
 EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 PORTEXAMPLES=	locking.py logger.py
-
-.include <bsd.port.options.mk>
+PLIST_DIRSTRY=	${DOCSDIR}/topics
 
 post-install:
-.if ${PORT_OPTIONS:MDOCS}
-	@${MKDIR} ${DOCSDIR}
-.for f in ${PORTDOCS}
-	@${INSTALL_DATA} ${WRKSRC}/doc/${f} ${DOCSDIR}
+	${MKDIR} ${STAGEDIR}${DOCSDIR}/topics
+.for f in ${PORTDOCS_1}
+	${INSTALL_DATA} ${WRKSRC}/doc/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
-.endif
-.if ${PORT_OPTIONS:MEXAMPLES}
-	@${MKDIR} ${EXAMPLESDIR}
+.for f in ${PORTDOCS_2}
+	${INSTALL_DATA} ${WRKSRC}/doc/${f} ${STAGEDIR}${DOCSDIR}/topics
+.endfor
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 .for f in ${PORTEXAMPLES}
-	@${INSTALL_SCRIPT} ${WRKSRC}/examples/${f} ${EXAMPLESDIR}
+	${INSTALL_SCRIPT} ${WRKSRC}/examples/${f} ${STAGEDIR}${EXAMPLESDIR}
 .endfor
-.endif
 
 .include <bsd.port.mk>

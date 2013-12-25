@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	xapian-core
-PORTVERSION=	1.2.15
+PORTVERSION=	1.2.16
 PORTEPOCH=	1
 CATEGORIES=	databases
 MASTER_SITES=	http://oligarchy.co.uk/xapian/${PORTVERSION}/ \
@@ -19,33 +19,17 @@ SSE2_DESC=	Use SSE2 for floating point
 PORTSCOUT=	limitw:1,even
 
 GNU_CONFIGURE=	yes
+MAKE_ENV=	INSTALL_STRIP_FLAG=${STRIP}
 USE_LDCONFIG=	yes
+USE_XZ=		yes
 
-MAN1=		xapian-check.1 \
-		xapian-chert-update.1 \
-		xapian-compact.1 \
-		xapian-config.1 \
-		xapian-inspect.1 \
-		xapian-progsrv.1 \
-		xapian-replicate.1 \
-		xapian-replicate-server.1 \
-		xapian-tcpsrv.1
+PORTDOCS=	*
 
-NO_STAGE=	yes
-.include <bsd.port.options.mk>
-
-.if !${PORT_OPTIONS:MSSE2}
-CONFIGURE_ARGS+=--disable-sse
-.endif
-
-post-patch:
-.if !${PORT_OPTIONS:MDOCS}
-	@${REINPLACE_CMD} -e '/^SUBDIRS = / s| docs||' ${WRKSRC}/Makefile.in
-.endif
+SSE2_CONFIGURE_ENABLE=	sse
 
 post-install:
 .for file in copydatabase delve quest
-	${INSTALL_PROGRAM} ${WRKSRC}/examples/.libs/${file} ${PREFIX}/bin/xapian-${file}
+	${INSTALL_PROGRAM} ${WRKSRC}/examples/.libs/${file} ${STAGEDIR}${PREFIX}/bin/xapian-${file}
 .endfor
 
 .include <bsd.port.mk>

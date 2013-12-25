@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	twistedNames
-PORTVERSION=	13.1.0
+PORTVERSION=	13.2.0
 CATEGORIES=	dns devel python
 MASTER_SITES=	http://twistedmatrix.com/Releases/Names/${PORTVERSION:R}/ \
 		LOCAL/sunpoet
@@ -22,5 +22,4 @@ USE_PYTHON=	-2.7
 USE_PYDISTUTILS=yes
 PYDISTUTILS_PKGNAME=	${PORTNAME:S/twisted/Twisted_/}
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

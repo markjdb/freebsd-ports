@@ -3,12 +3,12 @@
 
 PORTNAME=	nfsen
 PORTVERSION=	1.3.6p1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	net-mgmt
 MASTER_SITES=	SF/${PORTNAME}/stable/${PORTNAME}-${PORTVERSION} \
 		http://nfsen.sourceforge.net/
 
-MAINTAINER=	jmohacsi@bsd.hu
+MAINTAINER=	feld@FreeBSD.org
 COMMENT=	Web based frontend to nfdump netflow collector
 
 LICENSE=	BSD
@@ -37,6 +37,7 @@ SUB_LIST+=	"LIBEXECDIR=${PREFIX}/libexec/${PORTNAME}"
 SUB_LIST+=	"PORTVERSION=${PORTVERSION}"
 SUB_LIST+=	"PREFIX=${PREFIX}"
 SUB_LIST+=	"WWWDIR=${WWWDIR}"
+SUB_LIST+=	"PORTNAME=${PORTNAME}"
 
 NO_STAGE=	yes
 post-patch:

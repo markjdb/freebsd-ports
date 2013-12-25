@@ -11,7 +11,7 @@
     SUBDIR += bsdforen-firefox-searchplugin
     SUBDIR += bsdgroup-firefox-searchplugin
     SUBDIR += bsdpaste
-    SUBDIR += bugzilla
+    SUBDIR += bugzilla40
     SUBDIR += bugzilla42
     SUBDIR += bugzilla44
     SUBDIR += calligra-l10n
@@ -40,6 +40,7 @@
     SUBDIR += selfhtml
     SUBDIR += steak
     SUBDIR += tipp10
+    SUBDIR += trytond28_account_de_skr03
     SUBDIR += trytond_account_de_skr03
     SUBDIR += unix-connect
     SUBDIR += vtiger

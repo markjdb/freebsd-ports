@@ -15,10 +15,8 @@ LICENSE_FILE=	${WRKSRC}/readme.txt
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-NO_STAGE=	yes
-USES=		iconv
-USE_DOS2UNIX=	yes
-MAKE_ARGS=	CPP="${CXX}" CC="${CC}" OBJ="${UNALZ_OBJS}" \
+USES=		dos2unix iconv
+MAKE_ARGS+=	CPP="${CXX}" CC="${CC}" OBJ="${UNALZ_OBJS}" \
 		LDFLAGS="${LDFLAGS}" CFLAGS="${CFLAGS}"
 ALL_TARGET=	posix-utf8
 
@@ -31,10 +29,12 @@ UNALZ_OBJS=	main.o UnAlz.o UnAlzUtils.o UnAlzBz2decompress.o \
 		UnAlzBzip2.o UnAlzbzlib.o
 
 post-patch:
-	@${REINPLACE_CMD} -e \
+	${REINPLACE_CMD} -e \
+		's/-liconv/${ICONV_LIB}/g' ${WRKSRC}/Makefile
+	${REINPLACE_CMD} -e \
 		'/<sys\/timeb.h>/d' ${WRKSRC}/main.cpp
 
 do-install:
-	(cd ${WRKSRC} && ${INSTALL_PROGRAM} ${PORTNAME} ${PREFIX}/bin)
+	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>

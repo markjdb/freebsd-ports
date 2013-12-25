@@ -10,17 +10,14 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	A simple console MP3 player
 
 GNU_CONFIGURE=	yes
-NO_STAGE=	yes
 PORTDOCS=	*
 
 PLIST_FILES=	bin/${PORTNAME}
 
-.include <bsd.port.options.mk>
+OPTIONS_DEFINE=	DOCS
 
 post-install:
-.if ${PORT_OPTIONS:MDOCS}
-	@${MKDIR} ${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/README ${DOCSDIR}
-.endif
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

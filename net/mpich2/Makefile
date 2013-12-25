@@ -3,7 +3,7 @@
 
 PORTNAME=	mpich2
 DISTVERSION=	1.3.2p1
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=	5
 CATEGORIES=	net java parallel
 MASTER_SITES=	http://www.mcs.anl.gov/research/projects/mpich2/downloads/tarballs/${DISTVERSION}/
@@ -39,7 +39,8 @@ SMPD_DESC=	use SMPD instead of MPD, for a mixed-OS cluster
 X11_DESC=	build MPE graphics routines
 
 CONFIGURE_ARGS=	--enable-romio --enable-shared	\
-		--docdir="${DOCSDIR}"
+		--docdir="${DOCSDIR}" \
+		--with-python="${PYTHON_CMD}"
 CONFIGURE_ENV=	FCFLAGS="${FFLAGS}" \
 		PACKAGE=${PORTNAME} \
 		PTHREAD_LIBS="${PTHREAD_LIBS}"

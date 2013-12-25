@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	froxlor
-DISTVERSION=	0.9.28.1
+DISTVERSION=	0.9.30
 CATEGORIES=	sysutils www
 MASTER_SITES=	http://files.froxlor.org/releases/
 
@@ -57,88 +57,46 @@ NLS_DESC=	Enable NLS support (required for webFTP frontend)
 
 OPTIONS_DEFAULT=	APACHE MYSQLS POSTFIX DOVECOT PROFTPD WEBALIZER MYSQLS PCNTL NLS
 
-NO_STAGE=	yes
-.include <bsd.port.options.mk>
+POSTFIX_RUN_DEPENDS=	postfix:${PORTSDIR}/mail/postfix
 
-.if ${PORT_OPTIONS:MAPACHE}
-USE_APACHE_RUN=	22
-.endif
+EXIM_RUN_DEPENDS=	exim:${PORTSDIR}/mail/exim
 
-.if ${PORT_OPTIONS:MLIGHTTPD}
-RUN_DEPENDS+=	lighttpd:${PORTSDIR}/www/lighttpd
-.endif
+DKIM_RUN_DEPENDS=	opendkim:${PORTSDIR}/mail/opendkim
 
-.if ${PORT_OPTIONS:MNGINX}
-RUN_DEPENDS+=	nginx:${PORTSDIR}/www/nginx
-.endif
+DOVECOT_RUN_DEPENDS=	dovecot:${PORTSDIR}/mail/dovecot
 
-.if ${PORT_OPTIONS:MMYSQLS}
-USE_MYSQL=	server
-.endif
+COURIER_RUN_DEPENDS=	courier:${PORTSDIR}/mail/courier
 
-.if ${PORT_OPTIONS:MPOSTFIX}
-RUN_DEPENDS+=	postfix:${PORTSDIR}/mail/postfix
-.endif
+PROFTPD_RUN_DEPENDS=	${LOCALBASE}/libexec/proftpd/mod_sql_mysql.so:${PORTSDIR}/databases/proftpd-mod_sql_mysql
 
-.if ${PORT_OPTIONS:MEXIM}
-RUN_DEPENDS+=	exim:${PORTSDIR}/mail/exim
-.endif
+PUREFTPD_RUN_DEPENDS=	pure-ftpd:${PORTSDIR}/ftp/pure-ftpd
 
-.if ${PORT_OPTIONS:MDKIM}
-RUN_DEPENDS+=	opendkim:${PORTSDIR}/mail/opendkim
-.endif
+POWERDNS_RUN_DEPENDS=	powerdns:${PORTSDIR}/dns/powerdns
 
-.if ${PORT_OPTIONS:MDOVECOT}
-RUN_DEPENDS+=	dovecot:${PORTSDIR}/mail/dovecot
-.endif
+LIBNSS_RUN_DEPENDS=	${LOCALBASE}/lib/nss_mysql.so:${PORTSDIR}/net/libnss-mysql
 
-.if ${PORT_OPTIONS:MCOURIER}
-RUN_DEPENDS+=	courier:${PORTSDIR}/mail/courier
-.endif
+WEBALIZER_RUN_DEPENDS=	webalizer:${PORTSDIR}/www/webalizer
 
-.if ${PORT_OPTIONS:MPROFTPD}
-RUN_DEPENDS+=	${LOCALBASE}/libexec/proftpd/mod_sql_mysql.so:${PORTSDIR}/databases/proftpd-mod_sql_mysql
-.endif
+AWSTATS_RUN_DEPENDS=	awstats>=6.8:${PORTSDIR}/www/awstats
 
-.if ${PORT_OPTIONS:MPUREFTPD}
-RUN_DEPENDS+=	pure-ftpd:${PORTSDIR}/ftp/pure-ftpd
-.endif
+LOGROTATE_RUN_DEPENDS=	logrotate:${PORTSDIR}/sysutils/logrotate
 
-.if ${PORT_OPTIONS:MPOWERDNS}
-RUN_DEPENDS+=	powerdns:${PORTSDIR}/dns/powerdns
-.endif
+LIGHTTPD_RUN_DEPENDS=	lighttpd:${PORTSDIR}/www/lighttpd
 
-.if ${PORT_OPTIONS:MLIBNSS}
-RUN_DEPENDS+=	${LOCALBASE}/lib/nss_mysql.so:${PORTSDIR}/net/libnss-mysql
-.endif
+NGINX_RUN_DEPENDS=	nginx:${PORTSDIR}/www/nginx
 
-.if ${PORT_OPTIONS:MWEBALIZER}
-RUN_DEPENDS+=	webalizer:${PORTSDIR}/www/webalizer
-.endif
+APACHE_USE=	APACHE_RUN=22
 
-.if ${PORT_OPTIONS:MAWSTATS}
-RUN_DEPENDS+=	awstats>=6.8:${PORTSDIR}/www/awstats
-.endif
+MYSQLS_USE=	MYSQL=server
 
-.if ${PORT_OPTIONS:MLOGROTATE}
-RUN_DEPENDS+=	logrotate:${PORTSDIR}/sysutils/logrotate
-.endif
+PCNTL_USE=	PHP=pcntl
 
-.if ${PORT_OPTIONS:MPCNTL}
-USE_PHP+=	pcntl
-.endif
-
-.if ${PORT_OPTIONS:MNLS}
-USES+=		gettext:run
-USE_PHP+=	gettext
-.endif
+NLS_USES=	gettext:run
+NLS_USE=	PHP=gettext
 
 do-install:
 	cd ${WRKDIR}/${PORTNAME} && \
 	${FIND} . ! -name .gitignore | \
-	${CPIO} --quiet -pdm -R ${WWWOWN}:${WWWGRP} ${WWWDIR}
-
-post-install:
-	${CAT} ${PKGMESSAGE}
+	${CPIO} --quiet -pdm ${STAGEDIR}${WWWDIR}
 
 .include <bsd.port.mk>

@@ -1,3 +1,5 @@
+@owner www
+@group www
 %%WWWDIR%%/changelog.txt
 %%WWWDIR%%/examples/accessibility.html
 %%WWWDIR%%/examples/css/content.css
@@ -399,3 +401,5 @@
 @dirrm %%WWWDIR%%/examples/css
 @dirrm %%WWWDIR%%/examples
 @dirrmtry %%WWWDIR%%
+@owner
+@group

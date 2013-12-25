@@ -20,6 +20,7 @@
     SUBDIR += code2001
     SUBDIR += comfortaa-ttf
     SUBDIR += consolamono-ttf
+    SUBDIR += cosmic-sans-neue-mono
     SUBDIR += croscorefonts-fonts-ttf
     SUBDIR += cyberbit-ttfonts
     SUBDIR += cyr-rfx
@@ -92,6 +93,7 @@
     SUBDIR += gnu-unifont-ttf
     SUBDIR += gohufont
     SUBDIR += hanazono-fonts-ttf
+    SUBDIR += inconsolata-lgc-ttf
     SUBDIR += inconsolata-ttf
     SUBDIR += indic-ttf
     SUBDIR += intlfonts
@@ -132,10 +134,10 @@
     SUBDIR += paratype
     SUBDIR += pcf2bdf
     SUBDIR += pingwi
-    SUBDIR += ppantsfonts
     SUBDIR += profont
     SUBDIR += proggy_fonts
     SUBDIR += proggy_fonts-ttf
+    SUBDIR += py-bdflib
     SUBDIR += roboto-fonts-ttf
     SUBDIR += sgifonts
     SUBDIR += sharefonts
@@ -153,6 +155,7 @@
     SUBDIR += ubuntu-font
     SUBDIR += urwfonts
     SUBDIR += urwfonts-ttf
+    SUBDIR += vollkorn-ttf
     SUBDIR += webfonts
     SUBDIR += wqy
     SUBDIR += xf86bigfontproto

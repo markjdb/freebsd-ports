@@ -7,7 +7,7 @@ PORTREVISION=	4
 CATEGORIES=	www
 MASTER_SITES=	http://download.gna.org/bins/
 
-MAINTAINER=	araujo@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Tool to generate HTML photo albums with XML support
 
 RUN_DEPENDS=	\
@@ -30,6 +30,7 @@ USES=		perl5
 USE_PERL5=	run
 USE_BZIP2=	yes
 NO_BUILD=	yes
+NO_STAGE=	yes
 
 # additional scripts
 BINS_SCRIPTS=	tools/bins_txt2xml
@@ -53,12 +54,12 @@ do-install:
 
 post-install:
 .for file in ${BINS_SCRIPTS}
-	@${INSTALL_SCRIPT} ${WRKSRC}/${file} ${STAGEDIR}${PREFIX}/bin
+	@${INSTALL_SCRIPT} ${WRKSRC}/${file} ${PREFIX}/bin
 .endfor
 .ifndef(NOPORTDOCS)
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	@${MKDIR} ${DOCSDIR}
 .for ext in ${DOC_EXTS}
-	@${INSTALL_DATA} ${WRKSRC}/doc/*.${ext} ${STAGEDIR}${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/doc/*.${ext} ${DOCSDIR}
 .endfor
 .endif
 

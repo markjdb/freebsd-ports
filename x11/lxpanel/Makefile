@@ -7,7 +7,7 @@ PORTREVISION=	1
 CATEGORIES=	x11
 MASTER_SITES=	SF/lxde/LXPanel%20%28desktop%20panel%29/LXPanel%20${PORTVERSION}/
 
-MAINTAINER=	wg@FreeBSD.org
+MAINTAINER=	nemysis@FreeBSD.org
 COMMENT=	Lightweight X11 desktop panel
 
 LICENSE=	GPLv2 MIT
@@ -16,8 +16,14 @@ LICENSE_COMB=	dual
 LIB_DEPENDS=	libmenu-cache.so:${PORTSDIR}/x11/menu-cache
 RUN_DEPENDS=	${LOCALBASE}/share/desktop-directories/lxde-audio-video.directory:${PORTSDIR}/x11/lxmenu-data
 
-OPTIONS_DEFINE=	DOCS ALSA NLS
-OPTIONS_DEFAULT=NLS
+OPTIONS_DEFINE=	ALSA DOCS NLS
+
+OPTIONS_SUB=	yes
+
+ALSA_RUN_DEPENDS=	${LINUXBASE}/lib/libasound.so.2:${PORTSDIR}/audio/linux-f10-alsa-lib
+ALSA_CONFIGURE_ENABLE=	alsa
+
+NLS_USES=	gettext
 
 USE_XORG=	x11 xmu
 USE_GNOME=	gtk20 libwnck
@@ -35,34 +41,19 @@ PORTDOCS=	AUTHORS README
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MALSA}
-RUN_DEPENDS+=	${LINUXBASE}/lib/libasound.so.2:${PORTSDIR}/audio/linux-f10-alsa-lib
-.else
-CONFIGURE_ARGS+=--disable-alsa
-.endif
-
-.if ${PORT_OPTIONS:MNLS}
-USES+=		gettext
-PLIST_SUB+=	NLS=""
-.else
-PLIST_SUB+=	NLS="@comment "
-.endif
-
 post-patch:
-	@${REINPLACE_CMD} -e 's,linux,sys,' \
+	@${REINPLACE_CMD} -e 's|linux|sys|' \
 		${WRKSRC}/src/plugins/volume/volume-impl.c
-	@${REINPLACE_CMD} -e 's,$$(DATADIRNAME)/locale,share/locale,' \
+	@${REINPLACE_CMD} -e 's|$$(DATADIRNAME)/locale|share/locale|' \
 		${WRKSRC}/po/Makefile.in.in
 
 .if ! ${PORT_OPTIONS:MNLS}
-	@${REINPLACE_CMD} -e 's,po man,man,' \
+	@${REINPLACE_CMD} -e 's|po man|man|' \
 		${WRKSRC}/Makefile.in
 .endif
 
 post-install:
-.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
-.endif
 
 .include <bsd.port.mk>

@@ -583,6 +583,15 @@ lib/libYap.a
 %%DATADIR%%/xsdp_types.pl
 %%DATADIR%%/ypp.yap
 %%DATADIR%%/zlib.pl
+%%MYDDAS%%lib/Yap/odbc4pl.so
+%%MYDDAS%%%%DATADIR%%/myddas.yap
+%%MYDDAS%%%%DATADIR%%/myddas_assert_predicates.yap
+%%MYDDAS%%%%DATADIR%%/myddas_errors.yap
+%%MYDDAS%%%%DATADIR%%/myddas_mysql.yap
+%%MYDDAS%%%%DATADIR%%/myddas_prolog2sql.yap
+%%MYDDAS%%%%DATADIR%%/myddas_prolog2sql_optimizer.yap
+%%MYDDAS%%%%DATADIR%%/myddas_top_level.yap
+%%MYDDAS%%%%DATADIR%%/myddas_util_predicates.yap
 %%PORTDOCS%%%%DOCSDIR%%/Artistic
 %%PORTDOCS%%%%DOCSDIR%%/COPYING
 %%PORTDOCS%%%%DOCSDIR%%/README

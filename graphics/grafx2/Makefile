@@ -11,8 +11,8 @@ EXTRACT_SUFX=	.tgz
 MAINTAINER=	ehaupt@FreeBSD.org
 COMMENT=	Pixelart-oriented bitmap painting program
 
-LIB_DEPENDS=	X11:${PORTSDIR}/x11/libX11 \
-		png15:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libX11.so:${PORTSDIR}/x11/libX11 \
+		libpng15.so:${PORTSDIR}/graphics/png
 
 USES=		gmake pkgconfig
 USE_SDL=	sdl image
@@ -24,7 +24,6 @@ OPTIONS_DEFINE=	TTF LUA
 TTF_DESC=	True Type font support
 OPTIONS_DEFAULT=TTF
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MTTF}

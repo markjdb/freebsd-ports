@@ -11,7 +11,7 @@ COMMENT=	Backup content from DVD to hard disk
 
 LICENSE=	GPLv3
 
-LIB_DEPENDS=	dvdread:${PORTSDIR}/multimedia/libdvdread
+LIB_DEPENDS=	libdvdread.so:${PORTSDIR}/multimedia/libdvdread
 
 GNU_CONFIGURE=	yes
 USES=		gmake
@@ -19,14 +19,12 @@ USES=		gmake
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-MAN1=		dvdbackup.1
 PORTDOCS=	NEWS README
 
 DEFAULT_DVD_DEVICE?=	/dev/cd0
 
 OPTIONS_DEFINE=	DOCS NLS
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}

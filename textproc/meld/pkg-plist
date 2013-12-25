@@ -193,6 +193,7 @@ share/icons/hicolor/scalable/apps/meld.svg
 %%NLS%%share/locale/fr/LC_MESSAGES/meld.mo
 %%NLS%%share/locale/gl/LC_MESSAGES/meld.mo
 %%NLS%%share/locale/hu/LC_MESSAGES/meld.mo
+%%NLS%%share/locale/id/LC_MESSAGES/meld.mo
 %%NLS%%share/locale/it/LC_MESSAGES/meld.mo
 %%NLS%%share/locale/ja/LC_MESSAGES/meld.mo
 %%NLS%%share/locale/ko/LC_MESSAGES/meld.mo
@@ -269,7 +270,6 @@ share/omf/meld/meld-fr.omf
 @dirrm share/gnome/help/meld/es
 @dirrm share/gnome/help/meld/C
 @dirrm share/gnome/help/meld
-@dirrmtry share/applications
 @dirrmtry share/appdata
 @dirrm lib/meld/meld/vc
 @dirrm lib/meld/meld/util

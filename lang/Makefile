@@ -31,10 +31,11 @@
     SUBDIR += cfortran
     SUBDIR += chicken
     SUBDIR += cint
-    SUBDIR += clang
     SUBDIR += clang-devel
     SUBDIR += clang31
+    SUBDIR += clang32
     SUBDIR += clang33
+    SUBDIR += clang34
     SUBDIR += clay
     SUBDIR += clisp
     SUBDIR += clojure
@@ -52,7 +53,6 @@
     SUBDIR += dmd
     SUBDIR += dmd2
     SUBDIR += dragonegg-devel46
-    SUBDIR += dragonegg46
     SUBDIR += dragonegg46-33
     SUBDIR += dragonegg47-33
     SUBDIR += ecl
@@ -90,7 +90,6 @@
     SUBDIR += gcc-aux
     SUBDIR += gcc-ecj45
     SUBDIR += gcc34
-    SUBDIR += gcc42
     SUBDIR += gcc44
     SUBDIR += gcc46
     SUBDIR += gcc47
@@ -154,8 +153,6 @@
     SUBDIR += logo
     SUBDIR += lua
     SUBDIR += lua-mode.el
-    SUBDIR += lua4
-    SUBDIR += lua50
     SUBDIR += lua52
     SUBDIR += luajit
     SUBDIR += lush
@@ -185,10 +182,11 @@
     SUBDIR += newlisp-devel
     SUBDIR += nhc98
     SUBDIR += nickle
+    SUBDIR += nimrod
     SUBDIR += nml
     SUBDIR += nqc
     SUBDIR += nwcc
-    SUBDIR += objc
+    SUBDIR += nx
     SUBDIR += ocaml
     SUBDIR += ocaml-autoconf
     SUBDIR += ocaml-camlidl
@@ -300,9 +298,7 @@
     SUBDIR += ruby-doc-stdlib
     SUBDIR += ruby-man
     SUBDIR += ruby-programmingruby
-    SUBDIR += ruby-reference
     SUBDIR += ruby-usersguide
-    SUBDIR += ruby18
     SUBDIR += ruby19
     SUBDIR += ruby20
     SUBDIR += runawk
@@ -326,7 +322,6 @@
     SUBDIR += sisc
     SUBDIR += sketchy
     SUBDIR += slib
-    SUBDIR += slib-gauche
     SUBDIR += slib-guile
     SUBDIR += slisp
     SUBDIR += smalltalk
@@ -337,6 +332,7 @@
     SUBDIR += spidermonkey17
     SUBDIR += spidermonkey170
     SUBDIR += spidermonkey185
+    SUBDIR += spidermonkey24
     SUBDIR += spl
     SUBDIR += squeak
     SUBDIR += squirrel
@@ -359,9 +355,6 @@
     SUBDIR += tinypy
     SUBDIR += tolua
     SUBDIR += tolua++
-    SUBDIR += tolua++50
-    SUBDIR += tolua4
-    SUBDIR += tolua50
     SUBDIR += treecc
     SUBDIR += tuareg-mode.el
     SUBDIR += twelf

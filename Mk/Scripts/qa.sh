@@ -7,6 +7,9 @@ if [ -z "${STAGEDIR}" -o -z "${PREFIX}" -o -z "${LOCALBASE}" ]; then
 	exit 1
 fi
 
+LF=$(printf '\nX')
+LF=${LF%X}
+
 warn() {
 	echo "Warning: $@" >&2
 }
@@ -17,8 +20,8 @@ err() {
 
 shebang() {
 	rc=0
-	for f in `find ${STAGEDIR} -type f`; do
-		interp=$(sed -n -e '1s/^#![[:space:]]*\([^[:space:]]*\).*/\1/p' $f)
+	IFS="$LF" ; for f in `find ${STAGEDIR} -type f`; do
+		interp=$(sed -n -e '1s/^#![[:space:]]*\([^[:space:]]*\).*/\1/p;2q' $f)
 		case "$interp" in
 		"") ;;
 		/usr/bin/env) ;;
@@ -26,6 +29,8 @@ shebang() {
 		${PREFIX}/*) ;;
 		/usr/bin/awk) ;;
 		/usr/bin/sed) ;;
+		/usr/bin/nawk) ;;
+		/bin/csh) ;;
 		/bin/sh) ;;
 		*)
 			err "${interp} is an invalid shebang you need USES=shebangfix for ${f#${STAGEDIR}${PREFIX}/}"
@@ -37,7 +42,7 @@ shebang() {
 
 symlinks() {
 	rc=0
-	for l in `find ${STAGEDIR} -type l`; do
+	IFS="$LF" ; for l in `find ${STAGEDIR} -type l`; do
 		link=$(readlink ${l})
 		case "${link}" in
 		${STAGEDIR}*) err "Bad symlinks ${l} pointing inside the stage directory"
@@ -50,7 +55,7 @@ symlinks() {
 paths() {
 	rc=0
 	dirs="${STAGEDIR} ${WRKDIR}"
-	for f in `find ${STAGEDIR} -type f`;do
+	IFS="$LF" ; for f in `find ${STAGEDIR} -type f`;do
 		for d in ${dirs}; do
 			if grep -q ${d} ${f} ; then
 				err "${f} is referring to ${d}"
@@ -62,11 +67,12 @@ paths() {
 
 # For now do not raise an error, just warnings
 stripped() {
-	[ -x /usr/bin/file ] || return
-	for f in `find ${STAGEDIR} -type f`; do
+	[ -x /usr/bin/file ] || return # this is fatal
+	[ -n "${STRIP}" ] || return 0
+	IFS="$LF" ; for f in `find ${STAGEDIR} -type f`; do
 		output=`/usr/bin/file ${f}`
 		case "${output}" in
-		*:*\ ELF\ *,\ not\ stripped*) warn "${f} is not stripped";;
+		*:*\ ELF\ *,\ not\ stripped*) warn "${f} is not stripped consider using \${STRIP_CMD}";;
 		esac
 	done
 }
@@ -93,7 +99,18 @@ sharedmimeinfo() {
 	return 0
 }
 
-checks="shebang symlinks paths stripped desktopfileutils sharedmimeinfo"
+suidfiles() {
+	filelist=`find ${STAGEDIR} -type f \
+		\( -perm -u+x -or -perm -g+x -or -perm -o+x \) \
+		\( -perm -u+s -or -perm -g+s \)`
+	if [ -n "${filelist}" ]; then
+		warn "setuid files in the stage directory (are these necessary?):"
+		ls -liTd ${filelist}
+	fi
+	return 0
+}
+
+checks="shebang symlinks paths stripped desktopfileutils sharedmimeinfo suidfiles"
 
 ret=0
 cd ${STAGEDIR}

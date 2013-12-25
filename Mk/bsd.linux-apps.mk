@@ -55,10 +55,10 @@ WEB_AUTH=			nvu
 
 # Non-version specific components
 _LINUX_APPS_ALL=	allegro alsalib arts aspell atk cairo cups-libs curl dri esound expat fontconfig \
-					freealut gdkpixbuf gnutls gtk gtk2 hicontheme imlib jpeg libaudiofile \
+					freealut gdkpixbuf gnutls gtk2 hicontheme imlib jpeg libaudiofile \
 					libg2c libgcrypt libglade2 libglu libgpg-error libmng libogg \
 					libsigcpp20 libtasn1 libtheora libvorbis libxml2 mikmod naslibs \
-					ncurses-base openal openmotif openssl pango png png10 scimgtk \
+					ncurses-base openal openmotif openssl pango png scimgtk \
 					scimlibs sdl12 sdlimage sdlmixer tiff xorglibs ucl ungif upx webauth
 
 # 2.6.16 components
@@ -166,11 +166,6 @@ freealut_DEPENDS=	openal
 gdkpixbuf_f10_FILE=	${LINUXBASE}/usr/lib/libgdk_pixbuf.so.2
 gdkpixbuf_DETECT=	${gdkpixbuf${LINUX_DIST_SUFFIX:S/-/_/}_FILE}
 gdkpixbuf_PORT=		${PORTSDIR}/graphics/linux${LINUX_DIST_SUFFIX}-gdk-pixbuf
-
-gtk_f10_FILE=		${LINUXBASE}/usr/lib/libgtk-1.2.so.0.9.1
-gtk_DETECT=			${gtk${LINUX_DIST_SUFFIX:S/-/_/}_FILE}
-gtk_PORT=			${PORTSDIR}/x11-toolkits/linux${LINUX_DIST_SUFFIX}-gtk
-gtk_DEPENDS=		xorglibs
 
 gnutls_f10_FILE=	${LINUXBASE}/usr/lib/libgnutls.so.26.4.6
 gnutls_DETECT=		${gnutls${LINUX_DIST_SUFFIX:S/-/_/}_FILE}
@@ -318,10 +313,6 @@ pango_DEPENDS=		cairo expat fontconfig xorglibs
 png_f10_FILE=		${LINUXBASE}/usr/lib/libpng.so.3.37.0
 png_DETECT=			${png${LINUX_DIST_SUFFIX:S/-/_/}_FILE}
 png_PORT=			${PORTSDIR}/graphics/linux${LINUX_DIST_SUFFIX}-png
-
-png10_f10_FILE=		${LINUXBASE}/usr/lib/libpng.so.2.1.0.43
-png10_DETECT=		${png10${LINUX_DIST_SUFFIX:S/-/_/}_FILE}
-png10_PORT=			${PORTSDIR}/graphics/linux${LINUX_DIST_SUFFIX}-png10
 
 pulseaudio-libs_f10_FILE=	${LINUXBASE}/usr/lib/libpulse.so.0
 pulseaudio-libs_DETECT=		${pulseaudio-libs${LINUX_DIST_SUFFIX:S/-/_/}_FILE}

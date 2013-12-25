@@ -3,8 +3,6 @@ bin/docear
 share/applications/docear.desktop
 share/docear/docear-icon48x48.png
 @dirrm share/docear
-@exec %%LOCALBASE%%/bin/update-desktop-database > /dev/null || :
-@exec %%LOCALBASE%%/bin/update-mime-database %D/share/mime
 share/java/docear/core/org.freeplane.core/lib/commons-io-2.4.jar
 share/java/docear/core/org.freeplane.core/lib/commons-lang-2.0.jar
 share/java/docear/core/org.freeplane.core/lib/flamingo-6.3-javadoc.jar
@@ -225,7 +223,8 @@ share/java/docear/scripts/apiGenerator.groovy
 share/java/docear/scripts/freeplane.dsld
 share/java/docear/scripts/installScriptAddOn.groovy
 share/mime/packages/docear.xml
-share/mime/text/x-docear.xml
+@unexec %%LOCALBASE%%/bin/update-desktop-database > /dev/null || :
+@unexec %%LOCALBASE%%/bin/update-mime-database %D/share/mime
 @dirrm share/java/docear/scripts
 @dirrm share/java/docear/resources/xslt
 @dirrm share/java/docear/resources/templates
@@ -281,5 +280,3 @@ share/mime/text/x-docear.xml
 @dirrm share/java/docear/core/org.freeplane.core
 @dirrm share/java/docear/core
 @dirrm share/java/docear
-@unexec %%LOCALBASE%%/bin/update-desktop-database > /dev/null || :
-@unexec %%LOCALBASE%%/bin/update-mime-database %D/share/mime

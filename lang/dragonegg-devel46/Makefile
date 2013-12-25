@@ -2,6 +2,7 @@
 
 PORTNAME=	dragonegg46
 PORTVERSION=	3.4.r${SVN_REV}
+PORTREVISION=	2
 CATEGORIES=	lang devel
 MASTER_SITES=	${MASTER_SITE_LOCAL}
 MASTER_SITE_SUBDIR=	brooks
@@ -11,37 +12,41 @@ DISTNAME=	dragonegg-${PORTVERSION}
 MAINTAINER=	brooks@FreeBSD.org
 COMMENT=	GCC plugin to use the LLVM backend
 
-CONFLICTS+=	dragonegg46-3*
+BUILD_DEPENDS+=	llvm-config${LLVM_SUFFIX}:${PORTSDIR}/devel/llvm-devel
+RUN_DEPENDS+=	llvm-config${LLVM_SUFFIX}:${PORTSDIR}/devel/llvm-devel
 
-# XXX: not entierly sure if llvm-devel is a depend
-BUILD_DEPENDS+=	llvm-devel>=${PORTVERSION}:${PORTSDIR}/devel/llvm-devel
-RUN_DEPENDS+=	${CC}:${PORTSDIR}/lang/gcc \
-		llvm-devel>=${PORTVERSION}:${PORTSDIR}/devel/llvm-devel
+LLVM_SUFFIX=	-devel
 
 OPTIONS_DEFINE=	DOCS
 
+USES=		compiler:features gmake
 USE_BZIP2=	yes
 USE_GCC=	4.6
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
 
-DRAGONEGG_RELEASE=	${PORTVERSION:C/\.r[0-9]*//}
+DOCSDIR=	${PREFIX}/share/doc/${UNIQUENAME}
+UNIQUENAME=	${PORTNAME}${PKGNAMESUFFIX}
+
+DRAGONEGG_RELEASE=	${PORTVERSION:C/\.r[0-9]*//}svn
 DRAGONEGG_SO=		dragonegg-${DRAGONEGG_RELEASE}.so
 DRAGONEGG_PATH=		${GCC_LIBDIR}/${DRAGONEGG_SO}
 GCC_LIBDIR=		lib/${CC}
 
 ALL_TARGET=
-MAKE_ARGS=	GCC=${LOCALBASE}/bin/${CC} VERBOSE=1
+MAKE_ARGS=	GCC=${LOCALBASE}/bin/${CC} LLVM_CONFIG=llvm-config${LLVM_SUFFIX}
 
-NO_STAGE=	yes
 .include "${.CURDIR}/../../devel/llvm-devel/Makefile.svn_rev"
 
 PLIST_FILES=		${GCC_LIBDIR}/${DRAGONEGG_SO}
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MDOCS}
 PORTDOCS=		README
+
+.include <bsd.port.pre.mk>
+
+.if ${COMPILER_FEATURES:Mlibc++}
+IGNORE=	"Dragonegg can't work if LLVM was built with libc++"
 .endif
 
 .if defined(BOOTSTRAP) || defined(SVN_FETCH)
@@ -66,11 +71,10 @@ post-patch:
 	    ${WRKSRC}/README
 
 do-install:
+	@${MKDIR} ${STAGEDIR}${LOCALBASE}/${GCC_LIBDIR}
 	${INSTALL_LIB} ${WRKSRC}/dragonegg.so \
-	    ${LOCALBASE}/${GCC_LIBDIR}/${DRAGONEGG_SO}
-.if ${PORT_OPTIONS:MDOCS}
-	${MKDIR} ${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/README ${DOCSDIR}
-.endif
+	    ${STAGEDIR}${LOCALBASE}/${GCC_LIBDIR}/${DRAGONEGG_SO}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

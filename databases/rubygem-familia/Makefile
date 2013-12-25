@@ -9,6 +9,8 @@ MASTER_SITES=	RG
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Organize and store ruby objects in Redis
 
+LICENSE=	MIT
+
 RUN_DEPENDS=	rubygem-gibbler>=0.8.6:${PORTSDIR}/devel/rubygem-gibbler \
 		rubygem-multi_json>=0.0.5:${PORTSDIR}/devel/rubygem-multi_json \
 		rubygem-redis>=2.1.0:${PORTSDIR}/databases/rubygem-redis \
@@ -19,5 +21,4 @@ USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

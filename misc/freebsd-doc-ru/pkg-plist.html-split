@@ -18,6 +18,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/conserver-versions.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/freebsd.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/console-server/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/links.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/manpages.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/our-solution.html
@@ -28,8 +29,10 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/trademarks.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing/contrib-how.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/contributing/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing/trademarks.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/cups/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/cups/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/cups/printing-cups-clients.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/cups/printing-cups-configuring-printers.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/cups/printing-cups-configuring-server.html
@@ -175,6 +178,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/pr-guidelines/references.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/pr-guidelines/trademarks.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/pr-followup.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/pr-further.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/pr-prep.html
@@ -373,6 +377,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/install.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/introduction.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/ipsec.html
+%%DOCSDIR%%/%%DOCLANG%%/books/handbook/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/kerberos5.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/kerberosIV.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/kernelconfig-building.html
@@ -528,9 +533,9 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/x-xdm.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/x11-wm.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/x11.html
+%%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/appendices.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/build-cluster.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/building.html
-%%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/ch06s25.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/conflicts.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/dads-after-port-mk.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/dads-avoiding-linuxisms.html
@@ -563,6 +568,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/makefile-masterdir.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/makefile-naming.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/makefile-options.html
+%%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/makefile-portscout.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/makefile-wrkdir.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/makefile.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/moved-and-updating-files.html
@@ -594,6 +600,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/portsmon.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/quick-porting.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/rc-scripts.html
+%%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/requiring-kernel-sources.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/security-fix.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/security-notify.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/security.html

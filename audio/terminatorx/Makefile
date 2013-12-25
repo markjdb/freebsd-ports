@@ -4,7 +4,7 @@
 
 PORTNAME=	terminatorx
 PORTVERSION=	3.84
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	audio
 MASTER_SITES=	http://terminatorx.org/dist/
 DISTNAME=	terminatorX-${PORTVERSION}
@@ -17,8 +17,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	${LOCALBASE}/include/ladspa.h:${PORTSDIR}/audio/ladspa \
 		rarian-sk-config:${PORTSDIR}/textproc/rarian
-LIB_DEPENDS=	audiofile:${PORTSDIR}/audio/libaudiofile \
-		lrdf:${PORTSDIR}/textproc/liblrdf
+LIB_DEPENDS=	libaudiofile.so:${PORTSDIR}/audio/libaudiofile \
+		liblrdf.so:${PORTSDIR}/textproc/liblrdf
 
 OPTIONS_DEFINE=	ALSA JACK MPG123 SOX VORBIS MAD
 OPTIONS_DEFAULT=	JACK MPG123 SOX VORBIS MAD
@@ -47,11 +47,11 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 .if ${PORT_OPTIONS:MALSA}
 CONFIGURE_ARGS+=	--disable-alsa
 .else
-LIB_DEPENDS+=	asound:${PORTSDIR}/audio/alsa-lib
+LIB_DEPENDS+=	libasound.so:${PORTSDIR}/audio/alsa-lib
 .endif
 
 .if ${PORT_OPTIONS:MJACK}
-LIB_DEPENDS+=	jack:${PORTSDIR}/audio/jack
+LIB_DEPENDS+=	libjack.so:${PORTSDIR}/audio/jack
 .else
 CONFIGURE_ARGS+=	--disable-jack
 .endif
@@ -70,13 +70,13 @@ CONFIGURE_ARGS+=	--disable-sox
 
 .if ${PORT_OPTIONS:MVORBIS}
 BUILD_DEPENDS+=	oggenc:${PORTSDIR}/audio/vorbis-tools
-LIB_DEPENDS+=	vorbis:${PORTSDIR}/audio/libvorbis
+LIB_DEPENDS+=	libvorbis.so:${PORTSDIR}/audio/libvorbis
 .else
 CONFIGURE_ARGS+=	--disable-vorbis
 .endif
 
 .if ${PORT_OPTIONS:MMAD}
-LIB_DEPENDS+=	mad:${PORTSDIR}/audio/mad
+LIB_DEPENDS+=	libmad.so:${PORTSDIR}/audio/mad
 .else
 CONFIGURE_ARGS+=	--disable-mad
 .endif
@@ -98,7 +98,6 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/gnome-support/${f} \
 		${PREFIX}/share/mime-info
 .endfor
-	@${MKDIR} ${PREFIX}/share/applications
 	${INSTALL_DATA} ${WRKSRC}/gnome-support/terminatorX.desktop \
 		${PREFIX}/share/applications
 	@${MKDIR} ${PREFIX}/share/gnome/help/terminatorX/C

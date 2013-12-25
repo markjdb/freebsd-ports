@@ -1,12 +1,11 @@
---- ./lives-plugins/plugins/decoders/mpegts_decoder.c.orig	2012-06-25 19:55:35.000000000 +0200
-+++ ./lives-plugins/plugins/decoders/mpegts_decoder.c	2012-06-25 19:57:03.000000000 +0200
-@@ -29,9 +29,6 @@
- #include <stdlib.h>
+--- ./lives-plugins/plugins/decoders/mpegts_decoder.c.orig	2013-12-05 19:19:20.795023448 +0100
++++ ./lives-plugins/plugins/decoders/mpegts_decoder.c	2013-12-05 19:19:44.882059440 +0100
+@@ -30,7 +30,7 @@
+ #include <ctype.h>
  #include <sys/stat.h>
  
 -#ifndef IS_MINGW
--#include <endian.h>
--#endif
- 
- const char *plugin_version="LiVES mpegts decoder version 1.0";
++#ifndef __FreeBSD__
+ #include <endian.h>
+ #endif
  

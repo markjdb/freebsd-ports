@@ -15,20 +15,17 @@ COMMENT=	Widget style for Qt 4 and KDE 4
 
 LICENSE=	MIT
 
+USES=		qmake
 USE_BZIP2=	yes
-USE_QT4=	corelib gui qmake_build moc_build
+USE_QT4=	corelib gui moc_build
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 PLIST_FILES=	${QT_PLUGINDIR_REL}/styles/libphasestyle.so
 PLIST_DIRSTRY=	${QT_PLUGINDIR_REL}/styles
 
-NO_STAGE=	yes
-do-configure:
-	@cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ${QMAKE} ${QMAKEFLAGS}
-
 do-install:
-	${MKDIR} ${PREFIX}/${QT_PLUGINDIR_REL}/styles/
-	${INSTALL_PROGRAM} ${WRKSRC}/libphasestyle.so ${PREFIX}/${QT_PLUGINDIR_REL}/styles/
+	${MKDIR} ${STAGEDIR}${PREFIX}/${QT_PLUGINDIR_REL}/styles/
+	${INSTALL_PROGRAM} ${WRKSRC}/libphasestyle.so ${STAGEDIR}${PREFIX}/${QT_PLUGINDIR_REL}/styles/
 
 .include <bsd.port.mk>

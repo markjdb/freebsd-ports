@@ -3,6 +3,7 @@
 
 PORTNAME=	karaoke
 PORTVERSION=	0.7.5
+PORTREVISION=	1
 CATEGORIES=	audio python
 MASTER_SITES=	SF/py${PORTNAME}/py${PORTNAME}/${PORTVERSION}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,8 +15,8 @@ COMMENT=	Python karaoke application (Plays CD+G, MP3+G, OGG+G files)
 LICENSE=	LGPL21 # (or later)
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}game>0:${PORTSDIR}/devel/py-game
-LIB_DEPENDS=	pthread-stubs:${PORTSDIR}/devel/libpthread-stubs \
-		aa:${PORTSDIR}/graphics/aalib
+LIB_DEPENDS=	libpthread-stubs.so:${PORTSDIR}/devel/libpthread-stubs \
+		libaa.so:${PORTSDIR}/graphics/aalib
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}game>0:${PORTSDIR}/devel/py-game \
 		dejavu>0:${PORTSDIR}/x11-fonts/dejavu \
 		${PYNUMPY}

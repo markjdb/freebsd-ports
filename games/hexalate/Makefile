@@ -11,17 +11,11 @@ DISTNAME=	${PORTNAME}-${PORTVERSION}-src
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	A color matching game
 
+USES=		qmake
 USE_BZIP2=	yes
-USE_QT4=	corelib gui moc_build qmake_build rcc_build
-WANT_GNOME=	yes
+USE_QT4=	corelib gui moc_build rcc_build
 INSTALLS_ICONS=	yes
-QMAKEFLAGS+=	PREFIX=${PREFIX}
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
-
-NO_STAGE=	yes
-do-configure:
-	@cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} \
-		${QMAKE} ${QMAKEFLAGS} ${PORTNAME}.pro
 
 .include <bsd.port.mk>

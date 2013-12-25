@@ -3,7 +3,7 @@
 
 PORTNAME=	hachoir-wx
 PORTVERSION=	0.3
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	sysutils python
 MASTER_SITES=	CHEESESHOP
 
@@ -18,5 +18,4 @@ WX_COMPS=	python
 WX_UNICODE=	yes
 USE_PYDISTUTILS=yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

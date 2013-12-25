@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	SuppDists
-DISTVERSION=	1.1-9
-PORTREVISION=	1
+DISTVERSION=	1.1-9.1
 CATEGORIES=	math
 MASTER_SITES=	${MASTER_SITE_CRAN} \
 		http://r.research.att.com/benchmarks/:benchmark \
@@ -21,7 +20,6 @@ BENCHMARK_SCRIPT=	R-benchmark-25.R
 R_MOD_AUTOPLIST=	yes
 USE_R_MOD=		yes
 WRKSRC =		${WRKDIR}/${PORTNAME}
-NO_STAGE=	yes
 
 .if defined(MAINTAINER_MODE)
 USE_DOS2UNIX=	../${BENCHMARK_SCRIPT}

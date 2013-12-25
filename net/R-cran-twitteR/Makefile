@@ -3,6 +3,7 @@
 
 PORTNAME=	twitteR
 PORTVERSION=	1.1.7
+PORTREVISION=	2
 CATEGORIES=	net
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -18,5 +19,4 @@ RUN_DEPENDS=	R-cran-RCurl>0:${PORTSDIR}/ftp/R-cran-RCurl \
 USE_R_MOD=	yes
 R_MOD_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

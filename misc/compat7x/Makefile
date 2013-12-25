@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	compat7x
-PORTVERSION=	7.4.704000.201310
+PORTVERSION=	7.4.704000.201310.1
 CATEGORIES=	misc
 MASTER_SITES=	${MASTER_SITE_LOCAL}
 MASTER_SITE_SUBDIR=	garga/compat
@@ -10,6 +10,8 @@ DISTNAME=	${PORTNAME}-${ARCH}-${PORTVERSION}
 
 MAINTAINER=	garga@FreeBSD.org
 COMMENT=	A convenience package to install the compat7x libraries
+
+LICENSE=	BSD
 
 USE_XZ=		yes
 NO_BUILD=	yes

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	Horde_Vfs
-PORTVERSION=	2.1.1
+PORTVERSION=	2.1.2
 CATEGORIES=	sysutils www pear
 PKGNAMEPREFIX=	pear-
 
@@ -15,7 +15,6 @@ USE_HORDE_RUN=	Horde_Exception \
 OPTIONS_DEFINE=	FTP
 FTP_DESC=	Depend on FTP PHP extension
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MFTP}

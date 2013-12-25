@@ -3,7 +3,7 @@
 
 PORTNAME=	luxrender
 PORTVERSION=	0.7.1
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	graphics
 MASTER_SITES=	http://src.luxrender.net/lux/archive/ \
 		http://freebsd.nsu.ru/distfiles/luxrender/
@@ -13,15 +13,18 @@ DIST_SUBDIR=	${PORTNAME}
 MAINTAINER=	danfe@FreeBSD.org
 COMMENT=	Physically based and unbiased rendering system
 
+DEPRECATED=	Broken for more than 6 month
+EXPIRATION_DATE=	2013-11-18
+
 LICENSE=	GPLv3
 
 ONLY_FOR_ARCHS=	i386 amd64
 BROKEN=		does not build with boost-1.48.0
 
 BUILD_DEPENDS=	${LOCALBASE}/lib/libfreeimage.a:${PORTSDIR}/graphics/freeimage
-LIB_DEPENDS=	boost_thread:${PORTSDIR}/devel/boost-libs \
-		png15:${PORTSDIR}/graphics/png \
-		IlmImf:${PORTSDIR}/graphics/OpenEXR \
+LIB_DEPENDS=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
+		libpng15.so:${PORTSDIR}/graphics/png \
+		libIlmImf.so:${PORTSDIR}/graphics/OpenEXR \
 
 HG_NODEID=	9206b3ba7011
 

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	Horde_Smtp
-PORTVERSION=	1.2.3
+PORTVERSION=	1.3.0
 CATEGORIES=	mail www pear
 PKGNAMEPREFIX=	pear-
 
@@ -10,9 +10,9 @@ COMMENT=	Horde SMTP Client
 
 USE_HORDE_RUN=	Horde_Exception \
 		Horde_Mail \
+		Horde_Socket_Client \
 		Horde_Support
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 .include "${PORTSDIR}/devel/pear-channel-horde/bsd.horde.mk"
 .include <bsd.port.post.mk>

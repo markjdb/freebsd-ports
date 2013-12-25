@@ -10,11 +10,12 @@ MASTER_SITES=	RG
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Almost-pure-ruby PNG library
 
+LICENSE=	MIT
+
 RUN_DEPENDS=	rubygem-hoe>=2.3.0:${PORTSDIR}/devel/rubygem-hoe
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

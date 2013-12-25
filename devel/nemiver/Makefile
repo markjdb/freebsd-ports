@@ -3,7 +3,7 @@
 
 PORTNAME=	nemiver
 PORTVERSION=	0.8.2
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_GNOME}
 MASTER_SITE_SUBDIR=	sources/${PORTNAME}/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
@@ -12,16 +12,18 @@ DIST_SUBDIR=	gnome2
 MAINTAINER=	romain@FreeBSD.org
 COMMENT=	A C/C++ Debugger for GNOME
 
-LIB_DEPENDS=	boost_unit_test_framework:${PORTSDIR}/devel/boost-libs \
-		gtop-2.0:${PORTSDIR}/devel/libgtop \
-		sqlite3:${PORTSDIR}/databases/sqlite3 \
-		glademm-2.4:${PORTSDIR}/devel/libglademm24 \
-		gtksourceviewmm-2:${PORTSDIR}/x11-toolkits/libgtksourceviewmm
+LIB_DEPENDS=	libboost_unit_test_framework.so:${PORTSDIR}/devel/boost-libs \
+		libgtop-2.0.so:${PORTSDIR}/devel/libgtop \
+		libsqlite3.so:${PORTSDIR}/databases/sqlite3 \
+		libglademm-2.4.so:${PORTSDIR}/devel/libglademm24 \
+		libgtksourceviewmm-2.so:${PORTSDIR}/x11-toolkits/libgtksourceviewmm
 BUILD_DEPENDS=	${LOCALBASE}/bin/gdb:${PORTSDIR}/devel/gdb
 RUN_DEPENDS=	${LOCALBASE}/bin/gdb:${PORTSDIR}/devel/gdb
 
 OPTIONS_DEFINE=	GHEX
 GHEX_DESC=	Enable memory view
+
+BROKEN=		Does not build with current environment, and some GTK3 bits are missing for an update
 
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}

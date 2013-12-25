@@ -17,14 +17,9 @@ BUILD_DEPENDS=	p5-HTML-Parser>=0:${PORTSDIR}/www/p5-HTML-Parser \
 		p5-libwww>=0:${PORTSDIR}/www/p5-libwww
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5
+USES=		perl5 dos2unix
 USE_PERL5=	configure
-USE_DOS2UNIX=	yes
 
-MAN1=		httprecorder.1
-MAN3=		HTTP::Recorder.3
-
-NO_STAGE=	yes
 post-patch:
 	@${RM} -f ${WRKSRC}/lib/HTTP/Recorder.pm.orig
 

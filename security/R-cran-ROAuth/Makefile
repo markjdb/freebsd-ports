@@ -3,7 +3,7 @@
 
 PORTNAME=	ROAuth
 PORTVERSION=	0.9.3
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	security
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -18,5 +18,4 @@ RUN_DEPENDS=	R-cran-RCurl>=1.6.4:${PORTSDIR}/ftp/R-cran-RCurl \
 USE_R_MOD=	yes
 R_MOD_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

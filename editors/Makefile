@@ -33,6 +33,7 @@
     SUBDIR += calligra-l10n-et
     SUBDIR += calligra-l10n-fi
     SUBDIR += calligra-l10n-gl
+    SUBDIR += calligra-l10n-ia
     SUBDIR += calligra-l10n-it
     SUBDIR += calligra-l10n-kk
     SUBDIR += calligra-l10n-nb
@@ -56,6 +57,7 @@
     SUBDIR += e3
     SUBDIR += e93
     SUBDIR += edith
+    SUBDIR += editorconfig-core-c
     SUBDIR += elvis
     SUBDIR += emacs
     SUBDIR += emacs-devel
@@ -80,7 +82,6 @@
     SUBDIR += gnotepad+
     SUBDIR += gnuserv
     SUBDIR += gobby
-    SUBDIR += gphpedit
     SUBDIR += gummi
     SUBDIR += gwrite
     SUBDIR += heme
@@ -212,10 +213,10 @@
     SUBDIR += libreoffice-zu
     SUBDIR += madedit
     SUBDIR += manedit
+    SUBDIR += mate-text-editor
     SUBDIR += mg
     SUBDIR += mined
     SUBDIR += mlview
-    SUBDIR += mode-info
     SUBDIR += morla
     SUBDIR += mousepad
     SUBDIR += mp
@@ -289,10 +290,8 @@
     SUBDIR += xemacs-mule-packages
     SUBDIR += xemacs-packages
     SUBDIR += xemacs21-mule
-    SUBDIR += xml2rfc-xxe
     SUBDIR += xmlcopyeditor
     SUBDIR += xvile
-    SUBDIR += xxe
     SUBDIR += yasnippet
     SUBDIR += yudit
     SUBDIR += yui

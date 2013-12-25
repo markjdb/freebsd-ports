@@ -1,4 +1,5 @@
 bin/audacity
+man/man1/audacity.1.gz
 share/applications/audacity.desktop
 %%DATADIR%%/EQDefaultCurves.xml
 %%DATADIR%%/nyquist/bug.lsp
@@ -156,4 +157,3 @@ share/pixmaps/gnome-mime-application-x-audacity-project.xpm
 @dirrmtry %%DATADIR%%/nyquist/rawwaves
 @dirrmtry %%DATADIR%%/nyquist
 @dirrmtry %%DATADIR%%
-@dirrmtry share/applications

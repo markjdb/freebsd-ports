@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gupnp-av
-PORTVERSION=	0.12.2
+PORTVERSION=	0.12.4
 CATEGORIES=	net
 MASTER_SITES=	GNOME
 
@@ -19,12 +19,12 @@ RUN_DEPENDS=	gupnp>=0.19.0:${PORTSDIR}/net/gupnp
 CONFIGURE_ARGS=	--enable-introspection=yes
 CONFIGURE_ENV=	VAPIGEN=""
 GNU_CONFIGURE=	yes
+MAKE_ENV=	INSTALL_STRIP_FLAG=${STRIP}
 USE_GNOME=	glib20 introspection:build
 USE_LDCONFIG=	yes
 USE_XZ=		yes
 USES=		gmake pathfix pkgconfig
 
-NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e 's|-Wno-unused-parameters||' ${WRKSRC}/tests/Makefile.in
 

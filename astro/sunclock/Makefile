@@ -11,12 +11,11 @@ COMMENT=	Shows which portion of the Earth's surface is illuminated by the Sun
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg \
-		png15:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng15.so:${PORTSDIR}/graphics/png
 
 USE_BZIP2=	yes
 USE_XORG=	xpm
-NO_STAGE=	yes
 
 CPPFLAGS+=	$$(libpng-config --I_opts) \
 		-I${LOCALBASE}/include \
@@ -50,19 +49,19 @@ post-patch:
 		's|gzFile \* fd;|gzFile fd;|' ${WRKSRC}/readvmf.c
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/sunclock ${PREFIX}/bin
-	${INSTALL_MAN} ${WRKSRC}/sunclock.1 ${MANPREFIX}/man/man1
-	@${MKDIR} ${DATADIR}
-	${INSTALL_DATA} ${WRKSRC}/Sunclockrc ${DATADIR}
-	@${MKDIR} ${DATADIR}/earthmaps/vmf
-	${INSTALL_DATA} ${WRKSRC}/vmf/*.vmf ${DATADIR}/earthmaps/vmf
-	@${GZIP_CMD} ${DATADIR}/earthmaps/vmf/*.vmf
-	@${MKDIR} ${DATADIR}/i18n
-	${INSTALL_DATA} ${WRKSRC}/i18n/Sunclock.?? ${DATADIR}/i18n
-	${INSTALL_PROGRAM} ${WRKSRC}/editkit/emx ${PREFIX}/bin
-	@${MKDIR} ${DATADIR}/editkit
-	${INSTALL_DATA} ${WRKSRC}/editkit/MANUAL.emacs ${DATADIR}/editkit
-	${INSTALL_DATA} ${WRKSRC}/editkit/README ${DATADIR}/editkit
-	${INSTALL_DATA} ${WRKSRC}/editkit/emxrc ${DATADIR}/editkit
+	${INSTALL_PROGRAM} ${WRKSRC}/sunclock ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_MAN} ${WRKSRC}/sunclock.1 ${STAGEDIR}${MANPREFIX}/man/man1
+	@${MKDIR} ${STAGEDIR}${DATADIR}
+	${INSTALL_DATA} ${WRKSRC}/Sunclockrc ${STAGEDIR}${DATADIR}
+	@${MKDIR} ${STAGEDIR}${DATADIR}/earthmaps/vmf
+	${INSTALL_DATA} ${WRKSRC}/vmf/*.vmf ${STAGEDIR}${DATADIR}/earthmaps/vmf
+	@${GZIP_CMD} ${STAGEDIR}${DATADIR}/earthmaps/vmf/*.vmf
+	@${MKDIR} ${STAGEDIR}${DATADIR}/i18n
+	${INSTALL_DATA} ${WRKSRC}/i18n/Sunclock.?? ${STAGEDIR}${DATADIR}/i18n
+	${INSTALL_PROGRAM} ${WRKSRC}/editkit/emx ${STAGEDIR}${PREFIX}/bin
+	@${MKDIR} ${STAGEDIR}${DATADIR}/editkit
+	${INSTALL_DATA} ${WRKSRC}/editkit/MANUAL.emacs ${STAGEDIR}${DATADIR}/editkit
+	${INSTALL_DATA} ${WRKSRC}/editkit/README ${STAGEDIR}${DATADIR}/editkit
+	${INSTALL_DATA} ${WRKSRC}/editkit/emxrc ${STAGEDIR}${DATADIR}/editkit
 
 .include <bsd.port.mk>

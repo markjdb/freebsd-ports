@@ -3,7 +3,7 @@
 
 PORTNAME=	timeSeries
 PORTVERSION=	3010.97
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	finance
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -18,5 +18,4 @@ RUN_DEPENDS=	R-cran-timeDate>=2150.95:${PORTSDIR}/finance/R-cran-timeDate
 USE_R_MOD=	yes
 R_MOD_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

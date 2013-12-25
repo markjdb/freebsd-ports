@@ -1,42 +1,33 @@
 # $FreeBSD$
 
 PORTNAME=	rtmpdump
-PORTVERSION=	2.4
+PORTVERSION=	2.4.20130923
 PORTREVISION=	2
 CATEGORIES=	multimedia net
-MASTER_SITES=	http://rtmpdump.mplayerhq.hu/download/
+MASTER_SITES=	LOCAL/hrs
 
 MAINTAINER=	hrs@FreeBSD.org
-COMMENT=	A tool to download RTMP streams
+COMMENT=	RTMP streams download utility
 
 LICENSE=	GPLv2
 
+LIB_DEPENDS=	librtmp.so:${PORTSDIR}/multimedia/librtmp
+
 USES=		pkgconfig
-USE_LDCONFIG=	yes
 USE_OPENSSL=	yes
 MAKE_ENV=	THREADLIB="${PTHREAD_LIBS}"
-CFLAGS+=	${PTHREAD_CFLAGS}
-WRKSRC=		${WRKDIR}/${PORTNAME}
+CFLAGS+=	${PTHREAD_CFLAGS} -I${OPENSSLINC}
+LDFLAGS+=	-L${LOCALBASE}/lib -L${OPENSSLLIB}
 PORTDOCS=	ChangeLog README
-
-MAN1=		rtmpdump.1
-MAN3=		librtmp.3
-MAN8=		rtmpgw.8
 
 OPTIONS_DEFINE=	DOCS
 
-NO_STAGE=	yes
-.include <bsd.port.pre.mk>
-
-.if ${OPENSSLBASE} != "/usr"
-CFLAGS+=	-I${OPENSSLINC}
-LDFLAGS+=	-L${OPENSSLLIB}
-.endif
+.include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
 post-install:
-	@${MKDIR} ${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

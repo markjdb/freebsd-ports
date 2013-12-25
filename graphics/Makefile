@@ -192,7 +192,6 @@
     SUBDIR += exiftran
     SUBDIR += exiv2
     SUBDIR += exrtools
-    SUBDIR += f-spot
     SUBDIR += fbm
     SUBDIR += feh
     SUBDIR += ffff
@@ -307,12 +306,12 @@
     SUBDIR += gplot
     SUBDIR += gpsmanshp
     SUBDIR += gqview
-    SUBDIR += gqview-devel
     SUBDIR += gracula
     SUBDIR += grads
     SUBDIR += grafx2
     SUBDIR += graphite2
     SUBDIR += graphopt
+    SUBDIR += graphos
     SUBDIR += graphviz
     SUBDIR += grx
     SUBDIR += gscan2pdf
@@ -334,7 +333,9 @@
     SUBDIR += gstreamer1-plugins-libcaca
     SUBDIR += gstreamer1-plugins-libvisual
     SUBDIR += gstreamer1-plugins-opencv
+    SUBDIR += gstreamer1-plugins-openjpeg
     SUBDIR += gstreamer1-plugins-png
+    SUBDIR += gstreamer1-plugins-webp
     SUBDIR += gstreamer1-plugins-zbar
     SUBDIR += gthumb
     SUBDIR += gtimelapse
@@ -507,7 +508,6 @@
     SUBDIR += libgltext
     SUBDIR += libgnomecanvas
     SUBDIR += libgnomecanvas-reference
-    SUBDIR += libgnomecanvasmm
     SUBDIR += libgnomecanvasmm26
     SUBDIR += libgphoto2
     SUBDIR += libimg
@@ -557,11 +557,9 @@
     SUBDIR += linux-f10-libGLU
     SUBDIR += linux-f10-libmng
     SUBDIR += linux-f10-png
-    SUBDIR += linux-f10-png10
     SUBDIR += linux-f10-sdl_image
     SUBDIR += linux-f10-tiff
     SUBDIR += linux-f10-ungif
-    SUBDIR += linux-panorama-tools
     SUBDIR += linux-sdl_ttf
     SUBDIR += linux_glide
     SUBDIR += lprof-devel
@@ -575,10 +573,11 @@
     SUBDIR += mapnik
     SUBDIR += mapserver
     SUBDIR += mapyrus
+    SUBDIR += mate-document-viewer
+    SUBDIR += mate-image-viewer
     SUBDIR += maverik
     SUBDIR += megapov
     SUBDIR += mesa-demos
-    SUBDIR += mesagl
     SUBDIR += meshviewer
     SUBDIR += metacam
     SUBDIR += metapixel
@@ -609,14 +608,15 @@
     SUBDIR += ogre3d
     SUBDIR += okular
     SUBDIR += openclipart
+    SUBDIR += opencollada
     SUBDIR += opencolorio
     SUBDIR += opencolorio-tools
     SUBDIR += opencsg
     SUBDIR += opencv
     SUBDIR += opencv-core
+    SUBDIR += opencv-java
     SUBDIR += opendis
     SUBDIR += opendx
-    SUBDIR += openexr_ctl
     SUBDIR += opengl-man
     SUBDIR += opengtl
     SUBDIR += openimageio
@@ -641,6 +641,7 @@
     SUBDIR += p5-Chart-Clicker
     SUBDIR += p5-Chart-Graph
     SUBDIR += p5-Chart-PNGgraph
+    SUBDIR += p5-Color-Calc
     SUBDIR += p5-Color-Library
     SUBDIR += p5-Color-Palette
     SUBDIR += p5-Color-Rgb
@@ -691,10 +692,12 @@
     SUBDIR += p5-Image-Imgur
     SUBDIR += p5-Image-Imlib2
     SUBDIR += p5-Image-Info
+    SUBDIR += p5-Image-LibExif
     SUBDIR += p5-Image-Magick-Iterator
     SUBDIR += p5-Image-Math-Constrain
     SUBDIR += p5-Image-MetaData-GQview
     SUBDIR += p5-Image-MetaData-JPEG
+    SUBDIR += p5-Image-ObjectDetect
     SUBDIR += p5-Image-PBMlib
     SUBDIR += p5-Image-Pngslimmer
     SUBDIR += p5-Image-Scale
@@ -820,8 +823,6 @@
     SUBDIR += py-blockdiagcontrib-cisco
     SUBDIR += py-cairo
     SUBDIR += py-chart
-    SUBDIR += py-clutter
-    SUBDIR += py-clutter-gtk
     SUBDIR += py-django-easy-thumbnails
     SUBDIR += py-editobj
     SUBDIR += py-exif
@@ -906,7 +907,6 @@
     SUBDIR += ruby-image_size
     SUBDIR += ruby-imlib2
     SUBDIR += ruby-ming
-    SUBDIR += ruby-opengl
     SUBDIR += ruby-rmagick
     SUBDIR += ruby-rsvg2
     SUBDIR += ruby-svg
@@ -949,6 +949,7 @@
     SUBDIR += scr2png
     SUBDIR += scrot
     SUBDIR += scwm-icons
+    SUBDIR += sdl2_gfx
     SUBDIR += sdl2_image
     SUBDIR += sdl2_ttf
     SUBDIR += sdl_gfx
@@ -956,7 +957,6 @@
     SUBDIR += sdl_ttf
     SUBDIR += seam-carving-gui
     SUBDIR += seejpeg
-    SUBDIR += seom
     SUBDIR += separate
     SUBDIR += sharpconstruct
     SUBDIR += shiva-collections
@@ -1038,7 +1038,6 @@
     SUBDIR += xglurbules
     SUBDIR += xgrasp
     SUBDIR += xli
-    SUBDIR += xmagv
     SUBDIR += xmandel
     SUBDIR += xmedcon
     SUBDIR += xmfract
@@ -1077,7 +1076,6 @@
     SUBDIR += yafray
     SUBDIR += yagf
     SUBDIR += yed
-    SUBDIR += yukon
     SUBDIR += zathura
     SUBDIR += zathura-djvu
     SUBDIR += zathura-pdf-poppler

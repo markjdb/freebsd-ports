@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Horde_Service_Facebook
-PORTVERSION=	2.0.1
+PORTVERSION=	2.0.6
 CATEGORIES=	www pear
 
 MAINTAINER=	horde@FreeBSD.org
@@ -14,7 +14,6 @@ USE_HORDE_RUN=	Horde_Exception \
 		Horde_Translation \
 		Horde_Support
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 .include "${PORTSDIR}/devel/pear-channel-horde/bsd.horde.mk"
 .include <bsd.port.post.mk>

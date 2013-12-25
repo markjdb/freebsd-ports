@@ -3,7 +3,7 @@
 
 PORTNAME=	arpack++
 PORTVERSION=	1.2
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	math
 MASTER_SITES=	http://www.ime.unicamp.br/%7echico/arpack++/
 DISTNAME=	${PORTNAME}
@@ -34,8 +34,6 @@ LIB_DEPENDS+=	blas.2:${PORTSDIR}/math/blas
 BLAS=		-lblas
 LAPACK=		-llapack
 .endif
-
-USE_GCC=4.2+
 
 NO_BUILD=	yes
 REINPLACE_ARGS=	-i ""

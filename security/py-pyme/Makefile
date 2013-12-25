@@ -3,7 +3,7 @@
 
 PORTNAME=	pyme
 PORTVERSION=	0.8.1
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	security python
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,12 +12,14 @@ MAINTAINER=	johans@FreeBSD.org
 COMMENT=	Python interface to GPGME library
 
 BUILD_DEPENDS=	swig1.3:${PORTSDIR}/devel/swig13
-LIB_DEPENDS=	gpgme:${PORTSDIR}/security/gpgme
+LIB_DEPENDS=	libgpgme.so:${PORTSDIR}/security/gpgme
 
-USE_GMAKE=	yes
-USE_PYTHON=	2.5+
+USES=		gmake
+USE_PYTHON=	2
 USE_PYDISTUTILS=yes
 PYDISTUTILS_PKGNAME=pygpgme
+
+MAKE_ARGS=	PYTHON=${PYTHON_CMD}
 
 NO_STAGE=	yes
 .include <bsd.port.pre.mk>

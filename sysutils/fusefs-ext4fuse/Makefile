@@ -12,7 +12,7 @@ COMMENT=	EXT4 implementation for FUSE
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	execinfo:${PORTSDIR}/devel/libexecinfo
+LIB_DEPENDS=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo
 
 USES=		fuse pkgconfig gmake
 USE_GITHUB=	yes
@@ -27,8 +27,7 @@ ALL_TARGET=	${PORTNAME}
 
 PLIST_FILES=	bin/ext4fuse
 
-NO_STAGE=	yes
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>

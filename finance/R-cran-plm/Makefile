@@ -3,7 +3,7 @@
 
 PORTNAME=	plm
 DISTVERSION=	1.3-1
-PORTREVISION=	3
+PORTREVISION=	5
 CATEGORIES=	finance
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 
@@ -21,5 +21,4 @@ RUN_DEPENDS=	R-cran-bdsmatrix>0:${PORTSDIR}/math/R-cran-bdsmatrix \
 USE_R_MOD=	yes
 R_MOD_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

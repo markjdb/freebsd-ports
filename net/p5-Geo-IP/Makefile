@@ -2,22 +2,21 @@
 # $FreeBSD$
 
 PORTNAME=	Geo-IP
-PORTVERSION=	1.42
+PORTVERSION=	1.43
 CATEGORIES=	net geography perl5
-MASTER_SITES=	CPAN \
-		http://www.maxmind.com/download/geoip/api/perl/
+MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Gets country name by IP or hostname
 
-LIB_DEPENDS=	GeoIP.5:${PORTSDIR}/net/GeoIP
+LICENSE=	ART10 GPLv1
+LICENSE_COMB=	dual
 
+LIB_DEPENDS=	libGeoIP.so:${PORTSDIR}/net/GeoIP
+
+CONFIGURE_ARGS=	INC="-I${LOCALBASE}/include" LIBS="-L${LOCALBASE}/lib"
 USES=		perl5
 USE_PERL5=	configure
-CONFIGURE_ARGS=	LIBS='-L${LOCALBASE}/lib' INC='-I${LOCALBASE}/include'
 
-MAN3=		Geo::Mirror.3 Geo::IP.3 Geo::IP::Record.3
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

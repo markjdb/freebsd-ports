@@ -9,10 +9,10 @@ MASTER_SITES=	http://ftp.ussg.iu.edu/FreeBSD/distfiles/ \
 PKGNAMEPREFIX=	xmms-
 DISTNAME=	${PORTNAME}-plugin-${PORTVERSION}
 
-MAINTAINER=	c.petrik.sosa@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Realtime XMMS plugin for remastering mp3 sound
 
-LIB_DEPENDS=	xmms.4:${PORTSDIR}/multimedia/xmms
+LIB_DEPENDS=	libxmms.so:${PORTSDIR}/multimedia/xmms
 
 USE_GNOME=	imlib
 NO_STAGE=	yes

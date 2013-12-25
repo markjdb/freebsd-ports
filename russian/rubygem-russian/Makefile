@@ -9,11 +9,12 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Russian language support for Ruby and Rails, based on I18n library
 
+LICENSE=	MIT
+
 RUN_DEPENDS=	rubygem-i18n>=0.5.0:${PORTSDIR}/devel/rubygem-i18n
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

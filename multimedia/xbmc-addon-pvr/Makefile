@@ -3,6 +3,7 @@
 
 PORTNAME=	xbmc-pvr-addons
 PORTVERSION=	12.0
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://people.freebsd.org/~decke/distfiles/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-Frodo
@@ -24,7 +25,6 @@ REINPLACE_ARGS=	-i ''
 CFLAGS+=	"-I${LOCALBASE}/include"
 LDFLAGS+=	"-L${LOCALBASE}/lib"
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 post-patch:

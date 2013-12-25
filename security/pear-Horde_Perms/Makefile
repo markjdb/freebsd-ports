@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Horde_Perms
-PORTVERSION=	2.1.1
+PORTVERSION=	2.1.2
 CATEGORIES=	security www pear
 
 MAINTAINER=	horde@FreeBSD.org
@@ -14,7 +14,6 @@ USE_HORDE_RUN=	Horde_Db \
 		Horde_Util \
 		Horde_Translation
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 .include "${PORTSDIR}/devel/pear-channel-horde/bsd.horde.mk"
 .include <bsd.port.post.mk>

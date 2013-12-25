@@ -42,6 +42,7 @@
     SUBDIR += dmxproto
     SUBDIR += docker
     SUBDIR += dri2proto
+    SUBDIR += dri3proto
     SUBDIR += dxpc
     SUBDIR += dynamag
     SUBDIR += dzen2
@@ -78,7 +79,6 @@
     SUBDIR += gnome-clipboard-daemon
     SUBDIR += gnome-desktop
     SUBDIR += gnome-desktop-reference
-    SUBDIR += gnome-libs
     SUBDIR += gnome-menus
     SUBDIR += gnome-panel
     SUBDIR += gnome-panel-reference
@@ -172,9 +172,9 @@
     SUBDIR += libgnome-java
     SUBDIR += libgnome-reference
     SUBDIR += libgnomekbd
-    SUBDIR += libgnomemm
     SUBDIR += libgnomemm26
     SUBDIR += libkonq
+    SUBDIR += libmatekbd
     SUBDIR += liboldX
     SUBDIR += libsx
     SUBDIR += libsynaptics
@@ -186,6 +186,7 @@
     SUBDIR += libxkbfile
     SUBDIR += libxkbui
     SUBDIR += libxklavier
+    SUBDIR += libxshmfence
     SUBDIR += linux-f10-xorg-libs
     SUBDIR += listres
     SUBDIR += lsw
@@ -195,6 +196,16 @@
     SUBDIR += lxmenu-data
     SUBDIR += lxpanel
     SUBDIR += lxrandr
+    SUBDIR += mate
+    SUBDIR += mate-applets
+    SUBDIR += mate-base
+    SUBDIR += mate-desktop
+    SUBDIR += mate-dialogs
+    SUBDIR += mate-menus
+    SUBDIR += mate-panel
+    SUBDIR += mate-screensaver
+    SUBDIR += mate-session-manager
+    SUBDIR += mate-terminal
     SUBDIR += menu-cache
     SUBDIR += metalock
     SUBDIR += metisse
@@ -223,6 +234,7 @@
     SUBDIR += pixman
     SUBDIR += plasma-scriptengine-python
     SUBDIR += plasma-scriptengine-ruby
+    SUBDIR += presentproto
     SUBDIR += printproto
     SUBDIR += printscreen
     SUBDIR += props
@@ -256,7 +268,6 @@
     SUBDIR += setlayout
     SUBDIR += settitle
     SUBDIR += setxkbmap
-    SUBDIR += silo
     SUBDIR += simdock
     SUBDIR += sisctrl
     SUBDIR += slim

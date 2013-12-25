@@ -10,7 +10,7 @@ MASTER_SITES=	http://lpccomp.bc.ca/remserial/ \
 MAINTAINER=	ehaupt@FreeBSD.org
 COMMENT=	Bridge between a TCP/IP network port and a character-oriented device
 
-USE_DOS2UNIX=	yes
+USES=		dos2unix
 
 PLIST_FILES=	bin/remserial
 PORTDOCS=	README.txt
@@ -19,14 +19,13 @@ CFLAGS+=	-DOSVERSION=\"${OSVERSION}\"
 
 OPTIONS_DEFINE=	DOCS
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 .if ${PORT_OPTIONS:MDOCS}
-	${MKDIR} ${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/${PORTDOCS} ${DOCSDIR}
+	${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 .endif
 
 .include <bsd.port.mk>

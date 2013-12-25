@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	HTML-FormHandler
-PORTVERSION=	0.40050
+PORTVERSION=	0.40054
 PORTEPOCH=	1
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
@@ -25,6 +25,7 @@ BUILD_DEPENDS=	p5-Class-Load>=0.06:${PORTSDIR}/devel/p5-Class-Load \
 		p5-File-ShareDir>=0:${PORTSDIR}/devel/p5-File-ShareDir \
 		p5-HTML-Tree>=0:${PORTSDIR}/www/p5-HTML-Tree \
 		p5-JSON>=0:${PORTSDIR}/converters/p5-JSON \
+		p5-List-AllUtils>=0.07:${PORTSDIR}/devel/p5-List-AllUtils \
 		p5-Locale-Maketext>=1.09:${PORTSDIR}/devel/p5-Locale-Maketext \
 		p5-Moose>=2.0007:${PORTSDIR}/devel/p5-Moose \
 		p5-MooseX-Getopt>=0.16:${PORTSDIR}/devel/p5-MooseX-Getopt \
@@ -45,7 +46,5 @@ TEST_DEPENDS=	p5-Test-Differences>=0:${PORTSDIR}/devel/p5-Test-Differences \
 
 USES=		perl5
 USE_PERL5=	configure
-
-MAN3=	\
 
 .include <bsd.port.mk>

@@ -3,6 +3,7 @@
 
 PORTNAME=	kdepim
 PORTVERSION=	${KDE4_VERSION}
+PORTREVISION=	1
 CATEGORIES=	deskutils kde ipv6
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR=	${KDE4_BRANCH}/${PORTVERSION}/src
@@ -11,12 +12,12 @@ DIST_SUBDIR=	KDE/${PORTVERSION}
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Libraries for KDE-PIM applications
 
-LIB_DEPENDS=	gpgme:${PORTSDIR}/security/gpgme \
-		assuan:${PORTSDIR}/security/libassuan \
-		sasl2:${PORTSDIR}/security/cyrus-sasl2 \
-		boost_thread:${PORTSDIR}/devel/boost-libs \
-		grantlee_gui:${PORTSDIR}/devel/grantlee \
-		clucene-core:${PORTSDIR}/textproc/clucene
+LIB_DEPENDS=	libgpgme.so:${PORTSDIR}/security/gpgme \
+		libassuan.so:${PORTSDIR}/security/libassuan \
+		libsasl2.so:${PORTSDIR}/security/cyrus-sasl2 \
+		libboost_thread.so:${PORTSDIR}/devel/boost-libs \
+		libgrantlee_gui.so:${PORTSDIR}/devel/grantlee \
+		libclucene-core.so:${PORTSDIR}/textproc/clucene
 BUILD_DEPENDS=	xsltproc:${PORTSDIR}/textproc/libxslt
 RUN_DEPENDS=	${KDE4_PREFIX}/bin/accountwizard:${PORTSDIR}/deskutils/kdepim4-runtime
 

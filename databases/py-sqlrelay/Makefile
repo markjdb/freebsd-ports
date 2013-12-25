@@ -3,7 +3,6 @@
 
 PORTNAME=	${SQLRELAY_PORTNAME}
 PORTVERSION=	${SQLRELAY_PORTVERSION}
-PORTREVISION=	2
 CATEGORIES=	databases python
 MASTER_SITES=	# none
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -13,7 +12,7 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Python modules to access to SQL Relay
 
 EXTRACT_DEPENDS=	${NONEXISTENT}:${SQLRELAY_PORTDIR}:patch
-LIB_DEPENDS=	sqlrclient.0:${SQLRELAY_PORTDIR}
+LIB_DEPENDS=	libsqlrclient.so:${SQLRELAY_PORTDIR}
 
 USE_PYTHON=	yes
 USES=		perl5
@@ -29,7 +28,6 @@ CONFIGURE_ENV=	PTHREADINCLUDES="${PTHREAD_CFLAGS}" \
 CONFIGURE_ARGS=	${SQLRELAY_CONFIGURE_ARGS} \
 		--with-python-prefix="${LOCALBASE}"
 
-NO_STAGE=	yes
 .include "${.CURDIR}/../sqlrelay/Makefile.common"
 
 .include <bsd.port.pre.mk>

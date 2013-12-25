@@ -1,0 +1,4 @@
+SHA256 (cfe.src-3.4rc2-source.tar.xz) = 406e95d56e9078de51e5a290ab5c2330ccb900a0c6373cd0f0dc86bf1017f0bb
+SIZE (cfe.src-3.4rc2-source.tar.xz) = 7618328
+SHA256 (llvm.src-3.4rc2-source.tar.xz) = d9345fe68f1bc60d7aa4d6be559b7fa6d1c16ebfcfb9a8340e6d8beac0f073cc
+SIZE (llvm.src-3.4rc2-source.tar.xz) = 10490924

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pcbsd-utils
-PORTVERSION=	1381240866
+PORTVERSION=	1386348303
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.pcbsd.org/~kris/software/ \
 		ftp://ftp.pcbsd.org/pub/software/
@@ -14,7 +14,6 @@ RUN_DEPENDS=	pkg-static:${PORTSDIR}/ports-mgmt/pkg \
 		svn:${PORTSDIR}/devel/subversion \
 		mksquashfs:${PORTSDIR}/sysutils/squashfs-tools \
 		debootstrap:${PORTSDIR}/sysutils/debootstrap \
-		aria2c:${PORTSDIR}/www/aria2 \
 		sipcalc:${PORTSDIR}/net-mgmt/sipcalc \
 		eject:${PORTSDIR}/sysutils/eject \
 		unzip:${PORTSDIR}/archivers/unzip \
@@ -29,8 +28,8 @@ USE_PYTHON=	yes
 
 .include <bsd.port.pre.mk>
 
-.if ${OSVERSION} < 900030
-IGNORE=		requires FreeBSD 9.0 or later
+.if ${OSVERSION} < 1000000
+IGNORE=		requires FreeBSD 10 or later
 .endif
 
 do-install:

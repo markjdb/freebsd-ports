@@ -1,5 +1,8 @@
 bin/awale
-%%GUI%%bin/xawale
+bin/xawale
+man/man6/awale.6.gz
+man/man6/xawale.6.gz
+share/applications/awale.desktop
 %%DATADIR%%/AwaleBanner.bmp
 %%DATADIR%%/README
 %%DATADIR%%/Trou00.gif
@@ -25,11 +28,5 @@ bin/awale
 %%DATADIR%%/fr.gif
 %%DATADIR%%/sp.gif
 %%DATADIR%%/uk.gif
-%%GUI%%%%DATADIR%%/xawale.tcl
-%%PORTDOCS%%%%DOCSDIR%%/AUTHORS
-%%PORTDOCS%%%%DOCSDIR%%/ChangeLog
-%%PORTDOCS%%%%DOCSDIR%%/NEWS
-%%PORTDOCS%%%%DOCSDIR%%/README
-%%PORTDOCS%%%%DOCSDIR%%/THANKS
-%%PORTDOCS%%@dirrm %%DOCSDIR%%
+%%DATADIR%%/xawale.tcl
 @dirrm %%DATADIR%%

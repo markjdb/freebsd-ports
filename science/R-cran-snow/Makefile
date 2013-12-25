@@ -3,6 +3,7 @@
 
 PORTNAME=	snow
 DISTVERSION=	0.3-13
+PORTREVISION=	2
 CATEGORIES=	science
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 
@@ -15,5 +16,4 @@ LICENSE_COMB=	dual
 USE_R_MOD=	yes
 R_MOD_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

@@ -2,13 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	libvpx
-PORTVERSION=	1.1.0
+PORTVERSION=	1.2.0
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	GOOGLE_CODE
 DISTNAME=	${PORTNAME}-v${PORTVERSION}
 
 MAINTAINER=	ashish@FreeBSD.org
 COMMENT=	VP8 Codec SDK
+
+LICENSE=	BSD
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash \
 		yasm:${PORTSDIR}/devel/yasm
@@ -20,9 +24,6 @@ HAS_CONFIGURE=	yes
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 
-LICENSE=	BSD
-LICENSE_FILE=	${WRKSRC}/LICENSE
-
 OPTIONS_DEFINE=	DEBUG POSTPROC RUNTIME THREADS SHARED
 OPTIONS_DEFAULT=	POSTPROC RUNTIME THREADS SHARED
 POSTPROC_DESC=	Enable postprocessing
@@ -30,33 +31,22 @@ RUNTIME_DESC=	Enable runtime CPU detection
 SHARED_DESC=	Enable shared-library support
 
 ALL_TARGET=
-CONFIGURE_ARGS+=	--enable-pic --disable-install-srcs --enable-vp8 --disable-install-docs
-MAKE_ARGS+=	DIST_DIR=${PREFIX} verbose=yes
+CONFIGURE_ARGS+=	--enable-pic --disable-install-srcs --enable-vp8 --disable-install-docs --prefix=${PREFIX}
+MAKE_ARGS+=	verbose=yes
+MAKE_ENV=	LC_ALL=C
 
-NO_STAGE=	yes
+OPTIONS_SUB=		SHARED
+
+DEBUG_CONFIGURE_ON=	--enable-debug
+POSTPROC_CONFIGURE_ON=	--enable-postproc
+RUNTIME_CONFIGURE_ON=	--enable-runtime-cpu-detect
+THREADS_CONFIGURE_OFF=	--disable-multithread
+SHARED_CONFIGURE_ON=	--enable-shared
+
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MDEBUG}
-CONFIGURE_ARGS+=	--enable-debug
-.endif
-
-.if ${PORT_OPTIONS:MPOSTPROC}
-CONFIGURE_ARGS+=	--enable-postproc
-.endif
-
-.if ${PORT_OPTIONS:MRUNTIME}
-CONFIGURE_ARGS+=	--enable-runtime-cpu-detect
-.endif
-
-.if ! ${PORT_OPTIONS:MTHREADS}
-CONFIGURE_ARGS+=	--disable-multithread
-.endif
-
-.if ${PORT_OPTIONS:MSHARED}
-CONFIGURE_ARGS+=	--enable-shared
-PLIST_SUB+=	SHARED=""
-.else
-PLIST_SUB+=	SHARED="@comment "
+.if ${OSVERSION} >= 1000000
+CONFIGURE_ARGS+=	--disable-unit-tests
 .endif
 
 .if ${ARCH} == "amd64"
@@ -76,6 +66,8 @@ IGNORE=	no support for ${ARCH} the moment. testing/patches are welcome
 post-patch:
 	@${REINPLACE_CMD} 's|\(link_with_cc\)=gcc|\1=$${CC}|' \
 		${WRKSRC}/build/make/configure.sh
+	@${REINPLACE_CMD} -e 's|%%DESTDIR%%|${STAGEDIR}|g' \
+	       	${WRKSRC}/build/make/Makefile ${WRKSRC}/libs.mk
 	@${GREP} -Rl '^#!/bin/bash' ${WRKSRC} |${XARGS} ${REINPLACE_CMD} \
 		-e 's,#!/bin/bash,#!/usr/bin/env bash,g'
 	@${GREP} -Rl -- '-l\?pthread' ${WRKSRC} |${XARGS} ${REINPLACE_CMD} -E \

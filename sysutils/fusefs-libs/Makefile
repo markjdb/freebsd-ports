@@ -9,7 +9,7 @@ MASTER_SITES=	SF/fuse/fuse-2.X/${PORTVERSION}
 PKGNAMESUFFIX=	-libs
 DISTNAME=	fuse-${PORTVERSION}
 
-MAINTAINER=	bapt@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	FUSE allows filesystem implementation in userspace
 
 OPTIONS_DEFINE=	DOCS
@@ -23,14 +23,9 @@ CONFIGURE_ARGS=	--prefix=${PREFIX} \
 DOCS=		libs/how-fuse-works \
 		libs/kernel.txt
 
-.include <bsd.port.options.mk>
-
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/include/fuse_kernel.h ${STAGEDIR}${PREFIX}/include/fuse
-.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/libs
 	@cd ${WRKSRC}/doc/ && ${INSTALL_DATA} ${DOCS:S/libs\///} ${STAGEDIR}${DOCSDIR}/libs
-.endif
-
 
 .include <bsd.port.mk>

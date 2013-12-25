@@ -3,6 +3,7 @@
 
 PORTNAME=	inline
 PORTVERSION=	0.3.12
+PORTREVISION=	2
 CATEGORIES=	math
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -12,5 +13,4 @@ COMMENT=	Inline C, C++, Fortran function calls from R
 USE_R_MOD=	yes
 R_MOD_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

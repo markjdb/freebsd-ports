@@ -21,8 +21,6 @@ INNO_DESC=		Build with expermential Inno Setup support
 VISE_DESC=		Build with expermential VISE support
 MSI_DESC=		Build with expermential MSI support
 
-
-NO_STAGE=	yes
 USE_AUTOTOOLS=	libtool
 GNU_CONFIGURE=	yes
 USES=	iconv pathfix pkgconfig
@@ -30,15 +28,13 @@ CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
 
-MAN1=		orange.1
-
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MLIBSYNCE}
 CONFIGURE_ARGS+=	--without-libsynce
 REQUIRES+=	libsynce
 .else
-LIB_DEPENDS+=		synce.0:${PORTSDIR}/palm/synce-libsynce
+LIB_DEPENDS+=		libsynce.so:${PORTSDIR}/palm/synce-libsynce
 CONFIGURE_ARGS+=	--with-libsynce
 .endif
 
@@ -46,7 +42,7 @@ CONFIGURE_ARGS+=	--with-libsynce
 CONFIGURE_ARGS+=	--without-libdynamite
 REQUIRES+=	libdynamite
 .else
-LIB_DEPENDS+=		dynamite:${PORTSDIR}/archivers/libdynamite
+LIB_DEPENDS+=		libdynamite.so:${PORTSDIR}/archivers/libdynamite
 CONFIGURE_ARGS+=	--with-libdynamite
 .endif
 
@@ -54,7 +50,7 @@ CONFIGURE_ARGS+=	--with-libdynamite
 CONFIGURE_ARGS+=	--without-libunshield
 REQUIRES+=	libunshield
 .else
-LIB_DEPENDS+=		unshield:${PORTSDIR}/archivers/unshield
+LIB_DEPENDS+=		libunshield.so:${PORTSDIR}/archivers/unshield
 CONFIGURE_ARGS+=	--with-libunshield
 .endif
 
@@ -68,7 +64,7 @@ CONFIGURE_ARGS+=	--enable-vise
 
 .if ${PORT_OPTIONS:MMSI}
 CONFIGURE_ARGS+=	--enable-msi --with-libgsf
-LIB_DEPENDS+=		gsf-1.114:${PORTSDIR}/devel/libgsf
+LIB_DEPENDS+=		libgsf-1.so.114:${PORTSDIR}/devel/libgsf
 .endif
 
 post-patch:

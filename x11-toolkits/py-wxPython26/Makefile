@@ -3,7 +3,7 @@
 
 PORTNAME=	wxPython
 PORTVERSION=	2.6.3.3
-PORTREVISION?=	6
+PORTREVISION?=	7
 CATEGORIES=	x11-toolkits python
 MASTER_SITES=	SF/wxpython/wxPython/${PORTVERSION}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -151,6 +151,7 @@ post-install:
 # fix installation permissions
 	${CHMOD} -R a+rX \
 		${PYTHON_SITELIBDIR:C@^${LOCALBASE}@${PREFIX}@}/${WX_PYTHON_DIR}
+	@${RM} -rf ${PYTHON_SITELIBDIR:C@^${LOCALBASE}@${PREFIX}@}/${WX_PYTHON_DIR}/*egg-info
 .endif
 ##
 # wxversion wxPython available list

@@ -13,6 +13,9 @@ PATCHFILES=	mico-2.3.12-secfix1.diff
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Secure, reliable, production-quality, standards-based CORBA middleware
 
+DEPRECATED=	Broken for more than 6 month
+EXPIRATION_DATE=	2013-12-22
+
 BROKEN=	fails to build
 
 PATCH_DIST_STRIP=	-p1
@@ -63,7 +66,7 @@ CONFIGURE_ARGS+=	--with-gtk=${LOCALBASE}
 MICO_GTK=		"@comment "
 .endif
 .if ${PORT_OPTIONS:MTCL}
-USE_TCL=		yes
+USES+=			tcl
 CONFIGURE_ARGS+=	--with-tcl
 CPPFLAGS+=		-I${TCL_INCLUDEDIR}
 LDFLAGS+=		-L${LOCALBASE}/lib

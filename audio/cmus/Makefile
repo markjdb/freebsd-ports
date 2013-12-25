@@ -3,7 +3,7 @@
 
 PORTNAME=	cmus
 PORTVERSION=	2.5.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	audio
 MASTER_SITES=	SF/${PORTNAME}
 DISTNAME=	${PORTNAME}-v${PORTVERSION}
@@ -20,7 +20,7 @@ CONFIGURE_ARGS+=prefix=${PREFIX} mandir=${MANPREFIX}/man \
 		exampledir=${EXAMPLESDIR} \
 		CONFIG_ALSA=n CONFIG_ARTS=n CONFIG_ROAR=n
 
-OPTIONS_DEFINE=	AAC AO CDDB CDIO CUE DISCID FFMPEG FLAC MAD MIKMOD \
+OPTIONS_DEFINE=	AAC AO CDDB CDIO CUE DISCID FLAC MAD MIKMOD \
 		MODPLUG MP4 MUSEPACK PULSEAUDIO TREMOR VORBIS WAVPACK
 OPTIONS_DEFAULT=FLAC MAD VORBIS
 DISCID_DESC=	DISCID support
@@ -28,7 +28,7 @@ DISCID_DESC=	DISCID support
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MFLAC}
-LIB_DEPENDS+=	FLAC:${PORTSDIR}/audio/flac
+LIB_DEPENDS+=	libFLAC.so:${PORTSDIR}/audio/flac
 CONFIGURE_ARGS+=CONFIG_FLAC=y
 PLIST_SUB+=	FLAC=""
 .else
@@ -37,7 +37,7 @@ PLIST_SUB+=	FLAC="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MMAD}
-LIB_DEPENDS+=	mad:${PORTSDIR}/audio/libmad
+LIB_DEPENDS+=	libmad.so:${PORTSDIR}/audio/libmad
 CONFIGURE_ARGS+=CONFIG_MAD=y
 PLIST_SUB+=	MAD=""
 .else
@@ -46,7 +46,7 @@ PLIST_SUB+=	MAD="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MMODPLUG}
-LIB_DEPENDS+=	modplug:${PORTSDIR}/audio/libmodplug
+LIB_DEPENDS+=	libmodplug.so:${PORTSDIR}/audio/libmodplug
 CONFIGURE_ARGS+=CONFIG_MODPLUG=y
 PLIST_SUB+=	MODPLUG=""
 .else
@@ -55,7 +55,7 @@ PLIST_SUB+=	MODPLUG="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MMIKMOD}
-LIB_DEPENDS+=	mikmod:${PORTSDIR}/audio/libmikmod
+LIB_DEPENDS+=	libmikmod.so:${PORTSDIR}/audio/libmikmod
 CONFIGURE_ARGS+=CONFIG_MIKMOD=y
 PLIST_SUB+=	MIKMOD=""
 .else
@@ -63,7 +63,7 @@ PLIST_SUB+=	MIKMOD="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MMUSEPACK}
-LIB_DEPENDS+=	mpcdec:${PORTSDIR}/audio/musepack
+LIB_DEPENDS+=	libmpcdec.so:${PORTSDIR}/audio/musepack
 CONFIGURE_ARGS+=CONFIG_MPC=y
 PLIST_SUB+=	MPC=""
 .else
@@ -72,7 +72,7 @@ PLIST_SUB+=	MPC="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MVORBIS} || ${PORT_OPTIONS:MTREMOR}
-LIB_DEPENDS+=	vorbisfile:${PORTSDIR}/audio/libvorbis
+LIB_DEPENDS+=	libvorbisfile.so:${PORTSDIR}/audio/libvorbis
 CONFIGURE_ARGS+=CONFIG_VORBIS=y
 PLIST_SUB+=	VORBIS=""
 .else
@@ -81,13 +81,13 @@ PLIST_SUB+=	VORBIS="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MTREMOR}
-LIB_DEPENDS+=	vorbisidec:${PORTSDIR}/audio/libtremor
+LIB_DEPENDS+=	libvorbisidec.so:${PORTSDIR}/audio/libtremor
 CONFIGURE_ARGS+=CONFIG_TREMOR=y
 .endif
 
 .if ${PORT_OPTIONS:MMP4}
-LIB_DEPENDS+=	faad:${PORTSDIR}/audio/faad
-LIB_DEPENDS+=	mp4v2:${PORTSDIR}/multimedia/mp4v2
+LIB_DEPENDS+=	libfaad.so:${PORTSDIR}/audio/faad
+LIB_DEPENDS+=	libmp4v2.so:${PORTSDIR}/multimedia/mp4v2
 CONFIGURE_ARGS+=CONFIG_MP4=y
 PLIST_SUB+=	MP4=""
 .else
@@ -96,7 +96,7 @@ PLIST_SUB+=	MP4="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MAAC}
-LIB_DEPENDS+=	faad:${PORTSDIR}/audio/faad
+LIB_DEPENDS+=	libfaad.so:${PORTSDIR}/audio/faad
 CONFIGURE_ARGS+=CONFIG_AAC=y
 PLIST_SUB+=	AAC=""
 .else
@@ -105,7 +105,7 @@ PLIST_SUB+=	AAC="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MWAVPACK}
-LIB_DEPENDS+=	wavpack:${PORTSDIR}/audio/wavpack
+LIB_DEPENDS+=	libwavpack.so:${PORTSDIR}/audio/wavpack
 CONFIGURE_ARGS+=CONFIG_WAVPACK=y
 PLIST_SUB+=	WAVPACK=""
 .else
@@ -113,19 +113,18 @@ CONFIGURE_ARGS+=CONFIG_WAVPACK=n
 PLIST_SUB+=	WAVPACK="@comment "
 .endif
 
-.if ${PORT_OPTIONS:MFFMPEG}
-FFMPEG_SUFFIX=	1
-BUILD_DEPENDS+=	ffmpeg${FFMPEG_SUFFIX}>=1:${PORTSDIR}/multimedia/ffmpeg${FFMPEG_SUFFIX}
-RUN_DEPENDS+=	ffmpeg${FFMPEG_SUFFIX}>=1:${PORTSDIR}/multimedia/ffmpeg${FFMPEG_SUFFIX}
-CONFIGURE_ARGS+=CONFIG_FFMPEG=y
-PLIST_SUB+=	FFMPEG=""
-.else
+#.if ${PORT_OPTIONS:MFFMPEG}
+#BUILD_DEPENDS+=	ffmpeg>=2:${PORTSDIR}/multimedia/ffmpeg
+#RUN_DEPENDS+=	ffmpeg>=2:${PORTSDIR}/multimedia/ffmpeg
+#CONFIGURE_ARGS+=CONFIG_FFMPEG=y
+#PLIST_SUB+=	FFMPEG=""
+#.else
 CONFIGURE_ARGS+=CONFIG_FFMPEG=n
 PLIST_SUB+=	FFMPEG="@comment "
-.endif
+#.endif
 
 .if ${PORT_OPTIONS:MAO}
-LIB_DEPENDS+=	ao:${PORTSDIR}/audio/libao
+LIB_DEPENDS+=	libao.so:${PORTSDIR}/audio/libao
 CONFIGURE_ARGS+=CONFIG_AO=y
 PLIST_SUB+=	AO=""
 .else
@@ -134,7 +133,7 @@ PLIST_SUB+=	AO="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MPULSEAUDIO}
-LIB_DEPENDS+=	pulse:${PORTSDIR}/audio/pulseaudio
+LIB_DEPENDS+=	libpulse.so:${PORTSDIR}/audio/pulseaudio
 CONFIGURE_ARGS+=CONFIG_PULSE=y
 PLIST_SUB+=	PULSEAUDIO=""
 .else
@@ -143,7 +142,7 @@ PLIST_SUB+=	PULSEAUDIO="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MCDDB} && ${PORT_OPTIONS:MCDIO}
-LIB_DEPENDS+=	cddb:${PORTSDIR}/audio/libcddb
+LIB_DEPENDS+=	libcddb.so:${PORTSDIR}/audio/libcddb
 CONFIGURE_ARGS+=CONFIG_CDDB=y
 PLIST_SUB+=	CDDB=""
 .else
@@ -152,7 +151,7 @@ PLIST_SUB+=	CDDB="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MCDIO}
-LIB_DEPENDS+=	cdio:${PORTSDIR}/sysutils/libcdio
+LIB_DEPENDS+=	libcdio.so:${PORTSDIR}/sysutils/libcdio
 CONFIGURE_ARGS+=CONFIG_CDIO=y
 PLIST_SUB+=	CDIO=""
 .else
@@ -161,7 +160,7 @@ PLIST_SUB+=	CDIO="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MCUE}
-LIB_DEPENDS+=	cue:${PORTSDIR}/textproc/libcue
+LIB_DEPENDS+=	libcue.so:${PORTSDIR}/textproc/libcue
 CONFIGURE_ARGS+=CONFIG_CUE=y
 PLIST_SUB+=	CUE=""
 .else
@@ -170,7 +169,7 @@ PLIST_SUB+=	CUE="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MDISCID}
-LIB_DEPENDS+=	discid:${PORTSDIR}/audio/libdiscid
+LIB_DEPENDS+=	libdiscid.so:${PORTSDIR}/audio/libdiscid
 CONFIGURE_ARGS+=CONFIG_DISCID=y
 .else
 CONFIGURE_ARGS+=CONFIG_DISCID=n
@@ -183,9 +182,5 @@ post-patch:
 	@${REINPLACE_CMD} -e 's,doc/cmus/examples,examples/cmus,g' \
 		${WRKSRC}/Doc/cmus.txt
 	@${REINPLACE_CMD} -e 's,/usr,${PREFIX},g' ${WRKSRC}/Doc/cmus.txt
-.if ${PORT_OPTIONS:MFFMPEG}
-	@${REINPLACE_CMD} -e 's,libavformat,libavformat${FFMPEG_SUFFIX},g' \
-		${WRKSRC}/configure
-.endif
 
 .include <bsd.port.mk>

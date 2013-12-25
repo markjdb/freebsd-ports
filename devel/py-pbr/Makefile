@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	pbr
-PORTVERSION=	0.5.19
+PORTVERSION=	0.5.23
+PORTREVISION=	1
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,10 +13,10 @@ COMMENT=	Python Build Reasonableness
 
 LICENSE=	AL2
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}setuptools-git>=0.4:${PORTSDIR}/devel/py-setuptools-git
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pip>=1.0:${PORTSDIR}/devel/py-pip
 
 USE_PYTHON=		yes
 USE_PYDISTUTILS=	easy_install
+PYDISTUTILS_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

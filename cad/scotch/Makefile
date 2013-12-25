@@ -3,6 +3,7 @@
 
 PORTNAME=	scotch
 DISTVERSION=	5.1.12b_esmumps
+PORTREVISION=	1
 CATEGORIES=	cad science
 MASTER_SITES=	https://gforge.inria.fr/frs/download.php/28978/
 DISTNAME=	${PORTNAME}_${DISTVERSION}
@@ -50,7 +51,7 @@ MAN1=		acpl.1 amk_ccc.1 amk_fft2.1 amk_grf.1 amk_hy.1 amk_m2.1 amk_p2.1	\
 PKGMESSAGE=	${WRKSRC}/LICENSE_en.txt
 
 .if !defined(WITHOUT_MPI)
-LIB_DEPENDS+=	mpich.2:${PORTSDIR}/net/mpich2
+LIB_DEPENDS+=	libmpich.so:${PORTSDIR}/net/mpich2
 
 ALL_TARGET+=	ptscotch
 MAKE_ENV+=	PATH=${PATH}:${LOCALBASE}/mpich2/bin

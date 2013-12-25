@@ -3,14 +3,16 @@
 
 PORTNAME=	ctpp2
 PORTVERSION=	2.8.3
+PORTREVISION=	1
 CATEGORIES=	textproc devel
 MASTER_SITES=	http://ctpp.havoc.ru/download/
 
 MAINTAINER=	vg@FreeBSD.org
 COMMENT=	C++ library to use templates in C/C++ projects, version 2
 
-USES=		cmake gettext iconv
+USES=		cmake gettext iconv:build
 USE_LDCONFIG=	yes
+USE_GCC=	yes
 
 PLIST_SUB+=	PORTVERSION=${PORTVERSION}
 

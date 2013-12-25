@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Client library for memcached using libmemcache
 
-LIB_DEPENDS=	memcache.4:${PORTSDIR}/databases/libmemcache
+LIB_DEPENDS=	libmemcache.so:${PORTSDIR}/databases/libmemcache
 BUILD_DEPENDS=	p5-Storable>=0:${PORTSDIR}/devel/p5-Storable
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
@@ -18,7 +18,4 @@ USES=		perl5
 USE_PERL5=	configure
 CONFIGURE_ARGS=	INC="-I${LOCALBASE}/include"
 
-MAN3=		Cache::Memcached::XS.3
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

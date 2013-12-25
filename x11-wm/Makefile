@@ -83,7 +83,6 @@
     SUBDIR += epplets
     SUBDIR += evilwm
     SUBDIR += fbcmd
-    SUBDIR += fbpager
     SUBDIR += fluxbox
     SUBDIR += fluxconf
     SUBDIR += fluxter
@@ -109,13 +108,16 @@
     SUBDIR += libdockapp
     SUBDIR += libwraster
     SUBDIR += lwm
+    SUBDIR += lxmed
     SUBDIR += lxsession
+    SUBDIR += mate-window-manager
     SUBDIR += matwm2
     SUBDIR += mcwm
     SUBDIR += metacity
     SUBDIR += musca
     SUBDIR += mutter
     SUBDIR += nickleby
+    SUBDIR += obapps
     SUBDIR += obconf
     SUBDIR += obkey
     SUBDIR += obmenu

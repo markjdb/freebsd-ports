@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gdnsd
-PORTVERSION=	1.10.0
+PORTVERSION=	1.11.0
 CATEGORIES=	dns
 MASTER_SITES=	http://downloads.gdnsd.net/ \
 		http://gdnsd.scaleengine.net/gdnsd/
@@ -14,36 +14,25 @@ LICENSE=	GPLv3
 
 LIB_DEPENDS=	libev.so:${PORTSDIR}/devel/libev
 
-OPTIONS_DEFINE=	GEOIP
-
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--localstatedir=/var --with-rootdir=${LOCALBASE}/etc/gdnsd
 USE_LDCONFIG=	yes
 USE_XZ=		yes
 USES=		pkgconfig
-
-MAN1=		gdnsd_geoip_test.1
-MAN3=		gdnsd-plugin-api.3
-MAN5=		gdnsd.config.5 gdnsd.zonefile.5
-MAN8=		gdnsd.8 gdnsd-plugin-simplefo.8 gdnsd-plugin-multifo.8 \
-		gdnsd-plugin-metafo.8 gdnsd-plugin-geoip.8 \
-		gdnsd-plugin-weighted.8 gdnsd-plugin-extmon.8
-MANCOMPRESSED=	no
+CPPFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
 
 USE_RC_SUBR=	gdnsd
 
 USERS?=		gdnsd
 GROUPS?=	gdnsd
 
-NO_STAGE=	yes
-.include <bsd.port.options.mk>
+OPTIONS_DEFINE=	GEOIP URCU
 
-.if ${PORT_OPTIONS:MGEOIP}
-RUN_DEPENDS+=	${LOCALBASE}/share/GeoIP/GeoIP.dat:${PORTSDIR}/net/GeoIP
-.endif
+GEOIP_DESC=		Enable GeoIP Support
+GEOIP_RUN_DEPENDS=	${LOCALBASE}/share/GeoIP/GeoIP.dat:${PORTSDIR}/net/GeoIP
 
-post-install:
-	${MKDIR} ${PREFIX}/var/run/gdnsd
-	${MKDIR} ${PREFIX}/etc/gdnsd/zones
-	${TOUCH} ${PREFIX}/etc/gdnsd/zones/.keep-me
+URCU_DESC=		Read-Copy-Update Support (Faster Zone Parsing)
+URCU_CONFIGURE_WITH=	urcu
+URCU_LIB_DEPENDS=	liburcu.so:${PORTSDIR}/sysutils/liburcu
 
 .include <bsd.port.mk>

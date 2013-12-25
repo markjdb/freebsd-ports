@@ -12,10 +12,8 @@ COMMENT=	Extract game archives such as wad, dar, mea exe's, and many more
 
 LICENSE=	GPLv2
 
-NO_STAGE=	yes
-USES=		gmake
+USES=		gmake dos2unix
 GNU_CONFIGURE=	yes
-USE_DOS2UNIX=	yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/kdev
 
@@ -28,6 +26,6 @@ post-patch:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/src/${PORTNAME}_kdev \
-		${PREFIX}/bin/${PORTNAME}
+		${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>

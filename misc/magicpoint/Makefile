@@ -10,21 +10,19 @@ MASTER_SITES=	ftp://sh.wide.ad.jp/WIDE/free-ware/mgp/
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	An X11-based presentation tool
 
-LIB_DEPENDS+=	png15:${PORTSDIR}/graphics/png \
-		mng:${PORTSDIR}/graphics/libmng
+LIB_DEPENDS+=	libpng15.so:${PORTSDIR}/graphics/png \
+		libmng.so:${PORTSDIR}/graphics/libmng
 RUN_DEPENDS+=	pnmscale:${PORTSDIR}/graphics/netpbm
 
 MAKE_JOBS_UNSAFE=	yes
-NO_STAGE=	yes
 
-USES=		imake:env
+USES=		imake:env pkgconfig
 USE_XORG=	x11 xext xmu xt sm ice xi xtst
 WANT_GNOME=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-vflib --enable-locale
+CPPFLAGS+=	-I..
 LATE_INSTALL_ARGS=	install.man
-
-MAN1=	mgp.1 mgp2ps.1 mgpembed.1 mgpnet.1 xwintoppm.1 xmindpath.1
 
 PORTDOCS=	${DOCS} sample emacs-lisp scripts
 DOCS=		COPYRIGHT COPYRIGHT.jp FAQ README README.fonts \
@@ -46,38 +44,19 @@ OPTIONS_DEFINE=FREETYPE XFT GIF IMLIB
 OPTIONS_DEFAULT=FREETYPE XFT
 NO_OPTIONS_SORT=yes
 
+FREETYPE_CONFIGURE_ENABLE=	freetype
+XFT_USES=	iconv
+XFT_USE=	XORG=xft
+XFT_LIB_DEPENDS=	libttf.so:${PORTSDIR}/print/freetype
+XFT_CONFIGURE_ENABLE=	xft2
+XFT_CONFIGURE_ON=	--enable-freetype-charset16
+GIF_CONFIGURE_ENABLE=	gif
+GIF_LIB_DEPENDS=	libgif.so:${PORTSDIR}/graphics/giflib
+GIF_CPPFLAGS=		-I${LOCALBASE}/include
+IMLIB_USE=	GNOME=imlib
+IMLIB_CONFIGURE_ENABLE=	imlib
+
 .include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MFREETYPE}
-# Only freetype 1.x is supported
-LIB_DEPENDS+=		ttf:${PORTSDIR}/print/freetype
-CONFIGURE_ARGS+=	--enable-freetype \
-			--enable-freetype-charset16
-.else
-CONFIGURE_ARGS+=	--disable-freetype
-.endif
-
-.if ${PORT_OPTIONS:MXFT}
-USE_XORG+=	xft
-CONFIGURE_ARGS+=	--enable-xft2
-.else
-CONFIGURE_ARGS+=	--disable-xft2
-.endif
-
-.if ${PORT_OPTIONS:MGIF}
-LIB_DEPENDS+=	gif:${PORTSDIR}/graphics/giflib
-CONFIGURE_ARGS+=	--enable-gif
-CFLAGS+=	-I${LOCALBASE}/include
-.else
-CONFIGURE_ARGS+=	--disable-gif
-.endif
-
-.if ${PORT_OPTIONS:MIMLIB}
-USE_GNOME=	imlib
-CONFIGURE_ARGS+=	--enable-imlib
-.else
-CONFIGURE_ARGS+=	--disable-imlib
-.endif
 
 post-patch:
 	${REINPLACE_CMD} -e 's|-lungif|-lgif|' \
@@ -85,33 +64,39 @@ post-patch:
 		${WRKSRC}/configure
 
 post-configure:
-	(cd ${CONFIGURE_WRKSRC} && ${SETENV} ${MAKE_ENV} ${XMKMF} ${XMKMF_ARGS})
+	cd ${CONFIGURE_WRKSRC} && \
+		${SETENV} ${MAKE_ENV} ${XMKMF} ${XMKMF_ARGS}
 	cd ${WRKSRC}/contrib/xmindpath && \
 		${SH} ${CONFIGURE_SCRIPT} --prefix=${PREFIX}
 
 post-build:
 	cd ${WRKSRC}/contrib/xmindpath && \
-		${MAKE}
+		${MAKE_ENV} ${MAKE} ${MAKE_ARGS}
 
 post-install:
-	cd ${WRKSRC}/contrib/xmindpath && \
-		${MAKE} install
-.if !defined(NOPORTDOCS)
-	${MKDIR} ${DOCSDIR}
+	${INSTALL_MAN} ${WRKSRC}/contrib/xmindpath/xmindpath.1 \
+		${STAGEDIR}${MANPREFIX}/man/man1/
+	${INSTALL} ${WRKSRC}/contrib/xmindpath/xmindpath \
+		${STAGEDIR}${PREFIX}/bin/
+.if ${PORT_OPTIONS:MDOCS}
+	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && \
-		${INSTALL_DATA} ${DOCS} ${DOCSDIR}
-	${MKDIR} ${DOCSDIR}/sample
+		${INSTALL_DATA} ${DOCS} ${STAGEDIR}${DOCSDIR}/
+	${MKDIR} ${STAGEDIR}${DOCSDIR}/sample
 	cd ${WRKSRC}/sample && \
-		${INSTALL_DATA} ${SAMPLES} ${DOCSDIR}/sample/
-	${MKDIR} ${DOCSDIR}/emacs-lisp
+		${INSTALL_DATA} ${SAMPLES} ${STAGEDIR}${DOCSDIR}/sample/
+	${MKDIR} ${STAGEDIR}${DOCSDIR}/emacs-lisp
 	cd ${WRKSRC}/contrib && \
-		${INSTALL_DATA} ${EMACS_LISPS} ${DOCSDIR}/emacs-lisp/
-	${MKDIR} ${DOCSDIR}/emacs-lisp/mgp-el
+		${INSTALL_DATA} ${EMACS_LISPS} \
+		${STAGEDIR}${DOCSDIR}/emacs-lisp/
+	${MKDIR} ${STAGEDIR}${DOCSDIR}/emacs-lisp/mgp-el
 	cd ${WRKSRC}/contrib/mgp-el && \
-		${INSTALL_DATA} ${EMACS_LISPS_MGP} ${DOCSDIR}/emacs-lisp/mgp-el
-	${MKDIR} ${DOCSDIR}/scripts
+		${INSTALL_DATA} ${EMACS_LISPS_MGP} \
+		${STAGEDIR}${DOCSDIR}/emacs-lisp/mgp-el/
+	${MKDIR} ${STAGEDIR}${DOCSDIR}/scripts
 	cd ${WRKSRC}/contrib && \
-		${INSTALL_SCRIPT} ${SAMPLE_SCRIPTS} ${DOCSDIR}/scripts/
+		${INSTALL_SCRIPT} ${SAMPLE_SCRIPTS} \
+		${STAGEDIR}${DOCSDIR}/scripts/
 .endif
 
 .include <bsd.port.mk>

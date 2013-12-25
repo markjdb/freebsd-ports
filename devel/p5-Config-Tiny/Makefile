@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Config-Tiny
-PORTVERSION=	2.19
+PORTVERSION=	2.20
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -17,7 +17,4 @@ LICENSE_COMB=	dual
 USES=		perl5
 USE_PERL5=	configure
 
-MAN3=		Config::Tiny.3
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

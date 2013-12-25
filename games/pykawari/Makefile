@@ -3,7 +3,7 @@
 
 PORTNAME=	pykawari
 PORTVERSION=	8.2.8
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	games
 MASTER_SITES=	SF/kawari/kawari/${PORTVERSION}
 DISTNAME=	kawari-${PORTVERSION:S/.//g}
@@ -33,6 +33,10 @@ NO_STAGE=	yes
 .if ${ARCH} == "amd64" || ${ARCH} == "ia64"
 CFLAGS+=	-fPIC
 .endif
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|shell python|shell ${PYTHON_CMD}|' \
+		${WRKSRC}/build/src/gcc.mak
 
 do-build:
 	(cd ${WRKSRC}/build/src; CFLAGS="${CFLAGS}" ${GMAKE} -f gcc.mak PYTHONBASE=${PYTHONBASE} PYTHON_VERSION=${PYTHON_VERSION} PTHREAD_LIBS=${PTHREAD_LIBS} CXX=${CXX})

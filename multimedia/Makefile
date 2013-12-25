@@ -54,10 +54,7 @@
     SUBDIR += emotion
     SUBDIR += emovix
     SUBDIR += ffmpeg
-    SUBDIR += ffmpeg-devel
     SUBDIR += ffmpeg0
-    SUBDIR += ffmpeg1
-    SUBDIR += ffmpeg2
     SUBDIR += ffmpeg2theora
     SUBDIR += ffmpegthumbnailer
     SUBDIR += flvmeta
@@ -126,6 +123,7 @@
     SUBDIR += gstreamer1-plugins-dv
     SUBDIR += gstreamer1-plugins-dvdread
     SUBDIR += gstreamer1-plugins-good
+    SUBDIR += gstreamer1-plugins-kate
     SUBDIR += gstreamer1-plugins-mpeg2dec
     SUBDIR += gstreamer1-plugins-mpeg2enc
     SUBDIR += gstreamer1-plugins-resindvd
@@ -136,6 +134,7 @@
     SUBDIR += gstreamer1-plugins-v4l2
     SUBDIR += gstreamer1-plugins-vpx
     SUBDIR += gstreamer1-plugins-x264
+    SUBDIR += gstreamer1-vaapi
     SUBDIR += gstreamermm
     SUBDIR += gtk-recordmydesktop
     SUBDIR += gtk-youtube-viewer
@@ -181,6 +180,7 @@
     SUBDIR += libquicktime-lame
     SUBDIR += libquvi
     SUBDIR += libquvi-scripts
+    SUBDIR += librtmp
     SUBDIR += libsmacker
     SUBDIR += libtheora
     SUBDIR += libtuner
@@ -202,6 +202,7 @@
     SUBDIR += linux_dvbwrapper-kmod
     SUBDIR += linux_v4l2wrapper-kmod
     SUBDIR += lives
+    SUBDIR += livestreamer
     SUBDIR += lsdvd
     SUBDIR += lxdvdrip
     SUBDIR += m2tstoavi
@@ -286,13 +287,14 @@
     SUBDIR += py-kaa-base
     SUBDIR += py-kaa-imlib2
     SUBDIR += py-kaa-metadata
-    SUBDIR += py-subliminal
+    SUBDIR += py-librtmp
     SUBDIR += py-mlt
     SUBDIR += py-openlp
     SUBDIR += py-periscope
     SUBDIR += py-pybmp
     SUBDIR += py-qt4-multimedia
     SUBDIR += py-qt4-phonon
+    SUBDIR += py-subliminal
     SUBDIR += py-tvnamer
     SUBDIR += pyjama
     SUBDIR += pymp
@@ -316,6 +318,7 @@
     SUBDIR += shell-fm
     SUBDIR += smile
     SUBDIR += smpeg
+    SUBDIR += smpeg2
     SUBDIR += smplayer
     SUBDIR += smplayer-skins
     SUBDIR += smplayer-themes
@@ -336,7 +339,6 @@
     SUBDIR += tivodecode
     SUBDIR += totem
     SUBDIR += totem-pl-parser
-    SUBDIR += tovid
     SUBDIR += transcode
     SUBDIR += tstools
     SUBDIR += tunapie

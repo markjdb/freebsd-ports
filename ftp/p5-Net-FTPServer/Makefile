@@ -63,11 +63,11 @@ post-patch:
 post-install:
 .if !defined(NOPORTEXAMPLES)
 	@${MKDIR} ${EXAMPLESDIR}
-	@${INSTALL_DATA} ${WRKSRC}/etc/ftpd.conf ${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/etc/ftpd.conf ${EXAMPLESDIR}
 .endif
 .if !defined(NOPORTDOCS)
 	@${MKDIR} ${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} ${DOCS} ${DOCSDIR}
+	(cd ${WRKSRC} && ${INSTALL_DATA} ${DOCS} ${DOCSDIR})
 .endif
 	@${CAT} ${PKGMESSAGE}
 

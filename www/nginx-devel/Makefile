@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nginx
-PORTVERSION=	1.5.6
+PORTVERSION=	1.5.7
 CATEGORIES=	www
 MASTER_SITES=	http://nginx.org/download/
 MASTER_SITES+=	${MASTER_SITE_LOCAL}
@@ -60,6 +60,7 @@ OPTIONS_DEFINE=	\
 	HTTP_DAV_EXT \
 	HTTP_EVAL \
 	HTTP_FANCYINDEX \
+	HTTP_FOOTER \
 	HTTP_MOGILEFS \
 	HTTP_NOTICE \
 	HTTP_PUSH \
@@ -148,6 +149,7 @@ HTTP_AUTH_PAM_DESC=		3rd party http_auth_pam module
 HTTP_DAV_EXT_DESC=		3rd party webdav_ext module
 HTTP_EVAL_DESC=			3rd party eval module
 HTTP_FANCYINDEX_DESC=		3rd party http_fancyindex module
+HTTP_FOOTER_DESC=		3rd party http_footer module
 HTTP_MOGILEFS_DESC=		3rd party mogilefs module
 HTTP_MP4_H264_DESC=		3rd party mp4/h264 module
 HTTP_NOTICE_DESC=		3rd party notice module
@@ -193,7 +195,6 @@ VIDEO_DESC=			Video module support
 
 WANT_GNOME=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPASSENGER}
@@ -217,9 +218,6 @@ SUB_LIST+=	WWWOWN=${WWWOWN} \
 		WWWGRP=${WWWGRP} \
 		NGINX_RUNDIR=${NGINX_RUNDIR} \
 		NGINX_TMPDIR=${NGINX_TMPDIR}
-.if !defined(NO_INSTALL_MANPAGES)
-MAN8=		nginx.8
-.endif
 
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS+=--prefix=${ETCDIR} \
@@ -255,7 +253,7 @@ CATEGORIES+=	ipv6
 .endif
 
 .if ${PORT_OPTIONS:MGOOGLE_PERFTOOLS}
-LIB_DEPENDS+=	profiler:${PORTSDIR}/devel/google-perftools
+LIB_DEPENDS+=	libprofiler.so:${PORTSDIR}/devel/google-perftools
 CONFIGURE_ARGS+=--with-google_perftools_module
 .endif
 
@@ -268,7 +266,7 @@ CONFIGURE_ARGS+=--http-client-body-temp-path=${NGINX_TMPDIR}/client_body_temp \
 		--http-log-path=${NGINX_ACCESSLOG}
 
 .if ${PORT_OPTIONS:MHTTP_ACCEPT_LANGUAGE}
-GIT_ACCEPT_LANGUAGE_VERSION=	02262ce
+GIT_ACCEPT_LANGUAGE_VERSION=	2f69842
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/giom/nginx_accept_language_module/tarball/master/:accept_language
 DISTFILES+=	giom-nginx_accept_language_module-${GIT_ACCEPT_LANGUAGE_VERSION}.tar.gz:accept_language
@@ -327,7 +325,7 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/ngx_cache_purge-${NGINX_CACHE_PURGE_VERSI
 .endif
 
 .if ${PORT_OPTIONS:MCTPP2}
-LIB_DEPENDS+=	ctpp2:${PORTSDIR}/textproc/ctpp2
+LIB_DEPENDS+=	libctpp2.so:${PORTSDIR}/textproc/ctpp2
 NGINX_CTPP2_VERSION=	0.5
 MASTER_SITES+=	http://dl.vbart.ru/ngx-ctpp/:ctpp2
 DISTFILES+=	ngx_ctpp2-${NGINX_CTPP2_VERSION}.tar.gz:ctpp2
@@ -335,8 +333,8 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/ngx_ctpp2-${NGINX_CTPP2_VERSION}
 .endif
 
 .if ${PORT_OPTIONS:MECHO}
-NGINX_ECHO_VERSION=	0.46
-GIT_ECHO_VERSION=	0-g4de92b1
+NGINX_ECHO_VERSION=	0.50
+GIT_ECHO_VERSION=	0-gf827a4f
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/agentzh/echo-nginx-module/tarball/v${NGINX_ECHO_VERSION}/:echo
 DISTFILES+=	agentzh-echo-nginx-module-v${NGINX_ECHO_VERSION}-${GIT_ECHO_VERSION}.tar.gz:echo
@@ -344,8 +342,8 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/agentzh-echo-nginx-module-${GIT_ECHO_VERS
 .endif
 
 .if ${PORT_OPTIONS:MHEADERS_MORE}
-NGINX_HEADERS_MORE_VERSION=	0.22
-GIT_HEADERS_MORE_VERSION=	0-g6d19a39
+NGINX_HEADERS_MORE_VERSION=	0.24
+GIT_HEADERS_MORE_VERSION=	0-g7a6fd11
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/agentzh/headers-more-nginx-module/tarball/v${NGINX_HEADERS_MORE_VERSION}/:headers_more
 DISTFILES+=	agentzh-headers-more-nginx-module-v${NGINX_HEADERS_MORE_VERSION}-${GIT_HEADERS_MORE_VERSION}.tar.gz:headers_more
@@ -358,7 +356,7 @@ CONFIGURE_ARGS+=--with-http_dav_module
 
 .if ${PORT_OPTIONS:MHTTP_DAV_EXT}
 USE_HTTP_DAV=	yes
-LIB_DEPENDS+=	expat:${PORTSDIR}/textproc/expat2
+LIB_DEPENDS+=	libexpat.so:${PORTSDIR}/textproc/expat2
 NGINX_DAV_EXT_VERSION=	0.0.2
 GIT_DAV_EXT_VERSION=	0-g0e07a3e
 FETCH_ARGS=	-pRr
@@ -384,13 +382,22 @@ DISTFILES+=	ngx-fancyindex-${NGINX_FANCYINDEX_VERSION}.tar.gz:fancyindex
 CONFIGURE_ARGS+=--add-module=${WRKDIR}/ngx-fancyindex-${NGINX_FANCYINDEX_VERSION}
 .endif
 
+.if ${PORT_OPTIONS:MHTTP_FOOTER}
+NGINX_FOOTER_VERSION=	1.2.2
+GIT_FOOTER_VERSION=	0-g3572184
+FETCH_ARGS=	-pRr
+MASTER_SITES+=	https://github.com/alibaba/nginx-http-footer-filter/tarball/${NGINX_FOOTER_VERSION}/:footer
+DISTFILES+=	alibaba-nginx-footer-filter-${NGINX_FOOTER_VERSION}-${GIT_FOOTER_VERSION}.tar.gz:footer
+CONFIGURE_ARGS+=--add-module=${WRKDIR}/alibaba-nginx-http-footer-filter-${GIT_FOOTER_VERSION:S/^0-g//}
+.endif
+
 .if ${PORT_OPTIONS:MHTTP_FLV}
 CONFIGURE_ARGS+=--with-http_flv_module
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_GEOIP}
 CONFIGURE_ARGS+=--with-http_geoip_module
-LIB_DEPENDS+=	GeoIP:${PORTSDIR}/net/GeoIP
+LIB_DEPENDS+=	libGeoIP.so:${PORTSDIR}/net/GeoIP
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_GZIP_STATIC}
@@ -402,7 +409,7 @@ CONFIGURE_ARGS+=--with-http_gunzip_module
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_IMAGE_FILTER}
-LIB_DEPENDS+=	gd:${PORTSDIR}/graphics/gd
+LIB_DEPENDS+=	libgd.so:${PORTSDIR}/graphics/gd
 CONFIGURE_ARGS+=--with-http_image_filter_module
 .endif
 
@@ -465,7 +472,7 @@ CONFIGURE_ARGS+=--with-http_realip_module
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_REDIS}
-NGINX_REDIS_VERSION=	0.3.6
+NGINX_REDIS_VERSION=	0.3.7
 MASTER_SITES+=	${MASTER_SITE_LOCAL:S/$/:redis/}
 MASTER_SITE_SUBDIR+=	osa/:redis
 DISTFILES+=	ngx_http_redis-${NGINX_REDIS_VERSION}.tar.gz:redis
@@ -555,10 +562,9 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/mod_zip-${NGINX_ZIP_VERSION}
 .endif
 
 .if ${PORT_OPTIONS:MDRIZZLE}
-IGNORE=	DRIZZLE: update require
-LIB_DEPENDS+=	drizzle:${PORTSDIR}/databases/libdrizzle
-NGINX_DRIZZLE_VERSION=	0.1.5
-GIT_DRIZZLE_VERSION=	0-g943c915
+LIB_DEPENDS+=	libdrizzle.so:${PORTSDIR}/databases/libdrizzle
+NGINX_DRIZZLE_VERSION=	0.1.6
+GIT_DRIZZLE_VERSION=	0-ge6937ba
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/chaoslawful/drizzle-nginx-module/tarball/v${NGINX_DRIZZLE_VERSION}/:drizzle
 DISTFILES+=	chaoslawful-drizzle-nginx-module-v${NGINX_DRIZZLE_VERSION}-${GIT_DRIZZLE_VERSION}.tar.gz:drizzle
@@ -567,8 +573,8 @@ EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-chaoslawful-drizzle-nginx-module-config
 .endif
 
 .if ${PORT_OPTIONS:MARRAYVAR} || ${PORT_OPTIONS:MENCRYPTSESSION} || ${PORT_OPTIONS:MFORMINPUT} || ${PORT_OPTIONS:MICONV} || ${PORT_OPTIONS:MLUA} || ${PORT_OPTIONS:MSET_MISC}
-NGINX_DEVEL_KIT_VERSION=	0.2.18
-GIT_DEVEL_KIT_VERSION=	0-g48bc5dd
+NGINX_DEVEL_KIT_VERSION=	0.2.19
+GIT_DEVEL_KIT_VERSION=	0-g8dd0df5
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/simpl/ngx_devel_kit/tarball/v${NGINX_DEVEL_KIT_VERSION}/:devel_kit
 DISTFILES+=	simpl-ngx_devel_kit-v${NGINX_DEVEL_KIT_VERSION}-${GIT_DEVEL_KIT_VERSION}.tar.gz:devel_kit
@@ -607,11 +613,11 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/arut-nginx-let-module-${GIT_LET_VERSION:S
 .endif
 
 .if ${PORT_OPTIONS:MLUA}
-LIB_DEPENDS+=	luajit-5.1:${PORTSDIR}/lang/luajit
+LIB_DEPENDS+=	libluajit-5.1.so:${PORTSDIR}/lang/luajit
 CONFIGURE_ENV+=	"LUAJIT_INC=${LOCALBASE}/include/luajit-2.0"
 CONFIGURE_ENV+=	"LUAJIT_LIB=${LOCALBASE}/lib"
-NGINX_LUA_VERSION=	0.8.6
-GIT_LUA_VERSION=	0-g940429a
+NGINX_LUA_VERSION=	0.9.3
+GIT_LUA_VERSION=	0-g4f2b35d
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/chaoslawful/lua-nginx-module/tarball/v${NGINX_LUA_VERSION}/:lua
 DISTFILES+=	chaoslawful-lua-nginx-module-v${NGINX_LUA_VERSION}-${GIT_LUA_VERSION}.tar.gz:lua
@@ -619,8 +625,8 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/chaoslawful-lua-nginx-module-${GIT_LUA_VE
 .endif
 
 .if ${PORT_OPTIONS:MMEMC}
-NGINX_MEMC_VERSION=	0.13rc3
-GIT_MEMC_VERSION=	0-g4007350
+NGINX_MEMC_VERSION=	0.14
+GIT_MEMC_VERSION=	0-gde4cf86
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/agentzh/memc-nginx-module/tarball/v${NGINX_MEMC_VERSION}/:memc
 DISTFILES+=	agentzh-memc-nginx-module-v${NGINX_MEMC_VERSION}-${GIT_MEMC_VERSION}.tar.gz:memc
@@ -629,8 +635,8 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/agentzh-memc-nginx-module-${GIT_MEMC_VERS
 
 .if ${PORT_OPTIONS:MMODSECURITY}
 NGINX_MODSECURITY_VERSION=	2.7.5
-LIB_DEPENDS+=	pcre:${PORTSDIR}/devel/pcre \
-		apr-1:${PORTSDIR}/devel/apr1
+LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre \
+		libapr-1.so:${PORTSDIR}/devel/apr1
 USE_APACHE=	22+
 USE_GNOME=	libxml2
 MASTER_SITES+=	http://www.modsecurity.org/tarball/${NGINX_MODSECURITY_VERSION}/:modsecurity
@@ -647,7 +653,7 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/naxsi-core-${NGINX_NAXSI_VERSION}/naxsi_s
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_REWRITE} || defined(USE_HTTP_REWRITE)
-LIB_DEPENDS+=	pcre:${PORTSDIR}/devel/pcre
+LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre
 CONFIGURE_ARGS+=--with-pcre
 .else
 PKGNAMESUFFIX:=	${PKGNAMESUFFIX}-nopcre
@@ -656,7 +662,7 @@ CONFIGURE_ARGS+=--without-http_rewrite_module \
 .endif
 
 .if ${PORT_OPTIONS:MPASSENGER}
-PASSENGER_VERSION=	4.0.20
+PASSENGER_VERSION=	4.0.29
 MASTER_SITES+=	http://s3.amazonaws.com/phusion-passenger/releases/:passenger
 DISTFILES+=	passenger-${PASSENGER_VERSION}.tar.gz:passenger
 CONFIGURE_ARGS+=--add-module=${WRKDIR}/passenger-${PASSENGER_VERSION}/ext/nginx
@@ -678,8 +684,8 @@ EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-ngx_postgres-config
 .endif
 
 .if ${PORT_OPTIONS:MRDS_CSV}
-NGINX_RDS_CSV_VERSION=	0.05rc2
-GIT_RDS_CSV_VERSION=	0-gc15d3a4
+NGINX_RDS_CSV_VERSION=	0.05
+GIT_RDS_CSV_VERSION=	0-g607e26b
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/agentzh/rds-csv-nginx-module/tarball/v${NGINX_RDS_CSV_VERSION}/:rdscsv
 DISTFILES+=	agentzh-rds-csv-nginx-module-v${NGINX_RDS_CSV_VERSION}-${GIT_RDS_CSV_VERSION}.tar.gz:rdscsv
@@ -687,8 +693,8 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/agentzh-rds-csv-nginx-module-${GIT_RDS_CS
 .endif
 
 .if ${PORT_OPTIONS:MRDS_JSON}
-NGINX_RDS_JSON_VERSION=	0.12rc10
-GIT_RDS_JSON_VERSION=	0-g74c21b3
+NGINX_RDS_JSON_VERSION=	0.13
+GIT_RDS_JSON_VERSION=	0-g8292070
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/agentzh/rds-json-nginx-module/tarball/v${NGINX_RDS_JSON_VERSION}/:rdsjson
 DISTFILES+=	agentzh-rds-json-nginx-module-v${NGINX_RDS_JSON_VERSION}-${GIT_RDS_JSON_VERSION}.tar.gz:rdsjson
@@ -705,17 +711,16 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/agentzh-redis2-nginx-module-${GIT_REDIS2_
 .endif
 
 .if ${PORT_OPTIONS:MRTMP}
-NGINX_RTMP_VERSION=	1.0.3
-GIT_RTMP_VERSION=	0-g7749d54
+NGINX_RTMP_VERSION=	1.0.8
 FETCH_ARGS=	-pRr
-MASTER_SITES+=	https://github.com/arut/nginx-rtmp-module/tarball/v${NGINX_RTMP_VERSION}/:rtmp
-DISTFILES+=	arut-rtmp-nginx-module-v${NGINX_RTMP_VERSION}-${GIT_RTMP_VERSION}.tar.gz:rtmp
-CONFIGURE_ARGS+=--add-module=${WRKDIR}/arut-nginx-rtmp-module-${GIT_RTMP_VERSION:S/^0-g//}
+MASTER_SITES+=	https://github.com/arut/nginx-rtmp-module/archive/v${NGINX_RTMP_VERSION}/:rtmp
+DISTFILES+=	rtmp-nginx-module-v${NGINX_RTMP_VERSION}.tar.gz:rtmp
+CONFIGURE_ARGS+=--add-module=${WRKDIR}/nginx-rtmp-module-${NGINX_RTMP_VERSION}
 .endif
 
 .if ${PORT_OPTIONS:MSET_MISC}
-NGINX_SET_MISC_VERSION=	0.22rc8
-GIT_SET_MISC_VERSION=	0-g658c235
+NGINX_SET_MISC_VERSION=	0.23
+GIT_SET_MISC_VERSION=	0-g6ce586e
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/agentzh/set-misc-nginx-module/tarball/v${NGINX_SET_MISC_VERSION}/:setmisc
 DISTFILES+=	agentzh-set-misc-nginx-module-v${NGINX_SET_MISC_VERSION}-${GIT_SET_MISC_VERSION}.tar.gz:setmisc
@@ -724,7 +729,7 @@ EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-agentzh-set-misc-nginx-module-config
 .endif
 
 .if ${PORT_OPTIONS:MSFLOW}
-NGINX_SFLOW_VERSION=	0.9.6
+NGINX_SFLOW_VERSION=	0.9.7
 MASTER_SITES+=	http://nginx-sflow-module.googlecode.com/files/:sflow
 DISTFILES+=	nginx-sflow-module-${NGINX_SFLOW_VERSION}.tar.gz:sflow
 CONFIGURE_ARGS+=--add-module=${WRKDIR}/nginx-sflow-module-${NGINX_SFLOW_VERSION}
@@ -740,8 +745,8 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/ngx_slowfs_cache-${NGINX_SLOWFS_CACHE_VER
 .endif
 
 .if ${PORT_OPTIONS:MSRCACHE}
-NGINX_SRCACHE_VERSION=	0.22
-GIT_SRCACHE_VERSION=	0-gd0c7ff5
+NGINX_SRCACHE_VERSION=	0.24
+GIT_SRCACHE_VERSION=	0-g33f0f29
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/agentzh/srcache-nginx-module/tarball/v${NGINX_SRCACHE_VERSION}/:srcache
 DISTFILES+=	agentzh-srcache-nginx-module-v${NGINX_SRCACHE_VERSION}-${GIT_SRCACHE_VERSION}.tar.gz:srcache
@@ -789,8 +794,8 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/gabor-nginx-x-rid-header-${GIT_XRID_VERSI
 .endif
 
 .if ${PORT_OPTIONS:MXSS}
-NGINX_XSS_VERSION=	0.03rc9
-GIT_XSS_VERSION=	0-gbeddbe1
+NGINX_XSS_VERSION=	0.04
+GIT_XSS_VERSION=	0-g7e37038
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/agentzh/xss-nginx-module/tarball/v${NGINX_XSS_VERSION}/:xss
 DISTFILES+=	agentzh-xss-nginx-module-v${NGINX_XSS_VERSION}-${GIT_XSS_VERSION}.tar.gz:xss
@@ -798,7 +803,7 @@ CONFIGURE_ARGS+=--add-module=${WRKDIR}/agentzh-xss-nginx-module-${GIT_XSS_VERSIO
 .endif
 
 .if ${PORT_OPTIONS:MSPDY}
-USE_OPENSSL_PORT=	yes
+NGINX_OPENSSL=	yes
 USE_HTTP_SSL=	yes
 CONFIGURE_ARGS+=--with-http_spdy_module
 .endif
@@ -837,8 +842,8 @@ CONFIGURE_ARGS+=--with-http_ssl_module
 .endif
 
 .if ${PORT_OPTIONS:MARRAYVAR}
-NGINX_ARRAYVAR_VERSION=	0.03rc1
-GIT_ARRAYVAR_VERSION=	0-gfed751a
+NGINX_ARRAYVAR_VERSION=	0.03
+GIT_ARRAYVAR_VERSION=	0-g4676747
 FETCH_ARGS=	-pRr
 MASTER_SITES+=	https://github.com/agentzh/array-var-nginx-module/tarball/v${NGINX_ARRAYVAR_VERSION}/:arrayvar
 DISTFILES+=	agentzh-array-var-nginx-module-v${NGINX_ARRAYVAR_VERSION}-${GIT_ARRAYVAR_VERSION}.tar.gz:arrayvar
@@ -872,6 +877,13 @@ GROUPS?=${WWWGRP}
 
 .if defined(NGINX_OPENSSL)
 USE_OPENSSL=	yes
+.if ${PORT_OPTIONS:MSPDY}
+.if ${OSVERSION} < 1000028
+WITH_OPENSSL_PORT=	yes
+.else
+WITH_OPENSSL_BASE=	yes
+.endif
+.endif
 .endif
 
 pre-everything::
@@ -950,7 +962,7 @@ post-patch:
 		${WRKDIR}/chaoslawful-drizzle-nginx-module-${GIT_DRIZZLE_VERSION:S/^0-g//}/src/ngx_http_drizzle_util.c
 .endif
 .if ${PORT_OPTIONS:MLUA}
-	@${REINPLACE_CMD} '437d' \
+	@${REINPLACE_CMD} '464d' \
 		${WRKDIR}/chaoslawful-lua-nginx-module-${GIT_LUA_VERSION:S/^0-g//}/src/ngx_http_lua_socket_tcp.c
 .endif
 .endif
@@ -989,40 +1001,36 @@ do-build:
 	@cd ${WRKSRC} && ${MAKE}
 
 do-install:
-	${MKDIR} ${ETCDIR}
-	${INSTALL_PROGRAM} ${WRKSRC}/objs/nginx ${PREFIX}/sbin
+	${MKDIR} ${STAGEDIR}${ETCDIR}
+	${INSTALL_PROGRAM} ${WRKSRC}/objs/nginx ${STAGEDIR}${PREFIX}/sbin
 .for i in koi-utf koi-win win-utf
-	${INSTALL_DATA} ${WRKSRC}/conf/${i} ${ETCDIR}
+	${INSTALL_DATA} ${WRKSRC}/conf/${i} ${STAGEDIR}${ETCDIR}
 .endfor
 .for i in fastcgi_params mime.types nginx.conf scgi_params uwsgi_params
-	[ -f ${ETCDIR}/${i} ] || \
-		${INSTALL_DATA} ${WRKSRC}/conf/${i} ${ETCDIR}
-	${INSTALL_DATA} ${WRKSRC}/conf/${i} ${ETCDIR}/${i}-dist
+	${INSTALL_DATA} ${WRKSRC}/conf/${i} ${STAGEDIR}${ETCDIR}/${i}-dist
 .endfor
 .if !empty(PORT_OPTIONS:MHTTP) && !empty(PORT_OPTIONS:MWWW)
-	${MKDIR} ${PREFIX}/www/nginx-dist
+	${MKDIR} ${STAGEDIR}${PREFIX}/www/nginx-dist
 .for i in index.html 50x.html
-	${INSTALL_DATA} ${WRKSRC}/html/${i} ${PREFIX}/www/nginx-dist
+	${INSTALL_DATA} ${WRKSRC}/html/${i} ${STAGEDIR}${PREFIX}/www/nginx-dist
 .endfor
-	${ECHO_CMD} "" >>${PREFIX}/www/nginx-dist/EXAMPLE_DIRECTORY-DONT_ADD_OR_TOUCH_ANYTHING
-	[ -e ${PREFIX}/www/nginx ] || \
-		${LN} -sf ${PREFIX}/www/nginx-dist ${PREFIX}/www/nginx
+	${ECHO_CMD} "" >>${STAGEDIR}${PREFIX}/www/nginx-dist/EXAMPLE_DIRECTORY-DONT_ADD_OR_TOUCH_ANYTHING
 .endif
 
 .if !empty(PORT_OPTIONS:MHTTP) && !empty(PORT_OPTIONS:MHTTP_PERL)
-	${MKDIR} ${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx
+	${MKDIR} ${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx
 	${INSTALL_PROGRAM} ${WRKSRC}/objs/src/http/modules/perl/blib/arch/auto/nginx/nginx.so \
-		${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx
+		${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx
 	${INSTALL_DATA} ${WRKSRC}/objs/src/http/modules/perl/blib/arch/auto/nginx/nginx.bs \
-		${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx
+		${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx
 	${INSTALL_DATA} ${WRKSRC}/objs/src/http/modules/perl/blib/lib/nginx.pm \
-		${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/
+		${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/
 .endif
 
 .if ${PORT_OPTIONS:MNAXSI}
 	${INSTALL_DATA} \
 	${WRKDIR}/naxsi-core-${NGINX_NAXSI_VERSION}/naxsi_config/naxsi_core.rules \
-	${ETCDIR}
+	${STAGEDIR}${ETCDIR}
 .endif
 
 post-install:
@@ -1032,9 +1040,7 @@ post-install:
 	${ECHO_CMD} ${SITE_PERL_REL}/${PERL_ARCH}/nginx.pm >> ${TMPPLIST}
 	${ECHO_CMD} @dirrm ${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx >> ${TMPPLIST}
 .endif
-.if !defined(NO_INSTALL_MANPAGES)
-	@${INSTALL_MAN} ${WRKSRC}/objs/nginx.8 ${MAN8PREFIX}/man/man8
-.endif
+	@${INSTALL_MAN} ${WRKSRC}/objs/nginx.8 ${STAGEDIR}${MAN8PREFIX}/man/man8
 
 .if ${PORT_OPTIONS:MNAXSI}
 	${ECHO_CMD} etc/nginx/naxsi_core.rules >> ${TMPPLIST}

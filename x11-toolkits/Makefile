@@ -15,6 +15,7 @@
     SUBDIR += fl_editor
     SUBDIR += flowcanvas
     SUBDIR += fltk
+    SUBDIR += fltk-devel
     SUBDIR += flvw
     SUBDIR += fox14
     SUBDIR += fox16
@@ -32,6 +33,7 @@
     SUBDIR += girara
     SUBDIR += gnocl
     SUBDIR += gnome-desktop-sharp20
+    SUBDIR += gnome-pty-helper
     SUBDIR += gnome-sharp20
     SUBDIR += gnomemm
     SUBDIR += gnustep-back
@@ -62,7 +64,6 @@
     SUBDIR += gtkmm30-reference
     SUBDIR += gtksourceview
     SUBDIR += gtksourceview-reference
-    SUBDIR += gtksourceview-sharp
     SUBDIR += gtksourceview2
     SUBDIR += gtksourceview2-reference
     SUBDIR += gtksourceview3
@@ -100,10 +101,10 @@
     SUBDIR += libgnomeprintuimm
     SUBDIR += libgnomeui
     SUBDIR += libgnomeui-reference
-    SUBDIR += libgnomeuimm
     SUBDIR += libgnomeuimm26
     SUBDIR += libgtk-java
     SUBDIR += libgtksourceviewmm
+    SUBDIR += libmatewnck
     SUBDIR += libpanelappletmm
     SUBDIR += libsexy
     SUBDIR += libsexymm
@@ -114,7 +115,6 @@
     SUBDIR += libxfce4gui
     SUBDIR += libzvt
     SUBDIR += linux-f10-blt
-    SUBDIR += linux-f10-gtk
     SUBDIR += linux-f10-gtk2
     SUBDIR += linux-f10-openmotif
     SUBDIR += linux-f10-pango
@@ -224,7 +224,6 @@
     SUBDIR += ruby-fox16
     SUBDIR += ruby-goocanvas
     SUBDIR += ruby-gstreamer
-    SUBDIR += ruby-gtk
     SUBDIR += ruby-gtk2
     SUBDIR += ruby-gtksourceview2
     SUBDIR += ruby-pango
@@ -265,6 +264,7 @@
     SUBDIR += vdkbuilder
     SUBDIR += viewklass
     SUBDIR += vte
+    SUBDIR += vte3
     SUBDIR += vte-reference
     SUBDIR += vtkfox
     SUBDIR += wmapp

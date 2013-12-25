@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	freeradius
-DISTVERSION=	2.2.1
+DISTVERSION=	2.2.2
 CATEGORIES=	net
 MASTER_SITES=	ftp://ftp.freeradius.org/pub/freeradius/%SUBDIR%/ \
 		ftp://ftp.ntua.gr/pub/net/radius/freeradius/%SUBDIR%/ \
@@ -12,11 +12,11 @@ MASTER_SITE_SUBDIR=	. old
 DISTNAME=	freeradius-server-${DISTVERSION}
 
 MAINTAINER=	zi@FreeBSD.org
-COMMENT=	A free RADIUS server implementation
+COMMENT=	Free RADIUS server implementation
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	gdbm:${PORTSDIR}/databases/gdbm
+LIB_DEPENDS=	libgdbm.so:${PORTSDIR}/databases/gdbm
 
 LOGDIR?=	/var/log
 KRB5_CONFIG?=	/usr/bin/krb5-config --libs
@@ -83,11 +83,11 @@ ${UNIQUENAME}_SET+=	KERBEROS
 .if ${PORT_OPTIONS:MKERBEROS}
 .if ${PORT_OPTIONS:MHEIMDAL}
 .if ${PORT_OPTIONS:MHEIMDAL_PORT}
-LIB_DEPENDS+=	krb5:${PORTSDIR}/security/heimdal
+LIB_DEPENDS+=	libkrb5.so:${PORTSDIR}/security/heimdal
 .endif
 CONFIGURE_ARGS+=--enable-heimdal-krb5
 .else
-LIB_DEPENDS+=	krb5:${PORTSDIR}/security/krb5
+LIB_DEPENDS+=	libkrb5.so:${PORTSDIR}/security/krb5
 .endif
 CONFIGURE_ARGS+=--with-rlm_krb5
 .if ${PORT_OPTIONS:MHEIMDAL} && empty(PORT_OPTIONS:MHEIMDAL_PORT)
@@ -144,7 +144,7 @@ PLIST_SUB+=	PGSQL="@comment "
 .if ${PORT_OPTIONS:MUNIXODBC}
 CONFIGURE_ARGS+=--with-rlm_sql_unixodbc
 PLIST_SUB+=	UNIXODBC=""
-LIB_DEPENDS+=	odbc:${PORTSDIR}/databases/unixODBC
+LIB_DEPENDS+=	libodbc.so:${PORTSDIR}/databases/unixODBC
 .else
 CONFIGURE_ARGS+=--without-rlm_sql_unixodbc
 PLIST_SUB+=	UNIXODBC="@comment "
@@ -178,6 +178,7 @@ USE_PYTHON=	yes
 CONFIGURE_ARGS+=--with-rlm_python \
 		--with-rlm-python-lib-dir=${PYTHON_LIBDIR} \
 		--with-rlm-python-include-dir=${PYTHON_INCLUDEDIR}
+CONFIGURE_ENV+=	PYTHONBIN=${PYTHON_CMD}
 PLIST_SUB+=	RLMPYTHON=""
 .else
 CONFIGURE_ARGS+=--without-rlm_python
@@ -211,7 +212,7 @@ EXPM=		yes
 
 # No SMB option yet; rlm_smb is still unbuildable
 .if ${PORT_OPTIONS:MSMB}
-LIB_DEPENDS=	smbclient:${PORTSDIR}/net/samba-libsmbclient
+LIB_DEPENDS=	libsmbclient.so:${PORTSDIR}/net/samba-libsmbclient
 CONFIGURE_ARGS+=--with-rlm_smb
 CONFIGURE_ARGS+=--with-rlm-smb-lib-dir=${LOCALBASE}/lib
 CONFIGURE_ARGS+=--with-rlm-smb-include-dir=${LOCALBASE}/include
@@ -229,7 +230,7 @@ EXPM=		yes
 # Oracle support is experimental under FreeBSD
 .if ${PORT_OPTIONS:MOCI8}
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-exec.c
-CONFIGURE_ENV=	ORACLE_HOME="${ORACLE_HOME}"
+CONFIGURE_ENV+=	ORACLE_HOME="${ORACLE_HOME}"
 ORACLE_HOME?=	${LOCALBASE}/oracle8-client
 BUILD_DEPENDS+=	${ORACLE_HOME}/lib/libclntst8.a:${PORTSDIR}/databases/oracle8-client
 CONFIGURE_ARGS+=--with-oracle-home-dir=${ORACLE_HOME}/rdbms/demo

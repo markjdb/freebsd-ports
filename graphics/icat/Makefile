@@ -8,8 +8,7 @@ CATEGORIES=	graphics
 MAINTAINER=	ehaupt@FreeBSD.org
 COMMENT=	Displays images in 256-color capable terminals
 
-USES=		gmake
-USE_DOS2UNIX=	Makefile
+USES=		gmake dos2unix
 USE_EFL=	imlib2
 USE_GITHUB=	yes
 GH_ACCOUNT=	atextor
@@ -25,8 +24,7 @@ PLIST_FILES=	bin/icat
 
 CONFLICTS=	sleuthkit-[0-9]*
 
-NO_STAGE=	yes
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>

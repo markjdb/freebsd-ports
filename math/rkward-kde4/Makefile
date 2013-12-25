@@ -3,7 +3,7 @@
 
 PORTNAME=	rkward
 PORTVERSION=	0.6.1
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	math
 MASTER_SITES=	SF/${PORTNAME}/Current_Stable_Releases
 PKGNAMESUFFIX=	-kde4
@@ -31,10 +31,6 @@ CFLAGS+=	-I${LOCALBASE}/include
 
 DOCSDIR=	${PREFIX}/share/doc/HTML/en/rkward
 MAN1=		rkward.1
-
-.if defined(WITH_DEBUG)
-CMAKE_ARGS+=	-DCMAKE_BUILD_TYPE=Debug
-.endif
 
 OPTIONS_DEFINE=	RECDEP
 RECDEP_DESC=	Recommended runtime dependencies

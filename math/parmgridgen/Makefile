@@ -3,7 +3,7 @@
 
 PORTNAME=	parmgridgen
 PORTVERSION=	1.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	math science
 MASTER_SITES=	http://www.mgnet.org/mgnet/Codes/parmgridgen/ \
 		http://www-users.cs.umn.edu/~moulitsa/download/ \
@@ -21,6 +21,7 @@ MAKE_JOBS_UNSAFE=	yes
 
 NO_STAGE=	yes
 post-patch:
+		@${REINPLACE_CMD} 's|make|$$(MAKE)|g' ${WRKSRC}/Makefile
 #respect CFLAGS
 .		for f in IMlib Lib Programs
 		    @${REINPLACE_CMD} 's|CFLAGS =|CFLAGS+=|g' ${WRKSRC}/MGridGen/${f}/Makefile

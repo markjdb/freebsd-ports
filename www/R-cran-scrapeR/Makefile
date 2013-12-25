@@ -3,7 +3,7 @@
 
 PORTNAME=	scrapeR
 PORTVERSION=	0.1.6
-PORTREVISION=	9
+PORTREVISION=	11
 CATEGORIES=	www
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -16,5 +16,4 @@ RUN_DEPENDS=	R-cran-XML>0:${PORTSDIR}/textproc/R-cran-XML \
 USE_R_MOD=	yes
 R_MOD_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

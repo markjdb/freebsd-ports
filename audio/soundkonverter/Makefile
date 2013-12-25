@@ -12,11 +12,10 @@ COMMENT=	Frontend to various audio converters (transcoder)
 
 LICENSE=	GPLv3
 
-LIB_DEPENDS=	tag:${PORTSDIR}/audio/taglib \
-		cdda_paranoia:${PORTSDIR}/audio/cdparanoia
+LIB_DEPENDS=	libtag.so:${PORTSDIR}/audio/taglib \
+		libcdda_paranoia.so:${PORTSDIR}/audio/cdparanoia
 
 USES=		cmake
-NO_STAGE=	yes
 USE_QT4=	moc_build qmake_build rcc_build uic_build
 USE_KDE4=	automoc4 kdehier kdeprefix kdelibs libkcddb
 INSTALLS_ICONS=	yes
@@ -108,5 +107,8 @@ WAVPACK_RUN_DEPENDS=	wavpack:${PORTSDIR}/audio/wavpack
 
 NLS_USES=	gettext
 NLS_CMAKE_OFF=	-DBUILD_po=FALSE
+
+post-patch:
+	${REINPLACE_CMD} "/-pedantic/d" ${WRKSRC}/CMakeLists.txt
 
 .include <bsd.port.mk>

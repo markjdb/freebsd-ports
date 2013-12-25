@@ -14,10 +14,9 @@ LICENSE=	GPLv3
 RUN_DEPENDS=	trytond>=2.4.0:${PORTSDIR}/finance/trytond \
 		trytond_project>=2.4.0:${PORTSDIR}/finance/trytond_project
 
-CONFLICTS=	trytond_project_plan-2.[68].*
+CONFLICTS=	trytond28_project_plan-2.8.*
 
 USE_PYTHON=	yes
 USE_PYDISTUTILS=easy_install
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

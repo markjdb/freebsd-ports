@@ -1,37 +1,45 @@
 # Created by: Hye-Shik Chang <perky@FreeBSD.org>
 # $FreeBSD$
 
-PORTNAME=	python26
-PORTVERSION=	2.6.8
-PORTREVISION=	7
-CATEGORIES=	lang python ipv6
-MASTER_SITES=	PYTHON
+PORTNAME=		python26
+PORTVERSION=		2.6.9
+PORTREVISION=		2
+CATEGORIES=		lang python ipv6
+MASTER_SITES=		PYTHON
 MASTER_SITE_SUBDIR=	${PYTHON_MASTER_SITE_SUBDIR}
-DISTFILES=	${PYTHON_DISTFILE}
+DISTFILES=		${PYTHON_DISTFILE}
+DIST_SUBDIR=		python
 
 MAINTAINER=	python@FreeBSD.org
 COMMENT=	Interpreted object-oriented programming language
 
-DEPRECATED=	This port will reach it's EoL upstream soon, please migrate to lang/python27
-EXPIRATION_DATE=2013-10-01
+LICENSE=	PSFL
 
-DIST_SUBDIR=	python
-WRKSRC=		${PYTHON_WRKSRC}/portbld.static
-PATCH_WRKSRC=	${PYTHON_WRKSRC}
-GNU_CONFIGURE=	yes
+LIB_DEPENDS=	libffi.so:${PORTSDIR}/devel/libffi
+
+DEPRECATED=		Python 2.6 is now end-of-life, please migrate to lang/python27
+EXPIRATION_DATE=	2014-01-01
+
+GNU_CONFIGURE=		yes
 CONFIGURE_SCRIPT=	../configure # must be relative
-CONFIGURE_ENV=	SVNVERSION="echo freebsd"
-MAKE_ENV=	VPATH="${PYTHON_WRKSRC}"
-USE_LDCONFIG=	yes
+CONFIGURE_ARGS=		--with-system-ffi
+CONFIGURE_ENV=		SVNVERSION="echo freebsd" ac_cv_opt_olimit_ok=no
+MAKE_ENV=		VPATH="${PYTHON_WRKSRC}"
+
 INSTALL_TARGET=	altinstall
 MAN1=		${PYTHON_VERSION}.1
 
+USE_LDCONFIG=	yes
 USE_PYTHON=	yes
 USE_XZ=		yes
-PYTHON_VERSION=	python2.6
+
+PYTHON_VERSION=		python2.6
 PYTHON_NO_DEPENDS=	yes
 
+WRKSRC=		${PYTHON_WRKSRC}/portbld.static
 SHARED_WRKSRC=	${PYTHON_WRKSRC}/portbld.shared
+PATCH_WRKSRC=	${PYTHON_WRKSRC}
+
 PLIST=		${WRKDIR}/PLIST
 PLIST_TEMPLATE?=${PKGDIR}/pkg-plist
 PLIST_SUB=	PYVER=${PYTHON_VERSION:S/python//} \
@@ -41,7 +49,7 @@ EXAMPLESDIR=	${PREFIX}/share/examples/${PYTHON_VERSION}
 DATADIR=	${PREFIX}/share/${PYTHON_VERSION}
 
 PLATFORMS=	plat-freebsd6 plat-freebsd7 plat-freebsd8 plat-freebsd9 \
-		plat-freebsd10
+		plat-freebsd10 plat-freebsd11
 
 BIN_SCRIPTS=	2to3 idle pydoc smtpd.py
 BIN_FILES=	python python-shared python-config python-shared-config \
@@ -54,7 +62,7 @@ BINLINKS_SUB_PYTHON_VER=	${BINLINKS_SUB_TMPL:S/%%VERSION%%/${PYTHON_VER}/g}
 OPTIONS_DEFINE=		THREADS SEM PTH PYMALLOC IPV6 FPECTL EXAMPLES NLS
 OPTIONS_DEFAULT=	THREADS UCS4 PYMALLOC IPV6
 
-OPTIONS_SINGLE=	UCS
+OPTIONS_SINGLE=		UCS
 OPTIONS_SINGLE_UCS=	UCS2 UCS4
 
 NLS_DESC=	Enable Gettext support for the locale module
@@ -93,7 +101,7 @@ SUB_LIST=	SEM=${SEM_MSG}
 PLIST_SUB+=	THREADS=""
 .if ${PORT_OPTIONS:MPTH}
 CONFIGURE_ARGS+=	--with-pth
-EXTRA_PATCHES+=		${PATCHDIR}/extra-patch-configure-pth
+CONFIGURE_ENV+=		ac_cv_pthread=no
 LIB_DEPENDS+=		pth:${PORTSDIR}/devel/pth
 _PTH_CPPFLAGS=		"-I${LOCALBASE}/include/pth"
 _PTH_LDFLAGS=		"-L${LOCALBASE}/lib/pth"
@@ -155,6 +163,8 @@ pre-patch:
 		${PATCH_WRKSRC}/Lib/plat-freebsd9
 	${CP} -r ${PATCH_WRKSRC}/Lib/plat-freebsd8 \
 		${PATCH_WRKSRC}/Lib/plat-freebsd10
+	${CP} -r ${PATCH_WRKSRC}/Lib/plat-freebsd8 \
+		${PATCH_WRKSRC}/Lib/plat-freebsd11
 	${MKDIR} ${WRKSRC} ${SHARED_WRKSRC}/Modules
 	${LN} ${PATCH_WRKSRC}/Lib/smtpd.py ${PATCH_WRKSRC}/Tools/scripts/
 .for script in ${BIN_SCRIPTS}

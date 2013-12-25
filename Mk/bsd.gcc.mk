@@ -7,20 +7,26 @@
 #
 # To request the use of a current version of GCC, specify USE_GCC=yes in
 # your port/system configuration.  This is the preferred use of USE_GCC.
-# It defines a canonical, default version of GCC; the same version of
+# It defines a canonical, default version of GCC.  The same version of
 # GCC is also implied by USE_FORTRAN=yes.
+#
+# USE_GCC=any is similar, except that it also accepts the old GCC 4.2-
+# based system compiler in older versions of FreeBSD.
 # 
 # If your port needs a specific (minimum) version of GCC, you can easily
 # specify that with a USE_GCC= statement.  Unless absolutely necessary
 # do so by specifying USE_GCC=X.Y+ which requests at least GCC version
-# X.Y.  To request a specific version omit the trailing + sign.  Use of
-# a Fortran compiler is declared by the USE_FORTRAN knob, not USE_GCC.
+# X.Y.  To request a specific version omit the trailing + sign.
+#
+# Use of a Fortran compiler is declared by the USE_FORTRAN knob, not
+# USE_GCC.
 #
 # Examples:
 #   USE_GCC=	yes			# port requires a current version of GCC
 #							# (4.6 as of today, subject to change).
-#   USE_GCC=	4.2+		# port requires GCC 4.2 or later.
-#   USE_GCC=	4.7			# port requires GCC 4.7.
+#   USE_GCC=	any			# port requires GCC 4.2 or later.
+#   USE_GCC=	4.8+		# port requires GCC 4.8 or later.
+#   USE_GCC=	4.8			# port requires GCC 4.8.
 #
 # If your port needs a Fortran compiler, please specify that with the
 # USE_FORTRAN= knob.  Here is the list of options for that knob:
@@ -150,7 +156,7 @@ IGNORE=	Unknown version of GCC specified (USE_GCC=${USE_GCC})
 .endif
 
 # If the GCC package defined in USE_GCC does not exist, but a later
-# version is allowed (for example 4.2+), see if there is a later.
+# version is allowed (for example 4.7+), see if there is a later.
 # First check if the base installed version is good enough, otherwise
 # get the first available version.
 #
@@ -203,7 +209,7 @@ CPP:=			cpp${V}
 _GCC_RUNTIME:=		${LOCALBASE}/lib/gcc${V}
 CFLAGS+=		-Wl,-rpath=${_GCC_RUNTIME}
 CXXFLAGS+=		-Wl,-rpath=${_GCC_RUNTIME}
-LDFLAGS+=		-Wl,-rpath=${_GCC_RUNTIME}
+LDFLAGS+=		-Wl,-rpath=${_GCC_RUNTIME} -L${_GCC_RUNTIME}
 .    if defined (USE_FORTRAN)
 .    if ${USE_FORTRAN} == yes
 FFLAGS+=		-Wl,-rpath=${_GCC_RUNTIME}
@@ -230,11 +236,9 @@ CPP:=			cpp
 BUILD_DEPENDS+=	${_GCC_PORT_DEPENDS}:${PORTSDIR}/lang/${_GCC_PORT}
 . if ${_USE_GCC} != 3.4
 RUN_DEPENDS+=	${_GCC_PORT_DEPENDS}:${PORTSDIR}/lang/${_GCC_PORT}
-.  if ${_USE_GCC} != 4.2
 # Later GCC ports already depend on binutils; make sure whatever we
 # build leverages this as well.
 USE_BINUTILS=	yes
-.  endif
 . endif
 .endif
 .endif # defined(_USE_GCC) && !defined(FORCE_BASE_CC_FOR_TESTING)

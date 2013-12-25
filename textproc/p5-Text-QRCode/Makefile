@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Text-QRCode
-PORTVERSION=	0.01
-PORTREVISION=	1
+PORTVERSION=	0.02
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -11,14 +10,16 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Generate text based QR Code
 
-BUILD_DEPENDS=	libqrencode>=2.0.0:${PORTSDIR}/graphics/libqrencode
-RUN_DEPENDS:=	${BUILD_DEPENDS}
+LICENSE=	ART10 GPLv1
+LICENSE_COMB=	dual
 
-USES=		perl5
+LIB_DEPENDS=	libqrencode.so:${PORTSDIR}/graphics/libqrencode
+
+MAKE_ARGS=	PKG_CONFIG_PATH=${LOCALBASE}/bin
+USES=		perl5 pkgconfig
 USE_PERL5=	configure
-CFLAGS+=	-I${LOCALBASE}/include
 
-MAN3=		Text::QRCode.3
+post-patch:
+	@${REINPLACE_CMD} -e 's|qrencode.h|${LOCALBASE}/include/&|' ${WRKSRC}/Makefile.PL ${WRKSRC}/QRCode.xs
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

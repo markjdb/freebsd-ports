@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dovecot
-PORTVERSION=	2.2.6
+PORTVERSION=	2.2.9
 CATEGORIES=	mail ipv6
 MASTER_SITES=	http://www.dovecot.org/releases/${PORTVERSION:R}/
 
@@ -83,6 +83,8 @@ PORTEXAMPLES=	*
 #
 .if ${PORT_OPTIONS:MKQUEUE}
 CONFIGURE_ARGS+=--with-ioloop=kqueue
+.else
+CONFIGURE_ARGS+=--with-ioloop=poll
 .endif
 
 ## SSL support

@@ -10,7 +10,7 @@ MASTER_SITE_SUBDIR=	CPAN:ADAMK
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	Perl5 extremely light weight SQLite-specific schema migration
+COMMENT=	Light weight SQLite-specific schema migration
 
 BUILD_DEPENDS=	p5-File-pushd>=1.00:${PORTSDIR}/devel/p5-File-pushd \
 		p5-IPC-Run3>=0.042:${PORTSDIR}/devel/p5-IPC-Run3 \
@@ -25,8 +25,4 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 USES=		perl5
 USE_PERL5=	configure
 
-MAN3=		ORLite::Migrate.3 \
-		ORLite::Migrate::Timeline.3
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

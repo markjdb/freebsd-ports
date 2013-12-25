@@ -13,7 +13,6 @@ MAINTAINER=	mva@FreeBSD.org
 COMMENT=	A SDL audio library and player for some popular sound file formats
 
 USE_AUTOTOOLS=	libtool
-NO_STAGE=	yes
 USE_LDCONFIG=	yes
 USE_SDL=	sdl
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -29,38 +28,38 @@ SMPEG_DESC=	MP3 audio format
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MFLAC}
-LIB_DEPENDS+=	FLAC:${PORTSDIR}/audio/flac
+LIB_DEPENDS+=	libFLAC.so:${PORTSDIR}/audio/flac
 .else
 CONFIGURE_ARGS+=--disable-flac
 .endif
 
 .if ${PORT_OPTIONS:MMIKMOD}
-LIB_DEPENDS+=	mikmod:${PORTSDIR}/audio/libmikmod
+LIB_DEPENDS+=	libmikmod.so:${PORTSDIR}/audio/libmikmod
 .else
 CONFIGURE_ARGS+=--disable-mikmod
 .endif
 
 .if ${PORT_OPTIONS:MMODPLUG}
-LIB_DEPENDS+=	modplug:${PORTSDIR}/audio/libmodplug
+LIB_DEPENDS+=	libmodplug.so:${PORTSDIR}/audio/libmodplug
 .else
 CONFIGURE_ARGS+=--disable-modplug
 .endif
 
 .if ${PORT_OPTIONS:MPHYSFS}
-LIB_DEPENDS+=	physfs:${PORTSDIR}/devel/physfs
+LIB_DEPENDS+=	libphysfs.so:${PORTSDIR}/devel/physfs
 .else
 CONFIGURE_ARGS+=--disable-physfs
 .endif
 
 .if ${PORT_OPTIONS:MSMPEG}
-LIB_DEPENDS+=	smpeg:${PORTSDIR}/multimedia/smpeg
+LIB_DEPENDS+=	libsmpeg.so:${PORTSDIR}/multimedia/smpeg
 CONFIGURE_ARGS+=--disable-mpglib
 .else
 CONFIGURE_ARGS+=--disable-smpeg
 .endif
 
 .if ${PORT_OPTIONS:MSPEEX}
-LIB_DEPENDS+=	speex:${PORTSDIR}/audio/speex
+LIB_DEPENDS+=	libspeex.so:${PORTSDIR}/audio/speex
 .else
 CONFIGURE_ARGS+=--disable-speex
 .endif
@@ -73,7 +72,7 @@ CONFIGURE_ARGS+=--disable-midi
 .endif
 
 .if ${PORT_OPTIONS:MVORBIS}
-LIB_DEPENDS+=	vorbis:${PORTSDIR}/audio/libvorbis
+LIB_DEPENDS+=	libvorbis.so:${PORTSDIR}/audio/libvorbis
 .else
 CONFIGURE_ARGS+=--disable-ogg
 .endif

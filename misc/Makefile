@@ -24,6 +24,7 @@
     SUBDIR += bdelta
     SUBDIR += bestfit
     SUBDIR += bibletime
+    SUBDIR += bibletime-devel
     SUBDIR += biblical-curse
     SUBDIR += bigboard
     SUBDIR += biosfont-demos
@@ -120,9 +121,7 @@
     SUBDIR += freebsd-doc-zh_tw
     SUBDIR += freecode-submit
     SUBDIR += freeguide
-    SUBDIR += freeswitch-pizzademo
     SUBDIR += freeswitch-pizzademo-devel
-    SUBDIR += freeswitch-scripts
     SUBDIR += freeswitch-scripts-devel
     SUBDIR += ftdi-eeprom
     SUBDIR += fxload
@@ -400,6 +399,7 @@
     SUBDIR += rtfm
     SUBDIR += ruby-progressbar
     SUBDIR += ruby-vpim
+    SUBDIR += rubygem-dotenv
     SUBDIR += rubygem-mime-types
     SUBDIR += rubygem-rabbit
     SUBDIR += rubygem-vpim
@@ -422,6 +422,7 @@
     SUBDIR += susv2
     SUBDIR += susv3
     SUBDIR += sword
+    SUBDIR += sword17
     SUBDIR += table.el
     SUBDIR += talkfilters
     SUBDIR += tcb

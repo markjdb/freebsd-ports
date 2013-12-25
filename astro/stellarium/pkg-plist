@@ -1,4 +1,5 @@
 bin/stellarium
+man/man1/stellarium.1.gz
 %%DATADIR%%/data/DejaVuSans.ttf
 %%DATADIR%%/data/DejaVuSansMono.ttf
 %%DATADIR%%/data/base_locations.bin.gz
@@ -66,6 +67,8 @@ bin/stellarium
 %%DATADIR%%/landscapes/hurricane/hurricaneb.png
 %%DATADIR%%/landscapes/hurricane/landscape.ini
 %%DATADIR%%/landscapes/jupiter/description.en.utf8
+%%DATADIR%%/landscapes/jupiter/description.fr.utf8
+%%DATADIR%%/landscapes/jupiter/description.pt_BR.utf8
 %%DATADIR%%/landscapes/jupiter/description.ru.utf8
 %%DATADIR%%/landscapes/jupiter/jupiter-256.png
 %%DATADIR%%/landscapes/jupiter/landscape.ini
@@ -94,6 +97,8 @@ bin/stellarium
 %%DATADIR%%/landscapes/moon/description.uk.utf8
 %%DATADIR%%/landscapes/moon/landscape.ini
 %%DATADIR%%/landscapes/neptune/description.en.utf8
+%%DATADIR%%/landscapes/neptune/description.fr.utf8
+%%DATADIR%%/landscapes/neptune/description.pt_BR.utf8
 %%DATADIR%%/landscapes/neptune/description.ru.utf8
 %%DATADIR%%/landscapes/neptune/landscape.ini
 %%DATADIR%%/landscapes/neptune/neptune-256.png
@@ -142,6 +147,8 @@ bin/stellarium
 %%DATADIR%%/landscapes/trees/landscape.ini
 %%DATADIR%%/landscapes/trees/trees_512.png
 %%DATADIR%%/landscapes/uranus/description.en.utf8
+%%DATADIR%%/landscapes/uranus/description.fr.utf8
+%%DATADIR%%/landscapes/uranus/description.pt_BR.utf8
 %%DATADIR%%/landscapes/uranus/description.ru.utf8
 %%DATADIR%%/landscapes/uranus/landscape.ini
 %%DATADIR%%/landscapes/uranus/uranus-256.png
@@ -1200,4 +1207,3 @@ share/pixmaps/stellarium.xpm
 @dirrmtry share/locale/aa
 @dirrmtry share/icons/hicolor/512x512/apps
 @dirrmtry share/icons/hicolor/512x512
-@dirrmtry share/applications

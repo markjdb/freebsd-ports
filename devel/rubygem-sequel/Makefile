@@ -2,12 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	sequel
-PORTVERSION=	4.0.0
+PORTVERSION=	4.5.0
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	The Database Toolkit for Ruby
+
+LICENSE=	MIT
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
@@ -15,5 +17,4 @@ RUBYGEM_AUTOPLIST=yes
 
 PLIST_FILES=	bin/sequel
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	DBIx-Class-Schema-Loader
-PORTVERSION=	0.07036
+PORTVERSION=	0.07038
 CATEGORIES=	databases perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -49,65 +49,10 @@ ORACLE_DESC=	Enable Oracle backend (experimental)
 USES=		perl5
 USE_PERL5=	configure
 
-MAN1=	dbicdump.1
-MAN3=	DBIx::Class::Schema::Loader.3 \
-	DBIx::Class::Schema::Loader::Base.3 \
-	DBIx::Class::Schema::Loader::DBI.3 \
-	DBIx::Class::Schema::Loader::DBI::ADO.3 \
-	DBIx::Class::Schema::Loader::DBI::ADO::MS_Jet.3 \
-	DBIx::Class::Schema::Loader::DBI::ADO::Microsoft_SQL_Server.3 \
-	DBIx::Class::Schema::Loader::DBI::Component::QuotedDefault.3 \
-	DBIx::Class::Schema::Loader::DBI::DB2.3 \
-	DBIx::Class::Schema::Loader::DBI::Firebird.3 \
-	DBIx::Class::Schema::Loader::DBI::Informix.3 \
-	DBIx::Class::Schema::Loader::DBI::InterBase.3 \
-	DBIx::Class::Schema::Loader::DBI::MSSQL.3 \
-	DBIx::Class::Schema::Loader::DBI::ODBC.3 \
-	DBIx::Class::Schema::Loader::DBI::ODBC::ACCESS.3 \
-	DBIx::Class::Schema::Loader::DBI::ODBC::Firebird.3 \
-	DBIx::Class::Schema::Loader::DBI::ODBC::Microsoft_SQL_Server.3 \
-	DBIx::Class::Schema::Loader::DBI::ODBC::SQL_Anywhere.3 \
-	DBIx::Class::Schema::Loader::DBI::Oracle.3 \
-	DBIx::Class::Schema::Loader::DBI::Pg.3 \
-	DBIx::Class::Schema::Loader::DBI::SQLAnywhere.3 \
-	DBIx::Class::Schema::Loader::DBI::SQLite.3 \
-	DBIx::Class::Schema::Loader::DBI::Sybase.3 \
-	DBIx::Class::Schema::Loader::DBI::Sybase::Common.3 \
-	DBIx::Class::Schema::Loader::DBI::Sybase::Microsoft_SQL_Server.3 \
-	DBIx::Class::Schema::Loader::DBI::Writing.3 \
-	DBIx::Class::Schema::Loader::DBI::mysql.3 \
-	DBIx::Class::Schema::Loader::DBObject.3 \
-	DBIx::Class::Schema::Loader::DBObject::Informix.3 \
-	DBIx::Class::Schema::Loader::DBObject::Sybase.3 \
-	DBIx::Class::Schema::Loader::Manual::UpgradingFromV4.3 \
-	DBIx::Class::Schema::Loader::Optional::Dependencies.3 \
-	DBIx::Class::Schema::Loader::RelBuilder.3 \
-	DBIx::Class::Schema::Loader::RelBuilder::Compat::v0_040.3 \
-	DBIx::Class::Schema::Loader::RelBuilder::Compat::v0_05.3 \
-	DBIx::Class::Schema::Loader::RelBuilder::Compat::v0_06.3 \
-	DBIx::Class::Schema::Loader::RelBuilder::Compat::v0_07.3 \
-	DBIx::Class::Schema::Loader::Table.3 \
-	DBIx::Class::Schema::Loader::Table::Informix.3 \
-	DBIx::Class::Schema::Loader::Table::Sybase.3
-
-NO_STAGE=	yes
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MMYSQL}
-USE_MYSQL=	yes
-.endif
-
-.if ${PORT_OPTIONS:MORACLE}
-BUILD_DEPENDS+=	p5-DBD-Oracle>=0.19:${PORTSDIR}/databases/p5-DBD-Oracle
-RUN_DEPENDS+=	p5-DBD-Oracle>=0.19:${PORTSDIR}/databases/p5-DBD-Oracle
-.endif
-
-.if ${PORT_OPTIONS:MPGSQL}
-USE_PGSQL=	yes
-.endif
-
-.if ${PORT_OPTIONS:MSQLITE}
-USE_SQLITE=	yes
-.endif
+MYSQL_USE=		MYSQL=yes
+ORACLE_BUILD_DEPENDS=	p5-DBD-Oracle>=0.19:${PORTSDIR}/databases/p5-DBD-Oracle
+ORACLE_RUN_DEPENDS=	p5-DBD-Oracle>=0.19:${PORTSDIR}/databases/p5-DBD-Oracle
+PGSQL_USE=		PGSQL=yes
+SQLITE_USE=		SQLITE=yes
 
 .include <bsd.port.mk>

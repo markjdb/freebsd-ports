@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	freedoko
-PORTVERSION=	0.7.11
-PORTREVISION=	1
+PORTVERSION=	0.7.12
 CATEGORIES=	games
 MASTER_SITES=	SF/free-doko/FreeDoko%20source
 DISTNAME=	FreeDoko_${PORTVERSION}.src
@@ -12,18 +11,18 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Play the card game Doppelkopf
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/../COPYING
 
-LIB_DEPENDS=	gnet-2.0.0:${PORTSDIR}/net/gnet2 \
-		gtkmm-2.4.1:${PORTSDIR}/x11-toolkits/gtkmm24
+LIB_DEPENDS=	libgnet-2.0.so:${PORTSDIR}/net/gnet2
 
 WRKSRC=		${WRKDIR}/${DISTNAME:C/\.src$//}/src
 
 USE_ZIP=	yes
 USES=		gmake pkgconfig
+USE_GNOME=	gtkmm24
 MAKE_ENV=	OS="${OPSYS}" DATADIR="${DATADIR}" DOCSDIR="${DOCSDIR}"
 
-NO_STAGE=	yes
+OPTIONS_DEFINE=	DOCS
+
 post-patch:
 	@${FIND} ${WRKSRC} -name "*Makefile*" | ${XARGS} ${REINPLACE_CMD} -e \
 		's|\.\./data|$$(DATADIR)|g ; \
@@ -35,20 +34,18 @@ post-patch:
 		 s|/usr/local/|${LOCALBASE}/|g' ${WRKSRC}/misc/setting.cpp
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/FreeDoko ${PREFIX}/bin
-	${LN} -sf FreeDoko ${PREFIX}/bin/freedoko
-	@${MKDIR} ${DATADIR}
+	${INSTALL_PROGRAM} ${WRKSRC}/FreeDoko ${STAGEDIR}${PREFIX}/bin
+	${LN} -sf FreeDoko ${STAGEDIR}${PREFIX}/bin/freedoko
+	@${MKDIR} ${STAGEDIR}${DATADIR}
 .for file in icon.png logo.png
-	${INSTALL_DATA} ${WRKSRC}/${file} ${DATADIR}
+	${INSTALL_DATA} ${WRKSRC}/${file} ${STAGEDIR}${DATADIR}
 .endfor
 .for dir in backgrounds cardsets rules translations
-	@cd ${WRKSRC}/../data && ${FIND} ${dir} ! -name "*Makefile*" | \
-		${CPIO} --quiet -pdum -R ${SHAREOWN}:${SHAREGRP} ${DATADIR}
+	cd ${WRKSRC}/../data && ${FIND} ${dir} ! -name "*Makefile*" | \
+		${CPIO} --quiet -pdum ${STAGEDIR}${DATADIR}
 .endfor
-.if !defined(NOPORTDOCS)
-	@${MKDIR} ${DOCSDIR}
-	@cd ${WRKSRC}/../doc/manual && ${FIND} . | \
-		${CPIO} --quiet -pdum -R ${SHAREOWN}:${SHAREGRP} ${DOCSDIR}
-.endif
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	cd ${WRKSRC}/../doc/manual && ${FIND} . | \
+		${CPIO} --quiet -pdum ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

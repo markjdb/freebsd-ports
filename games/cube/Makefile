@@ -7,16 +7,13 @@ PORTREVISION=	11
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${DISTVERSION}
 DISTFILES=	${CUBE_DATA} ${CUBE_SRC}
-EXTRACT_ONLY=	${CUBE_SRC}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	OpenGL 3D FPS (first person shooter) game
 
 BUILD_DEPENDS=	${LOCALBASE}/lib/libenet.a:${PORTSDIR}/net/enet
 
-USE_ZIP=	yes
-USE_DOS2UNIX=	yes
-USES=		gmake
+USES=		dos2unix gmake
 ALL_TARGET=	#
 USE_XORG=	x11
 
@@ -37,7 +34,10 @@ FLAVOR_DESC=	Clients and servers
 CLIENT_DESC=	Build client
 SERVER_DESC=	Build dedicated server
 
-NO_STAGE=	yes
+OPTIONS_SUB=	yes
+
+OPTIMIZED_CFLAGS_CFLAGS=	-O3 -fomit-frame-pointer
+
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MCLIENT}
@@ -45,39 +45,24 @@ USE_GL=		glu
 USE_SDL=	image mixer sdl
 ALL_TARGET+=	client
 CUBE_BIN+=	client
-LDFLAGS=	-lX11
-PLIST_SUB+=	CLIENT=""
-.else
-PLIST_SUB+=	CLIENT="@comment "
+LDFLAGS+=	-lX11
 .endif
 
 .if ${PORT_OPTIONS:MSERVER}
 ALL_TARGET+=	server
 CUBE_BIN+=	server
-PLIST_SUB+=	SERVER=""
-.else
-PLIST_SUB+=	SERVER="@comment "
 .endif
-
-.if ${PORT_OPTIONS:MOPTIMIZED_CFLAGS}
-CFLAGS+=	-O3 -fomit-frame-pointer
-.endif
-
-post-extract:
-	@${TAR} zxf ${DISTDIR}/${CUBE_DATA} -C ${WRKDIR}
 
 do-install:
 .for f in ${CUBE_BIN}
-	${INSTALL_SCRIPT} ${WRKDIR}/cube_${f} ${PREFIX}/bin
-	${INSTALL_PROGRAM} ${WRKSRC}/cube_${f} ${PREFIX}/libexec
+	${INSTALL_SCRIPT} ${WRKDIR}/cube_${f} ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/cube_${f} ${STAGEDIR}${PREFIX}/libexec
 .endfor
-	@${MKDIR} ${DATADIR}
-	@(cd ${WRKDIR}/cube && ${COPYTREE_SHARE} "data packages" ${DATADIR})
-	${INSTALL_DATA} ${WRKDIR}/cube/autoexec.cfg ${DATADIR}
-.if ${PORT_OPTIONS:MDOCS}
-	@${MKDIR} ${DOCSDIR}
-	${INSTALL_DATA} ${WRKDIR}/cube/readme.html ${DOCSDIR}
-	@(cd ${WRKDIR}/cube/docs && ${COPYTREE_SHARE} . ${DOCSDIR})
-.endif
+	@${MKDIR} ${STAGEDIR}${DATADIR}
+	@(cd ${WRKDIR}/cube && ${COPYTREE_SHARE} "data packages" ${STAGEDIR}${DATADIR})
+	${INSTALL_DATA} ${WRKDIR}/cube/autoexec.cfg ${STAGEDIR}${DATADIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKDIR}/cube/readme.html ${STAGEDIR}${DOCSDIR}
+	(cd ${WRKDIR}/cube/docs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
 
 .include <bsd.port.mk>

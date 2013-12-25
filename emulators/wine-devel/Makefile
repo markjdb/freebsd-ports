@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-DISTVERSION=	1.7.4
+DISTVERSION=	1.7.8
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	SF/${PORTNAME}/Source \
@@ -17,48 +17,35 @@ LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/flex:${PORTSDIR}/textproc/flex
-LIB_DEPENDS=	libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
-		libfreetype.so:${PORTSDIR}/print/freetype2 \
-		libjpeg.so:${PORTSDIR}/graphics/jpeg \
-		liblcms2.so:${PORTSDIR}/graphics/lcms2 \
-		libpng15.so:${PORTSDIR}/graphics/png \
-		libxml2.so:${PORTSDIR}/textproc/libxml2
+LIB_DEPENDS=	libxml2.so:${PORTSDIR}/textproc/libxml2
 
-CONFLICTS_INSTALL=	i386-wine-* wine-1.4* wine-1.6*
+CONFLICTS_INSTALL=	i386-wine-[0-9]* i386-wine-devel-[0-9]* wine-[0-9]*
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-USE_GCC=	any
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--verbose --disable-tests \
 		--without-alsa --without-capi --without-dbus \
-		--with-fontconfig --with-glu \
 		--without-gphoto --without-gsm --without-gstreamer \
-		--with-opengl --without-mpg123 --without-opencl \
+		--without-mpg123 --without-opencl \
 		--with-oss --without-sane --without-tiff \
-		--without-v4l --without-xcomposite --without-xinerama \
-		--with-xinput2 --with-xrandr
+		--without-v4l --without-xcomposite --without-xinerama
 CONFIGURE_ENV=	FLEX="${LOCALBASE}/bin/flex"
 WINELIBDIR?=	${PREFIX}/lib
 .if !defined(USE_LDCONFIG32)
 USE_LDCONFIG=	${WINELIBDIR} ${WINELIBDIR}/wine
 .endif
-MAN1=		msiexec.1 notepad.1 regedit.1 regsvr32.1 widl.1 wine.1 \
-		wineboot.1 winebuild.1 winecfg.1 wineconsole.1 winedbg.1 \
-		winedump.1 winefile.1 winegcc.1 winemaker.1 winemine.1 \
-		winepath.1 wineserver.1 wmc.1 wrc.1
-MLINKS=		winegcc.1 winecpp.1 \
-		winegcc.1 wineg++.1
 ONLY_FOR_ARCHS=	i386
-USES=		bison gmake
+USES=		bison compiler:c11 gmake shebangfix
+SHEBANG_FILES=	tools/winemaker tools/winedump/function_grep.pl
 USE_BZIP2=	yes
-USE_GL=		glu
-USE_XORG=	xcursor xi xpm xrandr xrender
 
 SUB_FILES=	pkg-message
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
-OPTIONS_DEFINE=	CUPS DOSBOX GNUTLS HAL LDAP LIBXSLT OPENAL WINEMAKER GECKO MONO
+OPTIONS_DEFINE=	CUPS DOSBOX GNUTLS HAL LDAP LIBXSLT OPENAL WINEMAKER GECKO MONO X11
+OPTIONS_DEFAULT=X11
+OPTIONS_SUB=	yes
 
 DOSBOX_DESC=	Use DOSBox to run MS-DOS programs
 LIBXSLT_DESC=	Use libxslt (only used by msxml3.dll)
@@ -66,9 +53,8 @@ WINEMAKER_DESC=	Fully support winemaker (requires Perl)
 GECKO_DESC=	Bundle Gecko MSI package for Wine
 MONO_DESC=	Bundle Mono MSI package for Wine
 
-PORTDATA=	fonts/ generic.ppd l_intl.nls wine.inf
+PORTDATA=	l_intl.nls wine.inf
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MCUPS}
@@ -113,10 +99,8 @@ CONFIGURE_ARGS+=	--without-xslt
 .if ${PORT_OPTIONS:MOPENAL}
 CONFIGURE_ARGS+=	--with-openal
 USE_OPENAL=		yes
-PLIST_SUB+=		OPENAL=""
 .else
 CONFIGURE_ARGS+=	--without-openal
-PLIST_SUB+=		OPENAL="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MWINEMAKER}
@@ -131,6 +115,23 @@ RUN_DEPENDS+=	${DATADIR}/gecko/wine_gecko-2.24-x86.msi:${PORTSDIR}/emulators/win
 RUN_DEPENDS+=	${DATADIR}/mono/wine-mono-0.0.8.msi:${PORTSDIR}/emulators/wine-mono
 .endif
 
+.if ${PORT_OPTIONS:MX11}
+USE_GL=		glu
+USE_XORG=	xcursor xi xpm xrandr xrender
+LIB_DEPENDS+=	libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
+		libfreetype.so:${PORTSDIR}/print/freetype2 \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		liblcms2.so:${PORTSDIR}/graphics/lcms2 \
+		libpng15.so:${PORTSDIR}/graphics/png
+CONFIGURE_ARGS+=--with-fontconfig --with-glu --with-opengl \
+		--with-xinput2 --with-xrandr --with-freetype
+PORTDATA+=	fonts/
+.else
+CONFIGURE_ARGS+=--without-x --without-fontconfig --without-glu \
+		--without-opengl --without-xinput2 --without-xrandr \
+		--without-freetype
+.endif
+
 .if ${OSVERSION} < 800000
 IGNORE=		lacks required sound support on FreeBSD before 8.0
 .endif
@@ -139,27 +140,17 @@ pre-build:
 	cd ${WRKSRC} && ${GMAKE} depend
 
 post-install:
-	@${RM} -f ${MAN1PREFIX}/man/de.UTF-8/man1/wine.1 \
-	          ${MAN1PREFIX}/man/de.UTF-8/man1/winemaker.1 \
-	          ${MAN1PREFIX}/man/de.UTF-8/man1/wineserver.1 \
-	          ${MAN1PREFIX}/man/fr.UTF-8/man1/wine.1 \
-	          ${MAN1PREFIX}/man/fr.UTF-8/man1/winemaker.1 \
-	          ${MAN1PREFIX}/man/fr.UTF-8/man1/wineserver.1 \
-	          ${MAN1PREFIX}/man/pl.UTF-8/man1/wine.1
-	@-${RMDIR} -p ${MAN1PREFIX}/man/de.UTF-8/man1 \
-	              ${MAN1PREFIX}/man/fr.UTF-8/man1 \
-	              ${MAN1PREFIX}/man/pl.UTF-8/man1
-	@${MV} -f ${WINELIBDIR}/libwine.so.1.0 ${WINELIBDIR}/libwine.so.1
-	@${LN} -sf libwine.so.1 ${WINELIBDIR}/libwine.so
+	@${MV} -f ${STAGEDIR}${WINELIBDIR}/libwine.so.1.0 \
+	          ${STAGEDIR}${WINELIBDIR}/libwine.so.1
+	@${LN} -sf libwine.so.1 ${STAGEDIR}/${WINELIBDIR}/libwine.so
 .if !defined(NOPORTDOCS)
-	-@${MKDIR} ${DOCSDIR}
+	-@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in README ANNOUNCE AUTHORS
-	@${INSTALL_DATA} ${WRKSRC}/${i} ${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
-	@${INSTALL_DATA} ${WRKSRC}/programs/winedbg/README ${DOCSDIR}/README.winedbg
-	@${INSTALL_DATA} ${WRKSRC}/tools/winedump/README ${DOCSDIR}/README.winedump
+	@${INSTALL_DATA} ${WRKSRC}/programs/winedbg/README ${STAGEDIR}${DOCSDIR}/README.winedbg
+	@${INSTALL_DATA} ${WRKSRC}/tools/winedump/README ${STAGEDIR}${DOCSDIR}/README.winedump
 .endif
-	@${MKDIR} ${DESKTOPDIR}
 	@${ECHO}
 	@${CAT} ${PKGMESSAGE}
 

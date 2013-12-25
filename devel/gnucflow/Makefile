@@ -15,13 +15,14 @@ CONFLICTS=	bsdcflow-[0-9]* cflow-[0-9]*
 
 USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
-USE_GMAKE=	yes
+USES=		gmake
 
 INFO=		cflow
 
 PLIST_FILES=	bin/cflow
 
-NO_STAGE=	yes
+OPTIONS_DEFINE=	NLS
+
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}

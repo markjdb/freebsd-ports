@@ -3,7 +3,7 @@
 
 PORTNAME=	gmerlin-avdecoder
 PORTVERSION=	1.2.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	multimedia
 MASTER_SITES=	SF/gmerlin/${PORTNAME}/${PORTVERSION}
 
@@ -30,8 +30,8 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-cpuflags=none --without-doxygen
 USE_LDCONFIG=	yes
 
-CPPFLAGS+=	-I${LOCALBASE}/include/ffmpeg0
-LDFLAGS+=	-L${LOCALBASE}/lib/ffmpeg0
+CPPFLAGS+=	-I${LOCALBASE}/include/ffmpeg0 -I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib/ffmpeg0 -L${LOCALBASE}/lib
 
 .include <bsd.port.options.mk>
 

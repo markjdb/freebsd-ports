@@ -17,7 +17,7 @@ SLAVEPORT=	qt4
 QT_NONSTANDARD=	yes
 USE_QT4=	moc_build qmake_build rcc_build uic_build gui dbus network
 USE_GNOME=	desktopfileutils
-QMAKE_LFLAGS=	-lcrypto -L${LOCALBASE}/lib ${ICONV_LIB}
+LDFLAGS+=	-lcrypto
 
 EXTRA_CONF_ARGS=--disable-cli \
 		--disable-daemon \
@@ -33,7 +33,7 @@ post-patch: general-patch
 
 NO_STAGE=	yes
 post-build:
-	@(cd ${WRKSRC}/qt ; ${QMAKE} ${QMAKEFLAGS} qtr.pro ; ${GMAKE})
+	@(cd ${WRKSRC}/qt ; ${QMAKE} ${QMAKE_ARGS} qtr.pro ; ${GMAKE})
 
 do-install:
 	@(cd ${WRKSRC}/qt ; ${SETENV} INSTALL_ROOT=${PREFIX} ${MAKE} install)
@@ -43,10 +43,8 @@ post-install: general-install
 	@${MKDIR} ${DOCSDIR}
 	@${INSTALL_DATA} ${WRKSRC}/qt/README.txt ${DOCSDIR}/README-qt4
 .endif
-	@${MKDIR} ${PREFIX}/share/applications
 	@${INSTALL_DATA} ${WRKSRC}/qt/transmission-qt.desktop \
 		${PREFIX}/share/applications/
-	@${MKDIR} ${PREFIX}/share/pixmaps
 	@${INSTALL_DATA} ${WRKSRC}/qt/icons/transmission.png \
 		${PREFIX}/share/pixmaps/transmission-qt.png
 	@-update-desktop-database

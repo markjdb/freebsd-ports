@@ -4,7 +4,7 @@
 
 PORTNAME=	glib
 PORTVERSION=	2.36.3
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -26,7 +26,7 @@ USE_AUTOTOOLS=	libtool
 USE_LDCONFIG=	yes
 USES=		gettext gmake iconv pathfix pkgconfig shebangfix perl5
 USE_GNOME=	ltverhack
-USE_PYTHON=	2.5+
+USE_PYTHON=	yes
 CONFIGURE_ARGS=	--enable-static \
 		--disable-gtk-doc --with-html-dir=${PREFIX}/share/doc \
 		--disable-man --without-xml-catalog \

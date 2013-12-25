@@ -3,7 +3,7 @@
 
 PORTNAME=	opal
 PORTVERSION=	3.10.10
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	net
 MASTER_SITES=	GNOME
 
@@ -158,8 +158,13 @@ PLIST_SUB+=	X264="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MFFMPEG}
-LIB_DEPENDS+=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
+LIB_DEPENDS+=	libavcodec0.so:${PORTSDIR}/multimedia/ffmpeg0
 CONFIGURE_ARGS+=	--enable-libavcodec
+CONFIGURE_ENV+=		LIBAVCODEC_LIBS="-lavcodec0" \
+			LIBAVCODEC_CFLAGS="-I${LOCALBASE}/include/ffmpeg0" \
+			LIBAVUTIL_LIBS="-lavutil0" \
+			LIBAVUTIL_CFLAGS="-I${LOCALBASE}/include/ffmpeg0"
+CFLAGS+=		-I${LOCALBASE}/include/ffmpeg0
 PLIST_SUB+=	FFMPEG=""
 WITH_VIDEO=	yes
 .else

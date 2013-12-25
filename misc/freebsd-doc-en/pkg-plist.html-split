@@ -25,6 +25,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/casestudy-argentina.com/results.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/casestudy-argentina.com/trademarks.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/committers-guide/archs.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/committers-guide/commit-log-message.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/committers-guide/committer.types.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/committers-guide/conventions.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/committers-guide/coverity.html
@@ -53,6 +54,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/conserver-versions.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/freebsd.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/console-server/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/links.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/manpages.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/console-server/our-solution.html
@@ -65,6 +67,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing-ports/create-port.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing-ports/fix-broken.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing-ports/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/contributing-ports/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing-ports/maintain-port.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing-ports/mortal-coil.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing-ports/resources.html
@@ -72,6 +75,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing-ports/what-contribute.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing/contrib-how.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/contributing/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributing/trademarks.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributors/contrib-386bsd.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributors/contrib-additional.html
@@ -81,9 +85,11 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributors/contrib-develinmemoriam.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributors/contrib-portmgralumni.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributors/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/contributors/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributors/staff-committers.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/contributors/trademarks.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/cups/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/cups/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/cups/printing-cups-clients.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/cups/printing-cups-configuring-printers.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/cups/printing-cups-configuring-server.html
@@ -229,6 +235,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/mh/trademarks.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/nanobsd/howto.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/nanobsd/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/nanobsd/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/nanobsd/trademarks.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/new-users/adding-a-user.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/new-users/comments-welcome.html
@@ -300,6 +307,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/articles/pr-guidelines/references.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/pr-guidelines/trademarks.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/index.html
+%%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/pr-followup.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/pr-further.html
 %%DOCSDIR%%/%%DOCLANG%%/articles/problem-reports/pr-prep.html
@@ -392,6 +400,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/arch-handbook/isa-driver-resources.html
 %%DOCSDIR%%/%%DOCLANG%%/books/arch-handbook/isa-driver-shutdown.html
 %%DOCSDIR%%/%%DOCLANG%%/books/arch-handbook/isa-driver.html
+%%DOCSDIR%%/%%DOCLANG%%/books/arch-handbook/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/books/arch-handbook/jail-restrictions.html
 %%DOCSDIR%%/%%DOCLANG%%/books/arch-handbook/jail.html
 %%DOCSDIR%%/%%DOCLANG%%/books/arch-handbook/kernel-objects-operation.html
@@ -483,7 +492,6 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/overview.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/proc-depend-hats.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/process-core-election.html
-%%DOCSDIR%%/%%DOCLANG%%/books/dev-model/process-cvsupmirror.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/process-reactions.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/process-release-engineering.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/ref-freebsd.html
@@ -493,7 +501,6 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/sect-hats.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/sub-project-documentation.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/sub-projects.html
-%%DOCSDIR%%/%%DOCLANG%%/books/dev-model/tool-cvsup.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/tool-gnats.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/tool-perforce.html
 %%DOCSDIR%%/%%DOCLANG%%/books/dev-model/tool-pgp.html
@@ -512,6 +519,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/developers-handbook/introduction.html
 %%DOCSDIR%%/%%DOCLANG%%/books/developers-handbook/ipc.html
 %%DOCSDIR%%/%%DOCLANG%%/books/developers-handbook/ipv6.html
+%%DOCSDIR%%/%%DOCLANG%%/books/developers-handbook/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/books/developers-handbook/kernel.html
 %%DOCSDIR%%/%%DOCLANG%%/books/developers-handbook/kernelbuild-new.html
 %%DOCSDIR%%/%%DOCLANG%%/books/developers-handbook/kernelbuild.html
@@ -613,6 +621,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/fdp-primer/examples-formatted.html
 %%DOCSDIR%%/%%DOCLANG%%/books/fdp-primer/examples.html
 %%DOCSDIR%%/%%DOCLANG%%/books/fdp-primer/index.html
+%%DOCSDIR%%/%%DOCLANG%%/books/fdp-primer/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/books/fdp-primer/legalnotice.html
 %%DOCSDIR%%/%%DOCLANG%%/books/fdp-primer/make-includes.html
 %%DOCSDIR%%/%%DOCLANG%%/books/fdp-primer/overview-quick-start.html
@@ -678,7 +687,6 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/backup-basics.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/backup-strategies.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/backups-tapebackups.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/basics-daemons.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/basics-devices.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/basics-more-information.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/basics-processes.html
@@ -798,6 +806,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/install.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/introduction.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/ipsec.html
+%%DOCSDIR%%/%%DOCLANG%%/books/handbook/ix01.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/jails-application.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/jails-build.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/jails-intro.html
@@ -809,7 +818,6 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/kernelconfig-config.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/kernelconfig-custom-kernel.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/kernelconfig-devices.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/kernelconfig-modules.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/kernelconfig-trouble.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/kernelconfig.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/l10n-basics.html
@@ -819,24 +827,13 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/legalnotice.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/linuxemu-advanced.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/linuxemu-lbc-install.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/linuxemu-maple.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/linuxemu-mathematica.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/linuxemu-matlab.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/linuxemu-oracle.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/linuxemu.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-biba.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-bsdextended.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-ifoff.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-implementing.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-initial.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-inline-glossary.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-lomac.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-mls.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-modules.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-partition.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-planning.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-portacl.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-seeotheruids.html
+%%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-policies.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-troubleshoot.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-understandlabel.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/mac-userlocked.html
@@ -868,6 +865,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/network-ftp.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/network-inetd.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/network-ipv6.html
+%%DOCSDIR%%/%%DOCLANG%%/books/handbook/network-iscsi.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/network-ldap.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/network-natd.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/network-nfs.html
@@ -899,7 +897,6 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/ports.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/ppp-and-slip.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/ppp-troubleshoot.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/ppp.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/pppoa.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/pppoe.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/printing-advanced.html
@@ -923,7 +920,6 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/serialcomms.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/serialconsole-setup.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/shells.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/slip.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/small-lan.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/snapshots.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/sound-mp3.html
@@ -943,12 +939,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/updating-upgrading.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/usb-disks.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/userppp.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/users-becomesuper.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/users-groups.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/users-introduction.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/users-limiting.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/users-modifying.html
-%%DOCSDIR%%/%%DOCLANG%%/books/handbook/users.html
+%%DOCSDIR%%/%%DOCLANG%%/books/handbook/users-synopsis.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/using-bsdinstall.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/using-live-cd.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/using-localization.html
@@ -962,6 +953,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/x-install.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/x-understanding.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/x-xdm.html
+%%DOCSDIR%%/%%DOCLANG%%/books/handbook/x11-understanding.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/x11-wm.html
 %%DOCSDIR%%/%%DOCLANG%%/books/handbook/x11.html
 %%DOCSDIR%%/%%DOCLANG%%/books/pmake/answers.html
@@ -1037,7 +1029,6 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/pkg-files.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/pkg-install.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/pkg-names.html
-%%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/pkg-req.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/plist-autoplist.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/plist-cleaning.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/plist-config.html
@@ -1051,6 +1042,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/porting-prefix.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/porting-restrictions.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/porting-samplem.html
+%%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/porting-shlibs.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/porting-submitting.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/porting-testing.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/porting-versions.html
@@ -1083,6 +1075,7 @@
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/using-emacs.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/using-gettext.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/using-gnome.html
+%%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/using-iconv.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/using-java.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/using-kde.html
 %%DOCSDIR%%/%%DOCLANG%%/books/porters-handbook/using-lua.html

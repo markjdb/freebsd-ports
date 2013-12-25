@@ -24,7 +24,7 @@
     SUBDIR += dboxfe
     SUBDIR += desmume
     SUBDIR += dgen-sdl
-    SUBDIR += dolphin-emu-devel
+    SUBDIR += dolphin-emu
     SUBDIR += dosbox
     SUBDIR += doscmd
     SUBDIR += dtcyber
@@ -39,6 +39,7 @@
     SUBDIR += fmsx
     SUBDIR += frodo
     SUBDIR += fuse
+    SUBDIR += fuse-roms
     SUBDIR += fuse-utils
     SUBDIR += gbe
     SUBDIR += generator
@@ -71,9 +72,6 @@
     SUBDIR += libdsk
     SUBDIR += libspectrum
     SUBDIR += linux-geepee32
-    SUBDIR += linux-peops-softgpu
-    SUBDIR += linux-pete-mesagpu
-    SUBDIR += linux-pete-xgl2gpu
     SUBDIR += linux-systemsimcell
     SUBDIR += linux_base-c6
     SUBDIR += linux_base-f10
@@ -128,6 +126,7 @@
     SUBDIR += prodosemu
     SUBDIR += psim-freebsd
     SUBDIR += pyxmame
+    SUBDIR += q4wine
     SUBDIR += qemu
     SUBDIR += qemu-devel
     SUBDIR += qemu-launcher

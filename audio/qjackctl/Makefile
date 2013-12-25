@@ -11,8 +11,8 @@ COMMENT=	Qt Interface for the JACK Audio Connection Kit
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	asound:${PORTSDIR}/audio/alsa-lib \
-		jack:${PORTSDIR}/audio/jack
+LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib \
+		libjack.so:${PORTSDIR}/audio/jack
 
 USE_QT4=	corelib dbus gui xml \
 		linguist_build moc_build qmake_build rcc_build uic_build
@@ -31,12 +31,9 @@ MAKE_JOBS_UNSAFE=yes
 
 MAN1=		qjackctl.1
 
-LUPDATE=	${LOCALBASE}/bin/lupdate-qt4
-LRELEASE=	${LOCALBASE}/bin/lrelease-qt4
-
 post-configure:
 	@cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} -o ${PORTNAME}.mak \
-		${QMAKEFLAGS}
+		${QMAKE_ARGS}
 
 post-install:
 	@${STRIP_CMD} ${PREFIX}/bin/${PORTNAME}

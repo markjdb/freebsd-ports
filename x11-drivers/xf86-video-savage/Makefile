@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	xf86-video-savage
-PORTVERSION=	2.3.6
+PORTVERSION=	2.3.7
+PORTREVISION=	1
 CATEGORIES=	x11-drivers
 
 MAINTAINER=	x11@FreeBSD.org
@@ -11,7 +12,5 @@ USE_GL=		gl
 
 XORG_CAT=	driver
 USE_XORG=	xf86driproto glproto
-MAN4=		savage.4x
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

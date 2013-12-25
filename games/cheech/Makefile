@@ -11,13 +11,16 @@ EXTRACT_SUFX=	.tgz
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Multiplayer Chinese Checkers game
 
-LIB_DEPENDS=	gtkmm-2.4.1:${PORTSDIR}/x11-toolkits/gtkmm24 \
-		gnet-2.0.0:${PORTSDIR}/net/gnet2
+LICENSE=	GPLv2 # (or later)
 
-USES=		pkgconfig
-USE_GMAKE=	yes
-GNU_CONFIGURE=	yes
+LIB_DEPENDS=	libgnet-2.0.so:${PORTSDIR}/net/gnet2
+
+OPTIONS_DEFINE=	DOCS
+
+USES=		gmake pkgconfig
+USE_GNOME=	gtkmm24
 USE_AUTOTOOLS=	automake:env
+GNU_CONFIGURE=	yes
 
 DESKTOP_ENTRIES=	"cheech" \
 			"${COMMENT}" \
@@ -26,18 +29,17 @@ DESKTOP_ENTRIES=	"cheech" \
 			"Game;BoardGame;" \
 			"false"
 
-.if !defined(NOPORTDOCS)
-INSTALL_TARGET=	install install-cheechdocDATA
-.endif
-
-NO_STAGE=	yes
 post-patch:
-	@${REINPLACE_CMD} -e "s|doc/cheech|share/doc/cheech|g" \
-		-e "s|: install-cheechdocDATA|:|g" \
-		${WRKSRC}/Makefile.in
-	@${REINPLACE_CMD} -e 's|connect(SigC::slot|connect(sigc::mem_fun|g ; \
-		s|#include <sigc++\/compatibility\.h>||g' \
-			${WRKSRC}/src/*.cc
+	@${REINPLACE_CMD} -e \
+		's|$${prefix}/doc|$$(datadir)/doc| ; \
+		 /^cheechdoc_DATA/s|COPYING||' ${WRKSRC}/Makefile.in
+	@${REINPLACE_CMD} -e \
+		'/^AM_CXXFLAGS/s|[[:blank:]]-g||' ${WRKSRC}/src/Makefile.in
+	@${REINPLACE_CMD} -e \
+		's|\([[:blank:]]\)usleep|\1Glib::usleep|' ${WRKSRC}/src/utility.cc
+	@${REINPLACE_CMD} -e \
+		's|connect(SigC::slot|connect(sigc::mem_fun|g ; \
+		 s|#include <sigc++\/compatibility\.h>||g' ${WRKSRC}/src/*.cc
 
 pre-configure:
 	@${LN} -sf ${AUTOMAKE_DIR}/install-sh ${WRKSRC}

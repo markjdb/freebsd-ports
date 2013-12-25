@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	httpuv
-PORTVERSION=	1.1.0
+PORTVERSION=	1.2.0
 CATEGORIES=	www
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -23,5 +23,4 @@ R_MOD_AUTOPLIST=	yes
 
 MAKE_ENV=	MAKE=${GMAKE}
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

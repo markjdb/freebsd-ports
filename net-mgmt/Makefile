@@ -307,11 +307,13 @@
     SUBDIR += softflowd
     SUBDIR += spectools
     SUBDIR += ssgless
+    SUBDIR += statsd
     SUBDIR += subcalc
     SUBDIR += sysmon
     SUBDIR += tcpreplay
     SUBDIR += tcptrack
     SUBDIR += torrus
+    SUBDIR += unifi
     SUBDIR += vidalia
     SUBDIR += virt-viewer
     SUBDIR += virtinst
@@ -330,17 +332,18 @@
     SUBDIR += zabbix2-frontend
     SUBDIR += zabbix2-proxy
     SUBDIR += zabbix2-server
+    SUBDIR += zabbix22-agent
+    SUBDIR += zabbix22-frontend
+    SUBDIR += zabbix22-proxy
+    SUBDIR += zabbix22-server
     SUBDIR += zenoss
-    SUBDIR += zenpack-apachemonitor
     SUBDIR += zenpack-checkping
     SUBDIR += zenpack-dellmon
-    SUBDIR += zenpack-dellmonitor
     SUBDIR += zenpack-deviceadvdetail
     SUBDIR += zenpack-devicesearch
     SUBDIR += zenpack-graphportlet
     SUBDIR += zenpack-interfacegraphs
     SUBDIR += zenpack-libvirt
     SUBDIR += zenpack-macreport
-    SUBDIR += zenpack-ntpmonitor
 
 .include <bsd.port.subdir.mk>

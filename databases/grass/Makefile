@@ -3,7 +3,7 @@
 
 PORTNAME=	grass
 PORTVERSION=	6.4.2
-PORTREVISION=	6
+PORTREVISION=	7
 PORTEPOCH=	2
 CATEGORIES=	databases geography
 MASTER_SITES=	http://grass.osgeo.org/%SUBDIR%/ \
@@ -24,20 +24,18 @@ LICENSE=	GPLv2
 BROKEN=		Does not build
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/swig:${PORTSDIR}/devel/swig13
-LIB_DEPENDS=	gdal:${PORTSDIR}/graphics/gdal \
-		jpeg:${PORTSDIR}/graphics/jpeg \
-		png15:${PORTSDIR}/graphics/png \
-		proj:${PORTSDIR}/graphics/proj \
-		tiff:${PORTSDIR}/graphics/tiff \
-		fftw3:${PORTSDIR}/math/fftw3 \
-		freetype:${PORTSDIR}/print/freetype2
+LIB_DEPENDS=	libgdal.so:${PORTSDIR}/graphics/gdal \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng15.so:${PORTSDIR}/graphics/png \
+		libproj.so:${PORTSDIR}/graphics/proj \
+		libtiff.so:${PORTSDIR}/graphics/tiff \
+		libfftw3.so:${PORTSDIR}/math/fftw3 \
+		libfreetype.so:${PORTSDIR}/print/freetype2
 RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
 
 USES=		gettext gmake iconv readline perl5 tk
 USE_XORG=	sm ice xi x11 xt xmu xext
 USE_GL=		glut
-USE_TCL=	yes
-USE_TCL_BUILD=	yes
 USE_PYTHON=	yes
 USE_WX=		2.8
 WX_COMPS=	wx:build python:run
@@ -94,7 +92,7 @@ PLIST_SUB+=	MYSQL="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MODBC}
-LIB_DEPENDS+=	odbc:${PORTSDIR}/databases/unixODBC
+LIB_DEPENDS+=	libodbc.so:${PORTSDIR}/databases/unixODBC
 CONFIGURE_ARGS+=--with-odbc
 PLIST_SUB+=	ODBC=""
 .else

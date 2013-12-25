@@ -3,8 +3,9 @@
 
 PORTNAME=	duckmaze
 DISTVERSION=	0.3r34
+PORTREVISION=	1
 CATEGORIES=	games python
-MASTER_SITES=	SF/nemysisfreebsdp/${PORTNAME}/
+MASTER_SITES=	SF/nemysisfreebsdp/games/${PORTNAME}/
 DISTFILES=	${PORTNAME}-${DISTVERSION}${EXTRACT_SUFX} \
 		${PORTNAME}.png
 DIST_SUBDIR=	python

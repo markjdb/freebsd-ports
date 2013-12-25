@@ -3,7 +3,7 @@
 
 PORTNAME=	stringr
 PORTVERSION=	0.6.2
-PORTREVISION=	3
+PORTREVISION=	5
 CATEGORIES=	textproc
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -17,5 +17,4 @@ RUN_DEPENDS=	R-cran-plyr>0:${PORTSDIR}/devel/R-cran-plyr
 USE_R_MOD=	yes
 R_MOD_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

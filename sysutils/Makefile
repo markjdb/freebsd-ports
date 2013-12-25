@@ -125,6 +125,7 @@
     SUBDIR += clonehdd
     SUBDIR += cloop-utils
     SUBDIR += cmdwatch
+    SUBDIR += cmogstored
     SUBDIR += cmospwd
     SUBDIR += cog
     SUBDIR += colorize
@@ -177,10 +178,10 @@
     SUBDIR += dfc
     SUBDIR += di
     SUBDIR += dim
-    SUBDIR += dircomp
     SUBDIR += dirdiff
     SUBDIR += dirvish
     SUBDIR += diskcheckd
+    SUBDIR += diskimage-tools
     SUBDIR += diskscrub
     SUBDIR += disktool
     SUBDIR += disktype
@@ -196,6 +197,7 @@
     SUBDIR += dtpstree
     SUBDIR += du2ps
     SUBDIR += duff
+    SUBDIR += dunst
     SUBDIR += duplicity
     SUBDIR += duply
     SUBDIR += dupmerge
@@ -242,6 +244,8 @@
     SUBDIR += filetype
     SUBDIR += filewatcherd
     SUBDIR += finfo
+    SUBDIR += firstboot-freebsd-update
+    SUBDIR += firstboot-pkgs
     SUBDIR += flasher
     SUBDIR += flashrom
     SUBDIR += flexbackup
@@ -349,6 +353,8 @@
     SUBDIR += graveman
     SUBDIR += grok
     SUBDIR += grub2
+    SUBDIR += grub2-bhyve
+    SUBDIR += grub2-efi
     SUBDIR += gsmartcontrol
     SUBDIR += gstopd
     SUBDIR += gstreamer-plugins-cdio
@@ -362,7 +368,6 @@
     SUBDIR += hachoir-wx
     SUBDIR += hal
     SUBDIR += hal-info
-    SUBDIR += hammerhead
     SUBDIR += hardlink
     SUBDIR += hatop
     SUBDIR += hdup
@@ -390,7 +395,6 @@
     SUBDIR += i2c-tools
     SUBDIR += i7z
     SUBDIR += iat
-    SUBDIR += iextract
     SUBDIR += installwatch
     SUBDIR += iogen
     SUBDIR += iograph
@@ -464,7 +468,6 @@
     SUBDIR += linux-afaapps
     SUBDIR += linux-crashplan
     SUBDIR += linux-f10-procps
-    SUBDIR += linux-megamgr
     SUBDIR += linux-nero
     SUBDIR += linuxfdisk
     SUBDIR += lire
@@ -493,6 +496,12 @@
     SUBDIR += manck
     SUBDIR += mapchan
     SUBDIR += massadmin
+    SUBDIR += mate-control-center
+    SUBDIR += mate-polkit
+    SUBDIR += mate-power-manager
+    SUBDIR += mate-settings-daemon
+    SUBDIR += mate-system-monitor
+    SUBDIR += mbgtools
     SUBDIR += mbmon
     SUBDIR += mcelog
     SUBDIR += mcollective
@@ -510,13 +519,13 @@
     SUBDIR += metalog
     SUBDIR += mfid
     SUBDIR += mgeupsd
+    SUBDIR += minimunin
     SUBDIR += minirsyslogd
     SUBDIR += mixer
     SUBDIR += mkfile
     SUBDIR += mkfwimage
     SUBDIR += mkntpwd
     SUBDIR += mksunbootcd
-    SUBDIR += mktool
     SUBDIR += mmore
     SUBDIR += modules
     SUBDIR += monit
@@ -553,6 +562,7 @@
     SUBDIR += nepomuk-widgets
     SUBDIR += netident
     SUBDIR += news
+    SUBDIR += nfsping
     SUBDIR += nitrogen
     SUBDIR += no-login
     SUBDIR += npadmin
@@ -573,6 +583,7 @@
     SUBDIR += p5-BSD-Jail-Object
     SUBDIR += p5-BSD-Process
     SUBDIR += p5-BSD-Sysctl
+    SUBDIR += p5-BackupPC-XS
     SUBDIR += p5-Brackup
     SUBDIR += p5-Dir-Purge
     SUBDIR += p5-File-DirCompare
@@ -640,6 +651,7 @@
     SUBDIR += pacman
     SUBDIR += paicc
     SUBDIR += pam_mount
+    SUBDIR += panicmail
     SUBDIR += parallel
     SUBDIR += password-store
     SUBDIR += patchelf
@@ -712,6 +724,7 @@
     SUBDIR += pstree
     SUBDIR += ptools
     SUBDIR += puppet
+    SUBDIR += puppet-mode.el
     SUBDIR += puppet27
     SUBDIR += puppet-lint
     SUBDIR += pv
@@ -726,8 +739,10 @@
     SUBDIR += py-ezjailremote
     SUBDIR += py-filelike
     SUBDIR += py-glances
+    SUBDIR += py-halite 
     SUBDIR += py-iowait
     SUBDIR += py-nagiosplugin
+    SUBDIR += py-plumbum
     SUBDIR += py-psutil
     SUBDIR += py-pytsk
     SUBDIR += py-ranger
@@ -744,6 +759,7 @@
     SUBDIR += qjail2
     SUBDIR += qlogtools
     SUBDIR += qpxtool
+    SUBDIR += qsynergy
     SUBDIR += quicksynergy
     SUBDIR += qzeitgeist
     SUBDIR += radeontool
@@ -773,17 +789,9 @@
     SUBDIR += rsyncbackup
     SUBDIR += rsyncmanager
     SUBDIR += rsyncrypto
-    SUBDIR += rsyslog6
-    SUBDIR += rsyslog6-dbi
-    SUBDIR += rsyslog6-gnutls
-    SUBDIR += rsyslog6-gssapi
-    SUBDIR += rsyslog6-mysql
-    SUBDIR += rsyslog6-pgsql
-    SUBDIR += rsyslog6-relp
-    SUBDIR += rsyslog6-rfc3195
-    SUBDIR += rsyslog6-snmp
     SUBDIR += rsyslog7
     SUBDIR += rsyslog7-devel
+    SUBDIR += rsyslog8-devel
     SUBDIR += rtty
     SUBDIR += ruby-quota
     SUBDIR += rubygem-SyslogLogger
@@ -810,6 +818,7 @@
     SUBDIR += rubygem-hiera-json
     SUBDIR += rubygem-hiera-puppet
     SUBDIR += rubygem-log4r
+    SUBDIR += rubygem-mogilefs-client
     SUBDIR += rubygem-murder
     SUBDIR += rubygem-ohai
     SUBDIR += rubygem-parallel
@@ -858,6 +867,7 @@
     SUBDIR += slmon
     SUBDIR += sloth
     SUBDIR += slst
+    SUBDIR += slurm-hpc
     SUBDIR += smartmontools
     SUBDIR += smp_utils
     SUBDIR += snap

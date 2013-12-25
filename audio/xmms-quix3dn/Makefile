@@ -9,10 +9,10 @@ MASTER_SITES=	${MASTER_SITE_LOCAL}
 MASTER_SITE_SUBDIR=	alex
 DISTNAME=	quix3dn-${PORTVERSION}-freebsd
 
-MAINTAINER=	c.petrik.sosa@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	3D-sound effect plugin for XMMS
 
-LIB_DEPENDS=	c.4:${PORTSDIR}/misc/compat4x
+LIB_DEPENDS=	libc.so.4:${PORTSDIR}/misc/compat4x
 RUN_DEPENDS=	xmms:${PORTSDIR}/multimedia/xmms
 
 NO_STAGE=	yes

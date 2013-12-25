@@ -3,7 +3,7 @@
 
 PORTNAME=	btanks
 PORTVERSION=	0.9.8083
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-source/
 
@@ -11,10 +11,10 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast 2D tank arcade game with multiplayer and split-screen modes
 
 BUILD_DEPENDS=	zip:${PORTSDIR}/archivers/zip
-LIB_DEPENDS=	sigc-2.0.0:${PORTSDIR}/devel/libsigc++20 \
-		expat.6:${PORTSDIR}/textproc/expat2 \
-		vorbisfile.6:${PORTSDIR}/audio/libvorbis \
-		smpeg.1:${PORTSDIR}/multimedia/smpeg
+LIB_DEPENDS=	libsigc-2.0.so:${PORTSDIR}/devel/libsigc++20 \
+		libexpat.so:${PORTSDIR}/textproc/expat2 \
+		libvorbisfile.so:${PORTSDIR}/audio/libvorbis \
+		libsmpeg.so:${PORTSDIR}/multimedia/smpeg
 
 USES=		pkgconfig
 USE_BZIP2=	yes
@@ -24,6 +24,7 @@ USE_LUA=	5.0+
 USE_OPENAL=	al
 USE_SDL=	image sdl
 USE_SCONS=	yes
+USE_PYTHON=	yes
 SCONS_ARGS=	prefix=${PREFIX} resources_dir=${DATADIR}
 SCONS_BUILDENV=	CC="${CC}" CXX="${CXX}" \
 		CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS} -fpermissive" \
@@ -42,7 +43,7 @@ NO_STAGE=	yes
 pre-build:
 # Regenerate `sl08.h' after we patch `sl08.py' (as patching the header itself
 # would have resulted in a larger diff and gratuitous difference with Debian)
-	@cd ${WRKSRC} && python engine/sl08/sl08.py > engine/sl08/sl08.h
+	@cd ${WRKSRC} && ${PYTHON_CMD} engine/sl08/sl08.py > engine/sl08/sl08.h
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/build/release/clunk/libclunk.so \

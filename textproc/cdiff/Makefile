@@ -2,29 +2,21 @@
 # $FreeBSD$
 
 PORTNAME=	cdiff
-PORTVERSION=	1.5
+PORTVERSION=	0.9.3
+PORTREVISION=	1
+PORTEPOCH=	1
 CATEGORIES=	textproc
-MASTER_SITES=	# none
-DISTFILES=	# none
 
-MAINTAINER=	garga@FreeBSD.org
+MAINTAINER=	mat@FreeBSD.org
 COMMENT=	Diff readability enhancer for color terminals
 
-NO_BUILD=	yes
-NO_WRKSUBDIR=	yes
-USES=		perl5
+USE_GITHUB=
+GH_ACCOUNT=	ymattw
+GH_TAGNAME=	${GH_COMMIT}
+GH_COMMIT=	f85a5e2
 
-SRC=		${.CURDIR}/src
-
-MAN1=		cdiff.1
-PLIST_FILES=	bin/cdiff
-
-NO_STAGE=	yes
-do-fetch:
-	@${DO_NADA}
-
-do-install:
-	@${INSTALL_SCRIPT} ${SRC}/cdiff.sh ${PREFIX}/bin/cdiff
-	@${INSTALL_MAN} ${SRC}/cdiff.1 ${PREFIX}/man/man1
+USE_PYTHON=
+USE_PYDISTUTILS=
+PYDISTUTILS_AUTOPLIST=
 
 .include <bsd.port.mk>

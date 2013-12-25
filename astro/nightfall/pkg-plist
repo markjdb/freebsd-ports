@@ -1,4 +1,5 @@
 bin/nightfall
+man/man1/nightfall.1.gz
 share/applications/nightfall.desktop
 %%GNOMEUI%%share/gnome/help/nightfall/C/nightfall.xml
 %%GNOMEUI%%share/gnome/help/nightfall/de/nightfall.xml
@@ -104,4 +105,3 @@ share/locale/it/LC_MESSAGES/nightfall.mo
 %%GNOMEUI%%@dirrm share/gnome/help/nightfall/de
 %%GNOMEUI%%@dirrm share/gnome/help/nightfall/C
 %%GNOMEUI%%@dirrm share/gnome/help/nightfall
-@dirrmtry share/applications

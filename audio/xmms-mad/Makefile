@@ -9,12 +9,11 @@ MASTER_SITES=	SF
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	XMMS input plugin that uses libmad
 
-LIB_DEPENDS=	mad:${PORTSDIR}/audio/libmad \
-		id3tag:${PORTSDIR}/audio/libid3tag \
-		xmms:${PORTSDIR}/multimedia/xmms
+LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
+		libid3tag.so:${PORTSDIR}/audio/libid3tag \
+		libxmms.so:${PORTSDIR}/multimedia/xmms
 
 USES=		gmake pkgconfig
-NO_STAGE=	yes
 USE_BZIP2=	yes
 USE_GNOME=	gtk12
 GNU_CONFIGURE=	yes
@@ -25,7 +24,8 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 do-install:
+	${MKDIR} ${STAGEDIR}${PREFIX}/lib/xmms/Input
 	${INSTALL_DATA} ${WRKSRC}/src/.libs/libxmmsmad.so \
-		${PREFIX}/lib/xmms/Input
+		${STAGEDIR}${PREFIX}/lib/xmms/Input
 
 .include <bsd.port.mk>

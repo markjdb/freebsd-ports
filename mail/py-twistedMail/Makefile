@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	twistedMail
-PORTVERSION=	13.1.0
+PORTVERSION=	13.2.0
 CATEGORIES=	mail devel python
 MASTER_SITES=	http://twistedmatrix.com/Releases/Mail/${PORTVERSION:R}/ \
 		LOCAL/sunpoet
@@ -23,5 +23,4 @@ USE_PYTHON=	-2.7
 USE_PYDISTUTILS=yes
 PYDISTUTILS_PKGNAME=	${PORTNAME:S/twisted/Twisted_/}
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

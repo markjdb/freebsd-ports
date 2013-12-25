@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mcabber
-PORTVERSION=	0.10.1
-PORTREVISION=	4
+PORTVERSION=	0.10.2
 CATEGORIES=	net-im
 MASTER_SITES=	http://www.lilotux.net/~mikael/mcabber/files/ CENKES
 
@@ -36,7 +35,7 @@ NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGPGME}
-LIB_DEPENDS+=	gpgme.19:${PORTSDIR}/security/gpgme
+LIB_DEPENDS+=	libgpgme.so:${PORTSDIR}/security/gpgme
 CONFIGURE_ARGS+=--enable-gpgme
 .else
 CONFIGURE_ARGS+=--disable-gpgme

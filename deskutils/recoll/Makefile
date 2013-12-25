@@ -2,90 +2,105 @@
 # $FreeBSD$
 
 PORTNAME=	recoll
-PORTVERSION=	1.18.2
+PORTVERSION=	1.19.9
 CATEGORIES=	deskutils
 MASTER_SITES=	http://www.lesbonscomptes.com/${PORTNAME}/
 
-MAINTAINER=	nemysis@gmx.ch
+MAINTAINER=	nemysis@FreeBSD.org
 COMMENT=	Personal full text search package, based on Xapian
 
 LICENSE=	GPLv2
 
 BUILD_DEPENDS=	xapian-core>=0:${PORTSDIR}/databases/xapian-core
+RUN_DEPENDS:=	${BUILD_DEPENDS} \
+		xsltproc:${PORTSDIR}/textproc/libxslt \
+		antiword:${PORTSDIR}/textproc/antiword \
+		catdoc:${PORTSDIR}/textproc/catdoc \
+		wpd2html:${PORTSDIR}/textproc/libwpd \
+		unrtf:${PORTSDIR}/textproc/unrtf \
+		unrar:${PORTSDIR}/archivers/unrar
 
-USES=		iconv gmake
+USES=		gmake iconv
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--enable-pic
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-MAN1=		recollindex.1
-MAN5=		recoll.conf.5
-
-OPTIONS_DEFINE=	QT4 ASPELL PYTHON X11MON
+OPTIONS_DEFINE=	ASPELL CHM DJVU KONQUEROR LATEX IMAGE PDF PS PYTHON SOUND QT4 X11MON
+CHM_DESC=	CHM via CHMLIB
+IMAGE_DESC=	Store personal tags or textual descriptions in images
 X11MON_DESC=	X11 session monitoring support
-OPTIONS_DEFAULT=QT4 ASPELL PYTHON X11MON
+KONQUEROR_DESC=	Konqueror webarchive format with Python
+OPTIONS_DEFAULT=ASPELL IMAGE PDF PS PYTHON SOUND QT4 X11MON
 
-# Wrong versioning upstream
-PORTSCOUT=	skipv:1.19
+OPTIONS_SUB=	yes
 
-NO_STAGE=	yes
+ASPELL_LIB_DEPENDS=		libaspell.so:${PORTSDIR}/textproc/aspell
+ASPELL_CONFIGURE_WITH=		aspell
+
+CHM_RUN_DEPENDS=		pychm:${PORTSDIR}/textproc/pychm
+
+DJVU_RUN_DEPENDS=		djvutxt:${PORTSDIR}/graphics/djvulibre
+
+KONQUEROR_RUN_DEPENDS=		kwebkitpart:${PORTSDIR}/www/kwebkitpart
+
+LATEX_RUN_DEPENDS=		detex:${PORTSDIR}/print/detex \
+				dvips:${PORTSDIR}/print/dvips
+
+IMAGE_RUN_DEPENDS=		exiftool:${PORTSDIR}/graphics/p5-Image-ExifTool-devel
+
+PDF_RUN_DEPENDS=		xpdf:${PORTSDIR}/graphics/xpdf
+
+PS_RUN_DEPENDS=			pstotext:${PORTSDIR}/print/pstotext
+
+PYTHON_CONFIGURE_ENABLE=	python-module
+
+SOUND_RUN_DEPENDS=		mutagen-pony:${PORTSDIR}/audio/py-mutagen \
+				pykaraoke:${PORTSDIR}/audio/py-karaoke
+
+QT4_CONFIGURE_ENABLE=		qtgui
+
+X11MON_CONFIGURE_ENABLE=	x11mon
+
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MQT4}
-USE_QT4=	moc_build qmake_build rcc_build uic_build iconengines imageformats \
-		corelib gui xml webkit
-QT_NONSTANDARD=	yes
-CONFIGURE_ENV+=	QTDIR="${QT_PREFIX}" QMAKE="${QMAKE}"
-CONFIGURE_ARGS+=--enable-qtgui
-INSTALLS_ICONS=	yes
-PLIST_SUB+=	QT=""
-MAN1+=		recollq.1 recoll.1
-.else
-CONFIGURE_ARGS+=--disable-qtgui
-PLIST_SUB+=	QT="@comment "
-.endif
-
-.if ${PORT_OPTIONS:MASPELL}
-LIB_DEPENDS+=	aspell:${PORTSDIR}/textproc/aspell
-.else
-CONFIGURE_ARGS+=--without-aspell
-.endif
+PLIST_SUB+=	VERSION=${PORTVERSION}
 
 .if ${PORT_OPTIONS:MPYTHON}
 USE_PYTHON=	yes
 INSTALLS_EGGINFO=	yes
 PYDISTUTILS_EGGINFO=	Recoll-1.0-py${PYTHON_VER}.egg-info
-PLIST_SUB+=	PYTHON=""
-.else
-CONFIGURE_ARGS+=--disable-python-module
-PLIST_SUB+=	PYTHON="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MQT4}
+USE_QT4=	moc_build qmake_build rcc_build uic_build iconengines_run \
+		imageformats_run corelib gui xml webkit
+QT_NONSTANDARD=	yes
+CONFIGURE_ENV+=	QTDIR="${QT_PREFIX}" QMAKE="${QMAKE}"
+INSTALLS_ICONS=	yes
 .endif
 
 .if ${PORT_OPTIONS:MX11MON}
 USE_XORG+=	ice sm x11
 USE_FAM=	yes
 CONFIGURE_ARGS+=--with-fam
-.else
-CONFIGURE_ARGS+=--disable-x11mon
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} \
-		-e 's|$${MAKE} -C query recollq|@NOQTMAKE@$${MAKE} -C query recollq|' ${WRKSRC}/Makefile.in
 	@${REINPLACE_CMD} \
 		-e 's|/usr/local/lib|${LOCALBASE}/lib|' ${WRKSRC}/configure
 	@${REINPLACE_CMD} \
 		-e 's|= -g -O2|=|' ${WRKSRC}/mk/localdefs.in
 	@${REINPLACE_CMD} \
 		-e 's|-pthread|${PTHREAD_LIBS}|' ${WRKSRC}/mk/${OPSYS}
-	@${REINPLACE_CMD} -e 's|@NOCMDLINE@|@NOQTMAKE@|g' \
+	@${REINPLACE_CMD} -e 's|@NOCMDLINE@||g ; \
+		s|@prefix@|${PREFIX}| ; \
+		s|REALPREFIX=$$PREFIX|REALPREFIX=${STAGEDIR}$$PREFIX| ; \
+		s|$${ROOTFORPYTHON}||' \
 		${WRKSRC}/recollinstall.in
-
-post-configure:
-.if ${PORT_OPTIONS:MQT4}
-	@cd ${WRKSRC}/qtgui && ${SETENV} ${CONFIGURE_ENV} \
-	${QMAKE} ${QMAKEFLAGS} PREFIX=${PREFIX}
-.endif
+	@${REINPLACE_CMD} -e 's|python setup.py|${PYTHON_CMD} setup.py|' \
+		${WRKSRC}/python/recoll/Makefile \
+		${WRKSRC}/recollinstall.in
 
 .include <bsd.port.mk>

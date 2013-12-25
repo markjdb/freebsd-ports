@@ -1,15 +1,15 @@
 # $FreeBSD$
 
-PORTNAME=	jdk-doc
+PORTNAME=	jdk
 PORTVERSION=	${JDK_VERSION}.${JDK_UPDATE_VER}
 CATEGORIES=	java
 MASTER_SITES=	#
 DISTNAME=	jdk-${JDK_VERSION}u${JDK_UPDATE_VER}-apidocs
+PKGNAMESUFFIX=	${JDK_VERSION}-doc
 
 MAINTAINER=	java@FreeBSD.org
 COMMENT=	Java Development Kit ${JDK_MAJOR_VER} Documentation
 
-LATEST_LINK=	jdk${JDK_VERSION}-doc
 DOCSDIR?=	${PREFIX}/share/doc/jdk${JDK_VERSION}
 NO_CDROM=	License does not allow distribution with fee.
 RESTRICTED=	This documentation is under license and export control.
@@ -19,7 +19,7 @@ IGNORE=		port only installs documentation
 
 WRKSRC=		${WRKDIR}/docs
 JDK_VERSION=	7
-JDK_UPDATE_VER=	40
+JDK_UPDATE_VER=	45
 DOWNLOAD_URL=	http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 NO_BUILD=	yes

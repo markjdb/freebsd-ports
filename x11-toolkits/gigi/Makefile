@@ -3,7 +3,7 @@
 
 PORTNAME=	gigi
 PORTVERSION=	0.8.0.1074
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	${MASTER_SITE_LOCAL}
@@ -12,9 +12,9 @@ MASTER_SITE_SUBDIR=	oliver
 MAINTAINER=	oliver@FreeBSD.org
 COMMENT=	OpenGL Graphic User Interface Library
 
-LIB_DEPENDS=	IL.2:${PORTSDIR}/graphics/devil \
-		boost_python:${PORTSDIR}/devel/boost-python-libs \
-		freetype.9:${PORTSDIR}/print/freetype2
+LIB_DEPENDS=	libIL.so:${PORTSDIR}/graphics/devil \
+		libboost_python.so:${PORTSDIR}/devel/boost-python-libs \
+		libfreetype.so:${PORTSDIR}/print/freetype2
 
 USE_GCC=	yes
 USES=		cmake

@@ -52,6 +52,8 @@ lib/lives/plugins/decoders/mpegts_decoder.la
 lib/lives/plugins/decoders/mpegts_decoder.so
 lib/lives/plugins/decoders/ogg_decoder.la
 lib/lives/plugins/decoders/ogg_decoder.so
+lib/lives/plugins/decoders/zzavformat_decoder.la
+lib/lives/plugins/decoders/zzavformat_decoder.so
 lib/lives/plugins/effects/realtime/weed/RGBdelay.la
 lib/lives/plugins/effects/realtime/weed/RGBdelay.so
 lib/lives/plugins/effects/realtime/weed/alien_overlay.la
@@ -109,6 +111,8 @@ lib/lives/plugins/effects/realtime/weed/haar_analyser.la
 lib/lives/plugins/effects/realtime/weed/haar_analyser.so
 lib/lives/plugins/effects/realtime/weed/haip.la
 lib/lives/plugins/effects/realtime/weed/haip.so
+lib/lives/plugins/effects/realtime/weed/kaleidoscope.la
+lib/lives/plugins/effects/realtime/weed/kaleidoscope.so
 lib/lives/plugins/effects/realtime/weed/ladspa.la
 lib/lives/plugins/effects/realtime/weed/ladspa.so
 lib/lives/plugins/effects/realtime/weed/layout_blends.la
@@ -145,6 +149,8 @@ lib/lives/plugins/effects/realtime/weed/posterise.la
 lib/lives/plugins/effects/realtime/weed/posterise.so
 lib/lives/plugins/effects/realtime/weed/puretext.la
 lib/lives/plugins/effects/realtime/weed/puretext.so
+lib/lives/plugins/effects/realtime/weed/randomiser.la
+lib/lives/plugins/effects/realtime/weed/randomiser.so
 lib/lives/plugins/effects/realtime/weed/revTV.la
 lib/lives/plugins/effects/realtime/weed/revTV.so
 lib/lives/plugins/effects/realtime/weed/rippleTV.la
@@ -397,6 +403,7 @@ share/applications/LiVES.desktop
 %%NLS%%share/locale/nl_NL/LC_MESSAGES/lives.mo
 %%NLS%%share/locale/oc/LC_MESSAGES/lives.mo
 %%NLS%%share/locale/pl/LC_MESSAGES/lives.mo
+%%NLS%%share/locale/pms/LC_MESSAGES/lives.mo
 %%NLS%%share/locale/pt/LC_MESSAGES/lives.mo
 %%NLS%%share/locale/pt_BR/LC_MESSAGES/lives.mo
 %%NLS%%share/locale/ro/LC_MESSAGES/lives.mo
@@ -413,6 +420,8 @@ share/pixmaps/lives.xpm
 %%NLS%%@dirrmtry share/locale/ug
 %%NLS%%@dirrmtry share/locale/te/LC_MESSAGES
 %%NLS%%@dirrmtry share/locale/te
+%%NLS%%@dirrmtry share/locale/pms/LC_MESSAGES
+%%NLS%%@dirrmtry share/locale/pms
 %%NLS%%@dirrmtry share/locale/oc/LC_MESSAGES
 %%NLS%%@dirrmtry share/locale/oc
 %%NLS%%@dirrmtry share/locale/nl_NL/LC_MESSAGES
@@ -433,7 +442,7 @@ share/pixmaps/lives.xpm
 @dirrm %%DATADIR%%/plugins
 @dirrm %%DATADIR%%/icons
 @dirrm %%DATADIR%%
-%%PORTDOCS%%@dirrm %%DOCSDIR%%
+%%PORTDOCS%%@dirrmtry %%DOCSDIR%%
 @dirrm share/app-install/icons
 @dirrm share/app-install
 @dirrm lib/lives/plugins/playback/video
@@ -442,7 +451,6 @@ share/pixmaps/lives.xpm
 @dirrm lib/lives/plugins/encoders
 @dirrm lib/lives/plugins/effects/rendered
 @dirrm lib/lives/plugins/effects/realtime/weed/libvisual
-@dirrm lib/lives/plugins/effects/realtime/weed/icons
 %%FREI0R%%@dirrm lib/lives/plugins/effects/realtime/weed/frei0r
 @dirrm lib/lives/plugins/effects/realtime/weed/data/fourKlives/songs
 @dirrm lib/lives/plugins/effects/realtime/weed/data/fourKlives

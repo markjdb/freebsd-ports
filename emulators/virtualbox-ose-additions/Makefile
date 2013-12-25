@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	virtualbox-ose
-DISTVERSION=	4.2.18
-CATEGORIES=	emulators kld
+DISTVERSION=	4.2.20
+PORTREVISION=	1
+CATEGORIES=	emulators
 MASTER_SITES=	http://download.virtualbox.org/virtualbox/${DISTVERSION}/ \
 		http://tmp.chruetertee.ch/ \
 		http://disasterarea.chruetertee.ch/
@@ -23,7 +24,8 @@ BUILD_DEPENDS=	yasm:${PORTSDIR}/devel/yasm \
 UNIQUENAME=	${PORTNAME}${PKGNAMESUFFIX}
 WRKSRC=		${WRKDIR}/VirtualBox-${PORTVERSION}
 USE_RC_SUBR=	vboxguest vboxservice
-USES=		iconv
+USES=		iconv kmod
+USE_GCC=	any
 ONLY_FOR_ARCHS=	i386 amd64
 FETCH_ARGS=	-pRr
 USE_BZIP2=	yes
@@ -39,14 +41,11 @@ CONFLICTS_INSTALL=	virtualbox-ose-additions-devel-[3,4]* virtualbox-ose-[3,4]* v
 
 OPTIONS_DEFINE=	DEBUG X11 OPENGL
 OPTIONS_DEFAULT=	X11
+OPTIONS_SUB=	DEBUG X11 OPENGL
 
 NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
-PLIST_SUB+=	KMODDIR=${KMODDIR:C,^/,,}
-
-KMODDIR=	/boot/modules
-SRC_BASE?=	/usr/src
 VIDEODIR=	${PREFIX}/lib/xorg/modules/drivers
 INPUTDIR=	${PREFIX}/lib/xorg/modules/input
 
@@ -62,27 +61,20 @@ MAKE_FLAGS=	SYSDIR=${SRC_BASE}/sys
 KMK_FLAGS+=	BUILD_TYPE=debug
 KMK_BUILDTYPE=	debug
 MAKE_FLAGS+=	DEBUG_FLAGS="-O1 -g"
-PLIST_SUB+=	WITH_DEBUG=""
-.else
-PLIST_SUB+=	WITH_DEBUG="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MX11}
 VBOX_WITH_X11=	1
 USE_XORG=	xcursor xmu inputproto xorg-server xrandr
-PLIST_SUB+=	X11=""
 .else
 VBOX_WITH_X11=
-PLIST_SUB+=	X11="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MOPENGL}
 USE_XORG+=	xcomposite xdamage xext xfixes
 USE_GL=		gl
-PLIST_SUB+=	OPENGL=""
 .else
 CONFIGURE_ARGS+=--disable-opengl
-PLIST_SUB+=	OPENGL="@comment "
 .endif
 
 .if ${ARCH} == i386
@@ -92,10 +84,6 @@ KMK_ARCH=	freebsd.${ARCH}
 .endif
 
 XSERVER_ABI:=	${XSERVER_VER:S/.//:R}
-
-.if !exists(${SRC_BASE}/sys/kern/bus_if.m)
-IGNORE=		requires kernel sources
-.endif
 
 .include <bsd.port.pre.mk>
 
@@ -134,7 +122,6 @@ do-build:
 	cd ${VBOX_BIN}/src && make ${MAKE_FLAGS}
 
 do-install:
-	${MKDIR} ${KMODDIR}
 	${INSTALL_KLD} ${VBOX_BIN}/src/vboxguest/vboxguest.ko ${KMODDIR}
 .if ${PORT_OPTIONS:MDEBUG}
 	${INSTALL_KLD} ${VBOX_BIN}/src/vboxguest/vboxguest.ko.symbols ${KMODDIR}
@@ -145,7 +132,6 @@ do-install:
 	${INSTALL_KLD} ${VBOX_BIN}/vboxvideo.ko.symbols ${KMODDIR}
 .endif
 .endif
-	@/usr/sbin/kldxref ${KMODDIR}
 
 	${MKDIR} ${PREFIX}/etc/rc.d/
 

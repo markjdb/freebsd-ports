@@ -15,10 +15,9 @@ RUN_DEPENDS=	trytond>=2.4.0:${PORTSDIR}/finance/trytond \
 		trytond_account_product>=2.4.1:${PORTSDIR}/finance/trytond_account_product \
 		trytond_stock>=2.4.0:${PORTSDIR}/finance/trytond_stock
 
-CONFLICTS=	trytond_account_stock_continental-2.[68].*
+CONFLICTS=	trytond28_account_stock_continental-2.8.*
 
 USE_PYTHON=	yes
 USE_PYDISTUTILS=easy_install
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

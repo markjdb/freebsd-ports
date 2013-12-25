@@ -13,8 +13,6 @@ COMMENT=	A vbs-attachment filter for Sendmail Milter
 
 LICENSE=	GPLv2
 
-NO_STAGE=	yes
-
 USE_RC_SUBR=	vbsfilter
 PLIST_FILES=	libexec/vbsfilter
 
@@ -32,8 +30,8 @@ LIBS+=		-lsfio
 .endif
 
 do-extract:
-	@${MKDIR} ${WRKSRC}
-	@${CP} ${_DISTDIR}vbsfilter-${PORTVERSION}.c ${WRKSRC}
+	${MKDIR} ${WRKSRC}
+	${CP} ${_DISTDIR}vbsfilter-${PORTVERSION}.c ${WRKSRC}
 
 .for i in ${CTARGETS}
 ${i}:
@@ -46,6 +44,6 @@ do-build:	${CTARGETS}
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/vbsfilter-${PORTVERSION} \
-		${PREFIX}/libexec/vbsfilter
+		${STAGEDIR}${PREFIX}/libexec/vbsfilter
 
 .include <bsd.port.post.mk>

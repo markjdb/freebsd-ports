@@ -6,7 +6,9 @@ PORTVERSION=	3.5.8
 CATEGORIES=	www
 MASTER_SITES=	http://cloud.github.com/downloads/${PORTNAME}/${PORTNAME}/ \
 		LOCAL/sunpoet
+PKGNAMESUFFIX=	3
 DISTNAME=	${PORTNAME}_${PORTVERSION}
+EXTRACT_SUFX=	.zip
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Open source JavaScript HTML WYSIWYG editor for web sites
@@ -16,19 +18,15 @@ LICENSE=	LGPL21
 CONFLICTS_INSTALL=	tinymce-[0-24-9]*
 
 NO_BUILD=	yes
-NO_LATEST_LINK=	yes
-USE_ZIP=	yes
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-NO_STAGE=	yes
 post-extract:
 	@${TOUCH} \
 	  	${WRKSRC}/jscripts/tiny_mce/plugins/spellchecker/classes/utils/.keepme \
 		${WRKSRC}/jscripts/tiny_mce/plugins/spellchecker/includes/.keepme
 
 do-install:
-	cd ${WRKSRC}/ && ${COPYTREE_SHARE} . ${WWWDIR}/
-	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${WWWDIR}/
+	cd ${WRKSRC}/ && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR}/
 
 # maintainer section:
 

@@ -3,6 +3,7 @@
 
 PORTNAME=	mercator
 PORTVERSION=	0.3.2
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	SF/worldforge/Mercator%20%28terrain%20lib%29/${PORTVERSION}
 
@@ -17,7 +18,6 @@ USE_LDCONFIG=	yes
 USE_GCC=	yes
 
 CXXFLAGS+=	-include wchar.h
-CONFIGURE_ARGS+="CXXFLAGS=${CXXFLAGS}"
 
 NO_STAGE=	yes
 .include <bsd.port.mk>

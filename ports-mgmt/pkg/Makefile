@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	pkg
-DISTVERSION=	1.1.4
-PORTREVISION=	8
+DISTVERSION=	1.2.4
+PORTREVISION=	1
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://files.etoilebsd.net/pkg/ \
 		http://mirror.shatow.net/freebsd/${PORTNAME}/ \
@@ -11,7 +11,7 @@ MASTER_SITES=	http://files.etoilebsd.net/pkg/ \
 MAINTAINER=	portmgr@FreeBSD.org
 COMMENT=	New generation package manager
 
-LICENSE=	BSD
+LICENSE=	BSD2CLAUSE
 
 USE_XZ=		yes
 
@@ -20,14 +20,24 @@ USE_XZ=		yes
 NO_CCACHE=	yes
 USE_LDCONFIG=	yes
 USES=		uidfix
+MAKE_ARGS+=	PKG_PORTSDIR=${PORTSDIR}
 
 MAKE_ENV+=	WITHOUT_PROFILE=yes __MAKE_CONF=/dev/null SRCCONF=/dev/null \
 		PORTREVISION=${PORTREVISION}
+
 # Use a submake as 'deinstall install' needs to reevaluate PKG_CMD
 # so that pkg-static is used from the wrkdir
 USE_SUBMAKE=	yes
 
+.if !exists(/usr/include/jail.h)
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-pkg_pkg.8
+.endif
+
 .include <bsd.port.pre.mk>
+
+.if defined(WITH_DEBUG) && !defined(WITHOUT_DEBUG)
+MAKE_ARGS+=	DEBUG_FLAGS="${DEBUG_FLAGS}"
+.endif
 
 .if defined(WITH_PKGNG)
 .if ${WITH_PKGNG} == devel
@@ -71,7 +81,7 @@ pre-everything::
 PKG_DEPENDS=
 .undef INSTALLS_DEPENDS
 .if !exists(${LOCALBASE}/sbin/pkg)
-PKG_BIN=	${WRKSRC}/pkg-static/pkg-static
+PKG_BIN=	${WRKSRC}/pkg/pkg-static
 .endif
 .endif
 

@@ -3,7 +3,7 @@
 
 PORTNAME=	xpvm
 PORTVERSION=	1.2.5
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	net parallel
 MASTER_SITES=	NL
 MASTER_SITE_SUBDIR=	pvm3/xpvm
@@ -15,9 +15,10 @@ COMMENT=	A Graphical Console and Monitor for PVM
 
 MAKE_JOBS_UNSAFE=	yes
 
+USE_GCC=	yes
 BUILD_DEPENDS=	${LOCALBASE}/lib/libpvm3.a:${PORTSDIR}/net/pvm
 RUN_DEPENDS:=	${BUILD_DEPENDS}
-LIB_DEPENDS=	tk84.1:${PORTSDIR}/x11-toolkits/tk84
+LIB_DEPENDS=	libtk84.so:${PORTSDIR}/x11-toolkits/tk84
 
 WRKSRC=		${WRKDIR}/xpvm
 PVM_ROOT?=	${LOCALBASE}/lib/pvm

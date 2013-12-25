@@ -18,9 +18,10 @@ OPTIONS_DEFINE=	DOCS
 
 NO_WRKSUBDIR=yes
 
+USES=		dos2unix
 USE_ZIP=	yes
 USE_XORG=	xpm
-USE_DOS2UNIX=	*.cpp *.h config.mk makefile
+DOS2UNIX_GLOB=	*.cpp *.h config.mk makefile
 MAKEFILE=	makefile
 MAKE_ARGS=	DEPTH="${WRKSRC}"
 ALL_TARGET=	${OPSYS:L}
@@ -28,20 +29,15 @@ ALL_TARGET=	${OPSYS:L}
 PORTDOCS=	*
 PLIST_FILES=	bin/${PORTNAME}
 
-NO_STAGE=	yes
-.include <bsd.port.options.mk>
-
 post-patch:
 	@${FIND} ${WRKSRC} -name "*.xpm" | ${XARGS} ${REINPLACE_CMD} -e \
 		's|^static char|static const char|'
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/x11/${OPSYS:U}/${PORTNAME} ${PREFIX}/bin
-.if ${PORT_OPTIONS:MDOCS}
-	@${MKDIR} ${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/readme.txt ${DOCSDIR}
-	@${MKDIR} ${DOCSDIR}/instructions
-	${INSTALL_DATA} ${WRKSRC}/instructions/* ${DOCSDIR}/instructions
-.endif
+	${INSTALL_PROGRAM} ${WRKSRC}/x11/${OPSYS:U}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/readme.txt ${STAGEDIR}${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}/instructions
+	${INSTALL_DATA} ${WRKSRC}/instructions/* ${STAGEDIR}${DOCSDIR}/instructions
 
 .include <bsd.port.mk>

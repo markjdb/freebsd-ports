@@ -9,6 +9,8 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Small and easy to use ruby Atom feed generator
 
+LICENSE=	MIT
+
 RUN_DEPENDS=	rubygem-builder>=0:${PORTSDIR}/devel/rubygem-builder \
 		rubygem-public_suffix>=0:${PORTSDIR}/dns/rubygem-public_suffix
 
@@ -16,5 +18,4 @@ USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

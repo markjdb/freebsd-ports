@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Path-Class
-PORTVERSION=	0.32
+PORTVERSION=	0.33
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:KWILLIAMS
@@ -19,20 +19,14 @@ OPTIONS_DEFINE=	DOCS
 USES=		perl5
 USE_PERL5=	modbuild
 
-MAN3=		Path::Class.3 \
-		Path::Class::Dir.3 \
-		Path::Class::Entity.3 \
-		Path::Class::File.3
 PORTDOCS=	Changes README
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 post-install:
 .if ${PORT_OPTIONS:MDOCS}
-	${MKDIR} ${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${DOCSDIR}/
-	@${ECHO_MSG} "===> Documentation installed in ${DOCSDIR}."
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	(cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR})
 .endif
 
 .include <bsd.port.mk>

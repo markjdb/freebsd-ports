@@ -11,7 +11,7 @@ MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Sybase DBI driver for Perl 5
 
 BUILD_DEPENDS=	p5-DBI>=0:${PORTSDIR}/databases/p5-DBI
-LIB_DEPENDS=	ct.4:${PORTSDIR}/databases/freetds
+LIB_DEPENDS=	libct.so:${PORTSDIR}/databases/freetds
 RUN_DEPENDS=	p5-DBI>=0:${PORTSDIR}/databases/p5-DBI
 
 CONFIGURE_ENV=	SYBASE=${LOCALBASE}
@@ -22,7 +22,4 @@ USE_PERL5=	configure
 CONFIGURE_ARGS=	< /dev/null
 .endif
 
-MAN3=		DBD::Sybase.3
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

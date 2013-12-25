@@ -3,7 +3,7 @@
 
 PORTNAME=	reshape
 PORTVERSION=	0.8.4
-PORTREVISION=	9
+PORTREVISION=	11
 CATEGORIES=	devel
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -17,5 +17,4 @@ RUN_DEPENDS=	R-cran-plyr>0:${PORTSDIR}/devel/R-cran-plyr
 USE_R_MOD=	yes
 R_MOD_AUTOPLIST=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

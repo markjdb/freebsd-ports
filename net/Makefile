@@ -91,6 +91,7 @@
     SUBDIR += cvsupchk
     SUBDIR += cvsync
     SUBDIR += cyphesis
+    SUBDIR += czmq
     SUBDIR += daemonlogger
     SUBDIR += dante
     SUBDIR += daq
@@ -147,8 +148,6 @@
     SUBDIR += freeradius2
     SUBDIR += freeradius3
     SUBDIR += freerdp
-    SUBDIR += freeswitch
-    SUBDIR += freeswitch-core
     SUBDIR += freeswitch-core-devel
     SUBDIR += freeswitch-curl-devel
     SUBDIR += freeswitch-devel
@@ -161,7 +160,6 @@
     SUBDIR += fspclient
     SUBDIR += fspd
     SUBDIR += fsplib
-    SUBDIR += ftelnetd
     SUBDIR += g2ipmsg
     SUBDIR += gateway6
     SUBDIR += get_iplayer
@@ -210,7 +208,6 @@
     SUBDIR += hawknl-devel
     SUBDIR += hexinject
     SUBDIR += heybuddy
-    SUBDIR += hf6to4
     SUBDIR += hidentd
     SUBDIR += hinfo
     SUBDIR += hlmaster
@@ -314,6 +311,7 @@
     SUBDIR += libgweather
     SUBDIR += libilbc
     SUBDIR += libkvkontakte
+    SUBDIR += libmateweather
     SUBDIR += libmediawiki
     SUBDIR += libmms
     SUBDIR += libmxp
@@ -349,6 +347,9 @@
     SUBDIR += libunp
     SUBDIR += libutp
     SUBDIR += libvncserver
+    SUBDIR += libzmq2
+    SUBDIR += libzmq3
+    SUBDIR += libzmq4
     SUBDIR += liferea
     SUBDIR += linc
     SUBDIR += linc-reference
@@ -363,7 +364,6 @@
     SUBDIR += liveMedia
     SUBDIR += lla
     SUBDIR += ltm
-    SUBDIR += lua50-luasocket
     SUBDIR += lualdap
     SUBDIR += luasocket
     SUBDIR += lvwimax
@@ -405,6 +405,7 @@
     SUBDIR += ncp
     SUBDIR += ncplib
     SUBDIR += ndisc6
+    SUBDIR += ndpi
     SUBDIR += nemesis
     SUBDIR += nepenthes
     SUBDIR += nepim
@@ -441,6 +442,7 @@
     SUBDIR += nstxd
     SUBDIR += ntlmaps
     SUBDIR += ntop
+    SUBDIR += ntopng
     SUBDIR += ntp
     SUBDIR += ntp-devel
     SUBDIR += ntp-rc
@@ -469,6 +471,7 @@
     SUBDIR += openldap24-server
     SUBDIR += openmcu
     SUBDIR += openmpi
+    SUBDIR += openmpi-devel
     SUBDIR += openmq
     SUBDIR += openmq-client
     SUBDIR += openntpd
@@ -549,6 +552,7 @@
     SUBDIR += p5-Net-Blogger
     SUBDIR += p5-Net-CIDR-Lite
     SUBDIR += p5-Net-CIDR-MobileJP
+    SUBDIR += p5-Net-CIDR-Set
     SUBDIR += p5-Net-CLI-Interact
     SUBDIR += p5-Net-CSTA
     SUBDIR += p5-Net-CascadeCopy
@@ -583,6 +587,7 @@
     SUBDIR += p5-Net-Google-Calendar
     SUBDIR += p5-Net-Google-Code
     SUBDIR += p5-Net-Google-DataAPI
+    SUBDIR += p5-Net-Google-PicasaWeb
     SUBDIR += p5-Net-Google-SafeBrowsing2
     SUBDIR += p5-Net-Google-Spreadsheets
     SUBDIR += p5-Net-Growl
@@ -739,11 +744,9 @@
     SUBDIR += p5-SOAP-Amazon-S3
     SUBDIR += p5-SOAP-Data-Builder
     SUBDIR += p5-SOAP-Lite
-    SUBDIR += p5-SOAP-Lite-060
     SUBDIR += p5-SOAP-MySOAP
     SUBDIR += p5-SOAP-Transport-TCP
     SUBDIR += p5-Samba-LDAP
-    SUBDIR += p5-Script-isAperlScript
     SUBDIR += p5-Server-Starter
     SUBDIR += p5-Socket
     SUBDIR += p5-Socket-Class
@@ -797,6 +800,7 @@
     SUBDIR += pear-Horde_Ldap
     SUBDIR += pear-Horde_Rpc
     SUBDIR += pear-Horde_Scribe
+    SUBDIR += pear-Horde_Socket_Client
     SUBDIR += pear-Horde_Url
     SUBDIR += pear-Net_CDDB
     SUBDIR += pear-Net_CheckIP
@@ -883,7 +887,6 @@
     SUBDIR += proxychains
     SUBDIR += proxychains-ng
     SUBDIR += prtunnel
-    SUBDIR += ptpd
     SUBDIR += ptpd2
     SUBDIR += ptpd2-devel
     SUBDIR += ptunnel
@@ -904,6 +907,7 @@
     SUBDIR += py-eventlet
     SUBDIR += py-gntp
     SUBDIR += py-google
+    SUBDIR += py-gspreadsheet
     SUBDIR += py-impacket
     SUBDIR += py-iplib
     SUBDIR += py-kombu
@@ -1026,9 +1030,12 @@
     SUBDIR += rubygem-amqp067
     SUBDIR += rubygem-aws-s3
     SUBDIR += rubygem-bunny
+    SUBDIR += rubygem-bunny060
+    SUBDIR += rubygem-connection_pool
     SUBDIR += rubygem-domain_name
     SUBDIR += rubygem-dropbox-sdk
     SUBDIR += rubygem-geoip
+    SUBDIR += rubygem-gitlab_omniauth-ldap
     SUBDIR += rubygem-http_parser.rb
     SUBDIR += rubygem-httpauth
     SUBDIR += rubygem-ipaddress
@@ -1039,6 +1046,11 @@
     SUBDIR += rubygem-network_interface
     SUBDIR += rubygem-oauth
     SUBDIR += rubygem-oauth2
+    SUBDIR += rubygem-omniauth-github
+    SUBDIR += rubygem-omniauth-google-oauth2
+    SUBDIR += rubygem-omniauth-oauth
+    SUBDIR += rubygem-omniauth-oauth2
+    SUBDIR += rubygem-omniauth-twitter
     SUBDIR += rubygem-open-uri-cached
     SUBDIR += rubygem-openid
     SUBDIR += rubygem-packetfu
@@ -1049,6 +1061,7 @@
     SUBDIR += rubygem-rightgogrid
     SUBDIR += rubygem-righthttpconnection
     SUBDIR += rubygem-rightslicehost
+    SUBDIR += rubygem-rubyntlm
     SUBDIR += rubygem-rubytter
     SUBDIR += rubygem-rudy
     SUBDIR += rubygem-rye
@@ -1088,6 +1101,7 @@
     SUBDIR += service-discovery-applet
     SUBDIR += serviio
     SUBDIR += sflowtool
+    SUBDIR += shadowsocks-libev
     SUBDIR += shaperprobe
     SUBDIR += sharity-light
     SUBDIR += shelldap
@@ -1244,6 +1258,8 @@
     SUBDIR += wired-tracker
     SUBDIR += wireshark
     SUBDIR += wireshark-lite
+    SUBDIR += wizd
+    SUBDIR += wlan2eth
     SUBDIR += wmlj
     SUBDIR += wmnd
     SUBDIR += wmnet

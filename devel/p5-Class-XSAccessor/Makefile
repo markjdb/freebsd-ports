@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Class-XSAccessor
-PORTVERSION=	1.18
+PORTVERSION=	1.19
 PORTEPOCH=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
@@ -18,9 +18,4 @@ LICENSE_COMB=	dual
 USES=		perl5
 USE_PERL5=	configure
 
-MAN3=		Class::XSAccessor.3 \
-    		Class::XSAccessor::Array.3 \
-    		Class::XSAccessor::Heavy.3
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

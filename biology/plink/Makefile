@@ -3,6 +3,7 @@
 
 PORTNAME=	plink
 PORTVERSION=	1.07
+PORTREVISION=	1
 CATEGORIES=	biology science
 MASTER_SITES=	http://pngu.mgh.harvard.edu/~purcell/plink/dist/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-src
@@ -12,10 +13,10 @@ COMMENT=	Whole genome association analysis toolset
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	lapack:${PORTSDIR}/math/lapack
+LIB_DEPENDS=	liblapack.so:${PORTSDIR}/math/lapack
 
+USES=		gmake
 USE_ZIP=	yes
-USE_GMAKE=	yes
 USE_FORTRAN=	yes	# Make it use the same compiler as lapack
 
 PLIST_FILES=	bin/plink

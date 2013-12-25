@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Net-Nslookup
-PORTVERSION=	2.03
+PORTVERSION=	2.04
 CATEGORIES=	dns perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -16,7 +16,4 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 USES=		perl5
 USE_PERL5=	configure
 
-MAN3=		Net::Nslookup.3
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

@@ -48,6 +48,7 @@ lib/gemrb/plugins/WAVReader.so
 lib/gemrb/plugins/WEDImporter.so
 lib/gemrb/plugins/WMPImporter.so
 lib/gemrb/plugins/ZLibManager.so
+man/man6/gemrb.6.gz
 %%PORTDOCS%%%%DOCSDIR%%/README
 %%PORTDOCS%%%%DOCSDIR%%/INSTALL
 %%PORTDOCS%%%%DOCSDIR%%/COPYING
@@ -2569,7 +2570,6 @@ share/applications/gemrb.desktop
 @dirrm %%DATADIR%%/GUIScripts/bg1
 @dirrm %%DATADIR%%/GUIScripts
 @dirrm %%DATADIR%%
-@dirrmtry share/applications
 @dirrmtry share/icons/hicolor/scalable/apps
 @dirrmtry share/icons/hicolor/scalable
 @dirrmtry share/icons/hicolor

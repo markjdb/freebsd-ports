@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	Dancer
-PORTVERSION=	1.3117
+PORTVERSION=	1.3119
+PORTREVISION=	1
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:YANICK
@@ -18,6 +19,7 @@ RUN_DEPENDS=	\
 	p5-HTTP-Body>=1.07:${PORTSDIR}/www/p5-HTTP-Body \
 	p5-HTTP-Server-Simple-PSGI>=0.11:${PORTSDIR}/www/p5-HTTP-Server-Simple-PSGI \
 	p5-MIME-Types>0:${PORTSDIR}/mail/p5-MIME-Types \
+	p5-Module-Runtime>=0:${PORTSDIR}/devel/p5-Module-Runtime \
 	p5-URI>=1.59:${PORTSDIR}/net/p5-URI \
 	p5-Try-Tiny>=0.09:${PORTSDIR}/lang/p5-Try-Tiny
 BUILD_DEPENDS:=	${RUN_DEPENDS}
@@ -38,7 +40,6 @@ TEST_DEPENDS=	\
 OPTIONS_DEFINE=	YAML
 OPTIONS_DEFAULT=	YAML
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MYAML}
@@ -47,64 +48,5 @@ RUN_DEPENDS+=	p5-YAML>=0.71:${PORTSDIR}/textproc/p5-YAML
 
 USES=	perl5
 USE_PERL5=	configure
-
-MAN1=	dancer.1
-MAN3=	Dancer.3 \
-	Dancer::Config.3 \
-	Dancer::Config::Object.3 \
-	Dancer::Cookbook.3 \
-	Dancer::Cookie.3 \
-	Dancer::Cookies.3 \
-	Dancer::Deployment.3 \
-	Dancer::Deprecation.3 \
-	Dancer::Development.3 \
-	Dancer::Development::Integration.3 \
-	Dancer::Engine.3 \
-	Dancer::Error.3 \
-	Dancer::Exception.3 \
-	Dancer::Exception::Base.3 \
-	Dancer::FileUtils.3 \
-	Dancer::HTTP.3 \
-	Dancer::Handler::Debug.3 \
-	Dancer::Handler::PSGI.3 \
-	Dancer::Hook.3 \
-	Dancer::Hook::Properties.3 \
-	Dancer::Introduction.3 \
-	Dancer::Logger.3 \
-	Dancer::Logger::Abstract.3 \
-	Dancer::Logger::Capture.3 \
-	Dancer::Logger::Capture::Trap.3 \
-	Dancer::Logger::Console.3 \
-	Dancer::Logger::Diag.3 \
-	Dancer::Logger::File.3 \
-	Dancer::Logger::Note.3 \
-	Dancer::Logger::Null.3 \
-	Dancer::MIME.3 \
-	Dancer::ModuleLoader.3 \
-	Dancer::Object.3 \
-	Dancer::Object::Singleton.3 \
-	Dancer::Plugin.3 \
-	Dancer::Plugin::Ajax.3 \
-	Dancer::Plugins.3 \
-	Dancer::Request.3 \
-	Dancer::Request::Upload.3 \
-	Dancer::Response.3 \
-	Dancer::Route::Cache.3 \
-	Dancer::Serializer.3 \
-	Dancer::Serializer::JSON.3 \
-	Dancer::Serializer::Mutable.3 \
-	Dancer::Serializer::XML.3 \
-	Dancer::Serializer::YAML.3 \
-	Dancer::Session.3 \
-	Dancer::Session::Abstract.3 \
-	Dancer::Session::Simple.3 \
-	Dancer::Session::YAML.3 \
-	Dancer::Template.3 \
-	Dancer::Template::Abstract.3 \
-	Dancer::Template::Simple.3 \
-	Dancer::Template::TemplateToolkit.3 \
-	Dancer::Test.3 \
-	Dancer::Timer.3 \
-	Dancer::Tutorial.3
 
 .include <bsd.port.mk>

@@ -1,3 +1,4 @@
+# Created by: Matthias Petermann <matthias@petermann-it.de>
 # $FreeBSD$
 
 PORTNAME=	trytond_party_siret
@@ -13,10 +14,9 @@ LICENSE=	GPLv3
 RUN_DEPENDS=	trytond>=2.4.0:${PORTSDIR}/finance/trytond \
 		trytond_party>=2.4.0:${PORTSDIR}/finance/trytond_party
 
-CONFLICTS=	trytond_party_siret-2.[68].*
+CONFLICTS=	trytond28_party_siret-2.8.*
 
 USE_PYTHON=	yes
 USE_PYDISTUTILS=easy_install
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

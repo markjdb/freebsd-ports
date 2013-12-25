@@ -9,10 +9,10 @@ MASTER_SITES=	SF/${PORTNAME}-xmms/${PORTNAME}-xmms/2.05
 PKGNAMEPREFIX=	xmms-
 DISTNAME=	${PORTNAME}${PKGNAMEPREFIX}2.05
 
-MAINTAINER=	c.petrik.sosa@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	ModPlug-based plugin for XMMS
 
-LIB_DEPENDS?=	xmms:${PORTSDIR}/multimedia/xmms
+LIB_DEPENDS?=	libxmms.so:${PORTSDIR}/multimedia/xmms
 LIB_DEPENDS+=	modplug:${PORTSDIR}/audio/libmodplug
 
 USES=		pkgconfig

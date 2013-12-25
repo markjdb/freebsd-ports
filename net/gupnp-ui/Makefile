@@ -18,10 +18,10 @@ LIB_DEPENDS=	libgupnp-1.0.so:${PORTSDIR}/net/gupnp \
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 GNU_CONFIGURE=	yes
+MAKE_ENV=	INSTALL_STRIP_FLAG=${STRIP}
 USE_GNOME=	gtk20
 USE_LDCONFIG=	yes
 USE_PYTHON=	yes
 USES=		pathfix pkgconfig
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

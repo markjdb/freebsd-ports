@@ -9,11 +9,11 @@ MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE}
 PKGNAMEPREFIX=	fusefs-
 EXTRACT_SUFX=	.tgz
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	An encrypted pass-through FUSE filesystem
 
-LIB_DEPENDS=	rlog.5:${PORTSDIR}/devel/rlog \
-		boost_serialization:${PORTSDIR}/devel/boost-libs
+LIB_DEPENDS=	librlog.so:${PORTSDIR}/devel/rlog \
+		libboost_serialization.so:${PORTSDIR}/devel/boost-libs
 
 WRKSRC=		${WRKDIR}/encfs-${PORTVERSION}
 

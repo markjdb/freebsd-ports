@@ -12,10 +12,9 @@ COMMENT=	Player for many different Amiga and PC module formats
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	xmp:${PORTSDIR}/audio/libxmp
+LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
 
 USES=		pkgconfig gmake
-NO_STAGE=	yes
 WANT_GNOME=	yes
 GNU_CONFIGURE=	yes
 
@@ -24,8 +23,6 @@ CONFIGURE_ARGS+=	--sysconfdir=${PREFIX}/etc
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-MAN1=		xmp.1
-
 CONFIG_FILES=	xmp.conf modules.conf
 
 OPTIONS_DEFINE=	ALSA PULSEAUDIO
@@ -33,7 +30,7 @@ OPTIONS_DEFINE=	ALSA PULSEAUDIO
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MALSA}
-LIB_DEPENDS+=	asound:${PORTSDIR}/audio/alsa-lib
+LIB_DEPENDS+=	libasound.so:${PORTSDIR}/audio/alsa-lib
 RUN_DEPENDS+=	${LOCALBASE}/lib/alsa-lib/libasound_module_pcm_oss.so:${PORTSDIR}/audio/alsa-plugins
 CONFIGURE_ARGS+=	--enable-alsa
 .else
@@ -41,7 +38,7 @@ CONFIGURE_ARGS+=	--disable-alsa
 .endif
 
 .if ${PORT_OPTIONS:MPULSEAUDIO}
-LIB_DEPENDS+=	pulse-simple:${PORTSDIR}/audio/pulseaudio
+LIB_DEPENDS+=	libpulse-simple.so:${PORTSDIR}/audio/pulseaudio
 CONFIGURE_ARGS+=	--enable-pulseaudio
 .else
 CONFIGURE_ARGS+=	--disable-pulseaudio
@@ -51,10 +48,10 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|\ install-conf||' ${WRKSRC}/Makefile.in
 
 post-install:
-	${MKDIR} ${ETCDIR}
+	${MKDIR} ${STAGEDIR}${ETCDIR}
 .for f in ${CONFIG_FILES}
-	@test -f ${ETCDIR}/${f} || ${INSTALL_DATA} ${WRKSRC}/src/${f} ${ETCDIR}/${f}
-	${INSTALL_DATA} ${WRKSRC}/src/${f} ${ETCDIR}/${f}.sample
+	@test -f ${ETCDIR}/${f} || ${INSTALL_DATA} ${WRKSRC}/src/${f} ${STAGEDIR}${ETCDIR}/${f}
+	${INSTALL_DATA} ${WRKSRC}/src/${f} ${STAGEDIR}${ETCDIR}/${f}.sample
 .endfor
 
 .include <bsd.port.mk>

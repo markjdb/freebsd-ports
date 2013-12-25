@@ -71,6 +71,7 @@
     SUBDIR += p5-Convert-TNEF
     SUBDIR += p5-Convert-UU
     SUBDIR += p5-Convert-UUlib
+    SUBDIR += p5-Cpanel-JSON-XS
     SUBDIR += p5-Cstools
     SUBDIR += p5-Data-AMF
     SUBDIR += p5-Encode
@@ -87,7 +88,9 @@
     SUBDIR += p5-JSON
     SUBDIR += p5-JSON-Any
     SUBDIR += p5-JSON-DWIW
+    SUBDIR += p5-JSON-MaybeXS
     SUBDIR += p5-JSON-PP
+    SUBDIR += p5-JSON-Tiny
     SUBDIR += p5-JSON-XS
     SUBDIR += p5-JSON-XS-VersionOneAndTwo
     SUBDIR += p5-JSON1
@@ -109,7 +112,6 @@
     SUBDIR += p5-Text-Unidecode
     SUBDIR += p5-URI-UTF8-Punycode
     SUBDIR += p5-Unicode-IMAPUtf7
-    SUBDIR += p5-Unicode-Lite
     SUBDIR += p5-Unicode-Map
     SUBDIR += p5-Unicode-Map8
     SUBDIR += p5-Unicode-MapUTF8
@@ -141,7 +143,6 @@
     SUBDIR += py-bsdconv
     SUBDIR += py-iconv
     SUBDIR += py-pisa
-    SUBDIR += py-svglib
     SUBDIR += py-unidecode
     SUBDIR += py-zfec
     SUBDIR += rcctools

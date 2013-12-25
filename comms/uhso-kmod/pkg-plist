@@ -1,5 +1,0 @@
-%%PL_UHSOCTL%%bin/uhsoctl
-@cwd /boot/modules
-uhso.ko
-@exec kldxref %D
-@unexec kldxref %D

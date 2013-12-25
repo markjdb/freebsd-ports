@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	pypy
-DISTVERSION=	2.2-alpha${DATE}
-CATEGORIES=	lang python java
+DISTVERSION=	2.3-alpha${DATE}
+CATEGORIES=	lang python
 MASTER_SITES=	https://bitbucket.org/pypy/pypy/get/ LOCAL/dbn/${PORTNAME}
 PKGNAMESUFFIX=	-devel
 DISTNAME=	${COMMIT}
-DIST_SUBDIR=	pypy
+DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	dbn@FreeBSD.org
 COMMENT=	Fast, compliant implementation of the Python language
@@ -15,9 +15,9 @@ COMMENT=	Fast, compliant implementation of the Python language
 LICENSE=	MIT PSFL
 LICENSE_COMB=	multi
 
-LIB_DEPENDS=	expat:${PORTSDIR}/textproc/expat2 \
-		ffi:${PORTSDIR}/devel/libffi \
-		sqlite3:${PORTSDIR}/databases/sqlite3
+LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2 \
+		libffi.so:${PORTSDIR}/devel/libffi \
+		libsqlite3.so:${PORTSDIR}/databases/sqlite3
 
 PYTHON_DESC=	Use Python-2.7 to translate (slowest)
 PYPY_DESC=	Use PyPy to translate (fastest, highest memory usage)
@@ -37,14 +37,13 @@ OPTIONS_DEFAULT+=	PYPY_MINMEM
 .endif
 
 CONFLICTS_INSTALL=	pypy-[0-9]*
-LATEST_LINK=	${PORTNAME}-devel
 
 ALL_TARGET=	${PYPY_NAMES}
 BUILD_WRKSRC=	${WRKDIR}
-COMMIT=		ab7580454b32
-DATE=		20130810
+COMMIT=		92ff43b19372
+DATE=		20131216
 USE_BZIP2=	yes
-USES=		gettext iconv
+USES=		compiler:c11 gettext iconv
 MAKEFILE=	${FILESDIR}/Makefile
 PKGINSTALL=	${WRKDIR}/pkg-install
 PKGDEINSTALL=	${WRKDIR}/pkg-deinstall
@@ -64,20 +63,8 @@ PLIST_SUB+=	PYPY_LIBDIR=${PYPY_LIBDIR} \
 MAKE_ENV+=	DISTVERSION=${DISTVERSION} PYTHON_CMD=${PYTHON_CMD} \
 		WRKSRC=${WRKSRC} PYPY_LOCALBASE=${LOCALBASE}
 
-LOCALBASE_REFIX=	\
-		lib_pypy/_sqlite3.py
-
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 .include "${MASTERDIR}/files/bsd.pypy.inst.mk"
-
-.if ${OSVERSION} < 1000024 || ( ${ARCH} != "i386" && ${ARCH} != "amd64" )
-.if ${CC:T} == cc && ( exists(/usr/bin/clang) || exists(${LOCALBASE}/clang) )
-CC=		clang
-.else
-USE_GCC=	4.2+
-.endif
-.endif
 
 .if ${PORT_OPTIONS:MPYPY} || defined(PYTHON_CMD)
 PYTHON_CMD?=	${LOCALBASE}/bin/pypy
@@ -116,7 +103,7 @@ WITH_BOEHM_GC=	yes
 .endfor # inst in ${PYPY_INST}
 
 .if defined(WITH_BOEHM_GC)
-LIB_DEPENDS+=	gc:${PORTSDIR}/devel/boehm-gc
+LIB_DEPENDS+=	libgc.so:${PORTSDIR}/devel/boehm-gc
 .endif
 
 # Translate FreeBSD ARCH types to PyPy ARCH types
@@ -159,26 +146,26 @@ PYPY_${inst}_OPT=	2
 #
 .if ${PYPY_ARCH:M*64}
 .  if ${PORT_OPTIONS:MPYPY}
-# 64bit + pypy = 5.9 GiB
-PYPY_TRANSLATION_MEMORY=	6062436
+# 64bit + pypy = 5.5 GiB
+PYPY_TRANSLATION_MEMORY=	5803684
 .  elif ${PORT_OPTIONS:MPYPY_MINMEM}
-# 64bit + pypy (minimum memory) = 3.6GiB
-PYPY_TRANSLATION_MEMORY=	3729228
+# 64bit + pypy (minimum memory) = 3.3 GiB
+PYPY_TRANSLATION_MEMORY=	3452308
 .  else
-# 64bit + python = 4.7 GiB
-PYPY_TRANSLATION_MEMORY=	4662460
+# 64bit + python = 4.5 GiB
+PYPY_TRANSLATION_MEMORY=	4716500
 .  endif
 # 64bit system += 366 MiB
 PYPY_MINIMUM_MEMORY=	$$((${PYPY_TRANSLATION_MEMORY} + 374784))
 .else
 .  if ${PORT_OPTIONS:MPYPY}
 # 32bit + pypy = 2.3GiB
-PYPY_TRANSLATION_MEMORY=	2523868
+PYPY_TRANSLATION_MEMORY=	2438856
 .  elif ${PORT_OPTIONS:MPYPY_MINMEM}
-# 32bit + pypy (minimum memory) = 2.2GiB
-PYPY_TRANSLATION_MEMORY=	2246768
-# 32bit + python = 2.3 GiB
-PYPY_TRANSLATION_MEMORY=	2523868
+# 32bit + pypy (minimum memory) = 2.0GiB
+PYPY_TRANSLATION_MEMORY=	2120844
+# 32bit + python = 2.2 GiB
+PYPY_TRANSLATION_MEMORY=	2286764
 .  endif
 # 32bit system += 168 MiB
 PYPY_MINIMUM_MEMORY=	$$((${PYPY_TRANSLATION_MEMORY} + 171787))
@@ -242,11 +229,6 @@ post-extract:
 .endfor
 	${LN} -s ${WRKDIR}/lib ${WRKSRC}/lib
 
-post-patch:
-.for file in ${LOCALBASE_REFIX}
-	${REINPLACE_CMD} 's|/usr/local|${LOCALBASE}|g' ${WRKSRC}/${file}
-.endfor
-
 do-configure:
 	${SED} -e 's|%%PREFIX%%|${PREFIX}|g' \
 		-e 's|%%PYPY_NAMES%%|${PYPY_NAMES}|g' \
@@ -258,8 +240,9 @@ do-configure:
 post-build:
 # UPDATING: check pypy/tool/release/package.py for list of cffi modules
 .for mod in _sqlite3 _curses syslog
-	${WRKDIR}/${PYPY_PRIMARY} -c 'import ${mod}'
+	${SETENV} ${MAKE_ENV} ${WRKDIR}/${PYPY_PRIMARY} -c 'import ${mod}'
 .endfor
+	${STRIP_CMD} ${WRKDIR}/${PYPY_LIBDIR}/lib_pypy/__pycache__/_cffi__*.pypy-${PYPY_VER:C/\.//}.so
 .for _path in ${PYPYDIRS}
 	-${FIND} ${WRKDIR}/${_path:C/.*://}/ -type d | \
 		${XARGS} -n1 ${WRKDIR}/${PYPY_PRIMARY} -m compileall -fl
@@ -274,12 +257,12 @@ post-build:
 
 do-install:
 .for _path in ${PYPYDIRS}
-	-${RM} ${PREFIX}/${_path:C/.*://}
-	(cd ${WRKSRC}/${_path:C/:.*//}; ${COPYTREE_SHARE} . ${PREFIX}/${_path:C/.*://})
+	${RM} -f ${STAGEDIR}${PREFIX}/${_path:C/.*://}
+	(cd ${WRKSRC}/${_path:C/:.*//}; ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/${_path:C/.*://})
 .endfor
 .for name in ${PYPY_NAMES:O}
 	${STRIP_CMD} ${WRKDIR}/${name}
-	${INSTALL_PROGRAM} ${WRKDIR}/${name} ${PREFIX}/bin/${name}-${PYPY_VER}
+	${INSTALL_PROGRAM} ${WRKDIR}/${name} ${STAGEDIR}${PREFIX}/bin/${name}-${PYPY_VER}
 	${ECHO} bin/${name}-${PYPY_VER} >> ${TMPPLIST}
 .endfor
 

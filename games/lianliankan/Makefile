@@ -8,7 +8,7 @@ CATEGORIES=	games
 MASTER_SITES=	SF/llk-linux/llk-linux-source/${DISTVERSION}
 DISTNAME=	llk_linux-${DISTVERSION}
 
-MAINTAINER=	nemysis@gmx.ch
+MAINTAINER=	nemysis@FreeBSD.org
 COMMENT=	Tile matching game
 
 LICENSE=	GPLv2
@@ -43,7 +43,6 @@ post-patch:
 .endif
 
 post-install:
-	${MKDIR} ${PREFIX}/share/applications
 	${INSTALL_DATA} ${FILESDIR}/lianliankan.desktop ${PREFIX}/share/applications
 
 .include <bsd.port.mk>

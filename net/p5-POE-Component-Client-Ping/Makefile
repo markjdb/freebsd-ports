@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	POE-Component-Client-Ping
-PORTVERSION=	1.173
+PORTVERSION=	1.174
 CATEGORIES=	net perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -19,7 +19,4 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 USES=		perl5
 USE_PERL5=	configure
 
-MAN3=		POE::Component::Client::Ping.3
-
-NO_STAGE=	yes
 .include <bsd.port.mk>

@@ -31,11 +31,10 @@ CMAKE_ARGS+=	-DGDCM_PDF_DOCUMENTATION:BOOL=NO \
 		-DGDCM_BUILD_EXAMPLES:BOOL=NO \
 		-DGDCM_INSTALL_DATA_DIR:STRING=${DATADIR}
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MVTK}
-LIB_DEPENDS+=	vtkHybrid.5:${PORTSDIR}/math/vtk5
+LIB_DEPENDS+=	libvtkHybrid.so.5:${PORTSDIR}/math/vtk5
 CMAKE_ARGS+=	-DGDCM_USE_VTK:BOOL=YES
 PLIST_SUB+=	VTK=""
 .else
@@ -43,8 +42,8 @@ PLIST_SUB+=	VTK="@comment "
 .endif
 
 GDCM_MAJOR=	2
-GDCM_MINOR=	2
-GDCM_PATCH=	5
+GDCM_MINOR=	4
+GDCM_PATCH=	1
 
 PLIST_SUB+=	GDCM_MAJOR="${GDCM_MAJOR}" \
 		GDCM_MINOR="${GDCM_MINOR}" \
@@ -57,10 +56,6 @@ BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
 CMAKE_ARGS+=	-DGDCM_DOCUMENTATION:BOOL=YES \
 		-DGDCM_INSTALL_MAN_DIR:STRING=man \
 		-DGDCM_INSTALL_DOC_DIR:STRING=${DOCSDIR}
-MAN1=		gdcm2vtk.1 gdcmconv.1 gdcmanon.1 gdcmgendir.1 \
-		gdcmdump.1 gdcmimg.1 gdcminfo.1 gdcmpdf.1 \
-		gdcmraw.1 gdcmscanner.1 gdcmtar.1 gdcmviewer.1 \
-		gdcm2pnm.1 gdcmdiff.1 gdcmscu.1
 PORTDOCS=	*
 .else
 CMAKE_ARGS+=	-DGDCM_DOCUMENTATION:BOOL=NO

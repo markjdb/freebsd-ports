@@ -2,7 +2,7 @@
 
 PORTNAME?=	mariadb
 PORTVERSION=	5.5.33a
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES=	databases ipv6
 MASTER_SITES=	http://ftp.osuosl.org/pub/mariadb/${PORTNAME}-${PORTVERSION}/kvm-tarbake-jaunty-x86/ \
 		http://mirrors.supportex.net/mariadb/${PORTNAME}-${PORTVERSION}/kvm-tarbake-jaunty-x86/ \
@@ -124,7 +124,7 @@ PLIST_SUB+=	OQGRAPH="@comment "
 USE_GCC?=	yes
 CMAKE_ARGS+=	-DWITH_OQGRAPH_STORAGE_ENGINE=1
 PLIST_SUB+=	OQGRAPH=""
-LIB_DEPENDS+=	boost_system:${PORTSDIR}/devel/boost-libs
+LIB_DEPENDS+=	libboost_system.so:${PORTSDIR}/devel/boost-libs
 .endif
 .if ${PORT_OPTIONS:MMAXKEY}
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-include_my_compare.h
@@ -133,6 +133,7 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-patch-include_my_compare.h
 
 post-patch:
 	@${REINPLACE_CMD} 's/*.1/${MAN1}/' ${WRKSRC}/man/CMakeLists.txt
+	@${REINPLACE_CMD} 's|%%LOCALBASE%%|${LOCALBASE}|g' ${WRKSRC}/scripts/mysql_config.sh
 
 .include <bsd.port.pre.mk>
 

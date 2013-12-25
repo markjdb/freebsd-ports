@@ -5,7 +5,7 @@ PORTVERSION=	2.1
 CATEGORIES=	lang devel
 MASTER_SITES=	GOOGLE_CODE
 
-MAINTAINER=	bapt@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Very small C interpreter for scripting
 
 LICENSE=	BSD
@@ -17,11 +17,8 @@ PLIST_FILES=	bin/picoc
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-post-patch:
-	@${REINPLACE_CMD} -e "/-include/d" \
-		-e "s/^CFLAGS=.*/CFLAGS=${CFLAGS} -DUNIX_HOST/" \
-		-e "s/gcc/${CC}/" \
-		${WRKSRC}/Makefile
+MAKE_ARGS=	CC="${CC}" CFLAGS="${CFLAGS}"
+CFLAGS+=	-DUNIX_HOST
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/picoc ${STAGEDIR}${PREFIX}/bin/picoc

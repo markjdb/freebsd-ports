@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	MooseX-Types-Structured
-PORTVERSION=	0.28
+PORTVERSION=	0.29
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -18,23 +18,13 @@ BUILD_DEPENDS=	p5-Devel-PartialDump>=0.13:${PORTSDIR}/devel/p5-Devel-PartialDump
 		p5-MooseX-Types>=0.22:${PORTSDIR}/devel/p5-MooseX-Types \
 		p5-Sub-Exporter>=0.982:${PORTSDIR}/devel/p5-Sub-Exporter
 RUN_DEPENDS:=	${BUILD_DEPENDS}
-
-TEST_DEPENDS=	p5-DateTime>=0.28:${PORTSDIR}/devel/p5-DateTime \
-		p5-Test-Fatal>=0:${PORTSDIR}/devel/p5-Test-Fatal \
-		p5-Test-Simple>0:${PORTSDIR}/devel/p5-Test-Simple
+TEST_DEPENDS=	p5-DateTime>=0:${PORTSDIR}/devel/p5-DateTime \
+		p5-MooseX-Types-DateTime>=0:${PORTSDIR}/devel/p5-MooseX-Types-DateTime \
+		p5-Test-Fatal>=0:${PORTSDIR}/devel/p5-Test-Fatal
 
 USES=		perl5
-USE_PERL5=	configure
+USE_PERL5=	modbuildtiny
 
-MAN3=		MooseX::Meta::TypeCoercion::Structured.3 \
-		MooseX::Meta::TypeCoercion::Structured::Optional.3 \
-		MooseX::Meta::TypeConstraint::Structured.3 \
-		MooseX::Meta::TypeConstraint::Structured::Optional.3 \
-		MooseX::Types::Structured.3 \
-		MooseX::Types::Structured::MessageStack.3 \
-		MooseX::Types::Structured::OverflowHandler.3
-
-NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e '/auto_install/d' ${WRKSRC}/Makefile.PL
 
