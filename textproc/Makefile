@@ -338,6 +338,7 @@
     SUBDIR += jrefentry
     SUBDIR += jshon
     SUBDIR += kdiff3
+    SUBDIR += kibana
     SUBDIR += kmfl-european-latin
     SUBDIR += kmfl-khmer
     SUBDIR += kmfl-sil-ezra
@@ -1243,7 +1244,6 @@
     SUBDIR += redland-bindings
     SUBDIR += redland-bindings-python
     SUBDIR += refdb
-    SUBDIR += referrercop
     SUBDIR += reflex
     SUBDIR += replaceit
     SUBDIR += resume

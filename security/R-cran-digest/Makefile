@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	digest
-PORTVERSION=	0.6.3
-PORTREVISION=	4
+PORTVERSION=	0.6.4
 CATEGORIES=	security
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -12,7 +11,6 @@ COMMENT=	Create cryptographic hash digests of R objects
 
 LICENSE=	GPLv2
 
-USE_R_MOD=	yes
-R_MOD_AUTOPLIST=	yes
+USES=	cran:auto-plist
 
 .include <bsd.port.mk>

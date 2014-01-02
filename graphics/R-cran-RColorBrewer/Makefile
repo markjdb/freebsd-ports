@@ -10,9 +10,8 @@ DISTNAME=	${PORTNAME}_${DISTVERSION}
 MAINTAINER=	tota@FreeBSD.org
 COMMENT=	ColorBrewer palettes
 
-LICENSE=	AL2
+LICENSE=	APACHE20
 
-USE_R_MOD=	yes
-R_MOD_AUTOPLIST=	yes
+USES=	cran:auto-plist
 
 .include <bsd.port.mk>

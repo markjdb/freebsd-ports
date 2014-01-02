@@ -5,6 +5,36 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20140102:
+  AFFECTS: users of archivers/p7zip
+  AUTHOR: rakuco@FreeBSD.org
+
+  The MINIMAL and MODULES options have been removed from archivers/p7zip,
+  which now unconditionally installs the 7z, 7za and 7zr, as if the MINIMAL
+  option was previously unset.
+
+  The RAR decompression codec, whose source code has a more restrictive
+  license that forbids its use for creating RAR archives, has been moved to
+  a separate port, archivers/p7zip-codec-rar.
+
+20131230:
+  AFFECTS: ports using Apache Software License 2.0
+  AUTHOR: ohauer@FreeBSD.org
+
+  The acronym for Apache Software License 2.0 was renamed to APACHE20
+
+20131226:
+  AFFECTS: users of security/cyrus-sasl2
+  AUTHOR: ume@FreeBSD.org
+
+  The SASL GSSAPI authentication plugin was removed from
+  security/cyrus-sasl2 port and divided into new
+  security/cyrus-sasl2-gssapi port.
+
+  If you are using the SASL GSSAPI authentication, please install
+  security/cyrus-sasl2-gssapi port, in addition to upgrading
+  security/cyrus-sasl2 port.
+
 20131218:
   AFFECTS: users of news/cnews
   AUTHOR: dinoex@FreeBSD.org

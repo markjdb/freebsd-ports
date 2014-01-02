@@ -316,6 +316,7 @@
     SUBDIR += octave-forge-missing-functions
     SUBDIR += octave-forge-msh
     SUBDIR += octave-forge-multicore
+    SUBDIR += octave-forge-mvn
     SUBDIR += octave-forge-nan
     SUBDIR += octave-forge-ncarray
     SUBDIR += octave-forge-netcdf
@@ -363,6 +364,7 @@
     SUBDIR += oleo
     SUBDIR += open-axiom
     SUBDIR += openblas
+    SUBDIR += openfst
     SUBDIR += orpie
     SUBDIR += p5-AI-DecisionTree
     SUBDIR += p5-AI-Genetic

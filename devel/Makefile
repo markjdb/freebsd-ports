@@ -1091,6 +1091,8 @@
     SUBDIR += libsigc++12
     SUBDIR += libsigc++20
     SUBDIR += libsigcx
+    SUBDIR += libsigrok
+    SUBDIR += libsigrokdecode
     SUBDIR += libsigsegv
     SUBDIR += libslang2
     SUBDIR += libslave
@@ -1255,7 +1257,6 @@
     SUBDIR += ncc
     SUBDIR += ncnf
     SUBDIR += ncurses
-    SUBDIR += ncurses-devel
     SUBDIR += ndesk-dbus
     SUBDIR += ndesk-dbus-glib
     SUBDIR += ndesk-options
@@ -1889,7 +1890,6 @@
     SUBDIR += p5-Devel-ebug
     SUBDIR += p5-Devel-ptkdb
     SUBDIR += p5-Device-USB
-    SUBDIR += p5-Dialog
     SUBDIR += p5-Digest-TransformPath
     SUBDIR += p5-Dir-Project
     SUBDIR += p5-Dir-Self
@@ -3640,6 +3640,7 @@
     SUBDIR += py-levenshtein
     SUBDIR += py-liblarch
     SUBDIR += py-libplist
+    SUBDIR += py-libvirt
     SUBDIR += py-ll-core
     SUBDIR += py-lock_file
     SUBDIR += py-lockfile
@@ -3689,7 +3690,6 @@
     SUBDIR += py-pip
     SUBDIR += py-plex
     SUBDIR += py-ply
-    SUBDIR += py-pmock
     SUBDIR += py-polib
     SUBDIR += py-posix_ipc
     SUBDIR += py-pp
@@ -4378,6 +4378,7 @@
     SUBDIR += shiboken
     SUBDIR += shmap
     SUBDIR += showgrammar
+    SUBDIR += shtk
     SUBDIR += shtool
     SUBDIR += sigslot
     SUBDIR += silc-toolkit
