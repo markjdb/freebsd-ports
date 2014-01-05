@@ -126,7 +126,7 @@ do-install:
 	  ${PREFIX}/bin/ccx
 	@${INSTALL_PROGRAM} ${WRKSRC}/${CGX_VER}/src/cgx \
 	  ${PREFIX}/bin/cgx
-.if !defined(NOPORTDOCS)
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${DOCSDIR}
 	@${MKDIR} ${DOCSDIR}/ccx
 	@${INSTALL_DATA} ${WRKSRC}/${CCX_VER}/doc/ccx/* \
