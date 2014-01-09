@@ -881,6 +881,7 @@
     SUBDIR += qslim
     SUBDIR += qt4-iconengines
     SUBDIR += qt4-imageformats
+    SUBDIR += qt4-opengl
     SUBDIR += qt4-pixeltool
     SUBDIR += qt4-svg
     SUBDIR += qtgtl
@@ -1024,7 +1025,6 @@
     SUBDIR += whirlgif
     SUBDIR += white_dune
     SUBDIR += wings
-    SUBDIR += wings-devel
     SUBDIR += wmgrabimage
     SUBDIR += wmicons
     SUBDIR += wxsvg

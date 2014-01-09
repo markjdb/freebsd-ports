@@ -3,7 +3,7 @@
 
 PORTNAME=	gcin
 PORTVERSION=	2.8.0
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	chinese textproc gnome
 MASTER_SITES=	http://www.csie.nctu.edu.tw/~cp76/gcin/download/:main
 DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX}:main
@@ -22,6 +22,7 @@ USES=		gmake pkgconfig
 USE_XORG=	x11 xtst xext
 INSTALLS_ICONS=	YES
 USE_LDCONFIG=	YES
+MAKE_JOBS_UNSAFE=	yes
 OPTIONS_DEFINE=	ANTHY QT_IM_MODULE
 ANTHY_DESC=	Japanese anthy IM module
 QT_IM_MODULE_DESC=	QT IM module
