@@ -51,6 +51,198 @@ Note:  Please add new entries to the beginning of this file.
 
 -->
 <vuxml xmlns="http://www.vuxml.org/apps/vuxml-1">
+  <vuln vid="81f1fdc2-7ec7-11e3-a6c6-00163e1ed244">
+    <topic>virtualbox-ose -- local vulnerability</topic>
+    <affects>
+      <package>
+	<name>virtualbox-ose</name>
+	<range><lt>4.2.22</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Oracle reports:</p>
+	<blockquote cite="http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html">
+	  <p>Unspecified vulnerability in the Oracle VM VirtualBox
+	   component in Oracle Virtualization VirtualBox prior to
+	   3.2.20, 4.0.22, 4.1.30, 4.2.22, and 4.3.6 allows local
+	   users to affect confidentiality, integrity, and availability
+	   via unknown vectors related to Core.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-5892</cvename>
+      <url>http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html</url>
+    </references>
+    <dates>
+      <discovery>2014-01-15</discovery>
+      <entry>2014-01-16</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="5acf4638-7e2c-11e3-9fba-00262d5ed8ee">
+    <topic>chromium -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>chromium</name>
+	<range><lt>32.0.1700.77</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Google Chrome Releases reports:</p>
+	<blockquote cite="http://googlechromereleases.blogspot.nl/">
+	  <p>11 security fixes in this release, including:</p>
+	  <ul>
+	    <li>[249502] High CVE-2013-6646: Use-after-free in web workers.
+	      Credit to Collin Payne.</li>
+	    <li>[326854] High CVE-2013-6641: Use-after-free related to forms.
+	      Credit to Atte Kettunen of OUSPG.</li>
+	    <li>[324969] High CVE-2013-6642: Address bar spoofing in Chrome for
+	      Android. Credit to lpilorz.</li>
+	    <li>[321940] High CVE-2013-6643: Unprompted sync with an attacker’s
+	      Google account. Credit to Joao Lucas Melo Brasio.</li>
+	    <li>[318791] Medium CVE-2013-6645 Use-after-free related to speech
+	      input elements. Credit to Khalil Zhani.</li>
+	    <li>[333036] CVE-2013-6644: Various fixes from internal audits,
+	      fuzzing and other initiatives.</li>
+	  </ul>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-6641</cvename>
+      <cvename>CVE-2013-6642</cvename>
+      <cvename>CVE-2013-6643</cvename>
+      <cvename>CVE-2013-6644</cvename>
+      <cvename>CVE-2013-6645</cvename>
+      <cvename>CVE-2013-6646</cvename>
+      <url>http://googlechromereleases.blogspot.nl/</url>
+    </references>
+    <dates>
+      <discovery>2014-01-14</discovery>
+      <entry>2014-01-15</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="3d95c9a7-7d5c-11e3-a8c1-206a8a720317">
+    <topic>ntpd DRDoS / Amplification Attack using ntpdc monlist command</topic>
+    <affects>
+      <package>
+	<name>ntp</name>
+	<range><lt>4.2.7p26</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>ntp.org reports:</p>
+	<blockquote cite="http://support.ntp.org/bin/view/Main/SecurityNotice#DRDoS_Amplification_Attack_using">
+	  <p>Unrestricted access to the monlist feature in
+	    ntp_request.c in ntpd in NTP before 4.2.7p26 allows remote
+	    attackers to cause a denial of service (traffic
+	    amplification) via forged (1) REQ_MON_GETLIST or (2)
+	    REQ_MON_GETLIST_1 requests, as exploited in the wild in
+	    December 2013</p>
+	  <p>Use noquery to your default restrictions to block all
+	    status queries.</p>
+	  <p>Use disable monitor to disable the ``ntpdc -c monlist''
+	    command while still allowing other status queries.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-5211</cvename>
+      <freebsdsa>SA-14:02.ntpd</freebsdsa>
+      <url>http://support.ntp.org/bin/view/Main/SecurityNotice#DRDoS_Amplification_Attack_using</url>
+    </references>
+    <dates>
+      <discovery>2014-01-01</discovery>
+      <entry>2014-01-14</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="ba04a373-7d20-11e3-8992-00132034b086">
+    <topic>nagios -- denial of service vulnerability</topic>
+    <affects>
+      <package>
+	<name>nagios</name>
+	<range><lt>3.5.1_3</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Eric Stanley reports:</p>
+	<blockquote cite="http://sourceforge.net/p/nagios/nagioscore/ci/d97e03f32741a7d851826b03ed73ff4c9612a866/">
+	  <p>Most CGIs previously incremented the input variable counter twice
+	    when it encountered a long key value. This could cause the CGI to
+	    read past the end of the list of CGI variables.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-7108</cvename>
+      <cvename>CVE-2013-7205</cvename>
+      <url>http://sourceforge.net/p/nagios/nagioscore/ci/d97e03f32741a7d851826b03ed73ff4c9612a866/</url>
+      <url>https://bugzilla.redhat.com/show_bug.cgi?id=1046113</url>
+    </references>
+    <dates>
+      <discovery>2013-12-20</discovery>
+      <entry>2014-01-14</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="cb252f01-7c43-11e3-b0a6-005056a37f68">
+    <topic>bind -- denial of service vulnerability</topic>
+    <affects>
+      <package>
+	<name>bind99</name>
+	<name>bind99-base</name>
+	<range><lt>9.9.4.2</lt></range>
+      </package>
+      <package>
+	<name>bind98</name>
+	<name>bind98-base</name>
+	<range><lt>9.8.6.2</lt></range>
+      </package>
+      <package>
+	<name>bind96</name>
+	<name>bind96-base</name>
+	<range><lt>9.6.3.2.ESV.R10.2</lt></range>
+      </package>
+      <package>
+	<name>FreeBSD</name>
+	<range><gt>9.2</gt><lt>9.2_3</lt></range>
+	<range><gt>9.1</gt><lt>9.1_10</lt></range>
+	<range><gt>8.4</gt><lt>8.4_7</lt></range>
+	<range><gt>8.3</gt><lt>8.3_14</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>ISC reports:</p>
+	<blockquote cite="https://kb.isc.org/article/AA-01078/74/">
+	  <p>Because of a defect in handling queries for NSEC3-signed zones,
+	    BIND can crash with an "INSIST" failure in name.c when processing
+	    queries possessing certain properties. By exploiting this defect
+	    an attacker deliberately constructing a query with the right
+	    properties could achieve denial of service against an authoritative
+	    nameserver serving NSEC3-signed zones.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2014-0591</cvename>
+      <freebsdsa>SA-13:07.bind</freebsdsa>
+      <url>https://kb.isc.org/article/AA-01078/74/</url>
+    </references>
+    <dates>
+      <discovery>2014-01-08</discovery>
+      <entry>2014-01-13</entry>
+      <modified>2014-01-15</modified>
+    </dates>
+  </vuln>
+
   <vuln vid="28c575fa-784e-11e3-8249-001cc0380077">
     <topic>libXfont -- Stack buffer overflow in parsing of BDF font files in libXfont</topic>
     <affects>

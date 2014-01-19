@@ -15,7 +15,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Sound synthesizer
 
 LICENSE=	LGPL21
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 DIST_SUBDIR=	csound
 BUILD_DEPENDS=	${LOCALBASE}/bin/swig:${PORTSDIR}/devel/swig13 \
@@ -37,7 +36,7 @@ FLTK_DESC=	Build FLTK plugin and GUI
 CONFLICTS_INSTALL=	outguess-*
 
 SSP_UNSAFE=	yes
-USE_PYTHON=	2.6+
+USE_PYTHON=	yes
 USES=		bison gettext
 NO_STAGE=	yes
 USE_SCONS=	yes
@@ -139,8 +138,6 @@ EXTRACT_DEPENDS+=${LOCALBASE}/bin/unzip:${PORTSDIR}/archivers/unzip
 DISTFILES+=	Csound${PORTVERSION:R}_manual_html.zip:manual
 .endif
 
-.include <bsd.port.pre.mk>
-
 .if ${ARCH} == amd64 || ${ARCH} == sparc64 || ${ARCH} == ia64
 CMAKE_ARGS+=	Word64=1
 .endif
@@ -200,4 +197,4 @@ post-install:
 .endif
 	@${CAT} ${PKGMESSAGE}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

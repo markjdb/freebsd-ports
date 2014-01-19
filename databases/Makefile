@@ -572,6 +572,7 @@
     SUBDIR += pgpool-II-23
     SUBDIR += pgpool-II-30
     SUBDIR += pgpoolAdmin
+    SUBDIR += pgrouting
     SUBDIR += pgsphere
     SUBDIR += pgtcl
     SUBDIR += pgtop
@@ -656,7 +657,6 @@
     SUBDIR += phpminiadmin
     SUBDIR += phpmyadmin
     SUBDIR += phppgadmin
-    SUBDIR += postgis
     SUBDIR += postgis20
     SUBDIR += postgis21
     SUBDIR += postgis-jdbc

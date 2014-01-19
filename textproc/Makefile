@@ -212,6 +212,7 @@
     SUBDIR += gnome-translate
     SUBDIR += gnugrep
     SUBDIR += go-text
+    SUBDIR += go.text
     SUBDIR += goldendict
     SUBDIR += google-ctemplate
     SUBDIR += gpp
@@ -1242,7 +1243,6 @@
     SUBDIR += redet
     SUBDIR += redland
     SUBDIR += redland-bindings
-    SUBDIR += redland-bindings-python
     SUBDIR += refdb
     SUBDIR += reflex
     SUBDIR += replaceit

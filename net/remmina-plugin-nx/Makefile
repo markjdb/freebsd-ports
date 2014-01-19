@@ -3,14 +3,12 @@
 
 PKGNAMESUFFIX=	-nx
 
-MAINTAINER=	meta+ports@vmeta.jp
 COMMENT=	Remmina plugin for NX
 
 USE_XORG+=	xkbfile
 
 MASTERDIR=	${.CURDIR}/../remmina-plugins
 
-WITH_NX=	yes
+PLIST_SUB+=	ICONS="" SSH="@comment "
 
-NO_STAGE=	yes
 .include "${MASTERDIR}/Makefile"

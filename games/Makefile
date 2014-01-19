@@ -187,7 +187,6 @@
     SUBDIR += dcross
     SUBDIR += deal
     SUBDIR += defendguin
-    SUBDIR += deng
     SUBDIR += diameter
     SUBDIR += digger-vgl
     SUBDIR += djgame2
@@ -203,6 +202,7 @@
     SUBDIR += doom-hr2
     SUBDIR += doom-wolfendoom
     SUBDIR += doomlegacy
+    SUBDIR += doomsday
     SUBDIR += dopewars
     SUBDIR += drcreep
     SUBDIR += drm
@@ -658,6 +658,7 @@
     SUBDIR += odamex
     SUBDIR += oldrunner
     SUBDIR += omega
+    SUBDIR += oneisenough
     SUBDIR += oneko
     SUBDIR += oneko-sakura
     SUBDIR += oolite
@@ -732,6 +733,7 @@
     SUBDIR += poker-engine
     SUBDIR += poker-eval
     SUBDIR += pokerth
+    SUBDIR += polyglot
     SUBDIR += polypuzzle
     SUBDIR += pongix
     SUBDIR += popstar
@@ -910,6 +912,7 @@
     SUBDIR += stransball2
     SUBDIR += stratagus
     SUBDIR += sudoku
+    SUBDIR += sudoku-sensei
     SUBDIR += sudoku_solver
     SUBDIR += sudsol
     SUBDIR += sumwars

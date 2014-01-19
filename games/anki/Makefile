@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	anki
-PORTVERSION=	2.0.19
-PORTREVISION=	1
+PORTVERSION=	2.0.20
 CATEGORIES=	games python
 MASTER_SITES=	http://ankisrs.net/download/mirror/
 EXTRACT_SUFX=	.tgz
@@ -26,7 +25,7 @@ RUN_DEPENDS=	lame:${PORTSDIR}/audio/lame \
 		${PYTHON_PKGNAMEPREFIX}send2trash>0:${PORTSDIR}/deskutils/py-send2trash
 
 USES=		desktop-file-utils shared-mime-info
-USE_PYTHON=	2.7
+USE_PYTHON=	2
 USE_QT4=	network_run webkit_run
 
 OPTIONS_DEFINE=	NLS
@@ -37,9 +36,15 @@ NLS_USES=	gettext:run
 .include <bsd.port.options.mk>
 
 post-patch:
-	@${REINPLACE_CMD} \
-		-e 's|^Categories=.*|Categories=Education;Languages;KDE;Qt;Game;|' \
+	@${REINPLACE_CMD} -e \
+		's|^Categories=.*|Categories=Education;Languages;KDE;Qt;Game;|' \
 		${WRKSRC}/${PORTNAME}.desktop
+	@${REINPLACE_CMD} -e 's|/usr/bin/env python|${PYTHON_CMD}| ; \
+		s|/usr/share/anki|/usr/local/share/anki|' \
+		${WRKSRC}/runanki
+	@${REINPLACE_CMD} -e \
+		's|/usr/share/anki/locale|/usr/local/share/locale|' \
+		${WRKSRC}/anki/lang.py
 	@${FIND} ${WRKSRC} -name "*.bak" -delete -or -name "*.orig" -delete
 
 .if ! ${PORT_OPTIONS:MNLS}

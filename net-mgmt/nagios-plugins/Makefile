@@ -6,7 +6,7 @@ PORTVERSION=	1.5
 PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	net-mgmt
-MASTER_SITES=	https://www.nagios-plugins.org/download/
+MASTER_SITES=	https://www.monitoring-plugins.org/download/
 
 MAINTAINER=	demon@FreeBSD.org
 COMMENT=	Plugins for Nagios
@@ -46,8 +46,6 @@ NAGIOSCGIURL?=	${NAGIOSHTMURL}/cgi-bin
 
 NAGIOSPOLLIP?=	127.0.0.1
 NAGIOSPOLLIP6?=	::1
-
-NEED_ROOT=	yes # check_icmp, check_dhcp
 
 .include <bsd.port.options.mk>
 
@@ -172,6 +170,7 @@ post-patch:
 	check_users.c
 	@${REINPLACE_CMD} -e 's|setlocale (LC_ALL, "");|setlocale (LC_ALL, ""); setlocale(LC_NUMERIC, "C");|g' ${WRKSRC}/plugins/${file}
 .endfor
+	@${REINPLACE_CMD} -e 's|chown root|${TRUE}|g' ${WRKSRC}/plugins-root/Makefile.am
 .if ${PORT_OPTIONS:MJAIL}
 	@${REINPLACE_CMD} -e 's# 127.0.0.1 # ${NAGIOSPOLLIP} #g' ${WRKSRC}/configure.in
 	@${REINPLACE_CMD} -e 's# ::1 # ${NAGIOSPOLLIP6} #g' ${WRKSRC}/configure.in

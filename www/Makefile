@@ -179,6 +179,7 @@
     SUBDIR += dwoo
     SUBDIR += e107
     SUBDIR += eaccelerator
+    SUBDIR += edbrowse
     SUBDIR += efront
     SUBDIR += egueb
     SUBDIR += eldav.el
@@ -335,6 +336,7 @@
     SUBDIR += hs-yesod-routes
     SUBDIR += hs-yesod-static
     SUBDIR += hs-yesod-test
+    SUBDIR += htdigest
     SUBDIR += htdump
     SUBDIR += html2hdml
     SUBDIR += html2wml
@@ -465,7 +467,8 @@
     SUBDIR += mod_authn_otp
     SUBDIR += mod_authn_sasl
     SUBDIR += mod_authnz_crowd
-    SUBDIR += mod_authnz_external
+    SUBDIR += mod_authnz_external22
+    SUBDIR += mod_authnz_external24
     SUBDIR += mod_authz_unixgroup
     SUBDIR += mod_backtrace
     SUBDIR += mod_bw
@@ -1022,6 +1025,7 @@
     SUBDIR += p5-HTTP-Session
     SUBDIR += p5-HTTP-Session-State-MobileAgentID
     SUBDIR += p5-HTTP-Session-Store-DBI
+    SUBDIR += p5-HTTP-Session2
     SUBDIR += p5-HTTP-SimpleLinkChecker
     SUBDIR += p5-HTTP-Size
     SUBDIR += p5-HTTP-Tiny
@@ -1159,6 +1163,7 @@
     SUBDIR += p5-Reaction
     SUBDIR += p5-Reddit
     SUBDIR += p5-Rose-HTML-Objects
+    SUBDIR += p5-Router-Boom
     SUBDIR += p5-Router-Simple
     SUBDIR += p5-Router-Simple-Sinatraish
     SUBDIR += p5-SCGI
@@ -1505,6 +1510,7 @@
     SUBDIR += py-django-mptt
     SUBDIR += py-django-openid-auth
     SUBDIR += py-django-photologue
+    SUBDIR += py-django-picklefield
     SUBDIR += py-django-pipeline
     SUBDIR += py-django-piston
     SUBDIR += py-django-profiles
@@ -1908,7 +1914,6 @@
     SUBDIR += squirm
     SUBDIR += srg
     SUBDIR += subsonic
-    SUBDIR += suphp
     SUBDIR += surf
     SUBDIR += surfraw
     SUBDIR += sventon

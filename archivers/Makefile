@@ -81,6 +81,7 @@
     SUBDIR += makeself
     SUBDIR += mar
     SUBDIR += mate-file-archiver
+    SUBDIR += minizip
     SUBDIR += mscompress
     SUBDIR += mtf
     SUBDIR += nomarch
@@ -218,12 +219,12 @@
     SUBDIR += xdms
     SUBDIR += xmill
     SUBDIR += xpk
-    SUBDIR += xz
     SUBDIR += zip
     SUBDIR += zip-ada
     SUBDIR += zipmix
     SUBDIR += zipper
     SUBDIR += zoo
+    SUBDIR += zopfli
     SUBDIR += zutils
 
 .include <bsd.port.subdir.mk>
