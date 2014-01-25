@@ -255,7 +255,6 @@
     SUBDIR += codeworker
     SUBDIR += colorgcc
     SUBDIR += colormake
-    SUBDIR += combat
     SUBDIR += commit-patch
     SUBDIR += common_lib
     SUBDIR += commoncpp
@@ -554,6 +553,7 @@
     SUBDIR += git-merge-changelog
     SUBDIR += git-review
     SUBDIR += git-subversion
+    SUBDIR += gitg0
     SUBDIR += gitg
     SUBDIR += gitolite
     SUBDIR += gitolite2
@@ -887,6 +887,7 @@
     SUBDIR += jsmin
     SUBDIR += json-c
     SUBDIR += json-glib
+    SUBDIR += jsoncpp
     SUBDIR += jtag
     SUBDIR += judy
     SUBDIR += jwasm
@@ -1210,7 +1211,6 @@
     SUBDIR += mercurial
     SUBDIR += mercurialeclipse
     SUBDIR += meta-cvs
-    SUBDIR += mico
     SUBDIR += mime
     SUBDIR += mimir
     SUBDIR += mingw32-bin-msvcrt
@@ -3254,6 +3254,7 @@
     SUBDIR += pear-channel-doctrine
     SUBDIR += pear-channel-ezc
     SUBDIR += pear-channel-horde
+    SUBDIR += pear-channel-htmlpurifier
     SUBDIR += pear-channel-openpear
     SUBDIR += pear-channel-pdepend
     SUBDIR += pear-channel-phing
@@ -3264,9 +3265,11 @@
     SUBDIR += pear-channel-symfony
     SUBDIR += pear-channel-symfony2
     SUBDIR += pear-channel-theseer
+    SUBDIR += pear-channel-twig
     SUBDIR += pear-codegen
     SUBDIR += pear-ezc_Base
     SUBDIR += pear-ezc_ConsoleTools
+    SUBDIR += pear-htmlpurifier
     SUBDIR += pear-pdepend-staticReflection
     SUBDIR += pear-phing
     SUBDIR += pecl-APCu
@@ -3761,6 +3764,7 @@
     SUBDIR += py-resourcepackage
     SUBDIR += py-rlcompleter2
     SUBDIR += py-robotframework
+    SUBDIR += py-robotframework-pabot
     SUBDIR += py-robotframework-ride
     SUBDIR += py-robotframework-selenium2library
     SUBDIR += py-rope

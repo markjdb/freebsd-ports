@@ -210,6 +210,7 @@
     SUBDIR += feedonfeeds
     SUBDIR += ffproxy
     SUBDIR += fhttpd
+    SUBDIR += fira-webfont
     SUBDIR += firefox
     SUBDIR += firefox-esr
     SUBDIR += firefox-esr-i18n
@@ -635,6 +636,7 @@
     SUBDIR += p5-Ark
     SUBDIR += p5-Bigtop
     SUBDIR += p5-Blog-Spam
+    SUBDIR += p5-Browser-Open
     SUBDIR += p5-Business-PayPal
     SUBDIR += p5-CGI-Ajax
     SUBDIR += p5-CGI-Application
@@ -1399,6 +1401,7 @@
     SUBDIR += pear-Text_Wiki
     SUBDIR += pear-UDDI
     SUBDIR += pear-XML_GRDDL
+    SUBDIR += pear-twig
     SUBDIR += pebble
     SUBDIR += pecl-APC
     SUBDIR += pecl-amfext
@@ -1406,6 +1409,7 @@
     SUBDIR += pecl-solr
     SUBDIR += pecl-sphinx
     SUBDIR += pecl-swish
+    SUBDIR += pecl-twig
     SUBDIR += pecl-yaf
     SUBDIR += pecl-yar
     SUBDIR += pecl-zendopcache
@@ -1492,6 +1496,7 @@
     SUBDIR += py-django-app-plugins
     SUBDIR += py-django-appconf
     SUBDIR += py-django-appmedia
+    SUBDIR += py-django-auth-ldap
     SUBDIR += py-django-caching-app-plugins
     SUBDIR += py-django-classy-tags
     SUBDIR += py-django-cms
@@ -1782,8 +1787,10 @@
     SUBDIR += rubygem-gon
     SUBDIR += rubygem-haml
     SUBDIR += rubygem-haml-coderay
+    SUBDIR += rubygem-haml-contrib
     SUBDIR += rubygem-haml-rails
     SUBDIR += rubygem-hpricot
+    SUBDIR += rubygem-html2haml
     SUBDIR += rubygem-http-cookie
     SUBDIR += rubygem-httparty
     SUBDIR += rubygem-httpclient

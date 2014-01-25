@@ -3,10 +3,11 @@
 
 PORTNAME=	ddclient
 PORTVERSION=	3.8.2
+PORTREVISION=	1
 CATEGORIES=	dns
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	mjl@luckie.org.nz
 COMMENT=	Update dynamic DNS entries
 
 LICENSE=	GPLv2
@@ -39,7 +40,7 @@ post-patch:
 		's|/usr|${PREFIX}|g'
 	@${REINPLACE_CMD} -e \
 		's|%%PERL%%|${PERL}| ; \
-		 s|%%ETCDIR%%|${ETCDIR}| ; \
+		 s|%%ETCDIR%%|${PREFIX}/etc| ; \
 		 s|%%LOCALBASE%%|${LOCALBASE}|' ${WRKSRC}/ddclient
 
 do-install:

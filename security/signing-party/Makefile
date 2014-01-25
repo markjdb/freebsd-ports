@@ -3,7 +3,7 @@
 
 PORTNAME=	signing-party
 PORTVERSION=	1.1.4
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	security
 MASTER_SITES=	ftp://ftp.stack.nl/pub/users/johans/signing-party/ \
 		${MASTER_SITE_DEBIAN}
@@ -38,6 +38,7 @@ SCRIPTS=	caff/caff caff/pgp-clean caff/pgp-fixkey gpglist/gpglist \
 		gpgparticipants/gpgparticipants
 MANUALS1=	${SCRIPTS:S/$/.1/} ${BINS:S/$/.1/}
 EXAMPLES=	caff/caffrc.sample gpg-mailkeys/example.gpg-mailkeysrc
+PORTEXAMPLES=	${EXAMPLES:T}
 
 PORTDOCS=	*
 
@@ -50,6 +51,7 @@ post-patch:
 			-e 's|make pgpring|make|' \
 		${WRKSRC}/gpgwrap/Makefile \
 		${WRKSRC}/keyanalyze/Makefile
+	@${REINPLACE_CMD} -e 's|gcc|${CC}|' ${WRKSRC}/gpgwrap/src/Makefile
 	# Rename pgpring to pgppubring to avoid conflict with mail/mutt
 	@${REINPLACE_CMD} -e 's|pgpring|pgppubring|g' \
 		${WRKSRC}/keyanalyze/pgpring/Makefile.in
