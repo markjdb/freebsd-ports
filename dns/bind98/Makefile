@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	bind98
-PORTVERSION=	9.8.6.2
+PORTVERSION=	9.8.7
 CATEGORIES=	dns net ipv6
 MASTER_SITES=	${MASTER_SITE_ISC}
 MASTER_SITE_SUBDIR=	bind9/${ISCVERSION}
@@ -13,7 +13,7 @@ COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
 LICENSE=	ISCL
 
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.8.6-P2
+ISCVERSION=	9.8.7
 
 MAKE_JOBS_UNSAFE=	yes
 
@@ -79,7 +79,7 @@ RPZ_NSIP_CONFIGURE_ENABLE=	rpz-nsip
 
 RPZ_NSDNAME_CONFIGURE_ENABLE=	rpz-nsdname
 
-RPZRRL_PATCH_PATCHFILES=	rpz2+rl-9.8.6.patch:vix
+RPZRRL_PATCH_PATCHFILES=	9.8.7-rpz2+rl.14038.05.patch:vix
 RPZRRL_PATCH_PATCH_SITES=	http://ss.vix.su/~vjs/:vix
 
 DLZ_POSTGRESQL_CONFIGURE_ON=	--with-dlz-postgres=yes
@@ -104,7 +104,6 @@ GSSAPI_CONFIGURE_WITH=	gssapi
 
 .if (${ARCH} == "amd64")
 ARCH=		x86_64
-CFLAGS+=	-fPIC
 .endif
 
 .if !${PORT_OPTIONS:MLINKS} || ${PORT_OPTIONS:MREPLACE_BASE}

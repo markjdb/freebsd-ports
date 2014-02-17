@@ -177,21 +177,9 @@ RUBY?=			${LOCALBASE}/bin/${RUBY_NAME}
 # Ruby 1.9
 #
 RUBY_RELVERSION=	1.9.3
-RUBY_PORTREVISION=	0
+RUBY_PORTREVISION=	1
 RUBY_PORTEPOCH=		1
 RUBY_PATCHLEVEL=	484
-
-RUBY_VERSION?=		${RUBY_RELVERSION}.${RUBY_PATCHLEVEL}
-RUBY_DISTVERSION?=	${RUBY_RELVERSION}-p${RUBY_PATCHLEVEL}
-
-RUBY_WRKSRC=		${WRKDIR}/ruby-${RUBY_DISTVERSION}
-
-GEM_ENV?=		LC_CTYPE=UTF-8
-
-RUBY_CONFIGURE_ARGS+=	--with-rubyhdrdir="${PREFIX}/include/ruby-1.9/" \
-			--with-rubylibprefix="${PREFIX}/lib/ruby" \
-			--docdir="${RUBY_DOCDIR}" \
-			--with-soname=ruby19
 
 #
 # PLIST_SUB helpers
@@ -204,28 +192,15 @@ RUBY20=			"@comment "
 # Ruby 2.0
 #
 RUBY_RELVERSION=	2.0.0
-RUBY_PORTREVISION=	3
+RUBY_PORTREVISION=	4
 RUBY_PORTEPOCH=		1
 RUBY_PATCHLEVEL=	353
-
-RUBY_VERSION?=		${RUBY_RELVERSION}.${RUBY_PATCHLEVEL}
-RUBY_DISTVERSION?=	${RUBY_RELVERSION}-p${RUBY_PATCHLEVEL}
-
-RUBY_WRKSRC=		${WRKDIR}/ruby-${RUBY_DISTVERSION}
-
-GEM_ENV?=		LC_CTYPE=UTF-8
-
-RUBY_CONFIGURE_ARGS+=	--with-rubyhdrdir="${PREFIX}/include/ruby-2.0/" \
-			--with-rubylibprefix="${PREFIX}/lib/ruby" \
-			--docdir="${RUBY_DOCDIR}" \
-			--with-soname=ruby20
 
 #
 # PLIST_SUB helpers
 #
 RUBY19=			"@comment "
 RUBY20=			""
-
 
 . else
 #
@@ -234,6 +209,16 @@ RUBY20=			""
 IGNORE=	Only ruby 1.9 and 2.0 are supported
 . endif
 .endif # defined(RUBY_VER)
+
+RUBY_VERSION?=		${RUBY_RELVERSION}.${RUBY_PATCHLEVEL}
+RUBY_DISTVERSION?=	${RUBY_RELVERSION}-p${RUBY_PATCHLEVEL}
+
+RUBY_WRKSRC=		${WRKDIR}/ruby-${RUBY_DISTVERSION}
+
+RUBY_CONFIGURE_ARGS+=	--with-rubyhdrdir="${PREFIX}/include/ruby-${RUBY_VER}/" \
+			--with-rubylibprefix="${PREFIX}/lib/ruby" \
+			--docdir="${RUBY_DOCDIR}" \
+			--with-soname=ruby${RUBY_SUFFIX}
 
 CONFIGURE_TARGET?=	${ARCH}-portbld-freebsd${OSREL:C/\..*//}
 
@@ -245,6 +230,24 @@ _RUBY_SITEDIR?=		${_RUBY_SYSLIBDIR}/ruby/site_ruby
 _RUBY_VENDORDIR?=	${_RUBY_SYSLIBDIR}/ruby/vendor_ruby
 .endif
 #      defined(RUBY)
+
+.if defined(LANG) && !empty(LANG)
+GEM_ENV+=		LANG=${LANG}
+.else
+GEM_ENV+=		LANG=en_US.UTF-8
+.endif
+
+.if defined(LC_ALL) && !empty(LC_ALL)
+GEM_ENV+=		LC_ALL=${LC_ALL}
+.else
+GEM_ENV+=		LC_ALL=en_US.UTF-8
+.endif
+
+.if defined(LC_CTYPE) && !empty(LC_CTYPE)
+GEM_ENV+=		LC_CTYPE=${LC_CTYPE}
+.else
+GEM_ENV+=		LC_CTYPE=UTF-8
+.endif
 
 RUBY_DEFAULT_SUFFIX?=	${RUBY_DEFAULT_VER:S/.//}
 
@@ -330,7 +333,7 @@ PLIST_SUB+=		${PLIST_RUBY_DIRS:C,DIR="(${LOCALBASE}|${PREFIX})/,DIR=",} \
 			RUBY_NAME="${RUBY_NAME}" \
 			RUBY_DEFAULT_SUFFIX="${RUBY_DEFAULT_SUFFIX}" \
 			RUBY19=${RUBY19} \
-			RUBY20=${RUBY20} \
+			RUBY20=${RUBY20}
 
 .if defined(USE_RUBY_RDOC)
 MAKE_ENV+=	RUBY_RDOC=${RUBY_RDOC}
@@ -540,8 +543,13 @@ do-install:	ruby-setup-install
 
 ruby-setup-install:
 	@${ECHO_MSG} "===>  Running ${RUBY_SETUP} to install"
+.  if defined(NO_STAGE)
 	@cd ${INSTALL_WRKSRC}; \
 	${SETENV} ${MAKE_ENV} ${RUBY} ${RUBY_FLAGS} ${RUBY_SETUP} install
+.  else
+	@cd ${INSTALL_WRKSRC}; \
+	${SETENV} ${MAKE_ENV} ${RUBY} ${RUBY_FLAGS} ${RUBY_SETUP} install --prefix=${STAGEDIR}
+.  endif
 .endif
 
 .if defined(USE_LIBRUBY)

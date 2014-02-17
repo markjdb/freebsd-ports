@@ -51,6 +51,595 @@ Note:  Please add new entries to the beginning of this file.
 
 -->
 <vuxml xmlns="http://www.vuxml.org/apps/vuxml-1">
+  <vuln vid="0871d18b-9638-11e3-a371-6805ca0b3d42">
+    <topic>phpMyAdmin -- Self-XSS due to unescaped HTML output in import.</topic>
+    <affects>
+      <package>
+	<name>phpMyAdmin</name>
+	<range><ge>3.3.1</ge><lt>4.1.7</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The phpMyAdmin development team reports:</p>
+	<blockquote cite="http://www.phpmyadmin.net/home_page/security/PMASA-2014-1.php">
+	  <p> When importing a file with crafted filename, it is
+	    possible to trigger an XSS.  We consider this vulnerability
+	    to be non critical.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <url>http://www.phpmyadmin.net/home_page/security/PMASA-2014-1.php</url>
+      <cvename>CVE-2014-1879</cvename>
+    </references>
+    <dates>
+      <discovery>2014-02-15</discovery>
+      <entry>2014-02-15</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="3e0507c6-9614-11e3-b3a5-00e0814cab4e">
+    <topic>jenkins -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>jenkins</name>
+	<range><lt>1.551</lt></range>
+      </package>
+      <package>
+	<name>jenkins-lts</name>
+	<range><lt>1.532.2</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Jenkins Security Advisory reports:</p>
+	<blockquote cite="https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2014-02-14">
+	  <p>This advisory announces multiple security vulnerabilities that
+	    were found in Jenkins core.</p>
+	  <ol>
+	    <li>
+	      <p>iSECURITY-105</p>
+	      <p>In some places, Jenkins XML API uses XStream to deserialize
+	         arbitrary content, which is affected by CVE-2013-7285 reported
+	         against XStream. This allows malicious users of Jenkins with
+	         a limited set of permissions to execute arbitrary code inside
+	         Jenkins master.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-76 &amp; SECURITY-88 / CVE-2013-5573</p>
+	      <p>Restrictions of HTML tags for user-editable contents are too
+	         lax. This allows malicious users of Jenkins to trick other
+	         unsuspecting users into providing sensitive information.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-109</p>
+	      <p>Plugging a hole in the earlier fix to SECURITY-55. Under some
+	         circimstances, a malicious user of Jenkins can configure job
+	         X to trigger another job Y that the user has no access to.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-108</p>
+	      <p>CLI job creation had a directory traversal vulnerability. This
+	         allows a malicious user of Jenkins with a limited set of
+	         permissions to overwrite files in the Jenkins master and
+	         escalate privileges.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-106</p>
+	      <p>The embedded Winstone servlet container is susceptive to
+	         session hijacking attack.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-93</p>
+	      <p>The password input control in the password parameter
+	         definition in the Jenkins UI was serving the actual value of
+	         the password in HTML, not an encrypted one. If a sensitive
+	         value is set as the default value of such a parameter
+	         definition, it can be exposed to unintended audience.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-89</p>
+	      <p>Deleting the user was not invalidating the API token,
+	         allowing users to access Jenkins when they shouldn't be
+	         allowed to do so.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-80</p>
+	      <p>Jenkins UI was vulnerable to click jacking attacks.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-79</p>
+	      <p>"Jenkins' own user database" was revealing the
+	         presence/absence of users when login attempts fail.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-77</p>
+	      <p>Jenkins had a cross-site scripting vulnerability in one of its
+	         cookies. If Jenkins is deployed in an environment that allows
+	         an attacker to override Jenkins cookies in victim's browser,
+	         this vulnerability can be exploited.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-75</p>
+	      <p>Jenkins was vulnerable to session fixation attack. If Jenkins
+	         is deployed in an environment that allows an attacker to
+	         override Jenkins cookies in victim's browser, this
+	         vulnerability can be exploited.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-74</p>
+	      <p>Stored XSS vulnerability. A malicious user of Jenkins with a
+	         certain set of permissions can cause Jenkins to store
+	         arbitrary HTML fragment.</p>
+	    </li>
+	    <li>
+	      <p>SECURITY-73</p>
+	      <p>Some of the system diagnostic functionalities were checking a
+	         lesser permission than it should have. In a very limited
+	         circumstances, this can cause an attacker to gain information
+	         that he shouldn't have access to.</p>
+	    </li>
+	  </ol>
+	  <p>Severity</p>
+	  <ol>
+	    <li>SECURITY-106, and SECURITY-80 are rated <strong>high</strong>. An attacker only
+	        needs direct HTTP access to the server to mount this attack.</li>
+	    <li>SECURITY-105, SECURITY-109, SECURITY-108, and SECURITY-74 are
+	        rated <strong>high</strong>. These vulnerabilities allow attackes with valid
+	        Jenkins user accounts to escalate privileges in various ways.</li>
+	    <li>SECURITY-76, SECURIT-88, and SECURITY-89 are rated <strong>medium.</strong>
+	        These vulnerabilities requires an attacker to be an user of
+	        Jenkins, and the mode of the attack is limited.</li>
+	    <li>SECURITY-93, and SECURITY-79 are <strong>rated</strong> low. These
+	        vulnerabilities only affect a small part of Jenkins and has
+	        limited impact.</li>
+	    <li>SECURITY-77, SECURITY-75, and SECURITY-73 are <strong>rated</strong> low. These
+	        vulnerabilities are hard to exploit unless combined with other
+	        exploit in the network.</li>
+	  </ol>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <url>https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2014-02-14</url>
+      <cvename>CVE-2013-5573</cvename>
+      <cvename>CVE-2013-7285</cvename>
+    </references>
+    <dates>
+      <discovery>2014-02-14</discovery>
+      <entry>2014-02-15</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="90b27045-9530-11e3-9d09-000c2980a9f3">
+    <topic>lighttpd -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>lighttpd</name>
+	<range><lt>1.4.34</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>lighttpd security advisories report:</p>
+	<blockquote cite="http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2013_01.txt">
+	  <p>It is possible to inadvertantly enable vulnerable ciphers when using
+	    ssl.cipher-list.</p>
+	</blockquote>
+	<blockquote cite="http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2013_02.txt">
+	  <p>In certain cases setuid() and similar can fail, potentially triggering
+	    lighttpd to restart running as root.</p>
+	</blockquote>
+	<blockquote cite="http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2013_03.txt">
+	  <p>If FAMMonitorDirectory fails, the memory intended to store the context is
+	    released; some lines below the "version" compoment of that context is read.
+	    Reading invalid data doesn't matter, but the memory access could trigger a
+	    segfault.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <url>http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2013_01.txt</url>
+      <url>http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2013_02.txt</url>
+      <url>http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2013_03.txt</url>
+      <cvename>CVE-2013-4508</cvename>
+      <cvename>CVE-2013-4559</cvename>
+      <cvename>CVE-2013-4560</cvename>
+    </references>
+    <dates>
+      <discovery>2013-11-28</discovery>
+      <entry>2014-02-14</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="4dd575b8-8f82-11e3-bb11-0025905a4771">
+    <topic>phpmyfaq -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>phpmyfaq</name>
+	<range><lt>2.8.6</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The phpMyFAQ team reports:</p>
+	<blockquote cite="http://www.phpmyfaq.de/advisory_2014-02-04.php">
+	  <p> An arbitrary script may be executed on the user's Internet
+	    Explorer when using an older version of the browser. If a user views
+	    a malicious page while logged in, settings may be changed
+	    unintentionally.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2014-0813</cvename>
+      <cvename>CVE-2014-0814</cvename>
+      <url>http://www.phpmyfaq.de/advisory_2014-02-04.php</url>
+    </references>
+    <dates>
+      <discovery>2014-02-04</discovery>
+      <entry>2014-02-06</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="b7a7576d-8e0a-11e3-9976-9c4e36909cc0">
+    <topic>linux-flashplugin -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>linux-f10-flashplugin</name>
+	<range><lt>11.2r202.336</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Adobe reports:</p>
+	<blockquote cite="http://www.adobe.com/support/security/bulletins/apsb14-04.html">
+	  <p>These updates address vulnerabilities that could cause a crash
+	    and potentially allow an attacker to take control of the affected system.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2014-0497</cvename>
+      <url>http://www.adobe.com/support/security/bulletins/apsb14-04.html</url>
+    </references>
+    <dates>
+      <discovery>2014-02-04</discovery>
+      <entry>2014-02-04</entry>
+      <modified>2014-02-05</modified>
+    </dates>
+  </vuln>
+
+  <vuln vid="1753f0ff-8dd5-11e3-9b45-b4b52fce4ce8">
+    <topic>mozilla -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>firefox</name>
+	<range><gt>25.0,1</gt><lt>27.0,1</lt></range>
+	<range><lt>24.3.0,1</lt></range>
+      </package>
+      <package>
+	<name>linux-firefox</name>
+	<range><lt>27.0,1</lt></range>
+      </package>
+      <package>
+	<name>linux-seamonkey</name>
+	<range><lt>2.24</lt></range>
+      </package>
+      <package>
+	<name>linux-thunderbird</name>
+	<range><lt>24.3.0</lt></range>
+      </package>
+      <package>
+	<name>seamonkey</name>
+	<range><lt>2.24</lt></range>
+      </package>
+      <package>
+	<name>thunderbird</name>
+	<range><lt>24.3.0</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The Mozilla Project reports:</p>
+	<blockquote cite="http://www.mozilla.org/security/known-vulnerabilities/">
+	  <p>MFSA 2014-01 Miscellaneous memory safety hazards
+	    (rv:27.0 / rv:24.3)</p>
+	  <p>MFSA 2014-02 Clone protected content with XBL scopes</p>
+	  <p>MFSA 2014-03 UI selection timeout missing on download
+	    prompts</p>
+	  <p>MFSA 2014-04 Incorrect use of discarded images by
+	    RasterImage</p>
+	  <p>MFSA 2014-05 Information disclosure with *FromPoint on
+	    iframes</p>
+	  <p>MFSA 2014-06 Profile path leaks to Android system log</p>
+	  <p>MFSA 2014-07 XSLT stylesheets treated as styles in Content
+	    Security Policy</p>
+	  <p>MFSA 2014-08 Use-after-free with imgRequestProxy and image
+	    proccessing</p>
+	  <p>MFSA 2014-09 Cross-origin information leak through web
+	    workers</p>
+	  <p>MFSA 2014-10 Firefox default start page UI content invokable
+	    by script</p>
+	  <p>MFSA 2014-11 Crash when using web workers with asm.js</p>
+	  <p>MFSA 2014-12 NSS ticket handling issues</p>
+	  <p>MFSA 2014-13 Inconsistent JavaScript handling of access to
+	    Window objects</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2014-1477</cvename>
+      <cvename>CVE-2014-1478</cvename>
+      <cvename>CVE-2014-1479</cvename>
+      <cvename>CVE-2014-1480</cvename>
+      <cvename>CVE-2014-1481</cvename>
+      <cvename>CVE-2014-1482</cvename>
+      <cvename>CVE-2014-1483</cvename>
+      <cvename>CVE-2014-1484</cvename>
+      <cvename>CVE-2014-1485</cvename>
+      <cvename>CVE-2014-1486</cvename>
+      <cvename>CVE-2014-1487</cvename>
+      <cvename>CVE-2014-1488</cvename>
+      <cvename>CVE-2014-1489</cvename>
+      <cvename>CVE-2014-1490</cvename>
+      <cvename>CVE-2014-1491</cvename>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-01.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-02.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-03.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-04.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-05.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-06.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-07.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-08.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-09.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-10.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-11.html</url>
+      <url>https://www.mozilla.org/security/announce/2014/mfsa2014-12.html</url>
+      <url>http://www.mozilla.org/security/known-vulnerabilities/</url>
+    </references>
+    <dates>
+      <discovery>2014-02-04</discovery>
+      <entry>2014-02-04</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="111f1f84-1d14-4ff2-a9ea-cf07119c0d3b">
+    <topic>libyaml heap overflow resulting in possible code execution</topic>
+    <affects>
+      <package>
+	<name>libyaml</name>
+	<range><lt>0.1.4_3</lt></range>
+      </package>
+      <package>
+	<name>pkg</name>
+	<range><lt>1.2.6</lt></range>
+      </package>
+      <package>
+	<name>pkg-devel</name>
+	<range><lt>1.2.6</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>libyaml was prone to a heap overflow that could result in
+	  arbitrary code execution. Pkg uses libyaml to parse
+	  the package manifests in some cases. Pkg also used libyaml
+	  to parse the remote repository until 1.2.</p>
+	<p>RedHat Product Security Team reports on libyaml:</p>
+	<blockquote cite="https://bugzilla.redhat.com/show_bug.cgi?id=1033990">
+	  <p>A heap-based buffer overflow flaw was found in the way libyaml
+	    parsed YAML tags. A remote attacker could provide a
+	    specially-crafted YAML document that, when parsed by an application
+	    using libyaml, would cause the application to crash or, potentially,
+	    execute arbitrary code with the privileges of the user running the
+	    application.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-6393</cvename>
+      <url>https://bugzilla.redhat.com/show_bug.cgi?id=1033990</url>
+    </references>
+    <dates>
+      <discovery>2013-11-24</discovery>
+      <entry>2014-02-01</entry>
+      <modified>2014-02-01</modified>
+    </dates>
+  </vuln>
+
+  <vuln vid="a4c9e12d-88b7-11e3-8ada-10bf48e1088e">
+    <topic>socat -- buffer overflow with data from command line</topic>
+    <affects>
+      <package>
+	<name>socat</name>
+	<range><lt>1.7.2.3</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Florian Weimer of the Red Hat Product Security Team reports:</p>
+	<blockquote cite="http://www.dest-unreach.org/socat/contrib/socat-secadv5.txt">
+	  <p>Due to a missing check during assembly of the HTTP request line a long
+	    target server name in the PROXY-CONNECT address can cause a stack buffer
+	    overrun. Exploitation requires that the attacker is able to provide the
+	    target server name to the PROXY-CONNECT address in the command line.
+	    This can happen for example in scripts that receive data from untrusted
+	    sources.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2014-0019</cvename>
+      <url>http://www.dest-unreach.org/socat/contrib/socat-secadv5.txt</url>
+    </references>
+    <dates>
+      <discovery>2014-01-24</discovery>
+      <entry>2014-01-29</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="c7b5d72b-886a-11e3-9533-60a44c524f57">
+    <topic>otrs -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>otrs</name>
+	<range><lt>3.1.19</lt></range>
+	<range><gt>3.2.*</gt><lt>3.2.14</lt></range>
+	<range><gt>3.3.*</gt><lt>3.3.4</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The OTRS Project reports:</p>
+	<blockquote cite="https://www.otrs.com/security-advisory-2014-02-sql-injection-issue/">
+	  <p>SQL injection issue</p>
+	</blockquote>
+	<blockquote cite="https://www.otrs.com/security-advisory-2014-01-csrf-issue-customer-web-interface/">
+	  <p>An attacker that managed to take over the session of a logged in customer
+	    could create tickets and/or send follow-ups to existing tickets due to
+	    missing challenge token checks.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2014-1471</cvename>
+      <url>https://www.otrs.com/security-advisory-2014-02-sql-injection-issue/</url>
+      <url>https://www.otrs.com/security-advisory-2014-01-csrf-issue-customer-web-interface/</url>
+    </references>
+    <dates>
+      <discovery>2014-01-28</discovery>
+      <entry>2014-01-28</entry>
+      <modified>2014-02-06</modified>
+    </dates>
+  </vuln>
+
+  <vuln vid="080c5370-886a-11e3-9533-60a44c524f57">
+    <cancelled superseded="c7b5d72b-886a-11e3-9533-60a44c524f57"/>
+  </vuln>
+
+  <vuln vid="f9810c43-87a5-11e3-9214-00262d5ed8ee">
+    <topic>chromium -- multiple vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>chromium</name>
+	<range><lt>32.0.1700.102</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>Google Chrome Releases reports:</p>
+	<blockquote cite="http://googlechromereleases.blogspot.nl/">
+	  <p>14 security fixes in this release, including:</p>
+	  <ul>
+	    <li>[330420] High CVE-2013-6649: Use-after-free in SVG images.
+	      Credit to Atte Kettunen of OUSPG.</li>
+	    <li>[331444] High CVE-2013-6650: Memory corruption in V8. This
+	      issue was fixed in v8 version 3.22.24.16. Credit to Christian
+	      Holler.</li>
+	  </ul>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-6649</cvename>
+      <cvename>CVE-2013-6650</cvename>
+      <url>http://googlechromereleases.blogspot.nl/</url>
+    </references>
+    <dates>
+      <discovery>2014-01-27</discovery>
+      <entry>2014-01-27</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="d1dfc4c7-8791-11e3-a371-6805ca0b3d42">
+    <topic>rt42 -- denial-of-service attack via the email gateway</topic>
+    <affects>
+      <package>
+	<name>rt42</name>
+	<range><ge>4.2</ge><lt>4.2.1_3</lt></range>
+	<range><ge>4.2.2</ge><lt>4.2.2_2</lt></range>
+      </package>
+      <package>
+	<name>p5-Email-Address-List</name>
+	<range><lt>0.02</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>The RT development team reports:</p>
+	<blockquote cite="http://blog.bestpractical.com/2014/01/security-vulnerability-in-rt-42.html">
+	  <p>Versions of RT between 4.2.0 and 4.2.2 (inclusive) are
+	    vulnerable to a denial-of-service attack via the email
+	    gateway; any installation which accepts mail from untrusted
+	    sources is vulnerable, regardless of the permissions
+	    configuration inside RT. This vulnerability is assigned
+	    CVE-2014-1474.</p>
+	  <p>This vulnerability is caused by poor parsing performance
+	    in the Email::Address::List module, which RT depends on. We
+	    recommend that affected users upgrade their version of
+	    Email::Address::List to v0.02 or above, which resolves the
+	    issue. Due to a communications mishap, the release on CPAN
+	    will temporarily appear as "unauthorized," and the
+	    command-line cpan client will hence not install it. We
+	    expect this to be resolved shortly; in the meantime, the
+	    release is also available from our server.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2014-1474</cvename>
+      <url>http://blog.bestpractical.com/2014/01/security-vulnerability-in-rt-42.html</url>
+    </references>
+    <dates>
+      <discovery>2014-01-27</discovery>
+      <entry>2014-01-27</entry>
+    </dates>
+  </vuln>
+
+  <vuln vid="efa663eb-8754-11e3-9a47-00163e1ed244">
+    <topic>strongswan -- multiple DoS vulnerabilities</topic>
+    <affects>
+      <package>
+	<name>strongswan</name>
+	<range><lt>5.1.1</lt></range>
+      </package>
+    </affects>
+    <description>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+	<p>strongSwan Project reports:</p>
+	<blockquote cite="http://www.strongswan.org/blog/2013/11/01/strongswan-denial-of-service-vulnerability-%28cve-2013-6076%29.html">
+	  <p>A DoS vulnerability triggered by crafted IKEv1 fragmentation
+	    payloads was discovered in strongSwan's IKE daemon charon. All
+	    versions since 5.0.2 are affected.</p>
+	</blockquote>
+	<blockquote cite="http://www.strongswan.org/blog/2013/11/01/strongswan-denial-of-service-vulnerability-%28cve-2013-6075%29.html">
+	  <p>A DoS vulnerability and potential authorization bypass triggered
+	    by a crafted ID_DER_ASN1_DN ID payload was discovered in strongSwan.
+	    All versions since 4.3.3 are affected.</p>
+	</blockquote>
+	<blockquote cite="http://www.strongswan.org/blog/2013/08/01/strongswan-denial-of-service-vulnerability-%28cve-2013-5018%29.html">
+	  <p>A DoS vulnerability in strongSwan was discovered, which is
+	    triggered by XAuth usernames and EAP identities in versions
+	    5.0.3 and 5.0.4.</p>
+	</blockquote>
+      </body>
+    </description>
+    <references>
+      <cvename>CVE-2013-5018</cvename>
+      <cvename>CVE-2013-6075</cvename>
+      <cvename>CVE-2013-6076</cvename>
+      <url>http://www.strongswan.org/blog/2013/08/01/strongswan-denial-of-service-vulnerability-%28cve-2013-5018%29.html</url>
+      <url>http://www.strongswan.org/blog/2013/11/01/strongswan-denial-of-service-vulnerability-%28cve-2013-6075%29.html</url>
+      <url>http://www.strongswan.org/blog/2013/11/01/strongswan-denial-of-service-vulnerability-%28cve-2013-6076%29.html</url>
+    </references>
+    <dates>
+      <discovery>2013-11-01</discovery>
+      <entry>2014-01-27</entry>
+    </dates>
+  </vuln>
+
   <vuln vid="d9dbe6e8-84da-11e3-98bd-080027f2d077">
     <topic>varnish -- DoS vulnerability in Varnish HTTP cache</topic>
     <affects>
@@ -71,8 +660,10 @@ Note:  Please add new entries to the beginning of this file.
 	    there will be a brief interruption of service and the cache will be
 	    emptied, causing more traffic to go to the backend.
 	  </p>
-	  <p>We are releasing this advisory because restarting from vcl_error{} is both fairly common and documented.</p>
-	  <p>This is purely a denial of service vulnerability, there is no risk of privilege escalation.</p>
+	  <p>We are releasing this advisory because restarting from vcl_error{} is
+	    both fairly common and documented.</p>
+	  <p>This is purely a denial of service vulnerability, there is no risk of
+	    privilege escalation.</p>
 	  <p>Workaround</p>
 	  <p>Insert this at the top of your VCL file:</p>
 	  <pre>

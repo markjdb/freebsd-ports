@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mediawiki
-PORTVERSION=	1.19.8
+PORTVERSION=	1.19.11
 CATEGORIES=	www
 MASTER_SITES=	http://dumps.wikimedia.org/mediawiki/${PORTVERSION:R}/
 PKGNAMESUFFIX=	119
@@ -15,7 +15,6 @@ LICENSE=	GPLv2
 CONFLICTS=	mediawiki-1.2[0-9].*
 
 USE_PHP=	ctype iconv mbstring pcre session xml zlib readline dom
-IGNORE_WITH_PHP=4
 WANT_PHP_WEB=	yes
 MEDIAWIKIDIR?=	www/mediawiki
 
@@ -30,7 +29,6 @@ EACCEL_DESC=	use eAccelerator (instead of pecl-APC)
 XCACHE_DESC=	use xCache (instead of pecl-APC)
 IMAGICK_DESC=	use ImageMagick
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMYSQL}
@@ -67,9 +65,9 @@ RUN_DEPENDS+=	${LOCALBASE}/lib/php/${PHP_EXT_DIR}/xcache.so:${PORTSDIR}/www/xcac
 .endif
 
 do-install:
-	@${MKDIR} ${PREFIX}/${MEDIAWIKIDIR}
-	${CP} -r ${WRKSRC}/ ${PREFIX}/${MEDIAWIKIDIR}
-	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${PREFIX}/${MEDIAWIKIDIR}
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${MEDIAWIKIDIR}
+	${CP} -r ${WRKSRC}/ ${STAGEDIR}${PREFIX}/${MEDIAWIKIDIR}
+	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${STAGEDIR}${PREFIX}/${MEDIAWIKIDIR}
 
 post-install:
 	@${FIND} ${WRKSRC}/${file} -not -type d \

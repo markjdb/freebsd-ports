@@ -50,7 +50,6 @@
     SUBDIR += baresip
     SUBDIR += baudline
     SUBDIR += beast
-    SUBDIR += bebocd
     SUBDIR += beep
     SUBDIR += beets
     SUBDIR += blop
@@ -235,7 +234,6 @@
     SUBDIR += gqradio
     SUBDIR += gramofile
     SUBDIR += grip
-    SUBDIR += gsi
     SUBDIR += gsm
     SUBDIR += gspeakers
     SUBDIR += gstreamer-plugins-a52dec
@@ -259,8 +257,8 @@
     SUBDIR += gstreamer-plugins-mp3
     SUBDIR += gstreamer-plugins-musepack
     SUBDIR += gstreamer-plugins-nas
-    SUBDIR += gstreamer-plugins-opus
     SUBDIR += gstreamer-plugins-ogg
+    SUBDIR += gstreamer-plugins-opus
     SUBDIR += gstreamer-plugins-pulse
     SUBDIR += gstreamer-plugins-shout2
     SUBDIR += gstreamer-plugins-sidplay
@@ -408,6 +406,7 @@
     SUBDIR += libshout2
     SUBDIR += libsidplay
     SUBDIR += libsidplay2
+    SUBDIR += libsidplayfp
     SUBDIR += libsmf
     SUBDIR += libsndfile
     SUBDIR += libtremor
@@ -534,6 +533,7 @@
     SUBDIR += optimfrog
     SUBDIR += opus
     SUBDIR += opus-tools
+    SUBDIR += opusfile
     SUBDIR += osalp
     SUBDIR += osd-lyrics
     SUBDIR += osdmixer
@@ -606,8 +606,6 @@
     SUBDIR += py-al
     SUBDIR += py-ao
     SUBDIR += py-apetag
-    SUBDIR += py-pyacoustid
-    SUBDIR += py-pyaudio
     SUBDIR += py-cddb
     SUBDIR += py-discogs-client
     SUBDIR += py-eyed3
@@ -622,6 +620,8 @@
     SUBDIR += py-mutagen
     SUBDIR += py-ogg
     SUBDIR += py-openal
+    SUBDIR += py-pyacoustid
+    SUBDIR += py-pyaudio
     SUBDIR += py-pylast
     SUBDIR += py-pyliblo
     SUBDIR += py-shout

@@ -47,9 +47,7 @@ PERL_VERSION!=	perl -e 'printf "%vd\n", $$^V;'
 .endif
 .else
 .include "${PORTSDIR}/Mk/bsd.default-versions.mk"
-.if ${PERL5_DEFAULT} == 5.12
-PERL_VERSION=	5.12.5
-.elif ${PERL5_DEFAULT} == 5.14
+.if ${PERL5_DEFAULT} == 5.14
 PERL_VERSION=	5.14.4
 .elif ${PERL5_DEFAULT} == 5.16
 PERL_VERSION=	5.16.3
@@ -86,10 +84,8 @@ PERL_ARCH?=		mach
 PERL_PORT?=	perl5.18
 .elif    ${PERL_LEVEL} >= 501600
 PERL_PORT?=	perl5.16
-.elif  ${PERL_LEVEL} >= 501400
+.else  # ${PERL_LEVEL} < 501600
 PERL_PORT?=	perl5.14
-.else  # ${PERL_LEVEL} < 501400
-PERL_PORT?=	perl5.12
 .endif
 
 SITE_PERL_REL?=	lib/perl5/site_perl/${PERL_VER}
@@ -258,9 +254,9 @@ do-install:
 .endif # ! USES=gmake
 .endif # modbuild
 
-post-stage::
 # TODO: change to ${_USE_PERL5:Mconfigure} when M::B creates .packlist
 .if ${USE_PERL5:Mconfigure} || ${USE_PERL5:Mmodbuildtiny}
+post-stage::
 	-@[ -d ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/auto ] && ${FIND} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/auto -name .packlist -exec ${SED} -i '' 's|^${STAGEDIR}||' '{}' \;
 .endif
 .endif # defined(_POSTMKINCLUDED)

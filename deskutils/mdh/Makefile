@@ -10,6 +10,9 @@ MASTER_SITES=	http://www.gozer.org/programs/gtk/files/
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GTK2-based toolbar, like a smaller GNOME panel
 
+DEPRECATED=	No more public distfiles
+EXPIRATION_DATE=	2014-03-07
+
 USE_BZIP2=	yes
 USE_GNOME=	gtk20
 USES=		gmake pkgconfig
@@ -18,19 +21,15 @@ GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-.if defined(WITHOUT_GTOP)
-CONFIGURE_ARGS+=	--disable-gtop
-.else
-LIB_DEPENDS+=	libgtop-2.0.so:${PORTSDIR}/devel/libgtop
-.endif
+OPTIONS_DEFINE=	CURL DOCS GTOP
+OPTIONS_DEFAULT=	CURL GTOP
 
-.if defined(WITHOUT_CURL)
-CONFIGURE_ARGS+=	--disable-curl
-.else
-LIB_DEPENDS+=	libcurl.so:${PORTSDIR}/ftp/curl
-.endif
+CURL_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
+CURL_CONFIGURE_OFF=	--disable-curl
 
-NO_STAGE=	yes
+GTOP_LIB_DEPENDS=	libgtop-2.0.so:${PORTSDIR}/devel/libgtop
+GTOP_CONFIGURE_OFF=	--disable-gtop
+
 post-patch:
 	@${REINPLACE_CMD} -e 's| make| $$(MAKE)|g' ${WRKSRC}/Makefile
 	@${REINPLACE_CMD} -e 's|\.\./lib/getopt/getopt\.c||g ; \
@@ -43,9 +42,7 @@ post-patch:
 	@${REINPLACE_CMD} -e '/<curl\/types.h>/d' ${WRKSRC}/src/curl.c
 
 post-install:
-.if !defined(NOPORTDOCS)
-	@${MKDIR} ${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/README ${DOCSDIR}
-.endif
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

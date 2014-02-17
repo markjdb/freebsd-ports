@@ -31,6 +31,7 @@
     SUBDIR += asciidoc
     SUBDIR += asm-xml
     SUBDIR += aspell
+    SUBDIR += aspell-ispell
     SUBDIR += ast-aspell
     SUBDIR += atom
     SUBDIR += ats-contrib-parcomb
@@ -51,7 +52,6 @@
     SUBDIR += bn-aspell
     SUBDIR += bomstrip
     SUBDIR += br-aspell
-    SUBDIR += british-ispell
     SUBDIR += bsddiff
     SUBDIR += bsdgrep
     SUBDIR += bsdsort
@@ -167,7 +167,6 @@
     SUBDIR += es-aspell
     SUBDIR += es-hunspell
     SUBDIR += es-hyphen
-    SUBDIR += es-ispell
     SUBDIR += es-mythes
     SUBDIR += estraier
     SUBDIR += et-aspell
@@ -320,11 +319,9 @@
     SUBDIR += iso-schematron-xslt
     SUBDIR += iso12083
     SUBDIR += iso8879
-    SUBDIR += ispell
     SUBDIR += it-aspell
     SUBDIR += it-hunspell
     SUBDIR += it-hyphen
-    SUBDIR += it-ispell
     SUBDIR += it-mythes
     SUBDIR += itstool
     SUBDIR += jade
@@ -455,7 +452,6 @@
     SUBDIR += nl-aspell
     SUBDIR += nl-hunspell
     SUBDIR += nl-hyphen
-    SUBDIR += nl-ispell
     SUBDIR += nl-mythes
     SUBDIR += nltk
     SUBDIR += nn-aspell
@@ -507,9 +503,10 @@
     SUBDIR += p5-Dev-Bollocks
     SUBDIR += p5-Devel-TraceSAX
     SUBDIR += p5-DocSet
-    SUBDIR += p5-ElasticSearch
-    SUBDIR += p5-ElasticSearch-SearchBuilder
     SUBDIR += p5-EBook-Tools
+    SUBDIR += p5-ElasticSearch-SearchBuilder
+    SUBDIR += p5-ElasticSearch-legacy
+    SUBDIR += p5-Elasticsearch
     SUBDIR += p5-Excel-Template
     SUBDIR += p5-Excel-Writer-XLSX
     SUBDIR += p5-File-Inplace
@@ -1144,7 +1141,6 @@
     SUBDIR += publican
     SUBDIR += pure-csv
     SUBDIR += pure-xml
-    SUBDIR += py-4suite
     SUBDIR += py-4suite-xml
     SUBDIR += py-Chameleon
     SUBDIR += py-MarkupSafe
@@ -1182,18 +1178,21 @@
     SUBDIR += py-pyctpp2
     SUBDIR += py-pyelasticsearch
     SUBDIR += py-pygments
+    SUBDIR += py-pyscss
     SUBDIR += py-pysrt
     SUBDIR += py-pystache
     SUBDIR += py-pyx12
     SUBDIR += py-qt4-xml
     SUBDIR += py-qt4-xmlpatterns
     SUBDIR += py-rdflib
+    SUBDIR += py-regex
     SUBDIR += py-reverend
     SUBDIR += py-rss2gen
     SUBDIR += py-rst2html5
     SUBDIR += py-rstyoutube
     SUBDIR += py-rxp
     SUBDIR += py-sgrep
+    SUBDIR += py-sparqlwrapper
     SUBDIR += py-sphinx
     SUBDIR += py-sphinxcontrib-adadomain
     SUBDIR += py-sphinxcontrib-bitbucket
@@ -1394,7 +1393,6 @@
     SUBDIR += sk-aspell
     SUBDIR += sk-hunspell
     SUBDIR += sk-hyphen
-    SUBDIR += sk-ispell
     SUBDIR += sk-mythes
     SUBDIR += sl-aspell
     SUBDIR += sl-hyphen

@@ -74,9 +74,9 @@
     SUBDIR += flare
     SUBDIR += fortytwo-bdb
     SUBDIR += fpc-dblib
+    SUBDIR += fpc-fpindexer
     SUBDIR += fpc-gdbm
     SUBDIR += fpc-ibase
-    SUBDIR += fpc-fpindexer
     SUBDIR += fpc-mysql
     SUBDIR += fpc-odbc
     SUBDIR += fpc-oracle
@@ -119,10 +119,10 @@
     SUBDIR += jasperserver
     SUBDIR += java-mybatis
     SUBDIR += jdb
-    SUBDIR += jdbc-oracle8i
-    SUBDIR += jdbc-oracle9i
     SUBDIR += jdbc-oracle10g
     SUBDIR += jdbc-oracle11g
+    SUBDIR += jdbc-oracle8i
+    SUBDIR += jdbc-oracle9i
     SUBDIR += jdbm2
     SUBDIR += jrobin
     SUBDIR += jrrd
@@ -246,6 +246,7 @@
     SUBDIR += mytop
     SUBDIR += mywwwatcher
     SUBDIR += nagios-check_postgres_replication
+    SUBDIR += nagios-check_redis
     SUBDIR += namazu2
     SUBDIR += ocaml-mysql
     SUBDIR += ocaml-pgocaml
@@ -328,8 +329,6 @@
     SUBDIR += p5-DBD-cego
     SUBDIR += p5-DBD-mysql
     SUBDIR += p5-DBD-mysql51
-    SUBDIR += p5-DBD-mysql52
-    SUBDIR += p5-DBD-mysql55
     SUBDIR += p5-DBI
     SUBDIR += p5-DBI-Shell
     SUBDIR += p5-DBICx-Deploy
@@ -434,9 +433,9 @@
     SUBDIR += p5-Iterator-DBI
     SUBDIR += p5-Jifty-DBI
     SUBDIR += p5-KyotoCabinet
-    SUBDIR += p5-MR-Tarantool
     SUBDIR += p5-MLDBM
     SUBDIR += p5-MLDBM-Sync
+    SUBDIR += p5-MR-Tarantool
     SUBDIR += p5-Memcached-libmemcached
     SUBDIR += p5-Metadata
     SUBDIR += p5-MongoDB
@@ -657,9 +656,9 @@
     SUBDIR += phpminiadmin
     SUBDIR += phpmyadmin
     SUBDIR += phppgadmin
+    SUBDIR += postgis-jdbc
     SUBDIR += postgis20
     SUBDIR += postgis21
-    SUBDIR += postgis-jdbc
     SUBDIR += postgresql-jdbc
     SUBDIR += postgresql-libpgeasy
     SUBDIR += postgresql-libpqxx
@@ -839,6 +838,7 @@
     SUBDIR += rubygem-activerecord-mysql-adapter
     SUBDIR += rubygem-amalgalite
     SUBDIR += rubygem-arel
+    SUBDIR += rubygem-arel3
     SUBDIR += rubygem-bdb1
     SUBDIR += rubygem-bigrecord
     SUBDIR += rubygem-couchrest

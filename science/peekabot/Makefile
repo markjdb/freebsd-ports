@@ -3,7 +3,7 @@
 
 PORTNAME=	peekabot
 PORTVERSION=	0.8.6
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	science
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION:R}.x
 
@@ -14,6 +14,8 @@ LICENSE=	BSL GPLv3
 LICENSE_COMB=	multi
 
 BROKEN=		Does not build
+DEPRECATED=	Broken for more than 6 month
+EXPIRATION_DATE=	2014-02-27
 
 LIB_DEPENDS=	libboost_regex.so:${PORTSDIR}/devel/boost-libs \
 		libxerces-c.so.3:${PORTSDIR}/textproc/xerces-c3 \

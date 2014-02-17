@@ -14,12 +14,17 @@ COMMENT=	Command-line based Direct Connect client
 CONFLICTS=	tthsum-[0-9]*
 
 BROKEN=		Does not link
+DEPRECATED=	Broken for more than 6 month
+EXPIRATION_DATE=	2014-02-27
 
 GNU_CONFIGURE=	yes
 USES=		iconv
 USE_GNOME=	libxml2
 
 NO_STAGE=	yes
+
+OPTIONS_DEFINE=	NLS 
+
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}

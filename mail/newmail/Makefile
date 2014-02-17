@@ -9,11 +9,12 @@ MASTER_SITES=	ftp://ftp.ugh.net.au/pub/unix/newmail/
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Tool for checking for new mail in multiple mail boxes
 
+DEPRECATED=	No more public distfiles
+EXPIRATION_DATE=	2014-03-10
+
 WRKSRC=		${WRKDIR}/newmail
 
-MAN1=		newmail.1
-MANCOMPRESSED=	maybe
-PLIST_FILES=	bin/newmail
+PLIST_FILES=	bin/newmail \
+		man/man1/newmail.1.gz
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

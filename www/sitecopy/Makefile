@@ -22,7 +22,8 @@ CONFIGURE_ARGS=	--with-neon --with-libxml2
 USE_GNOME=	libxml2
 USE_GMAKE=	yes
 
-NO_STAGE=	yes
+OPTIONS_DEFINE=	NLS 
+
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MNLS}
@@ -39,7 +40,6 @@ USE_OPENSSL=	yes
 CONFIGURE_ARGS+=	--with-ssl
 .endif
 
-MAN1=		sitecopy.1
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|;;|;|g' \

@@ -107,8 +107,8 @@
     SUBDIR += cdroot
     SUBDIR += cdrtools
     SUBDIR += cdrtools-devel
-    SUBDIR += cfengine-devel
     SUBDIR += cfengine
+    SUBDIR += cfengine-devel
     SUBDIR += cfengine22
     SUBDIR += cfengine32
     SUBDIR += cfengine33
@@ -168,7 +168,6 @@
     SUBDIR += ddrescue
     SUBDIR += debhelper
     SUBDIR += debootstrap
-    SUBDIR += decomment
     SUBDIR += deltup
     SUBDIR += desktop-installer
     SUBDIR += detach
@@ -214,8 +213,8 @@
     SUBDIR += eiciel
     SUBDIR += eject
     SUBDIR += endian
-    SUBDIR += entr
     SUBDIR += enteruser
+    SUBDIR += entr
     SUBDIR += env4801
     SUBDIR += epylog
     SUBDIR += eroaster
@@ -370,8 +369,8 @@
     SUBDIR += hal-info
     SUBDIR += hardlink
     SUBDIR += hatop
-    SUBDIR += hdup
     SUBDIR += hdrecover
+    SUBDIR += hdup
     SUBDIR += healthd
     SUBDIR += heartbeat
     SUBDIR += heirloom
@@ -410,6 +409,7 @@
     SUBDIR += isomd5sum
     SUBDIR += ispman
     SUBDIR += istatd
+    SUBDIR += jail-primer
     SUBDIR += jail2
     SUBDIR += jailadmin
     SUBDIR += jailctl
@@ -503,7 +503,6 @@
     SUBDIR += mate-settings-daemon
     SUBDIR += mate-system-monitor
     SUBDIR += mbgtools
-    SUBDIR += mbmon
     SUBDIR += mcelog
     SUBDIR += mcollective
     SUBDIR += mcron
@@ -726,9 +725,9 @@
     SUBDIR += pstree
     SUBDIR += ptools
     SUBDIR += puppet
+    SUBDIR += puppet-lint
     SUBDIR += puppet-mode.el
     SUBDIR += puppet27
-    SUBDIR += puppet-lint
     SUBDIR += pv
     SUBDIR += pwd_unmkdb
     SUBDIR += pwgen
@@ -764,8 +763,8 @@
     SUBDIR += qsynergy
     SUBDIR += quicksynergy
     SUBDIR += qzeitgeist
-    SUBDIR += radeontool
     SUBDIR += racktables
+    SUBDIR += radeontool
     SUBDIR += radmind
     SUBDIR += raincoat
     SUBDIR += rclean
@@ -779,7 +778,6 @@
     SUBDIR += reed
     SUBDIR += rej
     SUBDIR += relaxconf
-    SUBDIR += relpath
     SUBDIR += rename
     SUBDIR += reoback
     SUBDIR += replicant
@@ -851,6 +849,7 @@
     SUBDIR += screen
     SUBDIR += screenfetch
     SUBDIR += screenie
+    SUBDIR += scterc
     SUBDIR += sdd
     SUBDIR += sdparm
     SUBDIR += searchmonkey
@@ -1073,6 +1072,7 @@
     SUBDIR += zisofs-tools
     SUBDIR += zogftw
     SUBDIR += zrep
+    SUBDIR += zsd
     SUBDIR += zxfer
 
 .include <bsd.port.subdir.mk>

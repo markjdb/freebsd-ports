@@ -3,6 +3,7 @@
 
 PORTNAME=	armv7
 PORTVERSION=	${SNAPSHOT}
+PORTREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	${MASTER_SITE_GCC}
 MASTER_SITE_SUBDIR=	releases/gcc-${GCC_VERSION}
@@ -13,7 +14,8 @@ DISTFILES=	gcc-${GCC_VERSION}.tar.bz2
 MAINTAINER=	marino@FreeBSD.org
 COMMENT=	C/Ada cross-compiler, target: Android ARMv7
 
-LICENSE=	GPLv3
+LICENSE=	GPLv3 GPLv3RLE
+LICENSE_COMB=	multi
 
 BUILD_DEPENDS=	gnatdroid-sysroot>=9:${PORTSDIR}/lang/gnatdroid-sysroot \
 		gnatdroid-binutils>=2.21:${PORTSDIR}/lang/gnatdroid-binutils
@@ -59,6 +61,8 @@ PLIST_SUB+=		TARGET="${DROID_TARGET}"
 PLIST_SUB+=		GCCVERS="${GCC_VERSION}"
 SUB_FILES=		pkg-message
 SUB_LIST=		TARGET="${DROID_TARGET}"
+CROSS=			gnat gnatbind gnatchop gnatclean gnatfind gnatkr \
+			gnatlink gnatls gnatmake gnatprep gnatxref
 
 ALL_TARGET=		all
 
@@ -144,8 +148,13 @@ do-configure:
 	${CFG_SCRIPT} ${CONFIGURE_ARGS}
 
 pre-install:
-	# The "native tools" won't install unless a directory exists
-	${MKDIR} ${STAGEDIR}${PREFIX}/${DROID_TARGET}/bin 
+#	The "native tools" won't install unless a directory exists
+	${MKDIR} ${STAGEDIR}${PREFIX}/${DROID_TARGET}/bin
+#	Buggy makefile; seems to have forgotten this is a cross compiler
+#	Manually rename products so it doesn't rebuild them with new name
+.for X in ${CROSS}
+	${CP} -a ${BUILD_WRKSRC}/gcc/${X}-cross ${BUILD_WRKSRC}/gcc/${X}
+.endfor	
 
 do-install:
 	cd ${BUILD_WRKSRC} && ${GMAKE} install-strip DESTDIR=${STAGEDIR}

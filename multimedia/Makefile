@@ -153,7 +153,6 @@
     SUBDIR += kdemultimedia4-ffmpegthumbs
     SUBDIR += kdemultimedia4-mplayerthumbs
     SUBDIR += kdenlive
-    SUBDIR += kino
     SUBDIR += kissdx
     SUBDIR += kmplayer-kde4
     SUBDIR += kplayer-kde4
@@ -247,7 +246,6 @@
     SUBDIR += ogmrip
     SUBDIR += ogmtools
     SUBDIR += opencinematools
-    SUBDIR += openmovieeditor
     SUBDIR += openquicktime
     SUBDIR += openshot
     SUBDIR += oqtencoder
@@ -283,8 +281,8 @@
     SUBDIR += pwcview
     SUBDIR += py-enzyme
     SUBDIR += py-ffmpeg
-    SUBDIR += py-guessit
     SUBDIR += py-gstreamer
+    SUBDIR += py-guessit
     SUBDIR += py-kaa-base
     SUBDIR += py-kaa-imlib2
     SUBDIR += py-kaa-metadata
@@ -369,7 +367,6 @@
     SUBDIR += vdr-plugin-remote
     SUBDIR += vdr-plugin-skinenigmang
     SUBDIR += vdr-plugin-sleeptimer
-    SUBDIR += vdr-plugin-softdevice
     SUBDIR += vdr-plugin-softhddevice
     SUBDIR += vdr-plugin-streamdev
     SUBDIR += vdr-plugin-ttxtsubs
@@ -393,8 +390,6 @@
     SUBDIR += xawtv
     SUBDIR += xbmc
     SUBDIR += xbmc-addon-pvr
-    SUBDIR += xbmc-addon-xvdr
-    SUBDIR += xbmc-pvr
     SUBDIR += xfce4-parole
     SUBDIR += xfce4-xmms-plugin
     SUBDIR += xine

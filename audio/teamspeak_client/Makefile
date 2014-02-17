@@ -14,6 +14,9 @@ EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Client side of a group voice chat system
 
+DEPRECATED=	No more public distfiles
+EXPIRATION_DATE=	2014-03-07
+
 ONLY_FOR_ARCHS=	i386 amd64
 USE_BZIP2=	yes
 NO_STAGE=	yes
@@ -35,6 +38,8 @@ DESKTOP_ENTRIES="TeamSpeak" \
 		"TeamSpeak" \
 		"Network;Telephony;" \
 		false
+
+OPTIONS_DEFINE=	DOCS 
 
 .include <bsd.port.options.mk>
 

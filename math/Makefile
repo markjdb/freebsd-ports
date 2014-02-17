@@ -163,6 +163,7 @@
     SUBDIR += gringo
     SUBDIR += grpn
     SUBDIR += gsl
+    SUBDIR += hexcalc
     SUBDIR += hs-Agda
     SUBDIR += hs-NumInstances
     SUBDIR += hs-categories
@@ -243,7 +244,7 @@
     SUBDIR += mate-calc
     SUBDIR += mathomatic
     SUBDIR += matio
-    SUBDIR += matlab-R2012a-installer
+    SUBDIR += matlab-installer
     SUBDIR += matrix
     SUBDIR += maxima
     SUBDIR += mbasecalc
@@ -519,6 +520,7 @@
     SUBDIR += pecl-big_int
     SUBDIR += pecl-bitset
     SUBDIR += pecl-stats
+    SUBDIR += pecl-trader
     SUBDIR += petsc
     SUBDIR += php5-bcmath
     SUBDIR += php5-gmp
@@ -533,6 +535,7 @@
     SUBDIR += ploticus
     SUBDIR += ploticus-nox11
     SUBDIR += plplot
+    SUBDIR += plplot-ada
     SUBDIR += polymake
     SUBDIR += primegen
     SUBDIR += prng

@@ -12,37 +12,22 @@
 # nsd_enable="YES"
 #
 
+: ${nsd_enable="NO"}
+
 . /etc/rc.subr
 
 name=nsd
-rcvar=${name}_enable
+rcvar=nsd_enable
 
-required_files=%%PREFIX%%/etc/nsd/nsd.conf
+config=${nsd_config:=%%PREFIX%%/etc/nsd/nsd.conf}
+required_files=${config}
+pidfile=`%%PREFIX%%/sbin/nsd-checkconf -o pidfile ${config}`
 
-command=%%PREFIX%%/sbin/nsd-control
-command_args="start"
-pidfile=`%%PREFIX%%/sbin/nsd-checkconf -o pidfile %%PREFIX%%/etc/nsd/nsd.conf`
-procname=%%PREFIX%%/sbin/${name}
-
-load_rc_config ${name}
-
-nsd_enable=${nsd_enable-"NO"}
-
+command="%%PREFIX%%/sbin/${name}"
+command_args="-c ${required_files}"
 extra_commands="reload"
-reload_cmd="${name}_reload"
-stop_cmd="${name}_stop"
 
-nsd_reload()
-{
-	echo "Reloading ${name}."
-	kill -HUP `cat $pidfile`
-}
-
-nsd_stop()
-{
-	echo "Stopping ${name}."
-	kill -TERM `cat $pidfile`
-}
+load_rc_config $name
 
 run_rc_command "$1"
 

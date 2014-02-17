@@ -39,7 +39,6 @@
     SUBDIR += acme
     SUBDIR += activitymail
     SUBDIR += adabooch
-    SUBDIR += adabooch-doc-html
     SUBDIR += adacurses
     SUBDIR += adasdl
     SUBDIR += adime
@@ -182,6 +181,7 @@
     SUBDIR += c-unit
     SUBDIR += c4
     SUBDIR += calibrator
+    SUBDIR += capstone
     SUBDIR += cbind
     SUBDIR += cbrowser
     SUBDIR += cc65
@@ -491,6 +491,7 @@
     SUBDIR += gauche-readline
     SUBDIR += gaul
     SUBDIR += gazpacho
+    SUBDIR += gcc-arm-embedded
     SUBDIR += gccmakedep
     SUBDIR += gconf2
     SUBDIR += gconf2-reference
@@ -553,8 +554,8 @@
     SUBDIR += git-merge-changelog
     SUBDIR += git-review
     SUBDIR += git-subversion
-    SUBDIR += gitg0
     SUBDIR += gitg
+    SUBDIR += gitg0
     SUBDIR += gitolite
     SUBDIR += gitolite2
     SUBDIR += gitphp
@@ -910,6 +911,7 @@
     SUBDIR += kyra
     SUBDIR += kyua
     SUBDIR += kyua-atf-compat
+    SUBDIR += kyua-cli
     SUBDIR += kyua-testers
     SUBDIR += lasi
     SUBDIR += lcov
@@ -948,6 +950,7 @@
     SUBDIR += libconfig
     SUBDIR += libconfuse
     SUBDIR += libcwd
+    SUBDIR += libcxxrt
     SUBDIR += libdaemon
     SUBDIR += libdap
     SUBDIR += libdasm
@@ -1040,6 +1043,7 @@
     SUBDIR += libmimedir
     SUBDIR += libmonetra
     SUBDIR += libmowgli
+    SUBDIR += libmowgli2
     SUBDIR += libmpcbdm
     SUBDIR += libmsiecf
     SUBDIR += libmsocket
@@ -1054,6 +1058,7 @@
     SUBDIR += libolecf
     SUBDIR += liboobs
     SUBDIR += liboop
+    SUBDIR += libopencm3
     SUBDIR += libopendaap
     SUBDIR += libopensync
     SUBDIR += libopensync022
@@ -1100,6 +1105,7 @@
     SUBDIR += libsoup
     SUBDIR += libsoup-gnome
     SUBDIR += libsoup-reference
+    SUBDIR += libspark2012
     SUBDIR += libstatgrab
     SUBDIR += libstrfunc
     SUBDIR += libstroke
@@ -1138,6 +1144,7 @@
     SUBDIR += linux-f10-allegro
     SUBDIR += linux-f10-dbus-glib
     SUBDIR += linux-f10-dbus-libs
+    SUBDIR += linux-f10-devtools
     SUBDIR += linux-f10-libglade2
     SUBDIR += linux-f10-libsigc++20
     SUBDIR += linux-f10-ncurses-base
@@ -1152,6 +1159,7 @@
     SUBDIR += llvm32
     SUBDIR += llvm33
     SUBDIR += llvm34
+    SUBDIR += lm4tools
     SUBDIR += lmdbg
     SUBDIR += lndir
     SUBDIR += lockfree-malloc
@@ -1682,6 +1690,7 @@
     SUBDIR += p5-Data-Hexdumper
     SUBDIR += p5-Data-Hexify
     SUBDIR += p5-Data-Hierarchy
+    SUBDIR += p5-Data-IEEE754
     SUBDIR += p5-Data-Inherited
     SUBDIR += p5-Data-Inspect
     SUBDIR += p5-Data-Integer
@@ -2292,6 +2301,7 @@
     SUBDIR += p5-Module-Install
     SUBDIR += p5-Module-Install-AuthorRequires
     SUBDIR += p5-Module-Install-AuthorTests
+    SUBDIR += p5-Module-Install-ReadmeFromPod
     SUBDIR += p5-Module-Install-Repository
     SUBDIR += p5-Module-Install-Template
     SUBDIR += p5-Module-Install-XSUtil
@@ -2328,6 +2338,7 @@
     SUBDIR += p5-MooX-ConfigFromFile
     SUBDIR += p5-MooX-File-ConfigDir
     SUBDIR += p5-MooX-Options
+    SUBDIR += p5-MooX-StrictConstructor
     SUBDIR += p5-MooX-Types-MooseLike
     SUBDIR += p5-MooX-Types-MooseLike-Numeric
     SUBDIR += p5-MooX-late
@@ -2526,6 +2537,7 @@
     SUBDIR += p5-Path-Class-File-Lockable
     SUBDIR += p5-Path-Dispatcher
     SUBDIR += p5-Path-Dispatcher-Declarative
+    SUBDIR += p5-Path-FindDev
     SUBDIR += p5-Path-IsDev
     SUBDIR += p5-Path-Iterator-Rule
     SUBDIR += p5-Path-Resource
@@ -2776,6 +2788,7 @@
     SUBDIR += p5-Test-Base
     SUBDIR += p5-Test-Benchmark
     SUBDIR += p5-Test-BinaryData
+    SUBDIR += p5-Test-Bits
     SUBDIR += p5-Test-Block
     SUBDIR += p5-Test-CPAN-Meta-YAML
     SUBDIR += p5-Test-CheckDeps
@@ -3317,9 +3330,11 @@
     SUBDIR += pep8
     SUBDIR += performance
     SUBDIR += perlconsole
+    SUBDIR += php-Psr_Log
     SUBDIR += php-java-bridge
     SUBDIR += php-libawl
     SUBDIR += php-memoize
+    SUBDIR += php-scalar_objects
     SUBDIR += php-xdebug
     SUBDIR += php5-blitz
     SUBDIR += php5-blitz-devel
@@ -3518,10 +3533,12 @@
     SUBDIR += py-bison
     SUBDIR += py-bitarray
     SUBDIR += py-bitstring
+    SUBDIR += py-blessings
     SUBDIR += py-blinker
     SUBDIR += py-bluelet
     SUBDIR += py-boto
     SUBDIR += py-botocore
+    SUBDIR += py-capstone
     SUBDIR += py-cclib
     SUBDIR += py-celery
     SUBDIR += py-cffi
@@ -3539,6 +3556,7 @@
     SUBDIR += py-collective.monkeypatcher
     SUBDIR += py-collective.z3cform.datetimewidget
     SUBDIR += py-colorama
+    SUBDIR += py-conditional
     SUBDIR += py-configobj
     SUBDIR += py-construct
     SUBDIR += py-country
@@ -3736,6 +3754,7 @@
     SUBDIR += py-pyutil
     SUBDIR += py-pyxml2obj
     SUBDIR += py-pyzmq
+    SUBDIR += py-qpid
     SUBDIR += py-qserve
     SUBDIR += py-qt4
     SUBDIR += py-qt4-assistant
@@ -3802,6 +3821,7 @@
     SUBDIR += py-sysctl
     SUBDIR += py-sysv_ipc
     SUBDIR += py-tables
+    SUBDIR += py-tapi
     SUBDIR += py-tarantool-queue
     SUBDIR += py-tconfpy
     SUBDIR += py-tempstorage
@@ -3826,6 +3846,7 @@
     SUBDIR += py-twistedCore
     SUBDIR += py-twistedFlow
     SUBDIR += py-twistedRunner
+    SUBDIR += py-ua_parser
     SUBDIR += py-ujson
     SUBDIR += py-uncompyle2
     SUBDIR += py-unittest2
@@ -3833,6 +3854,7 @@
     SUBDIR += py-urlimport
     SUBDIR += py-urwid
     SUBDIR += py-usb
+    SUBDIR += py-user_agents
     SUBDIR += py-utils
     SUBDIR += py-venusian
     SUBDIR += py-versiontools
@@ -3850,6 +3872,7 @@
     SUBDIR += py-xmltodict
     SUBDIR += py-xoltar-toolkit
     SUBDIR += py-yaml
+    SUBDIR += py-yappi
     SUBDIR += py-yapps2
     SUBDIR += py-ydbf
     SUBDIR += py-yum-metadata-parser
@@ -4064,6 +4087,7 @@
     SUBDIR += ruby-rbprof
     SUBDIR += ruby-robjectteam
     SUBDIR += ruby-rreadline
+    SUBDIR += ruby-sdl
     SUBDIR += ruby-setup.rb
     SUBDIR += ruby-statgrab
     SUBDIR += ruby-subversion
@@ -4101,6 +4125,7 @@
     SUBDIR += rubygem-cairo-gobject
     SUBDIR += rubygem-capybara
     SUBDIR += rubygem-celluloid
+    SUBDIR += rubygem-celluloid-io
     SUBDIR += rubygem-childprocess
     SUBDIR += rubygem-chronic
     SUBDIR += rubygem-classifier
@@ -4233,6 +4258,7 @@
     SUBDIR += rubygem-mutter
     SUBDIR += rubygem-needle
     SUBDIR += rubygem-nice-ffi
+    SUBDIR += rubygem-nio4r
     SUBDIR += rubygem-notify
     SUBDIR += rubygem-open4
     SUBDIR += rubygem-orm_adapter
@@ -4365,6 +4391,7 @@
     SUBDIR += sdl12
     SUBDIR += sdl20
     SUBDIR += sdl_console
+    SUBDIR += sdl_gnat
     SUBDIR += sdl_sge
     SUBDIR += sdlmm
     SUBDIR += sdlskk
@@ -4416,6 +4443,7 @@
     SUBDIR += statsvn
     SUBDIR += stfl
     SUBDIR += stlfilt
+    SUBDIR += stlink
     SUBDIR += stlport
     SUBDIR += stormlib-ghost++
     SUBDIR += str

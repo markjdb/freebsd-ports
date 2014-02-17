@@ -3,13 +3,15 @@
 
 PORTNAME=	visionworkbench
 PORTVERSION=	2.2.0
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	graphics
 MASTER_SITES=	http://ti.arc.nasa.gov/m/project/nasa-vision-workbench/
 DISTNAME=	VisionWorkbench-${PORTVERSION}
 
 MAINTAINER=	swills@FreeBSD.org
 COMMENT=	A general purpose image processing and computer vision library
+
+BROKEN=		Fails to configure
 
 LICENSE=	NOSA
 LICENSE_GROUPS=	OSI
@@ -18,9 +20,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 GNU_CONFIGURE=	yes
-USES=		pkgconfig
+USES=		fortran pkgconfig
 USE_QT4=	moc_build qmake_build
-USE_FORTRAN=	yes
 USE_LDCONFIG=	yes
 USE_PYTHON=	yes
 

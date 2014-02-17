@@ -10,8 +10,11 @@ DISTFILES=	optar.tgz \
 		font.h
 EXTRACT_ONLY=	optar.tgz
 
-MAINTAINER=	antonakis@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	A tool for encoding data on paper
+
+DEPRECATED=	No more public distfiles
+EXPIRATION_DATE=	2014-03-10
 
 BUILD_DEPENDS=	${LOCALBASE}/include/libpng15/png.h:${PORTSDIR}/graphics/png
 RUN_DEPENDS=	convert:${PORTSDIR}/graphics/ImageMagick

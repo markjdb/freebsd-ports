@@ -3,7 +3,7 @@
 
 PORTNAME=	secretmaryochronicles
 PORTVERSION=	1.10.git20120512
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	games
 MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/
 #		SF/smclone/Secret%20Maryo%20Chronicles/${PORTVERSION}
@@ -34,6 +34,9 @@ WRKSRC=		${WRKDIR}/smc
 PORTDOCS=	controls.html history.html style.css
 
 NO_STAGE=	yes
+
+OPTIONS_DEFINE=	DOCS 
+
 .include <bsd.port.options.mk>
 
 post-patch:

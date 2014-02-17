@@ -78,6 +78,7 @@
     SUBDIR += font-ipaex
     SUBDIR += font-jisx0213
     SUBDIR += font-kochi
+    SUBDIR += font-koruri
     SUBDIR += font-migmix
     SUBDIR += font-migu
     SUBDIR += font-mona-ipa
@@ -99,7 +100,6 @@
     SUBDIR += gimp-help
     SUBDIR += gjiten
     SUBDIR += gqmpeg
-    SUBDIR += grep
     SUBDIR += groff
     SUBDIR += gskk
     SUBDIR += gsuica

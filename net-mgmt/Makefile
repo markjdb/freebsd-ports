@@ -193,7 +193,6 @@
     SUBDIR += openlldp
     SUBDIR += openvmps
     SUBDIR += ourmon
-    SUBDIR += percona-monitoring-plugins
     SUBDIR += p0f
     SUBDIR += p0f2
     SUBDIR += p5-AnyEvent-SNMP
@@ -211,6 +210,7 @@
     SUBDIR += p5-NSNMP
     SUBDIR += p5-Nagios-Object
     SUBDIR += p5-Nagios-Plugin
+    SUBDIR += p5-Nagios-Plugin-Beanstalk
     SUBDIR += p5-Nagios-Plugin-LDAP
     SUBDIR += p5-Nagios-Plugins-Memcached
     SUBDIR += p5-Net-ACL
@@ -253,6 +253,7 @@
     SUBDIR += pandorafms_agent
     SUBDIR += pandorafms_console
     SUBDIR += pandorafms_server
+    SUBDIR += percona-monitoring-plugins
     SUBDIR += pftabled
     SUBDIR += php5-snmp
     SUBDIR += php52-snmp

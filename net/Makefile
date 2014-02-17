@@ -134,6 +134,7 @@
     SUBDIR += findmtu
     SUBDIR += flowgrep
     SUBDIR += fonulator
+    SUBDIR += foreman-proxy
     SUBDIR += forg
     SUBDIR += fpc-ldap
     SUBDIR += fpc-pcap
@@ -260,6 +261,9 @@
     SUBDIR += isc-dhcp42-client
     SUBDIR += isc-dhcp42-relay
     SUBDIR += isc-dhcp42-server
+    SUBDIR += isc-dhcp43-client
+    SUBDIR += isc-dhcp43-relay
+    SUBDIR += isc-dhcp43-server
     SUBDIR += iscsi-target
     SUBDIR += istgt
     SUBDIR += jags
@@ -308,6 +312,7 @@
     SUBDIR += libgnetwork
     SUBDIR += libgweather
     SUBDIR += libilbc
+    SUBDIR += libkfbapi
     SUBDIR += libkvkontakte
     SUBDIR += libmateweather
     SUBDIR += libmediawiki
@@ -388,6 +393,7 @@
     SUBDIR += mosh
     SUBDIR += mpd-l2tp-ipv6pd-client
     SUBDIR += mpd5
+    SUBDIR += mpich
     SUBDIR += mpich2
     SUBDIR += mping
     SUBDIR += mrouted
@@ -529,6 +535,7 @@
     SUBDIR += p5-IPC-Session
     SUBDIR += p5-JavaScript-RPC
     SUBDIR += p5-Jifty-Plugin-Authentication-Ldap
+    SUBDIR += p5-MaxMind-DB-Common
     SUBDIR += p5-Net
     SUBDIR += p5-Net-AMQP
     SUBDIR += p5-Net-APNS
@@ -897,7 +904,6 @@
     SUBDIR += py-amqp
     SUBDIR += py-amqplib
     SUBDIR += py-avahi
-    SUBDIR += py-pybeanstalk
     SUBDIR += py-beanstalkc
     SUBDIR += py-cloudfiles
     SUBDIR += py-dpkt
@@ -929,6 +935,7 @@
     SUBDIR += py-pcapy
     SUBDIR += py-pcs
     SUBDIR += py-port-for
+    SUBDIR += py-pybeanstalk
     SUBDIR += py-pynsq
     SUBDIR += py-pypcap
     SUBDIR += py-pysendfile
@@ -994,6 +1001,7 @@
     SUBDIR += remmina-plugin-vnc
     SUBDIR += remmina-plugin-xdmcp
     SUBDIR += remmina-plugins
+    SUBDIR += remotebox
     SUBDIR += remotedesk
     SUBDIR += repeater
     SUBDIR += reposado
@@ -1008,6 +1016,7 @@
     SUBDIR += rsmb
     SUBDIR += rsplib
     SUBDIR += rsync
+    SUBDIR += rsync-bpc
     SUBDIR += rtg
     SUBDIR += rtpbreak
     SUBDIR += rtpproxy
@@ -1209,8 +1218,8 @@
     SUBDIR += ttbudget
     SUBDIR += ttlscan
     SUBDIR += tucan
-    SUBDIR += turses
     SUBDIR += turnserver
+    SUBDIR += turses
     SUBDIR += twitux
     SUBDIR += u6rd
     SUBDIR += ucarp

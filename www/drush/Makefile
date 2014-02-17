@@ -20,8 +20,7 @@ GH_COMMIT=	d948558
 USE_GITHUB=	yes
 
 # set php requirements same as drupal itself
-USE_PHP=	gd pcre session xml mbstring ctype json hash simplexml dom pdo filter
-IGNORE_WITH_PHP=4
+USE_PHP=	gd pcre session mbstring ctype json hash simplexml dom pdo filter
 WANT_PHP_CLI=	yes
 
 PORTDOCS=	*

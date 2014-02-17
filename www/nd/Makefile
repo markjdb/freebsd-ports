@@ -9,12 +9,14 @@ MASTER_SITES=	http://www.gohome.org/nd/
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	A simple command line interface for WebDAV (RFC2518) server
 
+DEPRECATED=	No more public distfiles
+EXPIRATION_DATE=	2014-03-10
+
 LIB_DEPENDS=	xml2.5:${PORTSDIR}/textproc/libxml2
 
 GNU_CONFIGURE=	yes
 
-MAN1=		nd.1
-PLIST_FILES=	bin/nd
+PLIST_FILES=	bin/nd \
+		man/man1/nd.1.gz
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

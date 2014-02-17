@@ -126,6 +126,7 @@
     SUBDIR += capitalism
     SUBDIR += cardpics
     SUBDIR += castlevox
+    SUBDIR += cataclysm-dda
     SUBDIR += cave9
     SUBDIR += cavezofphear
     SUBDIR += ceferino
@@ -185,7 +186,6 @@
     SUBDIR += dangerdeep-data
     SUBDIR += darkplaces
     SUBDIR += dcross
-    SUBDIR += deal
     SUBDIR += defendguin
     SUBDIR += diameter
     SUBDIR += digger-vgl
@@ -571,6 +571,7 @@
     SUBDIR += madbomber
     SUBDIR += maelstrom
     SUBDIR += magiccube4d
+    SUBDIR += magicmaze
     SUBDIR += magicor
     SUBDIR += mahjong
     SUBDIR += maitretarot
@@ -669,6 +670,7 @@
     SUBDIR += openarena-oax
     SUBDIR += openarena-server
     SUBDIR += openastromenace
+    SUBDIR += openbubbles
     SUBDIR += opencity
     SUBDIR += opengfx
     SUBDIR += openglad
@@ -873,6 +875,7 @@
     SUBDIR += senken
     SUBDIR += sets
     SUBDIR += sex
+    SUBDIR += sgt-puzzles
     SUBDIR += shaaft
     SUBDIR += shootingstar
     SUBDIR += simplevaders
@@ -947,6 +950,7 @@
     SUBDIR += tkmoo
     SUBDIR += tksol
     SUBDIR += tomatoes
+    SUBDIR += tome4
     SUBDIR += tomenet
     SUBDIR += tong
     SUBDIR += toppler

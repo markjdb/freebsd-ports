@@ -11,12 +11,14 @@ DISTFILES=	${PORTNAME}crm-${DISTVERSION}.tar.gz \
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Vtiger CRM is open source Customer Relationship Management software
 
+DEPRECATED=	No more public distfiles
+EXPIRATION_DATE=	2014-03-10
+
 NO_BUILD=	yes
 SUB_FILES=	pkg-message
 
 USE_PHP=	mysql gd imap session pcre xml
 WANT_PHP_WEB=	YES
-IGNORE_WITH_PHP=	4
 
 WRKSRC=		${WRKDIR}/vtigercrm
 
@@ -47,7 +49,7 @@ WRITEABLES=	cache storage install tabdata.php parent_tabdata.php \
 
 do-patch:
 .for DIR in ${PATCHDIRS}
-	@${INSTALL_DATA} -v ${WRKDIR}/${DIR}/*.php ${WRKSRC}/${DIR}
+	${INSTALL_DATA} ${WRKDIR}/${DIR}/*.php ${WRKSRC}/${DIR}
 .endfor
 
 do-install:
@@ -55,9 +57,9 @@ do-install:
 	${MKDIR} ${WWWDIR}/${DIR}
 	( cd ${WRKSRC} && ${COPYTREE_SHARE} ${DIR} ${WWWDIR} )
 .endfor
-	@( ${FIND} ${WRKSRC} -type f -maxdepth 1 \( -name \*.php -or -name \*.properties \
+	( ${FIND} ${WRKSRC} -type f -maxdepth 1 \( -name \*.php -or -name \*.properties \
 		-or -name Copyright.txt \) -and -not -name config\* ; ${ECHO} ${WWWDIR} ) \
-		| ${XARGS} ${INSTALL_DATA} -v
+		| ${XARGS} ${INSTALL_DATA}
 .for FILE in ${CONFIGS}
 	${INSTALL_DATA}	${WRKSRC}/${FILE} ${WWWDIR}/${FILE}.sample
 .endfor

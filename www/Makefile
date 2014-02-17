@@ -108,7 +108,6 @@
     SUBDIR += cntlm
     SUBDIR += cocoon
     SUBDIR += codeigniter
-    SUBDIR += comclear
     SUBDIR += coppermine
     SUBDIR += cowboy
     SUBDIR += cplanet
@@ -251,6 +250,7 @@
     SUBDIR += get_flash_videos
     SUBDIR += getleft
     SUBDIR += gist
+    SUBDIR += glassfish
     SUBDIR += glpi
     SUBDIR += gnome-user-share
     SUBDIR += gnome-web-photo
@@ -390,6 +390,7 @@
     SUBDIR += libecap
     SUBDIR += libepc
     SUBDIR += libgtkhtml
+    SUBDIR += libhpack
     SUBDIR += libhtp-suricata
     SUBDIR += libmicrohttpd
     SUBDIR += libwww
@@ -571,10 +572,10 @@
     SUBDIR += node
     SUBDIR += node-devel
     SUBDIR += nostromo
+    SUBDIR += npapi-vlc
     SUBDIR += npapi-xine
     SUBDIR += npc
     SUBDIR += npm
-    SUBDIR += nscache
     SUBDIR += nspluginwrapper
     SUBDIR += ocaml-net
     SUBDIR += ocsigen
@@ -697,8 +698,8 @@
     SUBDIR += p5-CGI-Session
     SUBDIR += p5-CGI-Session-ExpireSessions
     SUBDIR += p5-CGI-Simple
-    SUBDIR += p5-CGI-Struct
     SUBDIR += p5-CGI-SpeedyCGI
+    SUBDIR += p5-CGI-Struct
     SUBDIR += p5-CGI-Thin
     SUBDIR += p5-CGI-Untaint
     SUBDIR += p5-CGI-Untaint-date
@@ -1071,6 +1072,7 @@
     SUBDIR += p5-Mojo-Server-FastCGI
     SUBDIR += p5-MojoMojo
     SUBDIR += p5-Mojolicious
+    SUBDIR += p5-Mojolicious-Plugin-Authentication
     SUBDIR += p5-Mojolicious-Plugin-Database
     SUBDIR += p5-Mojolicious-Plugin-Mongodb
     SUBDIR += p5-Mojolicious-Plugin-YamlConfig
@@ -1410,6 +1412,7 @@
     SUBDIR += pecl-sphinx
     SUBDIR += pecl-swish
     SUBDIR += pecl-twig
+    SUBDIR += pecl-varnish
     SUBDIR += pecl-yaf
     SUBDIR += pecl-yar
     SUBDIR += pecl-zendopcache
@@ -1500,6 +1503,8 @@
     SUBDIR += py-django-caching-app-plugins
     SUBDIR += py-django-classy-tags
     SUBDIR += py-django-cms
+    SUBDIR += py-django-crispy-forms
+    SUBDIR += py-django-debug-toolbar
     SUBDIR += py-django-devel
     SUBDIR += py-django-dpaste
     SUBDIR += py-django-evolution
@@ -1667,6 +1672,7 @@
     SUBDIR += py-requests
     SUBDIR += py-requests-oauth-hook
     SUBDIR += py-requests-oauthlib
+    SUBDIR += py-requests1
     SUBDIR += py-restclient
     SUBDIR += py-rhodecode
     SUBDIR += py-routes
@@ -1824,7 +1830,6 @@
     SUBDIR += rubygem-passenger
     SUBDIR += rubygem-rabbirack
     SUBDIR += rubygem-rack
-    SUBDIR += rubygem-rack15
     SUBDIR += rubygem-rack-accept
     SUBDIR += rubygem-rack-attack
     SUBDIR += rubygem-rack-cache
@@ -1834,6 +1839,7 @@
     SUBDIR += rubygem-rack-protection
     SUBDIR += rubygem-rack-ssl
     SUBDIR += rubygem-rack-test
+    SUBDIR += rubygem-rack15
     SUBDIR += rubygem-rails
     SUBDIR += rubygem-railties
     SUBDIR += rubygem-raindrops
@@ -1873,7 +1879,6 @@
     SUBDIR += rubygem-webrobots
     SUBDIR += rubygem-websocket
     SUBDIR += rubygem-yapra
-    SUBDIR += runsomebrowser
     SUBDIR += sahi
     SUBDIR += sakai
     SUBDIR += samidare
@@ -1989,6 +1994,7 @@
     SUBDIR += trac-hierwiki
     SUBDIR += trac-iniadmin
     SUBDIR += trac-keywords
+    SUBDIR += trac-keywordsecretticket
     SUBDIR += trac-ldap
     SUBDIR += trac-macropost
     SUBDIR += trac-mastertickets
@@ -2100,6 +2106,7 @@
     SUBDIR += wadcomblog
     SUBDIR += web2ldap
     SUBDIR += webalizer
+    SUBDIR += webbrowser
     SUBDIR += webcalendar
     SUBDIR += webcalendar-devel
     SUBDIR += webcheck
@@ -2107,6 +2114,7 @@
     SUBDIR += webcrawl
     SUBDIR += webfs
     SUBDIR += webgo
+    SUBDIR += webgrind
     SUBDIR += webinject
     SUBDIR += webkit-gtk2
     SUBDIR += webkit-gtk3

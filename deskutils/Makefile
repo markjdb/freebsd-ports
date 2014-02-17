@@ -65,7 +65,6 @@
     SUBDIR += glabels
     SUBDIR += glipper
     SUBDIR += global-menu
-    SUBDIR += gmcal
     SUBDIR += gnochm
     SUBDIR += gnome-blog
     SUBDIR += gnome-main-menu
@@ -91,15 +90,15 @@
     SUBDIR += hamster-applet
     SUBDIR += hebcal
     SUBDIR += helpviewer
+    SUBDIR += horde-groupware
+    SUBDIR += horde-kronolith
+    SUBDIR += horde-mnemo
+    SUBDIR += horde-nag
     SUBDIR += horde3-hermes
     SUBDIR += horde3-klutz
     SUBDIR += horde3-kronolith
     SUBDIR += horde3-mnemo
     SUBDIR += horde3-nag
-    SUBDIR += horde-groupware
-    SUBDIR += horde-kronolith
-    SUBDIR += horde-mnemo
-    SUBDIR += horde-nag
     SUBDIR += hot-babe
     SUBDIR += howm
     SUBDIR += ical
@@ -140,7 +139,6 @@
     SUBDIR += mate-menu-editor
     SUBDIR += mate-notification-daemon
     SUBDIR += mate-utils
-    SUBDIR += mcal
     SUBDIR += mdh
     SUBDIR += mencal
     SUBDIR += menumaker

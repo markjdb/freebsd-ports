@@ -3,7 +3,7 @@
 
 PORTNAME=	kdepim-runtime
 PORTVERSION=	4.4.11.1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	deskutils kde ipv6
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR=	stable/kdepim-${PORTVERSION}/src
@@ -17,8 +17,11 @@ LIB_DEPENDS=	libboost_thread.so:${PORTSDIR}/devel/boost-libs
 
 CONFLICTS_INSTALL=	kdepim-runtime-4.*
 
-USE_KDE4=	pimlibs kdeprefix kdehier sharedmime automoc4
-USES=		cmake:outsource
+DEPRECATED=	Not supported upstream, conflicts with upcoming kdepimlibs-4.12
+EXPIRATION_DATE=	2014-02-28
+
+USE_KDE4=	pimlibs kdeprefix kdehier automoc4
+USES=		cmake:outsource shared-mime-info
 USE_BZIP2=	yes
 USE_QT4=	qmake_build moc_build rcc_build uic_build \
 		corelib dbus gui network qtestlib xml

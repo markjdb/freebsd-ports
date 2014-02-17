@@ -9,12 +9,14 @@ MASTER_SITES=	http://www.roqe.org/stan/
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Generate several statistical informations of a stream
 
+DEPRECATED=	No more public distfiles
+EXPIRATION_DATE=	2014-03-10
+
 GNU_CONFIGURE=	yes
 
-MAN1=		stan.1
-PLIST_FILES=	bin/stan
+PLIST_FILES=	bin/stan \
+		man/man1/stan.1.gz
 
-NO_STAGE=	yes
 pre-configure:
 	${REINPLACE_CMD} -e "s|^CFLAGS =|CFLAGS ?=|g" \
 	${WRKSRC}/src/Makefile.in

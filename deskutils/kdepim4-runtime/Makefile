@@ -3,6 +3,7 @@
 
 PORTNAME=	kdepim-runtime
 PORTVERSION=	${KDE4_VERSION}
+PORTREVISION=	1
 CATEGORIES=	deskutils kde ipv6
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR=	${KDE4_BRANCH}/${PORTVERSION}/src
@@ -22,8 +23,8 @@ CONFLICTS_INSTALL=	kdepim-runtime44-4.*
 USE_XZ=		yes
 USE_GNOME=	libxml2
 USE_KDE4=	kdehier kdelibs kdeprefix pimlibs nepomuk-core \
-		akonadi automoc4 ontologies sharedmime soprano strigi
-USES=		cmake:outsource
+		akonadi automoc4 ontologies soprano strigi
+USES=		cmake:outsource shared-mime-info
 USE_QT4=	corelib dbus declarative designer_build gui network qtestlib \
 		script xml xmlpatterns \
 		qmake_build moc_build rcc_build uic_build

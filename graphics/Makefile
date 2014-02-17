@@ -281,7 +281,7 @@
     SUBDIR += glew
     SUBDIR += glexcess
     SUBDIR += glfw
-    SUBDIR += glfw-devel
+    SUBDIR += glfw2
     SUBDIR += glide3
     SUBDIR += glitz
     SUBDIR += gliv
@@ -600,7 +600,6 @@
     SUBDIR += nip2
     SUBDIR += nomacs
     SUBDIR += npretty
-    SUBDIR += nurbs++
     SUBDIR += nvidia-texture-tools
     SUBDIR += ocaml-images
     SUBDIR += ocaml-lablgl

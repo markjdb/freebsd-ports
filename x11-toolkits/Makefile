@@ -38,6 +38,7 @@
     SUBDIR += gnomemm
     SUBDIR += gnustep-back
     SUBDIR += gnustep-gui
+    SUBDIR += granite
     SUBDIR += gstreamer-plugins-pango
     SUBDIR += gstreamer1-plugins-pango
     SUBDIR += gtk-sharp-beans
@@ -237,7 +238,6 @@
     SUBDIR += rubygem-pango
     SUBDIR += rubygem-poppler
     SUBDIR += rubygem-vte
-    SUBDIR += sakura
     SUBDIR += scintilla
     SUBDIR += sdl_pango
     SUBDIR += shared-desktop-ontologies
@@ -264,8 +264,8 @@
     SUBDIR += vdkbuilder
     SUBDIR += viewklass
     SUBDIR += vte
-    SUBDIR += vte3
     SUBDIR += vte-reference
+    SUBDIR += vte3
     SUBDIR += vtkfox
     SUBDIR += wmapp
     SUBDIR += wxgtk26

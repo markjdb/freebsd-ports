@@ -11,14 +11,13 @@ PKGNAMEPREFIX=	elmer-
 MAINTAINER=	sylvio@FreeBSD.org
 COMMENT=	ELMER FEM Package Data base Interface
 
-USE_FORTRAN=	yes
+USES=		fortran
 
 GNU_CONFIGURE=	yes
 ALL_TARGET=
 
 PLIST_FILES=	include/eio_api.h lib/libeioc.a lib/libeiof.a
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64" || ${ARCH} == "ia64"

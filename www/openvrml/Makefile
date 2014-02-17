@@ -3,7 +3,7 @@
 
 PORTNAME=	openvrml
 PORTVERSION=	0.18.9
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	www graphics
 MASTER_SITES=	SF
 
@@ -11,6 +11,8 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	VRML97 runtime and browser
 
 BROKEN=		does not build
+DEPRECATED=	Broken for more than 6 month
+EXPIRATION_DATE=	2014-02-27
 
 BUILD_DEPENDS=	${LOCALBASE}/include/argp.h:${PORTSDIR}/devel/argp-standalone
 LIB_DEPENDS=	libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig		\

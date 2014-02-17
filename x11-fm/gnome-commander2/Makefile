@@ -14,6 +14,8 @@ DIST_SUBDIR=	gnome2
 MAINTAINER=	sylvio@FreeBSD.org
 COMMENT=	File manager for Gnome2
 
+BROKEN=		Fails to configure
+
 LICENSE=	GPLv2
 
 LIB_DEPENDS=	id3-3.8.3:${PORTSDIR}/audio/id3lib \
@@ -37,6 +39,8 @@ MAN1=		gnome-commander.1
 NO_STAGE=	yes
 pre-configure:
 	cd ${WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} ${AUTORECONF} -W none
+
+OPTIONS_DEFINE=	NLS 
 
 .include <bsd.port.options.mk>
 
