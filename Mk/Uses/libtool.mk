@@ -20,9 +20,10 @@ patch-libtool:
 	@${FIND} ${WRKDIR} \( -name configure -or -name ltconfig \)	\
 		-type f | ${XARGS} ${REINPLACE_CMD}			\
 		-e '/link_all_deplibs[0-9A-Z_]*=/s/=unknown/=no/'	\
+		-e 's,freebsd\*),freebsd\*|dragonfly\*),g'		\
 		-e '/objformat=/s/echo aout/echo elf/'			\
 		-e "/freebsd-elf\\*)/,/;;/ {				\
-		    /deplibs_check_method=/s/=.*/=pass_all/; }"
+		    /deplibs_check_method=/s/=.*/=pass_all/; }"	
 
 .if ! ${libtool_ARGS:Moldver}
 	@${FIND} ${WRKDIR} \( -name configure -or -name ltconfig \)	\

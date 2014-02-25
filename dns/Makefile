@@ -71,6 +71,7 @@
     SUBDIR += libidn
     SUBDIR += linux-f10-libasyncns
     SUBDIR += maradns
+    SUBDIR += maradns1
     SUBDIR += mdnsd
     SUBDIR += mydns
     SUBDIR += mydns-ng
@@ -138,6 +139,7 @@
     SUBDIR += powerdns-recursor
     SUBDIR += py-adns
     SUBDIR += py-dns
+    SUBDIR += py-dns3
     SUBDIR += py-dnspython
     SUBDIR += py-easyzone
     SUBDIR += py-idnkit2

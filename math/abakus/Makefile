@@ -3,6 +3,7 @@
 
 PORTNAME=	abakus
 PORTVERSION=	0.92
+PORTREVISION=	1
 CATEGORIES=	math kde
 MASTER_SITES=	http://purinchu.net/abakus/
 
@@ -11,7 +12,7 @@ COMMENT=	Simple KDE Calculator
 
 LICENSE=	GPLv2
 
-BUILD_DEPENDS=	flex:${PORTSDIR}/textproc/flex
+BUILD_DEPENDS=	${LOCALBASE}/bin/flex:${PORTSDIR}/textproc/flex
 LIB_DEPENDS=	libmpfr.so:${PORTSDIR}/math/mpfr
 
 USE_BZIP2=	yes

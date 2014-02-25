@@ -82,7 +82,6 @@
     SUBDIR += fpc-units
     SUBDIR += fpc-utils
     SUBDIR += fsharp
-    SUBDIR += g95
     SUBDIR += gambit-c
     SUBDIR += gauche
     SUBDIR += gawk
@@ -300,6 +299,7 @@
     SUBDIR += ruby-usersguide
     SUBDIR += ruby19
     SUBDIR += ruby20
+    SUBDIR += ruby21
     SUBDIR += runawk
     SUBDIR += rust
     SUBDIR += s9fes

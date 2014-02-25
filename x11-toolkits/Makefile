@@ -12,11 +12,9 @@
     SUBDIR += c++-gtk-utils
     SUBDIR += eel
     SUBDIR += elementary
-    SUBDIR += fl_editor
     SUBDIR += flowcanvas
     SUBDIR += fltk
     SUBDIR += fltk-devel
-    SUBDIR += flvw
     SUBDIR += fox14
     SUBDIR += fox16
     SUBDIR += fox17
@@ -70,7 +68,6 @@
     SUBDIR += gtksourceview3
     SUBDIR += gtksourceview3-reference
     SUBDIR += gtksourceviewmm3
-    SUBDIR += gtkunique
     SUBDIR += hippo-canvas
     SUBDIR += hs-GLURaw
     SUBDIR += hs-GLUT

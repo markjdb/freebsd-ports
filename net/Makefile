@@ -14,6 +14,7 @@
     SUBDIR += abills
     SUBDIR += activemq
     SUBDIR += acx100
+    SUBDIR += adasockets
     SUBDIR += afpfs-ng
     SUBDIR += aget
     SUBDIR += aoe
@@ -131,6 +132,7 @@
     SUBDIR += etherboot
     SUBDIR += etrace
     SUBDIR += exabgp
+    SUBDIR += exaddos
     SUBDIR += findmtu
     SUBDIR += flowgrep
     SUBDIR += fonulator
@@ -279,6 +281,10 @@
     SUBDIR += jumpgate
     SUBDIR += jwhois
     SUBDIR += kdenetwork4
+    SUBDIR += kdenetwork4-filesharing
+    SUBDIR += kdenetwork4-strigi-analyzers
+    SUBDIR += kdnssd
+    SUBDIR += kget
     SUBDIR += kio-upnp-ms
     SUBDIR += kippo
     SUBDIR += kissd
@@ -304,6 +310,7 @@
     SUBDIR += lft
     SUBDIR += libarms
     SUBDIR += libbgpdump
+    SUBDIR += libcapn
     SUBDIR += libcmis
     SUBDIR += libdnet
     SUBDIR += libexosip2
@@ -522,6 +529,7 @@
     SUBDIR += p5-Geo-IP
     SUBDIR += p5-Geo-IP-PurePerl
     SUBDIR += p5-Geo-IPfree
+    SUBDIR += p5-GeoIP2
     SUBDIR += p5-Google-SAML-Request
     SUBDIR += p5-Google-SAML-Response
     SUBDIR += p5-Growl-GNTP
@@ -536,6 +544,7 @@
     SUBDIR += p5-JavaScript-RPC
     SUBDIR += p5-Jifty-Plugin-Authentication-Ldap
     SUBDIR += p5-MaxMind-DB-Common
+    SUBDIR += p5-MaxMind-DB-Reader
     SUBDIR += p5-Net
     SUBDIR += p5-Net-AMQP
     SUBDIR += p5-Net-APNS
@@ -846,6 +855,7 @@
     SUBDIR += pear-XML_RPC
     SUBDIR += pear-XML_RPC2
     SUBDIR += pecl-amqp
+    SUBDIR += pecl-apn
     SUBDIR += pecl-cvsclient
     SUBDIR += pecl-geoip
     SUBDIR += pecl-gupnp

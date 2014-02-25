@@ -11,11 +11,13 @@ MASTER_SITE_SUBDIR=	${PORTNAME}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Create a named pipe to retrieve xmms info about currently playing song
 
+DEPRECATED=	Abandonware, please consider using multimedia/audacious instead
+EXPIRATION_DATE=	2014-03-23
+
 LIB_DEPENDS=	libxmms.so:${PORTSDIR}/multimedia/xmms
 RUN_DEPENDS=	xmms-config:${PORTSDIR}/multimedia/xmms
 
 USE_GNOME=	gtk12
-NO_STAGE=	yes
 USES=		gmake
 GNU_CONFIGURE=	yes
 
@@ -29,7 +31,7 @@ post-patch:
 
 do-install:
 	cd ${WRKSRC}/${SRCLIBDIR};\
-	${MKDIR} ${LIBDIR};\
-	${INSTALL_PROGRAM} libinfopipe-1.3.so.1 ${LIBDIR}/libinfopipe.so
+	${MKDIR} ${STAGEDIR}${LIBDIR};\
+	${INSTALL_PROGRAM} libinfopipe-1.3.so.1 ${STAGEDIR}${LIBDIR}/libinfopipe.so
 
 .include <bsd.port.mk>

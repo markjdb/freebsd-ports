@@ -192,7 +192,6 @@
     SUBDIR += kbdscan
     SUBDIR += kcd
     SUBDIR += kde-thumbnailer-chm
-    SUBDIR += kde-xdg-env
     SUBDIR += kde4-l10n
     SUBDIR += kde4-l10n-bg
     SUBDIR += kde4-l10n-bs
@@ -235,7 +234,6 @@
     SUBDIR += kde4-l10n-tr
     SUBDIR += kde4-l10n-ug
     SUBDIR += kde4-l10n-wa
-    SUBDIR += kde4-shared-mime-info
     SUBDIR += kde4-xdg-env
     SUBDIR += kdeedu4
     SUBDIR += kdehier4
@@ -251,6 +249,7 @@
     SUBDIR += lesspipe
     SUBDIR += libeatmydata
     SUBDIR += libhome
+    SUBDIR += libisocodes
     SUBDIR += libkdeedu
     SUBDIR += libmetalink
     SUBDIR += libpri

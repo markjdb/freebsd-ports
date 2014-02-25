@@ -23,7 +23,7 @@ WRKSRC=		${WRKDIR}/${DISTNAME}
 
 DOC_FILES=	CHANGES COPYING README
 
-OPTIONS_DEFINE=	DOCS 
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.options.mk>
 
@@ -34,6 +34,7 @@ post-patch:
 	SpiralInfo.C \
 	SpiralSound/Midi.h \
 	SpiralSound/Output.h \
+	SpiralSound/RiffWav.C \
 	SpiralSound/SpiralInfo.h \
 	SpiralSound/Synth.C \
 	SpiralSound/Synth.h \
@@ -49,6 +50,7 @@ post-patch:
 			s|-lm|${PTHREAD_LIBS} -lm|g ; \
 			s|/usr/X11R6|${LOCALBASE}|g ; \
 			s|iostream.h|iostream|g ;\
+			s|fstream.h|fstream|g ;\
 			s|<strstream>|<sstream>|g ;\
 			s|machine/soundcard|sys/soundcard|g' \
 			< ${WRKSRC}/${ii}.orig \

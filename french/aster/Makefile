@@ -43,9 +43,8 @@ RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/Gnuplot:${PORTSDIR}/math/py-gnuplot	\
 
 LICENSE=	GPLv2
 
-USES=		bison fortran
+USES=		bison fortran tk
 USE_PYTHON=	2	# >2.5 and <3.0
-USE_TK=		yes
 HAS_CONFIGURE=	yes
 REINPLACE_ARGS=	-i ""
 
@@ -262,7 +261,7 @@ pre-configure:
 .endif
 	${ECHO_CMD} "CC='${CC}'"				>> ${WRKSRC}/setup.cfg
 	${ECHO_CMD} "CXX='${CXX}'"				>> ${WRKSRC}/setup.cfg
-	${ECHO_CMD} "CXXLIB = '-L${LOCALBASE}/lib/${CC} -lstdc++ -lsupc++'"	\
+	${ECHO_CMD} "CXXLIB = '${LDFLAGS} -lstdc++ -lsupc++'"	\
 		>> ${WRKSRC}/setup.cfg
 	${ECHO_CMD} "LD='${FC}'"				>> ${WRKSRC}/setup.cfg
 	${ECHO_CMD} "F90='${LOCALBASE}/bin/${FC}'"		>> ${WRKSRC}/setup.cfg

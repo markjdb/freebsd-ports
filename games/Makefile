@@ -127,6 +127,7 @@
     SUBDIR += cardpics
     SUBDIR += castlevox
     SUBDIR += cataclysm-dda
+    SUBDIR += catesc
     SUBDIR += cave9
     SUBDIR += cavezofphear
     SUBDIR += ceferino
@@ -459,6 +460,7 @@
     SUBDIR += kiriki
     SUBDIR += kjumpingcube
     SUBDIR += klavaro
+    SUBDIR += klickety
     SUBDIR += klines
     SUBDIR += klondike
     SUBDIR += kmahjongg
@@ -720,6 +722,7 @@
     SUBDIR += pengupop
     SUBDIR += phalanx
     SUBDIR += phlipple
+    SUBDIR += picmi
     SUBDIR += pinball
     SUBDIR += pingus
     SUBDIR += pink-pony
@@ -757,7 +760,6 @@
     SUBDIR += py-pychess
     SUBDIR += py-sgflib
     SUBDIR += py-sgfsummary
-    SUBDIR += py-ski
     SUBDIR += pyawale
     SUBDIR += pycadia
     SUBDIR += pyching
@@ -882,6 +884,7 @@
     SUBDIR += simsu
     SUBDIR += simutrans
     SUBDIR += sjeng
+    SUBDIR += ski
     SUBDIR += sl
     SUBDIR += slashem-tty
     SUBDIR += slump

@@ -269,6 +269,7 @@
     SUBDIR += pitivi
     SUBDIR += playd
     SUBDIR += plexmediaserver
+    SUBDIR += plexmediaserver-plexpass
     SUBDIR += podcastdl
     SUBDIR += podcatcher
     SUBDIR += poe
@@ -403,7 +404,6 @@
     SUBDIR += xvid
     SUBDIR += y4mscaler
     SUBDIR += yamdi
-    SUBDIR += youtube-viewer
     SUBDIR += zoneminder
 
 .include <bsd.port.subdir.mk>
