@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dcraw
-PORTVERSION=	9.19
+PORTVERSION=	9.20
 CATEGORIES=	graphics
 MASTER_SITES=	LOCAL/sunpoet
 
@@ -11,11 +11,11 @@ COMMENT=	Decoder for RAW files from digital cameras
 
 LIB_DEPENDS=	libjasper.so:${PORTSDIR}/graphics/jasper \
 		libjpeg.so:${PORTSDIR}/graphics/jpeg \
-		liblcms.so:${PORTSDIR}/graphics/lcms
+		liblcms2.so:${PORTSDIR}/graphics/lcms2
 
 CFLAGS+=	-I${LOCALBASE}/include -I${LOCALBASE}/include/jasper
-LDFLAGS+=	-L${LOCALBASE}/lib -lm -ljasper -ljpeg -llcms
-USE_XZ=		yes
+LDFLAGS+=	-L${LOCALBASE}/lib -lm -ljasper -ljpeg -llcms2
+USES=		tar:xz
 
 PLIST_FILES=	bin/${PORTNAME} \
 		man/man1/${PORTNAME}.1.gz
@@ -49,7 +49,7 @@ maketar: do-clean extract
 		cd ${MS_WRKSRC}/ && ${TAR} -Jcf ${PORTNAME}-${MS_VERSION}.tar.xz ${PORTNAME}-${MS_VERSION}/; \
 		sudo ${INSTALL} -m 644 ${MS_WRKSRC}/${PORTNAME}-${MS_VERSION}.tar.xz ${DISTDIR}/; \
 		${SED} -i '' -e '/^PORTVERSION=/ s|${PORTVERSION}|'${MS_VERSION}'|; /^PORTREVISION=/d' ${.CURDIR}/Makefile; \
-		cd ${.CURDIR}/ && ${MAKE} makesum; \
+		cd ${.CURDIR}/ && ${MAKE_CMD} makesum; \
 		${ECHO_MSG} "*** Update from ${PORTVERSION} to ${MS_VERSION}, diff: ${MS_DIFF} ***"; \
 	else \
 		${ECHO_MSG} "*** ${MS_MASTER_SITE}${PORTNAME}.c is unchanged (${PORTVERSION}) ***"; \

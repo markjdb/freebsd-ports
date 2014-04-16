@@ -2251,7 +2251,6 @@ devel/colorer||2011-07-21|Has expired: Depends on deprecated Java 1.4
 security/jce_policy14||2011-07-21|Has expired: Only for Java 1.4, which is deprecated
 java/linux-blackdown-jdk14||2011-07-21|Has expired: ancient version of Java
 java/linux-sun-jdk14|java/linux-sun-jdk15|2011-07-21|Has expired: ancient version of Java
-misc/logsurfer|misc/logsurfer+|2011-07-25|Renamed
 dns/dhid||2011-07-28|Has expired: Unmaintained, distfile has changed with no explanation
 math/librandlib|math/randlib|2011-07-28|Move to a location that matches the name
 science/bblimage|science/pyvox|2011-07-28|Track the upstream name change
@@ -5003,7 +5002,7 @@ print/gnome-print||2013-10-07|Component of the obsolete gnome1
 mail/mavbiff||2013-10-07|Obsoleted
 finance/gnofin||2013-10-07|Depends on EOLed gnome1
 x11-toolkits/easygtk||2013-10-07|Depends on EOLed gnome1
-graphics/gnoemcanvas||2013-10-07|Component of the obsolete gnome1
+graphics/gnomecanvas||2013-10-07|Component of the obsolete gnome1
 www/p5-HTTP-GHTTP||2013-10-07|Depends on EOLed gnome1 libraries
 www/libghttp||2013-10-07|Component of the obsolete gnome1
 deskutils/gworkspace-clipbook||2013-10-07|Replaced by tabbed shelf in GWorkspace
@@ -5213,7 +5212,6 @@ devel/gonzui||2013-11-18|Has expired: Broken for more than 6 month
 devel/monodevelop-java||2013-11-18|Has expired: Broken for more than 6 month
 lang/objc||2013-11-18|Has expired: Broken for more than 6 month
 devel/klee||2013-11-18|Has expired: Broken for more than 6 month
-databases/p5-DBD-InterBase||2013-11-18|Has expired: Broken for more than 6 month
 devel/simulavr||2013-11-18|Has expired: Broken for more than 6 month
 japanese/mobileimap||2013-11-18|Has expired: Broken for more than 6 month
 devel/libYGP||2013-11-18|Has expired: Broken for more than 6 month
@@ -5372,7 +5370,6 @@ sysutils/lavaps||2014-01-14|Abandonware, segfaults
 www/mod_authnz_external|www/mod_authnz_external22|2014-01-14|Port was renamed to reflect the supported Apache version
 games/deng|games/doomsday|2014-01-16|Renamed to follow upstream naming
 misc/sword17|misc/sword|2014-01-16|Has expired: use misc/sword
-www/suphp||2014-01-17|Has expired: Upstream dead, EOL: https://lists.marsching.com/pipermail/suphp/2013-May/002554.html
 databases/postgis||2014-01-17|Has expired: EOLed upstream
 textproc/redland-bindings-python||2014-01-19|Use textproc/redland-bindings directly instead
 emulators/seabios-devel||2014-01-19|Has expired: Outdated, no longer needed, broken on 10+
@@ -5479,3 +5476,491 @@ x11-toolkits/flvw||2014-02-24|Abandonware
 textproc/p5-XML-Xerces||2014-02-24|Depend on a non supported version of xerces-c
 x11-toolkits/fl_editor||2014-02-24|Abandonware, buggy rendering and not stage friendly
 x11-toolkits/gtkunique|x11-toolkits/unique|2014-02-24|Superseeded by x11-toolkits/unique
+japanese/ruby-man||2014-02-25|Has expired: Documents EOLd version of Ruby and unmaintained
+lang/ruby-programmingruby||2014-02-25|Has expired: Documents EOLd version of Ruby and unmaintained
+lang/ruby-man||2014-02-25|Has expired: Documents EOLd version of Ruby and unmaintained
+lang/ruby-usersguide||2014-02-25|Has expired: Documents EOLd version of Ruby and unmaintained
+graphics/wmgrabimage||2014-02-25|Has expired: No more public distfiles
+www/trac-hierwiki||2014-02-27|Has expired: Runtime is broken, doesn't support Trac>0.11
+www/openvrml||2014-02-27|Has expired: Broken for more than 6 month
+science/peekabot||2014-02-27|Has expired: Broken for more than 6 month
+misc/xbiso||2014-02-27|Has expired: Broken for more than 6 month
+net/hornetq||2014-02-27|Has expired: Broken for more than 6 month
+sysutils/slmon||2014-02-27|Has expired: Broken for more than 6 month
+www/trac-revtree||2014-02-27|Has expired: Broken for more than 6 months
+security/crack||2014-02-27|Has expired: Broken for more than 6 month
+sysutils/graphicboot||2014-02-27|Has expired: Broken for more then 6 month
+graphics/kgraphviewer||2014-02-27|Has expired: Broken for more than 6 month
+sysutils/ckl||2014-02-27|Has expired: Broken for more than 6 month
+japanese/trac||2014-02-27|Has expired: Broken for more than 6 month
+lang/opa||2014-02-27|Has expired: Broken for more than 6 month
+sysutils/mmore||2014-02-27|Has expired: Broken for more than 6 month
+www/trac-announcer||2014-02-27|Has expired: Broken for more than 6 month
+lang/expect-devel||2014-02-28|No longer relevant. Use lang/expect instead
+x11-drivers/xf86-video-radeonhd|x11-drivers/xf86-video-ati|2014-02-28|Has expired: Abandoned upstream since 2010
+net/asterisk10||2014-02-28|Has expired: asterisk 10 reached EOL on 2013-12-15
+textproc/py-lucene||2014-02-28|Has expired: Broken for more than 6 month
+lang/gcc44|lang/gcc|2014-02-28|Superseded by GCC 4.6 or later
+archivers/php52-bz2||2014-03-01|PHP 5.2 is end-of-life
+archivers/php52-zip||2014-03-01|PHP 5.2 is end-of-life
+archivers/php52-zlib||2014-03-01|PHP 5.2 is end-of-life
+converters/php52-iconv||2014-03-01|PHP 5.2 is end-of-life
+converters/php52-mbstring||2014-03-01|PHP 5.2 is end-of-life
+converters/php52-recode||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-dba||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-dbase||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-interbase||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-mssql||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-mysql||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-mysqli||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-oci8||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-odbc||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-pdo||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-pdo_dblib||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-pdo_firebird||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-pdo_mysql||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-pdo_oci||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-pdo_odbc||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-pdo_pgsql||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-pdo_sqlite||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-pgsql||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-sqlite||2014-03-01|PHP 5.2 is end-of-life
+databases/php52-sybase_ct||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-gettext||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-json||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-ncurses||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-pcntl||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-pcre||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-readline||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-shmop||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-spl||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-sysvmsg||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-sysvsem||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-sysvshm||2014-03-01|PHP 5.2 is end-of-life
+devel/php52-tokenizer||2014-03-01|PHP 5.2 is end-of-life
+ftp/php52-curl||2014-03-01|PHP 5.2 is end-of-life
+ftp/php52-ftp||2014-03-01|PHP 5.2 is end-of-life
+graphics/php52-exif||2014-03-01|PHP 5.2 is end-of-life
+graphics/php52-gd||2014-03-01|PHP 5.2 is end-of-life
+graphics/php52-ming||2014-03-01|PHP 5.2 is end-of-life
+lang/php52||2014-03-01|PHP 5.2 is end-of-life
+lang/php52||2014-03-01|PHP 5.2 is end-of-life.ext
+lang/php52-extensions||2014-03-01|PHP 5.2 is end-of-life
+mail/php52-imap||2014-03-01|PHP 5.2 is end-of-life
+math/php52-bcmath||2014-03-01|PHP 5.2 is end-of-life
+math/php52-gmp||2014-03-01|PHP 5.2 is end-of-life
+misc/php52-calendar||2014-03-01|PHP 5.2 is end-of-life
+net/php52-ldap||2014-03-01|PHP 5.2 is end-of-life
+net/php52-soap||2014-03-01|PHP 5.2 is end-of-life
+net/php52-sockets||2014-03-01|PHP 5.2 is end-of-life
+net/php52-xmlrpc||2014-03-01|PHP 5.2 is end-of-life
+net-mgmt/php52-snmp||2014-03-01|PHP 5.2 is end-of-life
+security/php52-filter||2014-03-01|PHP 5.2 is end-of-life
+security/php52-hash||2014-03-01|PHP 5.2 is end-of-life
+security/php52-mcrypt||2014-03-01|PHP 5.2 is end-of-life
+security/php52-mhash||2014-03-01|PHP 5.2 is end-of-life
+security/php52-openssl||2014-03-01|PHP 5.2 is end-of-life
+sysutils/pecl-fileinfo||2014-03-01|PHP 5.2 is end-of-life
+sysutils/php52-posix||2014-03-01|PHP 5.2 is end-of-life
+textproc/php52-ctype||2014-03-01|PHP 5.2 is end-of-life
+textproc/php52-dom||2014-03-01|PHP 5.2 is end-of-life
+textproc/php52-pspell||2014-03-01|PHP 5.2 is end-of-life
+textproc/php52-simplexml||2014-03-01|PHP 5.2 is end-of-life
+textproc/php52-wddx||2014-03-01|PHP 5.2 is end-of-life
+textproc/php52-xml||2014-03-01|PHP 5.2 is end-of-life
+textproc/php52-xmlreader||2014-03-01|PHP 5.2 is end-of-life
+textproc/php52-xmlwriter||2014-03-01|PHP 5.2 is end-of-life
+textproc/php52-xsl||2014-03-01|PHP 5.2 is end-of-life
+www/php52-session||2014-03-01|PHP 5.2 is end-of-life
+www/php52-tidy||2014-03-01|PHP 5.2 is end-of-life
+lang/clang31||2014-03-01|Has expired: No remaining dependencies
+devel/llvm31||2014-03-01|Has expired: No remaining dependencies (except clang31)
+shells/bash-devel|shells/bash|2014-03-03|Maintainer reset, main port now properly maintained
+shells/bash-static-devel|shells/bash-static|2014-03-03|Maintainer reset, main port now properly maintained
+x11/mgapdesk||2014-03-03|Has expired: Needs an old (pre 7.2) XFree86/X.org header file to build
+security/kwallet|security/kwalletmanager|2014-03-04|Renamed to match upstream naming
+databases/mysqlard||2014-03-06|Has expired: Abandonware
+print/acrobatviewer||2014-03-06|Has expired: Abandoned, outdated (no updates since 1999)
+multimedia/castpodder||2014-03-06|Has expired: Depends on deprecated multimedia/beep-media-player
+audio/bmp-modplug|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-fc|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/bmp-rootvis|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+deskutils/bmp-docklet|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-festalon|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-faad|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-flac|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-wma|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+multimedia/py-pybmp|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-mac|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-songchange|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-htmlplaylist|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-crossfade|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/bmp-scrobbler|multimedia/audacious|2014-03-06|Has expired: Abandonware, please consider using multimedia/audacious instead
+shells/wapsh||2014-03-06|Broken and abandonware
+shells/zoidberg||2014-03-06|Broken and abandonware
+x11-toolkits/py31-tkinter|x11-toolkits/py-tkinter|2014-03-06|Has expired: Depends on expiring lang/python31
+misc/logsurfer+|misc/logsurfer|2014-03-07|Renamed upstream
+net-p2p/i2p|security/i2p|2014-03-07|Category change
+deskutils/phprojekt||2014-03-08|Has expired: No more public distfiles
+deskutils/libopensync-plugin-synce-legacy||2014-03-08|Has expired: No more public distfiles
+dns/skadns||2014-03-08|Has expired: No more public distfiles
+sysutils/gkrellmwho2||2014-03-08|Has expired: No more public distfiles
+audio/xmms-musepack||2014-03-08|Has expired: No more public distfiles
+archivers/bzip||2014-03-08|Has expired: No more public distfiles
+devel/cvsstat||2014-03-08|Has expired: No more public distfiles
+graphics/enfle||2014-03-08|Has expired: No more public distfiles
+audio/oggsplit||2014-03-08|Has expired: No more public distfiles
+devel/picasm||2014-03-08|Has expired: No more public distfiles
+databases/mysql-udf-preg||2014-03-08|Has expired: No more public distfiles
+devel/py-gitpython||2014-03-08|Has expired: No more public distfiles
+net/mars_nwe||2014-03-08|Has expired: No more public distfiles
+audio/fmio||2014-03-08|Has expired: No more public distfiles
+audio/libmtp|multimedia/libmtp|2014-03-09|Moved from audio to multimedia
+mail/p5-Mail-SpamAssassin-Alt|mail/p5-Mail-SpamAssassin|2014-03-09|Retired; please use mail/p5-Mail-SpamAssassin
+mail/fetchyahoo||2014-03-10|Has expired: Yahoo classic mail interface is discontinued, so this port is permanently broken
+audio/beep||2014-03-10|Has expired: No more public distfiles
+audio/p5-Audio-Beep||2014-03-10|Has expired: Depends on expiring audio/beep
+multimedia/beep-media-player|multimedia/audacious|2014-03-10|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/jumpgis-postgis||2014-03-10|Has expired: Depends on expiring graphics/jumpgis
+graphics/jumpgis||2014-03-10|Has expired: No more public distfiles
+mail/xfmail||2014-03-10|Has expired: No more public distfiles
+net/freenx||2014-03-10|Has expired: Depends on expiring net/nxserver
+deskutils/libopensync-plugin-synce||2014-03-10|Has expired: No more public distfiles
+irc/irchat-pj-xemacs21-mule||2014-03-10|Has expired: No more public distfiles
+irc/pure-xemacs21-mule||2014-03-10|Has expired: No more public distfiles
+lang/dice||2014-03-10|Has expired: No more public distfiles
+irc/dcc||2014-03-10|Has expired: No more public distfiles
+sysutils/backupme||2014-03-10|Has expired: No more public distfiles
+net/freeswitch-curl-devel||2014-03-10|Has expired: No more public distfiles
+misc/freeswitch-pizzademo-devel||2014-03-10|Has expired: No more public distfiles
+emulators/cygne-sdl||2014-03-10|Has expired: No more public distfiles
+mail/newmail||2014-03-10|Has expired: No more public distfiles
+x11-toolkits/xscoop||2014-03-10|Has expired: No more public distfiles
+security/didentd||2014-03-10|Has expired: No more public distfiles
+net/freeswitch-sbc-devel||2014-03-10|Has expired: No more public distfiles
+multimedia/gxanim||2014-03-10|Has expired: No more public distfiles
+www/nd||2014-03-10|Has expired: No more public distfiles
+lang/fbbi||2014-03-10|Has expired: No more public distfiles
+textproc/csv2xml||2014-03-10|Has expired: No more public distfiles
+www/trac-calendar||2014-03-10|Has expired: No more public distfiles
+misc/stan||2014-03-10|Has expired: No more public distfiles
+japanese/gtkicq||2014-03-10|Has expired: No more public distfiles
+net/nc6||2014-03-10|Has expired: No more public distfiles
+net/jpcap||2014-03-10|Has expired: No more public distfiles
+games/quake-extras||2014-03-10|Has expired: No more public distfiles
+net/asfrecorder||2014-03-10|Has expired: No more public distfiles
+sysutils/pyrenamer||2014-03-10|Has expired: No more public distfiles
+palm/synce-sync-engine||2014-03-10|Has expired: No more public distfiles
+www/linux-mplayer-plugin||2014-03-10|Has expired: No more public distfiles
+net-mgmt/airport||2014-03-10|Has expired: No more public distfiles
+textproc/manued.el||2014-03-10|Has expired: No more public distfiles
+sysutils/jailer||2014-03-10|Has expired: No more public distfiles
+sysutils/blimitd||2014-03-10|Has expired: No more public distfiles
+print/abntex||2014-03-10|Has expired: No more public distfiles
+sysutils/monkeytail||2014-03-10|Has expired: No more public distfiles
+dns/dns_mre||2014-03-10|Has expired: No more public distfiles
+japanese/libjcode||2014-03-10|Has expired: No more public distfiles
+sysutils/jailutils||2014-03-10|Has expired: No more public distfiles
+net/freeswitch-vanilla-devel||2014-03-10|Has expired: No more public distfiles
+sysutils/hdup||2014-03-10|Has expired: No more public distfiles
+print/cups-smb-backend||2014-03-10|Has expired: No more public distfiles
+x11/settitle||2014-03-10|Has expired: No more public distfiles
+sysutils/anteater||2014-03-10|Has expired: No more public distfiles
+www/trac-pendingticket||2014-03-10|Has expired: No more public distfiles
+www/admuser||2014-03-10|Has expired: No more public distfiles
+x11-themes/gnome-icons-snowish||2014-03-10|Has expired: No more public distfiles
+www/metacafe_dl||2014-03-10|Has expired: No more public distfiles
+irc/irchat-pj-emacs21||2014-03-10|Has expired: No more public distfiles
+www/horde3-wicked||2014-03-10|Has expired: No more public distfiles
+java/drexelsnmp||2014-03-10|Has expired: No more public distfiles
+mail/sigit||2014-03-10|Has expired: No more public distfiles
+misc/freeswitch-scripts-devel||2014-03-10|Has expired: No more public distfiles
+www/vtiger-customerportal||2014-03-10|Has expired: No more public distfiles
+irc/pure-emacs21||2014-03-10|Has expired: No more public distfiles
+www/extsm||2014-03-10|Has expired: No more public distfiles
+misc/cwish||2014-03-10|Has expired: No more public distfiles
+www/phpscheduleit||2014-03-10|Has expired: No more public distfiles
+palm/synce-serial||2014-03-10|Has expired: No more public distfiles
+palm/synce-vdccm||2014-03-10|Has expired: No more public distfiles
+net/freeswitch-insideout-devel||2014-03-10|Has expired: No more public distfiles
+sysutils/fusefs-fur||2014-03-10|Has expired: No more public distfiles
+mail/clamfilter||2014-03-10|Has expired: No more public distfiles
+textproc/cost||2014-03-10|Has expired: No more public distfiles
+palm/synce-gvfs||2014-03-10|Has expired: No more public distfiles
+net/nxserver||2014-03-10|Has expired: No more public distfiles
+sysutils/throttle||2014-03-10|Has expired: No more public distfiles
+japanese/aterm||2014-03-10|Has expired: No more public distfiles
+mail/teapop||2014-03-10|Has expired: No more public distfiles
+www/eldav.el||2014-03-10|Has expired: No more public distfiles
+graphics/gsnapshot||2014-03-10|Has expired: No more public distfiles
+japanese/zangband||2014-03-10|Has expired: No more public distfiles
+audio/xmms-wma||2014-03-10|Has expired: No more public distfiles
+misc/projectionlib||2014-03-10|Has expired: No more public distfiles
+net-mgmt/nagios-pf-plugin||2014-03-10|Has expired: No more public distfiles
+multimedia/smile||2014-03-10|Has expired: No more public distfiles
+x11-fm/dfm||2014-03-10|Has expired: No more public distfiles
+security/xyssl|security/polarssl|2014-03-10|Has expired: No more public distfiles
+japanese/p5-Mail-SpamAssassin|japanese/spamassassin|2014-03-10|Moved to japanese/spamassassin
+mail/p5-Mail-SpamAssassin|mail/spamassassin|2014-03-10|Moved to mail/spamassassin
+databases/pear-MDB2_Driver_sqlite||2014-03-12|Unmaintained upstream
+net/pppd23||2014-03-14|Has expired: Depends on PPPDISC
+net/ipa_ip6fw||2014-03-14|Has expired: Depends on IPv6 ipfw firewall
+palm/synce-hal||2014-03-14|Has expired: Requires pppd
+net/pppoa||2014-03-14|Has expired: Broken on FreeBSD 8 and later since june 2009
+multimedia/linux-huludesktop||2014-03-14|Removed
+multimedia/linux_v4l2wrapper-kmod||2014-03-16|Has expired: Included now in all supported FreeBSD versions
+devel/sgl||2014-03-16|Has expired: S/W never progressed beyond incomplete graduate project; library was never properly built - not worth fixing
+palm/jpilot-db||2014-03-16|Has expired
+databases/ludia||2014-03-18|Has expired: Broken since June 2013
+lang/schemetoc||2014-03-18|Has expired: Broken since July 2013
+sysutils/cfengine-devel||2014-03-19|Has expired: Broken since June 2013
+sysutils/py-salt-cloud|sysutils/py-salt|2014-03-19|Removed:py-salt-cloud is now part of py-salt
+devel/py-pyzmq|net/py-pyzmq|2014-03-22|Move to a more suitable category with other ZeroMQ ports 
+audio/p5-Xmms|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-a52dec|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-audiofile|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-cdread|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-crossfade|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-crystality|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-defx|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-efxmms|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-eq|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-fc|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-fxt|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-infopipe|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-jack|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-liveice|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-mac|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-mad|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-midi|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-modplug|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-mp3cue|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-osssurround|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-quix3dn|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-sid|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-sndfile|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+audio/xmms-tfmx|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+chinese/xmms|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-blursk|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-dancingparticles|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-dflowers|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-dscope|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-dspectogram|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-dspectral|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-finespectrum|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-fishmatic|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-gdancer|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-iris|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-jess|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-nebulus|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-paranormal|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-scivi|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-vumeter|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+graphics/xmms-waterfall|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+multimedia/gxmms|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+multimedia/xmms-status-plugin|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+russian/xmms|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+x11-themes/xmms-bluecurve-theme|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+x11-themes/xmms-eq-skins|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+x11-themes/xmms-vumeter-skins|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
+mail/mahogany||2014-03-24|Broken with all support compilers
+x11-toolkits/py-wxPython26|x11-toolkits/py-wxPython28|2014-03-24|wxPython26 is EOLed
+x11-toolkits/py-wxPython26-common|x11-toolkits/py-wxPython28-common|2014-03-24|wxPython26 is EOLed
+x11-toolkits/py-wxPython26-unicode|x11-toolkits/py-wxPython28-unicode|2014-03-24|wxPython26 is EOLed
+x11-toolkits/wxgtk26|x11-toolkits/wxgtk28|2014-03-24|wxGTK 2.6 is EOLed
+x11-toolkits/wxgtk26-common|x11-toolkits/wxgtk28-common|2014-03-24|wxGTK 2.6 is EOLed
+x11-toolkits/wxgtk26-contrib|x11-toolkits/wxgtk28-contrib|2014-03-24|wxGTK 2.6 is EOLed
+x11-toolkits/wxgtk26-contrib-common|x11-toolkits/wxgtk28-contrib-common|2014-03-24|wxGTK 2.6 is EOLed
+x11-toolkits/wxgtk26-docs||2014-03-24|wxGTK 2.6 is EOLed
+x11-toolkits/wxgtk26-unicode|x11-toolkits/wxgtk28-unicode|2014-03-24|wxGTK 2.6 is EOLed
+x11-toolkits/wxgtk26-unicode-contrib|x11-toolkits/wxgtk28-unicode-contrib|2014-03-24|wxGTK 2.6 is EOLed
+x11-toolkits/wxgtk29|x11-toolkits/wxgtk30|2014-03-24|wxGTK 2.9 was a developement version superseeded by the 3.0 release
+accessibility/ruby-atk||2014-03-24|Has expired: Use rubygem-atk instead
+devel/ruby-gio2||2014-03-24|Has expired: Use rubygem-gio2 instead
+devel/ruby-glib2||2014-03-24|Has expired: Use rubygem-glib2 instead
+graphics/ruby-cairo||2014-03-24|Has expired: Use rubygem-cairo instead
+graphics/ruby-gdk_pixbuf2||2014-03-24|Has expired: Use rubygem-gdk_pixbuf2 instead
+graphics/ruby-rsvg2||2014-03-24|Has expired: Use rubygem-rsvg2 instead
+x11-toolkits/ruby-goocanvas||2014-03-24|Has expired: No longer included upstream
+x11-toolkits/ruby-gstreamer||2014-03-24|Has expired: Use rubygem-gstreamer instead
+x11-toolkits/ruby-gtk2||2014-03-24|Has expired: Use rubygem-gtk2 instead
+x11-toolkits/ruby-gtksourceview2||2014-03-24|Has expired: Use rubygem-gtksourceview2 instead
+x11-toolkits/ruby-pango||2014-03-24|Has expired: Use rubygem-pango instead
+x11-toolkits/ruby-poppler||2014-03-24|Has expired: Use rubygem-poppler instead
+x11-toolkits/ruby-vte||2014-03-24|Has expired: Use rubygem-vte instead
+x11/ruby-gnome2||2014-03-24|Has expired: Use rubygem-gnome2 instead
+deskutils/lxshortcut||2014-03-24|Has expired: Now distributed with x11/libfm-1.2.0
+databases/p5-Ima-DBI-Contextual||2014-03-24|Has expired: deprecated by upstream
+databases/p5-Class-DBI-Lite||2014-03-24|Has expired: deprecated by upstream
+net/AquaGatekeeper||2014-03-24|Has expired: Binary port of software abandoned by the vendor
+mail/mailutils||2014-03-24|Has expired: This port needs to be taken care of, it suffers from bit rot.  Especially with options other than GUILE, uninstall may leave files behind
+games/xflame||2014-03-24|Has expired: No more public distfiles
+games/p5-Algorithm-Pair-Best|games/p5-Algorithm-Pair-Best2|2014-03-24|Has expired: Use games/p5-Algorithm-Pair-Best2 instead
+x11-wm/hackedbox||2014-03-24|Has expired: Abandonware
+emulators/hfs|sysutils/hfsutils|2014-03-24|Has expired: No upstream, no public distfiles; consider using 'sysutils/hfsutils'
+games/fuhquake||2014-03-24|Has expired: Upstream disappeared; no more public distfiles; unmaintained
+games/xarchon||2014-03-25|Has expired: Unusable, development ceased, not works with stage
+lang/libstdc++_stldoc_3.4.0||2014-03-25|STL 3.4 is not supported for long
+games/linux-warsow||2014-03-26|Has expired: outdated, broken
+audio/pysol-sound-server|games/pysolfc|2014-03-28|Has expired: Broken, abondonware, use pysolfc
+games/pysol-cardsets|games/pysolfc|2014-03-28|Has expired: Broken, abondonware, use pysolfc
+games/pysol-music|games/pysolfc|2014-03-28|Has expired: Broken, abondonware, use pysolfc
+games/pysol|games/pysolfc|2014-03-28|Has expired: Broken, abondonware, use pysolfc
+devel/ros_tutorials||2014-03-28|Has expired: Depends on expiring devel/ros_comm
+math/ros-geometry||2014-03-28|Has expired: Depends on expiring devel/ros_comm
+devel/ros-nxt||2014-03-28|Has expired: Depends on expiring devel/ros_comm
+devel/ros-rx||2014-03-28|Has expired: Depends on expiring devel/ros_comm
+devel/R-cran-vcd||2014-03-28|Has expired: New port without proper maintainer
+devel/ros-documentation||2014-03-28|Has expired: Depends on expiring devel/ros_comm
+devel/ros-common_msgs||2014-03-28|Has expired: Depends on expiring devel/ros_comm
+devel/ros_comm||2014-03-28|Has expired: Broken for more than 6 months
+devel/cross-gdb||2014-03-28|Has expired: No more public distfiles, unstaged
+x11-wm/fvwm2-i18n|x11-wm/fvwm2|2014-03-28|Does not differ from main fvwm2 port
+games/linux-spheresofchaos-demo||2014-03-28|Has expired: No more public distfiles
+chinese/php5-cconv|chinese/php-cconv|2014-03-30|Rename to php-
+emulators/gxmame||2014-03-30|Has expired: Depends on deprecated emulators/xmame
+emulators/pyxmame||2014-03-30|Has expired: Depends on deprecated emulators/xmame
+emulators/xmess||2014-03-30|Has expired: No more public distfiles
+benchmarks/xdd||2014-03-30|Has expired: No more public distfiles
+chinese/srecite||2014-03-30|Has expired: No more public distfiles
+games/hlstats||2014-03-30|Has expired: No more public distfiles
+audio/teamspeak_server||2014-03-30|Has expired: No more public distfiles
+games/utserver||2014-03-30|Has expired: No more public distfiles
+databases/p5-hp200lx-db||2014-03-30|Has expired: No more public distfiles
+audio/teamspeak_client||2014-03-30|Has expired: No more public distfiles
+german/vtiger||2014-03-30|Has expired: Depends on expiring www/vtiger
+www/gallery||2014-03-30|Has expired: No more public distfiles
+www/vtiger||2014-03-30|Has expired: No more public distfiles
+net/linux-nx-client||2014-03-30|Has expired: No more public distfiles
+emulators/extract-xiso||2014-03-30|Has expired: No more public distfiles
+www/trac-wantedpages||2014-03-30|Has expired: No more public distfiles
+www/trac-ldap||2014-03-30|Has expired: No more public distfiles
+www/trac-codetags||2014-03-30|Has expired: No more public distfiles
+www/trac-addcomment||2014-03-30|Has expired: No more public distfiles
+www/trac-nav||2014-03-30|Has expired: No more public distfiles
+www/baikal||2014-03-30|Has expired: No more public distfiles
+www/trac-pagetopdf||2014-03-30|Has expired: No more public distfiles
+sysutils/logmon||2014-03-30|Has expired: No more public distfiles
+www/trac-simpleticket||2014-03-30|Has expired: No more public distfiles
+www/trac-wikinegotiator||2014-03-30|Has expired: No more public distfiles
+www/trac-pagelist||2014-03-30|Has expired: No more public distfiles
+www/trac-remind||2014-03-30|Has expired: No more public distfiles
+www/trac-macropost||2014-03-30|Has expired: No more public distfiles
+lang/rscheme||2014-03-30|Has expired: No more public distfiles
+emulators/xmame||2014-03-30|Has expired: No more public distfiles
+devel/hyena||2014-04-01|Has expired: Broken for more than 6 month
+print/pdfmod||2014-04-01|Has expired: Depends on expired devel/hyena, unstaged, uses old standards
+security/gnutls-devel||2014-04-01|Has expired: Stale, broken and vulnerable
+sysutils/epylog||2014-04-01|Has expired: distfiles no longer fetchable
+japanese/Wnn6||2014-04-01|Has expired: Unmaintained, interactive and restricted
+japanese/srd-fpw||2014-04-01|Has expired: Unmaintained, interactive and restricted
+japanese/mypaedia-fpw||2014-04-01|Has expired: Unmaintained, interactive and restricted
+news/dnews||2014-04-01|Has expired: Unmaintained, interactive and restricted
+devel/adasdl|devel/sdl_gnat|2014-04-01|Has expired: Ancient, does not build on amd64; use devel/sdl_gnat instead
+lang/gnat|lang/gcc-aux|2014-04-01|Has expired: The Ada framework is based on lang/gcc-aux, use it instead
+textproc/p5-Elasticsearch|textproc/p5-Search-Elasticsearch|2014-04-02|Renamed upstream
+net/kdnssd|net/zeroconf-ioslave|2014-04-03|Renamed to match upstream naming
+www/aolserver||2014-04-03|Has expired: abandonware, messing up on clusters
+www/openacs-dotlrn||2014-04-03|Has expired: Depends on expiring www/aolserver
+www/openacs||2014-04-03|Has expired: Depends on expiring www/aolserver
+security/aolserver-nsmcrypt||2014-04-03|Has expired: abandonware, messing up on clusters
+www/aolserver-xotcl||2014-04-03|Has expired: abandonware, messing up on clusters
+graphics/aolserver-nsgd||2014-04-03|Has expired: abandonware, messing up on clusters
+security/aolserver-nsencrypt||2014-04-03|Has expired: abandonware, messing up on clusters
+security/aolserver-nsmhash||2014-04-03|Has expired: abandonware, messing up on clusters
+archivers/aolserver-nszlib||2014-04-03|Has expired: abandonware, messing up on clusters
+security/aolserver-nsopenssl||2014-04-03|Has expired: abandonware, messing up on clusters
+databases/aolserver-nspostgres||2014-04-03|Has expired: abandonware, messing up on clusters
+databases/aolserver-nsmysql||2014-04-03|Has expired: abandonware, messing up on clusters
+security/aolserver-nssha1||2014-04-03|Has expired: abandonware, messing up on clusters
+www/webobjects||2014-04-04|Has expired: Unmaintained, interactive and restricted
+devel/p5-Devel-LeakTrace-Fast||2014-04-04|Has expired: Broken for more than 6 months
+www/privoxy+ipv6|www/privoxy|2014-04-06|Has expired: www/privoxy natively supports ipv6
+games/f1lt||2014-04-06|Trademark violation: http://www.formula1.com/trademarkguidelines.html
+graphics/pyggel|graphics/py-pyggel|2014-04-07|Rename to consistency with other Python ports
+japanese/p5-manual||2014-04-08|Outdated manuals
+graphics/openclipart||2014-04-08|Outdated, has no real meaning as a port
+audio/py-xmms||2014-04-08|Has expired: Abandonware, please consider using multimedia/audacious instead
+archivers/ruby-libarchive|archivers/rubygem-libarchive|2014-04-08|Use the rubygem version instead
+java/j2sdkee13||2014-04-10|EOLed long ago
+astro/glunarclock||2014-04-11|gnome-panel will be updated to the 3.x version which is not compatible with 2.x
+databases/libgda2||2014-04-11|Ancient version, consider using newer versions
+databases/libgda2-references||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3-references||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3-firebird||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3-freetds||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3-ldap||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3-mdb||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3-mysql||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3-odbc||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3-odbc||2014-04-11|Ancient version, consider using newer versions
+databases/libgda3-postgresql||2014-04-11|Ancient version, consider using newer versions
+databases/libgnomedb||2014-04-11|Superseeded by libgda starting from version 4
+databases/libgnomedb-reference||2014-04-11|Superseeded by libgda starting from version 4
+databases/mergeant||2014-04-11|Superseeded by libgda starting from version 4
+deskutils/evolution-jescs||2014-04-11|Doesn't work with newer version of evolution
+deskutils/nautilus-locked-folder||2014-04-11|Has expired: nautilus will be updated to the 3.x version which is not compatible with 2.x
+www/screem||2014-04-11|Has expired: gnome-menus 2.x will be updated in the GNOME 3 import
+deskutils/nautilus-actions||2014-04-11|Has expired: nautilus will be updated to the 3.x version which is not compatible with 2.x
+deskutils/nautilus-sendto||2014-04-11|Has expired: nautilus will be updated to the 3.x version which is not compatible with 2.x
+deskutils/nautilus-open-terminal||2014-04-11|Has expired: nautilus will be updated to the 3.x version which is not compatible with 2.x
+sysutils/eiciel||2014-04-11|Has expired: nautilus will be updated to the 3.x version which is not compatible with 2.x
+sysutils/nautilus-cd-burner||2014-04-11|Has expired: nautilus will be updated to the 3.x version which is not compatible with 2.x
+x11-fm/py-nautilus||2014-04-11|Has expired: nautilus will be updated to the 3.x version which is not compatible with 2.x
+sysutils/sensors-applet||2014-04-11|Has expired: gnome-panel 2.x will be updated in the GNOME 3 import
+net/link-monitor-applet||2014-04-11|Has expired: gnome-panel 2.x will be updated in the GNOME 3 import
+net/netspeed_applet||2014-04-11|Has expired: gnome-panel 2.x will be updated in the GNOME 3 import
+net/remmina-applet||2014-04-11|Has expired: gnome-panel 2.x will be updated in the GNOME 3 import
+misc/uf-view||2014-04-11|Has expired: gnome-desktop 2.x will be updated in the GNOME 3 import
+textproc/uim-gnome||2014-04-11|Has expired: gnome-panel 2.x will be updated in the GNOME 3 import
+audio/istream||2014-04-11|Has expired: gnome-panel will be updated to the 3.x version which is not compatible with 2.x
+mail/contact-lookup-applet||2014-04-11|Has expired: gnome-panel will be updated to the 3.x version which is not compatible with 2.x
+security/tuntun||2014-04-11|Has expired: gnome-panel 2.x will be updated in the GNOME 3 import
+misc/quick-lounge-applet||2014-04-11|Has expired: gnome-panel 2.x will be updated in the GNOME 3 import
+sysutils/bubblemon2||2014-04-11|Has expired: gnome-panel 2.x will be updated in the GNOME 3 import
+lang/tcltutor||2014-04-11|Removed, depends on expired ports, unstaged, abandonware
+palm/gnome-pilot||2014-04-11|Has expired: gnome-panel 2.x will be updated in the GNOME 3 import
+palm/gnome-pilot-conduits||2014-04-11|Removed (depends on gnome-pilot)
+www/p5-CGI-modules||2014-04-11|Has expired: No more public distfiles
+www/p5-WWW-Link||2014-04-11|Has expired: Depends on expired www/p5-CGI-modules
+www/sbox-dtc||2014-04-11|Has expired: No more public distfiles
+sysutils/dtc||2014-04-11|Has expired: Depends on expired www/sbox-dtc
+textproc/glimpse||2014-04-11|Has expired: No more public distfiles
+ftp/ftplocate||2014-04-11|Has expired: Depends on expired textproc/glimpse
+misc/tkman||2014-04-11|Has expired: Depends on expired textproc/glimpse
+devel/asl||2014-04-11|Has expired: Unmaintained since 1997
+net/pcnfsd||2014-04-11|Has expired: Unmaintained since 1997
+cad/chipmunk||2014-04-11|Has expired: Unmaintained since 1999
+graphics/comix||2014-04-11|Has expired: Insists on installing in /usr/local, and uses nautilus2 which is deprecated
+www/mambo||2014-04-11|Has expired: Broken for more than 6 months
+devel/lua-rds-parser||2014-04-11|Has expired: Broken for more than 6 months
+editors/the||2014-04-11|Has expired: Unmaintained since 1999
+japanese/exmh2||2014-04-11|Has expired: Unmaintained since 1999
+net/freewais-sf||2014-04-11|Has expired: Unmaintained since 1999
+editors/elvis||2014-04-11|Has expired: Unmaintained since 1999
+japanese/sed||2014-04-11|Has expired: Unmaintained since 1999
+x11-fm/xfm||2014-04-11|Has expired: Unmaintained since 1999
+print/rtf2latex||2014-04-11|Has expired: Unmaintained since 1999
+graphics/fbm||2014-04-11|Has expired: Unmaintained since 1999
+devel/p5-Penguin-Easy||2014-04-11|Has expired: Unmaintained since 2000
+emulators/prodosemu||2014-04-11|Has expired: Unmaintained since 2000
+security/gtkportscan||2014-04-11|Has expired: Unmaintained since 2000
+graphics/xmfract||2014-04-11|Has expired: Unmaintained since 2000
+databases/xmbase-grok||2014-04-11|Has expired: Unmaintained since 2000
+emulators/svr4_base||2014-04-11|Has expired: Unmaintained since 2000
+math/freefem||2014-04-11|Has expired: Unmaintained since 2000
+graphics/tiff2png||2014-04-11|Has expired: Unmaintained since 2000
+math/wingz||2014-04-11|Has expired: Unmaintained since 2000
+lang/STk||2014-04-11|Has expired: Unmaintained since 2000
+graphics/kdc2tiff||2014-04-11|Has expired: Unmaintained since 2000
+math/xlispstat||2014-04-11|Has expired: Unmaintained since 2000
+databases/typhoon||2014-04-11|Has expired: Unmaintained since 2000
+graphics/dc20ctrl||2014-04-11|Has expired: Unmaintained since 2000
+www/fhttpd||2014-04-11|Has expired: Unmaintained since 2000
+graphics/xmorph||2014-04-11|Has expired: Unmaintained since 2000
+editors/axe||2014-04-11|Has expired: Unmaintained since 2000
+www/cgic||2014-04-11|Has expired: Unmaintained since 2000
+devel/orbitcpp||2014-04-11|Unused anymore, not libc++ friendly
+graphics/sodipodi|graphics/inkscape|2014-04-11|Sodipodi did not survive the Inkscape fork
+devel/g-wrap||2014-04-11|Unused, not stage friendly

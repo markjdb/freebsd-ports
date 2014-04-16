@@ -16,19 +16,15 @@ COMMENT=	HTML/XML Compressor
 LICENSE=	APACHE20
 
 NO_WRKSUBDIR=	yes
-USE_JAVA=	yes
-JAVA_VERSION=	1.5+
+USE_JAVA=	1.6+
 NO_BUILD=	yes
 
 PLIST_FILES=	bin/htmlcompressor %%JAVAJARDIR%%/htmlcompressor.jar
 SUB_FILES=	htmlcompressor
 
-NO_STAGE=	yes
-.include <bsd.port.pre.mk>
-
 do-install:
-	@${MKDIR} ${JAVAJARDIR}
-	${INSTALL_DATA} ${DISTDIR}/${DISTNAME} ${JAVAJARDIR}/htmlcompressor.jar
-	${INSTALL_SCRIPT} ${WRKDIR}/htmlcompressor ${PREFIX}/bin
+	@${MKDIR} ${STAGEDIR}${JAVAJARDIR}
+	${INSTALL_DATA} ${DISTDIR}/${DISTNAME} ${STAGEDIR}${JAVAJARDIR}/htmlcompressor.jar
+	${INSTALL_SCRIPT} ${WRKDIR}/htmlcompressor ${STAGEDIR}${PREFIX}/bin
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

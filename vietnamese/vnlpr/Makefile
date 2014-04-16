@@ -11,10 +11,13 @@ EXTRACT_SUFX=	.tar.Z
 MAINTAINER=	obrien@FreeBSD.org
 COMMENT=	Shell script and set of fonts to print Vietnamese text on PostScript printer
 
+BROKEN=		Conflicts with dependency vnpstext on share/vn-fonts/initcour.ps
+
 RUN_DEPENDS=	vn7to8:${PORTSDIR}/vietnamese/vn7to8 \
 		vnpstext:${PORTSDIR}/vietnamese/vnpstext
 
-NO_STAGE=	yes
+OPTIONS_DEFINE=	DOCS
+
 pre-patch:
 	@${MV} ${WRKSRC}/vnlpr ${WRKSRC}/vnlpr.in
 
@@ -24,14 +27,12 @@ do-build:
 		${WRKSRC}/vnlpr.in > ${WRKSRC}/vnlpr
 
 do-install:
-	${INSTALL_SCRIPT} ${WRKSRC}/vnlpr ${PREFIX}/bin
-	@${MKDIR} ${PREFIX}/share/vn-fonts
-	${INSTALL_DATA} ${WRKSRC}/*.ps ${PREFIX}/share/vn-fonts
-	${INSTALL_DATA} ${WRKSRC}/*.gsf ${PREFIX}/share/vn-fonts
-.if !defined(NOPORTDOCS)
-	@${MKDIR} ${DOCSDIR}
-	${INSTALL_MAN} ${WRKSRC}/README ${DOCSDIR}
-	${INSTALL_MAN} ${WRKSRC}/INSTALL ${DOCSDIR}
-.endif
+	${INSTALL_SCRIPT} ${WRKSRC}/vnlpr ${STAGEDIR}${PREFIX}/bin
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/vn-fonts
+	${INSTALL_DATA} ${WRKSRC}/*.ps ${STAGEDIR}${PREFIX}/share/vn-fonts
+	${INSTALL_DATA} ${WRKSRC}/*.gsf ${STAGEDIR}${PREFIX}/share/vn-fonts
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/INSTALL ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

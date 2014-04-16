@@ -8,12 +8,12 @@ CATEGORIES=	graphics java
 MASTER_SITES=	APACHE/xmlgraphics/${PORTNAME}
 DISTFILES=	${PORTNAME}-src-${PORTVERSION}${EXTRACT_SUFX}
 
-MAINTAINER=	nemysis@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Java based SVG toolkit
 
 LICENSE=	APACHE20
 
-USE_ZIP=	yes
+USES=		zip
 USE_JAVA=	1.6+
 USE_ANT=	yes
 ALL_TARGET=	jars all-jar

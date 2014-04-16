@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dbmail
-PORTVERSION=	3.1.10
-PORTREVISION=	1
+PORTVERSION=	3.1.13
 CATEGORIES=	mail
 MASTER_SITES=	http://www.dbmail.org/download/3.1/ \
 		http://git.dbmail.eu/paul/dbmail/snapshot/
@@ -26,7 +25,7 @@ CONFLICTS=	dbmail-2.* dbmail22-[0-9]*
 
 OPTIONS_DEFINE=	DOCS LDAP SIEVE THREADS
 OPTIONS_DEFAULT=	THREADS
-SIEVE_DESC=	Build with support for Sieve mail sorting language
+SIEVE_DESC=	Sieve mail sorting language support
 
 OPTIONS_SUB=	yes
 
@@ -74,5 +73,7 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/dbmail/libauth_sql.so.0 \
+		${STAGEDIR}${PREFIX}/lib/dbmail/libdbmail.so.0
 
 .include <bsd.port.mk>

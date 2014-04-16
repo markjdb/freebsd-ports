@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	oyranos
-PORTVERSION=	0.9.4
-PORTREVISION=	2
+PORTVERSION=	0.9.5
+PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	SF/${PORTNAME}/Oyranos/Oyranos%20${PORTVERSION:C|(.*)\.[0-9]*$|\1|}
 
@@ -25,8 +25,7 @@ LIB_DEPENDS=	libraw.so:${PORTSDIR}/graphics/libraw \
 		liblcms2.so:${PORTSDIR}/graphics/lcms2 \
 		libXcm.so:${PORTSDIR}/x11/libXcm
 
-USES=		cmake gettext iconv pkgconfig
-USE_BZIP2=	yes
+USES=		cmake gettext iconv pkgconfig tar:bzip2
 USE_GL=		yes
 USE_LDCONFIG=	yes
 USE_GNOME=	libxml2

@@ -3,7 +3,7 @@
 
 PORTNAME=	psi3
 PORTVERSION=	3.4.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	science
 MASTER_SITES=	SF/psicode/psi/${PORTVERSION} \
 		http://www.psicode.org/doc/:doc \
@@ -18,6 +18,8 @@ EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	maho@FreeBSD.org
 COMMENT=	An electronic structure programs for high-accuracy computations
+
+BROKEN=		Fails to build
 
 .if exists(${LOCALBASE}/lib/libgoto2.so)
 WITH_BLAS?=     gotoblas

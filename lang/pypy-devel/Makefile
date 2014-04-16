@@ -3,6 +3,7 @@
 
 PORTNAME=	pypy
 DISTVERSION=	2.3-alpha${DATE}
+PORTREVISION=	1
 CATEGORIES=	lang python
 MASTER_SITES=	https://bitbucket.org/pypy/pypy/get/ LOCAL/dbn/${PORTNAME}
 PKGNAMESUFFIX=	-devel
@@ -265,9 +266,6 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/${name} ${STAGEDIR}${PREFIX}/bin/${name}-${PYPY_VER}
 	${ECHO} bin/${name}-${PYPY_VER} >> ${TMPPLIST}
 .endfor
-
-post-install:
-	${SH} ${PKGINSTALL} ${PKGNAME} POST-INSTALL
 
 test: patch
 .for inst in ${PYPY_INST}

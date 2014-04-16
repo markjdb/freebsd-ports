@@ -14,7 +14,7 @@ COMMENT=	Full-featured integrated environment for Java
 LICENSE=	CDDL GPLv2
 LICENSE_COMB=	dual
 
-USE_ZIP=	yes
+USES=		zip
 USE_JAVA=	yes
 JAVA_VERSION=	1.7+
 NO_BUILD=	yes
@@ -24,7 +24,7 @@ PREFIXDIR=	${PREFIX}/netbeans-${PORTVERSION}
 
 PLIST_SUB+=	PORTVERSION=${PORTVERSION}
 
-#IGNORE=		No development version available right now. Please use java/netbeans instead.
+IGNORE=		No development version available right now. Please use java/netbeans instead.
 
 post-patch:
 	@${REINPLACE_CMD} -e '57s|#||;57s|/path/to/jdk|${JAVA_HOME}|' \

@@ -1,9 +1,8 @@
-# Created by: nemysis <nemysis@gmx.ch>
+# Created by: Rusmir Dusko <nemysis@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	tong
-PORTVERSION=	1.2
-PORTREVISION=	1
+PORTVERSION=	1.3
 CATEGORIES=	games
 MASTER_SITES=	http://www.nongnu.org/tong/
 
@@ -15,34 +14,35 @@ LICENSE=	GPLv3
 USES=		gmake
 USE_SDL=	image mixer sdl
 
-PORTDOCS=	CHANGELOG README making-of.txt notes.txt
+PORTDOCS=	CHANGELOG CREDITS README making-of.txt notes.txt
+OPTIONS_DEFINE=	DOCS
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-DESKTOP_ENTRIES="TONG!" "${COMMENT}" "${PORTNAME}" \
-		"${PORTNAME}" "Game;ArcadeGame;" false
-
-OPTIONS_DEFINE=	DOCS
+DESKTOP_ENTRIES="TONG!" "" "${PORTNAME}" \
+		"${PORTNAME}" "Game;ArcadeGame;" ""
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|GAME_DATA_DIR := .|GAME_DATA_DIR := ${DATADIR}|' \
-	-e 's|CC = g++ -O3 |CC = ${CXX} ${CXXFLAGS} |' \
+	@${REINPLACE_CMD} -e \
+		's|GAME_DATA_DIR := .|GAME_DATA_DIR := ${DATADIR}|; \
+		 s|CC = g++ -O3 |CC = ${CXX} ${CXXFLAGS} |' \
 		${WRKSRC}/Makefile
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/
-	@cd ${WRKSRC} && ${COPYTREE_SHARE} "*.png" ${STAGEDIR}${DATADIR}
+	@(cd ${WRKSRC} && ${COPYTREE_SHARE} "*.png" ${STAGEDIR}${DATADIR})
 
 	@${MKDIR} ${STAGEDIR}${DATADIR}/media/
-
-.for d in *.png *.xcf *.ogg *.ico
-	@(cd ${WRKSRC}/media ; ${COPYTREE_SHARE} "${d}" ${STAGEDIR}${DATADIR}/media/)
+.for f in *.png *.xcf *.ogg *.ico
+	@(cd ${WRKSRC}/media && ${COPYTREE_SHARE} "${f}" \
+		${STAGEDIR}${DATADIR}/media/)
 .endfor
 
 	${LN} -sf ${DATADIR}/media/icon.png \
 		${STAGEDIR}${PREFIX}/share/pixmaps/${PORTNAME}.png
 
-	${MKDIR} ${STAGEDIR}${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
+	${LN} -sf ${DOCSDIR}/CREDITS ${STAGEDIR}${DATADIR}
 
 .include <bsd.port.mk>

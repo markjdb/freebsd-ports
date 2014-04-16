@@ -3,7 +3,7 @@
 
 PORTNAME=	perl
 PORTVERSION=	${PERL_VERSION}
-PORTREVISION=	7
+PORTREVISION=	9
 CATEGORIES=	lang devel perl5
 MASTER_SITES=	CPAN \
 		${MASTER_SITE_LOCAL:S/$/:local/} \
@@ -35,15 +35,15 @@ MULTIPLICITY_DESC=	Use multiplicity
 SITECUSTOMIZE_DESC=	Run-time customization of @INC
 USE_PERL_DESC=		Rewrite links in /usr/bin
 
-PORTSCOUT=	limitw:1,even
+PORTSCOUT=	limit:^${PERL_VER}.
 
 PERL_VERSION=	5.16.3
 PERL_VER=	${PERL_VERSION:C/\.[0-9]+$//}
 PERL_ARCH=	mach
 SITE_PERL_REL?=	lib/perl5/site_perl/${PERL_VER}
-SITE_PERL?=	${LOCALBASE}/${SITE_PERL_REL}
+SITE_PERL?=	${PREFIX}/${SITE_PERL_REL}
 
-USE_BZIP2=	yes
+USES=	tar:bzip2
 HAS_CONFIGURE=	yes
 CONFIGURE_SCRIPT=Configure
 CONFIGURE_ARGS=	-sde -Dprefix=${PREFIX} \
@@ -77,7 +77,7 @@ PKGDEINSTALL=	${WRKDIR}/use.perl
 .include "${PORTSDIR}/Mk/bsd.default-versions.mk"
 
 # if this port is default due PERL5_DEFAULT
-# change PKGNAME to reflect this 
+# change PKGNAME to reflect this
 .if ${PERL_VER} == ${PERL5_DEFAULT}
 PKGNAMESUFFIX=	${PERL_VERSION:C/\.[0-9]+\.[0-9]+$//}
 .else
@@ -110,8 +110,8 @@ MANDIRS+=	${MAN3PREFIX}
 PLIST_SUB+=	PERL_VERSION=${PERL_VERSION} \
 		PERL_VER=${PERL_VER} \
 		PERL_ARCH=${PERL_ARCH} \
-		MAN3=${MAN3PREFIX:S|^${LOCALBASE}/||}/man/man3 \
-		SITE_PERL=${SITE_PERL:S|^${LOCALBASE}/||}
+		MAN3=${MAN3PREFIX:S|^${PREFIX}/||}/man/man3 \
+		SITE_PERL=${SITE_PERL:S|^${PREFIX}/||}
 
 .if ${PORT_OPTIONS:MDEBUG}
 CONFIGURE_ARGS+=	-Doptimize="-g" -DDEBUGGING
@@ -197,25 +197,25 @@ post-patch:
 .endif
 
 post-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/perl5/${PERL_VER}/man/man3
-	@${MKDIR} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/auto
-	@${MKDIR} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/machine
-	@${MKDIR} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/sys
-	@${MKDIR} ${STAGEDIR}${SITE_PERL}/auto
-	@${LN} ${STAGEDIR}${PREFIX}/bin/perl${PERL_VERSION} ${STAGEDIR}${PREFIX}/bin/perl5
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/perl${PERL_VERSION}
+	${MKDIR} ${STAGEDIR}${PREFIX}/lib/perl5/${PERL_VER}/man/man3
+	${MKDIR} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/auto
+	${MKDIR} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/machine
+	${MKDIR} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/sys
+	${MKDIR} ${STAGEDIR}${SITE_PERL}/auto
+	${LN} ${STAGEDIR}${PREFIX}/bin/perl${PERL_VERSION} ${STAGEDIR}${PREFIX}/bin/perl5
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/perl${PERL_VERSION}
 	${INSTALL_DATA} ${WRKDIR}/perl5_version ${STAGEDIR}${PREFIX}/etc
 .if ${OSVERSION} >= 900022
 	${INSTALL_DATA} ${WRKDIR}/perl-man.conf ${STAGEDIR}${PREFIX}/etc/man.d/perl${PERL_VER}.conf
 .endif
 .for files in ${BSDPAN_FILES}
-	@${MKDIR} ${STAGEDIR}${BSDPAN_DEST}/${files:H}
+	${MKDIR} ${STAGEDIR}${BSDPAN_DEST}/${files:H}
 	${INSTALL_DATA} \
 		${BSDPAN_WRKSRC}/${files} ${STAGEDIR}${BSDPAN_DEST}/${files}
 .endfor
 
 test: build
-	@(cd ${WRKSRC}; TEST_JOBS=${MAKE_JOBS_NUMBER} make test_harness)
+	(cd ${WRKSRC}; TEST_JOBS=${MAKE_JOBS_NUMBER} make test_harness)
 
 regression-test: test
 

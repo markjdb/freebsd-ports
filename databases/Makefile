@@ -16,8 +16,10 @@
     SUBDIR += akonadi-googledata
     SUBDIR += animenfo-client
     SUBDIR += animenfo-client-gtk
-    SUBDIR += aolserver-nsmysql
-    SUBDIR += aolserver-nspostgres
+    SUBDIR += apq
+    SUBDIR += apq-mysql
+    SUBDIR += apq-odbc
+    SUBDIR += apq-pgsql
     SUBDIR += autobackupmysql
     SUBDIR += bbdb
     SUBDIR += beansdb
@@ -89,6 +91,7 @@
     SUBDIR += frontbase
     SUBDIR += frontbase-jdbc
     SUBDIR += gadfly
+    SUBDIR += galera
     SUBDIR += gdbm
     SUBDIR += geoserver-mysql-plugin
     SUBDIR += gigabase
@@ -136,17 +139,6 @@
     SUBDIR += libdbi
     SUBDIR += libdbi-drivers
     SUBDIR += libdrizzle
-    SUBDIR += libgda2
-    SUBDIR += libgda2-reference
-    SUBDIR += libgda3
-    SUBDIR += libgda3-firebird
-    SUBDIR += libgda3-freetds
-    SUBDIR += libgda3-ldap
-    SUBDIR += libgda3-mdb
-    SUBDIR += libgda3-mysql
-    SUBDIR += libgda3-odbc
-    SUBDIR += libgda3-postgresql
-    SUBDIR += libgda3-reference
     SUBDIR += libgda4
     SUBDIR += libgda4-bdb
     SUBDIR += libgda4-jdbc
@@ -165,8 +157,6 @@
     SUBDIR += libgda5-ui
     SUBDIR += libgdamm
     SUBDIR += libgdamm5
-    SUBDIR += libgnomedb
-    SUBDIR += libgnomedb-reference
     SUBDIR += libhsclient
     SUBDIR += libiodbc
     SUBDIR += libmemcache
@@ -187,7 +177,6 @@
     SUBDIR += luasql-mysql
     SUBDIR += luasql-postgres
     SUBDIR += luasql-sqlite3
-    SUBDIR += ludia
     SUBDIR += mantis
     SUBDIR += mariadb-client
     SUBDIR += mariadb-scripts
@@ -199,7 +188,6 @@
     SUBDIR += memcached
     SUBDIR += memcachedb
     SUBDIR += memcacheq
-    SUBDIR += mergeant
     SUBDIR += metakit
     SUBDIR += mongodb
     SUBDIR += mrtg-mysql-load
@@ -219,7 +207,6 @@
     SUBDIR += mysql-proxy
     SUBDIR += mysql-q4m
     SUBDIR += mysql-udf
-    SUBDIR += mysql-udf-preg
     SUBDIR += mysql-udf-sys
     SUBDIR += mysql-workbench51
     SUBDIR += mysql-workbench52
@@ -233,7 +220,6 @@
     SUBDIR += mysql55-server
     SUBDIR += mysql56-client
     SUBDIR += mysql56-server
-    SUBDIR += mysqlard
     SUBDIR += mysqlbackup
     SUBDIR += mysqlcppapi
     SUBDIR += mysqldumper
@@ -248,6 +234,8 @@
     SUBDIR += nagios-check_postgres_replication
     SUBDIR += nagios-check_redis
     SUBDIR += namazu2
+    SUBDIR += ntdb
+    SUBDIR += ocaml-dbm
     SUBDIR += ocaml-mysql
     SUBDIR += ocaml-pgocaml
     SUBDIR += ocaml-sqlite3
@@ -286,7 +274,6 @@
     SUBDIR += p5-Class-DBI-DDL
     SUBDIR += p5-Class-DBI-FromCGI
     SUBDIR += p5-Class-DBI-LazyInflate
-    SUBDIR += p5-Class-DBI-Lite
     SUBDIR += p5-Class-DBI-Loader
     SUBDIR += p5-Class-DBI-Loader-Relationship
     SUBDIR += p5-Class-DBI-Oracle
@@ -314,6 +301,7 @@
     SUBDIR += p5-DBD-Excel
     SUBDIR += p5-DBD-FrontBase
     SUBDIR += p5-DBD-Google
+    SUBDIR += p5-DBD-InterBase
     SUBDIR += p5-DBD-LDAP
     SUBDIR += p5-DBD-Mock
     SUBDIR += p5-DBD-Multi
@@ -337,6 +325,9 @@
     SUBDIR += p5-DBICx-TxnInsert
     SUBDIR += p5-DBIWrapper
     SUBDIR += p5-DBIx-Abstract
+    SUBDIR += p5-DBIx-Admin-CreateTable
+    SUBDIR += p5-DBIx-Admin-DSNManager
+    SUBDIR += p5-DBIx-Admin-TableInfo
     SUBDIR += p5-DBIx-AnyDBD
     SUBDIR += p5-DBIx-Browse
     SUBDIR += p5-DBIx-Class
@@ -429,7 +420,6 @@
     SUBDIR += p5-GraphViz-DBI
     SUBDIR += p5-HTML-FormHandler-Model-DBIC
     SUBDIR += p5-Ima-DBI
-    SUBDIR += p5-Ima-DBI-Contextual
     SUBDIR += p5-Iterator-DBI
     SUBDIR += p5-Jifty-DBI
     SUBDIR += p5-KyotoCabinet
@@ -454,6 +444,8 @@
     SUBDIR += p5-RRD-Simple
     SUBDIR += p5-Redis
     SUBDIR += p5-Redis-hiredis
+    SUBDIR += p5-RedisDB
+    SUBDIR += p5-RedisDB-Parser
     SUBDIR += p5-Relations
     SUBDIR += p5-Relations-Query
     SUBDIR += p5-ResourcePool-Resource-DBI
@@ -491,7 +483,6 @@
     SUBDIR += p5-Tie-LevelDB
     SUBDIR += p5-Time-Piece-MySQL
     SUBDIR += p5-TokyoCabinet
-    SUBDIR += p5-hp200lx-db
     SUBDIR += p5-mysql-genocide
     SUBDIR += p5-qdbm
     SUBDIR += p5-tokyotyrant
@@ -520,7 +511,6 @@
     SUBDIR += pear-MDB2_Driver_mysql
     SUBDIR += pear-MDB2_Driver_mysqli
     SUBDIR += pear-MDB2_Driver_pgsql
-    SUBDIR += pear-MDB2_Driver_sqlite
     SUBDIR += pear-MDB2_Schema
     SUBDIR += pear-MDB_QueryTool
     SUBDIR += pear-Structures_DataGrid_DataSource_Array
@@ -600,25 +590,6 @@
     SUBDIR += php5-sqlite3
     SUBDIR += php5-sybase_ct
     SUBDIR += php5-tarantool
-    SUBDIR += php52-dba
-    SUBDIR += php52-dbase
-    SUBDIR += php52-interbase
-    SUBDIR += php52-mssql
-    SUBDIR += php52-mysql
-    SUBDIR += php52-mysqli
-    SUBDIR += php52-oci8
-    SUBDIR += php52-odbc
-    SUBDIR += php52-pdo
-    SUBDIR += php52-pdo_dblib
-    SUBDIR += php52-pdo_firebird
-    SUBDIR += php52-pdo_mysql
-    SUBDIR += php52-pdo_oci
-    SUBDIR += php52-pdo_odbc
-    SUBDIR += php52-pdo_pgsql
-    SUBDIR += php52-pdo_sqlite
-    SUBDIR += php52-pgsql
-    SUBDIR += php52-sqlite
-    SUBDIR += php52-sybase_ct
     SUBDIR += php53-dba
     SUBDIR += php53-interbase
     SUBDIR += php53-mssql
@@ -642,7 +613,7 @@
     SUBDIR += php55-mssql
     SUBDIR += php55-mysql
     SUBDIR += php55-mysqli
-    SUBDIR += php55-odbc   
+    SUBDIR += php55-odbc
     SUBDIR += php55-pdo
     SUBDIR += php55-pdo_dblib
     SUBDIR += php55-pdo_firebird
@@ -716,6 +687,7 @@
     SUBDIR += proftpd-mod_sql_postgres
     SUBDIR += proftpd-mod_sql_sqlite
     SUBDIR += proftpd-mod_sql_tds
+    SUBDIR += puppetdb-terminus
     SUBDIR += pure-sql3
     SUBDIR += puredb
     SUBDIR += pxlib
@@ -800,6 +772,13 @@
     SUBDIR += qt4-sql
     SUBDIR += qt4-sqlite-plugin
     SUBDIR += qt4-sqlite3-plugin
+    SUBDIR += qt5-sql
+    SUBDIR += qt5-sqldrivers-ibase
+    SUBDIR += qt5-sqldrivers-mysql
+    SUBDIR += qt5-sqldrivers-odbc
+    SUBDIR += qt5-sqldrivers-pgsql
+    SUBDIR += qt5-sqldrivers-sqlite2
+    SUBDIR += qt5-sqldrivers-sqlite3
     SUBDIR += rdb
     SUBDIR += rdfdb
     SUBDIR += recutils
@@ -839,6 +818,7 @@
     SUBDIR += rubygem-amalgalite
     SUBDIR += rubygem-arel
     SUBDIR += rubygem-arel3
+    SUBDIR += rubygem-awesome_nested_set
     SUBDIR += rubygem-bdb1
     SUBDIR += rubygem-bigrecord
     SUBDIR += rubygem-couchrest
@@ -916,7 +896,6 @@
     SUBDIR += tokyotyrant
     SUBDIR += tora
     SUBDIR += tuning-primer
-    SUBDIR += typhoon
     SUBDIR += unixODBC
     SUBDIR += useracc
     SUBDIR += usogres
@@ -928,7 +907,6 @@
     SUBDIR += xapian-bindings
     SUBDIR += xapian-core
     SUBDIR += xapian-core10
-    SUBDIR += xmbase-grok
     SUBDIR += xtrabackup
     SUBDIR += yasql
     SUBDIR += zodb3

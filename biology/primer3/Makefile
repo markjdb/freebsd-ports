@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	primer3
-PORTVERSION=	2.3.5
+PORTVERSION=	2.3.6
 CATEGORIES=	biology
 MASTER_SITES=	SF
+DISTNAME=	${PORTNAME}-src-${PORTVERSION}
 
-MAINTAINER=	wen@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Primer3 helps to choose primers for PCR reactions
 
 LICENSE=	GPLv2
@@ -16,7 +17,6 @@ MAKE_ARGS=	CC=${CC} CPP=${CXX}
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/src
 PLIST_FILES=	bin/primer3
 
-NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} \
 		-e 's#^CFLAGS.*#CFLAGS  += \$$\(CC_OPTS\)#;' \
@@ -26,6 +26,7 @@ post-patch:
 		${WRKSRC}/Makefile
 
 do-install:
-	@${INSTALL_PROGRAM} ${WRKSRC}/primer3_core ${PREFIX}/bin/primer3
+	${INSTALL_PROGRAM} ${WRKSRC}/primer3_core \
+		${STAGEDIR}${PREFIX}/bin/primer3
 
 .include <bsd.port.mk>

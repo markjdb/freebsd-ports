@@ -9,6 +9,7 @@
     SUBDIR += autotrust
     SUBDIR += bind-tools
     SUBDIR += bind10
+    SUBDIR += bind910
     SUBDIR += bind98
     SUBDIR += bind99
     SUBDIR += bindgraph
@@ -26,7 +27,6 @@
     SUBDIR += dnrd
     SUBDIR += dns2tcp
     SUBDIR += dns_balance
-    SUBDIR += dns_mre
     SUBDIR += dnscap
     SUBDIR += dnscheck
     SUBDIR += dnscheckengine
@@ -53,6 +53,7 @@
     SUBDIR += fpdns
     SUBDIR += gdnsd
     SUBDIR += geta
+    SUBDIR += getdns
     SUBDIR += ghtool
     SUBDIR += hesiod
     SUBDIR += hostdb
@@ -102,6 +103,7 @@
     SUBDIR += p5-Net-DNS-Check
     SUBDIR += p5-Net-DNS-Codes
     SUBDIR += p5-Net-DNS-Lite
+    SUBDIR += p5-Net-DNS-Match
     SUBDIR += p5-Net-DNS-RR-SRV-Helper
     SUBDIR += p5-Net-DNS-Resolver-Programmable
     SUBDIR += p5-Net-DNS-SEC
@@ -158,7 +160,6 @@
     SUBDIR += samba-nsupdate
     SUBDIR += scavenge
     SUBDIR += sheerdns
-    SUBDIR += skadns
     SUBDIR += sleuth
     SUBDIR += sshfp
     SUBDIR += tinystats

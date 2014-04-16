@@ -6,7 +6,6 @@
     SUBDIR += 3proxy
     SUBDIR += 44bsd-rdist
     SUBDIR += 6tunnel
-    SUBDIR += AquaGatekeeper
     SUBDIR += DarwinStreamingServer
     SUBDIR += GeoIP
     SUBDIR += R-cran-twitteR
@@ -17,6 +16,7 @@
     SUBDIR += adasockets
     SUBDIR += afpfs-ng
     SUBDIR += aget
+    SUBDIR += anet
     SUBDIR += aoe
     SUBDIR += apinger
     SUBDIR += appkonference
@@ -25,12 +25,10 @@
     SUBDIR += arpdig
     SUBDIR += arping
     SUBDIR += arprelease
-    SUBDIR += asfrecorder
     SUBDIR += asio
     SUBDIR += aslookup
     SUBDIR += asterisk
     SUBDIR += asterisk-oh323
-    SUBDIR += asterisk10
     SUBDIR += asterisk11
     SUBDIR += asterisk14
     SUBDIR += asterisk14-addons
@@ -69,6 +67,7 @@
     SUBDIR += cagibi
     SUBDIR += callweaver
     SUBDIR += ccxstream
+    SUBDIR += chrony
     SUBDIR += citrix_ica
     SUBDIR += clamz
     SUBDIR += click
@@ -145,19 +144,13 @@
     SUBDIR += freebsd-uucp
     SUBDIR += freedbd
     SUBDIR += freenet6
-    SUBDIR += freenx
     SUBDIR += freeradius-client
     SUBDIR += freeradius2
     SUBDIR += freeradius3
     SUBDIR += freerdp
     SUBDIR += freeswitch-core-devel
-    SUBDIR += freeswitch-curl-devel
     SUBDIR += freeswitch-devel
-    SUBDIR += freeswitch-insideout-devel
-    SUBDIR += freeswitch-sbc-devel
-    SUBDIR += freeswitch-vanilla-devel
     SUBDIR += freevrrpd
-    SUBDIR += freewais-sf
     SUBDIR += frickin
     SUBDIR += fspclient
     SUBDIR += fspd
@@ -213,7 +206,6 @@
     SUBDIR += hinfo
     SUBDIR += hlmaster
     SUBDIR += honeyd
-    SUBDIR += hornetq
     SUBDIR += hostapd
     SUBDIR += howl
     SUBDIR += hping
@@ -248,7 +240,6 @@
     SUBDIR += imapproxy
     SUBDIR += iodine
     SUBDIR += ip6_int
-    SUBDIR += ipa_ip6fw
     SUBDIR += ipa_ipfw
     SUBDIR += ipfw-graph
     SUBDIR += ipgrab
@@ -275,7 +266,6 @@
     SUBDIR += jgroups
     SUBDIR += jicmp
     SUBDIR += jicmp6
-    SUBDIR += jpcap
     SUBDIR += jrdesktop
     SUBDIR += jsch
     SUBDIR += jumpgate
@@ -283,7 +273,6 @@
     SUBDIR += kdenetwork4
     SUBDIR += kdenetwork4-filesharing
     SUBDIR += kdenetwork4-strigi-analyzers
-    SUBDIR += kdnssd
     SUBDIR += kget
     SUBDIR += kio-upnp-ms
     SUBDIR += kippo
@@ -363,13 +352,11 @@
     SUBDIR += liferea
     SUBDIR += linc
     SUBDIR += linc-reference
-    SUBDIR += link-monitor-applet
     SUBDIR += linknx
     SUBDIR += linphone
     SUBDIR += linphone-base
     SUBDIR += linux-f10-nss_ldap
     SUBDIR += linux-f10-openldap
-    SUBDIR += linux-nx-client
     SUBDIR += linuxigd
     SUBDIR += liveMedia
     SUBDIR += lla
@@ -379,7 +366,6 @@
     SUBDIR += lvwimax
     SUBDIR += mDNSResponder
     SUBDIR += mad_fcl
-    SUBDIR += mars_nwe
     SUBDIR += mcast-tools
     SUBDIR += mediaproxy
     SUBDIR += mediatomb
@@ -412,7 +398,6 @@
     SUBDIR += nast
     SUBDIR += nbd-server
     SUBDIR += nc
-    SUBDIR += nc6
     SUBDIR += ncp
     SUBDIR += ncplib
     SUBDIR += ndisc6
@@ -432,7 +417,6 @@
     SUBDIR += netscript
     SUBDIR += netsed
     SUBDIR += netselect
-    SUBDIR += netspeed_applet
     SUBDIR += netstrain
     SUBDIR += nettest
     SUBDIR += netwib
@@ -460,7 +444,6 @@
     SUBDIR += ntraceroute
     SUBDIR += nusoap
     SUBDIR += nxproxy
-    SUBDIR += nxserver
     SUBDIR += nyancat
     SUBDIR += nylon
     SUBDIR += ohphone
@@ -476,7 +459,6 @@
     SUBDIR += openbgpd
     SUBDIR += opendpi
     SUBDIR += openh323
-    SUBDIR += openistgt
     SUBDIR += openldap24-client
     SUBDIR += openldap24-sasl-client
     SUBDIR += openldap24-server
@@ -574,6 +556,7 @@
     SUBDIR += p5-Net-Cassandra-Easy
     SUBDIR += p5-Net-DAV-Server
     SUBDIR += p5-Net-DHCP
+    SUBDIR += p5-Net-DHCP-Watch
     SUBDIR += p5-Net-DHCPClient
     SUBDIR += p5-Net-DLookup
     SUBDIR += p5-Net-Daemon
@@ -805,7 +788,6 @@
     SUBDIR += pathneck
     SUBDIR += pbnc
     SUBDIR += pchar
-    SUBDIR += pcnfsd
     SUBDIR += pdb
     SUBDIR += pear-Auth_RADIUS
     SUBDIR += pear-File_Bittorrent2
@@ -870,18 +852,14 @@
     SUBDIR += php5-soap
     SUBDIR += php5-sockets
     SUBDIR += php5-xmlrpc
-    SUBDIR += php52-ldap
-    SUBDIR += php52-soap
-    SUBDIR += php52-sockets
-    SUBDIR += php52-xmlrpc
     SUBDIR += php53-ldap
     SUBDIR += php53-soap
     SUBDIR += php53-sockets
     SUBDIR += php53-xmlrpc
-    SUBDIR += php55-ldap 
+    SUBDIR += php55-ldap
     SUBDIR += php55-soap
     SUBDIR += php55-sockets
-    SUBDIR += php55-xmlrpc  
+    SUBDIR += php55-xmlrpc
     SUBDIR += phpldapadmin
     SUBDIR += pimdd
     SUBDIR += pipsecd
@@ -892,8 +870,6 @@
     SUBDIR += polyorb
     SUBDIR += poptop
     SUBDIR += portfwd
-    SUBDIR += pppd23
-    SUBDIR += pppoa
     SUBDIR += pptpclient
     SUBDIR += proftpd-mod_ldap
     SUBDIR += prosearch
@@ -908,6 +884,7 @@
     SUBDIR += pure-sockets
     SUBDIR += pvm
     SUBDIR += pvm++
+    SUBDIR += pwhois
     SUBDIR += pxe
     SUBDIR += pxe-pdhcp
     SUBDIR += py-GeoIP
@@ -950,14 +927,17 @@
     SUBDIR += py-pypcap
     SUBDIR += py-pysendfile
     SUBDIR += py-pysphere
+    SUBDIR += py-pyzmq
     SUBDIR += py-qt4-network
     SUBDIR += py-radix
     SUBDIR += py-s3cmd
+    SUBDIR += py-simplesoap
     SUBDIR += py-smb
     SUBDIR += py-smbpasswd
     SUBDIR += py-soappy
     SUBDIR += py-soappy-devel
     SUBDIR += py-soapy
+    SUBDIR += py-speedtest-cli
     SUBDIR += py-spreadmodule
     SUBDIR += py-suds
     SUBDIR += py-tofu
@@ -977,8 +957,10 @@
     SUBDIR += pyrad
     SUBDIR += pythondirector
     SUBDIR += qadsl
+    SUBDIR += qjsonrpc
     SUBDIR += qoauth
     SUBDIR += qt4-network
+    SUBDIR += qt5-network
     SUBDIR += qtweetlib
     SUBDIR += quagga
     SUBDIR += quagga-re
@@ -1002,7 +984,6 @@
     SUBDIR += redir
     SUBDIR += relayd
     SUBDIR += remmina
-    SUBDIR += remmina-applet
     SUBDIR += remmina-plugin-gnome
     SUBDIR += remmina-plugin-i18n
     SUBDIR += remmina-plugin-nx
@@ -1320,6 +1301,7 @@
     SUBDIR += yptransitd
     SUBDIR += zebra
     SUBDIR += zebra-server
+    SUBDIR += zeroconf-ioslave
     SUBDIR += zillion
     SUBDIR += zsync
 

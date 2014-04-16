@@ -3,7 +3,7 @@
 
 PORTNAME=	vdrift
 PORTVERSION=	20100630
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${DATE_VERSION}
 DISTNAME=	${PORTNAME}-${DATE_VERSION}-src
@@ -11,6 +11,8 @@ DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	acm@FreeBSD.org
 COMMENT=	Open source driving simulation
+
+BROKEN=		Fails to build
 
 BUILD_DEPENDS=	scons:${PORTSDIR}/devel/scons \
 		${LOCALBASE}/lib/libBulletCollision.a:${PORTSDIR}/devel/bullet \

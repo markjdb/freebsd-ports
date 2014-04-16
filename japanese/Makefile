@@ -8,7 +8,6 @@
     SUBDIR += FreeWnn-lib
     SUBDIR += FreeWnn-server
     SUBDIR += VTPSfont
-    SUBDIR += Wnn6
     SUBDIR += Wnn6-lib
     SUBDIR += Wnn7-lib
     SUBDIR += a2ps
@@ -21,7 +20,6 @@
     SUBDIR += another-htmllint
     SUBDIR += anthy
     SUBDIR += asterisk-sounds
-    SUBDIR += aterm
     SUBDIR += awffull
     SUBDIR += bible_names-fpw
     SUBDIR += bookview
@@ -67,7 +65,6 @@
     SUBDIR += esecanna-module-vje30
     SUBDIR += esecanna-module-wnn6
     SUBDIR += eterm
-    SUBDIR += exmh2
     SUBDIR += fcitx-anthy
     SUBDIR += fcitx-mozc
     SUBDIR += flex-sdk
@@ -103,7 +100,6 @@
     SUBDIR += groff
     SUBDIR += gskk
     SUBDIR += gsuica
-    SUBDIR += gtkicq
     SUBDIR += guesswork-classic
     SUBDIR += hns
     SUBDIR += ibus-anthy
@@ -153,7 +149,6 @@
     SUBDIR += latex2html
     SUBDIR += leafrogue
     SUBDIR += less
-    SUBDIR += libjcode
     SUBDIR += libreoffice
     SUBDIR += libskk
     SUBDIR += libslang
@@ -192,7 +187,6 @@
     SUBDIR += mtools
     SUBDIR += multiskkserv
     SUBDIR += mutt-devel
-    SUBDIR += mypaedia-fpw
     SUBDIR += mypaedia-fpw-package
     SUBDIR += namazu
     SUBDIR += namazu2
@@ -223,7 +217,6 @@
     SUBDIR += p5-Lingua-JA-Numbers
     SUBDIR += p5-Lingua-JA-Regular-Unicode
     SUBDIR += p5-Lingua-JA-Summarize-Extract
-    SUBDIR += p5-Mail-SpamAssassin
     SUBDIR += p5-MeCab
     SUBDIR += p5-Number-Phone-JP
     SUBDIR += p5-PDFJ
@@ -233,7 +226,6 @@
     SUBDIR += p5-Unicode-Japanese
     SUBDIR += p5-WWW-2ch
     SUBDIR += p5-WWW-MobileCarrierJP
-    SUBDIR += p5-manual
     SUBDIR += p5-nkf
     SUBDIR += pejv-fpw
     SUBDIR += php5-mecab
@@ -262,7 +254,6 @@
     SUBDIR += rogue_s
     SUBDIR += rskkserv
     SUBDIR += ruby-eb
-    SUBDIR += ruby-man
     SUBDIR += ruby-mecab
     SUBDIR += ruby-ming
     SUBDIR += ruby-romkan
@@ -284,7 +275,6 @@
     SUBDIR += scim-tomoe
     SUBDIR += scim-uim
     SUBDIR += seaside
-    SUBDIR += sed
     SUBDIR += sj3-lib
     SUBDIR += sj3-server
     SUBDIR += skk
@@ -297,7 +287,7 @@
     SUBDIR += skkserv
     SUBDIR += slimeforest
     SUBDIR += slrn
-    SUBDIR += srd-fpw
+    SUBDIR += spamassassin
     SUBDIR += srd-fpw-package
     SUBDIR += suicavalue
     SUBDIR += suikyo
@@ -317,7 +307,6 @@
     SUBDIR += tkhonyaku
     SUBDIR += today
     SUBDIR += tomoe
-    SUBDIR += trac
     SUBDIR += uim-anthy
     SUBDIR += uim-tomoe-gtk
     SUBDIR += vera-fpw
@@ -345,7 +334,6 @@
     SUBDIR += xyaku
     SUBDIR += yasou-fpw
     SUBDIR += yc.el
-    SUBDIR += zangband
     SUBDIR += zinnia
     SUBDIR += zinnia-tomoe
     SUBDIR += zipcodes

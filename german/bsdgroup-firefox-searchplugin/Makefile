@@ -3,7 +3,7 @@
 
 PORTNAME=	bsdgroup-firefox-searchplugin
 PORTVERSION=	0.2
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	german www
 MASTER_SITES=	http://www.crashmail.de/files/ \
 		http://people.bsdgroup.de/~steve/files/
@@ -13,11 +13,15 @@ EXTRACT_ONLY=	yes
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Firefox search plugins for the www.BSDGroup.de board
 
-USE_FIREFOX=	yes
+USES=		gecko:firefox
 
 NO_BUILD=	yes
 
 NO_STAGE=	yes
+
+DEPRECATED=	bsdgroup.de no longer seems to exist
+EXPIRATION_DATE=2014-05-31
+
 do-extract:
 	@${MKDIR} ${WRKSRC}
 	@${CP} ${DISTDIR}/${DIST_SUBDIR}/bsdgroup.src ${WRKSRC}

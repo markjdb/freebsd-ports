@@ -33,11 +33,10 @@ RUN_DEPENDS=	${LOCALBASE}/share/icons/hicolor/index.theme:${PORTSDIR}/misc/hicol
 		${LOCALBASE}/share/xml/docbook/4.2:${PORTSDIR}/textproc/docbook-xml \
 		${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:${PORTSDIR}/textproc/docbook-xsl
 
-USE_XZ=		yes
 USE_GNOME=	libxml2 libxslt
 USE_KDE4=	kdehier kdeprefix oxygen \
 		attica automoc4 ontologies soprano strigi
-USES=		cmake:outsource fam gettext perl5 shared-mime-info shebangfix
+USES=		cmake:outsource fam gettext perl5 shared-mime-info shebangfix tar:xz
 USE_OPENSSL=	yes
 USE_QT4=	corelib dbus declarative designer_build gui \
 		network opengl phonon qt3support \
@@ -89,12 +88,6 @@ post-patch:
 # Fix rgb named colors database path.
 	${REINPLACE_CMD} -e 's|/usr/X11R6|${LOCALBASE}|g' \
 		${PATCH_WRKSRC}/kdeui/colors/kcolordialog.cpp
-# Ports fails to locate pimlibs and workspace when PREFIX!=KDE4_PREFIX.
-# More search paths resolve the problem.
-.for module in KdepimLibs KDE4Workspace
-	${REINPLACE_CMD} -e '/find_package/s,PATHS,PATHS ${KDE4_PREFIX}/lib/cmake/${module},' \
-		${PATCH_WRKSRC}/cmake/modules/Find${module}.cmake
-.endfor
 
 pre-configure:
 	${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \
@@ -115,5 +108,10 @@ pre-configure:
 # then we can disable it.
 	${REINPLACE_CMD} -e '/macro_bool_to_01/ s|^.*X11_Xscreensaver.*$$|set(HAVE_XSCREENSAVER 0)|' \
 		${PATCH_WRKSRC}/CMakeLists.txt
+
+post-install:
+# workaround for non-standard mime files and directories
+	${MKDIR} ${STAGEDIR}/${PREFIX}/share/mime/all \
+		${STAGEDIR}/${PREFIX}/share/mime/uri
 
 .include <bsd.port.post.mk>

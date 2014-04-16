@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	iperf
-PORTVERSION=	3.0.1
+PORTVERSION=	3.0.3
 CATEGORIES=	benchmarks ipv6
 MASTER_SITES=	http://stats.es.net/software/
 PKGNAMESUFFIX=	3
@@ -13,16 +13,11 @@ COMMENT=	Improved tool to measure TCP and UDP bandwidth
 LICENSE=	BSD3CLAUSE
 
 GNU_CONFIGURE=	yes
+USE_LDCONFIG=	yes
+USES=		libtool
 
 # Set ${DOCSDIR} to avoid conflict with benchmarks/iperf ${DOCSDIR}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
-
-PLIST_FILES=	bin/iperf3 \
-		include/iperf_api.h \
-		lib/libiperf.a \
-		man/man1/iperf3.1.gz \
-		man/man3/libiperf.3.gz
-PORTDOCS=	*
 
 post-patch:
 # automake generates a buggy Makefile.in that tries to do ${RANLIB} on
@@ -39,6 +34,6 @@ post-patch:
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	(cd ${WRKSRC} && ${INSTALL_DATA} AUTHORS README RELEASE_NOTES TODO ${STAGEDIR}${DOCSDIR})
+	(cd ${WRKSRC} && ${INSTALL_DATA} AUTHORS README.md RELEASE_NOTES ${STAGEDIR}${DOCSDIR})
 
 .include <bsd.port.mk>

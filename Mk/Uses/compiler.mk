@@ -2,14 +2,13 @@
 #
 # Allows to determine the compiler being used
 #
-# MAINTAINER: portmgr@FreeBSD.org
-#
 # Feature:	compiler
 # Usage:	USES=compiler or USES=compiler:ARGS
 # Valid ARGS:	env (default, implicit) c++0x c++11-lib c++11-lang c11 openmp nestedfct features
 #
 # c++0x:	The port needs a compiler understanding C++0X
 # c++11-lang:	The port needs a compiler understanding C++11
+# gcc-c++11-lib:The port needs g++ compiler with a C++11 library
 # c++11-lib:	The port needs a compiler understanding C++11 and with a C++11 ready standard library
 # c11:		The port needs a compiler understanding C11
 # openmp:	The port needs a compiler understanding openmp
@@ -20,11 +19,13 @@
 #
 # COMPILER_TYPE:	can be gcc or clang
 # ALT_COMPILER_TYPE:	can be gcc or clang depending on COMPILER_TYPE, only set if the base system has 2 compilers
-# COMPILER_VERSION:	first 2 digits of the version: 33 for clang 3.3.*, 46 for gcc 4.6.*
-# ALT_COMPILER_VERSION:	first 2 digits of the version: 33 for clang 3.3.*, 46 for gcc 4.6.* of the ALT_COMPILER_TYPE
+# COMPILER_VERSION:	first 2 digits of the version: 33 for clang 3.3.*, 47 for gcc 4.7.*
+# ALT_COMPILER_VERSION:	first 2 digits of the version: 33 for clang 3.3.*, 47 for gcc 4.7.* of the ALT_COMPILER_TYPE
 #
 # COMPILER_FEATURES:	the list of features supported by the compiler includes the standard C++ library.
 # CHOSEN_COMPILER_TYPE:	can be gcc or clang (type of compiler chosen by the framework)
+#
+# MAINTAINER: portmgr@FreeBSD.org
 
 .if !defined(_INCLUDE_USES_COMPILER_MK)
 _INCLUDE_USES_COMPILER_MK=	yes
@@ -33,9 +34,11 @@ _INCLUDE_USES_COMPILER_MK=	yes
 compiler_ARGS=	env
 .endif
 
-VALID_ARGS=	c++11-lib c++11-lang c11 features openmp env nestedfct c++0x
+VALID_ARGS=	c++11-lib c++11-lang c11 features openmp env nestedfct c++0x gcc-c++11-lib
 
-.if ${compiler_ARGS} == c++11-lib
+.if ${compiler_ARGS} == gcc-c++11-lib
+_COMPILER_ARGS+=	features gcc-c++11-lib
+.elif ${compiler_ARGS} == c++11-lib
 _COMPILER_ARGS+=	features c++11-lib
 .elif ${compiler_ARGS} == c++0x
 _COMPILER_ARGS+=	features c++0x
@@ -125,10 +128,10 @@ COMPILER_FEATURES+=	${std}
 
 .if ${_COMPILER_ARGS:Mc++11-lib}
 .if !${COMPILER_FEATURES:Mc++11}
-USE_GCC=	4.7+
+USE_GCC=	yes
 CHOSEN_COMPILER_TYPE=	gcc
 .elif ${COMPILER_TYPE} == clang && ${COMPILER_FEATURES:Mlibstdc++}
-USE_GCC=	4.7+
+USE_GCC=	yes
 CHOSEN_COMPILER_TYPE=	gcc
 .endif
 .endif
@@ -136,7 +139,7 @@ CHOSEN_COMPILER_TYPE=	gcc
 .if ${_COMPILER_ARGS:Mc++11-lang}
 .if !${COMPILER_FEATURES:Mc++11}
 .if defined(FAVORITE_COMPILER) && ${FAVORITE_COMPILER} == gcc
-USE_GCC=	4.7+
+USE_GCC=	yes
 CHOSEN_COMPILER_TYPE=	gcc
 .elif (${COMPILER_TYPE} == clang && ${COMPILER_VERSION} < 33) || ${COMPILER_TYPE} == gcc
 .if ${ALT_COMPILER_TYPE} == clang && ${ALT_COMPILER_VERSION} >= 33
@@ -188,7 +191,7 @@ LDFLAGS+=	-B${LOCALBASE}/bin
 .if ${_COMPILER_ARGS:Mc11}
 .if !${COMPILER_FEATURES:Mc11}
 .if defined(FAVORITE_COMPILER) && ${FAVORITE_COMPILER} == gcc
-USE_GCC=	4.7+
+USE_GCC=	yes
 CHOSEN_COMPILER_TYPE=	gcc
 .elif (${COMPILER_TYPE} == clang && ${COMPILER_VERSION} < 33) || ${COMPILER_TYPE} == gcc
 .if ${ALT_COMPILER_TYPE} == clang && ${ALT_COMPILER_VERSION} >= 33
@@ -208,6 +211,15 @@ LDFLAGS+=	-B${LOCALBASE}/bin
 .endif
 .endif
 .endif
+.endif
+.endif
+
+.if ${_COMPILER_ARGS:Mgcc-c++11-lib}
+USE_GCC=	yes
+.if ${COMPILER_FEATURES:Mlibc++}
+LDFLAGS+=	-L${LOCALBASE}/lib/c++
+CXXFLAGS+=	-nostdinc++ -isystem ${LOCALBASE}/include/c++/v1
+BUILD_DEPENDS+=	${LOCALBASE}/lib/c++/libstdc++.so:${PORTSDIR}/devel/libc++
 .endif
 .endif
 

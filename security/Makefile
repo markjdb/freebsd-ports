@@ -16,11 +16,6 @@
     SUBDIR += amavis-stats
     SUBDIR += amavisd-milter
     SUBDIR += amavisd-new
-    SUBDIR += aolserver-nsencrypt
-    SUBDIR += aolserver-nsmcrypt
-    SUBDIR += aolserver-nsmhash
-    SUBDIR += aolserver-nsopenssl
-    SUBDIR += aolserver-nssha1
     SUBDIR += apache-xml-security-c
     SUBDIR += apg
     SUBDIR += arirang
@@ -90,7 +85,6 @@
     SUBDIR += courierpasswd
     SUBDIR += courieruserinfo
     SUBDIR += cp2fwb
-    SUBDIR += crack
     SUBDIR += cracklib
     SUBDIR += crank
     SUBDIR += create-cert
@@ -102,11 +96,11 @@
     SUBDIR += cyrus-sasl2-gssapi
     SUBDIR += cyrus-sasl2-ldapdb
     SUBDIR += cyrus-sasl2-saslauthd
+    SUBDIR += d0_blind_id
     SUBDIR += dcetest
     SUBDIR += ddos_scan
     SUBDIR += denyhosts
     SUBDIR += destroy
-    SUBDIR += didentd
     SUBDIR += digest
     SUBDIR += dirbuster
     SUBDIR += dirmngr
@@ -162,7 +156,6 @@
     SUBDIR += gnupg
     SUBDIR += gnupg1
     SUBDIR += gnutls
-    SUBDIR += gnutls-devel
     SUBDIR += gnutls3
     SUBDIR += go.crypto
     SUBDIR += gorilla
@@ -177,7 +170,6 @@
     SUBDIR += gss
     SUBDIR += gtk-knocker
     SUBDIR += gtkpasman
-    SUBDIR += gtkportscan
     SUBDIR += gwee
     SUBDIR += hackbot
     SUBDIR += hamachi
@@ -216,6 +208,7 @@
     SUBDIR += httprint
     SUBDIR += hunch
     SUBDIR += hydra
+    SUBDIR += i2p
     SUBDIR += iaikpkcs11wrapper
     SUBDIR += idea
     SUBDIR += identify
@@ -239,6 +232,7 @@
     SUBDIR += kedpm
     SUBDIR += keepassx
     SUBDIR += keepassx2
+    SUBDIR += keybase
     SUBDIR += keychain
     SUBDIR += keynote
     SUBDIR += keyprint
@@ -250,7 +244,7 @@
     SUBDIR += krb5-appl
     SUBDIR += krb5-maint
     SUBDIR += kripp
-    SUBDIR += kwallet
+    SUBDIR += kwalletmanager
     SUBDIR += l0pht-watch
     SUBDIR += l0phtcrack
     SUBDIR += l5
@@ -276,8 +270,10 @@
     SUBDIR += libp11
     SUBDIR += libprelude
     SUBDIR += libpreludedb
+    SUBDIR += libpwquality
     SUBDIR += libpwstor
     SUBDIR += libscrypt
+    SUBDIR += libsecret
     SUBDIR += libsectok
     SUBDIR += libsodium
     SUBDIR += libsparkcrypto
@@ -574,6 +570,7 @@
     SUBDIR += p5-Net-Radius-Server
     SUBDIR += p5-Net-SAML
     SUBDIR += p5-Net-SSL-ExpireDate
+    SUBDIR += p5-Net-SSLGlue
     SUBDIR += p5-Net-SSLeay
     SUBDIR += p5-Net-Server-Mail-ESMTP-AUTH
     SUBDIR += p5-Net-SinFP
@@ -692,11 +689,6 @@
     SUBDIR += php5-hash
     SUBDIR += php5-mcrypt
     SUBDIR += php5-openssl
-    SUBDIR += php52-filter
-    SUBDIR += php52-hash
-    SUBDIR += php52-mcrypt
-    SUBDIR += php52-mhash
-    SUBDIR += php52-openssl
     SUBDIR += php53-filter
     SUBDIR += php53-hash
     SUBDIR += php53-mcrypt
@@ -731,6 +723,7 @@
     SUBDIR += prelude-lml
     SUBDIR += prelude-manager
     SUBDIR += prelude-pflogger
+    SUBDIR += proftpd-mod_clamav
     SUBDIR += proxycheck
     SUBDIR += proxytunnel
     SUBDIR += pscan
@@ -749,6 +742,7 @@
     SUBDIR += py-Products.PluggableAuthService
     SUBDIR += py-RestrictedPython
     SUBDIR += py-SecretStorage
+    SUBDIR += py-backports.ssl_match_hostname
     SUBDIR += py-bcrypt
     SUBDIR += py-borg.localrole
     SUBDIR += py-cerealizer
@@ -996,7 +990,6 @@
     SUBDIR += truecrypt
     SUBDIR += tsshbatch
     SUBDIR += tthsum
-    SUBDIR += tuntun
     SUBDIR += umit
     SUBDIR += unhide
     SUBDIR += unicornscan
@@ -1021,7 +1014,6 @@
     SUBDIR += xmlsec1
     SUBDIR += xorsearch
     SUBDIR += xspy
-    SUBDIR += xyssl
     SUBDIR += yafic
     SUBDIR += yapet
     SUBDIR += yara

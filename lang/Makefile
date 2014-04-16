@@ -4,7 +4,6 @@
     COMMENT = Programming languages
 
     SUBDIR += Gofer
-    SUBDIR += STk
     SUBDIR += Sather
     SUBDIR += abcl
     SUBDIR += adacontrol
@@ -32,7 +31,6 @@
     SUBDIR += chicken
     SUBDIR += cint
     SUBDIR += clang-devel
-    SUBDIR += clang31
     SUBDIR += clang32
     SUBDIR += clang33
     SUBDIR += clang34
@@ -47,7 +45,6 @@
     SUBDIR += cparser
     SUBDIR += csharp-mode.el
     SUBDIR += cython
-    SUBDIR += dice
     SUBDIR += diveintopython
     SUBDIR += dlv
     SUBDIR += dmd
@@ -63,14 +60,13 @@
     SUBDIR += erlang
     SUBDIR += erlang-runtime15
     SUBDIR += erlang-runtime16
+    SUBDIR += erlang-runtime17
     SUBDIR += execline
     SUBDIR += expect
-    SUBDIR += expect-devel
     SUBDIR += ezm3
     SUBDIR += f2c
     SUBDIR += f77
     SUBDIR += fasm
-    SUBDIR += fbbi
     SUBDIR += ferite
     SUBDIR += ficl
     SUBDIR += fpc
@@ -88,16 +84,15 @@
     SUBDIR += gcc
     SUBDIR += gcc-aux
     SUBDIR += gcc-ecj45
-    SUBDIR += gcc44
     SUBDIR += gcc46
     SUBDIR += gcc47
+    SUBDIR += gcc47-aux
     SUBDIR += gcc48
     SUBDIR += gcc49
     SUBDIR += gcl
     SUBDIR += gforth
     SUBDIR += ghc
     SUBDIR += gjs
-    SUBDIR += gnat
     SUBDIR += gnat-aux
     SUBDIR += gnat_util
     SUBDIR += gnatdroid-armv5
@@ -134,6 +129,7 @@
     SUBDIR += jakarta-commons-jelly
     SUBDIR += jimtcl
     SUBDIR += jruby
+    SUBDIR += js_of_ocaml
     SUBDIR += jython
     SUBDIR += kawa
     SUBDIR += klone
@@ -144,7 +140,6 @@
     SUBDIR += libjit
     SUBDIR += libobjc2
     SUBDIR += librep
-    SUBDIR += libstdc++_stldoc_3.4.0
     SUBDIR += libstdc++_stldoc_4.2.2
     SUBDIR += linux-f10-libg2c
     SUBDIR += linux-f10-tcl85
@@ -200,7 +195,6 @@
     SUBDIR += onyx
     SUBDIR += oo2c
     SUBDIR += oorexx
-    SUBDIR += opa
     SUBDIR += open-cobol
     SUBDIR += opendylan
     SUBDIR += otcl
@@ -247,8 +241,6 @@
     SUBDIR += php-mode.el
     SUBDIR += php5
     SUBDIR += php5-extensions
-    SUBDIR += php52
-    SUBDIR += php52-extensions
     SUBDIR += php53
     SUBDIR += php53-extensions
     SUBDIR += php55
@@ -280,8 +272,10 @@
     SUBDIR += python31
     SUBDIR += python32
     SUBDIR += python33
+    SUBDIR += python34
     SUBDIR += qore
     SUBDIR += qscheme
+    SUBDIR += qt5-qml
     SUBDIR += racket
     SUBDIR += racket-minimal
     SUBDIR += rakudo
@@ -291,12 +285,8 @@
     SUBDIR += rexx-regutil
     SUBDIR += rexx-wrapper
     SUBDIR += rhino
-    SUBDIR += rscheme
     SUBDIR += rubinius
     SUBDIR += ruby-doc-stdlib
-    SUBDIR += ruby-man
-    SUBDIR += ruby-programmingruby
-    SUBDIR += ruby-usersguide
     SUBDIR += ruby19
     SUBDIR += ruby20
     SUBDIR += ruby21
@@ -309,7 +299,6 @@
     SUBDIR += scala
     SUBDIR += scala-docs
     SUBDIR += scheme48
-    SUBDIR += schemetoc
     SUBDIR += scm
     SUBDIR += scsh
     SUBDIR += sdcc
@@ -350,7 +339,6 @@
     SUBDIR += tcl85
     SUBDIR += tcl86
     SUBDIR += tclX
-    SUBDIR += tcltutor
     SUBDIR += tinypy
     SUBDIR += tolua
     SUBDIR += tolua++

@@ -3,7 +3,7 @@
 
 PORTNAME=	vim
 PORTVERSION=	7.4.${PATCHLEVEL}
-PORTREVISION?=	1
+PORTREVISION?=	0
 CATEGORIES?=	editors
 MASTER_SITES=	VIM:source \
 		${MASTER_SITE_VIM:S|unix|patches/${PORTVERSION:R}|}:patch \
@@ -16,7 +16,9 @@ PATCH_SITES=	${MASTER_SITE_VIM:S|unix|patches/${PORTVERSION:R}|} \
 		LOCAL/sunpoet/${PORTNAME}
 
 MAINTAINER?=	sunpoet@FreeBSD.org
-COMMENT?=	Vi "workalike", with many additional features
+COMMENT?=	Improved version of the vi editor
+
+PATCH_DEPENDS=	${LOCALBASE}/bin/gpatch:${PORTSDIR}/devel/patch
 
 OPTIONS_DEFINE=	CSCOPE EXUBERANT_CTAGS LUA NLS PERL PYTHON RUBY TCL XTERM_SAVE
 OPTIONS_SINGLE=	UI
@@ -32,17 +34,20 @@ XTERM_SAVE_DESC=	Restore xterm screen after exit
 ALL_TARGET=	# empty
 MAKE_ARGS+=	CC=${CC} CONF_ARGS="--prefix=${PREFIX} ${CSCOPE_ARG}" STRIP=${STRIP_CMD} CONF_OPT_MULTIBYTE=--enable-multibyte CONF_TERM_LIB=--with-tlib=termlib
 MAKE_JOBS_UNSAFE=	yes
+PATCH=		${LOCALBASE}/bin/gpatch
 PATCH_DIST_ARGS=--batch --directory ${WRKSRC} --forward --quiet --remove-empty-files ${PATCH_DIST_STRIP}
 REINPLACE_ARGS=	-i ''
-USE_BZIP2=	yes
-USES=		iconv pkgconfig shebangfix
+USES=		iconv pkgconfig shebangfix tar:bzip2
 WANT_GNOME=	yes
 
-PATCHLEVEL=	182
+PATCHLEVEL=	256
 PATCHFILES!=	/usr/bin/jot -s " " -w "%03d" ${PATCHLEVEL} 1 ${PATCHLEVEL}
-BADPATCHES=	064 087 147 # empty
-.for p in ${BADPATCHES}
+#POSTPONED_PATCHES=	064 087 147	# patch files postponed to be applied in post-patch:
+SKIPPED_PATCHES=	208		# patch files skipped
+.for p in ${POSTPONED_PATCHES}
 DISTFILES+=	${PORTVERSION:R}.${p}:patch
+.endfor
+.for p in ${POSTPONED_PATCHES} ${SKIPPED_PATCHES}
 PATCHFILES:=	${PATCHFILES:N${p}}
 .endfor
 PATCHFILES:=	${PATCHFILES:C/^/${PORTVERSION:R}./g}
@@ -96,6 +101,8 @@ LUA_MAKE_ARGS=		CONF_OPT_LUA=--enable-luainterp=dynamic CONF_OPT_LUA_PREFIX=--wi
 LUA_USES=		lua
 MOTIF_MAKE_ARGS=	CONF_OPT_GUI='--enable-gui=motif --with-motif-lib="${MOTIFLIB}"' MOTIFHOME=${LOCALBASE}
 MOTIF_USES=		motif
+NLS_MAKE_ARGS=		CONF_OPT_NLS=--enable-nls
+NLS_MAKE_ARGS_OFF=	CONF_OPT_NLS=--disable-nls
 NLS_USES=		gettext
 PERL_MAKE_ARGS=		CONF_OPT_PERL=--enable-perlinterp
 PERL_USES=		perl5
@@ -125,16 +132,6 @@ CTAGS_CMD=	exctags -R .
 CTAGS_CMD=	${FIND} . -type f \\| ${XARGS} ctags
 .endif
 
-.if ${PORT_OPTIONS:MNLS}
-MAKE_ARGS+=	CONF_OPT_NLS=--enable-nls
-.else
-MAKE_ARGS+=	CONF_OPT_NLS=--disable-nls
-.endif
-
-.if ${PORT_OPTIONS:MGNOME}
-PKGNAMESUFFIX+=	-gnome2
-.endif
-
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MPYTHON}
@@ -148,14 +145,14 @@ MAKE_ARGS+=	CONF_OPT_PYTHON="--enable-python3interp --disable-pythoninterp"
 post-patch:
 	@${REINPLACE_CMD} -e '/^install_normal: / s|install-icons|# &|; /cd $$(DEST_BIN); ln -s/d' ${WRKSRC}/src/Makefile
 	@${FIND} ${WRKSRC}/runtime/ -name menu\*.vim -print0 | ${XARGS} -0 ${REINPLACE_CMD} -e 's,ctags -R \\.,${CTAGS_CMD},g'
-.for badpatch in ${BADPATCHES}
-	@${ECHO_MSG} "===>   Applying distribution patch ${badpatch}"
-	@${PATCH} ${PATCH_DIST_ARGS} -i ${_DISTDIR}/${PORTVERSION:R}.${badpatch}
+.for p in ${POSTPONED_PATCHES}
+	@${ECHO_MSG} "===>   Applying distribution patch ${p}"
+	@${PATCH} ${PATCH_DIST_ARGS} -i ${_DISTDIR}/${PORTVERSION:R}.${p}
 .endfor
 
 pre-configure:
 	@${CP} ${WRKSRC}/src/config.mk.dist ${WRKSRC}/src/auto/config.mk
-	@(cd ${WRKSRC}/src/ && ${MAKE} distclean)
+	@(cd ${WRKSRC}/src/ && ${MAKE_CMD} distclean)
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \
 		-e 's|\$$gtk_config_prefix/bin/gtk-config|\$${GTK_CONFIG}|g' \
 		-e 's|\$$gtk_config_exec_prefix/bin/gtk-config|\$${GTK_CONFIG}|g' \
@@ -165,7 +162,7 @@ pre-configure:
 .endif
 
 post-configure:
-	@(cd ${WRKSRC}/src/ && ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_ARGS} scratch config)
+	@(cd ${WRKSRC}/src/ && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} scratch config)
 	@${REINPLACE_CMD} -e 's|#define HAVE_SYSINFO 1|/* #undef HAVE_SYSINFO */|' ${WRKSRC}/src/auto/config.h
 
 post-install:

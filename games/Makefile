@@ -96,6 +96,7 @@
     SUBDIR += bombherman
     SUBDIR += bombz
     SUBDIR += bomns
+    SUBDIR += bomns3
     SUBDIR += boswars
     SUBDIR += bouncy
     SUBDIR += bovo
@@ -156,6 +157,7 @@
     SUBDIR += cosmosmash
     SUBDIR += cowsay
     SUBDIR += crack-attack
+    SUBDIR += craft
     SUBDIR += crafty
     SUBDIR += crafty-open-enormous
     SUBDIR += crafty-open-large
@@ -244,7 +246,6 @@
     SUBDIR += exmars
     SUBDIR += exult
     SUBDIR += ezquake
-    SUBDIR += f1lt
     SUBDIR += f1spirit-remake
     SUBDIR += fairymax
     SUBDIR += falconseye
@@ -265,6 +266,7 @@
     SUBDIR += flightgear-data
     SUBDIR += flightgear-mb339-pan
     SUBDIR += flobopuyo
+    SUBDIR += flukz
     SUBDIR += flyhard
     SUBDIR += flying
     SUBDIR += fmars
@@ -299,7 +301,6 @@
     SUBDIR += frozen-bubble
     SUBDIR += fteqw
     SUBDIR += ftjava
-    SUBDIR += fuhquake
     SUBDIR += funnyboat
     SUBDIR += fxsudoku
     SUBDIR += galaxis
@@ -395,7 +396,6 @@
     SUBDIR += hinversi
     SUBDIR += hitori
     SUBDIR += hllib
-    SUBDIR += hlstats
     SUBDIR += hlstatsx
     SUBDIR += hohlin
     SUBDIR += hoichess
@@ -541,7 +541,6 @@
     SUBDIR += linux-savage
     SUBDIR += linux-skulltag
     SUBDIR += linux-sof
-    SUBDIR += linux-spheresofchaos-demo
     SUBDIR += linux-ssamtfe
     SUBDIR += linux-ssamtse
     SUBDIR += linux-steam
@@ -551,7 +550,6 @@
     SUBDIR += linux-ut2003-demo
     SUBDIR += linux-ut2004-demo
     SUBDIR += linux-virtual-jay-peak
-    SUBDIR += linux-warsow
     SUBDIR += linux-worldofgoo-demo
     SUBDIR += linwarrior
     SUBDIR += liquidwar
@@ -684,6 +682,7 @@
     SUBDIR += opensfx
     SUBDIR += opensonic
     SUBDIR += openssn
+    SUBDIR += opensurge
     SUBDIR += openttd
     SUBDIR += openxcom
     SUBDIR += openyahtzee
@@ -692,7 +691,6 @@
     SUBDIR += osgg
     SUBDIR += outerspace
     SUBDIR += p5-Acme-GuessNumber
-    SUBDIR += p5-Algorithm-Pair-Best
     SUBDIR += p5-Algorithm-Pair-Best2
     SUBDIR += p5-Algorithm-Pair-Swiss
     SUBDIR += p5-Baseball-Sabermetrics
@@ -765,9 +763,6 @@
     SUBDIR += pyching
     SUBDIR += pydance
     SUBDIR += pykawari
-    SUBDIR += pysol
-    SUBDIR += pysol-cardsets
-    SUBDIR += pysol-music
     SUBDIR += pysolfc
     SUBDIR += pyspacewar
     SUBDIR += pysycache
@@ -793,7 +788,6 @@
     SUBDIR += quadra
     SUBDIR += quake-data
     SUBDIR += quake-dpmod
-    SUBDIR += quake-extras
     SUBDIR += quake-reaper
     SUBDIR += quake-source
     SUBDIR += quake2-3zb2
@@ -836,6 +830,7 @@
     SUBDIR += rftg
     SUBDIR += ri-li
     SUBDIR += rnd_jue
+    SUBDIR += robocalypto
     SUBDIR += robocode
     SUBDIR += robotfindskitten
     SUBDIR += rockdodger
@@ -874,6 +869,7 @@
     SUBDIR += searchandrescue-data
     SUBDIR += secretmaryochronicles
     SUBDIR += secretmaryochronicles-music
+    SUBDIR += secrettower
     SUBDIR += senken
     SUBDIR += sets
     SUBDIR += sex
@@ -1003,7 +999,6 @@
     SUBDIR += untahris
     SUBDIR += uqm
     SUBDIR += urbanterror-data
-    SUBDIR += utserver
     SUBDIR += valyriatear
     SUBDIR += vamos
     SUBDIR += vavoom
@@ -1044,7 +1039,6 @@
     SUBDIR += worldofpadman
     SUBDIR += wtf
     SUBDIR += xabacus
-    SUBDIR += xarchon
     SUBDIR += xasteroids
     SUBDIR += xataxx
     SUBDIR += xbat
@@ -1070,10 +1064,10 @@
     SUBDIR += xdesktopwaves
     SUBDIR += xdigger
     SUBDIR += xdino
+    SUBDIR += xemeraldia
     SUBDIR += xevil
     SUBDIR += xeyesplus
     SUBDIR += xfireworks
-    SUBDIR += xflame
     SUBDIR += xfrisk
     SUBDIR += xgalaga
     SUBDIR += xgalaga++

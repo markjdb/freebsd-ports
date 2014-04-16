@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dcf77pi
-PORTVERSION=	2.0.1
+PORTVERSION=	2.0.2
 CATEGORIES=	comms
 
 MAINTAINER=	rene@FreeBSD.org
@@ -12,7 +12,7 @@ LICENSE=	BSD2CLAUSE
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	rene0
-GH_COMMIT=	9865afc
+GH_COMMIT=	d5b52d9
 
 USES=		ncurses
 
@@ -25,8 +25,5 @@ post-install:
 .for f in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
-	if [ ! -f ${ETCDIR}/config.txt ] ; then \
-		${CP} -p ${STAGEDIR}${ETCDIR}/config.txt.sample ${STAGEDIR}${ETCDIR}/config.txt ; \
-	fi
 
 .include <bsd.port.mk>

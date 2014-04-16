@@ -11,8 +11,8 @@ DOC_PREFIX=	${INTERIM_PREFIX}/${DOCS_SUFFIX}
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 .if ${CHOSEN_COMPILER_TYPE} == clang
-CFLAGS+=	-Wno-string-plus-int -Wno-empty-body -Wno-self-assign -Wno-shadow
-CXXFLAGS+=	-Wno-string-plus-int -Wno-empty-body -Wno-self-assign -Wno-shadow
+CFLAGS+=	-Wno-error
+CXXFLAGS+=	-Wno-error
 .endif
 
 MISC_DOCS=	license.txt readme.txt release.txt
@@ -128,7 +128,7 @@ build-newlib:
 	@${MKDIR} ${BUILD_PREFIX}/newlib >> ${WRKDIR}/newlib.log 2>&1
 	@${ECHO_MSG} "=====>  Configure"
 	@cd ${BUILD_PREFIX}/newlib && \
-	 ${MAKE_ENV} ${CONFIGURE_ENV} PATH="${INTERIM_PREFIX}/bin:${PATH}" CFLAGS_FOR_TARGET="-g -O2 -fno-unroll-loops -ffunction-sections -fdata-sections" \
+	 ${MAKE_ENV} ${CONFIGURE_ENV} PATH="${INTERIM_PREFIX}/bin:${PATH}" CFLAGS_FOR_TARGET="-g -O2 -ffunction-sections -fdata-sections" \
 	  ${SRC_DIR}/newlib/configure \
 	 --target=${TARGET} \
 	 --prefix=${INTERIM_PREFIX} \
@@ -169,7 +169,7 @@ build-newlib-nano:
 	@${ECHO_MSG} "=====>  Configure"
 	@cd ${BUILD_PREFIX}/newlib-nano && \
 	 ${MAKE_ENV} ${CONFIGURE_ENV} PATH="${INTERIM_PREFIX}/bin:${PATH}" CFLAGS_FOR_TARGET="-g -Os -ffunction-sections -fdata-sections" \
-	  ${SRC_DIR}/newlib-nano-2.0/configure \
+	  ${SRC_DIR}/newlib-nano-2.1/configure \
 	 --target=${TARGET} \
 	 --prefix=${BUILD_PREFIX}/target-libs \
 	 --infodir=${DOC_PREFIX}/info \
@@ -348,6 +348,7 @@ build-gdb:
 	 --with-libexpat-prefix=${LOCALBASE} \
 	 --with-python=no \
 	 --with-system-gdbinit=${INTERIM_PREFIX}/xxxx/${TARGET}/lib/gdbinit \
+	 --with-lzma=no \
 	 --with-gdb-datadir='$${prefix}/${TARGET}/share/gdb' \
 	 --with-pkgversion="${PKGVERSION}" >> ${WRKDIR}/gdb.log 2>&1
 	@${ECHO_MSG} "=====>  Build"

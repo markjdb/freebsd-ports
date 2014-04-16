@@ -14,7 +14,6 @@
     SUBDIR += basket
     SUBDIR += bigyear
     SUBDIR += bitcollider
-    SUBDIR += bmp-docklet
     SUBDIR += cairo-dock
     SUBDIR += cairo-dock-plugins
     SUBDIR += cal
@@ -44,7 +43,6 @@
     SUBDIR += epoch
     SUBDIR += etask
     SUBDIR += everygui
-    SUBDIR += evolution-jescs
     SUBDIR += fbreader
     SUBDIR += fengoffice
     SUBDIR += fet
@@ -122,8 +120,6 @@
     SUBDIR += libopensync-plugin-file
     SUBDIR += libopensync-plugin-python
     SUBDIR += libopensync-plugin-sunbird
-    SUBDIR += libopensync-plugin-synce
-    SUBDIR += libopensync-plugin-synce-legacy
     SUBDIR += libopensync-plugin-vformat-devel
     SUBDIR += libstreamanalyzer
     SUBDIR += libstreams
@@ -131,7 +127,6 @@
     SUBDIR += ljclive
     SUBDIR += ljit
     SUBDIR += logjam
-    SUBDIR += lxshortcut
     SUBDIR += mate-character-map
     SUBDIR += mate-file-manager-open-terminal
     SUBDIR += mate-menu-editor
@@ -150,10 +145,7 @@
     SUBDIR += myitcrm
     SUBDIR += nagaina
     SUBDIR += narval
-    SUBDIR += nautilus-actions
-    SUBDIR += nautilus-locked-folder
-    SUBDIR += nautilus-open-terminal
-    SUBDIR += nautilus-sendto
+    SUBDIR += note
     SUBDIR += notecase
     SUBDIR += notification-daemon
     SUBDIR += notify-osd
@@ -172,7 +164,6 @@
     SUBDIR += parcellite
     SUBDIR += phpcollab
     SUBDIR += phpicalendar
-    SUBDIR += phprojekt
     SUBDIR += pinot
     SUBDIR += plan
     SUBDIR += planner
@@ -260,6 +251,7 @@
     SUBDIR += xfce4-notification-daemon
     SUBDIR += xfce4-notifyd
     SUBDIR += xfce4-tumbler
+    SUBDIR += xfce4-volumed
     SUBDIR += xfce4-xkb-plugin
     SUBDIR += xmaddressbook
     SUBDIR += xmdiary

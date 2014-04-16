@@ -45,7 +45,6 @@
     SUBDIR += c-sig-emacs21
     SUBDIR += cclient
     SUBDIR += chk4mail
-    SUBDIR += clamfilter
     SUBDIR += claws-mail
     SUBDIR += claws-mail-address_keeper
     SUBDIR += claws-mail-archiver
@@ -71,7 +70,6 @@
     SUBDIR += claws-mail-vcalendar
     SUBDIR += clawsker
     SUBDIR += cone
-    SUBDIR += contact-lookup-applet
     SUBDIR += coolmail
     SUBDIR += courier
     SUBDIR += courier-authlib-vchkpw
@@ -148,7 +146,6 @@
     SUBDIR += faces
     SUBDIR += fdm
     SUBDIR += fetchmail
-    SUBDIR += fetchyahoo
     SUBDIR += filtermail
     SUBDIR += findmaildirs
     SUBDIR += firemime
@@ -236,7 +233,6 @@
     SUBDIR += lmtp2nntp
     SUBDIR += lookout
     SUBDIR += lurker
-    SUBDIR += mahogany
     SUBDIR += mail-notification
     SUBDIR += mail2procmailrc
     SUBDIR += mail2sms
@@ -252,7 +248,6 @@
     SUBDIR += mailscanner
     SUBDIR += mailsync
     SUBDIR += mailtray
-    SUBDIR += mailutils
     SUBDIR += mailx
     SUBDIR += mairix
     SUBDIR += majordomo
@@ -301,7 +296,6 @@
     SUBDIR += mutt_vc_query
     SUBDIR += muttils
     SUBDIR += nbsmtp
-    SUBDIR += newmail
     SUBDIR += nmh
     SUBDIR += nmzmail
     SUBDIR += noattach
@@ -368,6 +362,7 @@
     SUBDIR += p5-Log-Procmail
     SUBDIR += p5-MIME-AltWords
     SUBDIR += p5-MIME-Charset
+    SUBDIR += p5-MIME-EcoEncode
     SUBDIR += p5-MIME-EncWords
     SUBDIR += p5-MIME-Explode
     SUBDIR += p5-MIME-Fast
@@ -417,8 +412,6 @@
     SUBDIR += p5-Mail-SendEasy
     SUBDIR += p5-Mail-Sender
     SUBDIR += p5-Mail-Sendmail
-    SUBDIR += p5-Mail-SpamAssassin
-    SUBDIR += p5-Mail-SpamAssassin-Alt
     SUBDIR += p5-Mail-Spool
     SUBDIR += p5-Mail-Tools
     SUBDIR += p5-Mail-Transport-Dbx
@@ -437,6 +430,7 @@
     SUBDIR += p5-Net-SMTP-TLS
     SUBDIR += p5-Net-SMTP-TLS-ButMaintained
     SUBDIR += p5-Net-SMTP_auth
+    SUBDIR += p5-Net-SMTPS
     SUBDIR += p5-Net-SenderBase
     SUBDIR += p5-Net-Server-Mail
     SUBDIR += p5-POE-Component-Client-POP3
@@ -463,6 +457,7 @@
     SUBDIR += pear-Horde_Kolab_Storage
     SUBDIR += pear-Horde_ListHeaders
     SUBDIR += pear-Horde_Mail
+    SUBDIR += pear-Horde_Mapi
     SUBDIR += pear-Horde_Mime
     SUBDIR += pear-Horde_Mime_Viewer
     SUBDIR += pear-Horde_Smtp
@@ -484,7 +479,6 @@
     SUBDIR += pfqueue
     SUBDIR += pgpsendmail
     SUBDIR += php5-imap
-    SUBDIR += php52-imap
     SUBDIR += php53-imap
     SUBDIR += php55-imap
     SUBDIR += phplist
@@ -635,7 +629,6 @@
     SUBDIR += sgwi
     SUBDIR += sid-milter
     SUBDIR += sieve-connect
-    SUBDIR += sigit
     SUBDIR += sigrot
     SUBDIR += simscan
     SUBDIR += slapd-cyrus
@@ -653,6 +646,7 @@
     SUBDIR += spamass-ixhash
     SUBDIR += spamass-milter
     SUBDIR += spamass-rules
+    SUBDIR += spamassassin
     SUBDIR += spambnc
     SUBDIR += spamcup
     SUBDIR += spamd
@@ -713,7 +707,6 @@
     SUBDIR += sympa
     SUBDIR += synonym
     SUBDIR += t-prot
-    SUBDIR += teapop
     SUBDIR += textmail
     SUBDIR += thunderbird
     SUBDIR += thunderbird-dictionaries
@@ -723,6 +716,7 @@
     SUBDIR += tmda
     SUBDIR += tpop3d
     SUBDIR += trojita
+    SUBDIR += trojita-qt4
     SUBDIR += tumgreyspf
     SUBDIR += uebimiau
     SUBDIR += up-imapproxy
@@ -754,7 +748,6 @@
     SUBDIR += xf-spf
     SUBDIR += xfaces
     SUBDIR += xfce4-mailwatch-plugin
-    SUBDIR += xfmail
     SUBDIR += xlbiff
     SUBDIR += xmail
     SUBDIR += xmailbox

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	doublecmd
-PORTVERSION=	0.5.8
+PORTVERSION=	0.5.9
+PORTREVISION=	1
 CATEGORIES=	x11-fm
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	${PORTNAME}/Double%20Commander%20Source
@@ -81,23 +82,23 @@ OPTIONS_DEFAULT=	GTK2 \
 
 .if ${PORT_OPTIONS:MGTK2}
 USE_FPC+=	gtk2
-USE_GNOME=	gtk20 gdkpixbuf
+USE_GNOME=	gtk20
 LCL_PLATFORM=	gtk2
 BUILD_DEPENDS+=	${LOCALBASE}/share/lazarus/lcl/units/${BUILDNAME}/${LCL_PLATFORM}/interfaces.ppu:${PORTSDIR}/editors/lazarus-lcl-gtk2
 .endif
 
 .if ${PORT_OPTIONS:MQT4}
-LIB_DEPENDS+=	Qt4Pas:${PORTSDIR}/x11-toolkits/qt4pas
+LIB_DEPENDS+=	libQt4Pas.so:${PORTSDIR}/x11-toolkits/qt4pas
 LCL_PLATFORM=	qt
 BUILD_DEPENDS+=	${LOCALBASE}/share/lazarus/lcl/units/${BUILDNAME}/${LCL_PLATFORM}/interfaces.ppu:${PORTSDIR}/editors/lazarus-lcl-qt
 .endif
 
 .if ${PORT_OPTIONS:MWCX_UNRAR}
-LIB_DEPENDS+=	unrar:${PORTSDIR}/archivers/libunrar
+LIB_DEPENDS+=	libunrar.so:${PORTSDIR}/archivers/libunrar
 .endif
 
 .if ${PORT_OPTIONS:MWFX_SAMBA}
-LIB_DEPENDS+=	smbclient:${PORTSDIR}/net/samba-libsmbclient
+LIB_DEPENDS+=	libsmbclient.so:${PORTSDIR}/net/samba-libsmbclient
 .endif
 
 .if ${PORT_OPTIONS:MWLX_MPLAYER}

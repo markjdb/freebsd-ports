@@ -143,7 +143,6 @@
     SUBDIR += p5-Physics-Unit
     SUBDIR += paje
     SUBDIR += paraview
-    SUBDIR += peekabot
     SUBDIR += pnetcdf
     SUBDIR += psi3
     SUBDIR += psychopy
@@ -175,6 +174,7 @@
     SUBDIR += ruby-gphys
     SUBDIR += ruby-netcdf
     SUBDIR += rubygem-ai4r
+    SUBDIR += rubygem-netcdf
     SUBDIR += sigrok-cli
     SUBDIR += silo
     SUBDIR += simlib

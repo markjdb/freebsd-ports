@@ -23,6 +23,7 @@ _FORCE_POST_PATTERNS=	rmdir kldxref mkfontscale mkfontdir fc-cache \
 						gtk-query-immodules \
 						ldconfig \
 						load-octave-pkg \
+						ocamlfind \
 						update-desktop-database update-mime-database \
 						gdk-pixbuf-query-loaders catalog.ports \
 						glib-compile-schemas \
@@ -128,15 +129,14 @@ fake-pkg: create-manifest
 	@${ECHO_MSG} "===>   Registering installation for ${PKGNAME}"
 .endif
 .if defined(INSTALLS_DEPENDS)
-	@${SETENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CMD} -d ${STAGE_ARGS} -m ${METADIR} -f ${TMPPLIST}
+	@${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CMD} -d ${STAGE_ARGS} -m ${METADIR} -f ${TMPPLIST}
 .else
-	@${SETENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CMD} ${STAGE_ARGS} -m ${METADIR} -f ${TMPPLIST}
+	@${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CMD} ${STAGE_ARGS} -m ${METADIR} -f ${TMPPLIST}
 .endif
 	@${RM} -rf ${METADIR}
 .endif
 .endif
 
-.if defined(WITH_PKGNG)
 .if !target(check-build-conflicts)
 check-build-conflicts:
 .if ( defined(CONFLICTS) || defined(CONFLICTS_BUILD) ) && !defined(DISABLE_CONFLICTS) && !defined(DEFER_CONFLICTS_CHECK)
@@ -228,7 +228,6 @@ check-install-conflicts:
 .endif # defined(DEFER_CONFLICTS_CHECK)
 .endif
 .endif
-.endif
 
 .if !target(do-package)
 .if !defined(NO_STAGE)
@@ -247,29 +246,27 @@ do-package: ${TMPPLIST}
 	@for cat in ${CATEGORIES}; do \
 		${RM} -f ${PACKAGES}/$$cat/${PKGNAMEPREFIX}${PORTNAME}*${PKG_SUFX} ; \
 	done
-	@if ${SETENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CREATE} ${PKG_CREATE_ARGS} -o ${PKGREPOSITORY} ${PKGNAME}; then \
-		if [ -n "${WITH_PKGNG}" ]; then \
-			if [ "${PKGORIGIN}" = "ports-mgmt/pkg" -o "${PKGORIGIN}" = "ports-mgmt/pkg-devel" ]; then \
-				if [ ! -d ${PKGLATESTREPOSITORY} ]; then \
-					if ! ${MKDIR} ${PKGLATESTREPOSITORY}; then \
-						${ECHO_MSG} "=> Can't create directory ${PKGLATESTREPOSITORY}."; \
-						exit 1; \
-					fi; \
-				fi ; \
-				${LN} -sf ../${PKGREPOSITORYSUBDIR}/${PKGNAME}${PKG_SUFX} ${PKGLATESTFILE} ; \
-			fi; \
-		else \
-			if [ -d ${PACKAGES} ]; then \
-				cd ${.CURDIR} && eval ${MAKE} package-links; \
-			fi; \
-		fi ; \
+	@${MKDIR} ${WRKDIR}/pkg
+	@if ${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CREATE} ${PKG_CREATE_ARGS} -o ${WRKDIR}/pkg ${PKGNAME}; then \
+	      if [ -d ${PKGREPOSITORY} -a -w ${PKGREPOSITORY} ]; then \
+	          ${LN} -f ${WRKDIR}/pkg/${PKGNAME}${PKG_SUFX} ${PKGFILE} 2>/dev/null \
+			      || ${CP} -af ${WRKDIR}/pkg/${PKGNAME}${PKG_SUFX} ${PKGFILE}; \
+		      if [ "${PKGORIGIN}" = "ports-mgmt/pkg" -o "${PKGORIGIN}" = "ports-mgmt/pkg-devel" ]; then \
+			      if [ ! -d ${PKGLATESTREPOSITORY} ]; then \
+			    	  if ! ${MKDIR} ${PKGLATESTREPOSITORY}; then \
+		    			  ${ECHO_MSG} "=> Can't create directory ${PKGLATESTREPOSITORY}."; \
+	    				  exit 1; \
+    				  fi; \
+	    		  fi ; \
+	    		  ${LN} -sf ../${PKGREPOSITORYSUBDIR}/${PKGNAME}${PKG_SUFX} ${PKGLATESTFILE} ; \
+	    	  fi; \
+	      fi; \
 	else \
 		cd ${.CURDIR} && eval ${MAKE} delete-package; \
 		exit 1; \
 	fi
 .endif
 
-.if defined(WITH_PKGNG)
 .if !target(check-already-installed)
 .if !defined(NO_PKG_REGISTER) && !defined(FORCE_PKG_REGISTER)
 check-already-installed:
@@ -310,7 +307,6 @@ deinstall:
 		${ECHO_MSG} "===>   ${PKGBASE} not installed, skipping"; \
 	fi
 	@${RM} -f ${INSTALL_COOKIE} ${PACKAGE_COOKIE}
-.endif
 .endif
 .endif
 

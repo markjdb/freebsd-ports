@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	poudriere
-PORTVERSION=	3.0.14
+PORTVERSION=	3.0.15
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://fossil.etoilebsd.net/poudriere/tarball/ \
 		LOCAL/bdrewery/${PORTNAME}/
@@ -15,8 +15,6 @@ LICENSE=	BSD2CLAUSE
 OPTIONS_DEFINE=	ZSH
 
 CONFLICTS_INSTALL=	poudriere-devel
-
-USES=		uidfix
 
 PLIST_FILES=	etc/poudriere.conf.sample \
 		bin/poudriere \
@@ -61,6 +59,7 @@ PLIST_DIRSTRY+=	share/zsh/
 .endif
 
 post-install:
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/libexec/poudriere/*
 .if ${PORT_OPTIONS:MZSH}
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/zsh/site-functions/
 	@${INSTALL_DATA} ${WRKSRC}/zsh-completions \

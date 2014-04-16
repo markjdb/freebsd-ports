@@ -23,7 +23,7 @@ CONFIGURE_ARGS=	--program-suffix=${PORTVERSION:S/.//g} \
 		--without-libunwind-ia64 \
 		--enable-targets=all
 CFLAGS:=	${CFLAGS:C/ +$//}	# blanks at EOL creep in sometimes
-CFLAGS+=	-DRL_NO_COMPAT
+CFLAGS+=	-DRL_NO_COMPAT -Wno-unused-function -Wno-unused-variable
 EXCLUDE=	dejagnu expect sim texinfo intl
 EXTRACT_AFTER_ARGS=	${EXCLUDE:S/^/--exclude /}
 
@@ -57,6 +57,7 @@ EXPAT_LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2
 PYTHON_CONFIGURE_ON=	--with-python=${PYTHON_CMD}
 PYTHON_CONFIGURE_OFF=	--without-python
 PORT_READLINE_USES=	readline:port
+PORT_READLINE_EXTRA_PATCHES=	${FILESDIR}/extrapatch-gdb-tui-tui-io.c
 TUI_CONFIGURE_ENABLE=	tui
 
 .include <bsd.port.options.mk>
@@ -70,7 +71,7 @@ USE_PYTHON=	2
 .endif
 
 .if ${PORT_OPTIONS:MTHREADS}
-EXTRA_PATCHES=	${FILESDIR}/extrapatch-gdb-configure.tgt \
+EXTRA_PATCHES+=	${FILESDIR}/extrapatch-gdb-configure.tgt \
 		${FILESDIR}/extrapatch-gdb-Makefile.in
 .endif
 

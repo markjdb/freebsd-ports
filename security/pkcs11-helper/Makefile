@@ -2,23 +2,23 @@
 # $FreeBSD$
 
 PORTNAME=	pkcs11-helper
-PORTVERSION=	1.09
+PORTVERSION=	1.11
+PORTREVISION=	1
 CATEGORIES=	security devel
-MASTER_SITES=	http://www.opensc-project.org/files/${PORTNAME}/
+MASTER_SITES=	SF/opensc/pkcs11-helper/
 
 MAINTAINER=	ale@FreeBSD.org
 COMMENT=	A helper library for multiple PKCS\#11 providers
 
-LICENSE=	BSD GPLv2
+LICENSE=	BSD3CLAUSE GPLv2
 LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKSRC}/COPYING
-LICENSE_FILE_BSD=	${WRKSRC}/COPYING.BSD
+LICENSE_FILE_BSD3CLAUSE=${WRKSRC}/COPYING.BSD
 LICENSE_FILE_GPLv2=	${WRKSRC}/COPYING.GPL
 
-USE_BZIP2=	yes
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
-USES=		pathfix pkgconfig
+USES=		libtool pathfix pkgconfig tar:bzip2
 USE_LDCONFIG=	yes
 
 CONFIGURE_ENV=	OPENSSL_CFLAGS="-I${OPENSSLINC}" \
@@ -27,21 +27,14 @@ CONFIGURE_ENV=	OPENSSL_CFLAGS="-I${OPENSSLINC}" \
 CONFIGURE_ARGS=	--disable-crypto-engine-gnutls \
 		--disable-crypto-engine-nss
 
-MAN8=		pkcs11-helper-1.8
+OPTIONS_DEFINE=	DOCS
 
 PORTDOCS=	*
 
-NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} 's|[(]libdir[)]/pkgconfig|(prefix)/libdata/pkgconfig|' \
 		${WRKSRC}/configure
 	@${REINPLACE_CMD} 's|install-data-am: install-apidocDATA|install-data-am:|' \
 		${WRKSRC}/doc/api/Makefile.in
-.if defined(NOPORTDOCS)
-	@${REINPLACE_CMD} 's|install-data-am: install-dist_docDATA|install-data-am:|' \
-		${WRKSRC}/Makefile.in
-	@${REINPLACE_CMD} 's|install-data-am: install-man install-nodist_htmlDATA|install-data-am: install-man|' \
-		${WRKSRC}/man/Makefile.in
-.endif
 
 .include <bsd.port.mk>

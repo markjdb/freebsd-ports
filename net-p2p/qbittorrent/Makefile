@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	qbittorrent
-PORTVERSION=	3.1.8
-PORTREVISION?=	1
+PORTVERSION=	3.1.9
+PORTREVISION?=	0
 CATEGORIES=	net-p2p ipv6
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}/
 
@@ -30,10 +30,13 @@ INSTALLS_ICONS=	yes
 OPTIONS_DEFINE=	DBUS
 .endif
 
-PORTDOCS=	AUTHORS Changelog README TODO
+SUB_FILES=	pkg-message
 
-OPTIONS_DEFINE=	DOCS DBUS
+PORTDOCS=	AUTHORS Changelog README
 
+OPTIONS_DEFINE=	DEBUG DOCS DBUS
+
+DEBUG_CONFIGURE_ENABLE=	debug
 DBUS_CONFIGURE_ENABLE=	qt-dbus
 
 .include <bsd.port.options.mk>
@@ -45,15 +48,17 @@ USE_QT4+=	dbus
 do-configure:
 .if defined(SLAVE_PORT) && ${SLAVE_PORT:L} == "no"
 	@cd ${WRKSRC} ; ${SETENV} ${CONFIGURE_ENV} \
-		./configure --prefix=${PREFIX} --enable-debug
+		./configure --prefix=${PREFIX}
 .else
 	@cd ${WRKSRC} ; ${SETENV} ${CONFIGURE_ENV} \
 		./configure --prefix=${PREFIX} --disable-gui
 .endif
 
 post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .if defined(SLAVE_PORT) && ${SLAVE_PORT:L} == "no"
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/qbittorrent

@@ -2,10 +2,10 @@
 #
 # Bring libtool scripts up to date.
 #
-# MAINTAINER:	autotools@FreeBSD.org
-#
 # Feature:	libtool
 # Usage:	USES=libtool
+#
+# MAINTAINER:	autotools@FreeBSD.org
 
 .if !defined(_INCLUDE_USES_LIBTOOL_MK)
 _INCLUDE_USES_LIBTOOL_MK=	yes
@@ -19,11 +19,17 @@ _INCLUDE_USES_LIBTOOL_POST_MK=	yes
 patch-libtool:
 	@${FIND} ${WRKDIR} \( -name configure -or -name ltconfig \)	\
 		-type f | ${XARGS} ${REINPLACE_CMD}			\
+		-e '/dragonfly\*/!s/^ *freebsd\*[ )]/dragonfly* | &/'	\
+		-e '/gcc_dir=\\`/s/gcc /$$CC /'				\
+		-e '/gcc_ver=\\`/s/gcc /$$CC /'				\
 		-e '/link_all_deplibs[0-9A-Z_]*=/s/=unknown/=no/'	\
-		-e 's,freebsd\*),freebsd\*|dragonfly\*),g'		\
 		-e '/objformat=/s/echo aout/echo elf/'			\
 		-e "/freebsd-elf\\*)/,/;;/ {				\
 		    /deplibs_check_method=/s/=.*/=pass_all/; }"	
+
+	@${FIND} ${WRKDIR} -type f -name ltmain.sh |			\
+		${XARGS} ${REINPLACE_CMD}				\
+		-e 's/|-p|-pg|/|-B*|-p|-pg|/'
 
 .if ! ${libtool_ARGS:Moldver}
 	@${FIND} ${WRKDIR} \( -name configure -or -name ltconfig \)	\

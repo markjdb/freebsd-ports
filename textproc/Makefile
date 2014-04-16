@@ -73,6 +73,7 @@
     SUBDIR += clit
     SUBDIR += clucene
     SUBDIR += clucene-qt4
+    SUBDIR += clucene-qt5
     SUBDIR += coccigrep
     SUBDIR += coco
     SUBDIR += code2html
@@ -80,13 +81,11 @@
     SUBDIR += colordiff
     SUBDIR += confetti
     SUBDIR += confget
-    SUBDIR += cost
     SUBDIR += crimson
     SUBDIR += cs-aspell
     SUBDIR += cs-mythes
     SUBDIR += csb-aspell
     SUBDIR += csv2latex
-    SUBDIR += csv2xml
     SUBDIR += csvdiff
     SUBDIR += ctpl
     SUBDIR += ctpp2
@@ -143,6 +142,7 @@
     SUBDIR += el-aspell
     SUBDIR += el-hyphen
     SUBDIR += elasticsearch
+    SUBDIR += elasticsearch-plugin-marvel
     SUBDIR += emacs-wiki
     SUBDIR += en-aspell
     SUBDIR += en-hunspell
@@ -189,7 +189,6 @@
     SUBDIR += gl-aspell
     SUBDIR += gladtex
     SUBDIR += glark
-    SUBDIR += glimpse
     SUBDIR += glpi-plugins-AdditionalReports
     SUBDIR += glpi-plugins-DataInjection
     SUBDIR += gmetadom
@@ -209,6 +208,7 @@
     SUBDIR += gsed
     SUBDIR += gtk-doc
     SUBDIR += gtkspell
+    SUBDIR += gtkspell3
     SUBDIR += gtkspell-reference
     SUBDIR += gu-aspell
     SUBDIR += gutenmark
@@ -409,7 +409,6 @@
     SUBDIR += makefaq
     SUBDIR += makepatch
     SUBDIR += man2html
-    SUBDIR += manued.el
     SUBDIR += markdown
     SUBDIR += markdown-mode.el
     SUBDIR += mate-doc-utils
@@ -460,6 +459,7 @@
     SUBDIR += openjade
     SUBDIR += opensched
     SUBDIR += opensp
+    SUBDIR += opentoken
     SUBDIR += openvanilla-framework
     SUBDIR += openvanilla-modules
     SUBDIR += or-aspell
@@ -497,7 +497,6 @@
     SUBDIR += p5-EBook-Tools
     SUBDIR += p5-ElasticSearch-SearchBuilder
     SUBDIR += p5-ElasticSearch-legacy
-    SUBDIR += p5-Elasticsearch
     SUBDIR += p5-Excel-Template
     SUBDIR += p5-Excel-Writer-XLSX
     SUBDIR += p5-File-Inplace
@@ -667,6 +666,7 @@
     SUBDIR += p5-RDF-Core
     SUBDIR += p5-RDF-Notation3
     SUBDIR += p5-RDF-Simple
+    SUBDIR += p5-RDF-Trine
     SUBDIR += p5-RDFStore
     SUBDIR += p5-RTF-Parser
     SUBDIR += p5-RTF-Tokenizer
@@ -687,6 +687,7 @@
     SUBDIR += p5-SQL-Tokenizer
     SUBDIR += p5-SVG
     SUBDIR += p5-SVG-Parser
+    SUBDIR += p5-Search-Elasticsearch
     SUBDIR += p5-Search-Estraier
     SUBDIR += p5-Search-Odeum
     SUBDIR += p5-Search-Saryer
@@ -902,6 +903,7 @@
     SUBDIR += p5-XML-Catalog
     SUBDIR += p5-XML-Clean
     SUBDIR += p5-XML-Code
+    SUBDIR += p5-XML-CommonNS
     SUBDIR += p5-XML-Compile
     SUBDIR += p5-XML-Compile-Cache
     SUBDIR += p5-XML-Compile-Dumper
@@ -959,6 +961,8 @@
     SUBDIR += p5-XML-Literal
     SUBDIR += p5-XML-Mini
     SUBDIR += p5-XML-MyXML
+    SUBDIR += p5-XML-Namespace
+    SUBDIR += p5-XML-NamespaceFactory
     SUBDIR += p5-XML-NamespaceSupport
     SUBDIR += p5-XML-Node
     SUBDIR += p5-XML-NodeFilter
@@ -1092,15 +1096,6 @@
     SUBDIR += php5-xmlreader
     SUBDIR += php5-xmlwriter
     SUBDIR += php5-xsl
-    SUBDIR += php52-ctype
-    SUBDIR += php52-dom
-    SUBDIR += php52-pspell
-    SUBDIR += php52-simplexml
-    SUBDIR += php52-wddx
-    SUBDIR += php52-xml
-    SUBDIR += php52-xmlreader
-    SUBDIR += php52-xmlwriter
-    SUBDIR += php52-xsl
     SUBDIR += php53-ctype
     SUBDIR += php53-dom
     SUBDIR += php53-pspell
@@ -1114,11 +1109,11 @@
     SUBDIR += php55-dom
     SUBDIR += php55-pspell
     SUBDIR += php55-simplexml
-    SUBDIR += php55-wddx 
+    SUBDIR += php55-wddx
     SUBDIR += php55-xml
     SUBDIR += php55-xmlreader
     SUBDIR += php55-xmlwriter
-    SUBDIR += php55-xsl 
+    SUBDIR += php55-xsl
     SUBDIR += plover
     SUBDIR += po4a
     SUBDIR += pocketreader
@@ -1138,6 +1133,7 @@
     SUBDIR += py-asv
     SUBDIR += py-charade
     SUBDIR += py-chardet
+    SUBDIR += py-cloud_sptheme
     SUBDIR += py-creole
     SUBDIR += py-docutils
     SUBDIR += py-dsv
@@ -1157,7 +1153,6 @@
     SUBDIR += py-libxml2
     SUBDIR += py-libxslt
     SUBDIR += py-ltxml
-    SUBDIR += py-lucene
     SUBDIR += py-mako
     SUBDIR += py-markdown
     SUBDIR += py-markdown2
@@ -1221,6 +1216,8 @@
     SUBDIR += qt4-xml
     SUBDIR += qt4-xmlpatterns
     SUBDIR += qt4-xmlpatterns-tool
+    SUBDIR += qt5-xml
+    SUBDIR += qt5-xmlpatterns
     SUBDIR += qu-aspell
     SUBDIR += queequeg
     SUBDIR += rand
@@ -1328,6 +1325,7 @@
     SUBDIR += rubygem-sanitize
     SUBDIR += rubygem-sass
     SUBDIR += rubygem-sass-rails
+    SUBDIR += rubygem-sass32
     SUBDIR += rubygem-sax-machine
     SUBDIR += rubygem-simplecov-html
     SUBDIR += rubygem-spreadsheet
@@ -1466,7 +1464,6 @@
     SUBDIR += uim-el-emacs21
     SUBDIR += uim-el-emacs22
     SUBDIR += uim-el-xemacs21-mule
-    SUBDIR += uim-gnome
     SUBDIR += uim-gtk
     SUBDIR += uim-gtk3
     SUBDIR += uim-kde4
@@ -1518,6 +1515,7 @@
     SUBDIR += xml-i18n-tools
     SUBDIR += xml-lite.el
     SUBDIR += xml-parse.el
+    SUBDIR += xml_ez_out
     SUBDIR += xml2
     SUBDIR += xml2rfc
     SUBDIR += xmlada
@@ -1541,12 +1539,16 @@
     SUBDIR += xslide.el
     SUBDIR += xslint
     SUBDIR += xstream
+    SUBDIR += xsv
     SUBDIR += xt
+    SUBDIR += xwindiff
     SUBDIR += y2l
     SUBDIR += yali
     SUBDIR += yamcha
     SUBDIR += yaml-mode.el
     SUBDIR += yaml-mode.el-emacs21
+    SUBDIR += yelp-tools
+    SUBDIR += yelp-xsl
     SUBDIR += yi-aspell
     SUBDIR += yi-hunspell
     SUBDIR += yodl

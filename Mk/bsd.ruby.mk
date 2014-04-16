@@ -177,7 +177,7 @@ RUBY?=			${LOCALBASE}/bin/${RUBY_NAME}
 # Ruby 1.9
 #
 RUBY_RELVERSION=	1.9.3
-RUBY_PORTREVISION=	1
+RUBY_PORTREVISION=	2
 RUBY_PORTEPOCH=		1
 RUBY_PATCHLEVEL=	484
 
@@ -193,7 +193,7 @@ RUBY21=			"@comment "
 # Ruby 2.0
 #
 RUBY_RELVERSION=	2.0.0
-RUBY_PORTREVISION=	4
+RUBY_PORTREVISION=	5
 RUBY_PORTEPOCH=		1
 RUBY_PATCHLEVEL=	353
 
@@ -208,8 +208,8 @@ RUBY21=			"@comment "
 #
 # Ruby 2.1
 #
-RUBY_RELVERSION=	2.1.0
-RUBY_PORTREVISION=	0
+RUBY_RELVERSION=	2.1.1
+RUBY_PORTREVISION=	1
 RUBY_PORTEPOCH=		1
 RUBY_PATCHLEVEL=	0
 
@@ -463,12 +463,8 @@ GEMFILES=	${DISTFILES:C/:[^:]+$//}
 GEMFILES=	${DISTNAME}${EXTRACT_SUFX}
 . endif
 
-.if defined(NO_STAGE)
-RUBYGEM_ARGS=-l --no-update-sources --no-ri --install-dir ${PREFIX}/lib/ruby/gems/${RUBY_VER}
-.else
 RUBYGEM_ARGS=-l --no-update-sources --no-ri --install-dir ${STAGEDIR}${PREFIX}/lib/ruby/gems/${RUBY_VER} --ignore-dependencies --bindir=${STAGEDIR}${PREFIX}/bin
 GEM_ENV+=	RB_USER_INSTALL=yes
-.endif
 .if defined(NOPORTDOCS)
 RUBYGEM_ARGS+=	--no-rdoc
 .endif
@@ -567,13 +563,8 @@ do-install:	ruby-setup-install
 
 ruby-setup-install:
 	@${ECHO_MSG} "===>  Running ${RUBY_SETUP} to install"
-.  if defined(NO_STAGE)
-	@cd ${INSTALL_WRKSRC}; \
-	${SETENV} ${MAKE_ENV} ${RUBY} ${RUBY_FLAGS} ${RUBY_SETUP} install
-.  else
 	@cd ${INSTALL_WRKSRC}; \
 	${SETENV} ${MAKE_ENV} ${RUBY} ${RUBY_FLAGS} ${RUBY_SETUP} install --prefix=${STAGEDIR}
-.  endif
 .endif
 
 .if defined(USE_LIBRUBY)

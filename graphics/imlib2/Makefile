@@ -4,6 +4,7 @@
 PORTNAME=	imlib2
 PORTVERSION=	1.4.6
 PORTEPOCH=	2
+PORTREVISION=	1
 CATEGORIES=	graphics enlightenment
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	enlightenment/imlib2-src/${PORTVERSION}
@@ -14,7 +15,7 @@ COMMENT=	The next generation graphics library for Enlightenment
 LICENSE=	imlib2
 LICENSE_NAME=	imlib2 license
 LICENSE_FILE=	${WRKSRC}/COPYING
-LICENSE_PERMS=	auto-accept
+LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2
 
@@ -98,8 +99,9 @@ PLIST_SUB+=	ID3="@comment "
 .if ! ${PORT_OPTIONS:MX11}
 post-patch:
 	@${REINPLACE_CMD} -e '/MY_LIBS =/s/-lXext -lX11//' \
-	${WRKSRC}/src/lib/Makefile.in
-
+		${WRKSRC}/src/lib/Makefile.in
+	@${REINPLACE_CMD} -e '/# ifndef X_DISPLAY_MISSING/,/# endif/ d' \
+		${WRKSRC}/src/lib/Imlib2.h
 .endif
 
 .include <bsd.port.mk>

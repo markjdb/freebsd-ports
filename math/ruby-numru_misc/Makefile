@@ -3,7 +3,7 @@
 
 PORTNAME=	numru_misc
 PORTVERSION=	0.1.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	math ruby
 MASTER_SITES=	http://ruby.gfd-dennou.org/products/numru-misc/release/ \
 		http://dennou-h.gfd-dennou.org/library/ruby/products/numru-misc/release/ \
@@ -12,7 +12,9 @@ PKGNAMEPREFIX=	${RUBY_PKGNAMEPREFIX}
 DISTNAME=	numru-misc-${PORTVERSION}
 DIST_SUBDIR=	ruby
 
-LICENSE=	BSD
+OPTIONS_DEFINE=	DOCS
+
+LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 MAINTAINER=	murashin@gfd-dennou.org
@@ -26,16 +28,11 @@ NO_BUILD=	yes
 
 DOCS=		ChangeLog LICENSE.txt doc/*
 
-NO_STAGE=	yes
 do-install:
-	@cd ${WRKSRC}/ && ${RUBY} ./install.rb
-
-post-install:
-.if !defined(NOPORTDOCS)
-	${MKDIR} ${RUBY_MODDOCDIR}/
+	@cd ${WRKSRC}/ && ${RUBY} ./install.rb -d ${STAGEDIR}${RUBY_SITELIBDIR}
+	@${MKDIR} ${STAGEDIR}${RUBY_MODDOCDIR}/
 .for f in ${DOCS}
-	${INSTALL_DATA} ${WRKSRC}/${f} ${RUBY_MODDOCDIR}/
+	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${RUBY_MODDOCDIR}/
 .endfor
-.endif
 
 .include <bsd.port.mk>

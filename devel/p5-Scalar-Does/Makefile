@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Scalar-Does
-PORTVERSION=	0.201
+PORTVERSION=	0.202
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -33,10 +33,6 @@ USE_PERL5=	configure
 USES=		perl5
 
 .include <bsd.port.pre.mk>
-
-.if ${PERL_LEVEL} < 501400
-TEST_DEPENDS+=	p5-Test-Simple>=0.96:${PORTSDIR}/devel/p5-Test-Simple
-.endif
 
 .if ${PERL_LEVEL} < 501601
 BUILD_DEPENDS+=	p5-Scalar-List-Utils>=1.24:${PORTSDIR}/lang/p5-Scalar-List-Utils

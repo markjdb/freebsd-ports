@@ -2,17 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	bitstring
-PORTVERSION=	3.1.2
+PORTVERSION=	3.1.3
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
-EXTRACT_SUFX=	.zip
 
 MAINTAINER=	sbz@FreeBSD.org
 COMMENT=	Simple construction, analysis, and modification of binary data
 
 LICENSE=	MIT
 
+USES=		zip
 USE_PYTHON=	yes
 USE_PYDISTUTILS=	yes
 PYDISTUTILS_AUTOPLIST=	yes

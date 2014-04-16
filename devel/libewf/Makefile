@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libewf
-PORTVERSION=	20131230
+PORTVERSION=	20140406
 CATEGORIES=	devel
 MASTER_SITES=	https://googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/ \
 		LOCAL/antoine
@@ -15,12 +15,13 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid
 
-USES=		fuse gettext iconv pathfix pkgconfig
+USES=		fuse gettext iconv libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 USE_OPENSSL=	yes
 USE_PYTHON=	2
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--enable-python --with-libintl-prefix=${LOCALBASE} --with-libuuid=${LOCALBASE} ${ICONV_CONFIGURE_ARG}
+CONFIGURE_ARGS=	--enable-python --with-libintl-prefix=${LOCALBASE} --with-libuuid=${LOCALBASE} ${ICONV_CONFIGURE_ARG} --with-libsmdev=no
+INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

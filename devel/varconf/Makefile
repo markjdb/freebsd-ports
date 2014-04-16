@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	varconf
-PORTVERSION=	1.0.0
-PORTREVISION=	1
+PORTVERSION=	1.0.1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	SF/worldforge/${PORTNAME}%20%28config%20lib%29/${PORTVERSION}
 
@@ -16,7 +16,7 @@ OPTIONS_DEFINE=	DOCS
 
 GNU_CONFIGURE=	yes
 USE_BZIP2=	yes
-USES=		libtool pathfix pkgconfig
+USES=		libtool pathfix pkgconfig compiler:c++11-lib
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 

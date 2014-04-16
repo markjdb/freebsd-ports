@@ -47,6 +47,7 @@
     SUBDIR += cmatrix
     SUBDIR += color-theme.el
     SUBDIR += colortail
+    SUBDIR += compat10x
     SUBDIR += compat4x
     SUBDIR += compat5x
     SUBDIR += compat6x
@@ -59,7 +60,6 @@
     SUBDIR += cs
     SUBDIR += cstream
     SUBDIR += cuecat
-    SUBDIR += cwish
     SUBDIR += dahdi
     SUBDIR += dahdi-kmod
     SUBDIR += dahdi-kmod26
@@ -83,6 +83,7 @@
     SUBDIR += elscreen
     SUBDIR += esniper
     SUBDIR += estic
+    SUBDIR += excel-writer
     SUBDIR += explosions
     SUBDIR += fbless
     SUBDIR += felis
@@ -120,8 +121,6 @@
     SUBDIR += freebsd-doc-zh_tw
     SUBDIR += freecode-submit
     SUBDIR += freeguide
-    SUBDIR += freeswitch-pizzademo-devel
-    SUBDIR += freeswitch-scripts-devel
     SUBDIR += ftdi-eeprom
     SUBDIR += fxload
     SUBDIR += gcstar
@@ -181,6 +180,7 @@
     SUBDIR += hotkeys
     SUBDIR += hulgalugha
     SUBDIR += imerge
+    SUBDIR += ini_file_manager
     SUBDIR += inplace
     SUBDIR += ipa_conv
     SUBDIR += ipbt
@@ -259,7 +259,7 @@
     SUBDIR += lingoteach
     SUBDIR += linm
     SUBDIR += localedata
-    SUBDIR += logsurfer+
+    SUBDIR += logsurfer
     SUBDIR += loop
     SUBDIR += lr
     SUBDIR += lv
@@ -346,6 +346,7 @@
     SUBDIR += p5-Locale-US
     SUBDIR += p5-Net-vCard
     SUBDIR += p5-Norge
+    SUBDIR += p5-OSSP-uuid
     SUBDIR += p5-Software-License
     SUBDIR += p5-Test-Dir
     SUBDIR += p5-Text-FIGlet
@@ -363,7 +364,6 @@
     SUBDIR += pear-Text_Figlet
     SUBDIR += pecl-timezonedb
     SUBDIR += php5-calendar
-    SUBDIR += php52-calendar
     SUBDIR += php53-calendar
     SUBDIR += php55-calendar
     SUBDIR += phraze
@@ -371,7 +371,6 @@
     SUBDIR += pipe
     SUBDIR += podsleuth
     SUBDIR += posixtestsuite
-    SUBDIR += projectionlib
     SUBDIR += proxyper
     SUBDIR += pspresent
     SUBDIR += py-YABT
@@ -390,7 +389,6 @@
     SUBDIR += qt4-l10n
     SUBDIR += qt4-qtconfig
     SUBDIR += qt4-qtdemo
-    SUBDIR += quick-lounge-applet
     SUBDIR += quotes
     SUBDIR += quranref
     SUBDIR += ree
@@ -421,7 +419,6 @@
     SUBDIR += spamcalc
     SUBDIR += sshbuddy
     SUBDIR += sssnips
-    SUBDIR += stan
     SUBDIR += susv2
     SUBDIR += susv3
     SUBDIR += sword
@@ -438,7 +435,6 @@
     SUBDIR += tet
     SUBDIR += tkcron
     SUBDIR += tkinfo
-    SUBDIR += tkman
     SUBDIR += tkregexp
     SUBDIR += tkrunit
     SUBDIR += toilet
@@ -448,7 +444,6 @@
     SUBDIR += tvbrowser
     SUBDIR += txt2regex
     SUBDIR += typetrainer
-    SUBDIR += uf-view
     SUBDIR += uk-phone
     SUBDIR += uk-postcodes
     SUBDIR += umodunpack
@@ -472,7 +467,6 @@
     SUBDIR += wmweather+
     SUBDIR += wmwork
     SUBDIR += wotsap
-    SUBDIR += xbiso
     SUBDIR += xd
     SUBDIR += xdelta
     SUBDIR += xdelta3

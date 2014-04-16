@@ -127,7 +127,6 @@
     SUBDIR += fpc-fftw
     SUBDIR += fpc-gmp
     SUBDIR += fpc-numlib
-    SUBDIR += freefem
     SUBDIR += freemat
     SUBDIR += fricas
     SUBDIR += fxt
@@ -526,8 +525,6 @@
     SUBDIR += petsc
     SUBDIR += php5-bcmath
     SUBDIR += php5-gmp
-    SUBDIR += php52-bcmath
-    SUBDIR += php52-gmp
     SUBDIR += php53-bcmath
     SUBDIR += php53-gmp
     SUBDIR += php55-bcmath
@@ -601,7 +598,6 @@
     SUBDIR += rkward-kde4
     SUBDIR += rngstreams
     SUBDIR += rocs
-    SUBDIR += ros-geometry
     SUBDIR += rpcalc
     SUBDIR += rpy
     SUBDIR += rpy2
@@ -613,6 +609,8 @@
     SUBDIR += ruby-narray_miss
     SUBDIR += ruby-numru_misc
     SUBDIR += ruby-numru_units
+    SUBDIR += rubygem-narray
+    SUBDIR += rubygem-narray_miss
     SUBDIR += saga
     SUBDIR += sage
     SUBDIR += sc
@@ -662,7 +660,6 @@
     SUBDIR += vtk6
     SUBDIR += wcalc
     SUBDIR += wfmath
-    SUBDIR += wingz
     SUBDIR += wingz3
     SUBDIR += wxMaxima
     SUBDIR += x12arima
@@ -671,7 +668,6 @@
     SUBDIR += xgraph
     SUBDIR += xlapack
     SUBDIR += xldlas
-    SUBDIR += xlispstat
     SUBDIR += xplot
     SUBDIR += xppaut
     SUBDIR += xspread

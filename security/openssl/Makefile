@@ -3,8 +3,8 @@
 
 PORTNAME=	openssl
 PORTVERSION=	1.0.1
-DISTVERSIONSUFFIX=	f
-PORTREVISION=	9
+DISTVERSIONSUFFIX=	g
+PORTREVISION=	10
 CATEGORIES=	security devel
 MASTER_SITES=	http://www.openssl.org/%SUBDIR%/ \
 		ftp://ftp.openssl.org/%SUBDIR%/ \
@@ -45,6 +45,8 @@ RFC3779_DESC?=	RFC3779 support
 GMP_DESC?=	gmp support (LGPLv3)
 EC_DESC?=	Optimize NIST elliptic curves
 
+GMP_LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp
+
 MAKE_JOBS_UNSAFE=	yes
 NOPRECIOUSMAKEVARS=	Too many _MLINKS for fetch
 NOPRECIOUSSOFTMAKEVARS=	Too many _MLINKS for fetch
@@ -52,7 +54,7 @@ NOPRECIOUSSOFTMAKEVARS=	Too many _MLINKS for fetch
 USES=		perl5
 USE_PERL5=	build
 MAKE_ARGS+=	WHOLE_ARCHIVE_FLAG=--whole-archive
-MAKE_ENV+=	LIBRPATH="${PREFIX}/lib"
+MAKE_ENV+=	LIBRPATH="${PREFIX}/lib" GREP_OPTIONS=
 SUB_FILES=	pkg-message
 OPENSSLDIR=	${PREFIX}/openssl
 
@@ -77,6 +79,10 @@ FIX_POD=apps/cms.pod \
 	ssl/SSL_write.pod
 
 .include <bsd.port.pre.mk>
+
+.if ${PREFIX} == /usr
+IGNORE=	OpenSSL can not be installed over the base version
+.endif
 
 OPENSSL_BASE_SONAME!=	readlink ${DESTDIR}/usr/lib/libcrypto.so || true
 OPENSSL_SHLIBVER_BASE=	${OPENSSL_BASE_SONAME:E}
@@ -203,7 +209,7 @@ do-configure:
 		-L${PREFIX}/lib ${EXTRACONFIGURE}
 .endif
 	${REINPLACE_CMD} \
-		-e 's|^MANDIR=.*$$|MANDIR=$$(MANPREFIX)/man|' \
+		-e 's|^MANDIR=.*$$|MANDIR=$$(PREFIX)/man|' \
 		-e 's|$$(LIBDIR)/pkgconfig|libdata/pkgconfig|g' \
 		-e 's|LIBVERSION=[^ ]* |LIBVERSION=$(OPENSSL_SHLIBVER) |' \
 		${WRKSRC}/Makefile

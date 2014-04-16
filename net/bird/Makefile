@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME?=	bird
-PORTVERSION=	1.4.0
-PORTREVISION=	2
+PORTVERSION=	1.4.2
 CATEGORIES=	net
 MASTER_SITES=	ftp://bird.network.cz/pub/bird/ \
 		http://bird.mpls.in/distfiles/bird/
@@ -31,16 +30,10 @@ SUB_LIST+=	PORTNAME=${PORTNAME}
 
 PLIST_SUB?=	VER=""
 
-NO_STAGE=	yes
-.include <bsd.port.pre.mk>
+FIREWALL_EXTRA_PATCHES+=	${FILESDIR}/firewall_support.patch
+AGG_EXTRA_PATCHES+=	${FILESDIR}/agg_support.patch
 
-.if ${PORT_OPTIONS:MFIREWALL}
-EXTRA_PATCHES+=	${FILESDIR}/firewall_support.patch
-.endif
-
-.if ${PORT_OPTIONS:MAGG}
-EXTRA_PATCHES+=	${FILESDIR}/agg_support.patch
-.endif
+.include <bsd.port.options.mk>
 
 post-patch:
 .if ${PORT_OPTIONS:MAGG}
@@ -59,10 +52,4 @@ post-patch:
 	@${REINPLACE_CMD} -e 's/\(proto_bfd\)/\1, proto_firewall/' ${WRKSRC}/nest/protocol.h
 .endif
 
-post-install:
-	@if [ ! -f ${PREFIX}/etc/${PORTNAME}.conf ]; then \
-		${CP} -p ${PREFIX}/etc/${PORTNAME}.conf.example ${PREFIX}/etc/${PORTNAME}.conf ; \
-		${CHMOD} 0640 ${PREFIX}/etc/${PORTNAME}.conf ; \
-	fi
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

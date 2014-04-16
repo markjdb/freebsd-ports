@@ -10,6 +10,54 @@ in the release notes and/or placed into UPDATING.
 
 All ports committers are allowed to commit to this file.
 
+20140411:
+AUTHOR: bdrewery@FreeBSD.org
+
+  A new plist keyword has been added, @sample. It accepts a file (must end in
+  .sample):
+
+    @sample file.conf.sample
+
+  This will install file.conf.sample and copy it to file.conf. The file.conf
+  will be removed if it matches file.conf.sample on deinstall.
+
+  This replaces older patterns of:
+
+    @unexec if cmp -s %D/etc/pkgtools.conf %D/etc/pkgtools.conf.sample; then rm -f %D/etc/pkgtools.conf; fi
+    etc/pkgtools.conf.sample
+    @exec [ -f %B/pkgtools.conf ] || cp %B/%f %B/pkgtools.conf
+
+20140312:
+AUTHOR: bapt@FreeBSD.org
+
+  Two new USES were added to finish handling distfiles formats a consistent way:
+
+  USES=tar[:[xz|bzip2|Z|tgz]] handles distributions files in format:
+  - plain tar
+  - tar.xz
+  - tar.bz2
+  - tar.Z
+  - tgz
+
+  USES=lha handles distributions files info LHA format
+
+20140307:
+AUTHOR: rene@FreeBSD.org
+
+  Two new USES were added by bapt@FreeBSD.org :
+
+  USES=zip handles distribution files in Zip format. InfoZip files
+  need USES=zip:infozip
+
+  USES=makeself handles distribution files in makeself format.
+
+20140303:
+AUTHOR: kde@FreeBSD.org
+
+  Add support for Qt 5 via USE_QT5. USE_QT5 is analogous to USE_QT4,
+  the only difference is the list of available components
+  (see Mk/bsd.qt.mk for details). USES=qmake supports Qt 5 as well.
+
 20140127:
 AUTHOR: mat@FreeBSD.org
 

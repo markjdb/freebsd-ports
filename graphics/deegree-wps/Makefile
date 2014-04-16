@@ -12,8 +12,8 @@ DISTNAME=	${PKGNAMEPREFIX}${PORTNAME}_${PORTVERSION}
 MAINTAINER=	wenheping@gmail.com
 COMMENT=	Deegree Web Processing Service(WPS)
 
-USE_ZIP=	yes
-USE_JAVA=	1.5+
+USES=		zip
+USE_JAVA=	1.6+
 
 NO_BUILD=	yes
 TOMCATDIR=	${PREFIX}/${TOMCATVER}

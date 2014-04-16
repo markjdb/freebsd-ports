@@ -2,8 +2,6 @@
 #
 # Provide support to use perl5
 #
-# MAINTAINER: perl@FreeBSD.org
-#
 # PERL5			- Set to full path of perl5, either in the system or
 #				  installed from a port.
 # PERL			- Set to full path of perl5, either in the system or
@@ -30,6 +28,8 @@
 #				  It can also have configure, modbuild and modbuildtiny when
 #				  the port needs to run Makefile.PL, Build.PL and a
 #				  Module::Build::Tiny flavor of Build.PL.
+#
+# MAINTAINER: perl@FreeBSD.org
 
 .if !defined(_INCLUDE_USES_PERL5_MK)
 _INCLUDE_USES_PERL5_MK=	yes
@@ -93,6 +93,7 @@ SITE_PERL?=	${LOCALBASE}/${SITE_PERL_REL}
 
 PERL5=		${LOCALBASE}/bin/perl${PERL_VERSION}
 PERL=		${LOCALBASE}/bin/perl
+CONFIGURE_ENV+=	ac_cv_path_PERL=${PERL} ac_cv_path_PERL_PATH=${PERL}
 
 # Define the want perl first if defined
 .if ${USE_PERL5:M5*}
@@ -170,10 +171,8 @@ CONFIGURE_ARGS+=--install_path lib="${PREFIX}/${SITE_PERL_REL}" \
 				--install_path bindoc="${MAN1PREFIX}/man/man1"
 CONFIGURE_SCRIPT?=	Build.PL
 PL_BUILD?=	Build
-.if !defined(NO_STAGE)
 CONFIGURE_ARGS+=--destdir ${STAGEDIR}
 DESTDIRNAME=	--destdir
-.endif
 .if ${_USE_PERL5:Mmodbuild}
 .if ${PORTNAME} != Module-Build
 BUILD_DEPENDS+=	${SITE_PERL}/Module/Build.pm:${PORTSDIR}/devel/p5-Module-Build
@@ -259,4 +258,20 @@ do-install:
 post-stage::
 	-@[ -d ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/auto ] && ${FIND} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/auto -name .packlist -exec ${SED} -i '' 's|^${STAGEDIR}||' '{}' \;
 .endif
+
+.if !target(regression-test)
+TEST_ARGS+=	${MAKE_ARGS}
+TEST_ENV+=	${MAKE_ENV}
+TEST_TARGET?=	test
+TEST_WRKSRC?=	${BUILD_WRKSRC}
+.if !target(test)
+test: regression-test
+.endif # test
+regression-test: build
+.if ${USE_PERL5:Mmodbuild*}
+	-cd ${TEST_WRKSRC}/ && ${SETENV} ${TEST_ENV} ${PERL5} ${PL_BUILD} ${TEST_TARGET} ${TEST_ARGS}
+.elif ${USE_PERL5:Mconfigure}
+	-cd ${TEST_WRKSRC}/ && ${SETENV} ${TEST_ENV} ${MAKE_CMD} ${TEST_ARGS} ${TEST_TARGET}
+.endif # USE_PERL5:Mmodbuild*
+.endif # regression-test
 .endif # defined(_POSTMKINCLUDED)

@@ -11,7 +11,7 @@ COMMENT=	KDE multi-protocol instant messenger
 
 LIB_DEPENDS=	libidn.so:${PORTSDIR}/dns/libidn \
 		libqca.so:${PORTSDIR}/devel/qca \
-		libotr.so:${PORTSDIR}/security/libotr \
+		libotr.so.5:${PORTSDIR}/security/libotr \
 		libgadu.so:${PORTSDIR}/polish/libgadu \
 		libortp.so:${PORTSDIR}/net/linphone-base \
 		libmediastreamer.so:${PORTSDIR}/net/linphone-base \
@@ -28,7 +28,7 @@ BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev2.h:${PORTSDIR}/multimedia/v4l
 RUN_DEPENDS=	qca-ossl>=2.0.0.b3:${PORTSDIR}/security/qca-ossl \
 		${LOCALBASE}/lib/mediastreamer/plugins/libmsilbc.so:${PORTSDIR}/audio/msilbc
 
-USES=		cmake:outsource webplugin:native
+USES=		cmake:outsource tar:xz webplugin:native
 USE_GNOME=	libxml2 libxslt
 USE_KDE4=	kdehier kdelibs kdeprefix pimlibs \
 		automoc4 qimageblitz
@@ -37,7 +37,6 @@ USE_QT4=	corelib gui network qt3support sql xml \
 		moc_build qmake_build rcc_build uic_build uic3_build
 USE_SQLITE=	yes
 USE_XORG=	x11 xdamage xext xscrnsaver xtst
-USE_XZ=		yes
 USE_LDCONFIG=	yes
 
 WEBPLUGIN_NAME=	# empty

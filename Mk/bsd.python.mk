@@ -27,7 +27,7 @@ Python_Include_MAINTAINER=	python@FreeBSD.org
 #					  number (used for dependencies).
 #					  default: ${PYTHONBASE}/bin/${PYTHON_VERSION}
 #
-# PYTHON_DISTFILE	- The ${DISTFILE} for your python version. Needed for
+# PYTHON_DISTNAME	- The ${DISTNAME} for your python version. Needed for
 #					  extensions like bsddb, gdbm, sqlite3 and tkinter, which
 #					  are built from sources contained in the Python
 #					  distribution.
@@ -194,7 +194,7 @@ Python_Include_MAINTAINER=	python@FreeBSD.org
 #					  default: ${LOCALBASE}/bin/easy_install-${PYTHON_VER}
 
 _PYTHON_PORTBRANCH=		2.7
-_PYTHON_ALLBRANCHES=	2.7 3.3 3.2 3.1	# preferred first
+_PYTHON_ALLBRANCHES=	2.7 3.4 3.3 3.2 3.1	# preferred first
 
 # Determine version number of Python to use
 .include "${PORTSDIR}/Mk/bsd.default-versions.mk"
@@ -333,14 +333,25 @@ PYTHON_PORTVERSION=	${PYTHON_DEFAULT_PORTVERSION}
 # Propagate the chosen python version to submakes.
 .MAKEFLAGS:	PYTHON_VERSION=python${_PYTHON_VERSION}
 
+# Python-3.4
+.if ${PYTHON_VERSION} == "python3.4"
+PYTHON_PORTVERSION?=	3.4.0
+PYTHON_PORTSDIR=	${PORTSDIR}/lang/python34
+PYTHON_REL=		340
+PYTHON_SUFFIX=		34
+PYTHON_VER=		3.4
+.if exists(${PYTHON_CMD}-config) && ${PORTNAME} != python34
+PYTHON_ABIVER!=		${PYTHON_CMD}-config --abiflags
+.endif
+
 # Python-3.3
-.if ${PYTHON_VERSION} == "python3.3"
-PYTHON_PORTVERSION?=	3.3.3
+.elif ${PYTHON_VERSION} == "python3.3"
+PYTHON_PORTVERSION?=	3.3.5
 PYTHON_PORTSDIR=	${PORTSDIR}/lang/python33
-PYTHON_REL=		333
+PYTHON_REL=		335
 PYTHON_SUFFIX=		33
 PYTHON_VER=		3.3
-.if exists(${PYTHON_CMD}-config)
+.if exists(${PYTHON_CMD}-config) && defined(PORTNAME) && ${PORTNAME} != python33
 PYTHON_ABIVER!=		${PYTHON_CMD}-config --abiflags
 .endif
 
@@ -351,7 +362,7 @@ PYTHON_PORTSDIR=	${PORTSDIR}/lang/python32
 PYTHON_REL=		325
 PYTHON_SUFFIX=		32
 PYTHON_VER=		3.2
-.if exists(${PYTHON_CMD}-config)
+.if exists(${PYTHON_CMD}-config) && defined(PORTNAME) && ${PORTNAME} != python32
 PYTHON_ABIVER!=		${PYTHON_CMD}-config --abiflags
 .endif
 
@@ -389,6 +400,7 @@ check-makevars::
 	@${ECHO} "  python3.1"
 	@${ECHO} "  python3.2"
 	@${ECHO} "  python3.3"
+	@${ECHO} "  python3.4"
 	@${FALSE}
 .endif
 
@@ -396,7 +408,7 @@ PYTHON_MAJOR_VER=	${PYTHON_VER:R}
 
 PYTHON_MASTER_SITES=		${MASTER_SITE_PYTHON}
 PYTHON_MASTER_SITE_SUBDIR=	ftp/python/${PYTHON_PORTVERSION:C/rc[0-9]//}
-PYTHON_DISTFILE=		Python-${PYTHON_PORTVERSION:S/.rc/rc/}${EXTRACT_SUFX}
+PYTHON_DISTNAME=		Python-${PYTHON_PORTVERSION:S/.rc/rc/}
 PYTHON_WRKSRC=				${WRKDIR}/Python-${PYTHON_PORTVERSION:S/.rc/rc/}
 
 PYTHON_ABIVER?=			# empty
@@ -411,10 +423,10 @@ PYTHONPREFIX_INCLUDEDIR=	${PYTHON_INCLUDEDIR:S;${PYTHONBASE};${PREFIX};}
 PYTHONPREFIX_LIBDIR=		${PYTHON_LIBDIR:S;${PYTHONBASE};${PREFIX};}
 PYTHONPREFIX_SITELIBDIR=	${PYTHON_SITELIBDIR:S;${PYTHONBASE};${PREFIX};}
 
-_CURRENTPORT:=	${PKGNAMEPREFIX}${PORTNAME}
-.if defined(USE_PYDISTUTILS) && ${_CURRENTPORT} != ${PYTHON_PKGNAMEPREFIX}setuptools
-BUILD_DEPENDS+=		${PYTHON_PKGNAMEPREFIX}setuptools>0:${PORTSDIR}/devel/py-setuptools
-RUN_DEPENDS+=		${PYTHON_PKGNAMEPREFIX}setuptools>0:${PORTSDIR}/devel/py-setuptools
+_CURRENTPORT:=	${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
+.if defined(USE_PYDISTUTILS) && ${_CURRENTPORT:S/${PYTHON_SUFFIX}$//} != ${PYTHON_PKGNAMEPREFIX}setuptools
+BUILD_DEPENDS+=		${PYTHON_PKGNAMEPREFIX}setuptools${PYTHON_SUFFIX}>0:${PORTSDIR}/devel/py-setuptools${PYTHON_SUFFIX}
+RUN_DEPENDS+=		${PYTHON_PKGNAMEPREFIX}setuptools${PYTHON_SUFFIX}>0:${PORTSDIR}/devel/py-setuptools${PYTHON_SUFFIX}
 .endif
 
 # setuptools support

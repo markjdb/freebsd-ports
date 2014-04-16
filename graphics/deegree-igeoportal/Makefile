@@ -12,8 +12,8 @@ DISTNAME=	${PORTNAME}-std_${PORTVERSION}
 MAINTAINER=	wenheping@gmail.com
 COMMENT=	Browser based client handling WMS, WFS, and proxy service
 
-USE_ZIP=	yes
-USE_JAVA=	1.5+
+USES=		zip
+USE_JAVA=	1.6+
 
 NO_BUILD=	yes
 TOMCATDIR=	${PREFIX}/${TOMCATVER}

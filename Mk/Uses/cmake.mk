@@ -2,8 +2,6 @@
 #
 # Provide support for CMake based projects
 #
-# MAINTAINER: kde@FreeBSD.org
-#
 # Feature:		cmake
 # Usage:		USES=cmake or USES=cmake:ARGS
 # Valid ARGS:		outsource
@@ -36,6 +34,8 @@
 #			Debug otherwise
 # CMAKE_SOURCE_PATH	- Path to the source directory
 #			Default: ${WRKSRC}
+#
+# MAINTAINER: kde@FreeBSD.org
 
 .if !defined(_INCLUDE_USES_CMAKE_MK)
 _INCLUDE_USES_CMAKE_MK=	yes
@@ -83,10 +83,12 @@ CMAKE_ARGS+=		-DCMAKE_C_COMPILER:STRING="${CC}" \
 			-DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
 			-DCMAKE_MODULE_LINKER_FLAGS:STRING="${LDFLAGS}" \
 			-DCMAKE_SHARED_LINKER_FLAGS:STRING="${LDFLAGS}" \
-			-DCMAKE_INSTALL_PREFIX:PATH="${PREFIX}" \
+			-DCMAKE_INSTALL_PREFIX:PATH="${CMAKE_INSTALL_PREFIX}" \
 			-DCMAKE_BUILD_TYPE:STRING="${CMAKE_BUILD_TYPE}" \
 			-DTHREADS_HAVE_PTHREAD_ARG:BOOL=YES \
 			-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=YES
+
+CMAKE_INSTALL_PREFIX?=	${PREFIX}
 
 .if defined(BATCH) || defined(PACKAGE_BUILDING)
 CMAKE_VERBOSE=		yes

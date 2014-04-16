@@ -4,12 +4,9 @@
     COMMENT = Software support for handheld devices (Palm, PocketPC, ...)
 
     SUBDIR += bibelot
-    SUBDIR += gnome-pilot
-    SUBDIR += gnome-pilot-conduits
     SUBDIR += iSiloXC
     SUBDIR += imgvtopgm
     SUBDIR += jpilot
-    SUBDIR += jpilot-db
     SUBDIR += jpilot-picsnvideos
     SUBDIR += libmal
     SUBDIR += makeztxt
@@ -25,13 +22,8 @@
     SUBDIR += ppmtoTbmp
     SUBDIR += py-synce-librapi2
     SUBDIR += py-synce-librra
-    SUBDIR += synce-gvfs
-    SUBDIR += synce-hal
     SUBDIR += synce-librapi2
     SUBDIR += synce-librra
     SUBDIR += synce-libsynce
-    SUBDIR += synce-serial
-    SUBDIR += synce-sync-engine
-    SUBDIR += synce-vdccm
 
 .include <bsd.port.subdir.mk>

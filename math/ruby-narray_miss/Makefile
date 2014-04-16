@@ -3,7 +3,7 @@
 
 PORTNAME=	narray_miss
 PORTVERSION=	1.2.8
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	math ruby
 MASTER_SITES=	http://ruby.gfd-dennou.org/products/narray_miss/ \
 		http://dennou-h.gfd-dennou.org/library/ruby/products/narray_miss/ \
@@ -14,7 +14,9 @@ DIST_SUBDIR=	ruby
 MAINTAINER=	murashin@gfd-dennou.org
 COMMENT=	Additional class with processing of missing value to NArray
 
-LICENSE=	BSD
+OPTIONS_DEFINE=	DOCS
+
+LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/${PORTNAME}/LICENSE.txt
 
 RUN_DEPENDS=	${RUBY_SITEARCHLIBDIR}/narray.so:${PORTSDIR}/math/ruby-narray
@@ -27,14 +29,11 @@ NO_BUILD=	yes
 
 DOCS=		LICENSE.txt README.rdoc
 
-NO_STAGE=	yes
 do-install:
-	cd ${WRKSRC}/${PORTNAME} && ${RAKE_BIN} nongeminstall
-.if !defined(NOPORTDOCS)
-	${MKDIR} ${RUBY_MODDOCDIR}
+	cd ${WRKSRC}/${PORTNAME} && ${SETENV} DESTDIR=${STAGEDIR} ${RAKE_BIN} nongeminstall
+	@${MKDIR} ${STAGEDIR}${RUBY_MODDOCDIR}
 .for f in ${DOCS}
-	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}/${f} ${RUBY_MODDOCDIR}
+	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}/${f} ${STAGEDIR}${RUBY_MODDOCDIR}
 .endfor
-.endif
 
 .include <bsd.port.mk>

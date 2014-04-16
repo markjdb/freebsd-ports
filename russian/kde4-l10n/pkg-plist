@@ -731,7 +731,6 @@ share/doc/HTML/ru/kolourpaint/common
 share/doc/HTML/ru/kolourpaint/image_balance.png
 share/doc/HTML/ru/kolourpaint/image_emboss.png
 share/doc/HTML/ru/kolourpaint/image_flatten.png
-share/doc/HTML/ru/kolourpaint/image_flip.png
 share/doc/HTML/ru/kolourpaint/image_invert.png
 share/doc/HTML/ru/kolourpaint/image_reduce_colors.png
 share/doc/HTML/ru/kolourpaint/image_resize_scale.png
@@ -740,6 +739,7 @@ share/doc/HTML/ru/kolourpaint/image_skew.png
 share/doc/HTML/ru/kolourpaint/image_soften_sharpen.png
 share/doc/HTML/ru/kolourpaint/index.cache.bz2
 share/doc/HTML/ru/kolourpaint/index.docbook
+share/doc/HTML/ru/kolourpaint/screenshot_acquiring.png
 share/doc/HTML/ru/kolourpaint/view_thumbnails.png
 share/doc/HTML/ru/kompare/common
 share/doc/HTML/ru/kompare/index.cache.bz2
@@ -935,9 +935,9 @@ share/doc/HTML/ru/kturtle/using-kturtle.docbook
 share/doc/HTML/ru/kuser/common
 share/doc/HTML/ru/kuser/index.cache.bz2
 share/doc/HTML/ru/kuser/index.docbook
-share/doc/HTML/ru/kwallet/common
-share/doc/HTML/ru/kwallet/index.cache.bz2
-share/doc/HTML/ru/kwallet/index.docbook
+share/doc/HTML/ru/kwalletmanager/common
+share/doc/HTML/ru/kwalletmanager/index.cache.bz2
+share/doc/HTML/ru/kwalletmanager/index.docbook
 share/doc/HTML/ru/kwatchgnupg/common
 share/doc/HTML/ru/kwatchgnupg/index.cache.bz2
 share/doc/HTML/ru/kwatchgnupg/index.docbook
@@ -1772,7 +1772,7 @@ share/locale/ru/entry.desktop
 @dirrm share/doc/HTML/ru/kwrite
 @dirrm share/doc/HTML/ru/kwordquiz
 @dirrm share/doc/HTML/ru/kwatchgnupg
-@dirrm share/doc/HTML/ru/kwallet
+@dirrm share/doc/HTML/ru/kwalletmanager
 @dirrm share/doc/HTML/ru/kuser
 @dirrm share/doc/HTML/ru/kturtle
 @dirrm share/doc/HTML/ru/ktuberling

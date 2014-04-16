@@ -17,15 +17,15 @@ LIB_DEPENDS=	libgpgme.so:${PORTSDIR}/security/gpgme \
 		libgrantlee_gui.so:${PORTSDIR}/devel/grantlee \
 		libclucene-core.so:${PORTSDIR}/textproc/clucene \
 		liblink-grammar.so:${PORTSDIR}/textproc/link-grammar
-RUN_DEPENDS=	${KDE4_PREFIX}/bin/accountwizard:${PORTSDIR}/deskutils/kdepim4-runtime
+RUN_DEPENDS=	${KDE4_PREFIX}/bin/accountwizard:${PORTSDIR}/deskutils/kdepim4-runtime \
+		${LOCALBASE}/bin/gmd5sum:${PORTSDIR}/sysutils/coreutils
 
 CONFLICTS_INSTALL=	kdepim44-4.*
 
-USE_XZ=		yes
 USE_GNOME=	libxml2 libxslt:build
 USE_KDE4=	kdehier kdelibs kdeprefix pimlibs kactivities \
 		akonadi automoc4 ontologies soprano strigi nepomuk-widgets
-USES=		cmake:outsource gmake iconv
+USES=		cmake:outsource gmake iconv tar:xz
 USE_OPENLDAP=	yes
 USE_QT4=	corelib dbus declarative designer_build gui network opengl \
 		script sql webkit \

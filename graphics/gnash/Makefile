@@ -3,7 +3,7 @@
 
 PORTNAME=	gnash
 PORTVERSION=	0.8.10
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES=	graphics
 MASTER_SITES=	GNU/${PORTNAME}/${PORTVERSION}/
 
@@ -19,13 +19,12 @@ LIB_DEPENDS=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
 
 CONFLICTS=	gnash-devel-[0-9]*
 
-USE_BZIP2=	yes
-USES=		gmake pkgconfig
+USES=		tar:bzip2 pkgconfig gmake
 USE_AUTOTOOLS=	libltdl
 GNU_CONFIGURE=	yes
 WANT_SDL=	yes
 WANT_GNOME=	yes
-USE_GCC=	4.2+	# triggers compiler error on gcc 3.4
+USE_GCC=	any
 WANT_GSTREAMER=	yes
 USE_GNOME=	libxml2
 USE_XORG=	x11 xau xdmcp xext xi xinerama ice sm xv

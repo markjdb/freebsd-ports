@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Catalyst-Authentication-Store-DBIx-Class
-PORTVERSION=	0.1505
+PORTVERSION=	0.1506
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -25,5 +25,7 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USES=		perl5
 USE_PERL5=	configure
+
+PATCH_STRIP=	-p1
 
 .include <bsd.port.mk>

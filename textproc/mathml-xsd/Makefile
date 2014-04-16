@@ -3,27 +3,24 @@
 
 PORTNAME=	mathml-xsd
 PORTVERSION=	2
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	textproc
 MASTER_SITES=	http://www.w3.org/Math/XMLSchema/
 DISTNAME=	mathml${PORTVERSION}
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	The MathML XML Schema
 
+USES=		tar:tgz
 NO_BUILD=	yes
+PORTDATA=	*
 
-NO_STAGE=	yes
 post-extract:
-	@${FIND} ${WRKSRC} -name "CVS" -type d -delete
+	@${FIND} ${WRKSRC} -name "CVS" -type d -exec rm -rf {} +;
+	@${RM} ${WRKSRC}/content/tokens.xsd.~1.3.~
 
 do-install:
-	@${MKDIR} ${DATADIR}
-	@${CP} -R ${WRKSRC}/* ${DATADIR}
-	@${FIND} ${DATADIR} -type f | \
-		${SED} 's,^${PREFIX}/,,' >> ${TMPPLIST}
-	@${FIND} ${DATADIR} -type d | ${SORT} -r | \
-		${SED} 's,^${PREFIX}/,@dirrm ,' >> ${TMPPLIST}
+	${MKDIR} ${STAGEDIR}${DATADIR}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
 
 .include <bsd.port.mk>

@@ -3,7 +3,7 @@
 
 PORTNAME?=	djbdns
 PORTVERSION?=	${DJBDNS_VER}
-PORTREVISION?=	17
+PORTREVISION?=	19
 PORTEPOCH?=	1
 CATEGORIES?=	dns
 MASTER_SITES=	http://cr.yp.to/djbdns/ \
@@ -117,7 +117,7 @@ BUILD_DEPENDS+=	nacl-sha256:${PORTSDIR}/security/nacl
 DJBDNS_VER=	1.05
 DJBDNS_V6_VER=	test23
 
-ALL_TARGET=	it
+ALL_TARGET=	prog
 INSTALL_TARGET=	setup check
 
 .if ${PORT_OPTIONS:MIP6}
@@ -127,15 +127,17 @@ PLIST_SUB+=	WITH_IP6="@comment "
 .endif
 
 post-patch:
-	@echo "${CC} ${CFLAGS}" > ${WRKSRC}/conf-cc
-	@echo "${CC} ${STRIP} ${LDFLAGS}" > ${WRKSRC}/conf-ld
-	@echo "${PREFIX}" > ${WRKSRC}/conf-home
+	@${ECHO_CMD} "${CC} ${CFLAGS}" > ${WRKSRC}/conf-cc
+	@${ECHO_CMD} "${CC} ${STRIP} ${LDFLAGS}" > ${WRKSRC}/conf-ld
+	@${ECHO_CMD} "${PREFIX}" > ${WRKSRC}/conf-home
 
-pre-install:
+post-build:
+	@${ECHO_MSG} "===> Rebuilding DJB installer to respect STAGEDIR"
 	@${MV} -f ${WRKSRC}/conf-home ${WRKSRC}/conf-home.sav
-	@echo "${STAGEDIR}${PREFIX}" > ${WRKSRC}/conf-home
-	@cd ${WRKSRC} ; ${RM} -f install instcheck install.o instcheck.o hier.o auto_home.o
+	@${ECHO_CMD} "${STAGEDIR}${PREFIX}" > ${WRKSRC}/conf-home
+	@cd ${WRKSRC} ; ${RM} -f install instcheck install.o instcheck.o hier.o auto_home.o auto_home.c
 	@cd ${WRKSRC} ; ${MAKE_CMD} install instcheck
+	@${TOUCH} ${WRKSRC}/*-conf
 	@${MV} -f ${WRKSRC}/conf-home.sav ${WRKSRC}/conf-home
 
 .if ${PORT_OPTIONS:MMAN}

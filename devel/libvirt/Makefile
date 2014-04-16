@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libvirt
-PORTVERSION=	1.2.1
+PORTVERSION=	1.2.3
 PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://libvirt.org/sources/ \
@@ -19,8 +19,10 @@ LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
 		libgnutls.so:${PORTSDIR}/security/gnutls \
 		libssh2.so:${PORTSDIR}/security/libssh2
 
-OPTIONS_DEFINE=	QEMU DOCS NLS
+OPTIONS_DEFINE=	DOCS NLS QEMU
+OPTIONS_DEFINE_amd64=	BHYVE
 QEMU_DESC=	QEMU driver
+BHYVE_DESC=	bhyve driver
 
 OPTIONS_SUB=	yes
 
@@ -29,6 +31,8 @@ QEMU_CFLAGS=	-I${LOCALBASE}/include
 QEMU_LIB_DEPENDS=	libyajl.so:${PORTSDIR}/devel/yajl
 QEMU_RUN_DEPENDS=	dmidecode:${PORTSDIR}/sysutils/dmidecode \
 			qemu-io:${PORTSDIR}/emulators/qemu-devel
+
+BHYVE_CONFIGURE_WITH=	bhyve
 
 NLS_USES=	gettext
 NLS_CONFIGURE_ENABLE=	nls
@@ -45,6 +49,7 @@ CONFIGURE_ARGS=	--without-sasl \
 		--without-netcf \
 		--without-network \
 		--without-sysctl \
+		--without-lxc \
 		--with-ssh2
 
 # workaround to override pkg-config calls
@@ -74,6 +79,11 @@ STRIP_FILES=	libvirt.so.${SHLIB_VER} \
 		libvirt/connection-driver/libvirt_driver_storage.so
 
 .include <bsd.port.options.mk>
+
+#work around an options bug (thanks mat@)
+.if ${ARCH} != amd64
+PLIST_SUB+=	BHYVE="@comment "
+.endif
 
 post-patch:
 .if ${OSVERSION} < 900000

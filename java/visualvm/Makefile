@@ -15,19 +15,19 @@ LICENSE_NAME=	VISUALVM with ClassPath Exception
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 LICENSE_PERMS=	${_LICENSE_PERMS_DEFAULT}
 
-USE_ZIP=	yes
+USES=		zip:infozip
 NO_BUILD=	yes
 USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 WRKSRC=		${WRKDIR}/visualvm_${PORTVERSION:S/.//g}
 SUB_FILES=	visualvm.desktop
 
-post-extract-script:
+post-extract:
 	@${FIND} ${WRKSRC} -type f \( -name '*.bak' -or -name '*.dll' -or -name '*.exe' \) -delete
 	@${RM} -rf ${WRKSRC}/profiler/lib/deployed
 	@${RM} -rf ${WRKSRC}/profiler/lib/jfluid-server-15.jar
 
-post-patch-script:
+post-patch:
 	@${REINPLACE_CMD} 's|%%JAVA_HOME%%|${JAVA_HOME}|' ${WRKSRC}/bin/visualvm
 
 do-install:

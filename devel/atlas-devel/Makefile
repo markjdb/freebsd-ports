@@ -3,7 +3,7 @@
 
 PORTNAME=	Atlas
 PORTVERSION=	0.6.3
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	SF/worldforge/${PORTNAME}-C%2B%2B%20%28protocol%20lib%29/${PORTVERSION}
 DISTNAME=	${PORTNAME}-C++-${PORTVERSION:S/.r/rc/}
@@ -15,12 +15,16 @@ OPTIONS_DEFINE=	DOCS
 
 PKGNAMESUFFIX=	-devel
 GNU_CONFIGURE=	yes
-USES=	pathfix compiler:c++11-lang
-USE_AUTOTOOLS=	libtool
+USES=		pathfix compiler:c++11-lib
 USE_LDCONFIG=	YES
 USE_BZIP2=	YES
 MAKE_ARGS=	docdir=${DOCSDIR}
 CONFIGURE_ARGS+=--program-transform-name=
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|^static const bool debug_flag = false;$$||' \
+		${WRKSRC}/Atlas/Message/DecoderBase.cpp \
+		${WRKSRC}/Atlas/Codecs/Bach.cpp
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

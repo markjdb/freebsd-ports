@@ -8,6 +8,8 @@ MASTER_SITES=	RG
 MAINTAINER=	kuriyama@FreeBSD.org
 COMMENT=	Fluent event collector
 
+BROKEN=		Requires http_parser version 0.5.1 while version 0.6 is installed
+
 RUN_DEPENDS=	\
 	rubygem-msgpack>=0.5.4:${PORTSDIR}/devel/rubygem-msgpack \
 	rubygem-json>=1.4.3:${PORTSDIR}/devel/rubygem-json \
@@ -26,10 +28,4 @@ USERS=		fluentd
 GROUPS=		fluentd
 SUB_LIST+=	USER=${USERS} GROUP=${GROUPS}
 
-NO_STAGE=	yes
-.include <bsd.port.pre.mk>
-
-post-install:
-	${INSTALL} -d -o ${USERS} -g ${GROUPS} -m 775 /var/run/fluentd
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

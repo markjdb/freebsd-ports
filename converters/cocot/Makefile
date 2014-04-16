@@ -8,14 +8,15 @@ MASTER_SITES=	ftp://ftp.iDaemons.org/pub/distfiles/ \
 		${MASTER_SITE_LOCAL}
 MASTER_SITE_SUBDIR=	knu
 DISTNAME=	${PORTNAME}-1.1-${PORTVERSION}
-EXTRACT_SUFX=	.zip
 
 MAINTAINER=	knu@FreeBSD.org
 COMMENT=	Code Converter on TTY
 
+LICENSE=	BSD3CLAUSE
+
 OPTIONS_DEFINE=	DOCS
 
-USES=		iconv
+USES=		iconv zip
 WRKSRC=		${WRKDIR}/vmi-${PORTNAME}-8bc9f64
 GNU_CONFIGURE=	yes
 

@@ -7,7 +7,6 @@
     SUBDIR += TkTopNetFlows
     SUBDIR += aggregate
     SUBDIR += aircrack-ng
-    SUBDIR += airport
     SUBDIR += angst
     SUBDIR += ap-utils
     SUBDIR += argus-monitor
@@ -132,7 +131,6 @@
     SUBDIR += nagios-check_tftp
     SUBDIR += nagios-geom
     SUBDIR += nagios-openldap-plugins
-    SUBDIR += nagios-pf-plugin
     SUBDIR += nagios-plugins
     SUBDIR += nagios-portaudit
     SUBDIR += nagios-silfreed-plugins
@@ -216,6 +214,7 @@
     SUBDIR += p5-Nagios-Plugins-Memcached
     SUBDIR += p5-Net-ACL
     SUBDIR += p5-Net-Abuse-Utils
+    SUBDIR += p5-Net-Abuse-Utils-Spamhaus
     SUBDIR += p5-Net-CIDR
     SUBDIR += p5-Net-ILO
     SUBDIR += p5-Net-IP
@@ -257,7 +256,6 @@
     SUBDIR += percona-monitoring-plugins
     SUBDIR += pftabled
     SUBDIR += php5-snmp
-    SUBDIR += php52-snmp
     SUBDIR += php53-snmp
     SUBDIR += php55-snmp
     SUBDIR += phpip

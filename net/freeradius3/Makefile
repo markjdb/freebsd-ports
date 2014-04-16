@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	freeradius
-DISTVERSION=	3.0.1
+DISTVERSION=	3.0.2
 PORTREVISION=	2
 CATEGORIES=	net
 MASTER_SITES=	ftp://ftp.freeradius.org/pub/freeradius/%SUBDIR%/ \
@@ -14,26 +14,27 @@ PKGNAMESUFFIX=	3
 DISTNAME=	freeradius-server-${DISTVERSION}
 
 MAINTAINER=	zi@FreeBSD.org
-COMMENT=	A free RADIUS server implementation
+COMMENT=	Free RADIUS server implementation
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	gdbm:${PORTSDIR}/databases/gdbm \
-		talloc:${PORTSDIR}/devel/talloc
+LIB_DEPENDS=	libgdbm.so:${PORTSDIR}/databases/gdbm \
+		libtalloc.so:${PORTSDIR}/devel/talloc
 
 LOGDIR?=	/var/log
 KRB5_CONFIG?=	/usr/bin/krb5-config --libs
 
-CONFLICTS=	gnu-radius-[0-9].* openradius-[0-9].* radiusd-cistron-[0-9].* \
-		freeradius-mysql-[0-9].* freeradius-[0124-9].*
+CONFLICTS_INSTALL=	gnu-radius-[0-9].* openradius-[0-9].* radiusd-cistron-[0-9].* \
+		freeradius-mysql-[0-9].* freeradius-[^3].*
 
 USE_RC_SUBR=	radiusd
 
-USES=		gmake
+USES=		gmake tar:bzip2
 GNU_CONFIGURE=	yes
-USE_BZIP2=	yes
 USE_OPENSSL=	yes
 MAKE_ARGS+=	LDFLAGS="-L${LOCALBASE}/lib ${PTHREAD_LIBS}"
+# Prevent /root/.rnd leftover
+MAKE_ARGS+=	HOME=/dev/null
 CFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
 MAKE_JOBS_SAFE=	yes
 
@@ -56,8 +57,6 @@ DEVELOPER_DESC=		Enable developer options
 EDIR_DESC=		Enable eDirectory support (implies LDAP)
 REST_DESC=		Enable RESTful API support
 SSL_PORT_DESC=		Use OpenSSL from the ports collection
-
-NO_STAGE=	yes
 
 .include <bsd.port.options.mk>
 
@@ -84,11 +83,11 @@ ${UNIQUENAME}_SET+=	KERBEROS
 .if ${PORT_OPTIONS:MKERBEROS}
 .if ${PORT_OPTIONS:MHEIMDAL}
 .if ${PORT_OPTIONS:MHEIMDAL_PORT}
-LIB_DEPENDS+=	krb5:${PORTSDIR}/security/heimdal
+LIB_DEPENDS+=	libkrb5.so:${PORTSDIR}/security/heimdal
 .endif
 CONFIGURE_ARGS+=--enable-heimdal-krb5 --enable-pthread-support
 .else
-LIB_DEPENDS+=	krb5:${PORTSDIR}/security/krb5
+LIB_DEPENDS+=	libkrb5.so:${PORTSDIR}/security/krb5
 .endif
 CONFIGURE_ARGS+=--with-rlm_krb5
 .if ${PORT_OPTIONS:MHEIMDAL} && empty(PORT_OPTIONS:MHEIMDAL_PORT)
@@ -147,7 +146,7 @@ PLIST_SUB+=	PGSQL="@comment "
 .if ${PORT_OPTIONS:MUNIXODBC}
 CONFIGURE_ARGS+=--with-rlm_sql_unixodbc
 PLIST_SUB+=	UNIXODBC=""
-LIB_DEPENDS+=	odbc:${PORTSDIR}/databases/unixODBC
+LIB_DEPENDS+=	libodbc.so:${PORTSDIR}/databases/unixODBC
 .else
 CONFIGURE_ARGS+=--without-rlm_sql_unixodbc
 PLIST_SUB+=	UNIXODBC="@comment "
@@ -188,6 +187,7 @@ PLIST_SUB+=	RLMPYTHON="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MRUBY}
+IGNORE=		with ruby support leaks memory, breaks signal handling.  Please disable RUBY support
 USE_RUBY=	yes
 CONFIGURE_ARGS+=--with-rlm_ruby
 PLIST_SUB+=	RLMRUBY=""
@@ -202,7 +202,7 @@ EXPM=		yes
 .endif
 
 .if ${PORT_OPTIONS:MREDIS}
-LIB_DEPENDS+=	hiredis:${PORTSDIR}/databases/hiredis
+LIB_DEPENDS+=	libhiredis.so:${PORTSDIR}/databases/hiredis
 CONFIGURE_ARGS+=--with-rlm_redis --with-rlm_rediswho
 PLIST_SUB+=	RLMREDIS=""
 .else
@@ -217,8 +217,8 @@ EXPM=		yes
 
 .if ${PORT_OPTIONS:MREST}
 IGNORE=		requires devel/json-c to be updated to 0.11 to build with RESTful support
-LIB_DEPENDS+=	json:${PORTSDIR}/devel/json-c \
-    		curl:${PORTSDIR}/ftp/curl
+LIB_DEPENDS+=	libjson.so:${PORTSDIR}/devel/json-c \
+    		libcurl.so:${PORTSDIR}/ftp/curl
 CONFIGURE_ARGS+=--with-rlm_rest \
 		--with-libcurl=${LOCALBASE} \
 		--with-jsonc-lib-dir=${LOCALBASE}/lib \
@@ -235,7 +235,7 @@ EXPM=		yes
 .endif
 
 .if ${PORT_OPTIONS:MFREETDS}
-LIB_DEPENDS+=	tds:${PORTSDIR}/databases/freetds
+LIB_DEPENDS+=	libtds.so:${PORTSDIR}/databases/freetds
 CONFIGURE_ARGS+=--with-rlm_freetds
 PLIST_SUB+=	RLMFREETDS=""
 .else
@@ -249,7 +249,7 @@ EXPM=		yes
 .endif
 
 .if ${PORT_OPTIONS:MIDN}
-LIB_DEPENDS+=	idn:${PORTSDIR}/dns/libidn
+LIB_DEPENDS+=	libidn.so:${PORTSDIR}/dns/libidn
 CONFIGURE_ARGS+=--with-rlm_idn
 PLIST_SUB+=	RLMIDN=""
 .else
@@ -290,9 +290,7 @@ WITH_OPENSSL_PORT=yes
 .include <bsd.port.pre.mk>
 
 # if we're installing, place sample configs into ${EXAMPLESDIR}
-.if make(install)
-MAKE_ENV+=	raddbdir="${EXAMPLESDIR}/raddb"
-.endif
+MAKE_ARGS+=	raddbdir="${EXAMPLESDIR}/raddb" R=${STAGEDIR}
 
 .if ${ARCH} == "sparc64" && ${OSVERSION} < 700000
 BROKEN=		Does not build on sparc64-6
@@ -338,31 +336,20 @@ CONFIGURE_ARGS+=--with-logdir=${LOGDIR} \
 CONFIGURE_ARGS+=--with-pic
 .endif
 
+SUB_FILES+=	pkg-install pkg-message
 SUB_LIST+=	RADIUS_USER="${RADIUS_USER}" \
 		RADIUS_GROUP="${RADIUS_GROUP}" \
 		RADDB_WORK="${WRKSRC}/raddb" \
 		RADDB="${PREFIX}/etc/raddb" \
 		LOGDIR="${LOGDIR}" \
 		LIBDIR="${PREFIX}/${FREERADIUS_LIBDIR}"
-SUB_FILES+=	pkg-install pkg-message
-
-MAN1=		radclient.1 radeapclient.1 radlast.1 radtest.1 radwho.1 \
-		radzap.1 smbencrypt.1
-MAN5=		clients.conf.5 dictionary.5 radiusd.conf.5 radrelay.conf.5 \
-		rlm_always.5 rlm_attr_filter.5 rlm_chap.5 rlm_counter.5 \
-		rlm_detail.5 rlm_digest.5 rlm_expr.5 rlm_files.5 rlm_mschap.5 \
-		rlm_pap.5 rlm_passwd.5 rlm_realm.5 rlm_sql.5 \
-		rlm_unix.5 unlang.5 users.5 checkrad.5 rlm_idn.5
-MAN8=		radiusd.8 radmin.8 raddebug.8 radrelay.8 radsqlrelay.8 \
-		rlm_ippool_tool.8 radconf2xml.8 radcrypt.8 radsniff.8
-
 SUB_LIST+=	REQUIRE="${_REQUIRE}"
 
 post-patch:
+# never try to find execinfo.h (needed until we can enable/disable backtrace
+	@${REINPLACE_CMD} -e '/execinfo.h/d' ${WRKSRC}/configure
 	@${REINPLACE_CMD} -Ee "s:tests/all.mk ::" ${WRKSRC}/src/all.mk
 	@${CP} ${WRKSRC}/m4/ax_with_prog.m4 ${WRKSRC}
-	@${REINPLACE_CMD} -Ee "s:^make:${GMAKE}:" \
-		${WRKSRC}/raddb/certs/bootstrap
 # Patch raddb/certs/Makefile for the full path to the openssl binary (using
 # ports OpenSSL if installed)
 	@${REINPLACE_CMD} -E \
@@ -370,11 +357,7 @@ post-patch:
 		${WRKSRC}/raddb/certs/Makefile
 	@${REINPLACE_CMD} -Ee 's: ..R...sbindir./rc.radiusd : :' \
 		${WRKSRC}/scripts/all.mk
-# Clean up after the last two operations (so as not to get unwanted files in
-# raddb)
-	@${FIND} -E ${WRKSRC}/raddb/certs \
-		-regex '.*/(bootstrap|Makefile)\.(orig|bak)$$' \
-		-delete
+
 # If we're using Heimdal from base, alter the LIBS variable
 .if ${PORT_OPTIONS:MHEIMDAL} && empty(PORT_OPTIONS:MHEIMDAL_PORT)
 	@${REINPLACE_CMD} -e 's|LIBS|KRB5LIBS|g' ${WRKSRC}/src/modules/rlm_krb5/configure
@@ -389,26 +372,5 @@ pre-configure:
 # Replace -pthread with ${PTHREAD_LIBS} in configure(.in) files
 	@${FIND} -E ${WRKSRC} -regex '.*/configure(\.in)?$$' -exec \
 		${REINPLACE_CMD} -e "s:-pthread:${PTHREAD_LIBS}:g" {} \;
-
-pre-install:
-	@${SETENV} PKG_PREFIX=${PREFIX} ${SH} ${PKGINSTALL} ${PKGNAME} \
-		PRE-INSTALL
-
-post-install:
-	@${INSTALL_DATA} ${FILESDIR}/dictionary.cisco.asa ${DATADIR}
-# If ${PREFIX}/etc/raddb isn't a directory (or a symlink), make a copy
-# of ${EXAMPLESDIR}/raddb as ${PREFIX}/etc/raddb, then bootstrap the
-# certificates
-	@if ! [ -d ${PREFIX}/etc/raddb -o -L ${PREFIX}/etc/raddb ]; then \
-		${CP} -RP ${EXAMPLESDIR}/raddb ${PREFIX}/etc/raddb; \
-		${ECHO_MSG} '===> Bootstrapping default certificates, please wait...'; \
-		${PREFIX}/etc/raddb/certs/bootstrap >/dev/null 2>&1; \
-	fi
-# Set ${PREFIX}/etc/raddb and all the files and folders in it to g-w,o-rwx
-# (FreeRADIUS will probably complain if this is not done)
-	@${CHMOD} -R g-w,o-rwx ${PREFIX}/etc/raddb
-	@${SETENV} PKG_PREFIX=${PREFIX} ${SH} ${PKGINSTALL} ${PKGNAME} \
-		POST-INSTALL
-	@${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.post.mk>
