@@ -299,7 +299,6 @@
     SUBDIR += info2man
     SUBDIR += info_to_html
     SUBDIR += intltool
-    SUBDIR += ipdf
     SUBDIR += irstlm
     SUBDIR += is-aspell
     SUBDIR += is-hyphen
@@ -341,6 +340,7 @@
     SUBDIR += l2a
     SUBDIR += la-aspell
     SUBDIR += lacheck
+    SUBDIR += lasem
     SUBDIR += latex-service
     SUBDIR += latex2html
     SUBDIR += lemmatizer2
@@ -365,6 +365,7 @@
     SUBDIR += libodfgen
     SUBDIR += libparsifal
     SUBDIR += libroxml
+    SUBDIR += libsass
     SUBDIR += libsoldout
     SUBDIR += libsphinxclient
     SUBDIR += libstree
@@ -1042,7 +1043,6 @@
     SUBDIR += p5-xmltv
     SUBDIR += pa-aspell
     SUBDIR += par
-    SUBDIR += pardiff
     SUBDIR += pcrs
     SUBDIR += pdfgrep
     SUBDIR += pdfoutline
@@ -1208,7 +1208,6 @@
     SUBDIR += py-zope.tal
     SUBDIR += py-zpt
     SUBDIR += py2html
-    SUBDIR += pybook
     SUBDIR += pychm
     SUBDIR += pystemmer
     SUBDIR += qprint
@@ -1244,7 +1243,6 @@
     SUBDIR += ro-hunspell
     SUBDIR += ro-hyphen
     SUBDIR += ro-mythes
-    SUBDIR += roap
     SUBDIR += rot
     SUBDIR += rss2html
     SUBDIR += rtf2html
@@ -1349,6 +1347,7 @@
     SUBDIR += sagasu
     SUBDIR += sarep
     SUBDIR += sary
+    SUBDIR += sassc
     SUBDIR += saxon
     SUBDIR += saxon-devel
     SUBDIR += saxon-he

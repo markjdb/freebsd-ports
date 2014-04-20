@@ -358,7 +358,6 @@
     SUBDIR += patchutils
     SUBDIR += pauker
     SUBDIR += pciids
-    SUBDIR += pdfmap
     SUBDIR += pdmenu
     SUBDIR += pear-Services_Weather
     SUBDIR += pear-Text_Figlet
@@ -405,7 +404,6 @@
     SUBDIR += rubygem-vpim
     SUBDIR += rump
     SUBDIR += saaghar
-    SUBDIR += salias
     SUBDIR += seq2
     SUBDIR += shared-mime-info
     SUBDIR += shc
@@ -442,7 +440,6 @@
     SUBDIR += translate
     SUBDIR += ttyrec
     SUBDIR += tvbrowser
-    SUBDIR += txt2regex
     SUBDIR += typetrainer
     SUBDIR += uk-phone
     SUBDIR += uk-postcodes
@@ -459,7 +456,6 @@
     SUBDIR += window
     SUBDIR += wmScoreBoard
     SUBDIR += wmcalendar
-    SUBDIR += wmfirew
     SUBDIR += wminfo
     SUBDIR += wmjulia
     SUBDIR += wmpal

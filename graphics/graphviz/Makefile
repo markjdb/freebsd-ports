@@ -3,6 +3,7 @@
 
 PORTNAME=	graphviz
 PORTVERSION=	2.36.0
+PORTREVISION=	1
 CATEGORIES=	graphics tk
 MASTER_SITES=	http://www.graphviz.org/pub/graphviz/ARCHIVE/
 
@@ -69,7 +70,7 @@ SMYRNA_DESC=	SMYRNA graph viewer (requires GTK2)
 GVEDIT_DESC=	gvedit (requires qt)
 MING_DESC=	ming plugin
 DEVIL_DESC=	devil plugin
-GHOSTSCRIPT_DESC=ghostscript plugin
+GHOSTSCRIPT_DESC=ghostscript plugin (requires PANGOCAIRO)
 PERL_DESC=	Perl bindings (swig)
 PHP_DESC=	PHP bindings (swig) 
 PYTHON_DESC=	Python bindings (swig)
@@ -197,6 +198,12 @@ CONFIGURE_ARGS+=	--without-libiconv-prefix
 .if ${PORT_OPTIONS:MLIBRSVG2}
 .if empty(PORT_OPTIONS:MPANGOCAIRO)
 IGNORE=	option PANGOCAIRO is required for option LIBRVG2
+.endif
+.endif
+
+.if ${PORT_OPTIONS:MGHOSTSCRIPT}
+.if empty(PORT_OPTIONS:MPANGOCAIRO)
+IGNORE=	option PANGOCAIRO is required for option GHOSTSCRIPT
 .endif
 .endif
 

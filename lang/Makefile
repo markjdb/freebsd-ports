@@ -47,9 +47,8 @@
     SUBDIR += cython
     SUBDIR += diveintopython
     SUBDIR += dlv
-    SUBDIR += dmd
+    SUBDIR += dmd1
     SUBDIR += dmd2
-    SUBDIR += dragonegg-devel46
     SUBDIR += dragonegg46-33
     SUBDIR += dragonegg47-33
     SUBDIR += ecl
@@ -65,7 +64,6 @@
     SUBDIR += expect
     SUBDIR += ezm3
     SUBDIR += f2c
-    SUBDIR += f77
     SUBDIR += fasm
     SUBDIR += ferite
     SUBDIR += ficl
@@ -132,7 +130,6 @@
     SUBDIR += js_of_ocaml
     SUBDIR += jython
     SUBDIR += kawa
-    SUBDIR += klone
     SUBDIR += kroc
     SUBDIR += kturtle
     SUBDIR += lafontaine
@@ -144,7 +141,6 @@
     SUBDIR += linux-f10-libg2c
     SUBDIR += linux-f10-tcl85
     SUBDIR += linux-j
-    SUBDIR += logo
     SUBDIR += lua
     SUBDIR += lua-mode.el
     SUBDIR += lua52
@@ -330,7 +326,6 @@
     SUBDIR += stklos
     SUBDIR += stldoc
     SUBDIR += swi-pl
-    SUBDIR += sxm
     SUBDIR += t3x
     SUBDIR += tcc
     SUBDIR += tcl-manual

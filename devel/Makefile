@@ -418,7 +418,6 @@
     SUBDIR += exercisix
     SUBDIR += f77flow
     SUBDIR += fam
-    SUBDIR += fampp
     SUBDIR += fastcrc
     SUBDIR += fb303
     SUBDIR += fc++
@@ -435,7 +434,6 @@
     SUBDIR += flex_compiler_shell
     SUBDIR += flexdock
     SUBDIR += flexjson
-    SUBDIR += flick
     SUBDIR += flickrnet
     SUBDIR += florist-gpl
     SUBDIR += flowdesigner
@@ -633,7 +631,6 @@
     SUBDIR += hachoir-parser
     SUBDIR += hachoir-regex
     SUBDIR += hadoop
-    SUBDIR += happydoc
     SUBDIR += hapy
     SUBDIR += hcs12mem
     SUBDIR += hexcompare
@@ -860,7 +857,6 @@
     SUBDIR += ipython
     SUBDIR += ireport
     SUBDIR += itext
-    SUBDIR += ixlib
     SUBDIR += jakarta-commons-configuration
     SUBDIR += jakarta-commons-daemon
     SUBDIR += jakarta-commons-io
@@ -1195,7 +1191,6 @@
     SUBDIR += lua-lunit
     SUBDIR += lua-posix
     SUBDIR += lua-pty
-    SUBDIR += lua-redis-parser
     SUBDIR += lua-sysctl
     SUBDIR += luabind
     SUBDIR += luafilesystem
@@ -3422,7 +3417,6 @@
     SUBDIR += projectcenter
     SUBDIR += protobuf
     SUBDIR += protobuf-c
-    SUBDIR += prototype
     SUBDIR += psptoolchain
     SUBDIR += psptoolchain-binutils
     SUBDIR += psptoolchain-gcc-stage1
@@ -3567,6 +3561,7 @@
     SUBDIR += py-colorama
     SUBDIR += py-conditional
     SUBDIR += py-configobj
+    SUBDIR += py-configparser
     SUBDIR += py-construct
     SUBDIR += py-country
     SUBDIR += py-coverage
@@ -3599,6 +3594,7 @@
     SUBDIR += py-epsilon
     SUBDIR += py-event
     SUBDIR += py-experimental.cssselect
+    SUBDIR += py-extras
     SUBDIR += py-extremes
     SUBDIR += py-ezpyinline
     SUBDIR += py-fabric
@@ -4458,7 +4454,6 @@
     SUBDIR += shflags
     SUBDIR += shiboken
     SUBDIR += shmap
-    SUBDIR += showgrammar
     SUBDIR += shtk
     SUBDIR += shtool
     SUBDIR += sigslot

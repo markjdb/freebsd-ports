@@ -82,7 +82,6 @@
     SUBDIR += gmtk
     SUBDIR += gnome-mplayer
     SUBDIR += gnome-subtitles
-    SUBDIR += gopchop
     SUBDIR += gpac-libgpac
     SUBDIR += gpac-mp4box
     SUBDIR += gpodder
@@ -242,6 +241,7 @@
     SUBDIR += mxflib
     SUBDIR += mythtv
     SUBDIR += mythtv-frontend
+    SUBDIR += naludump
     SUBDIR += nxtvepg
     SUBDIR += oggvideotools
     SUBDIR += ogmrip

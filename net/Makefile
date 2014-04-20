@@ -20,6 +20,7 @@
     SUBDIR += aoe
     SUBDIR += apinger
     SUBDIR += appkonference
+    SUBDIR += aprsc
     SUBDIR += arp-scan
     SUBDIR += arp-sk
     SUBDIR += arpdig
@@ -136,7 +137,6 @@
     SUBDIR += flowgrep
     SUBDIR += fonulator
     SUBDIR += foreman-proxy
-    SUBDIR += forg
     SUBDIR += fpc-ldap
     SUBDIR += fpc-pcap
     SUBDIR += fping
@@ -164,7 +164,6 @@
     SUBDIR += glib-networking
     SUBDIR += gnet2
     SUBDIR += gnetcat
-    SUBDIR += gnome-mud
     SUBDIR += gnome-netstatus
     SUBDIR += gnome-nettool
     SUBDIR += gnu-dico
@@ -173,7 +172,6 @@
     SUBDIR += gofish
     SUBDIR += gogoc
     SUBDIR += googlecl
-    SUBDIR += googolplex
     SUBDIR += gopher
     SUBDIR += gotthard
     SUBDIR += gpxe
@@ -405,7 +403,6 @@
     SUBDIR += nemesis
     SUBDIR += nepenthes
     SUBDIR += nepim
-    SUBDIR += net-http
     SUBDIR += net6
     SUBDIR += netatalk
     SUBDIR += netatalk3
@@ -883,7 +880,6 @@
     SUBDIR += ptunnel
     SUBDIR += pure-sockets
     SUBDIR += pvm
-    SUBDIR += pvm++
     SUBDIR += pwhois
     SUBDIR += pxe
     SUBDIR += pxe-pdhcp
@@ -1001,7 +997,6 @@
     SUBDIR += rinetd
     SUBDIR += ripe-whois
     SUBDIR += ris
-    SUBDIR += rmsg
     SUBDIR += rp-pppoe
     SUBDIR += rshell
     SUBDIR += rsmb
@@ -1101,7 +1096,6 @@
     SUBDIR += sflowtool
     SUBDIR += shadowsocks-libev
     SUBDIR += shaperprobe
-    SUBDIR += sharity-light
     SUBDIR += shelldap
     SUBDIR += shmux
     SUBDIR += silc-client
