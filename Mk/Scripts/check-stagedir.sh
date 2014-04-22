@@ -23,6 +23,12 @@ listmtree() { # mtreefile prefix
 	} | tar -tf- | sed "s,^,$2/,;s,^$2/\.$,$2,;s,^$,/,"
 }
 
+sort_dfs() {
+	while read dir; do
+		grep "^[0-9]* ${dir}$" ${WRKDIR}/.staged-dirs-dfs-sorted
+	done | sort -n | cut -d ' ' -f2-
+}
+
 # obtain operating mode from command line
 makeplist=0
 case "$1" in
@@ -234,10 +240,14 @@ comm -13 ${WRKDIR}/.plist-files ${WRKDIR}/.staged-files | \
 ### HANDLE DIRS
 cat ${WRKDIR}/.plist-dirs-unsorted ${WRKDIR}/.mtree \
     ${WRKDIR}/.run-depends-dirs | sort -u >${WRKDIR}/.traced-dirs
-find ${STAGEDIR} -type d | sed -e "s,^${STAGEDIR},,;/^$/d" | \
-    sort >${WRKDIR}/.staged-dirs
-comm -13 ${WRKDIR}/.traced-dirs ${WRKDIR}/.staged-dirs \
-    | sort -r | sed "${sed_dirs}" \
+find -sd ${STAGEDIR} -type d | sed -e "s,^${STAGEDIR},,;/^$/d" \
+    >${WRKDIR}/.staged-dirs-dfs
+sort ${WRKDIR}/.staged-dirs-dfs >${WRKDIR}/.staged-dirs-sorted
+awk '{print FNR, $0}' ${WRKDIR}/.staged-dirs-dfs \
+    >${WRKDIR}/.staged-dirs-dfs-sorted
+# Find all staged dirs and then sort them by depth-first (find -ds)
+comm -13 ${WRKDIR}/.traced-dirs ${WRKDIR}/.staged-dirs-sorted \
+    | sort_dfs | sed "${sed_dirs}" \
     >>${WRKDIR}/.staged-plist || :
 
 # If just making plist, show results and exit successfully.
@@ -251,7 +261,22 @@ while read path; do
 	case "${path}" in
 	*.bak) ;;
 	*.orig) ;;
-	#*/info/dir|info/dir) ;;
+	*/info/dir|info/dir) ;;
+	lib/X11/fonts/*/fonts.dir) ;;
+	lib/X11/fonts/*/fonts.scale) ;;
+	share/applications/mimeinfo.cache) ;;
+	share/mime/XMLnamespaces) ;;
+	share/mime/aliases) ;;
+	share/mime/generic-icons) ;;
+	share/mime/globs) ;;
+	share/mime/globs2) ;;
+	share/mime/icons) ;;
+	share/mime/magic) ;;
+	share/mime/mime.cache) ;;
+	share/mime/subclasses) ;;
+	share/mime/treemagic) ;;
+	share/mime/types) ;;
+	share/mime/version) ;;
 	*)
 		# An orphan was found, return non-zero status
 		ret=1
@@ -265,17 +290,29 @@ sort -u ${WRKDIR}/.plist-dirs-unsorted-no-comments \
 
 # Anything listed in plist and in restricted-dirs is a failure. I.e.,
 # it's owned by a run-time dependency or one of the MTREEs.
-echo "===> Checking for directories owned by dependencies or MTREEs"
-cat ${WRKDIR}/.mtree ${WRKDIR}/.run-depends-dirs | sort -u \
-    >${WRKDIR}/.restricted-dirs
-: >${WRKDIR}/.invalid-plist-dependencies
+echo "===> Checking for directories owned by MTREEs"
+cat ${WRKDIR}/.mtree | sort -u >${WRKDIR}/.restricted-dirs
+: >${WRKDIR}/.invalid-plist-mtree
 comm -12 ${WRKDIR}/.plist-dirs-sorted-no-comments ${WRKDIR}/.restricted-dirs \
-    | sort -r | sed "${sed_dirs}" \
-    >>${WRKDIR}/.invalid-plist-dependencies || :
-if [ -s "${WRKDIR}/.invalid-plist-dependencies" ]; then
+    | sort_dfs | sed "${sed_dirs}" \
+    >>${WRKDIR}/.invalid-plist-mtree || :
+if [ -s "${WRKDIR}/.invalid-plist-mtree" ]; then
 	ret=1
 	while read line; do
-		echo "Error: Owned by dependency: ${line}" >&2
+		echo "Error: Owned by MTREE: ${line}" >&2
+	done < ${WRKDIR}/.invalid-plist-mtree
+fi
+
+echo "===> Checking for directories handled by dependencies"
+cat ${WRKDIR}/.run-depends-dirs | sort -u >${WRKDIR}/.restricted-dirs
+: >${WRKDIR}/.invalid-plist-dependencies
+comm -12 ${WRKDIR}/.plist-dirs-sorted-no-comments ${WRKDIR}/.restricted-dirs \
+    | sort_dfs | sed "${sed_dirs}" \
+    >>${WRKDIR}/.invalid-plist-dependencies || :
+if [ -s "${WRKDIR}/.invalid-plist-dependencies" ]; then
+#	ret=1
+	while read line; do
+		echo "Warning: Possibly owned by dependency: ${line}" >&2
 	done < ${WRKDIR}/.invalid-plist-dependencies
 fi
 
@@ -285,9 +322,19 @@ comm -23 ${WRKDIR}/.plist-files-no-comments ${WRKDIR}/.staged-files | \
     sed -e "${sed_files}" \
     >>${WRKDIR}/.invalid-plist-missing || :
 
-comm -23 ${WRKDIR}/.plist-dirs-sorted-no-comments ${WRKDIR}/.staged-dirs \
-    | sort -r | sed "${sed_dirs}" \
+# Look for directories, then sort them by DFS. Must create the dirs
+# so find -ds can be used to sort them.
+rm -rf ${WRKDIR}/.missing-dirs > /dev/null 2>&1 || :
+mkdir ${WRKDIR}/.missing-dirs
+comm -23 ${WRKDIR}/.plist-dirs-sorted-no-comments \
+    ${WRKDIR}/.staged-dirs-sorted > ${WRKDIR}/.missing-plist-dirs
+sed "s,^,${WRKDIR}/.missing-dirs," ${WRKDIR}/.missing-plist-dirs | \
+    xargs mkdir -p
+find -ds ${WRKDIR}/.missing-dirs | sed -e "s,^${WRKDIR}/.missing-dirs,," | \
+    while read dir; do grep -x "${dir}" ${WRKDIR}/.missing-plist-dirs || :; done | \
+    sed "${sed_dirs}" \
     >>${WRKDIR}/.invalid-plist-missing || :
+rm -rf ${WRKDIR}/.missing-dirs
 if [ -s "${WRKDIR}/.invalid-plist-missing" ]; then
 	ret=1
 	while read line; do
