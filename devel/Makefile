@@ -331,6 +331,7 @@
     SUBDIR += dbus-glib
     SUBDIR += dbus-qt4
     SUBDIR += dbus-qt5
+    SUBDIR += dbus-tcl
     SUBDIR += dbus-sharp
     SUBDIR += dbus-sharp-glib
     SUBDIR += dcmtk
@@ -547,7 +548,9 @@
     SUBDIR += gindent
     SUBDIR += gio-sharp
     SUBDIR += git
+    SUBDIR += git-bzr-ng
     SUBDIR += git-merge-changelog
+    SUBDIR += git-modes
     SUBDIR += git-review
     SUBDIR += git-subversion
     SUBDIR += gitg
@@ -917,6 +920,7 @@
     SUBDIR += lasi
     SUBDIR += lcov
     SUBDIR += leaktracer
+    SUBDIR += leiningen
     SUBDIR += lemon
     SUBDIR += lfcbase
     SUBDIR += lfcxml
@@ -1082,6 +1086,7 @@
     SUBDIR += libplist
     SUBDIR += libpo6
     SUBDIR += libpthread-stubs
+    SUBDIR += libqcow
     SUBDIR += libqxt
     SUBDIR += librcc
     SUBDIR += librcd
@@ -1104,6 +1109,7 @@
     SUBDIR += libsigsegv
     SUBDIR += libslang2
     SUBDIR += libslave
+    SUBDIR += libsmdev
     SUBDIR += libsoup
     SUBDIR += libsoup-gnome
     SUBDIR += libsoup-reference
@@ -1349,7 +1355,6 @@
     SUBDIR += ossp-val
     SUBDIR += ossp-var
     SUBDIR += ossp-xds
-    SUBDIR += otrs
     SUBDIR += p4
     SUBDIR += p4.el
     SUBDIR += p4api
@@ -1663,6 +1668,7 @@
     SUBDIR += p5-Curses-UI
     SUBDIR += p5-Curses-Widgets
     SUBDIR += p5-Cvs
+    SUBDIR += p5-Cwd-Guard
     SUBDIR += p5-DB_File-Lock
     SUBDIR += p5-Daemon-Control
     SUBDIR += p5-Dancer-Debug
@@ -1954,6 +1960,7 @@
     SUBDIR += p5-ExtUtils-InstallPaths
     SUBDIR += p5-ExtUtils-LibBuilder
     SUBDIR += p5-ExtUtils-MakeMaker
+    SUBDIR += p5-ExtUtils-MakeMaker-CPANfile
     SUBDIR += p5-ExtUtils-MakeMaker-Coverage
     SUBDIR += p5-ExtUtils-Manifest
     SUBDIR += p5-ExtUtils-ParseXS
@@ -2275,6 +2282,7 @@
     SUBDIR += p5-Memoize-ExpireLRU
     SUBDIR += p5-Meta-Builder
     SUBDIR += p5-MetaCPAN-API
+    SUBDIR += p5-MetaCPAN-Client
     SUBDIR += p5-Metabase-Client-Simple
     SUBDIR += p5-Metabase-Fact
     SUBDIR += p5-Method-Alias
@@ -2781,6 +2789,7 @@
     SUBDIR += p5-Term-ReadLine-Zoid
     SUBDIR += p5-Term-ReadPassword
     SUBDIR += p5-Term-Screen
+    SUBDIR += p5-Term-ScreenColor
     SUBDIR += p5-Term-Shell
     SUBDIR += p5-Term-Size
     SUBDIR += p5-Term-Size-Any
@@ -3591,6 +3600,7 @@
     SUBDIR += py-durus
     SUBDIR += py-dynrules
     SUBDIR += py-eggtestinfo
+    SUBDIR += py-enum34
     SUBDIR += py-epsilon
     SUBDIR += py-event
     SUBDIR += py-experimental.cssselect
@@ -4207,6 +4217,9 @@
     SUBDIR += rubygem-file-tail
     SUBDIR += rubygem-filemagic
     SUBDIR += rubygem-fog
+    SUBDIR += rubygem-fog-brightbox
+    SUBDIR += rubygem-fog-core
+    SUBDIR += rubygem-fog-json
     SUBDIR += rubygem-font-awesome-rails
     SUBDIR += rubygem-foreman
     SUBDIR += rubygem-foreman_api
@@ -4538,6 +4551,7 @@
     SUBDIR += tclxml
     SUBDIR += tdl
     SUBDIR += terminality
+    SUBDIR += tesla
     SUBDIR += tevent
     SUBDIR += tex-kpathsea
     SUBDIR += tex-web2c
@@ -4606,6 +4620,7 @@
     SUBDIR += xdg-user-dirs
     SUBDIR += xdg-utils
     SUBDIR += xfce4-dev-tools
+    SUBDIR += xfce4-vala
     SUBDIR += xmake
     SUBDIR += xmltooling
     SUBDIR += xorg-macros

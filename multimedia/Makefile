@@ -294,6 +294,7 @@
     SUBDIR += py-periscope
     SUBDIR += py-qt4-multimedia
     SUBDIR += py-qt4-phonon
+    SUBDIR += py-soco
     SUBDIR += py-subliminal
     SUBDIR += py-tvnamer
     SUBDIR += pyjama
@@ -392,12 +393,10 @@
     SUBDIR += xbmc
     SUBDIR += xbmc-addon-pvr
     SUBDIR += xfce4-parole
-    SUBDIR += xfce4-xmms-plugin
     SUBDIR += xine
     SUBDIR += xmms
     SUBDIR += xmms-skins
     SUBDIR += xmms-skins-huge
-    SUBDIR += xmms-weasel
     SUBDIR += xporthdmv
     SUBDIR += xtheater
     SUBDIR += xvid

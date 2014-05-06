@@ -13,9 +13,13 @@ MAKE_ARGS+=	${DESTDIRNAME}=${STAGEDIR}
 QA_ENV+=	STAGEDIR=${STAGEDIR} \
 		PREFIX=${PREFIX} \
 		LOCALBASE=${LOCALBASE} \
-		USESDESKTOPFILEUTILS=${USES:Mdesktop-file-utils} \
-		USESSHAREDMIMEINFO=${USES:Mshared-mime-info} \
 		"STRIP=${STRIP}"
+.if !empty(USES:Mdesktop-file-utils)
+QA_ENV+=	USESDESKTOPFILEUTILS=yes
+.endif
+.if !empty(USES:Mdesktop-file-utils)
+QA_ENV+=	USESSHAREDMIMEINFO=yes
+.endif
 CO_ENV+=	STAGEDIR=${STAGEDIR} \
 		PREFIX=${PREFIX} \
 		LOCALBASE=${LOCALBASE} \

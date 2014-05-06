@@ -58,7 +58,6 @@
     SUBDIR += btc
     SUBDIR += calf
     SUBDIR += cam
-    SUBDIR += cantus_3
     SUBDIR += caps-plugins
     SUBDIR += ccaudio2
     SUBDIR += cd-console
@@ -360,11 +359,13 @@
     SUBDIR += libcoverart
     SUBDIR += libdiscid
     SUBDIR += libdssialsacompat
+    SUBDIR += libebur128
     SUBDIR += libechonest
     SUBDIR += libfishsound
     SUBDIR += libgig
     SUBDIR += libgme
     SUBDIR += libgpod
+    SUBDIR += libgroove
     SUBDIR += libid3tag
     SUBDIR += libkcddb
     SUBDIR += libkcompactdisc
@@ -379,7 +380,6 @@
     SUBDIR += libmpd
     SUBDIR += libmpdclient
     SUBDIR += libmusicbrainz3
-    SUBDIR += libmusicbrainz4
     SUBDIR += libmusicbrainz5
     SUBDIR += libnjb
     SUBDIR += libnoise
@@ -808,7 +808,6 @@
     SUBDIR += xmms-sapplug
     SUBDIR += xmms-scrobbler
     SUBDIR += xmms-sexypsf
-    SUBDIR += xmms-sexyspc
     SUBDIR += xmms-shn
     SUBDIR += xmms-timidity
     SUBDIR += xmms-volnorm

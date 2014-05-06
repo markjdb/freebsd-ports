@@ -88,6 +88,7 @@
     SUBDIR += gcc47-aux
     SUBDIR += gcc48
     SUBDIR += gcc49
+    SUBDIR += gcc410
     SUBDIR += gcl
     SUBDIR += gforth
     SUBDIR += ghc
@@ -154,7 +155,6 @@
     SUBDIR += metaocaml
     SUBDIR += mit-scheme
     SUBDIR += mixal
-    SUBDIR += ml-pnet
     SUBDIR += mlton
     SUBDIR += mmix
     SUBDIR += modula3
@@ -246,9 +246,6 @@
     SUBDIR += picoc
     SUBDIR += pike76
     SUBDIR += pike78
-    SUBDIR += pnet
-    SUBDIR += pnet-base
-    SUBDIR += pnetlib
     SUBDIR += polyml
     SUBDIR += ptoc
     SUBDIR += pure
@@ -283,7 +280,6 @@
     SUBDIR += rexx-wrapper
     SUBDIR += rhino
     SUBDIR += rubinius
-    SUBDIR += ruby-doc-stdlib
     SUBDIR += ruby19
     SUBDIR += ruby20
     SUBDIR += ruby21
@@ -338,7 +334,6 @@
     SUBDIR += tinypy
     SUBDIR += tolua
     SUBDIR += tolua++
-    SUBDIR += treecc
     SUBDIR += tuareg-mode.el
     SUBDIR += twelf
     SUBDIR += ucc

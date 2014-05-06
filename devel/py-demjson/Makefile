@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	demjson
-PORTVERSION=	1.6
-PORTREVISION=	1
+PORTVERSION=	1.7
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP \
 		http://deron.meranda.us/python/demjson/dist/
@@ -13,6 +12,8 @@ MAINTAINER=	ports@robakdesign.com
 COMMENT=	Encoder, Decoder, and Lint/Validator for JSON
 
 LICENSE=	LGPL3
+
+BROKEN=		Unfetchable
 
 USE_PYTHON=		yes
 USE_PYDISTUTILS=	yes

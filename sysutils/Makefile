@@ -141,7 +141,6 @@
     SUBDIR += cpu
     SUBDIR += cpuburn
     SUBDIR += cpulimit
-    SUBDIR += cpupowerd
     SUBDIR += cramfs
     SUBDIR += crashme
     SUBDIR += createrepo
@@ -840,6 +839,7 @@
     SUBDIR += schedutils
     SUBDIR += scprotect
     SUBDIR += screen
+    SUBDIR += screen-legacy
     SUBDIR += screenfetch
     SUBDIR += screenie
     SUBDIR += scterc
@@ -975,6 +975,7 @@
     SUBDIR += vagrant
     SUBDIR += vbetool
     SUBDIR += vcp
+    SUBDIR += vhdtool
     SUBDIR += videogen
     SUBDIR += vii
     SUBDIR += vils
@@ -1010,7 +1011,6 @@
     SUBDIR += wmfire
     SUBDIR += wmflame
     SUBDIR += wmmemfree
-    SUBDIR += wmmemload
     SUBDIR += wmtop
     SUBDIR += wmupmon
     SUBDIR += worldtools

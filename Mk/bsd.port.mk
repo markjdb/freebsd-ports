@@ -2125,6 +2125,19 @@ BUILD_FAIL_MESSAGE+=	Try to set MAKE_JOBS_UNSAFE=yes and rebuild before reportin
 .endif
 
 # ccache support
+
+# Try to set a default CCACHE_DIR to workaround HOME=/dev/null and
+# HOME=${WRKDIR}/* staging fixes
+.if defined(WITH_CCACHE_BUILD) && !defined(CCACHE_DIR) && \
+    (!defined(HOME) || ${HOME} == /dev/null || ${HOME:S/^${WRKDIR}//} != ${HOME})
+.  if defined(USER) && ${USER} == root
+CCACHE_DIR=	/root/.ccache
+.  else
+NO_CCACHE=	yes
+WARNING+=	WITH_CCACHE_BUILD support disabled, please set CCACHE_DIR.
+.  endif
+.endif
+
 # Support NO_CCACHE for common setups, require WITH_CCACHE_BUILD, and
 # don't use if ccache already set in CC
 .if !defined(NO_CCACHE) && defined(WITH_CCACHE_BUILD) && !${CC:M*ccache*} && \
@@ -2138,12 +2151,15 @@ _CCACHE_PATH=	${LOCALBASE}/libexec/ccache
 
 # Prepend the ccache dir into the PATH and setup ccache env
 PATH:=	${_CCACHE_PATH}:${PATH}
+#.MAKEFLAGS:		PATH=${PATH}
 .if !${MAKE_ENV:MPATH=*} && !${CONFIGURE_ENV:MPATH=*}
 MAKE_ENV+=			PATH=${PATH}
 CONFIGURE_ENV+=		PATH=${PATH}
 .endif
 
+# Ensure this is always in subchild environments
 .	if defined(CCACHE_DIR)
+#.MAKEFLAGS:		CCACHE_DIR=${CCACHE_DIR}
 MAKE_ENV+=		CCACHE_DIR="${CCACHE_DIR}"
 CONFIGURE_ENV+=	CCACHE_DIR="${CCACHE_DIR}"
 .	endif
@@ -3328,9 +3344,6 @@ check-vulnerable:
 				vlist=`${PKG_BIN} audit "${PKGNAME}"`; \
 			elif [ "${PORTNAME}" = "pkg" ]; then \
 				vlist=""; \
-			else \
-				${ECHO_MSG} "===> Unable to check vuln database as pkg(8) is missing"; \
-				exit 1; \
 			fi; \
 		elif [ -x "${LOCALBASE}/sbin/portaudit" ]; then \
 			vlist=`${LOCALBASE}/sbin/portaudit -X 14 "${PKGNAME}" \
@@ -3565,13 +3578,17 @@ do-patch:
 .if defined(EXTRA_PATCHES)
 	@set -e ; \
 	for i in ${EXTRA_PATCHES}; do \
-		${ECHO_MSG} "===>  Applying extra patch $$i" ; \
 		case $$i in \
-		*.Z|*.gz) ${GZCAT} $$i ;; \
-		*.bz2) ${BZCAT} $$i ;; \
-		*.xz) ${XZCAT} $$i ;; \
-		*) ${CAT} $$i ;; \
-		esac | ${PATCH} ${PATCH_ARGS} ; \
+		*:-p[0-9]) patch_file=$${i%:*} ; patch_strip=$${i##*:} ;; \
+		*) patch_file=$$i ;; \
+		esac ; \
+		${ECHO_MSG} "===>  Applying extra patch $$patch_file" ; \
+		case $$patfh_file in \
+		*.Z|*.gz) ${GZCAT} $$patch_file ;; \
+		*.bz2) ${BZCAT} $$patch_file ;; \
+		*.xz) ${XZCAT} $$patch_file ;; \
+		*) ${CAT} $$patch_file ;; \
+		esac | ${PATCH} ${PATCH_ARGS} $$patch_strip ; \
 	done
 .endif
 	@set -e ;\
@@ -6530,22 +6547,26 @@ _STAGE_DEP=		build
 _STAGE_SEQ=		stage-message stage-dir run-depends lib-depends apply-slist pre-install generate-plist \
 				pre-su-install
 .if defined(NEED_ROOT)
-_STAGE_SUSEQ=	create-users-groups do-install desktop-file-post-install kmod-post-install \
-				shared-mime-post-install webplugin-post-install \
-				post-install post-install-script move-uniquefiles post-stage compress-man \
+_STAGE_SUSEQ=	create-users-groups do-install desktop-file-post-install \
+				kmod-post-install shared-mime-post-install \
+				webplugin-post-install post-install post-install-script \
+				move-uniquefiles post-stage compress-man patch-lafiles \
 				install-rc-script install-ldconfig-file install-license \
-				install-desktop-entries add-plist-info add-plist-docs add-plist-examples \
-				add-plist-data add-plist-post move-uniquefiles-plist fix-plist-sequence
+				install-desktop-entries add-plist-info add-plist-docs \
+				add-plist-examples add-plist-data add-plist-post \
+				move-uniquefiles-plist fix-plist-sequence
 .if defined(DEVELOPER)
 _STAGE_SUSEQ+=	stage-qa
 .endif
 .else
-_STAGE_SEQ+=	create-users-groups do-install desktop-file-post-install kmod-post-install \
-				shared-mime-post-install webplugin-post-install post-install post-install-script \
-				move-uniquefiles post-stage compress-man install-rc-script install-ldconfig-file \
-				install-license install-desktop-entries add-plist-info add-plist-docs \
-				add-plist-examples add-plist-data add-plist-post move-uniquefiles-plist \
-				fix-plist-sequence
+_STAGE_SEQ+=	create-users-groups do-install desktop-file-post-install \
+				kmod-post-install shared-mime-post-install \
+				webplugin-post-install post-install post-install-script \
+				move-uniquefiles post-stage compress-man patch-lafiles \
+				install-rc-script install-ldconfig-file install-license \
+				install-desktop-entries add-plist-info add-plist-docs \
+				add-plist-examples add-plist-data add-plist-post \
+				move-uniquefiles-plist fix-plist-sequence
 .if defined(DEVELOPER)
 _STAGE_SEQ+=	stage-qa
 .endif
