@@ -64,7 +64,7 @@ CONFIGURE_ENV=	QTDIR="${QTDIR}"
 CONFIGURE_ARGS+=--with-doxywizard
 .endif # QT4
 
-.if ${MACHINE_ARCH:L} == alpha
+.if ${MACHINE_ARCH:tl} == alpha
 CONFIGURE_ARGS+=	--enable-langs no
 .endif
 

@@ -60,6 +60,7 @@
     SUBDIR += apiextractor
     SUBDIR += apr1
     SUBDIR += apr2
+    SUBDIR += arcanist
     SUBDIR += arduino
     SUBDIR += arduino-glcd
     SUBDIR += arduino-irremote
@@ -142,14 +143,12 @@
     SUBDIR += bpython
     SUBDIR += bsdbuild
     SUBDIR += bsdcflow
-    SUBDIR += bsdlibdwarf
     SUBDIR += bufferpool
     SUBDIR += bug-buddy
     SUBDIR += bugzilla40
     SUBDIR += bugzilla42
     SUBDIR += bugzilla44
     SUBDIR += build
-    SUBDIR += buildapp
     SUBDIR += buildbot
     SUBDIR += buildbot-slave
     SUBDIR += buildtool
@@ -1083,6 +1082,7 @@
     SUBDIR += libpff
     SUBDIR += libphish
     SUBDIR += libphk
+    SUBDIR += libphutil
     SUBDIR += libplist
     SUBDIR += libpo6
     SUBDIR += libpthread-stubs
@@ -3749,6 +3749,7 @@
     SUBDIR += py-pycparser
     SUBDIR += py-pydasm
     SUBDIR += py-pyechonest
+    SUBDIR += py-pyelftools
     SUBDIR += py-pyev
     SUBDIR += py-pyflakes
     SUBDIR += py-pygit2
@@ -4146,6 +4147,7 @@
     SUBDIR += rubygem-bin_utils
     SUBDIR += rubygem-bindata
     SUBDIR += rubygem-bioruby
+    SUBDIR += rubygem-blankslate
     SUBDIR += rubygem-blockenspiel
     SUBDIR += rubygem-bson
     SUBDIR += rubygem-bugspots
@@ -4261,6 +4263,7 @@
     SUBDIR += rubygem-io-like
     SUBDIR += rubygem-iobuffer
     SUBDIR += rubygem-jammit
+    SUBDIR += rubygem-jekyll-coffeescript
     SUBDIR += rubygem-jeweler
     SUBDIR += rubygem-jquery-ui-themes
     SUBDIR += rubygem-jruby-jars
@@ -4282,6 +4285,7 @@
     SUBDIR += rubygem-main
     SUBDIR += rubygem-map
     SUBDIR += rubygem-mash
+    SUBDIR += rubygem-mercenary
     SUBDIR += rubygem-metaclass
     SUBDIR += rubygem-metaid
     SUBDIR += rubygem-method_source
@@ -4411,6 +4415,8 @@
     SUBDIR += rubygem-timers
     SUBDIR += rubygem-timers1
     SUBDIR += rubygem-tins
+    SUBDIR += rubygem-tins0
+    SUBDIR += rubygem-toml
     SUBDIR += rubygem-transactionsimple
     SUBDIR += rubygem-treetop
     SUBDIR += rubygem-trollop
@@ -4459,6 +4465,7 @@
     SUBDIR += serdisplib
     SUBDIR += sfio
     SUBDIR += sfml
+    SUBDIR += sfml1
     SUBDIR += sfslite
     SUBDIR += sfslite-dbg
     SUBDIR += sfslite-noopt
@@ -4621,6 +4628,7 @@
     SUBDIR += xdg-utils
     SUBDIR += xfce4-dev-tools
     SUBDIR += xfce4-vala
+    SUBDIR += xlocale
     SUBDIR += xmake
     SUBDIR += xmltooling
     SUBDIR += xorg-macros

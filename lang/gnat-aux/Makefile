@@ -16,7 +16,7 @@ COMMENT=	GNAT Ada compiler based on GCC ${GCC_BRANCH}
 LICENSE=	GPLv3 GPLv3RLE
 LICENSE_COMB=	multi
 
-DEPRECATED=	Superceded by gcc4.7-based lang/gcc-aux, use it instead
+DEPRECATED=	Superceded by gcc4.9-based lang/gcc-aux, use it instead
 EXPIRATION_DATE=2014-06-01
 
 .include "${.CURDIR}/Makefile.common"
@@ -54,8 +54,8 @@ BOOTSTRAP_TRIPLET=	i386-bootstrap-freebsd8.0/4.6.0
 .if ${OPSYS} == DragonFly
 BOOTSTRAP_TRIPLET=	${GARCH}-bootstrap-dragonfly2.8/4.6.0
 .endif
-BLD_TARGET=		${GARCH}-aux-${OPSYS:L}${OSREL}
-BOOTSTRAP_COMPILER=	gnat-bootstrap.${GARCH}.${OPSYS:L}.tar.bz2
+BLD_TARGET=		${GARCH}-aux-${OPSYS:tl}${OSREL}
+BOOTSTRAP_COMPILER=	gnat-bootstrap.${GARCH}.${OPSYS:tl}.tar.bz2
 
 WRKSRC=			${WRKDIR}/gcc-${GCC_VERSION}
 BUILDDIR=		${WRKDIR}/build
