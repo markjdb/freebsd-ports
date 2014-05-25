@@ -87,8 +87,8 @@ Licenses_Include_MAINTAINER=         portmgr@FreeBSD.org
 # Case 2: license only known by the port (aka "unknown").
 #
 # In this case LICENSE_{PERMS,NAME} are mandatory, in addition to
-# either LICENSE_FILE or LICENSE_TEXT. Optional variables are
-# LICENSE_{GROUPS,NOTES}.
+# either LICENSE_FILE or LICENSE_TEXT. Optional variable is
+# LICENSE_GROUPS.
 #
 # Available components for LICENSE_PERMS:
 # dist-mirror	- No free redistribution of distfile (like FTP mirroring; RESTRICTED).
@@ -683,7 +683,11 @@ ${_LICENSE_COOKIE}:
 	@${ECHO_MSG}
 .		if ${_LICENSE_COMB} != "single"
 .			for lic in ${_LICENSE_TO_ASK}
+.				if defined(WRKDIRPREFIX)
+	@${ECHO_MSG} "- ${lic} (${_LICENSE_NAME_${lic}}), available at ${_LICENSE_FILE_${lic}}"
+.				else
 	@${ECHO_MSG} "- ${lic} (${_LICENSE_NAME_${lic}}), available at ${_LICENSE_FILE_${lic}:S/${WRKDIR}\//${WRKDIR:T}\//}"
+.				endif
 .			endfor
 	@${ECHO_MSG}
 .		endif

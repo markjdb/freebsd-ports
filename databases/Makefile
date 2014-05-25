@@ -66,8 +66,6 @@
     SUBDIR += evolution-data-server
     SUBDIR += exist
     SUBDIR += fastdb
-    SUBDIR += firebird20-client
-    SUBDIR += firebird20-server
     SUBDIR += firebird21-client
     SUBDIR += firebird21-server
     SUBDIR += firebird25-client
@@ -139,6 +137,7 @@
     SUBDIR += libdbi
     SUBDIR += libdbi-drivers
     SUBDIR += libdrizzle
+    SUBDIR += libdrizzle-redux
     SUBDIR += libgda4
     SUBDIR += libgda4-bdb
     SUBDIR += libgda4-jdbc
@@ -231,6 +230,7 @@
     SUBDIR += mysqltuner
     SUBDIR += mytop
     SUBDIR += mywwwatcher
+    SUBDIR += nagios-check_mongodb
     SUBDIR += nagios-check_postgres_replication
     SUBDIR += nagios-check_redis
     SUBDIR += namazu2
@@ -680,6 +680,14 @@
     SUBDIR += postgresql93-plpython
     SUBDIR += postgresql93-pltcl
     SUBDIR += postgresql93-server
+    SUBDIR += postgresql94-client
+    SUBDIR += postgresql94-contrib
+    SUBDIR += postgresql94-docs
+    SUBDIR += postgresql94-pgtcl
+    SUBDIR += postgresql94-plperl
+    SUBDIR += postgresql94-plpython
+    SUBDIR += postgresql94-pltcl
+    SUBDIR += postgresql94-server
     SUBDIR += postgresql_autodoc
     SUBDIR += powerarchitect
     SUBDIR += proftpd-mod_sql_mysql
@@ -714,6 +722,7 @@
     SUBDIR += py-flask-sqlalchemy
     SUBDIR += py-forgetsql
     SUBDIR += py-gdbm
+    SUBDIR += py-geoalchemy
     SUBDIR += py-hiredis
     SUBDIR += py-htsql
     SUBDIR += py-htsql-mysql
@@ -897,6 +906,7 @@
     SUBDIR += tokyotyrant
     SUBDIR += tora
     SUBDIR += tuning-primer
+    SUBDIR += twemproxy
     SUBDIR += unixODBC
     SUBDIR += useracc
     SUBDIR += usogres

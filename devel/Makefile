@@ -76,6 +76,7 @@
     SUBDIR += art
     SUBDIR += as31
     SUBDIR += asdlgen
+    SUBDIR += asl
     SUBDIR += asmutils
     SUBDIR += asmx
     SUBDIR += astah-community
@@ -240,6 +241,7 @@
     SUBDIR += clig
     SUBDIR += clint
     SUBDIR += clisp-hyperspec
+    SUBDIR += clojure-cider
     SUBDIR += cmake
     SUBDIR += cmake-fedora
     SUBDIR += cmake-gui
@@ -324,6 +326,7 @@
     SUBDIR += cxxtools
     SUBDIR += d-feet
     SUBDIR += darts
+    SUBDIR += dash.el
     SUBDIR += dasm
     SUBDIR += datadraw
     SUBDIR += dbus
@@ -406,6 +409,7 @@
     SUBDIR += elib-emacs21
     SUBDIR += entity
     SUBDIR += epm
+    SUBDIR += epl.el
     SUBDIR += epydoc
     SUBDIR += eric4
     SUBDIR += eris
@@ -573,6 +577,7 @@
     SUBDIR += glrparser
     SUBDIR += glui
     SUBDIR += gmake
+    SUBDIR += gnatcoll
     SUBDIR += gnatpython
     SUBDIR += gnome-common
     SUBDIR += gnome-js-common
@@ -606,6 +611,7 @@
     SUBDIR += gps
     SUBDIR += gpsim
     SUBDIR += gputils
+    SUBDIR += gradle
     SUBDIR += grantlee
     SUBDIR += gsettings-desktop-schemas
     SUBDIR += gsoap
@@ -858,6 +864,7 @@
     SUBDIR += ioncube
     SUBDIR += ipython
     SUBDIR += ireport
+    SUBDIR += isl
     SUBDIR += itext
     SUBDIR += jakarta-commons-configuration
     SUBDIR += jakarta-commons-daemon
@@ -960,6 +967,7 @@
     SUBDIR += libdasm
     SUBDIR += libdatrie
     SUBDIR += libdbusmenu-qt
+    SUBDIR += libdevq
     SUBDIR += libdfui
     SUBDIR += libdict
     SUBDIR += libdisasm
@@ -1115,6 +1123,7 @@
     SUBDIR += libsoup-reference
     SUBDIR += libspark2012
     SUBDIR += libstatgrab
+    SUBDIR += libstatgrab0
     SUBDIR += libstrfunc
     SUBDIR += libstroke
     SUBDIR += libsysinfo
@@ -1261,7 +1270,6 @@
     SUBDIR += msgpack
     SUBDIR += msp430-binutils
     SUBDIR += msp430-gcc
-    SUBDIR += msp430-gcc3
     SUBDIR += msp430-gdb
     SUBDIR += msp430-libc
     SUBDIR += msp430mcu
@@ -1635,6 +1643,7 @@
     SUBDIR += p5-Config-Grammar
     SUBDIR += p5-Config-INI
     SUBDIR += p5-Config-INI-Simple
+    SUBDIR += p5-Config-Identity
     SUBDIR += p5-Config-IniFiles
     SUBDIR += p5-Config-IniHash
     SUBDIR += p5-Config-IniRegEx
@@ -2630,6 +2639,7 @@
     SUBDIR += p5-Religion
     SUBDIR += p5-ResourcePool
     SUBDIR += p5-Resources
+    SUBDIR += p5-Return-MultiLevel
     SUBDIR += p5-Return-Type
     SUBDIR += p5-Return-Value
     SUBDIR += p5-Role-Basic
@@ -2878,11 +2888,13 @@
     SUBDIR += p5-Test-More-UTF8
     SUBDIR += p5-Test-Most
     SUBDIR += p5-Test-Name-FromLine
+    SUBDIR += p5-Test-Net-LDAP
     SUBDIR += p5-Test-Net-RabbitMQ
     SUBDIR += p5-Test-NoTabs
     SUBDIR += p5-Test-NoWarnings
     SUBDIR += p5-Test-Number-Delta
     SUBDIR += p5-Test-Object
+    SUBDIR += p5-Test-OpenLDAP
     SUBDIR += p5-Test-Output
     SUBDIR += p5-Test-POE-Client-TCP
     SUBDIR += p5-Test-POE-Server-TCP
@@ -3327,6 +3339,7 @@
     SUBDIR += pecl-judy
     SUBDIR += pecl-libevent
     SUBDIR += pecl-mcve
+    SUBDIR += pecl-memoize
     SUBDIR += pecl-msgpack
     SUBDIR += pecl-ncurses
     SUBDIR += pecl-newt
@@ -3409,6 +3422,7 @@
     SUBDIR += pire
     SUBDIR += pit
     SUBDIR += pkgconf
+    SUBDIR += pkg-info.el
     SUBDIR += plan9port
     SUBDIR += pmccabe
     SUBDIR += pmd
@@ -3579,6 +3593,7 @@
     SUBDIR += py-cxx
     SUBDIR += py-d2to1
     SUBDIR += py-daemon
+    SUBDIR += py-daemons
     SUBDIR += py-dal
     SUBDIR += py-darcsver
     SUBDIR += py-dateutil
@@ -3663,6 +3678,7 @@
     SUBDIR += py-iterpipes
     SUBDIR += py-itools
     SUBDIR += py-jcc
+    SUBDIR += py-jdcal
     SUBDIR += py-jellyfish
     SUBDIR += py-jira
     SUBDIR += py-jmespath
@@ -3765,6 +3781,7 @@
     SUBDIR += py-pytemplate
     SUBDIR += py-pytest
     SUBDIR += py-pytest-runner
+    SUBDIR += py-python-statsd
     SUBDIR += py-pythonbrew
     SUBDIR += py-pytz
     SUBDIR += py-pyutil
@@ -3981,10 +3998,14 @@
     SUBDIR += py-zope.traversing
     SUBDIR += py-zope.viewlet
     SUBDIR += py_static_check
+    SUBDIR += py3-dbus
+    SUBDIR += py3-gobject3
     SUBDIR += pybaz
     SUBDIR += pybugz
     SUBDIR += pychecker
     SUBDIR += pycount
+    SUBDIR += pydbus-common
+    SUBDIR += pygobject3-common
     SUBDIR += pylint
     SUBDIR += pymacs
     SUBDIR += pyobfuscate
@@ -4247,6 +4268,7 @@
     SUBDIR += rubygem-grape-entity
     SUBDIR += rubygem-grape-swagger
     SUBDIR += rubygem-grit
+    SUBDIR += rubygem-gyoku
     SUBDIR += rubygem-hashery
     SUBDIR += rubygem-hashie
     SUBDIR += rubygem-highline
@@ -4274,6 +4296,7 @@
     SUBDIR += rubygem-kafo_parsers
     SUBDIR += rubygem-kgio
     SUBDIR += rubygem-launchy
+    SUBDIR += rubygem-launchy22
     SUBDIR += rubygem-librarian
     SUBDIR += rubygem-listen
     SUBDIR += rubygem-little_plugger
@@ -4289,6 +4312,7 @@
     SUBDIR += rubygem-metaclass
     SUBDIR += rubygem-metaid
     SUBDIR += rubygem-method_source
+    SUBDIR += rubygem-mini_portile
     SUBDIR += rubygem-minitest
     SUBDIR += rubygem-minitest4
     SUBDIR += rubygem-mirror
@@ -4311,6 +4335,7 @@
     SUBDIR += rubygem-needle
     SUBDIR += rubygem-nice-ffi
     SUBDIR += rubygem-nio4r
+    SUBDIR += rubygem-nori
     SUBDIR += rubygem-notify
     SUBDIR += rubygem-open3_backport
     SUBDIR += rubygem-open4

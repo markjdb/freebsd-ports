@@ -107,6 +107,7 @@
     SUBDIR += groovy
     SUBDIR += gscheme
     SUBDIR += guile
+    SUBDIR += guile2
     SUBDIR += harbour
     SUBDIR += haskell-mode.el
     SUBDIR += hiphop-php
@@ -249,6 +250,7 @@
     SUBDIR += polyml
     SUBDIR += ptoc
     SUBDIR += pure
+    SUBDIR += py-clojure
     SUBDIR += py-mx-base
     SUBDIR += py-prolog
     SUBDIR += pypy

@@ -3,7 +3,7 @@
 
 PORTNAME=	sssd
 DISTVERSION=	1.9.6
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	security
 MASTER_SITES=   https://fedorahosted.org/released/${PORTNAME}/ \
 		http://mirrors.rit.edu/zi/
@@ -44,6 +44,7 @@ CONFIGURE_ARGS=	--with-selinux=no --with-semanage=no \
 		--with-db-path=/var/db/sss --with-pipe-path=/var/run/sss \
 		--with-pubconf-path=/var/run/sss --with-mcache-path=/var/db/sss_mc \
 		--with-unicode-lib=libunistring --with-autofs=no
+CONFIGURE_ENV=	XMLLINT="/bin/echo"
 CFLAGS+=	-fstack-protector-all
 PLIST_SUB=	PYTHON_VER=${PYTHON_VER}
 #DEBUG_FLAGS=  -g
@@ -104,6 +105,7 @@ post-patch:
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/src/examples/sssd-example.conf ${STAGEDIR}${ETCDIR}/sssd.conf.sample
+	(cd ${STAGEDIR}${PREFIX}/lib && ${LN} -s nss_sss.so nss_sss.so.1)
 
 	# clean these up from the install; we create them in rc script start_precmd
 .for VARDIRS in db/sss db/sss_mc log/sssd run/sss/krb5.include.d run/sss/private run/sss

@@ -91,6 +91,7 @@
     SUBDIR += figlet-fonts
     SUBDIR += findutils
     SUBDIR += firestring
+    SUBDIR += flag
     SUBDIR += floatator
     SUBDIR += fortune-mod-bible
     SUBDIR += fortune-mod-bofh
@@ -401,6 +402,7 @@
     SUBDIR += ruby-vpim
     SUBDIR += rubygem-dotenv
     SUBDIR += rubygem-mime-types
+    SUBDIR += rubygem-mime-types117
     SUBDIR += rubygem-rabbit
     SUBDIR += rubygem-vpim
     SUBDIR += rump

@@ -8,7 +8,6 @@
     SUBDIR += Coin
     SUBDIR += EZWGL
     SUBDIR += GraphicsMagick
-    SUBDIR += GraphicsMagick12
     SUBDIR += GraphicsMagick13
     SUBDIR += Hermes
     SUBDIR += IPA
@@ -503,6 +502,7 @@
     SUBDIR += libgeotiff
     SUBDIR += libgfx
     SUBDIR += libggi
+    SUBDIR += libglapi
     SUBDIR += libglesv2
     SUBDIR += libgltext
     SUBDIR += libgnomecanvas
@@ -535,6 +535,7 @@
     SUBDIR += libraw
     SUBDIR += libreatlas
     SUBDIR += librsvg2
+    SUBDIR += libsixel
     SUBDIR += libspiro
     SUBDIR += libsvg
     SUBDIR += libsvg-cairo
@@ -850,6 +851,7 @@
     SUBDIR += py-poppler-qt4
     SUBDIR += py-pycha
     SUBDIR += py-pydot
+    SUBDIR += py-pygal
     SUBDIR += py-pyggel
     SUBDIR += py-pyglet
     SUBDIR += py-pygooglechart

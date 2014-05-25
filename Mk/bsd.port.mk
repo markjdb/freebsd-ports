@@ -144,7 +144,7 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				- Backup location(s) for distribution files and patch
 #				  files if not found locally and ${MASTER_SITES}/${PATCH_SITES}
 #				  Default:
-#				  ftp://ftp.FreeBSD.org/pub/FreeBSD/ports/distfiles/${DIST_SUBDIR}/
+#				  http://distcache.FreeBSD.org/ports-distfiles/${DIST_SUBDIR}/
 # MASTER_SITE_OVERRIDE
 #				- If set, override the MASTER_SITES setting with this
 #				  value.
@@ -1485,7 +1485,7 @@ PKGCOMPATDIR?=		${LOCALBASE}/lib/compat/pkg
 .include "${PORTSDIR}/Mk/bsd.drupal.mk"
 .endif
 
-.if defined(WANT_GECKO) || defined(USE_GECKO)
+.if defined(USE_GECKO)
 .include "${PORTSDIR}/Mk/bsd.gecko.mk"
 .endif
 
@@ -1947,7 +1947,7 @@ IGNORE=	Do not define STAGEDIR in command line
 .include "${PORTSDIR}/Mk/bsd.fpc.mk"
 .endif
 
-.if defined(WANT_GECKO) || defined(USE_GECKO)
+.if defined(USE_GECKO)
 .include "${PORTSDIR}/Mk/bsd.gecko.mk"
 .endif
 
@@ -2555,7 +2555,7 @@ PATCH_SITES_TMP=
 
 # The primary backup site.
 MASTER_SITE_BACKUP?=	\
-	ftp://ftp.FreeBSD.org/pub/FreeBSD/ports/distfiles/${DIST_SUBDIR}/
+	http://distcache.FreeBSD.org/ports-distfiles/${DIST_SUBDIR}/
 MASTER_SITE_BACKUP:=	${MASTER_SITE_BACKUP:S^\${DIST_SUBDIR}/^^}
 
 # If the user has MASTER_SITE_FREEBSD set, go to the FreeBSD repository
@@ -3340,6 +3340,9 @@ check-vulnerable:
 		if [ -n "${WITH_PKGNG}" ]; then \
 			if [ -x "${PKG_BIN}" ]; then \
 				vlist=`${PKG_BIN} audit "${PKGNAME}"`; \
+				if [ "$${vlist}" = "0 problem(s) in the installed packages found." ]; then \
+					vlist=""; \
+				fi; \
 			elif [ "${PORTNAME}" = "pkg" ]; then \
 				vlist=""; \
 			fi; \
@@ -5041,8 +5044,9 @@ lib-depends:
 				[ `file -b -L --mime-type $${_LIB_FILE}` = "application/x-sharedlib" ] || continue ; \
 			fi ; \
 			found=1 ; \
-			${ECHO_MSG} " - found"; \
+			${ECHO_MSG} -n " - found ($${_LIB_FILE})"; \
 		done ; \
+		${ECHO_MSG}; \
 		if [ $${found} -eq 0 ]; then \
 			${ECHO_MSG} " - not found"; \
 			${ECHO_MSG} "===>    Verifying for $$lib in $$dir"; \
@@ -6528,7 +6532,7 @@ _EXTRACT_SEQ=	check-build-conflicts extract-message checksum extract-depends \
 				pre-extract pre-extract-script do-extract \
 				post-extract post-extract-script
 _PATCH_DEP=		extract
-_PATCH_SEQ=		ask-license patch-message patch-depends pathfix-pre-patch dos2unix fix-shebang \
+_PATCH_SEQ=		ask-license patch-message patch-depends pathfix dos2unix fix-shebang \
 				pre-patch \
 				pre-patch-script do-patch charsetfix-post-patch post-patch post-patch-script
 _CONFIGURE_DEP=	patch
@@ -6566,7 +6570,7 @@ _STAGE_SEQ+=	create-users-groups do-install \
 				install-rc-script install-ldconfig-file install-license \
 				install-desktop-entries add-plist-info add-plist-docs \
 				add-plist-examples add-plist-data add-plist-post \
-				move-uniquefiles-plist fix-plist-sequence
+				move-uniquefiles-plist fix-plist-sequence fix-packlist
 .if defined(DEVELOPER)
 _STAGE_SEQ+=	stage-qa
 .endif

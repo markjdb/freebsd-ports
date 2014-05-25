@@ -731,6 +731,7 @@
     SUBDIR += p5-String-Urandom
     SUBDIR += p5-Syntax-Highlight-Engine-Kate
     SUBDIR += p5-Syntax-Highlight-Perl-Improved
+    SUBDIR += p5-TOML
     SUBDIR += p5-TeX-Encode
     SUBDIR += p5-TeX-Hyphen
     SUBDIR += p5-Template-Declare
@@ -1158,6 +1159,7 @@
     SUBDIR += py-markdown
     SUBDIR += py-markdown2
     SUBDIR += py-openpyxl
+    SUBDIR += py-openpyxl1
     SUBDIR += py-paragrep
     SUBDIR += py-pdfminer
     SUBDIR += py-pss
@@ -1209,6 +1211,7 @@
     SUBDIR += py-zope.tal
     SUBDIR += py-zpt
     SUBDIR += py2html
+    SUBDIR += py3-libxml2
     SUBDIR += pychm
     SUBDIR += pystemmer
     SUBDIR += qprint
@@ -1221,6 +1224,7 @@
     SUBDIR += qu-aspell
     SUBDIR += queequeg
     SUBDIR += rand
+    SUBDIR += rapidxml
     SUBDIR += raptor
     SUBDIR += raptor2
     SUBDIR += rarian
@@ -1312,6 +1316,7 @@
     SUBDIR += rubygem-markaby
     SUBDIR += rubygem-multi_xml
     SUBDIR += rubygem-nokogiri
+    SUBDIR += rubygem-nokogiri14
     SUBDIR += rubygem-opml
     SUBDIR += rubygem-parslet
     SUBDIR += rubygem-phone
@@ -1432,6 +1437,7 @@
     SUBDIR += teckit
     SUBDIR += tei-guidelines-p3
     SUBDIR += tei-p3
+    SUBDIR += templates_parser
     SUBDIR += tet-aspell
     SUBDIR += tex2im
     SUBDIR += texi2db

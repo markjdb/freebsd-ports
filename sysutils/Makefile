@@ -460,7 +460,6 @@
     SUBDIR += linux-f10-procps
     SUBDIR += linux-nero
     SUBDIR += linuxfdisk
-    SUBDIR += lire
     SUBDIR += livecd
     SUBDIR += lmmon
     SUBDIR += lmon
@@ -778,6 +777,7 @@
     SUBDIR += rsyncrypto
     SUBDIR += rsyslog7
     SUBDIR += rsyslog7-devel
+    SUBDIR += rsyslog8
     SUBDIR += rsyslog8-devel
     SUBDIR += rtty
     SUBDIR += ruby-quota
@@ -823,6 +823,7 @@
     SUBDIR += rubygem-sys-uname
     SUBDIR += rubygem-sys-uptime
     SUBDIR += rubygem-teamocil
+    SUBDIR += rubygem-winrm
     SUBDIR += rubygem-yell
     SUBDIR += runit
     SUBDIR += runwhen

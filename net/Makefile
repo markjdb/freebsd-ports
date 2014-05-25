@@ -236,7 +236,6 @@
     SUBDIR += iodine
     SUBDIR += ip6_int
     SUBDIR += ipa_ipfw
-    SUBDIR += ipfw-graph
     SUBDIR += ipgrab
     SUBDIR += iplog
     SUBDIR += ipsorc
@@ -379,6 +378,7 @@
     SUBDIR += mopd
     SUBDIR += morebalance
     SUBDIR += mosh
+    SUBDIR += mosquitto
     SUBDIR += mpd-l2tp-ipv6pd-client
     SUBDIR += mpd5
     SUBDIR += mpich
@@ -834,6 +834,7 @@
     SUBDIR += pecl-oauth
     SUBDIR += pecl-radius
     SUBDIR += pecl-yaz
+    SUBDIR += pecl-yp
     SUBDIR += pen
     SUBDIR += pfflowd
     SUBDIR += pfinger
@@ -1047,6 +1048,7 @@
     SUBDIR += rubygem-righthttpconnection
     SUBDIR += rubygem-rightslicehost
     SUBDIR += rubygem-rubyntlm
+    SUBDIR += rubygem-rubyntlm01
     SUBDIR += rubygem-rubytter
     SUBDIR += rubygem-rudy
     SUBDIR += rubygem-rye
@@ -1078,6 +1080,7 @@
     SUBDIR += sdl2_net
     SUBDIR += sdl_net
     SUBDIR += seda
+    SUBDIR += self-service-password
     SUBDIR += sendemail
     SUBDIR += sendfile
     SUBDIR += sendsms
