@@ -74,7 +74,7 @@ CONFIGURE_ARGS+=	--without-mysql
 .endif
 
 .if ${LIBGDA5_SLAVE}==postgresql
-USE_PGSQL=		yes
+USES+=			pgsql
 CONFIGURE_ARGS+=	--with-postgres=${LOCALBASE}
 .else
 CONFIGURE_ARGS+=	--without-postgres
@@ -90,6 +90,7 @@ CONFIGURE_ARGS+=	--without-mdb
 
 .if ${LIBGDA5_SLAVE}==jdbc
 USE_JAVA=		yes
+JAVA_VERSION=		1.6
 JAVA_VENDOR=		bsdjava openjdk
 .else
 CONFIGURE_ARGS+=	--without-java

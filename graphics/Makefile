@@ -68,7 +68,6 @@
     SUBDIR += c-a-i-r
     SUBDIR += cadubi
     SUBDIR += cairo
-    SUBDIR += cairo-java
     SUBDIR += cairo-reference
     SUBDIR += cairomm
     SUBDIR += cal3d
@@ -619,6 +618,7 @@
     SUBDIR += opengtl
     SUBDIR += openimageio
     SUBDIR += openjpeg
+    SUBDIR += openjpeg15
     SUBDIR += openjump
     SUBDIR += opennurbs
     SUBDIR += openrm

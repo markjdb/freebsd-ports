@@ -274,6 +274,7 @@
     SUBDIR += numdiff
     SUBDIR += nyh-hoc
     SUBDIR += ocaml-ocamlgraph
+    SUBDIR += ocaml-zarith
     SUBDIR += ocamlgsl
     SUBDIR += octave
     SUBDIR += octave-forge
@@ -556,7 +557,6 @@
     SUBDIR += py-gmpy
     SUBDIR += py-gnuplot
     SUBDIR += py-graphillion
-    SUBDIR += py-graphtool
     SUBDIR += py-gsl
     SUBDIR += py-igraph
     SUBDIR += py-mathdom

@@ -10,6 +10,16 @@ in the release notes and/or placed into UPDATING.
 
 All ports committers are allowed to commit to this file.
 
+20140529:
+AUTHOR: miwi@FreeBSD.org
+
+  USE_GMAKE is no longer supported, please use USES=gmake instead
+
+20140526:
+AUTHOR: bapt@FreeBSD.org
+
+  USE_DOS2UNIX is no longer supported, USES=dos2unix should be used instead
+
 20140505:
 AUTHOR: bapt@FreeBSD.org
 

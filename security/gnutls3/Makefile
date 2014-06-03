@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnutls
-PORTVERSION=	3.1.23
-PORTREVISION=	1
+PORTVERSION=	3.1.25
 CATEGORIES=	security net
 MASTER_SITES=	ftp://ftp.gnutls.org/gcrypt/gnutls/v3.1/
 PKGNAMESUFFIX=	${GNUTLS_SUFFIX}

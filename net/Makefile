@@ -84,7 +84,6 @@
     SUBDIR += ct
     SUBDIR += ctrace
     SUBDIR += cvsup
-    SUBDIR += cvsup-mirror
     SUBDIR += cvsup-without-gui
     SUBDIR += cvsupchk
     SUBDIR += cvsync
@@ -297,6 +296,7 @@
     SUBDIR += libcmis
     SUBDIR += libdnet
     SUBDIR += libexosip2
+    SUBDIR += libexosip2-legacy
     SUBDIR += libfb
     SUBDIR += libfixbuf
     SUBDIR += libgnetwork
@@ -831,6 +831,7 @@
     SUBDIR += pecl-cvsclient
     SUBDIR += pecl-geoip
     SUBDIR += pecl-gupnp
+    SUBDIR += pecl-mosquitto
     SUBDIR += pecl-oauth
     SUBDIR += pecl-radius
     SUBDIR += pecl-yaz

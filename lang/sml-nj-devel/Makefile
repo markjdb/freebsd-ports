@@ -14,8 +14,10 @@ EXTRACT_ONLY=	config.tgz
 MAINTAINER=	joemann@beefree.free.de
 COMMENT=	Popular functional language from Bell Labs
 
+BROKEN=		Dysfunctional
+
 NO_WRKSUBDIR=	yes
-USE_GMAKE=	yes
+USES=		gmake
 
 ONLY_FOR_ARCHS=	i386
 

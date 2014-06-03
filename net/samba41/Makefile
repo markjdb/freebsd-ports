@@ -16,8 +16,6 @@ LICENSE=		GPLv3
 
 CONFLICTS?=		*samba3[2-6]-3.* samba4-4.0.*
 
-SAMBA4_PORT=		${PORTNAME}
-
 SAMBA4_BASENAME=	samba
 SAMBA4_PORTNAME=	${SAMBA4_BASENAME}4
 SAMBA4_VERSION=		4.1.7
@@ -521,12 +519,12 @@ do-install:
 			@(cd ${INSTALL_WRKSRC} && ${SETENV} ${MAKE_ENV} ${PYTHON_CMD} ${INSTALL_WRKSRC}/${WAF_TOOL} ${MAKE_ARGS} ${INSTALL_TARGET})
 
 post-install:
+			@${LN} -sf smb.conf.5.gz ${STAGEDIR}${PREFIX}/man/man5/smb4.conf.5.gz
 .if ${PORT_OPTIONS:MDOCS}
 			@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .	for doc in ${PORTDOCS}
 			@${INSTALL_DATA} ${WRKDIR}/${doc} ${STAGEDIR}${DOCSDIR}
 .	endfor
-			@${LN} -sf smb.conf.5.gz ${STAGEDIR}${PREFIX}/man/man5/smb4.conf.5.gz
 .endif
 # Run post-install script
 .for dir in ${SAMBA4_LOGDIR} ${SAMBA4_RUNDIR} ${SAMBA4_LOCKDIR} ${SAMBA4_MODULEDIR} ${SAMBA4_PRIVATEDIR}

@@ -75,7 +75,6 @@
     SUBDIR += mbpurple
     SUBDIR += mcabber
     SUBDIR += meanwhile
-    SUBDIR += mercury
     SUBDIR += mikutter
     SUBDIR += mu-conference
     SUBDIR += naim
@@ -172,7 +171,6 @@
     SUBDIR += twitmail
     SUBDIR += vacuum-im
     SUBDIR += venom
-    SUBDIR += vicq
     SUBDIR += vqcc-gtk
     SUBDIR += yoono
     SUBDIR += ysm

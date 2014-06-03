@@ -19,9 +19,9 @@ CONFLICTS_INSTALL=	caudium14-1.* \
 		apache-*-2.2.* apache22-*
 
 USE_APACHE=	common24
-USES=		iconv perl5 tar:bzip2
+USES=		tar:bzip2 iconv perl5 libtool
 USE_PERL5=	run
-USE_AUTOTOOLS=	autoconf libtool
+USE_AUTOTOOLS=	autoconf
 USE_RC_SUBR=	apache24 htcacheclean
 LIBTOOLFILES=	configure.in
 
@@ -113,8 +113,7 @@ MAKE_ENV+=	EXPR_COMPAT=yes \
 # here we do only OPTIONS fixups
 
 .if ${PORT_OPTIONS:MLUA}
-USE_LUA=	5.1+
-LUA_COMPS=	lua
+USES+=		lua:51
 .endif
 
 .if ${PORT_OPTIONS:MPROXY_HTML} || ${PORT_OPTIONS:MXML2ENC}

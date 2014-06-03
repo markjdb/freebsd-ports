@@ -33,11 +33,13 @@
     SUBDIR += cups-client
     SUBDIR += cups-cloud-print
     SUBDIR += cups-filters
+    SUBDIR += cups-fxlinuxprint
     SUBDIR += cups-image
     SUBDIR += cups-pdf
     SUBDIR += cups-pk-helper
     SUBDIR += cups-pstoraster
     SUBDIR += cups-samba
+    SUBDIR += cups-smb-backend
     SUBDIR += deforaos-pdfviewer
     SUBDIR += detex
     SUBDIR += dk-acroread8

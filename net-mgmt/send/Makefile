@@ -12,10 +12,12 @@ MAINTAINER=	anchie@FreeBSD.org
 COMMENT=	Secure Neighbor Discovery implementation for IPv6
 
 BROKEN=		Fails to link
+DEPRECATED=	Broken for more than 5 months
+EXPIRATION_DATE=	2014-06-30
 
 LIB_DEPENDS=	dnet.1:${PORTSDIR}/net/libdnet
 
-USE_GMAKE=	yes
+USES=		gmake
 SUB_FILES=	pkg-message
 PKGMESSAGE=	${WRKDIR}/pkg-message
 PORTDOCS=	README UserGuide.pdf

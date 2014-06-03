@@ -8,8 +8,10 @@ MASTER_SITES=	http://z.cs.utexas.edu/users/nn/nero/downloads/
 PKGNAMEPREFIX=	linux-
 DISTNAME=	nero2_linux_i386
 
-MAINTAINER=	acm@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Neuro evolving robotic operatives the game
+
+BROKEN=		Unfetchable
 
 USE_LINUX=	yes
 USE_LINUX_APPS=	libvorbis sdl12 libtheora

@@ -11,10 +11,12 @@ MAINTAINER=	rsmith@xs4all.nl
 COMMENT=	Very conservative branch of the Quake source code
 
 BROKEN=		Fails to build
+DEPRECATED=	Broken for more than 5 months
+EXPIRATION_DATE=	2014-06-30
 
 USE_XORG=	x11 xxf86vm xdamage xfixes xau xext xdmcp
 USE_GL=		yes
-USE_GMAKE=	yes
+USES=		gmake
 MAKE_ENV=	QBASEDIR="${Q1DIR}" X11BASE=${LOCALBASE}
 
 OPTIONS_DEFINE=	OPTIMIZED_CFLAGS

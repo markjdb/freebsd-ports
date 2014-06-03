@@ -180,6 +180,7 @@
     SUBDIR += c4
     SUBDIR += calibrator
     SUBDIR += capstone
+    SUBDIR += catch
     SUBDIR += cbind
     SUBDIR += cbrowser
     SUBDIR += cc65
@@ -239,7 +240,6 @@
     SUBDIR += cld
     SUBDIR += clewn
     SUBDIR += clig
-    SUBDIR += clint
     SUBDIR += clisp-hyperspec
     SUBDIR += clojure-cider
     SUBDIR += cmake
@@ -340,6 +340,7 @@
     SUBDIR += dconf
     SUBDIR += dconf-editor
     SUBDIR += ddd
+    SUBDIR += dee
     SUBDIR += deforaos-libsystem
     SUBDIR += deheader
     SUBDIR += delta
@@ -1007,7 +1008,6 @@
     SUBDIR += libg19draw
     SUBDIR += libgalago
     SUBDIR += libgamepad
-    SUBDIR += libgconf-java
     SUBDIR += libgdata
     SUBDIR += libgee
     SUBDIR += libgee06
@@ -1015,7 +1015,6 @@
     SUBDIR += libghthash
     SUBDIR += libgii
     SUBDIR += libgit2
-    SUBDIR += libglade-java
     SUBDIR += libglade2
     SUBDIR += libglade2-reference
     SUBDIR += libglademm24
@@ -1146,9 +1145,11 @@
     SUBDIR += libvanessa_logger
     SUBDIR += libvanessa_socket
     SUBDIR += libvc
+    SUBDIR += libvhdi
     SUBDIR += libvirt
     SUBDIR += libvirt-glib
     SUBDIR += libvirt-java
+    SUBDIR += libvmdk
     SUBDIR += libvolume_id
     SUBDIR += libvshadow
     SUBDIR += libwfut
@@ -4193,6 +4194,7 @@
     SUBDIR += rubygem-coffee-rails
     SUBDIR += rubygem-coffee-script
     SUBDIR += rubygem-coffee-script-source
+    SUBDIR += rubygem-colorize
     SUBDIR += rubygem-columnize
     SUBDIR += rubygem-commander
     SUBDIR += rubygem-configatron

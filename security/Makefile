@@ -50,7 +50,6 @@
     SUBDIR += burpsuite
     SUBDIR += ca_root_nss
     SUBDIR += calife
-    SUBDIR += calife-devel
     SUBDIR += ccrypt
     SUBDIR += ccsrch
     SUBDIR += cfs
@@ -752,6 +751,7 @@
     SUBDIR += py-cryptkit
     SUBDIR += py-cryptography
     SUBDIR += py-cybox
+    SUBDIR += py-dfvfs
     SUBDIR += py-ecdsa
     SUBDIR += py-ed25519ll
     SUBDIR += py-fail2ban
@@ -778,7 +778,6 @@
     SUBDIR += py-plone.openid
     SUBDIR += py-plone.protect
     SUBDIR += py-plone.session
-    SUBDIR += py-posix1e
     SUBDIR += py-potr
     SUBDIR += py-pow
     SUBDIR += py-pyclamd

@@ -5449,7 +5449,7 @@ mail/zmailer||2014-02-13|Broken since at least last August
 lang/gcc34|lang/gcc|2014-02-13|Superseded by GCC 4.6 or later
 devel/adabooch-doc-html||2014-02-15|Obsolete; adabooch now has DOCS option
 x11-toolkits/sakura|x11/sakura|2014-02-16|Moved to a better category
-misc/kde4-shared-mime-info||2014-02-18|Removed, the port not needed anymore
+misc/kde4-shared-mime-info||2014-02-18|Removed: this port is not needed anymore
 deskutils/kdepim44-runtime||2014-02-18|Removed: conflicts with new kdepimlibs
 deskutils/kdepim44||2014-02-18|Removed: depends on deskutils/kdepim44-runtime
 misc/kde-xdg-env||2014-02-18|Removed, remnant of KDE 3
@@ -5664,7 +5664,6 @@ japanese/libjcode||2014-03-10|Has expired: No more public distfiles
 sysutils/jailutils||2014-03-10|Has expired: No more public distfiles
 net/freeswitch-vanilla-devel||2014-03-10|Has expired: No more public distfiles
 sysutils/hdup||2014-03-10|Has expired: No more public distfiles
-print/cups-smb-backend||2014-03-10|Has expired: No more public distfiles
 x11/settitle||2014-03-10|Has expired: No more public distfiles
 sysutils/anteater||2014-03-10|Has expired: No more public distfiles
 www/trac-pendingticket||2014-03-10|Has expired: No more public distfiles
@@ -5716,7 +5715,7 @@ databases/ludia||2014-03-18|Has expired: Broken since June 2013
 lang/schemetoc||2014-03-18|Has expired: Broken since July 2013
 sysutils/cfengine-devel||2014-03-19|Has expired: Broken since June 2013
 sysutils/py-salt-cloud|sysutils/py-salt|2014-03-19|Removed:py-salt-cloud is now part of py-salt
-devel/py-pyzmq|net/py-pyzmq|2014-03-22|Move to a more suitable category with other ZeroMQ ports 
+devel/py-pyzmq|net/py-pyzmq|2014-03-22|Move to a more suitable category with other ZeroMQ ports
 audio/p5-Xmms|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
 audio/xmms-a52dec|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
 audio/xmms-audiofile|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
@@ -5930,7 +5929,6 @@ sysutils/dtc||2014-04-11|Has expired: Depends on expired www/sbox-dtc
 textproc/glimpse||2014-04-11|Has expired: No more public distfiles
 ftp/ftplocate||2014-04-11|Has expired: Depends on expired textproc/glimpse
 misc/tkman||2014-04-11|Has expired: Depends on expired textproc/glimpse
-devel/asl||2014-04-11|Has expired: Unmaintained since 1997
 net/pcnfsd||2014-04-11|Has expired: Unmaintained since 1997
 cad/chipmunk||2014-04-11|Has expired: Unmaintained since 1999
 graphics/comix||2014-04-11|Has expired: Insists on installing in /usr/local, and uses nautilus2 which is deprecated
@@ -6109,3 +6107,24 @@ security/clamav-devel||2014-05-16|Retire, older than security/clamav
 devel/msp430-gcc3||2014-05-18|Version obsolete, use devel/msp430-gcc
 graphics/GraphicsMagick12|graphics/GraphicsMagick13|2014-05-20|Has expired: Unmaintained upstream, no ports depending on it. Use graphics/GraphicsMagick13 instead
 net-im/tkabber-devel|net-im/tkabber|2014-05-23|Has expired: Unfetchable, outdated by net-im/tkabber
+devel/libglade-java||2014-05-26|Has expired: Unmaintained, outdated not depend on
+lang/lua|lang/lua51|2014-05-26|Rename to allow multiple version of lua to coexist
+math/py-graphtool||2014-05-27|Has expired: Broken for more than 6 months
+devel/clint||2014-05-27|Has expired: Broken for more than 6 months
+x11-toolkits/libgtk-java||2014-05-27|Has expired: Unmaintained, outdated not depend on
+graphics/cairo-java||2014-05-27|Has expired: Unmaintained, outdated not depend on
+devel/libgconf-java||2014-05-27|Has expired: Unmaintained, outdated not depend on
+x11/libgnome-java||2014-05-27|Has expired: Unmaintained, outdated not depend on
+security/calife-devel||2014-05-28|Replaced by security/calife
+sysutils/synergy-devel||2014-05-30|Replaced by sysutils/synergy
+net-im/vicq||2014-05-30|Has expired: Unmaintained, outdated not depend on
+net-im/mercury||2014-05-31|Has expired: MSN is dying and the domain mercury.im is down
+german/bsdgroup-firefox-searchplugin||2014-05-31|Has expired: bsdgroup.de no longer seems to exist
+german/bsdforen-firefox-searchplugin||2014-05-31|Has expired: No longer works after forum software update
+lang/ocaml-doc||2014-06-01|Has expired: Documentation is now included in lang/ocaml
+lang/ocaml-examples||2014-06-01|Has expired: Outdated and discontinued; new examples are in lang/ocaml
+lang/gnat-aux|lang/gcc-aux|2014-06-01|Has expired: Superceded by gcc4.9-based lang/gcc-aux, use it instead
+lang/python31|lang/python33|2014-06-01|Has expired: Python 3.1 will be end-of-life soon, please migrate to lang/python33
+net/cvsup-mirror||2014-06-01|Removed: www, doc, gnats, ports repo gone; src repo deprecated
+multimedia/shell-fm||2014-06-02|Has expired: Unusable, subscription radio streaming service will come to an end
+security/py-posix1e|security/py-pylibacl|2014-06-03|Duplicate of security/py-pylibacl

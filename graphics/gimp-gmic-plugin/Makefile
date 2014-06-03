@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	gmic
-PORTVERSION=	1.5.8.3
-PORTREVISION=	1
+PORTVERSION=	1.5.9.0
 CATEGORIES=	graphics
 MASTER_SITES=	SF/${PORTNAME}/older_versions/ \
 		SF/${PORTNAME}/
@@ -63,7 +62,7 @@ do-install:
 	${INSTALL_DATA} ${PORTEXAMPLES:S|^|${WRKSRC}/|} ${STAGEDIR}${EXAMPLESDIR}
 .if ${PORT_OPTIONS:MBASH}
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d
-	${INSTALL_SCRIPT} ${WRKSRC}/gmic_bashcompletion.sh \
+	${INSTALL_SCRIPT} ${WRKSRC}/../resources/gmic_bashcompletion.sh \
 		${STAGEDIR}${PREFIX}/etc/bash_completion.d
 .endif
 

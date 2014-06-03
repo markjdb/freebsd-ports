@@ -134,6 +134,7 @@
     SUBDIR += consolehm
     SUBDIR += consolekit
     SUBDIR += contool
+    SUBDIR += contractor
     SUBDIR += copytape
     SUBDIR += coreutils
     SUBDIR += cotty
@@ -891,7 +892,6 @@
     SUBDIR += symlinks
     SUBDIR += symon
     SUBDIR += synergy
-    SUBDIR += synergy-devel
     SUBDIR += sysgather
     SUBDIR += sysinfo
     SUBDIR += syslinux

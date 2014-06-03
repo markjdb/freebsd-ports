@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	libav
-PORTVERSION=	10
-PORTREVISION=	2
+PORTVERSION=	10.1
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	http://libav.org/releases/
 
@@ -95,7 +94,7 @@ LAME_CONFIGURE_ENABLE=		libmp3lame
 OPENCV_LIB_DEPENDS=		libopencv_gpu.so:${PORTSDIR}/graphics/opencv
 OPENCV_CONFIGURE_ENABLE=	libopencv
 
-OPENJPEG_LIB_DEPENDS=		libopenjpeg.so:${PORTSDIR}/graphics/openjpeg
+OPENJPEG_LIB_DEPENDS=		libopenjpeg.so:${PORTSDIR}/graphics/openjpeg15
 OPENJPEG_CONFIGURE_ENABLE=	libopenjpeg
 
 OPENSSL_CONFIGURE_ENABLE=	openssl

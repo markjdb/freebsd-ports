@@ -93,7 +93,6 @@
     SUBDIR += gforth
     SUBDIR += ghc
     SUBDIR += gjs
-    SUBDIR += gnat-aux
     SUBDIR += gnat_util
     SUBDIR += gnatdroid-armv5
     SUBDIR += gnatdroid-armv7
@@ -145,8 +144,8 @@
     SUBDIR += linux-f10-libg2c
     SUBDIR += linux-f10-tcl85
     SUBDIR += linux-j
-    SUBDIR += lua
     SUBDIR += lua-mode.el
+    SUBDIR += lua51
     SUBDIR += lua52
     SUBDIR += luajit
     SUBDIR += lush
@@ -184,8 +183,6 @@
     SUBDIR += ocaml
     SUBDIR += ocaml-autoconf
     SUBDIR += ocaml-camlidl
-    SUBDIR += ocaml-doc
-    SUBDIR += ocaml-examples
     SUBDIR += ocaml-mode.el
     SUBDIR += ocaml-nox11
     SUBDIR += ocs
@@ -231,6 +228,7 @@
     SUBDIR += perl5.14
     SUBDIR += perl5.16
     SUBDIR += perl5.18
+    SUBDIR += perl5.20
     SUBDIR += petite-chez
     SUBDIR += pfe
     SUBDIR += phantomjs
@@ -265,7 +263,6 @@
     SUBDIR += python2
     SUBDIR += python27
     SUBDIR += python3
-    SUBDIR += python31
     SUBDIR += python32
     SUBDIR += python33
     SUBDIR += python34
