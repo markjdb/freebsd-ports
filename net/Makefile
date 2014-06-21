@@ -63,7 +63,6 @@
     SUBDIR += bwping
     SUBDIR += c3270
     SUBDIR += cagibi
-    SUBDIR += callweaver
     SUBDIR += ccxstream
     SUBDIR += chrony
     SUBDIR += citrix_ica
@@ -1149,6 +1148,7 @@
     SUBDIR += tac_plus4
     SUBDIR += tapidbus
     SUBDIR += tayga
+    SUBDIR += tclsoap
     SUBDIR += tcludp
     SUBDIR += tcpcat
     SUBDIR += tcpdstat
@@ -1237,6 +1237,7 @@
     SUBDIR += vortex
     SUBDIR += vserver
     SUBDIR += vtun
+    SUBDIR += wackamole
     SUBDIR += wackford-squeers
     SUBDIR += wakeonlan
     SUBDIR += whois

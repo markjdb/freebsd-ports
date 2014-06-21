@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	redis
-DISTVERSION=	3.0.0-beta5
+DISTVERSION=	3.0.0-beta6
 CATEGORIES=	databases
 MASTER_SITES=	https://github.com/antirez/redis/archive/
 PKGNAMESUFFIX=	-devel
@@ -10,7 +10,7 @@ DISTNAME=	${DISTVERSION}
 DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	osa@FreeBSD.org
-COMMENT=	A persistent key-value database with built-in net interface
+COMMENT=	Persistent key-value database with built-in net interface
 
 LICENSE=	BSD3CLAUSE
 

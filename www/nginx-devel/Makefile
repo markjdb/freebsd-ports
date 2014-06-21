@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	nginx
-PORTVERSION=	1.7.1
+PORTVERSION=	1.7.2
+PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	http://nginx.org/download/
 MASTER_SITES+=	${MASTER_SITE_LOCAL}
@@ -71,7 +72,6 @@ OPTIONS_DEFINE=	\
 	HTTP_UPLOAD \
 	HTTP_UPLOAD_PROGRESS \
 	HTTP_UPSTREAM_FAIR \
-	HTTP_UPSTREAM_HASH \
 	HTTP_UPSTREAM_STICKY \
 	HTTP_ZIP \
 	ARRAYVAR \
@@ -161,7 +161,6 @@ HTTP_SUBS_FILTER_DESC=		3rd party subs filter module
 HTTP_UPLOAD_DESC=		3rd party upload module
 HTTP_UPLOAD_PROGRESS_DESC=	3rd party uploadprogress module
 HTTP_UPSTREAM_FAIR_DESC=	3rd party upstream fair module
-HTTP_UPSTREAM_HASH_DESC=	3rd party upstream hash module
 HTTP_UPSTREAM_STICKY_DESC=	3rd party upstream sticky module
 HTTP_ZIP_DESC=			3rd party http_zip module
 ARRAYVAR_DESC=			3rd party array_var module
@@ -522,14 +521,6 @@ DISTFILES+=	nginx_upstream_fair-${NGINX_UPSTREAM_FAIR_VERSION}.tar.gz:upstreamfa
 CONFIGURE_ARGS+=--add-module=${WRKDIR}/nginx_upstream_fair-${NGINX_UPSTREAM_FAIR_VERSION}
 .endif
 
-.if ${PORT_OPTIONS:MHTTP_UPSTREAM_HASH}
-NGINX_UPSTREAM_HASH_VERSION=	0.3.1
-MASTER_SITES+=	http://wiki.nginx.org/images/1/11/:upstreamhash
-DISTFILES+=	Nginx_upstream_hash-${NGINX_UPSTREAM_HASH_VERSION}.tar.gz:upstreamhash
-CONFIGURE_ARGS+=--add-module=${WRKDIR}/nginx_upstream_hash-${NGINX_UPSTREAM_HASH_VERSION}
-EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-ngx_http_upstream.h
-.endif
-
 .if ${PORT_OPTIONS:MHTTP_UPSTREAM_STICKY}
 IGNORE=	HTTP_UPSTREAM_STICKY: update require
 USE_HTTP_SSL=	yes
@@ -645,8 +636,7 @@ CONFIGURE_ARGS+=--without-http_rewrite_module \
 .endif
 
 .if ${PORT_OPTIONS:MPASSENGER}
-#IGNORE=	PASSENGER: update require
-PASSENGER_VERSION=	4.0.44
+PASSENGER_VERSION=	4.0.45
 MASTER_SITES+=	http://s3.amazonaws.com/phusion-passenger/releases/:passenger
 DISTFILES+=	passenger-${PASSENGER_VERSION}.tar.gz:passenger
 CONFIGURE_ARGS+=--add-module=${WRKDIR}/passenger-${PASSENGER_VERSION}/ext/nginx
@@ -991,8 +981,6 @@ do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx
 	${INSTALL_PROGRAM} ${WRKSRC}/objs/src/http/modules/perl/blib/arch/auto/nginx/nginx.so \
 		${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx
-	${INSTALL_DATA} ${WRKSRC}/objs/src/http/modules/perl/blib/arch/auto/nginx/nginx.bs \
-		${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx
 	${INSTALL_DATA} ${WRKSRC}/objs/src/http/modules/perl/blib/lib/nginx.pm \
 		${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/
 .endif
@@ -1006,7 +994,6 @@ do-install:
 post-install:
 .if !empty(PORT_OPTIONS:MHTTP) && !empty(PORT_OPTIONS:MHTTP_PERL)
 	${ECHO_CMD} ${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx/nginx.so >> ${TMPPLIST}
-	${ECHO_CMD} ${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx/nginx.bs >> ${TMPPLIST}
 	${ECHO_CMD} ${SITE_PERL_REL}/${PERL_ARCH}/nginx.pm >> ${TMPPLIST}
 	${ECHO_CMD} @dirrm ${SITE_PERL_REL}/${PERL_ARCH}/auto/nginx >> ${TMPPLIST}
 .endif

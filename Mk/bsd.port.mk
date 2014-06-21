@@ -583,11 +583,11 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				  depending on the value of MANCOMPRESSED (see below).
 # COPYTREE_BIN
 # COPYTREE_SHARE
-#				- Similiar to INSTALL commands but working on whole
-#				  trees of directories, takes 3 arguments, last one is
-#				  find(1) arguments and optional.
+#				- Similiar to INSTALL_PROGRAM and INSTALL_DATA commands but
+#				  working on whole trees of directories, takes 3 arguments,
+#				  last one is find(1) arguments and optional.
 #				  Example use: 
-#				  cd ${WRKSRC}/doc && ${COPYTREE} . ${DOCSDIR} "! -name *.bak"
+#				  cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${DOCSDIR} "! -name *.bak"
 #
 #				  Installs all directories and files from ${WRKSRC}/doc
 #				  to ${DOCSDIR} except sed backup files.
@@ -970,12 +970,6 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 # 				- Same as USE_LDCONFIG but the target file is
 # 				  ${PREFIX}/libdata/ldconfig32/${UNIQUENAME} instead.
 # 				  Note: that should only be used on 64-bit architectures.
-# NO_LDCONFIG_MTREE
-#				- Denotes whether the libdata/ldconfig directory is part of
-#				  the mtree on a given OSVERSION system.  If it is not, we
-#				  create the directory, pull in the ldconfig_compat port,
-#				  and clean up on de-installation.  NOTE: this variable is
-#				  internal to bsd.port.mk and must not be set in your Makefile.
 #
 # DOCSDIR		- Name of the directory to install the packages docs in.
 #				  Default: ${PREFIX}/share/doc/${PORTNAME}
@@ -1149,17 +1143,17 @@ HCC:=	${CC}
 HCXX:=	${CXX}
 .endif
 .if !exists(/usr/${X_BUILD_FOR}/usr/bin/cc)
-CC=		${LOCALBASE}/${X_BUILD_FOR}/usr/bin/cc
-CXX=		${LOCALBASE}/${X_BUILD_FOR}/usr/bin/c++
-PKG_ENV+=	ABI_FILE=${LOCALBASE}/${X_BUILD_FOR}/usr/lib/crt1.o
+X_SYSROOT=	${LOCALBASE}/${X_BUILD_FOR}
 .else
-CC=		/usr/${X_BUILD_FOR}/usr/bin/cc
-CXX=	/usr/${X_BUILD_FOR}/usr/bin/c++
-PKG_ENV+=	ABI_FILE=/usr/${X_BUILD_FOR}/usr/lib/crt1.o
+X_SYSROOT=	/usr/${X_BUILD_FOR}
 .endif
+CC=		${X_SYSROOT}/usr/bin/cc
+CXX=	${X_SYSROOT}/usr/bin/c++
+PKG_ENV+=	ABI_FILE=${X_SYSROOT}/usr/lib/crt1.o
 NM=		${X_BUILD_FOR}-nm
 STRIP_CMD=	${X_BUILD_FOR}-strip
-MAKE_ENV+=	NM=${NM} STRIPBIN=${X_BUILD_FOR}-strip
+MAKE_ENV+=	NM=${NM} STRIPBIN=${X_BUILD_FOR}-strip PKG_CONFIG_SYSROOT_DIR="${X_SYSROOT}"
+CONFIGURE_ENV+=	PKG_CONFIG_SYSROOT_DIR="${X_SYSROOT}"
 # only bmake support the below
 STRIPBIN=	${STRIP_CMD}
 .export.env STRIPBIN
@@ -1475,10 +1469,6 @@ PKGCOMPATDIR?=		${LOCALBASE}/lib/compat/pkg
 .include "${PORTSDIR}/Mk/bsd.tex.mk"
 .endif
 
-.if defined(USE_DRUPAL)
-.include "${PORTSDIR}/Mk/bsd.drupal.mk"
-.endif
-
 .if defined(USE_GECKO)
 .include "${PORTSDIR}/Mk/bsd.gecko.mk"
 .endif
@@ -1596,8 +1586,7 @@ SUB_LIST+=	PREFIX=${PREFIX} LOCALBASE=${LOCALBASE} \
 PLIST_SUB_SED_MIN?=	2
 PLIST_SUB_SED?= ${PLIST_SUB:C/.*=.{1,${PLIST_SUB_SED_MIN}}$//g:NEXTRACT_SUFX=*:NOSREL=*:NLIB32DIR=*:NPREFIX=*:NLOCALBASE=*:N*="":N*="@comment*:C/([^=]*)="?([^"]*)"?/s!\2!%%\1%%!g;/g:C/\./\\./g}
 
-PLIST_REINPLACE+=	dirrmtry stopdaemon rmtry
-PLIST_REINPLACE_DIRRMTRY=s!^@dirrmtry \(.*\)!@unexec rmdir "%D/\1" 2>/dev/null || true!
+PLIST_REINPLACE+=	stopdaemon rmtry
 PLIST_REINPLACE_RMTRY=s!^@rmtry \(.*\)!@unexec rm -f %D/\1 2>/dev/null || true!
 PLIST_REINPLACE_STOPDAEMON=s!^@stopdaemon \(.*\)!@unexec %D/etc/rc.d/\1 forcestop 2>/dev/null || true!
 
@@ -1630,6 +1619,9 @@ INSTALL_TARGET:=	${INSTALL_TARGET:S/^install-strip$/install/g}
 .if defined(WITH_SSP) || defined(WITH_SSP_PORTS)
 .include "${PORTSDIR}/Mk/bsd.ssp.mk"
 .endif
+
+# XXX PIE support to be added here
+MAKE_ENV+=	NO_PIE=yes
 
 .if defined(NOPORTDOCS)
 PLIST_SUB+=		PORTDOCS="@comment "
@@ -2035,7 +2027,7 @@ MAKE_ENV+=		PREFIX=${PREFIX} \
 			LIBDIR="${LIBDIR}" \
 			CC="${CC}" CFLAGS="${CFLAGS}" \
 			CPP="${CPP}" CPPFLAGS="${CPPFLAGS}" \
-			LDFLAGS="${LDFLAGS}" \
+			LDFLAGS="${LDFLAGS}" LIBS="${LIBS}" \
 			CXX="${CXX}" CXXFLAGS="${CXXFLAGS}" \
 			MANPREFIX="${MANPREFIX}"
 
@@ -2932,6 +2924,12 @@ INFO_PATH?=	info
 .endif
 
 .if defined(INFO)
+#.if !exists(/usr/bin/install-info)
+#.if ${.CURDIR} != ${PORTSDIR}/print/texinfo
+#BUILD_DEPENDS+=	makeinfo:${PORTSDIR}/print/texinfo
+#RUN_DEPENDS+=	install-info:${PORTSDIR}/print/texinfo
+#.endif
+#.endif
 . for D in ${INFO:H}
 RD:=	${D}
 .  if ${RD} != "."
@@ -3632,7 +3630,7 @@ do-configure:
 	    ${SET_LATE_CONFIGURE_ARGS} \
 		if ! ${SETENV} CC="${CC}" CPP="${CPP}" CXX="${CXX}" \
 	    CFLAGS="${CFLAGS}" CPPFLAGS="${CPPFLAGS}" CXXFLAGS="${CXXFLAGS}" \
-	    LDFLAGS="${LDFLAGS}" \
+	    LDFLAGS="${LDFLAGS}" LIBS="${LIBS}" \
 	    INSTALL="/usr/bin/install -c ${_BINOWNGRP}" \
 	    INSTALL_DATA="${INSTALL_DATA}" \
 	    INSTALL_LIB="${INSTALL_LIB}" \
@@ -4019,18 +4017,15 @@ install-ldconfig-file:
 	-${LDCONFIG} -m ${USE_LDCONFIG}
 .endif
 .endif
-.if ${USE_LDCONFIG} != "${PREFIX}/lib" && !defined(INSTALL_AS_USER)
+.if ${USE_LDCONFIG} != "${LOCALBASE}/lib" && !defined(INSTALL_AS_USER)
 	@${ECHO_MSG} "===>   Installing ldconfig configuration file"
-.if defined(NO_LDCONFIG_MTREE)
-	@${MKDIR} ${STAGEDIR}${PREFIX}/${LDCONFIG_DIR}
+.if defined(NO_MTREE) || ${PREFIX} != ${LOCALBASE}
+	@${MKDIR} ${STAGEDIR}${LOCALBASE}/${LDCONFIG_DIR}
 .endif
 	@${ECHO_CMD} ${USE_LDCONFIG} | ${TR} ' ' '\n' \
-		> ${STAGEDIR}${PREFIX}/${LDCONFIG_DIR}/${UNIQUENAME}
-	@${ECHO_CMD} "@cwd ${PREFIX}" >> ${TMPPLIST}
+		> ${STAGEDIR}${LOCALBASE}/${LDCONFIG_DIR}/${UNIQUENAME}
+	@${ECHO_CMD} "@cwd ${LOCALBASE}" >> ${TMPPLIST}
 	@${ECHO_CMD} ${LDCONFIG_DIR}/${UNIQUENAME} >> ${TMPPLIST}
-.if defined(NO_LDCONFIG_MTREE)
-	@${ECHO_CMD} "@unexec rmdir ${LDCONFIG_DIR} >/dev/null 2>&1 || true" >> ${TMPPLIST}
-.endif
 .endif
 .endif
 .endif
@@ -4046,16 +4041,13 @@ install-ldconfig-file:
 .endif
 .if !defined(INSTALL_AS_USER)
 	@${ECHO_MSG} "===>   Installing 32-bit ldconfig configuration file"
-.if defined(NO_LDCONFIG_MTREE)
-	@${MKDIR} ${STAGEDIR}${PREFIX}/${LDCONFIG_32DIR}
+.if defined(NO_MTREE) || ${PREFIX} != ${LOCALBASE}
+	@${MKDIR} ${STAGEDIR}${LOCALBASE}/${LDCONFIG_32DIR}
 .endif
 	@${ECHO_CMD} ${USE_LDCONFIG32} | ${TR} ' ' '\n' \
-		> ${STAGEDIR}${PREFIX}/${LDCONFIG32_DIR}/${UNIQUENAME}
-	@${ECHO_CMD} "@cwd ${PREFIX}" >> ${TMPPLIST}
+		> ${STAGEDIR}${LOCALBASE}/${LDCONFIG32_DIR}/${UNIQUENAME}
+	@${ECHO_CMD} "@cwd ${LOCALBASE}" >> ${TMPPLIST}
 	@${ECHO_CMD} ${LDCONFIG32_DIR}/${UNIQUENAME} >> ${TMPPLIST}
-.if defined(NO_LDCONFIG_MTREE)
-	@${ECHO_CMD} "@unexec rmdir ${LDCONFIG32_DIR} >/dev/null 2>&1" >> ${TMPPLIST}
-.endif
 .endif
 .endif
 .if defined(INSTALLS_SHLIB)
@@ -4211,6 +4203,9 @@ fix-plist-sequence: ${TMPPLIST}
 	@${MV} -f ${TMPGUCMD} ${TMPPLIST}
 .endif
 .if !defined(WITH_PKGNG)
+	@cd ${.CURDIR} && { ${MAKE} pretty-print-config | fold -sw 120 | ${SED} -e 's/^/@comment OPTIONS:/'; } >> ${TMPPLIST}
+	@${AWK} -f ${KEYWORDS}/pkg_install.awk ${TMPPLIST} > ${TMPPLIST}.keyword && \
+	    ${MV} -f ${TMPPLIST}.keyword ${TMPPLIST}
 	@${ECHO_CMD} "@exec echo pkg_install EOL is scheduled for 2014-09-01. Please consider migrating to pkgng" >> ${TMPPLIST}
 	@${ECHO_CMD} "@exec echo http://blogs.freebsdish.org/portmgr/2014/02/03/time-to-bid-farewell-to-the-old-pkg_-tools/" >> ${TMPPLIST}
 .endif
@@ -5012,7 +5007,6 @@ lib-depends:
 			found=1 ; \
 			${ECHO_MSG} -n " - found ($${_LIB_FILE})"; \
 		done ; \
-		${ECHO_MSG}; \
 		if [ $${found} -eq 0 ]; then \
 			${ECHO_MSG} " - not found"; \
 			${ECHO_MSG} "===>    Verifying for $$lib in $$dir"; \
@@ -5021,6 +5015,8 @@ lib-depends:
 			else \
 				${_INSTALL_DEPENDS} \
 			fi ; \
+		else \
+			${ECHO_MSG}; \
 		fi ; \
 	done
 	@set -e ; for i in ${LIB_DEPENDS:N*.so*\:*}; do \
@@ -5635,11 +5631,6 @@ generate-plist:
 .endif
 .endif
 .endif
-.if !defined(WITH_PKGNG)
-	@cd ${.CURDIR} && { ${MAKE} pretty-print-config | fold -sw 120 | ${SED} -e 's/^/@comment OPTIONS:/'; } >> ${TMPPLIST}
-	@${AWK} -f ${KEYWORDS}/pkg_install.awk ${TMPPLIST} > ${TMPPLIST}.keyword && \
-	    ${MV} -f ${TMPPLIST}.keyword ${TMPPLIST}
-.endif
 .endif
 
 ${TMPPLIST}:
@@ -5750,7 +5741,7 @@ add-plist-info:
 .if (${PREFIX} != "/usr")
 	@${ECHO_CMD} "@unexec if [ -f %D/${INFO_PATH}/dir ]; then if sed -e '1,/Menu:/d' %D/${INFO_PATH}/dir | grep -q '^[*] '; then true; else rm %D/${INFO_PATH}/dir; fi; fi" >> ${TMPPLIST}
 .if (${PREFIX} != ${LOCALBASE} && ${PREFIX} != ${LINUXBASE})
-	@${ECHO_CMD} "@unexec rmdir %D/${INFO_PATH} 2>/dev/null || true" >> ${TMPPLIST}
+	@${ECHO_CMD} "@dirrmtry ${INFO_PATH}" >> ${TMPPLIST}
 .endif
 .endif
 .endif
@@ -6523,7 +6514,7 @@ _STAGE_SUSEQ=	create-users-groups do-install \
 				install-rc-script install-ldconfig-file install-license \
 				install-desktop-entries add-plist-info add-plist-docs \
 				add-plist-examples add-plist-data add-plist-post \
-				move-uniquefiles-plist fix-plist-sequence fix-packlist fix-plist-perl
+				move-uniquefiles-plist fix-plist-sequence fix-packlist fix-perl-bs
 .if defined(DEVELOPER)
 _STAGE_SUSEQ+=	stage-qa
 .endif
@@ -6536,7 +6527,7 @@ _STAGE_SEQ+=	create-users-groups do-install \
 				install-rc-script install-ldconfig-file install-license \
 				install-desktop-entries add-plist-info add-plist-docs \
 				add-plist-examples add-plist-data add-plist-post \
-				move-uniquefiles-plist fix-plist-sequence fix-packlist fix-plist-perl
+				move-uniquefiles-plist fix-plist-sequence fix-packlist fix-perl-bs
 .if defined(DEVELOPER)
 _STAGE_SEQ+=	stage-qa
 .endif
@@ -6570,7 +6561,7 @@ _INSTALL_SUSEQ= check-umask install-mtree pre-su-install \
 				desktop-file-post-install kmod-post-install shared-mime-post-install webplugin-post-install \
 				post-install post-install-script add-plist-buildinfo \
 				add-plist-info add-plist-docs add-plist-examples \
-				add-plist-data add-plist-post fix-plist-sequence fix-plist-perl \
+				add-plist-data add-plist-post fix-plist-sequence \
 				compress-man install-ldconfig-file fake-pkg security-check
 _PACKAGE_DEP=	install
 _PACKAGE_SEQ=	package-message pre-package pre-package-script \

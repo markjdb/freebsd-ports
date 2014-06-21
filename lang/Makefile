@@ -38,7 +38,6 @@
     SUBDIR += clay
     SUBDIR += clisp
     SUBDIR += clojure
-    SUBDIR += clojure-contrib
     SUBDIR += clojure-mode.el
     SUBDIR += cmucl
     SUBDIR += cmucl-extra
@@ -154,6 +153,7 @@
     SUBDIR += mawk
     SUBDIR += mdk
     SUBDIR += metaocaml
+    SUBDIR += micropython
     SUBDIR += mit-scheme
     SUBDIR += mixal
     SUBDIR += mlton

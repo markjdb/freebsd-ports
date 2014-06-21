@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME?=	mariadb
-PORTVERSION=	5.5.37
+PORTVERSION=	5.5.38
 PORTREVISION?=	0
 CATEGORIES=	databases ipv6
 MASTER_SITES=	http://ftp.osuosl.org/pub/mariadb/${PORTNAME}-${PORTVERSION}/source/ \
@@ -83,9 +83,14 @@ CMAKE_ARGS+=	-DWITH_JEMALLOC="system"
 .endif
 
 .if ${PORT_OPTIONS:MSSL}
+.if exists(${LOCALBASE}/include/openssl/opensslv.h)
+.  if !${PORT_OPTIONS:MOPENSSL} || !${PORT_OPTIONS:MPORTSSL}
+IGNORE=	security/openssl package is installed. To build this either select the OPENSSL and PORTSSL options or deinstall openssl
+.  endif
+.endif
 .if ${PORT_OPTIONS:MOPENSSL}
 USE_OPENSSL=	yes
-.if empty(PORT_OPTIONS:MPORTSSL)
+.if !${PORT_OPTIONS:MPORTSSL}
 WITH_OPENSSL_BASE=	yes
 .else
 WITH_OPENSSL_PORT=	yes

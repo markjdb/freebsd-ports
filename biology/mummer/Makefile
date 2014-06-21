@@ -7,8 +7,8 @@ CATEGORIES=	biology
 MASTER_SITES=	SF
 DISTNAME=	MUMmer${PORTVERSION}
 
-MAINTAINER=	sylvio@FreeBSD.org
-COMMENT=	A modular system for rapid whole genome alignment
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Modular system for rapid whole genome alignment
 
 USES=		gmake
 

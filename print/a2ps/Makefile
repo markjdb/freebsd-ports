@@ -3,7 +3,7 @@
 
 PORTNAME=	a2ps
 PORTVERSION=	4.13b
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	print
 MASTER_SITES=	${MASTER_SITE_GNU} \
 		${MASTER_SITE_LOCAL:S/$/:i18n/}
@@ -30,7 +30,7 @@ STRIP=
 CONFIGURE_ARGS=	--with-medium=libpaper --sharedstatedir=${PREFIX}/share \
 	--sysconfdir=${PREFIX}/etc --datadir=${PREFIX}/share \
 	--localstatedir=${PREFIX}/share
-CONFIGURE_ENV=	LIBS="-L${LOCALBASE}/lib"
+LIBS+=		-L${LOCALBASE}/lib
 
 PAPERSIZE?=
 .if ${PAPERSIZE:tl} == a4

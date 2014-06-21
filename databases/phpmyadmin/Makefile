@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	phpMyAdmin
-DISTVERSION=	4.2.2
+DISTVERSION=	4.2.4
 CATEGORIES=	databases www
 MASTER_SITES=	SF/${PORTNAME:tl}/${PORTNAME}/${DISTVERSION}
 DISTNAME=	${PORTNAME}-${DISTVERSION}-all-languages
 
 MAINTAINER=	matthew@FreeBSD.org
-COMMENT=	A set of PHP-scripts to manage MySQL over the web
+COMMENT=	Set of PHP-scripts to manage MySQL over the web
 
 NO_ARCH=	yes
 LICENSE=	GPLv2
@@ -25,7 +25,7 @@ USE_PHP=	ctype session filter mbstring json spl mysqli
 # FONTCONFIG in the graphics/gd port options.
 
 OPTIONS_DEFINE=		APC BZ2 GD MCRYPT OPENSSL PDF XML ZIP ZLIB
-OPTIONS_DEFAULT=	APC BZ2 GD MCRYPT OPENSSL PDF XML ZIP ZLIB
+OPTIONS_DEFAULT=	BZ2 GD MCRYPT OPENSSL XML ZIP ZLIB
 
 APC_DESC=	PHP APC (animated progress bar) support
 BZ2_DESC=	PHP bzip2 library support
@@ -47,7 +47,7 @@ CFG_FILE=	config.inc.php
 PLIST=		${WRKDIR}/plist
 PLIST_SUB+=	PMA_GRP=${GROUPS}
 
-SUB_LIST+=	PKGNAME=${PKGNAME}	       \
+SUB_LIST+=	PKGNAME=${PKGNAME}	        \
 		CFG_FILE=${WWWDIR}/${CFG_FILE}
 SUB_FILES+=	pkg-message
 

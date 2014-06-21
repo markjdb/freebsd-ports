@@ -122,6 +122,29 @@ Python_Include_MAINTAINER=	python@FreeBSD.org
 # PYXML				- Dependency line for the XML extension. As of Python-2.0,
 #					  this extension is in the base distribution.
 #
+# PYTHON_CONCURRENT_INSTALL
+#					- Indicates that the port can be installed for different
+#					  python versions at the same time. The port is supposed
+#					  to use a unique prefix for certain directories using
+#					  USES=uniquefiles:dirs (see the uniquefiles.mk Uses for
+#					  details about the directories), if set to yes. Binaries
+#					  receive an additional suffix, based on PYTHON_VER.
+#
+#					  The values for the uniquefiles USES are set as follows:
+#
+#						UNIQUE_PREFIX=  ${PYTHON_PKGNAMEPREFIX}
+#						UNIQUE_SUFFIX=  -${PYTHON_VER}
+#
+#					  If the port is installed for the current default
+#					  python version, scripts and binaries in
+#
+#						${PREFIX}/bin
+#						${PREFIX}/sbin
+#						${PREFIX}/libexec
+#
+#					  are linked from the prefixed version to the prefix-less
+#					  original name, e.g. bin/foo-2.7 --> bin/foo.
+#
 # USE_PYTHON_PREFIX	- Says that the port installs in ${PYTHONBASE}.
 #
 # USE_PYDISTUTILS	- Use distutils as do-configure, do-build and do-install
@@ -414,6 +437,46 @@ PYTHONPREFIX_INCLUDEDIR=	${PYTHON_INCLUDEDIR:S;${PYTHONBASE};${PREFIX};}
 PYTHONPREFIX_LIBDIR=		${PYTHON_LIBDIR:S;${PYTHONBASE};${PREFIX};}
 PYTHONPREFIX_SITELIBDIR=	${PYTHON_SITELIBDIR:S;${PYTHONBASE};${PREFIX};}
 
+# Used for recording the installed files.
+_PYTHONPKGLIST=	${WRKDIR}/.PLIST.pymodtmp
+
+# Ports bound to a certain python version SHOULD
+# - use the PYTHON_PKGNAMEPREFIX
+# - use directories using the PYTHON_PKGNAMEPREFIX
+# - install binaries using the required PYTHON_VER, with
+#   the default python version creating a symlink to the original binary
+#   name (for staging-aware ports).
+#
+# What makes a port 'bound' to a certain python version?
+# - it installs data into PYTHON_SITELIBDIR, PYTHON_INCLUDEDIR, ...
+# - it links against libpython*.so
+# - it uses USE_PYDISTUTILS
+#
+PYTHON_CONCURRENT_INSTALL?=	no
+.if defined(NO_STAGE) && ${PYTHON_CONCURRENT_INSTALL} == "yes"
+BROKEN=		PYTHON_CONCURRENT_INSTALL uses USES=uniquefiles, which is not stage-safe
+.endif
+
+.if ${PYTHON_CONCURRENT_INSTALL} == "yes"
+_USES_POST+=			uniquefiles:dirs
+.if ${PYTHON_VERSION} == ${PYTHON_DEFAULT_VERSION}
+UNIQUE_DEFAULT_LINKS=	yes
+.else
+UNIQUE_DEFAULT_LINKS=	no
+.endif
+UNIQUE_PREFIX=			${PYTHON_PKGNAMEPREFIX}
+UNIQUE_SUFFIX=			-${PYTHON_VER}
+
+.if defined(PYDISTUTILS_AUTOPLIST)
+UNIQUE_FIND_SUFFIX_FILES=	\
+	${SED} -e 's|^${PREFIX}/||' ${_PYTHONPKGLIST} ${TMPPLIST} | \
+	${GREP} -e '^bin/.*$$\|^sbin/.*$$\|^libexec/.*$$'
+.else
+UNIQUE_FIND_SUFFIX_FILES=	\
+	${GREP} -he '^bin/.*$$\|^sbin/.*$$\|^libexec/.*$$' ${TMPPLIST} 2>/dev/null
+.endif
+.endif # ${PYTHON_CONCURRENT_INSTALL} == "yes"
+
 _CURRENTPORT:=	${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
 .if defined(USE_PYDISTUTILS) && ${_CURRENTPORT:S/${PYTHON_SUFFIX}$//} != ${PYTHON_PKGNAMEPREFIX}setuptools
 BUILD_DEPENDS+=		${PYTHON_PKGNAMEPREFIX}setuptools${PYTHON_SUFFIX}>0:${PORTSDIR}/devel/py-setuptools${PYTHON_SUFFIX}
@@ -497,7 +560,6 @@ PYDISTUTILS_INSTALLARGS+=	--single-version-externally-managed
 PYDISTUTILS_INSTALLARGS+=	--root=${STAGEDIR}
 . endif
 .endif
-_PYTHONPKGLIST=				${WRKDIR}/.PLIST.pymodtmp
 PYDISTUTILS_INSTALLARGS:=	--record ${_PYTHONPKGLIST} \
 		${PYDISTUTILS_INSTALLARGS}
 
@@ -518,7 +580,7 @@ add-plist-egginfo:
 		${LS} ${PYDISTUTILS_EGGINFODIR}/${egginfo} | while read f; do \
 			${ECHO_CMD} ${PYDISTUTILS_EGGINFODIR:S;^${STAGEDIR}${PYTHONBASE}/;;}/${egginfo}/$${f} >> ${TMPPLIST}; \
 		done; \
-		${ECHO_CMD} "@unexec rmdir \"%D/${PYDISTUTILS_EGGINFODIR:S;${STAGEDIR}${PYTHONBASE}/;;}/${egginfo}\" 2>/dev/null || true" >> ${TMPPLIST}; \
+		${ECHO_CMD} "@dirrmtry ${PYDISTUTILS_EGGINFODIR:S;${STAGEDIR}${PYTHONBASE}/;;}/${egginfo}" >> ${TMPPLIST}; \
 	fi;
 . endfor
 .else
@@ -537,7 +599,7 @@ add-plist-pymod:
 	@${ECHO_CMD} "${_RELLIBDIR}" >> ${WRKDIR}/.localmtree
 	@${SED} -e 's|^${STAGEDIR}${PREFIX}/||' \
 		-e 's|^${PREFIX}/||' \
-		-e 's|^\(man/man[0-9]\)/\(.*\.[0-9]\)$$|\1/\2${MANEXT}|' \
+		-e 's|^\(man/.*man[0-9]\)/\(.*\.[0-9]\)$$|\1/\2${MANEXT}|' \
 		${_PYTHONPKGLIST} | ${SORT} >> ${TMPPLIST}
 	@${SED} -e 's|^${STAGEDIR}${PREFIX}/\(.*\)/\(.*\)|\1|' \
 		-e 's|^${PREFIX}/\(.*\)/\(.*\)|\1|' ${_PYTHONPKGLIST} | \
@@ -551,11 +613,13 @@ add-plist-pymod:
 		while read line; do \
 			${GREP} -qw "^$${line}$$" ${WRKDIR}/.localmtree || { \
 				[ -n "$${line}" ] && \
-				${ECHO_CMD} "@unexec rmdir \"%D/$${line}\" 2>/dev/null || true"; \
+				${ECHO_CMD} "@dirrmtry $${line}"; \
 			}; \
 		done | ${SORT} | uniq | ${SORT} -r >> ${TMPPLIST}
-	@${ECHO_CMD} "@unexec rmdir \"%D/${PYTHON_SITELIBDIR:S;${PYTHONBASE}/;;}\" 2>/dev/null || true" >> ${TMPPLIST}
-	@${ECHO_CMD} "@unexec rmdir \"%D/${PYTHON_LIBDIR:S;${PYTHONBASE}/;;}\" 2>/dev/null || true" >> ${TMPPLIST}
+.if ${PREFIX} != ${LOCALBASE}
+	@${ECHO_CMD} "@dirrmtry ${PYTHON_SITELIBDIR:S;${PYTHONBASE}/;;}" >> ${TMPPLIST}
+	@${ECHO_CMD} "@dirrmtry ${PYTHON_LIBDIR:S;${PYTHONBASE}/;;}" >> ${TMPPLIST}
+.endif
 
 .else
 .if ${PYTHON_REL} >= 320 && defined(PYTHON_PY3K_PLIST_HACK)
@@ -567,6 +631,7 @@ add-plist-post:
 	@${AWK} '\
 		/\.py[co]$$/ && !($$0 ~ "/" pc "/") {id = match($$0, /\/[^\/]+\.py[co]$$/); if (id != 0) {d = substr($$0, 1, RSTART - 1); dirs[d] = 1}; sub(/\.py[co]$$/,  "." mt "&"); sub(/[^\/]+\.py[co]$$/, pc "/&"); print; next} \
 		/^@dirrm / {d = substr($$0, 8); if (d in dirs) {print $$0 "/" pc}; print $$0; next} \
+		/^@dirrmtry / {d = substr($$0, 11); if (d in dirs) {print $$0 "/" pc}; print $$0; next} \
 		{print} \
 		END {if (sp in dirs) {print "@dirrm " sp "/" pc}} \
 		' \

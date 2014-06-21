@@ -29,7 +29,7 @@ parse_plist() {
 		# make all ports use @ignore instead of @comment.
 		comment=
 		if [ ${makeplist} -eq 0 -a -z "${line%%@comment *}" ]; then
-			line="${line#@comment }"
+			line="${line##*@comment }"
 			# Remove @comment so it can be parsed as a file,
 			# but later prepend it again to create a list of
 			# all files commented and uncommented.
@@ -64,7 +64,7 @@ parse_plist() {
 			esac
 		;;
 		# Handle [file] Keywords
-		@info\ *)
+		@info\ *|@shell\ *)
 			set -- $line
 			shift
 			echo "${comment}${cwd}/$@"
@@ -415,7 +415,7 @@ makeplist=0
 case "$1" in
 	checkplist)	;;
 	makeplist)	makeplist=1 ;;
-	*) echo >&2 "Usage: $0 {checkplist|makelist}" ; exit 1 ;;
+	*) echo >&2 "Usage: $0 {checkplist|makeplist}" ; exit 1 ;;
 esac
 
 # validate environment

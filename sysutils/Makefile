@@ -119,6 +119,7 @@
     SUBDIR += clone
     SUBDIR += clonehdd
     SUBDIR += cloop-utils
+    SUBDIR += clsync
     SUBDIR += cmdwatch
     SUBDIR += cmogstored
     SUBDIR += cmospwd
@@ -344,6 +345,7 @@
     SUBDIR += grub2
     SUBDIR += grub2-bhyve
     SUBDIR += grub2-efi
+    SUBDIR += grub2-pcbsd
     SUBDIR += gsmartcontrol
     SUBDIR += gstopd
     SUBDIR += gstreamer-plugins-cdio
@@ -709,6 +711,7 @@
     SUBDIR += pslist
     SUBDIR += psmisc
     SUBDIR += pstack
+    SUBDIR += pstacku
     SUBDIR += pstree
     SUBDIR += ptools
     SUBDIR += puppet
@@ -904,7 +907,6 @@
     SUBDIR += syslogger
     SUBDIR += sysrc
     SUBDIR += system-tools-backends
-    SUBDIR += sysupdate
     SUBDIR += sysvbanner
     SUBDIR += tai64nfrac
     SUBDIR += tarsnap

@@ -8,7 +8,7 @@ CATEGORIES=	graphics
 MASTER_SITES=	SF
 
 MAINTAINER=	stb@lassitu.de
-COMMENT=	A tool for quantizing PNG images in RGBA format
+COMMENT=	Tool for quantizing PNG images in RGBA format
 
 LICENSE=	BSD3CLAUSE
 
@@ -17,8 +17,7 @@ LIB_DEPENDS=	libpng15.so:${PORTSDIR}/graphics/png
 GNU_CONFIGURE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
-CONFIGURE_ENV+=	LIBS=-lpng
-LDFLAGS+=	-L${LOCALBASE}/lib
+LIBS+=		-L${LOCALBASE}/lib -lpng
 
 USES=		pkgconfig
 

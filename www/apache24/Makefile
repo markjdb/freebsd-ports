@@ -2,7 +2,7 @@
 
 PORTNAME=	apache24
 PORTVERSION=	2.4.9
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	www ipv6
 MASTER_SITES=	${MASTER_SITE_APACHE_HTTPD}
 DISTNAME=	httpd-${PORTVERSION}
@@ -12,18 +12,21 @@ MAINTAINER=	apache@FreeBSD.org
 COMMENT=	Version 2.4.x of Apache web server
 
 LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2 \
-		libapr-1.so.5:${PORTSDIR}/devel/apr1 \
+		libapr-1.so.0.5.1:${PORTSDIR}/devel/apr1 \
 		libpcre.so:${PORTSDIR}/devel/pcre
 
 CONFLICTS_INSTALL=	caudium14-1.* \
 		apache-*-2.2.* apache22-*
 
 USE_APACHE=	common24
-USES=		tar:bzip2 iconv perl5 libtool
+USES=		tar:bzip2 iconv perl5 libtool cpe
 USE_PERL5=	run
 USE_AUTOTOOLS=	autoconf
 USE_RC_SUBR=	apache24 htcacheclean
 LIBTOOLFILES=	configure.in
+
+CPE_VENDOR=	apache
+CPE_PRODUCT=	http_server
 
 PORTDOCS=	*
 
@@ -46,19 +49,18 @@ WITH_SSL_PORT?=		443
 AUTHNZ_LDAP_CONFIGURE_ON=	--enable-authnz-ldap
 
 # http://httpd.apache.org/docs/2.4/bind.html
-IPV4_MAPPED_CONFIGURE_OFF=	--disable-v4-mapped
-IPV4_MAPPED_CONFIGURE_ON=	--enable-v4-mapped
+IPV4_MAPPED_CONFIGURE_ENABLE=	v4-mapped
 
 LDAP_CONFIGURE_ON=		--enable-ldap=shared
 
 LUAJIT_LIB_DEPENDS=		luajit:${PORTSDIR}/lang/luajit
-LUA_CONFIGURE_OFF=		--without-lua
-LUA_CONFIGURE_ON=		--with-lua=${LOCALBASE}
+LUA_CONFIGURE_WITH=		lua
+LUA_USES=			lua
 
 SOCACHE_DC_CONFIGURE_ON=	--with-distcache=${LOCALBASE}
 SOCACHE_DC_LIB_DEPENDS=		distcache:${PORTSDIR}/security/distcache
 
-# Note: 
+# Note:
 # OpenSSL version (base/ports) depends how devel/apr1 was build
 #  apu-1-config --(includes|ldflags) and apr_rules.mk
 SSL_CFLAGS=			-I${OPENSSLINC}
@@ -113,7 +115,8 @@ MAKE_ENV+=	EXPR_COMPAT=yes \
 # here we do only OPTIONS fixups
 
 .if ${PORT_OPTIONS:MLUA}
-USES+=		lua:51
+CONFIGURE_ENV+=	LUA_CFLAGS="-I${LUA_INCDIR}" \
+		LUA_LIBS="-L${LUA_LIBDIR} -llua-${LUA_VER}"
 .endif
 
 .if ${PORT_OPTIONS:MPROXY_HTML} || ${PORT_OPTIONS:MXML2ENC}

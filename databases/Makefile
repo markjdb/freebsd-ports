@@ -622,6 +622,7 @@
     SUBDIR += php55-pdo_pgsql
     SUBDIR += php55-pdo_sqlite
     SUBDIR += php55-pgsql
+    SUBDIR += php55-redis
     SUBDIR += php55-sqlite3
     SUBDIR += php55-sybase_ct
     SUBDIR += phpminiadmin
@@ -712,7 +713,6 @@
     SUBDIR += py-bsddb3
     SUBDIR += py-carbon
     SUBDIR += py-cdb
-    SUBDIR += py-cmemcache
     SUBDIR += py-couchdb
     SUBDIR += py-cql
     SUBDIR += py-dbf
@@ -747,6 +747,7 @@
     SUBDIR += py-pylibmc
     SUBDIR += py-pymysql
     SUBDIR += py-pytc
+    SUBDIR += py-python-rrdtool
     SUBDIR += py-qt4-sql
     SUBDIR += py-redis
     SUBDIR += py-riak
@@ -873,6 +874,7 @@
     SUBDIR += rubygem-sqlite3
     SUBDIR += rubygem-sqlite3-ruby
     SUBDIR += rubygem-tarantool
+    SUBDIR += sfcgal
     SUBDIR += sharedance
     SUBDIR += skytools
     SUBDIR += slony1

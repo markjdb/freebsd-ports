@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	redis
-DISTVERSION=	2.8.9
+DISTVERSION=	2.8.11
 CATEGORIES=	databases
 MASTER_SITES=	http://download.redis.io/releases/
 
 MAINTAINER=	osa@FreeBSD.org
-COMMENT=	A persistent key-value database with built-in net interface
+COMMENT=	Persistent key-value database with built-in net interface
 
 LICENSE=	BSD3CLAUSE
 

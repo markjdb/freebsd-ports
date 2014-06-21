@@ -55,6 +55,7 @@
     SUBDIR += claws-mail-fancy
     SUBDIR += claws-mail-fetchinfo
     SUBDIR += claws-mail-gdata
+    SUBDIR += claws-mail-libravatar
     SUBDIR += claws-mail-mailmbox
     SUBDIR += claws-mail-newmail
     SUBDIR += claws-mail-notification
@@ -350,7 +351,6 @@
     SUBDIR += p5-Email-Stuff
     SUBDIR += p5-Email-Valid
     SUBDIR += p5-Email-Valid-Loose
-    SUBDIR += p5-FuzzyOcr
     SUBDIR += p5-FuzzyOcr-devel
     SUBDIR += p5-GMail-IMAPD
     SUBDIR += p5-IMAP-Admin
@@ -592,6 +592,7 @@
     SUBDIR += roundcube-automatic_addressbook
     SUBDIR += roundcube-contextmenu
     SUBDIR += roundcube-groupvice
+    SUBDIR += roundcube-html5_notifier
     SUBDIR += roundcube-login_info
     SUBDIR += roundcube-mobilecube
     SUBDIR += roundcube-mvision2
@@ -617,7 +618,6 @@
     SUBDIR += rubygem-vmail
     SUBDIR += sa-stats
     SUBDIR += sa-utils
-    SUBDIR += sastatd
     SUBDIR += scam-backscatter
     SUBDIR += sccmilter
     SUBDIR += sendmail
