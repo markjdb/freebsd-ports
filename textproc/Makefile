@@ -101,7 +101,6 @@
     SUBDIR += denature
     SUBDIR += dict
     SUBDIR += dictem
-    SUBDIR += dictem-xemacs21-mule
     SUBDIR += dictfmt
     SUBDIR += dictionary
     SUBDIR += diffmark
@@ -421,7 +420,6 @@
     SUBDIR += mathml-xsd
     SUBDIR += mdocml
     SUBDIR += meld
-    SUBDIR += metaf2xml
     SUBDIR += metauml
     SUBDIR += mgdiff
     SUBDIR += mguesser
@@ -1188,6 +1186,7 @@
     SUBDIR += py-sgrep
     SUBDIR += py-sparqlwrapper
     SUBDIR += py-sphinx
+    SUBDIR += py-sphinx_rtd_theme
     SUBDIR += py-sphinxcontrib-adadomain
     SUBDIR += py-sphinxcontrib-bitbucket
     SUBDIR += py-sphinxcontrib-httpdomain
@@ -1265,7 +1264,6 @@
     SUBDIR += ruby-diff
     SUBDIR += ruby-escape
     SUBDIR += ruby-format
-    SUBDIR += ruby-hikidoc
     SUBDIR += ruby-html-fillinform
     SUBDIR += ruby-html-template
     SUBDIR += ruby-htmlrepair
@@ -1476,9 +1474,6 @@
     SUBDIR += txt2tags
     SUBDIR += uim
     SUBDIR += uim-el
-    SUBDIR += uim-el-emacs21
-    SUBDIR += uim-el-emacs22
-    SUBDIR += uim-el-xemacs21-mule
     SUBDIR += uim-gtk
     SUBDIR += uim-gtk3
     SUBDIR += uim-kde4
@@ -1561,7 +1556,6 @@
     SUBDIR += yali
     SUBDIR += yamcha
     SUBDIR += yaml-mode.el
-    SUBDIR += yaml-mode.el-emacs21
     SUBDIR += yelp-tools
     SUBDIR += yelp-xsl
     SUBDIR += yi-aspell

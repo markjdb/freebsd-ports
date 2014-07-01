@@ -10,10 +10,10 @@
     SUBDIR += bitcoin-daemon
     SUBDIR += bitflu
     SUBDIR += bitmessage
-    SUBDIR += bittyrant
     SUBDIR += bnbt
     SUBDIR += btpd
     SUBDIR += btqueue
+    SUBDIR += btsync
     SUBDIR += cdonkey
     SUBDIR += cpuminer
     SUBDIR += createtorrent
@@ -97,6 +97,7 @@
     SUBDIR += transmission-qt4
     SUBDIR += transmission-remote-gui
     SUBDIR += tribler
+    SUBDIR += twister
     SUBDIR += uhub
     SUBDIR += unworkable
     SUBDIR += valknut

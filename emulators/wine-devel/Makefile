@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-DISTVERSION=	1.7.20
+DISTVERSION=	1.7.21
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	SF/${PORTNAME}/Source \
@@ -92,7 +92,7 @@ PORTDATA=	l_intl.nls wine.inf
 .include <bsd.port.options.mk>
 
 pre-build:
-	cd ${WRKSRC} && ${GMAKE} depend
+	cd ${WRKSRC} && ${MAKE_CMD} depend
 
 post-install:
 	@${MV} -f ${STAGEDIR}${WINELIBDIR}/libwine.so.1.0 \

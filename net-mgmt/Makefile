@@ -83,6 +83,7 @@
     SUBDIR += hawk
     SUBDIR += horde3-nic
     SUBDIR += icinga
+    SUBDIR += icinga2
     SUBDIR += icli
     SUBDIR += icmpmonitor
     SUBDIR += icmpquery
@@ -299,7 +300,6 @@
     SUBDIR += scdp
     SUBDIR += scli
     SUBDIR += sdig
-    SUBDIR += send
     SUBDIR += sendip
     SUBDIR += sing
     SUBDIR += sipcalc
@@ -314,6 +314,7 @@
     SUBDIR += ssgless
     SUBDIR += statsd
     SUBDIR += subcalc
+    SUBDIR += sx
     SUBDIR += sysmon
     SUBDIR += tcpreplay
     SUBDIR += tcptrack

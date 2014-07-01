@@ -107,7 +107,6 @@
     SUBDIR += eigen3
     SUBDIR += eispack
     SUBDIR += elmer-umfpack
-    SUBDIR += emacs-calc
     SUBDIR += emc2
     SUBDIR += ent
     SUBDIR += entropy
@@ -537,7 +536,6 @@
     SUBDIR += ploticus-nox11
     SUBDIR += plplot
     SUBDIR += plplot-ada
-    SUBDIR += polymake
     SUBDIR += primegen
     SUBDIR += prng
     SUBDIR += proofgeneral

@@ -10,7 +10,7 @@ MASTER_SITE_SUBDIR=	${PORTNAME}/core/${PORTNAME}-${PORTVERSION}
 PKGNAMEPREFIX=	apache-
 DIST_SUBDIR=	hadoop
 
-MAINTAINER=	pfg@apache.org
+MAINTAINER=	demon@FreeBSD.org
 COMMENT=	Apache Map/Reduce framework
 
 LICENSE=	APACHE20
@@ -20,7 +20,7 @@ BUILD_DEPENDS=	gmake:${PORTSDIR}/devel/gmake \
 RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
 
 USE_JAVA=	yes
-JAVA_VERSION=	1.6
+JAVA_VERSION=	1.7
 USE_ANT=	yes
 ONLY_FOR_ARCHS=	amd64 i386
 USE_LDCONFIG=	yes
@@ -30,9 +30,10 @@ OPTIONS_DEFINE=	DOCS
 HADOOP_LOGDIR=	/var/log/${PORTNAME}
 HADOOP_RUNDIR=	/var/run/${PORTNAME}
 
-HADOOP_USER=	hadoop
+HDFS_USER=	hdfs
+MAPRED_USER=	mapred
 HADOOP_GROUP=	hadoop
-USERS=		${HADOOP_USER}
+USERS=		${HDFS_USER} ${MAPRED_USER}
 GROUPS=		${HADOOP_GROUP}
 
 SUB_FILES=	hadoop 000.java_home.env
@@ -41,9 +42,11 @@ USE_RC_SUBR=	tasktracker jobtracker datanode namenode secondarynamenode
 PLIST_SUB=	PORTVERSION="${PORTVERSION}" \
 		HADOOP_LOGDIR="${HADOOP_LOGDIR}" \
 		HADOOP_RUNDIR="${HADOOP_RUNDIR}" \
-		HADOOP_USER="${HADOOP_USER}" \
+		HDFS_USER="${HDFS_USER}" \
+		MAPRED_USER="${MAPRED_USER}" \
 		HADOOP_GROUP="${HADOOP_GROUP}"
-SUB_LIST=	HADOOP_USER="${HADOOP_USER}" \
+SUB_LIST=	HDFS_USER="${HDFS_USER}" \
+		MAPRED_USER="${MAPRED_USER}" \
 		HADOOP_GROUP="${HADOOP_GROUP}" \
 		JAVA_HOME="${JAVA_HOME}"
 
@@ -66,7 +69,7 @@ CONF=		capacity-scheduler.xml configuration.xsl core-site.xml hadoop-env.sh hado
 		hadoop-policy.xml hdfs-site.xml log4j.properties mapred-queue-acls.xml mapred-site.xml taskcontroller.cfg
 
 MAKE_ARGS=	-Dbuild.classes=${WRKSRC}/hadoop-core-${PORTVERSION}.jar -Dversion=${PORTVERSION} -Dcompile.native=true \
-		-Dcompile.c++=true -Dmake.cmd=${GMAKE} -Dlibhdfs=1 -Dlibrecordio=true  -Dskip.record-parser=true
+		-Dcompile.c++=true -Dmake.cmd=gmake -Dlibhdfs=1 -Dlibrecordio=true  -Dskip.record-parser=true
 ALL_TARGET=	compile-core-native compile-c++ compile-c++-libhdfs compile-c++-pipes compile-c++-utils
 
 .include <bsd.port.options.mk>

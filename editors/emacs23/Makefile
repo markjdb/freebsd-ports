@@ -28,7 +28,7 @@ CONFLICTS=	emacs-19.* emacs21-* emacs22-* emacs24-* \
 
 EMACS_VER=	23.4
 GNU_CONFIGURE=	yes
-USES=		ncurses gmake pkgconfig
+USES=		gmake makeinfo ncurses pkgconfig
 USE_BZIP2=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -75,7 +75,7 @@ OPTIONS_DEFAULT=DBUS GCONF GIF GTK2 JPEG M17N OTF PNG SOUND SOURCES SVG TIFF SYN
 
 OPTIONS_SUB=	SOURCES
 
-DBUS_LIB_DEPENDS=		dbus-1:${PORTSDIR}/devel/dbus
+DBUS_LIB_DEPENDS=		libdbus-1.so:${PORTSDIR}/devel/dbus
 DBUS_CONFIGURE_WITH=		dbus
 
 SOUND_CONFIGURE_WITH=	sound

@@ -8,7 +8,7 @@ CATEGORIES=	games
 MASTER_SITES=	SF/kawari/kawari/${PORTVERSION}
 DISTNAME=	kawari-${PORTVERSION:S/.//g}
 
-MAINTAINER=	umeno@rr.iij4u.or.jp
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Real kawari8 module for ninix-aya
 
 RUN_DEPENDS=	ninix:${PORTSDIR}/games/ninix-aya
@@ -36,7 +36,7 @@ post-patch:
 		${WRKSRC}/build/src/gcc.mak
 
 do-build:
-	(cd ${WRKSRC}/build/src; CFLAGS="${CFLAGS}" ${GMAKE} -f gcc.mak PYTHONBASE=${PYTHONBASE} PYTHON_VERSION=${PYTHON_VERSION} PTHREAD_LIBS=${PTHREAD_LIBS} CXX=${CXX})
+	(cd ${WRKSRC}/build/src; CFLAGS="${CFLAGS}" ${MAKE_CMD} -f gcc.mak PYTHONBASE=${PYTHONBASE} PYTHON_VERSION=${PYTHON_VERSION} PTHREAD_LIBS=${PTHREAD_LIBS} CXX=${CXX})
 
 do-install:
 	${MKDIR} ${PREFIX}/share/kawari

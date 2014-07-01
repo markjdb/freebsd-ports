@@ -10,6 +10,13 @@ in the release notes and/or placed into UPDATING.
 
 All ports committers are allowed to commit to this file.
 
+20140623:
+AUTHOR: bapt@FreeBSD.org
+
+  IGNOREFILES is not supported anymore, it was an unsafe feature allowing to
+  use unchecked files downloaded from untrusted places to be used in the ports
+  tree.
+
 20140607:
 AUTHOR: mva@FreeBSD.org
 
@@ -46,6 +53,13 @@ AUTHOR: miwi@FreeBSD.org
 AUTHOR: bapt@FreeBSD.org
 
   USE_DOS2UNIX is no longer supported, USES=dos2unix should be used instead
+
+20140525:
+AUTHOR: mat@FreeBSD.org
+
+  Add a USE_PERL5=fixpacklist to account for ports creating a .packlist file
+  referencing ${STAGEDIR} when not using USE_PERL5=configure or
+  USE_PERL5=modbuildtiny.
 
 20140505:
 AUTHOR: bapt@FreeBSD.org
