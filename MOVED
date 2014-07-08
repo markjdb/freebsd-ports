@@ -6232,3 +6232,14 @@ security/sudosh||2014-07-01|Has expired: Funcition replaced by sudo -s
 security/sudosh2||2014-07-01|Has expired: Funcition replaced by sudo -s
 lang/pike76|lang/pike78|2014-07-01|Has expired: Outdated: Users should switch to lang/pike78
 editors/gummi||2014-07-01|Has expired: Builds fine but the program itself is unusable
+archivers/rpm|archivers/rpm4|2014-07-03|rpm3 is long EOLed, rpm4 is the default rpm archivers for most of linux distributions
+x11-clocks/wmitime||2014-07-04|Has expired
+x11/xorg-edit||2014-07-04|Has expired: Depends on older version of wxGTK
+net/ttbudget||2014-07-06|Has expired: does not build, mastersite disapperead, not staged
+sysutil/psgconf||2014-07-06|Removed: abandonware
+print/texinfo-lite|print/indexinfo|2014-07-06|Replaced by indexinfo to handle info page index
+audio/linnya||2014-07-07|Deprecated upstream
+databases/slony1|databases/slony1v2|2014-07-07|Unsupported: consider using slony1 v2 instead
+lang/see-devel|lang/see|2014-07-07|lang/see is up to date no need for see-devel
+net-p2p/libtorrent-devel||2014-07-07|libtorrent port has newer version, use that instead
+net-p2p/rtorrent-devel||2014-07-07|rtorrent port has newer version, use that instead

@@ -25,6 +25,7 @@
     SUBDIR += congruity
     SUBDIR += conserver
     SUBDIR += conserver-com
+    SUBDIR += cqrlog
     SUBDIR += cutecom
     SUBDIR += cwdaemon
     SUBDIR += dabstick-radio
@@ -131,6 +132,7 @@
     SUBDIR += qpage
     SUBDIR += qrq
     SUBDIR += qsstv
+    SUBDIR += quisk
     SUBDIR += remserial
     SUBDIR += rtl-sdr
     SUBDIR += rubygem-callsign
