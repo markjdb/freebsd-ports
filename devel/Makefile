@@ -641,6 +641,7 @@
     SUBDIR += hachoir-parser
     SUBDIR += hachoir-regex
     SUBDIR += hadoop
+    SUBDIR += hadoop2
     SUBDIR += hapy
     SUBDIR += hcs12mem
     SUBDIR += hexcompare
@@ -969,6 +970,7 @@
     SUBDIR += libdap
     SUBDIR += libdasm
     SUBDIR += libdatrie
+    SUBDIR += libdbusmenu
     SUBDIR += libdbusmenu-qt
     SUBDIR += libdevq
     SUBDIR += libdfui
@@ -2791,6 +2793,7 @@
     SUBDIR += p5-Term-Animation
     SUBDIR += p5-Term-CallEditor
     SUBDIR += p5-Term-Clui
+    SUBDIR += p5-Term-EditLine
     SUBDIR += p5-Term-Encoding
     SUBDIR += p5-Term-Menus
     SUBDIR += p5-Term-ProgressBar
@@ -3618,6 +3621,7 @@
     SUBDIR += py-docopt
     SUBDIR += py-dogpile.cache
     SUBDIR += py-dogpile.core
+    SUBDIR += py-doit
     SUBDIR += py-durus
     SUBDIR += py-dynrules
     SUBDIR += py-eggtestinfo
@@ -3701,6 +3705,7 @@
     SUBDIR += py-kjbuckets
     SUBDIR += py-kqueue
     SUBDIR += py-krosspython
+    SUBDIR += py-lazy
     SUBDIR += py-levenshtein
     SUBDIR += py-liblarch
     SUBDIR += py-libplist
@@ -3787,6 +3792,7 @@
     SUBDIR += py-pyke
     SUBDIR += py-pylib
     SUBDIR += py-pymarc
+    SUBDIR += py-pympler
     SUBDIR += py-pyro
     SUBDIR += py-pyshapelib
     SUBDIR += py-pytemplate
@@ -3897,6 +3903,7 @@
     SUBDIR += py-ua_parser
     SUBDIR += py-ujson
     SUBDIR += py-uncompyle2
+    SUBDIR += py-unipath
     SUBDIR += py-unittest2
     SUBDIR += py-unittestplus
     SUBDIR += py-urlimport

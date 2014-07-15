@@ -56,6 +56,7 @@
     SUBDIR += bacula-client-static
     SUBDIR += bacula-docs
     SUBDIR += bacula-server
+    SUBDIR += bamf
     SUBDIR += bashburn
     SUBDIR += batmon
     SUBDIR += battfink
@@ -706,7 +707,6 @@
     SUBDIR += procenv
     SUBDIR += procmap
     SUBDIR += progsreiserfs
-    SUBDIR += psgconf
     SUBDIR += pslist
     SUBDIR += psmisc
     SUBDIR += pstack
@@ -726,12 +726,14 @@
     SUBDIR += py-bcfg2
     SUBDIR += py-danzfs
     SUBDIR += py-drmaa
+    SUBDIR += py-execnet
     SUBDIR += py-ezjailremote
     SUBDIR += py-filelike
     SUBDIR += py-glances
     SUBDIR += py-halite
     SUBDIR += py-iowait
     SUBDIR += py-nagiosplugin
+    SUBDIR += py-ploy
     SUBDIR += py-plumbum
     SUBDIR += py-psutil
     SUBDIR += py-psutil121
