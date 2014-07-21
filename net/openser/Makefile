@@ -11,7 +11,7 @@ DISTNAME=	${PORTNAME}-${PORTVERSION}-tls_src
 MAINTAINER=	jesusr@FreeBSD.org
 COMMENT=	Fast and configurable SIP proxy with TLS support
 
-LIB_DEPENDS=	radiusclient-ng.2:${PORTSDIR}/net/radiusclient
+LIB_DEPENDS=	libradiusclient-ng.so:${PORTSDIR}/net/radiusclient
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}-tls
 
@@ -80,7 +80,7 @@ MAKE_ENV+=	POSTGRESQL=postgres
 .endif
 
 .if ${PORT_OPTIONS:MUNIXODBC}
-LIB_DEPENDS+=	odbc.2:${PORTSDIR}/databases/unixODBC
+LIB_DEPENDS+=	libodbc.so:${PORTSDIR}/databases/unixODBC
 MODULES+=	unixodbc
 .else
 MAKE_ENV+=	UNIXODBC=unixodbc

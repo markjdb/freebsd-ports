@@ -405,7 +405,6 @@
     SUBDIR += linux-firefox
     SUBDIR += linux-libgtkembedmoz
     SUBDIR += linux-opera
-    SUBDIR += linux-opera-devel
     SUBDIR += linux-seamonkey
     SUBDIR += lionwiki
     SUBDIR += ljdeps
@@ -503,6 +502,7 @@
     SUBDIR += mod_memcache
     SUBDIR += mod_memcache_block
     SUBDIR += mod_mono
+    SUBDIR += mod_mpm_itk
     SUBDIR += mod_musicindex
     SUBDIR += mod_myvhost
     SUBDIR += mod_ntlm2
@@ -583,7 +583,6 @@
     SUBDIR += opencart
     SUBDIR += openxmldir
     SUBDIR += opera
-    SUBDIR += opera-devel
     SUBDIR += opera-linuxplugins
     SUBDIR += orangehrm
     SUBDIR += oscommerce
@@ -1668,6 +1667,7 @@
     SUBDIR += py-qt4-webkit
     SUBDIR += py-rackspace-monitoring
     SUBDIR += py-recaptcha
+    SUBDIR += py-requestbuilder
     SUBDIR += py-requests
     SUBDIR += py-requests-oauth-hook
     SUBDIR += py-requests-oauthlib
@@ -1955,6 +1955,7 @@
     SUBDIR += tdom
     SUBDIR += template_
     SUBDIR += templatelite
+    SUBDIR += tengine
     SUBDIR += testlink
     SUBDIR += textpattern
     SUBDIR += thttpd

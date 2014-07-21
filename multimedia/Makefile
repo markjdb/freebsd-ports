@@ -172,6 +172,7 @@
     SUBDIR += libfame
     SUBDIR += libkate
     SUBDIR += libmatroska
+    SUBDIR += libmediainfo
     SUBDIR += libmovtar
     SUBDIR += libmpeg2
     SUBDIR += libmpeg3
@@ -192,6 +193,7 @@
     SUBDIR += libvpx
     SUBDIR += libxine
     SUBDIR += libxspf
+    SUBDIR += libzen
     SUBDIR += linux-f10-libtheora
     SUBDIR += linux-f10-libv4l
     SUBDIR += linux-realplayer
@@ -302,6 +304,7 @@
     SUBDIR += qmmp
     SUBDIR += qmmp-plugin-pack
     SUBDIR += qt-faststart
+    SUBDIR += qt4-mobility
     SUBDIR += qt4-multimedia
     SUBDIR += qt5-multimedia
     SUBDIR += quark
@@ -346,6 +349,7 @@
     SUBDIR += umph
     SUBDIR += umplayer
     SUBDIR += umr
+    SUBDIR += universal-media-server
     SUBDIR += v4l-utils
     SUBDIR += v4l_compat
     SUBDIR += vamps

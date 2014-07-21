@@ -32,6 +32,7 @@ OPTIONS_DEFINE=	NTPSNMPD \
   		ONCORE \
   		PALISADE \
   		PCF \
+		PERL_UTILS \
   		PST \
   		RIPENCC \
   		SHM \
@@ -51,11 +52,14 @@ OPTIONS_DEFINE=	NTPSNMPD \
   		TRIMTAIP \
   		TRIMTSIP \
   		WHARTON	 \
-  		VARITEXT
+  		VARITEXT \
+  		DOCS \
+  		EXAMPLES
 
 OPTIONS_DEFAULT=	SSL \
 		NTP_SIGND \
   		ATOM \
+		PERL_UTILS \
   		NMEA
 
 NTPSNMPD_DESC=	Build and install ntpsnmpd
@@ -88,6 +92,7 @@ NMEA_DESC=	Enable NMEA GPS receiver
 ONCORE_DESC=	Enable Motorola VP/UT Oncore GPS receiver
 PALISADE_DESC=	Enable Palisade clock
 PCF_DESC=	Enable Conrad parallel port radio clock
+PERL_UTILS_DESC=	Install ntp-wait and ntptrace utilities
 PST_DESC=	Enable PST/Traconex 1020 WWV/WWVH receiver
 RIPENCC_DESC=	Enable RIPENCC specific Trimble driver
 SHM_DESC=	Enable SHM clock attached thru shared memory

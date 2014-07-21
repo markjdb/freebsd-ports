@@ -10,7 +10,7 @@ MASTER_SITE_SUBDIR=	quagga-re
 PKGNAMESUFFIX=	-re
 
 MAINTAINER=	sem@FreeBSD.org
-COMMENT=	A branch of popular quagga software pointed at stability
+COMMENT=	Branch of popular quagga software pointed at stability
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
@@ -22,7 +22,7 @@ USE_AUTOTOOLS=		libtool autoheader
 USE_LDCONFIG=		yes
 USE_PERL5=		build
 BUILD_DEPENDS+=		gawk:${PORTSDIR}/lang/gawk
-LIB_DEPENDS+=		gcrypt:${PORTSDIR}/security/libgcrypt
+LIB_DEPENDS+=		libgcrypt.so:${PORTSDIR}/security/libgcrypt
 CONFIGURE_ARGS+=	--with-libgcrypt
 
 MAN1=		vtysh.1
@@ -114,7 +114,7 @@ CONFIGURE_ARGS+=--enable-rtadv
 
 .if ${PORT_OPTIONS:MSNMP}
 CONFIGURE_ARGS+=--enable-snmp
-LIB_DEPENDS+=netsnmp:${PORTSDIR}/net-mgmt/net-snmp
+LIB_DEPENDS+=libnetsnmp.so:${PORTSDIR}/net-mgmt/net-snmp
 .endif
 
 .if ${PORT_OPTIONS:MTCPSOCKETS}
@@ -122,7 +122,7 @@ CONFIGURE_ARGS+=--enable-tcp-zebra
 .endif
 
 .if ${PORT_OPTIONS:MDLMALLOC}
-LIB_DEPENDS+=dlmalloc:${PORTSDIR}/devel/libdlmalloc
+LIB_DEPENDS+=libdlmalloc.so:${PORTSDIR}/devel/libdlmalloc
 LDFLAGS+=-ldlmalloc
 SUB_LIST=	RCLDCONFIG=ldconfig
 .else

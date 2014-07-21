@@ -2,7 +2,7 @@
 
 PORTNAME=	rt
 DISTVERSION=	4.2.5
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	www
 MASTER_SITES=	http://download.bestpractical.com/pub/rt/release/
 PKGNAMESUFFIX=	42
@@ -32,7 +32,7 @@ NO_ARCH=	yes
 # mentioned in the docs is currently unsupported in the ports, but see
 # http://www.infracaninophile.co.uk/articles/sphinxse.html
 
-OPTIONS_DEFINE=		DEVELOPER GD GPG GRAPHVIZ SMIME
+OPTIONS_DEFINE=		DEVELOPER GD GPG GRAPHVIZ SMIME DOCS
 OPTIONS_SINGLE=		DB
 OPTIONS_SINGLE_DB=	MYSQL ORACLE PGSQL SQLITE
 OPTIONS_RADIO=		WEB
@@ -55,7 +55,8 @@ RUN_DEPENDS+=	${CLI_DEPS}        \
 		${USERLOGO_DEPS}   \
 		${HTML_DOC_DEPS}
 
-USES+=		perl5
+USES=		cpe perl5
+CPE_VENDOR=	bestpractical
 USE_AUTOTOOLS=	autoconf
 
 RT_LAYOUT=	FreeBSD

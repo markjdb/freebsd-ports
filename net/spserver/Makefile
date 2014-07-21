@@ -9,9 +9,9 @@ MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE}
 DISTNAME=	${PORTNAME}-${PORTVERSION}.src
 
 MAINTAINER=	vanilla@FreeBSD.org
-COMMENT=	A TCP server framework library written in C++ based on libevent
+COMMENT=	TCP server framework library written in C++ based on libevent
 
-LIB_DEPENDS=	event-1.4:${PORTSDIR}/devel/libevent
+LIB_DEPENDS=	libevent-1.4.so:${PORTSDIR}/devel/libevent
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USE_LDCONFIG=	yes
@@ -33,7 +33,7 @@ PLIST_SUB+=	WITH_MATRIXSSL="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MGNUTLS}
-LIB_DEPENDS+=	gnutls.26:${PORTSDIR}/security/gnutls
+LIB_DEPENDS+=	libgnutls.so:${PORTSDIR}/security/gnutls
 ALL_TARGET+=	build_gnutls
 PLIST_SUB+=	WITH_GNUTLS=""
 .else

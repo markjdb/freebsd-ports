@@ -12,7 +12,10 @@ MASTER_SITE_SUBDIR=	distfiles
 PKGNAMESUFFIX=	10
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	A C library for creating IP packets
+COMMENT=	C library for creating IP packets
+
+DEPRECATED=	Superseded by net/libnet
+EXPIRATION_DATE=2014-08-31
 
 CFLAGS+=	-fPIC
 

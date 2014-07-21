@@ -10,7 +10,7 @@ MASTER_SITES=	http://www.laurentconstantin.com/common/netw/${PORTNAME}/download/
 DISTFILES=	${PORTNAME}-${PORTVERSION}-src.tgz ${PORTNAME}-${PORTVERSION}-doc_html.tgz
 
 MAINTAINER=	jmohacsi@bsd.hu
-COMMENT=	A graphical front end for netwox
+COMMENT=	Graphical front end for netwox
 
 BUILD_DEPENDS=	netwox:${PORTSDIR}/net-mgmt/netwox \
 		wish8.4:${PORTSDIR}/x11-toolkits/tk84 \
@@ -18,13 +18,13 @@ BUILD_DEPENDS=	netwox:${PORTSDIR}/net-mgmt/netwox \
 		xterm:${PORTSDIR}/x11/xterm
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
+OPTIONS_DEFINE=	DOCS
+
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}-src/src
 SHORTPORTVERSION=${PORTVERSION:C/([0-9]*)\.([0-9]*)\.[0-9]*/\1\2/}
-MAN1=		${PORTNAME}.1 ${PORTNAME}${SHORTPORTVERSION}.1
 
 PLIST_SUB+=	SHORTPORTVERSION=${SHORTPORTVERSION}
 
-NO_STAGE=	yes
 do-configure:
 		@${REINPLACE_CMD} -e 's|%%PREFIX%%|${PREFIX}|' \
 			 -e 's|%%LOCALBASE%%|${LOCALBASE}|' \
@@ -32,9 +32,7 @@ do-configure:
 		cd ${WRKSRC}; ${SH} ./genemake
 
 post-install:
-.ifndef(NOPORTDOCS)
-		@${MKDIR} ${DOCSDIR}
-		@${CP} -R ${WRKSRC}/../../${PORTNAME}-${PORTVERSION}-doc_html/* ${DOCSDIR}
-.endif
+		@${MKDIR} ${STAGEDIR}${DOCSDIR}
+		${CP} -R ${WRKSRC}/../../${PORTNAME}-${PORTVERSION}-doc_html/* ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

@@ -418,6 +418,7 @@
     SUBDIR += etcd
     SUBDIR += etcdctl
     SUBDIR += etl
+    SUBDIR += euca2ools
     SUBDIR += eventxx
     SUBDIR += evolution-gconf-tools
     SUBDIR += exercisix
@@ -593,9 +594,12 @@
     SUBDIR += gnulibiberty
     SUBDIR += gnustep
     SUBDIR += gnustep-make
+    SUBDIR += go-flags
     SUBDIR += go-json-rest
     SUBDIR += go-pretty
+    SUBDIR += go-runewidth
     SUBDIR += go-sql-driver
+    SUBDIR += go-termbox
     SUBDIR += gob2
     SUBDIR += gobject-introspection
     SUBDIR += goffice
@@ -937,6 +941,7 @@
     SUBDIR += libIDL
     SUBDIR += libPropList
     SUBDIR += libafterbase
+    SUBDIR += libantlr3c
     SUBDIR += libarena
     SUBDIR += libassa
     SUBDIR += libassetml
@@ -1080,6 +1085,7 @@
     SUBDIR += libopensync022
     SUBDIR += libopkele
     SUBDIR += liborcus
+    SUBDIR += libosinfo
     SUBDIR += libowfat
     SUBDIR += libpafe
     SUBDIR += libpafe-ruby
@@ -2740,6 +2746,7 @@
     SUBDIR += p5-String-RexxParse
     SUBDIR += p5-String-Similarity
     SUBDIR += p5-String-TT
+    SUBDIR += p5-Struct-Dumb
     SUBDIR += p5-Sub-Alias
     SUBDIR += p5-Sub-Current
     SUBDIR += p5-Sub-Delete
@@ -3034,6 +3041,7 @@
     SUBDIR += p5-Tree-Simple-VisitorFactory
     SUBDIR += p5-Type-Tie
     SUBDIR += p5-Type-Tiny
+    SUBDIR += p5-Type-Tiny-XS
     SUBDIR += p5-Types-Path-Tiny
     SUBDIR += p5-Types-Serialiser
     SUBDIR += p5-UDCode
@@ -3435,6 +3443,7 @@
     SUBDIR += pmd
     SUBDIR += pmk
     SUBDIR += poco
+    SUBDIR += poco-devel
     SUBDIR += poco-ssl
     SUBDIR += popt
     SUBDIR += poslib
@@ -3550,6 +3559,7 @@
     SUBDIR += py-archetypes.schemaextender
     SUBDIR += py-argh
     SUBDIR += py-argparse
+    SUBDIR += py-args
     SUBDIR += py-asn1
     SUBDIR += py-asn1-modules
     SUBDIR += py-aspects
@@ -3584,6 +3594,7 @@
     SUBDIR += py-cjson
     SUBDIR += py-cld
     SUBDIR += py-click
+    SUBDIR += py-clint
     SUBDIR += py-clonedigger
     SUBDIR += py-cmdln
     SUBDIR += py-cog
@@ -3685,9 +3696,11 @@
     SUBDIR += py-interface
     SUBDIR += py-ipaddr
     SUBDIR += py-ipdb
+    SUBDIR += py-iso8601
     SUBDIR += py-isodate
     SUBDIR += py-iterpipes
     SUBDIR += py-itools
+    SUBDIR += py-jaraco.timing
     SUBDIR += py-jaraco.util
     SUBDIR += py-jcc
     SUBDIR += py-jdcal
@@ -3745,6 +3758,7 @@
     SUBDIR += py-ode
     SUBDIR += py-odfpy
     SUBDIR += py-olefileio_pl
+    SUBDIR += py-omnijson
     SUBDIR += py-omniorb
     SUBDIR += py-optik
     SUBDIR += py-orbit
@@ -3924,6 +3938,7 @@
     SUBDIR += py-xattr
     SUBDIR += py-xcaplib
     SUBDIR += py-xdg
+    SUBDIR += py-xerox
     SUBDIR += py-xmltodict
     SUBDIR += py-xoltar-toolkit
     SUBDIR += py-yaml

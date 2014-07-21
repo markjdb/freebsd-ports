@@ -83,6 +83,7 @@
     SUBDIR += bsdhwmon
     SUBDIR += bsdinfo
     SUBDIR += bsdmoted
+    SUBDIR += bsdploy
     SUBDIR += bsdstats
     SUBDIR += bubblemon-dockapp
     SUBDIR += bulk_extractor
@@ -352,7 +353,6 @@
     SUBDIR += gstreamer-plugins-hal
     SUBDIR += gstreamer1-plugins-cdio
     SUBDIR += gtk-imonc
-    SUBDIR += gtk-send-pr
     SUBDIR += hachoir-metadata
     SUBDIR += hachoir-subfile
     SUBDIR += hachoir-urwid
@@ -388,6 +388,7 @@
     SUBDIR += iat
     SUBDIR += installwatch
     SUBDIR += intel-pcm
+    SUBDIR += iocage
     SUBDIR += iogen
     SUBDIR += iograph
     SUBDIR += ioping
@@ -734,6 +735,10 @@
     SUBDIR += py-iowait
     SUBDIR += py-nagiosplugin
     SUBDIR += py-ploy
+    SUBDIR += py-ploy_ansible
+    SUBDIR += py-ploy_ec2
+    SUBDIR += py-ploy_ezjail
+    SUBDIR += py-ploy_fabric
     SUBDIR += py-plumbum
     SUBDIR += py-psutil
     SUBDIR += py-psutil121
@@ -746,6 +751,7 @@
     SUBDIR += py-zdaemon
     SUBDIR += py-zfs
     SUBDIR += pydf
+    SUBDIR += qchroot
     SUBDIR += qjail
     SUBDIR += qjail2
     SUBDIR += qlogtools

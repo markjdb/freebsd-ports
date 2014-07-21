@@ -63,6 +63,7 @@
     SUBDIR += cbedic
     SUBDIR += cdif
     SUBDIR += cdiff
+    SUBDIR += cgrep
     SUBDIR += chm2pdf
     SUBDIR += chpp
     SUBDIR += cl-meta
@@ -1054,6 +1055,8 @@
     SUBDIR += pdftohtml
     SUBDIR += pear-File_Fortune
     SUBDIR += pear-File_MARC
+    SUBDIR += pear-Horde_CssMinify
+    SUBDIR += pear-Horde_JavascriptMinify
     SUBDIR += pear-Horde_Kolab_Format
     SUBDIR += pear-Horde_Pdf
     SUBDIR += pear-Horde_SpellChecker
@@ -1090,6 +1093,7 @@
     SUBDIR += pecl-xdiff
     SUBDIR += pecl-xslcache
     SUBDIR += pecl-yaml
+    SUBDIR += peco
     SUBDIR += perl2html
     SUBDIR += permute
     SUBDIR += php5-ctype
@@ -1415,13 +1419,8 @@
     SUBDIR += srilm
     SUBDIR += ss-hunspell
     SUBDIR += ssddiff
-    SUBDIR += stardict-BritannicaConcise
-    SUBDIR += stardict-MerrianWebster
-    SUBDIR += stardict-OxfordCollocation
     SUBDIR += stardict-dict-fa_IR
     SUBDIR += stardict-dictd_mova
-    SUBDIR += stardict-longman
-    SUBDIR += stardict-oald
     SUBDIR += stardict-quick
     SUBDIR += stardict-rptts
     SUBDIR += stardict3

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ntp
-PORTVERSION=	4.2.7p446
+PORTVERSION=	4.2.7p451
 CATEGORIES=	net ipv6
 MASTER_SITES=	http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-dev/ \
 		ftp://ftp.archive.de.uu.net/pub/unix/ntp/ntp4/ntp-dev/ \
@@ -17,12 +17,14 @@ GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	automake
 AUTOMAKE_ARGS=	--add-missing
 OPTIONS_SUB=	yes
-USES=		pathfix perl5 shebangfix libtool
+USES=		pathfix shebangfix libtool
 LIB_DEPENDS=	libevent-2.0.so:${PORTSDIR}/devel/libevent2
 
 NTP_SHEBANG_FILES=	sbin/ntp-wait sbin/ntptrace
 
 .include "Makefile.inc"
+
+PERL_UTILS_USES=	perl5
 
 SSL_USE=		OPENSSL=yes
 SSL_CONFIGURE_OFF=	--without-crypto
@@ -31,7 +33,6 @@ IPV6_CONFIGURE_ENABLE=	ipv6
 
 NTP_SIGND_CONFIGURE_ENABLE=	ntp-signd
 
-NTPSNMPD_PLIST_FILES=	sbin/ntpsnmpd
 NTPSNMPD_LIB_DEPENDS=	libnetsnmp.so:${PORTSDIR}/net-mgmt/net-snmp
 NTPSNMPD_CONFIGURE_OFF=	--without-ntpsnmpd
 
@@ -54,14 +55,12 @@ BROKEN=		Fails to compile when MX4200 is enabled.
  
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}4
 
-pre-everything::
-	@${ECHO}
-	@${ECHO} If you wish to build this port with SNMP support, please make
-	@${ECHO} sure that the net-mgmt/net-snmp port is installed before
-	@${ECHO} building and installing this port.
-	@${ECHO}
-
 AUTOTOOLSFILES=	aclocal.m4
+
+# XXX Temporary hack. Remember to remove this next commit.
+post-extract:
+	@/usr/bin/touch ${WRKSRC}/scripts/build/checkHtmlFileDates
+	@${CHMOD} +x ${WRKSRC}/scripts/build/checkHtmlFileDates
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|1.11.1|%%AUTOMAKE_APIVER%%|g' \

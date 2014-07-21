@@ -3,14 +3,14 @@
 
 PORTNAME=	lbreakout2
 PORTVERSION=	2.6
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	games
 MASTER_SITES=	SF/lgames/${PORTNAME}/${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	The polished successor to LBreakout
 
-LIB_DEPENDS=	png15:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libpng15.so:${PORTSDIR}/graphics/png
 
 USE_SDL=	mixer net sdl
 USES=		gmake

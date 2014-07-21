@@ -8,16 +8,16 @@ CATEGORIES=	net-p2p ipv6 security
 MASTER_SITES=	GNU
 
 MAINTAINER=	bf@FreeBSD.org
-COMMENT=	An anonymous, distributed, reputation-based network
+COMMENT=	Anonymous, distributed, reputation-based network
 
 LICENSE=	GPLv3
 
-LIB_DEPENDS=	unistring:${PORTSDIR}/devel/libunistring \
-		curl:${PORTSDIR}/ftp/curl \
-		glpk:${PORTSDIR}/math/glpk \
-		gmp:${PORTSDIR}/math/gmp \
-		gcrypt:${PORTSDIR}/security/libgcrypt \
-		extractor:${PORTSDIR}/textproc/libextractor
+LIB_DEPENDS=	libunistring.so:${PORTSDIR}/devel/libunistring \
+		libcurl.so:${PORTSDIR}/ftp/curl \
+		libglpk.so:${PORTSDIR}/math/glpk \
+		libgmp.so:${PORTSDIR}/math/gmp \
+		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
+		libextractor.so:${PORTSDIR}/textproc/libextractor
 
 OPTIONS_DEFINE =	HTTP
 
@@ -74,7 +74,7 @@ report.sh
 
 .if ${PORT_OPTIONS:MHTTP}
 BROKEN =	WITH_HTTP requires libmicrohttpd 0.9.18 or higher
-LIB_DEPENDS+=		microhttpd:${PORTSDIR}/www/libmicrohttpd
+LIB_DEPENDS+=		libmicrohttpd.so:${PORTSDIR}/www/libmicrohttpd
 CONFIGURE_ARGS+=	--with-microhttpd=${LOCALBASE}
 PLIST_SUB+=		HTTP=""
 .else

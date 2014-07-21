@@ -10,7 +10,7 @@ DISTNAME=	gamess-current
 DIST_SUBDIR=	${PORTNAME}/${PORTVERSION}
 
 MAINTAINER=	maho@FreeBSD.org
-COMMENT=	A freely obtainable ab-initio molecular orbital calculation program
+COMMENT=	Freely obtainable ab-initio molecular orbital calculation program
 
 USES=		fortran gmake
 WRKSRC=		${WRKDIR}/gamess
@@ -36,16 +36,16 @@ WITH_BLAS?=	reference
 .endif
 
 . if ${WITH_BLAS} == reference
-LIB_DEPENDS+=	blas:${PORTSDIR}/math/blas
-LIB_DEPENDS+=	lapack:${PORTSDIR}/math/lapack
+LIB_DEPENDS+=	libblas.so:${PORTSDIR}/math/blas
+LIB_DEPENDS+=	liblapack.so:${PORTSDIR}/math/lapack
 BLAS=		-lblas
 LAPACK=		-llapack
 .elif ${WITH_BLAS} == gotoblas
-LIB_DEPENDS+=	goto2:${PORTSDIR}/math/gotoblas
+LIB_DEPENDS+=	libgoto2.so:${PORTSDIR}/math/gotoblas
 BLAS=		-lgoto2p
 LAPACK=		-lgoto2p
 .elif ${WITH_BLAS} == atlas
-LIB_DEPENDS+=	atlas:${PORTSDIR}/math/atlas
+LIB_DEPENDS+=	libatlas.so:${PORTSDIR}/math/atlas
 BLAS=		-lptf77blas
 LAPACK=		-lalapack -lptcblas
 .endif

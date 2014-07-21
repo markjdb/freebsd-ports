@@ -3,7 +3,7 @@
 
 PORTNAME=	grub2-pcbsd
 PORTVERSION=	2.02p
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	sysutils
 MASTER_SITES=   http://www.pcbsd.org/~kris/software/ \
 		ftp://ftp.pcbsd.org/pub/software/
@@ -64,7 +64,7 @@ MKFONT=		"@comment "
 PLIST_SUB+=	MKFONT=${MKFONT}
 
 .if ${PORT_OPTIONS:MFUSE}
-LIB_DEPENDS+=	fuse:${PORTSDIR}/sysutils/fusefs-libs
+LIB_DEPENDS+=	libfuse.so:${PORTSDIR}/sysutils/fusefs-libs
 CONFIGURE_ARGS+=	--enable-grub-mount
 .else
 CONFIGURE_ARGS+=	--disable-grub-mount

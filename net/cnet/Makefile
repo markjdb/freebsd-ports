@@ -11,9 +11,9 @@ MASTER_SITES=	http://www.csse.uwa.edu.au/cnet/ \
 EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	itetcu@FreeBSD.org
-COMMENT=	A networking simulator
+COMMENT=	Networking simulator
 
-LIB_DEPENDS=	tk84.1:${PORTSDIR}/x11-toolkits/tk84
+LIB_DEPENDS=	libtk84.so:${PORTSDIR}/x11-toolkits/tk84
 
 USE_XORG=	xpm
 USES=		gmake

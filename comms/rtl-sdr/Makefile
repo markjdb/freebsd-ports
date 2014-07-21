@@ -3,7 +3,7 @@
 
 PORTNAME=	rtl-sdr
 PORTVERSION=	20140210
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://contribs.martymac.org/FreeBSD-ports/distfiles/ \
 		LOCAL/martymac
@@ -23,6 +23,8 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
 
 DOCSDIR=	${PREFIX}/share/doc/librtlsdr
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.pre.mk>
 

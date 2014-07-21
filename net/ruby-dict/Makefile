@@ -10,7 +10,7 @@ DISTNAME=	ruby-${PORTNAME}-${PORTVERSION}
 DIST_SUBDIR=	ruby
 
 MAINTAINER=	miwi@FreeBSD.org
-COMMENT=	A client-side implementation of the DICT protocol in Ruby
+COMMENT=	Client-side implementation of the DICT protocol in Ruby
 
 USE_RUBY=	yes
 USE_RUBY_SETUP=	yes
@@ -19,6 +19,8 @@ RUBY_SETUP=	install.rb
 RUBY_SHEBANG_FILES=	${WRKSRC}/rdict
 
 DOCS=		Changelog README doc/dict.html doc/rdict.html
+
+OPTIONS_DEFINE=	DOCS
 
 post-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/rdict ${STAGEDIR}${PREFIX}/bin/

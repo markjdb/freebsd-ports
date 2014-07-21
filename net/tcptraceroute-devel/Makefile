@@ -3,15 +3,16 @@
 
 PORTNAME=	tcptraceroute
 DISTVERSION=	1.5beta7
+PORTREVISION=	1
 CATEGORIES=	net
 MASTER_SITES=	http://michael.toren.net/code/tcptraceroute/ \
 		http://pflog.net/tcptraceroute/
 PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	josh.carroll@gmail.com
-COMMENT=	A traceroute implementation using TCP packets
+COMMENT=	Traceroute implementation using TCP packets
 
-BUILD_DEPENDS=	${LIBNET_CONFIG}:${PORTSDIR}/net/libnet
+LIB_DEPENDS=	libnet.so:${PORTSDIR}/net/libnet
 
 CONFLICTS=	tcptraceroute-1.4*
 

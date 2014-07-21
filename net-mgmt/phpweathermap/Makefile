@@ -9,7 +9,7 @@ MASTER_SITES=	http://www.network-weathermap.com/files/
 DISTNAME=	php-weathermap-${PORTVERSION}
 
 MAINTAINER=	hhyou@cs.nctu.edu.tw
-COMMENT=	A network visualisation tool with web editor
+COMMENT=	Network visualisation tool with web editor
 
 LICENSE=	GPLv2
 
@@ -34,7 +34,9 @@ WRKSRC=		${WRKDIR}/weathermap
 
 SUB_FILES=	pkg-message
 
-.include <bsd.port.pre.mk>
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
+.include <bsd.port.options.mk>
 post-patch:
 	${REINPLACE_CMD} -e 's|%%DATADIR%%|${DATADIR}|g' ${WRKSRC}/editor.php
 	${REINPLACE_CMD} -e 's|%%DATADIR%%|${DATADIR}|g' \
@@ -66,4 +68,4 @@ post-install:
 .endif
 	@${CAT} ${PKGMESSAGE}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

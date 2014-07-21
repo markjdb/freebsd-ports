@@ -272,6 +272,7 @@
     SUBDIR += libpreludedb
     SUBDIR += libpwquality
     SUBDIR += libpwstor
+    SUBDIR += libressl
     SUBDIR += libscrypt
     SUBDIR += libsecret
     SUBDIR += libsectok
@@ -622,7 +623,6 @@
     SUBDIR += pam_mkhomedir
     SUBDIR += pam_p11
     SUBDIR += pam_per_user
-    SUBDIR += pam_pgina
     SUBDIR += pam_pseudo
     SUBDIR += pam_pwdfile
     SUBDIR += pam_require
@@ -911,6 +911,7 @@
     SUBDIR += shishi
     SUBDIR += shttpscanner
     SUBDIR += sig2dot
+    SUBDIR += signify
     SUBDIR += signing-party
     SUBDIR += silktools
     SUBDIR += sinfp

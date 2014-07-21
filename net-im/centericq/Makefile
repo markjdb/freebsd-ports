@@ -8,7 +8,7 @@ CATEGORIES=	net-im
 MASTER_SITES=	http://thekonst.net/download/
 
 MAINTAINER= ports@FreeBSD.org
-COMMENT=	A text mode menu- and window-driven IM interface
+COMMENT=	Text mode menu- and window-driven IM interface
 
 DEPRECATED=	Fails to build with new utmpx
 EXPIRATION_DATE=	2014-07-23
@@ -59,12 +59,12 @@ CONFIGURE_ARGS+=	--enable-locales-fix
 .endif
 
 .if ${PORT_OPTIONS:MFRIBIDI}
-LIB_DEPENDS+=	fribidi.3:${PORTSDIR}/converters/fribidi
+LIB_DEPENDS+=	libfribidi.so:${PORTSDIR}/converters/fribidi
 CONFIGURE_ARGS+=	--with-fribidi
 .endif
 
 .if ${PORT_OPTIONS:MMSN}
-LIB_DEPENDS+=		curl:${PORTSDIR}/ftp/curl
+LIB_DEPENDS+=		libcurl.so:${PORTSDIR}/ftp/curl
 .else
 CONFIGURE_ARGS+=	--disable-msn
 .endif
@@ -101,7 +101,7 @@ CONFIGURE_ARGS+=	--disable-lj
 .endif
 
 .if ${PORT_OPTIONS:MGG}
-LIB_DEPENDS+=	gadu.3:${PORTSDIR}/polish/ekg
+LIB_DEPENDS+=	libgadu.so:${PORTSDIR}/polish/ekg
 LIBGADU=	-lgadu
 .else
 CONFIGURE_ARGS+=	--disable-gg

@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	toxic
-PORTVERSION=	0.4.2.140630
+PORTVERSION=	0.4.5.140717
 CATEGORIES=	net-im
 
 MAINTAINER=	thierry@FreeBSD.org
-COMMENT=	A console client for Tox
+COMMENT=	Console client for Tox
 
 LICENSE=	GPLv3
 
@@ -19,7 +19,7 @@ RUN_DEPENDS=	${LOCALBASE}/lib/libtoxcore.a:${PORTSDIR}/net-im/tox
 USE_GITHUB=	yes
 GH_ACCOUNT=	tox
 GH_TAGNAME=	${GH_COMMIT}
-GH_COMMIT=	a126f9c
+GH_COMMIT=	e61d070
 
 WRKSRC=		${WRKDIR}/Tox-${PORTNAME}-${GH_COMMIT}
 BUILD_WRKSRC=	${WRKSRC}/build

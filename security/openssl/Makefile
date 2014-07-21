@@ -19,7 +19,9 @@ COMMENT=	SSL and crypto library
 .error You have `USE_OPENSSL' variable defined either in environment or in make(1) arguments. Please undefine and try again.
 .endif
 
-OPTIONS_DEFINE=	SHARED THREADS I386 SSE2 ASM PADLOCK ZLIB SCTP MD2 RC5 RFC3779 GMP
+CONFLICTS?=	libressl-*
+
+OPTIONS_DEFINE=	SHARED THREADS I386 SSE2 ASM PADLOCK ZLIB SCTP MD2 RC5 RFC3779 GMP DOCS
 OPTIONS_DEFAULT=SHARED THREADS SSE2 ASM ZLIB SCTP MD2
 .for a in amd64 ia64
 OPTIONS_DEFINE_${a}=	EC
@@ -56,6 +58,8 @@ USE_PERL5=	build
 MAKE_ARGS+=	WHOLE_ARCHIVE_FLAG=--whole-archive
 MAKE_ENV+=	LIBRPATH="${PREFIX}/lib" GREP_OPTIONS=
 SUB_FILES=	pkg-message
+
+CPE_VERSION=	${PORTVERSION}${DISTVERSIONSUFFIX}
 
 FIX_POD=apps/cms.pod \
 	apps/smime.pod \

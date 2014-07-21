@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	seqtools
-PORTVERSION=	4.26
-PORTREVISION=	1
+PORTVERSION=	4.27
 CATEGORIES=	biology
 MASTER_SITES=	ftp://ftp.sanger.ac.uk/pub4/resources/software/seqtools/PRODUCTION/
 
@@ -23,5 +22,7 @@ USE_GNOME=	gtk20
 CFLAGS=		-I${LOCALBASE}/include
 LDFLAGS=	-L${LOCALBASE}/lib -lexecinfo -lcurl -lsqlite3 -lm
 MAKE_JOBS_UNSAFE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

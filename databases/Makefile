@@ -261,6 +261,7 @@
     SUBDIR += p5-Bucardo
     SUBDIR += p5-CDB_File
     SUBDIR += p5-CDB_File-Generator
+    SUBDIR += p5-CGI-Session-Driver-memcached
     SUBDIR += p5-Cache-BDB
     SUBDIR += p5-Cache-Memcached
     SUBDIR += p5-Cache-Memcached-Fast
@@ -334,6 +335,7 @@
     SUBDIR += p5-DBIx-Browse
     SUBDIR += p5-DBIx-Class
     SUBDIR += p5-DBIx-Class-AsFdat
+    SUBDIR += p5-DBIx-Class-BitField
     SUBDIR += p5-DBIx-Class-Candy
     SUBDIR += p5-DBIx-Class-Cursor-Cached
     SUBDIR += p5-DBIx-Class-CustomPrefetch
@@ -755,7 +757,6 @@
     SUBDIR += py-redis
     SUBDIR += py-riak
     SUBDIR += py-rrdtool_lgpl
-    SUBDIR += py-simplecouchdb
     SUBDIR += py-south
     SUBDIR += py-sqlalchemy
     SUBDIR += py-sqlalchemy-devel

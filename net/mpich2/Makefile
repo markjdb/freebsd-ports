@@ -10,7 +10,7 @@ MASTER_SITES=	http://www.mcs.anl.gov/research/projects/mpich2/downloads/tarballs
 DIST_SUBDIR=	mpich
 
 MAINTAINER=	bf@FreeBSD.org
-COMMENT=	A portable implementation of MPI-1 and MPI-2
+COMMENT=	Portable implementation of MPI-1 and MPI-2
 
 LICENSE=	MPICH
 LICENSE_NAME=	MPICH
@@ -18,7 +18,7 @@ LICENSE_FILE=	${WRKSRC}/COPYRIGHT
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash
-LIB_DEPENDS=	execinfo.1:${PORTSDIR}/devel/libexecinfo
+LIB_DEPENDS=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo
 RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
 
 GNU_CONFIGURE=	yes
