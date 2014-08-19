@@ -3,13 +3,13 @@
 
 PORTNAME=	cimg
 PORTVERSION=	1.5.9
-PORTREVISION=	1
+PORTREVISION=	4
 PORTEPOCH=	3
 CATEGORIES=	graphics devel
 MASTER_SITES=	SF/${PORTNAME}		\
 		SF/${PORTNAME}/old
 DISTNAME=	CImg-${DISTVERSION}
-DIST_SUBDIR=	${PORTNAME}-${PORTVERSION}_${PORTREVISION}
+DIST_SUBDIR=	${PORTNAME}-${PORTVERSION}_${TARBALLREVISION}
 
 MAINTAINER=	thierry@FreeBSD.org
 COMMENT=	The C++ Template Image Processing Library
@@ -26,6 +26,7 @@ LICENSE_PERMS_CeCILL=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 ONLY_FOR_ARCHS=	i386 amd64
 ONLY_FOR_ARCHS_REASON=	"invokes i386 asm"
 
+TARBALLREVISION=3
 USES=		zip
 WRKSRC=		${WRKDIR}/${DISTNAME:C/_/-/}
 BUILD_WRKSRC=	${WRKSRC}/examples
@@ -51,7 +52,7 @@ LIB_DEPENDS+=	libpng15.so:${PORTSDIR}/graphics/png		\
 		libfftw3.so:${PORTSDIR}/math/fftw3		\
 		libopencv_legacy.so:${PORTSDIR}/graphics/opencv	\
 		libopencv_core.so:${PORTSDIR}/graphics/opencv-core\
-		libGraphicsMagick.so.14:${PORTSDIR}/graphics/GraphicsMagick
+		libGraphicsMagick.so:${PORTSDIR}/graphics/GraphicsMagick
 ALL_TARGET=	Mlinux
 . else
 ALL_TARGET=	dlinux

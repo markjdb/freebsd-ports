@@ -13,7 +13,7 @@ COMMENT=	IPv6 network diagnostic tools
 
 LICENSE=	GPLv2
 
-USE_BZIP2=	yes
+USES=		tar:bzip2
 USE_GCC=	any
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-suid-install

@@ -2,24 +2,23 @@
 # $FreeBSD$
 
 PORTNAME=	davmail
-PORTVERSION=	4.5.0
+PORTVERSION=	4.5.1
 CATEGORIES=	mail java
 MASTER_SITES=	SF/davmail/davmail/${PORTVERSION}
 DISTNAME=	${PORTNAME}-src-${PORTVERSION}-${REVISION}
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	john.c.prather@gmail.com
 COMMENT=	POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 
 LICENSE=	GPLv2
 
-USES=		dos2unix
+USES=		dos2unix tar:tgz
 DOS2UNIX_FILES=	build.xml
 USE_ANT=	yes
 USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 ALL_TARGET=	release
-REVISION=	2292
+REVISION=	2303
 # port build number, same as on DISTNAME
 MAKE_ARGS=	-Drevision=${REVISION}
 MAKE_ENV+=	"ANT_OPTS=-Dfile.encoding=UTF-8"

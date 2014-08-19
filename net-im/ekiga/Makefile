@@ -3,7 +3,7 @@
 
 PORTNAME=	ekiga
 PORTVERSION=	4.0.1
-PORTREVISION=	3
+PORTREVISION=	6
 CATEGORIES=	net-im
 MASTER_SITES=	GNOME
 #MASTER_SITES=	http://www.ekiga.org/admin/downloads/latest/sources/ekiga_${PORTVERSION}/
@@ -20,9 +20,8 @@ LIB_DEPENDS=	libboost_signals.so:${PORTSDIR}/devel/boost-libs \
 		libv4l2.so:${PORTSDIR}/multimedia/libv4l
 RUN_DEPENDS=	gnome-icon-theme>=3.0.0:${PORTSDIR}/misc/gnome-icon-theme
 
-USE_XZ=		yes
 GNU_CONFIGURE=	yes
-USES=		gettext gmake pathfix perl5 pkgconfig
+USES=		gettext gmake libtool pathfix perl5 pkgconfig tar:xz
 USE_XORG=	xv
 USE_GNOME=	gtk20 intltool libxml2
 INSTALLS_OMF=	yes
@@ -103,12 +102,6 @@ CONFIGURE_ARGS+=--disable-ldap
 PLIST_SUB+=	LDAP="@comment "
 .endif
 
-.if defined(WITH_PLUGINS)
-PLIST_SUB+=	PLUGINS=""
-.else
-PLIST_SUB+=	PLUGINS="@comment "
-.endif
-
 .if ${PORT_OPTIONS:MNOTIFY}
 LIB_DEPENDS+=	libnotify.so:${PORTSDIR}/devel/libnotify
 CONFIGURE_ARGS+=--enable-notify
@@ -164,6 +157,12 @@ USE_GNOME+=	gnomedocutils
 .else
 CONFIGURE_ARGS+=--disable-gdu
 PLIST_SUB+=	GNOMEHELP="@comment "
+.endif
+
+.if defined(WITH_PLUGINS)
+PLIST_SUB+=	PLUGINS=""
+.else
+PLIST_SUB+=	PLUGINS="@comment "
 .endif
 
 post-install:

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	cbsd
-PORTVERSION=	10.0.6
+PORTVERSION=	10.0.7
 CATEGORIES=	sysutils
 
 MAINTAINER=	olevole@olevole.ru
@@ -17,7 +17,7 @@ LIB_DEPENDS=	libssh2.so:${PORTSDIR}/security/libssh2 \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	olevole
-GH_COMMIT=	cac57bb
+GH_COMMIT=	74d433e
 
 USE_RC_SUBR=	cbsdd cbsdrsyncd
 
@@ -31,12 +31,8 @@ CBSD_HOME?=	${PREFIX}/cbsd
 USERS=	${PORTNAME}
 GROUPS=	${PORTNAME}
 
-.if ${OSVERSION} < 901000
-IGNORE=	does not support FreeBSD versions < 9.1
-.endif
-
-.if ${OSVERSION} < 902001
-RUN_DEPENDS+=	sysrc:${PORTSDIR}/sysutils/sysrc
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
+IGNORE=	does not support FreeBSD versions < 10.0
 .endif
 
 do-install:

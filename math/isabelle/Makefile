@@ -15,6 +15,8 @@ COMMENT=	Generic proof assistant
 LICENSE=	BSD
 LICENSE_FILE=	${WRKSRC}/COPYRIGHT
 
+BROKEN=		Build seems to hang on the package builders
+
 OPTIONS_DEFINE=	POLYML RLWRAP LEDIT HOL_ALGEBRA HOL_NOMINAL HOL_NSA HOL_WORD \
 		HOL_TLA HOL_HOL4 EMACS_PKG
 OPTIONS_DEFAULT=	RLWRAP
@@ -30,8 +32,8 @@ HOL_HOL4_DESC=		Build optional heap: HOL4
 EMACS_PKG_DESC=		Build with Emacs Packages
 
 USES=		perl5
+MAKE_JOBS_UNSAFE=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
@@ -123,14 +125,12 @@ PLIST_SUB+=	HEAPSUBDIR=${ML_SYSTEM}_${ML_PLATFORM} \
 		HEAP_HOL_TLA=${HEAP_HOL_TLA} \
 		HEAP_HOL_HOL4=${HEAP_HOL_HOL4}
 .if ! ${PORT_OPTIONS:MPOLYML}
-BUILD_DEPENDS+=	smlnj-devel>=110.71:${PORTSDIR}/lang/sml-nj-devel
+BUILD_DEPENDS+=	smlnj>=110.71:${PORTSDIR}/lang/smlnj
 MAKE_ENV+=	SMLNJ_DEVEL=yes
 .else
 BUILD_DEPENDS+=	polyml>=5.2.1:${PORTSDIR}/lang/polyml
 RUN_DEPENDS+=	polyml>=5.2.1:${PORTSDIR}/lang/polyml
 .endif
-
-NO_INSTALL_MANPAGES=yes
 
 post-extract:
 	@${CP} ${FILESDIR}/Makefile ${WRKSRC}
@@ -160,16 +160,16 @@ post-build:
 
 post-install:
 	${WRKSRC}/bin/isabelle install \
-		-d ${PREFIX}/share/isabelle \
-		-p ${PREFIX}/bin
+		-d ${STAGEDIR}${PREFIX}/share/isabelle \
+		-p ${STAGEDIR}${PREFIX}/bin
 .if ${PORT_OPTIONS:MDOCS}
-	${MKDIR} ${DOCSDIR}
+	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for file in ${DOCFILES}
-	${INSTALL_DATA} ${WRKSRC}/doc/${file} ${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/doc/${file} ${STAGEDIR}${DOCSDIR}
 .endfor
 	(cd ${WRKSRC}; \
-	 ${FIND} -d browser_info -type d -exec ${MKDIR} ${DOCSDIR}/{} \; ; \
-	 ${FIND} -d browser_info -type f -exec ${INSTALL_DATA} {} ${DOCSDIR}/{} \;)
+	 ${FIND} -d browser_info -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/{} \; ; \
+	 ${FIND} -d browser_info -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/{} \;)
 .endif
 
 .include <bsd.port.post.mk>

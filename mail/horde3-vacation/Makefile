@@ -3,12 +3,15 @@
 
 PORTNAME=	vacation
 PORTVERSION=	3.2.1
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	mail www
 DIST_SUBDIR=	horde
 
 MAINTAINER= ports@FreeBSD.org
 COMMENT=	E-mail auto-responder
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 #-----------------------------------------------------------------------
 NO_STAGE=	yes

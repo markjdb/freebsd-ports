@@ -2,7 +2,7 @@
 
 PORTNAME=	kpovmodeler
 PORTVERSION=	${APP_VER}.${EXTRA_VER}
-PORTREVISION=	10
+PORTREVISION=	11
 CATEGORIES=	graphics kde
 MASTER_SITES=	KDE/Attic/${EXTRA_VER}/src/extragear
 DISTNAME=	${PORTNAME}-${APP_VER}-kde${EXTRA_VER}
@@ -13,11 +13,10 @@ COMMENT=	KDE editor/frontend for Povray
 
 RUN_DEPENDS=	povray:${PORTSDIR}/graphics/povray-meta
 
-USE_BZIP2=	yes
 USE_GL=		glu
 USE_KDE4=	kdelibs kdeprefix kdehier automoc4
 USE_QT4=	corelib opengl qmake_build moc_build rcc_build uic_build
-USES=		cmake gettext
+USES=		cmake gettext tar:bzip2
 
 APP_VER=	1.1.3
 EXTRA_VER=	4.3.1

@@ -56,6 +56,11 @@
     SUBDIR += bacula-client-static
     SUBDIR += bacula-docs
     SUBDIR += bacula-server
+    SUBDIR += bacula5-bat
+    SUBDIR += bacula5-client
+    SUBDIR += bacula5-client-static
+    SUBDIR += bacula5-docs
+    SUBDIR += bacula5-server
     SUBDIR += bamf
     SUBDIR += bashburn
     SUBDIR += batmon
@@ -158,6 +163,7 @@
     SUBDIR += dae
     SUBDIR += daedalus
     SUBDIR += daemontools
+    SUBDIR += daemontools-encore
     SUBDIR += dar
     SUBDIR += dateutils
     SUBDIR += dc3dd
@@ -379,10 +385,11 @@
     SUBDIR += hptcli
     SUBDIR += hs-angel
     SUBDIR += hs-cpu
+    SUBDIR += hs-ekg
+    SUBDIR += hs-ekg-core
     SUBDIR += htop
     SUBDIR += httplog
     SUBDIR += hwstat
-    SUBDIR += hyperic-sigar
     SUBDIR += i2c-tools
     SUBDIR += i7z
     SUBDIR += iat
@@ -446,6 +453,7 @@
     SUBDIR += less
     SUBDIR += lfm
     SUBDIR += libcdio
+    SUBDIR += libcdio-paranoia
     SUBDIR += libchk
     SUBDIR += libfvde
     SUBDIR += libgksu
@@ -475,8 +483,6 @@
     SUBDIR += logtool
     SUBDIR += logwatch
     SUBDIR += lookat
-    SUBDIR += lookupd
-    SUBDIR += lookupd_ldap
     SUBDIR += lsof
     SUBDIR += ltrace
     SUBDIR += luckybackup
@@ -498,6 +504,8 @@
     SUBDIR += mcollective
     SUBDIR += mcollective-nrpe-agent
     SUBDIR += mcollective-puppet-agent
+    SUBDIR += mcollective-shell-agent
+    SUBDIR += mcollective-shell-client
     SUBDIR += mcron
     SUBDIR += mcweject
     SUBDIR += mdcp
@@ -627,7 +635,6 @@
     SUBDIR += p5-Sys-Load
     SUBDIR += p5-Sys-Syslog
     SUBDIR += p5-Sys-User-UIDhelper
-    SUBDIR += p5-Sys-Utmp
     SUBDIR += p5-Sysadm-Install
     SUBDIR += p5-SyslogScan
     SUBDIR += p5-Tail-Stat
@@ -740,6 +747,7 @@
     SUBDIR += py-ploy_ezjail
     SUBDIR += py-ploy_fabric
     SUBDIR += py-plumbum
+    SUBDIR += py-power
     SUBDIR += py-psutil
     SUBDIR += py-psutil121
     SUBDIR += py-pytsk
@@ -768,7 +776,6 @@
     SUBDIR += rdiff-backup
     SUBDIR += rdiff-backup-devel
     SUBDIR += rdup
-    SUBDIR += readlink
     SUBDIR += realsync
     SUBDIR += recoverdm
     SUBDIR += reed
@@ -842,6 +849,7 @@
     SUBDIR += safecat
     SUBDIR += samefile
     SUBDIR += samesame
+    SUBDIR += sas2ircu
     SUBDIR += savelogs
     SUBDIR += sb16config
     SUBDIR += sbniconfig
@@ -906,8 +914,8 @@
     SUBDIR += sysinfo
     SUBDIR += syslinux
     SUBDIR += syslog-ng
+    SUBDIR += syslog-ng-devel
     SUBDIR += syslog-ng-incubator
-    SUBDIR += syslog-ng2
     SUBDIR += syslog-ng33
     SUBDIR += syslog-ng34
     SUBDIR += syslogger
@@ -1037,6 +1045,7 @@
     SUBDIR += xen-tools
     SUBDIR += xfburn
     SUBDIR += xfce4-battery-plugin
+    SUBDIR += xfce4-bsdcpufreq-plugin
     SUBDIR += xfce4-cpugraph-plugin
     SUBDIR += xfce4-diskperf-plugin
     SUBDIR += xfce4-fsguard-plugin
@@ -1060,7 +1069,6 @@
     SUBDIR += xstow
     SUBDIR += xsysstats
     SUBDIR += xvidcap
-    SUBDIR += yawho
     SUBDIR += yum
     SUBDIR += zeitgeist
     SUBDIR += zeroer

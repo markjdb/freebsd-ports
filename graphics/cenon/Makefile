@@ -3,6 +3,7 @@
 
 PORTNAME=	cenon
 PORTVERSION=	4.0.2
+PORTREVISION=	1
 CATEGORIES=	graphics gnustep
 MASTER_SITES=	http://www.vhf-group.com/vhf-interservice/download/source/
 DISTNAME=	Cenon-${MAINVERSION}
@@ -13,7 +14,7 @@ EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 MAINTAINER=	theraven@FreeBSD.org
 COMMENT=	Vector graphics tool for GNUstep
 
-USE_BZIP2=	yes
+USES=	tar:bzip2
 USE_GNUSTEP=	yes
 USE_GNUSTEP_BACK=	yes
 USE_GNUSTEP_BUILD=	yes

@@ -103,8 +103,10 @@
     SUBDIR += gtksql
     SUBDIR += hamsterdb
     SUBDIR += hashtypes
+    SUBDIR += hbase
     SUBDIR += hiredis
     SUBDIR += hk_classes
+    SUBDIR += hs-esqueleto
     SUBDIR += hs-mysql
     SUBDIR += hs-persistent
     SUBDIR += hs-persistent-sqlite
@@ -117,7 +119,6 @@
     SUBDIR += isql-viewer
     SUBDIR += jakarta-commons-dbutils
     SUBDIR += jasperreports
-    SUBDIR += jasperserver
     SUBDIR += java-mybatis
     SUBDIR += jdb
     SUBDIR += jdbc-oracle10g
@@ -190,6 +191,7 @@
     SUBDIR += memcachedb
     SUBDIR += memcacheq
     SUBDIR += metakit
+    SUBDIR += monetdb
     SUBDIR += mongodb
     SUBDIR += mrtg-mysql-load
     SUBDIR += msql
@@ -311,6 +313,7 @@
     SUBDIR += p5-DBD-ODBC
     SUBDIR += p5-DBD-Oracle
     SUBDIR += p5-DBD-Pg
+    SUBDIR += p5-DBD-Pg32
     SUBDIR += p5-DBD-PgLite
     SUBDIR += p5-DBD-PgPP
     SUBDIR += p5-DBD-SQLite
@@ -710,6 +713,7 @@
     SUBDIR += py-MySQLdb
     SUBDIR += py-MySQLdb51
     SUBDIR += py-MySQLdb55
+    SUBDIR += py-MySQLdb56
     SUBDIR += py-PyGreSQL
     SUBDIR += py-Pyrseas
     SUBDIR += py-alembic
@@ -728,6 +732,7 @@
     SUBDIR += py-forgetsql
     SUBDIR += py-gdbm
     SUBDIR += py-geoalchemy
+    SUBDIR += py-geoalchemy2
     SUBDIR += py-hiredis
     SUBDIR += py-htsql
     SUBDIR += py-htsql-mysql
@@ -736,6 +741,7 @@
     SUBDIR += py-leveldb
     SUBDIR += py-memcached
     SUBDIR += py-mssql
+    SUBDIR += py-mysql-connector-python
     SUBDIR += py-mysql2pgsql
     SUBDIR += py-odbc
     SUBDIR += py-oops
@@ -801,6 +807,7 @@
     SUBDIR += redis
     SUBDIR += redis-devel
     SUBDIR += riak
+    SUBDIR += rocksdb
     SUBDIR += rrdman
     SUBDIR += rrdmerge
     SUBDIR += rrdtool

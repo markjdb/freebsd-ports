@@ -3,6 +3,7 @@
 
 PORTNAME=	rubinius
 PORTVERSION=	2.2.10
+PORTREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	http://releases.rubini.us/:source \
 		RG:gems
@@ -37,7 +38,7 @@ CONFIGURE_ARGS=	-P "${PREFIX}" \
 		--vendordir "${PREFIX}/lib/ruby/vendor_ruby/rubinius" \
 		--stagingdir "${STAGEDIR}${PREFIX}" --with-execinfo
 
-USES=		perl5 gmake tar:bzip2
+USES=		perl5 gmake tar:bzip2 readline
 USE_RUBY=	yes
 RUBY_NO_RUN_DEPENDS=	yes
 USE_PERL5=	build
@@ -75,7 +76,7 @@ F_ARCH=		x86
 .endif
 
 post-extract:
-.for DF in ${DISTFILES}
+.for DF in ${DISTFILES:N*\:source}
 	@${LN} -s ${DISTDIR}/${DF:C/:gems//g} ${WRKSRC}/vendor/cache/
 .endfor
 
@@ -93,6 +94,10 @@ do-build:
 	@${TOUCH} ${STAGEDIR}${PREFIX}/lib/ruby/site_ruby/rubinius/.keep_me
 	@${TOUCH} ${STAGEDIR}${PREFIX}/lib/ruby/vendor_ruby/rubinius/.keep_me
 	@${MV} ${STAGEDIR}${PREFIX}/bin/testrb ${STAGEDIR}${PREFIX}/bin/testrbx
+	@${FIND} ${STAGEDIR} -type f -name '*.so' |${XARGS} ${STRIP_CMD}
+	@${FIND} ${STAGEDIR} -type f -name 'gem_make.out' |${XARGS} ${RM}
+	@${FIND} ${STAGEDIR} -type f -name 'gem.build_complete' |${XARGS} ${RM}
+	@${FIND} ${STAGEDIR} -type f -name 'mkmf.log' |${XARGS} ${RM}
 
 plist:
 	@truncate -s0 pkg-plist

@@ -3,12 +3,12 @@
 
 PORTNAME=	retawq
 DISTVERSION=	0.2.6c
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES=	www ipv6
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-0.2.6c
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	An interactive, multi-threaded web browser for text terminals
+COMMENT=	Interactive, multi-threaded web browser for text terminals
 
 USES=		gettext
 HAS_CONFIGURE=	yes

@@ -2,14 +2,19 @@
 # $FreeBSD$
 
 PORTNAME=	ephemera
-PORTVERSION=	2.9
-PORTREVISION=	1
+PORTVERSION=	5.0
 CATEGORIES=	www
 MASTER_SITES=	http://www.mammothcheese.ca/
 
 MAINTAINER=	jimmy@mammothcheese.ca
 COMMENT=	Blog server
 
+LICENSE=	BSD3CLAUSE
+
 RUN_DEPENDS=	munger:${PORTSDIR}/lang/munger
+
+DATADIR=	${PREFIX}/share/ephemera
+
+USE_SQLITE=	3
 
 .include <bsd.port.mk>

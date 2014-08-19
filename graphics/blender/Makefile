@@ -3,6 +3,7 @@
 
 PORTNAME=	blender
 PORTVERSION=	2.71
+PORTREVISION=	1
 CATEGORIES=	graphics games
 MASTER_SITES=	http://download.blender.org/source/ \
 		http://mirror.cs.umn.edu/blender.org/source/ \
@@ -19,8 +20,7 @@ LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
 
 USE_XORG=	x11 xext xmu
 USE_GL=		glew
-USES=		cmake:outsource compiler:features shebangfix
-USE_PYTHON=	3.4
+USES=		cmake:outsource compiler:features python:3.4 shebangfix
 CMAKE_ARGS+=	-DWITH_PYTHON_INSTALL:BOOL=OFF \
 		-DWITH_PYTHON_INSTALL_NUMPY:BOOL=OFF
 

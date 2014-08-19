@@ -2,18 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-PORTVERSION=	1.7.22
+PORTVERSION=	1.7.24
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	LOCAL/dbn/repos/wine/${DIST_SUBDIR}/${PORTVERSION}
 PKGNAMEPREFIX=	i386-
-PKGNAMESUFFIX=	-devel
+PKGNAMESUFFIX?=	-devel
 DISTNAME=	${PKGNAME}
 EXTRACT_SUFX=	.txz
 DIST_SUBDIR=	freebsd:${OSREL:C/\..*//}:x86:64
 
 MAINTAINER=	dbn@FreeBSD.org
-COMMENT=	32bit Microsoft Windows compatibility environment for 64bit FreeBSD
+COMMENT?=	32bit Microsoft Windows compatibility environment for 64bit FreeBSD
 
 LICENSE=        LGPL21 LGPL3
 LICENSE_COMB=   dual
@@ -23,7 +23,7 @@ OPTIONS_DEFINE=	GECKO MONO
 GECKO_DESC=     Bundle Gecko MSI package for Wine
 MONO_DESC=      Bundle Mono MSI package for Wine
 
-CONFLICTS_INSTALL=	i386-wine-[0-9]* wine-[0-9]* wine-devel-[0-9]*
+CONFLICTS_INSTALL?=	i386-wine-[0-9]* wine-[0-9]* wine-devel-[0-9]*
 
 EXTRACT_AFTER_ARGS=	-C / --exclude +COMPACT_MANIFEST --exclude +MANIFEST \
 				--exclude +MTREE_DIRS --exclude share/licenses/'*' \
@@ -73,11 +73,13 @@ ${PLIST}: fetch
 port-update:
 	${RM} -f ${.CURDIR}/distinfo ${.CURDIR}/distinfo~ ${.CURDIR}/pkg-plist.*
 .for osrel in 8 9 10 11
-	${MAKE} fetch OSREL=${osrel}
-	${MAKE} makesum OSREL=${osrel}
+.for suffix in -devel -compholio
+	${MAKE} fetch OSREL=${osrel} PKGNAMESUFFIX=${suffix}
+	${MAKE} makesum OSREL=${osrel} PKGNAMESUFFIX=${suffix}
 	${CAT} ${.CURDIR}/distinfo >> ${.CURDIR}/distinfo~
 	${RM} ${.CURDIR}/distinfo
-	${MAKE} pkg-plist.${osrel} PLIST=pkg-plist.${osrel} OSREL=${osrel}
+	[ "${suffix}" != "-devel" ] || ${MAKE} pkg-plist.${osrel} PLIST=pkg-plist.${osrel} OSREL=${osrel}
+.endfor
 .endfor
 	${MV} ${.CURDIR}/distinfo~ ${.CURDIR}/distinfo
 	python ${FILESDIR}/mergeplist.py ${.CURDIR}/pkg-plist.* > ${PLIST}

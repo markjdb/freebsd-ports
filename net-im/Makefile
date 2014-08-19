@@ -5,7 +5,6 @@
 
     SUBDIR += ayttm
     SUBDIR += bsflite
-    SUBDIR += centericq
     SUBDIR += centerim
     SUBDIR += centerim-devel
     SUBDIR += chattahoochie
@@ -28,7 +27,6 @@
     SUBDIR += gajim
     SUBDIR += gale
     SUBDIR += gloox
-    SUBDIR += gtkyahoo
     SUBDIR += gyach
     SUBDIR += hotot
     SUBDIR += icb
@@ -103,7 +101,6 @@
     SUBDIR += pidgin-audacious-remote
     SUBDIR += pidgin-birthday-reminder
     SUBDIR += pidgin-bs
-    SUBDIR += pidgin-facebookchat
     SUBDIR += pidgin-fetion
     SUBDIR += pidgin-guifications
     SUBDIR += pidgin-hotkeys

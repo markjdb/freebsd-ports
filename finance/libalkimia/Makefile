@@ -2,7 +2,7 @@
 
 PORTNAME=	libalkimia
 PORTVERSION=	4.3.2
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	finance kde
 MASTER_SITES=	http://kde-apps.org/CONTENT/content-files/
 DISTNAME=	137323-${PORTNAME}-${PORTVERSION}
@@ -14,8 +14,7 @@ LICENSE=	LGPL21
 
 LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp
 
-USE_BZIP2=	yes
-USES=		cmake pkgconfig
+USES=		cmake pkgconfig tar:bzip2
 USE_KDE4=	automoc4 kdeprefix kdelibs
 USE_QT4=	qmake_build moc_build rcc_build uic_build
 USE_LDCONFIG=	yes

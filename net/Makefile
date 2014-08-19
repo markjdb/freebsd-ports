@@ -95,7 +95,6 @@
     SUBDIR += datapipe
     SUBDIR += dbeacon
     SUBDIR += delegate
-    SUBDIR += desktop-data-model
     SUBDIR += despoof
     SUBDIR += dgd
     SUBDIR += dgd-kernel
@@ -167,6 +166,8 @@
     SUBDIR += gofish
     SUBDIR += gogoc
     SUBDIR += googlecl
+    SUBDIR += google-cloud-sdk
+    SUBDIR += google-daemon
     SUBDIR += gopher
     SUBDIR += gotthard
     SUBDIR += gpxe
@@ -203,12 +204,15 @@
     SUBDIR += howl
     SUBDIR += hping
     SUBDIR += hping-devel
+    SUBDIR += hs-connection
+    SUBDIR += hs-gsasl
     SUBDIR += hs-hostname
+    SUBDIR += hs-iproute
     SUBDIR += hs-maccatcher
     SUBDIR += hs-network
-    SUBDIR += hs-network-conduit
     SUBDIR += hs-network-info
     SUBDIR += hs-network-multicast
+    SUBDIR += hs-network-protocol-xmpp
     SUBDIR += hs-pcap
     SUBDIR += hs-publicsuffixlist
     SUBDIR += hs-sendfile
@@ -420,6 +424,7 @@
     SUBDIR += ngrep
     SUBDIR += nifmon
     SUBDIR += nload
+    SUBDIR += nmsg
     SUBDIR += nocatsplash
     SUBDIR += nos-ttb
     SUBDIR += nph
@@ -445,7 +450,6 @@
     SUBDIR += omnitty
     SUBDIR += onenetd
     SUBDIR += onioncat
-    SUBDIR += online-desktop
     SUBDIR += opal
     SUBDIR += openafs
     SUBDIR += openam
@@ -584,6 +588,8 @@
     SUBDIR += p5-Net-GrowlClient
     SUBDIR += p5-Net-HL7
     SUBDIR += p5-Net-HTTP
+    SUBDIR += p5-Net-HTTP-Spore
+    SUBDIR += p5-Net-HTTP-Spore-Middleware-Header
     SUBDIR += p5-Net-HTTPS-Any
     SUBDIR += p5-Net-HTTPS-NB
     SUBDIR += p5-Net-Hiveminder
@@ -635,6 +641,7 @@
     SUBDIR += p5-Net-Proxy
     SUBDIR += p5-Net-PubSubHubbub-Publisher
     SUBDIR += p5-Net-RTP
+    SUBDIR += p5-Net-RabbitFoot
     SUBDIR += p5-Net-RabbitMQ
     SUBDIR += p5-Net-Radius
     SUBDIR += p5-Net-Random
@@ -655,6 +662,7 @@
     SUBDIR += p5-Net-SMS-Mollie
     SUBDIR += p5-Net-SMS-PChome
     SUBDIR += p5-Net-SNPP
+    SUBDIR += p5-Net-SPDY
     SUBDIR += p5-Net-SSH
     SUBDIR += p5-Net-SSH-Expect
     SUBDIR += p5-Net-SSH-Mechanize
@@ -1082,7 +1090,6 @@
     SUBDIR += seda
     SUBDIR += self-service-password
     SUBDIR += sendemail
-    SUBDIR += sendfile
     SUBDIR += sendsms
     SUBDIR += sendsnpp
     SUBDIR += ser
@@ -1094,6 +1101,7 @@
     SUBDIR += shaperprobe
     SUBDIR += shelldap
     SUBDIR += shmux
+    SUBDIR += sie-nmsg
     SUBDIR += silc-client
     SUBDIR += silc-irssi-plugin
     SUBDIR += silc-server
@@ -1143,6 +1151,9 @@
     SUBDIR += suckblow
     SUBDIR += sup
     SUBDIR += svnup
+    SUBDIR += syncthing
+    SUBDIR += syncthing-cli
+    SUBDIR += syncthing-discosrv
     SUBDIR += tableutil
     SUBDIR += tac_plus-libradius
     SUBDIR += tac_plus4

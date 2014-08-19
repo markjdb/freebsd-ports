@@ -4,12 +4,15 @@
 PORTNAME=	kronolith
 PORTVERSION=	2.3.6
 DISTVERSIONSUFFIX=
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	deskutils www
 
-MAINTAINER=	horde@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Calendar application
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 RUN_DEPENDS=	${LOCALBASE}/share/pear/Date/Holidays.php:${PORTSDIR}/devel/pear-Date_Holidays
 

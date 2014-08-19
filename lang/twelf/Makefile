@@ -15,7 +15,8 @@ LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	mlton:${PORTSDIR}/lang/mlton
-BUILD_DEPENDS=	mlton:${PORTSDIR}/lang/mlton
+BUILD_DEPENDS=	mlton:${PORTSDIR}/lang/mlton \
+		texi2html:${PORTSDIR}/textproc/texi2html
 
 USES=	gmake
 ALL_TARGET=	mlton
@@ -26,9 +27,8 @@ PORTDOCS=	dvi html info pdf ps
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
-USE_TEX=	tex:build
+USE_TEX=	tex:build dvipsk:build
 BUILD_DEPENDS+=	${LOCALBASE}/bin/makeinfo:${PORTSDIR}/print/texinfo
-BUILD_DEPENDS+=	${LOCALBASE}/bin/dvips:${PORTSDIR}/print/dvipsk-tetex
 .endif
 
 post-patch:

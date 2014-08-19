@@ -3,7 +3,7 @@
 
 PORTNAME=	greylite
 PORTVERSION=	2.3
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	mail
 MASTER_SITES=	http://mij.oltrelinux.com/net/greylite/releases/
 
@@ -12,7 +12,7 @@ COMMENT=	Modified greylisting for qmail and for any other MDA
 
 RUN_DEPENDS=	tcpserver:${PORTSDIR}/sysutils/ucspi-tcp
 
-USE_BZIP2=	yes
+USES=	tar:bzip2
 USE_SQLITE=	3
 PLIST_FILES=	bin/greylite \
 		%%DNSBLENV%%bin/dnsblenv	\

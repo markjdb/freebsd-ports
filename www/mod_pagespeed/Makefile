@@ -11,7 +11,7 @@ MASTER_SITE_SUBDIR=	swills
 DISTNAME=	mod_pagespeed_source_${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	An Apache module that automatically optimizes web pages
+COMMENT=	Apache module that automatically optimizes web pages
 
 BROKEN=		Does not link
 
@@ -27,8 +27,7 @@ LIB_DEPENDS=	libpng15.so:${PORTSDIR}/graphics/png \
 		libopencv_legacy.so:${PORTSDIR}/graphics/opencv \
 		libexecinfo.so:${PORTSDIR}/devel/libexecinfo
 
-USES=		gmake pkgconfig
-USE_XZ=		yes
+USES=		gmake pkgconfig tar:xz
 USE_BINUTILS=	yes
 USE_APACHE=	22
 USE_PYTHON=	yes

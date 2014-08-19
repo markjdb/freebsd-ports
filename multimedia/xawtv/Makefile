@@ -3,6 +3,7 @@
 
 PORTNAME=	xawtv
 PORTVERSION=	3.103
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://linuxtv.org/downloads/xawtv/
 
@@ -19,8 +20,7 @@ OPTIONS_DEFINE_i386=	MMX
 OPTIONS_DEFAULT=	AALIB
 ZVBI_DESC=	Enable libzvbi support
 
-USES=		gmake iconv motif perl5
-USE_BZIP2=	yes
+USES=		gmake iconv motif perl5 tar:bzip2
 GNU_CONFIGURE=	yes
 USE_XORG=	x11 xaw
 CPPFLAGS+=	-I${WRKSRC}/common

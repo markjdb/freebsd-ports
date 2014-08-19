@@ -3,7 +3,7 @@
 
 PORTNAME=	kports
 PORTVERSION=	0.8.2
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	ports-mgmt kde
 MASTER_SITES=	SF
 
@@ -15,8 +15,7 @@ RUN_DEPENDS=	portaudit:${PORTSDIR}/ports-mgmt/portaudit \
 
 CONFLICTS=	kports-0.[0-7]*
 
-USE_BZIP2=	yes
-USES=		qmake
+USES=		qmake tar:bzip2
 USE_QT4=	corelib gui network moc_build uic_build rcc_build
 
 OPTIONS_DEFINE=	DEBUG OXYGEN KDEBASE

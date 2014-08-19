@@ -10,7 +10,7 @@ MASTER_SITES=	http://download.tuxfamily.org/bartcoding/FreeBSD/ \
 DISTNAME=	${PORTNAME}-${PORTVERSION}-${SVN_REV}
 PKGNAMESUFFIX=	-devel
 
-MAINTAINER=	coder@tuxfamily.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Comprehensive desktop publishing program
 
 LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
@@ -33,12 +33,11 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}tkinter>0:${PORTSDIR}/x11-toolkits/py-tkinte
 
 CONFLICTS=	scribus-1.[0-4]*
 
-USE_BZIP2=	yes
 USE_QT4=	gui linguist_build moc_build qmake_build rcc_build uic_build xml network
 USE_GNOME=	desktopfileutils libartlgpl2 libxml2
 USE_GHOSTSCRIPT_RUN=	yes
 USE_PYTHON=	yes
-USES=		cmake pkgconfig
+USES=		cmake pkgconfig tar:bzip2
 USE_LDCONFIG=	yes
 
 MAN1=		scribus.1

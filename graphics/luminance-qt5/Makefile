@@ -3,6 +3,7 @@
 
 PORTNAME=	luminance-hdr
 DISTVERSION=	2.4.0
+PORTREVISION=	2
 CATEGORIES=	graphics
 MASTER_SITES=	SF/qtpfsgui/luminance/${DISTVERSION}
 PKGNAMESUFFIX=	-qt5
@@ -29,7 +30,7 @@ INSTALLS_ICONS=	yes
 
 MAKE_JOBS_UNSAFE=yes
 
-CONFLICTS_INSTALL=	luminance-hdr-qt5-*
+CONFLICTS_INSTALL=	luminance-hdr-[0-9]*
 
 OPTIONS_DEFINE=	DOCS
 

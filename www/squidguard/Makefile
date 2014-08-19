@@ -2,7 +2,7 @@
 
 PORTNAME=	squidGuard
 PORTVERSION=	1.4
-PORTREVISION=	8
+PORTREVISION=	10
 CATEGORIES=	www
 MASTER_SITES=	http://www.squidguard.org/Downloads/:a \
 		http://www.squidguard.org/Downloads/Contrib/:b
@@ -12,7 +12,7 @@ DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:a \
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	madpilot@FreeBSD.org
-COMMENT=	A fast redirector for squid
+COMMENT=	Fast redirector for squid
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
@@ -43,18 +43,16 @@ SUB_LIST=	PORTNAME=${PORTNAME}
 
 OPTIONS_DEFINE=		DNS_BL DOCS EXAMPLES LDAP QUOTE_STRING
 OPTIONS_SINGLE=		SV
-OPTIONS_SINGLE_SV=	SQUID27 SQUID32 SQUID33
-OPTIONS_DEFAULT=	SQUID27
+OPTIONS_SINGLE_SV=	SQUID32 SQUID33
+OPTIONS_DEFAULT=	SQUID33
 
 EXAMPLES_DESC=	Install sample blacklists
 DNS_BL_DESC=	Enable DNS based blacklists
 QUOTE_STRING_DESC=	Add quoted string patch
-SQUID27_DESC=	Depend on Squid 2.7.x
 SQUID32_DESC=	Depend on Squid 3.2.x
 SQUID33_DESC=	Depend on Squid 3.3.x
 
 OPTIONS_SUB=		yes
-SQUID27_RUN_DEPENDS=	${LOCALBASE}/sbin/squid:${PORTSDIR}/www/squid
 SQUID32_RUN_DEPENDS=	${LOCALBASE}/sbin/squid:${PORTSDIR}/www/squid32
 SQUID33_RUN_DEPENDS=	${LOCALBASE}/sbin/squid:${PORTSDIR}/www/squid33
 LDAP_CONFIGURE_ON=	--with-ldap

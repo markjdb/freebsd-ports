@@ -3,7 +3,7 @@
 
 PORTNAME=	heartbeat
 PORTVERSION=	2.1.4
-PORTREVISION=	23
+PORTREVISION=	24
 CATEGORIES=	sysutils
 #MASTER_SITES=	http://hg.linux-ha.org/lha-2.1/archive/STABLE-2.1.4.tar.bz2
 MASTER_SITES=	${MASTER_SITE_LOCAL}
@@ -22,7 +22,7 @@ LIB_DEPENDS=	libgnutls.so:${PORTSDIR}/security/gnutls \
 		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid \
 		libxml2.so:${PORTSDIR}/textproc/libxml2
 BUILD_DEPENDS=	bison:${PORTSDIR}/devel/bison
-PATCH_DEPENDS=	libtool:${PORTSDIR}/devel/libtool
+PATCH_DEPENDS=	libtoolize:${PORTSDIR}/devel/libtool
 
 USE_AUTOTOOLS=	autoconf autoheader automake aclocal libltdl libtoolize
 AUTOMAKE_ARGS+=	--add-missing --include-deps --copy

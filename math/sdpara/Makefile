@@ -10,7 +10,7 @@ DISTFILES=	${SRCFILE}#${MANUALFILE}
 DIST_SUBDIR=	sdpa
 EXTRACT_ONLY=	${SRCFILE}
 
-MAINTAINER=	maho@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	SDPARA parallel version of SDPA (math/sdpa)
 
 LIB_DEPENDS=	libscalapack.so:${PORTSDIR}/math/scalapack \
@@ -54,7 +54,6 @@ SCALAPACK=	-L/usr/local/lib -lscalapack -lblacs -lblacsc
 FORTRAN_LIBS=	-lgfortran
 GCCLIBDIR=	-L`${CAT} ${WRKSRC}/LIBDIR` -L`${CAT} ${WRKSRC}/LIBDIR`/../../..
 
-NO_STAGE=	yes
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%MPICC%%|${LOCALBASE}/bin/mpicc|g ; \
 				s|%%MPICXX%%|${LOCALBASE}/bin/mpicxx|g ; \
@@ -84,15 +83,13 @@ do-build:
 	cd ${WRKSRC} ; ${MAKE_CMD}
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/sdpara ${PREFIX}/bin
-	@${MKDIR} ${DATADIR}
-	${INSTALL_DATA}    ${WRKSRC}/param.sdpa ${DATADIR}
-	@${MKDIR} ${EXAMPLESDIR}
-	${INSTALL_DATA}    ${WRKSRC}/example* ${EXAMPLESDIR}
-	${INSTALL_DATA}    ${WRKSRC}/param.sdpa ${EXAMPLESDIR}
-#.if !defined(NOPORTDOCS)
-#	@${MKDIR} ${DOCSDIR}
-#	${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/${MANUALFILE} ${DOCSDIR}
-#.endif
+	${INSTALL_PROGRAM} ${WRKSRC}/sdpara ${STAGEDIR}${PREFIX}/bin
+	@${MKDIR} ${STAGEDIR}${DATADIR}
+	${INSTALL_DATA}    ${WRKSRC}/param.sdpa ${STAGEDIR}${DATADIR}
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA}    ${WRKSRC}/example* ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA}    ${WRKSRC}/param.sdpa ${STAGEDIR}${EXAMPLESDIR}
+#	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+#	${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/${MANUALFILE} ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

@@ -200,6 +200,8 @@ oracle/*		databases/jdbc-oracle11g	This software is under license and export con
 oracle/*		databases/jdbc-oracle8i	This software is under license and export controls
 oracle/*		databases/jdbc-oracle9i	This software is under license and export controls
 oracle/sqldeveloper*	databases/sqldeveloper	This software is under license and export controls
+oracle/instantclient-basic-linux*	databases/linux-oracle-instantclient-basic	Packaging prohibited by Oracle license
+oracle/instantclient-sqlplus-linux*	databases/linux-oracle-instantclient-sqlplus	Packaging prohibited by Oracle license
 palmos-sdk-*-1.tar.gz	palm/palmos-sdk		License agreement is required
 pcsv*fb.tar.gz		lang/petite-chez	User must accept license terms before installation
 PDFlib-Lite-*.tar.gz	print/pdflib		Many odd restrictions on usage and distribution
@@ -303,3 +305,4 @@ UrbanTerror*.zip	games/urbanterror-data	The mod files may not be sold or distrib
 gmsh-*			cad/gmsh		Contact appropriate authors for commercial purposes if including Tetgen or Metis
 gmsh-occ-*		cad/gmsh-occ		Contact appropriate authors for commercial purposes if including Tetgen or Metis
 btsync_*		net-p2p/btsync		Redistribution forbidden by license
+sas2ircu-*		sysutils/sas2ircu	May not be redistributed. Must accept license to download.

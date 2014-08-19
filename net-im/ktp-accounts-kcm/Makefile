@@ -2,7 +2,7 @@
 
 PORTNAME=	ktp-accounts-kcm
 PORTVERSION=	${KTP_VERSION}
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	net-im kde
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR=	${KTP_BRANCH}/kde-telepathy/${PORTVERSION}/src
@@ -17,8 +17,7 @@ RUN_DEPENDS=	${KDE4_PREFIX}/bin/ktp-contactlist:${PORTSDIR}/net-im/ktp-contact-l
 
 USE_KDE4=	kdehier kdeprefix kdelibs automoc4
 USE_QT4=	corelib moc_build qmake_build rcc_build uic_build
-USES=		cmake gettext
-USE_BZIP2=	yes
+USES=		cmake gettext tar:bzip2
 USE_LDCONFIG=	yes
 
 OPTIONS_DEFINE=	HAZE IRC JABBER SALUT

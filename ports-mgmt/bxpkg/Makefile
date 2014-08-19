@@ -8,15 +8,14 @@ CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://bxpkg.bsdroot.lv/files/
 DISTNAME=	${PORTNAME}-${DISTVERSION}
 
-MAINTAINER=	kpetrikas@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GTK+ based tool to manage binary packages on BSD systems
 
-USES=		pkgconfig
+USES=		pkgconfig tar:bzip2
 USE_XORG=	x11
 USE_GNOME=	gtk20
 
 PLIST_FILES=	bin/bxpkg
-USE_BZIP2=	YES
 
 WRKSRC=	${WRKDIR}/${PORTNAME}-${DISTVERSION}
 

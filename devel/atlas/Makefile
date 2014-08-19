@@ -3,7 +3,7 @@
 
 PORTNAME=	Atlas
 PORTVERSION=	0.5.2
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	SF/worldforge/OldFiles
 DISTNAME=	${PORTNAME}-C++-${PORTVERSION}
@@ -14,10 +14,8 @@ COMMENT=	C++ reference implementation of the Atlas protocol
 OPTIONS_DEFINE=	DOCS
 
 GNU_CONFIGURE=	yes
-USES=	pathfix
-USE_AUTOTOOLS=	libtool
+USES=		libtool pathfix tar:bzip2
 USE_LDCONFIG=	YES
-USE_BZIP2=	YES
 MAKE_ARGS=	docdir=${DOCSDIR}
 
 .include <bsd.port.mk>

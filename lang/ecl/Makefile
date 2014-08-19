@@ -5,15 +5,16 @@ PORTNAME=	ecl
 PORTVERSION=	13.5.1
 CATEGORIES=	lang lisp
 MASTER_SITES=	SF/${PORTNAME}s/${PORTNAME}s/13.5/
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	ANSI Common Lisp implementation
 
+BROKEN=		Fails to link with new libgc
+
 LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp
 
 MAKE_JOBS_UNSAFE=	yes
-USES=		gmake perl5
+USES=		gmake perl5 tar:tgz
 USE_PERL5=	build
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-system-gmp --with-gmp-prefix=${LOCALBASE} --enable-boehm=system

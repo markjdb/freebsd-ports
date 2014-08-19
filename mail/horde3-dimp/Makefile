@@ -3,11 +3,14 @@
 
 PORTNAME=	dimp
 PORTVERSION=	1.1.8
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	mail www
 
 MAINTAINER= ports@FreeBSD.org
 COMMENT=	Dynamic webmail system
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 RUN_DEPENDS+=	${PEARDIR}/Auth/SASL.php:${PORTSDIR}/security/pear-Auth_SASL \
 		${HORBAS}/imp/index.php:${PORTSDIR}/mail/horde3-imp

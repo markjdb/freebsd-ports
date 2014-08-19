@@ -7,11 +7,11 @@ CATEGORIES=	www
 MASTER_SITES=	http://xcache.lighttpd.net/pub/Releases/${DISTVERSION}/
 
 MAINTAINER=	ale@FreeBSD.org
-COMMENT=	A fast and stable php opcode cacher
+COMMENT=	Fast and stable php opcode cacher
 
 LICENSE=	BSD
 
-USE_BZIP2=	yes
+USES=	tar:bzip2
 USE_PHP=	yes
 USE_PHPIZE=	yes
 

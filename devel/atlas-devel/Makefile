@@ -3,7 +3,7 @@
 
 PORTNAME=	Atlas
 PORTVERSION=	0.6.3
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	devel
 MASTER_SITES=	SF/worldforge/${PORTNAME}-C%2B%2B%20%28protocol%20lib%29/${PORTVERSION}
 DISTNAME=	${PORTNAME}-C++-${PORTVERSION:S/.r/rc/}
@@ -15,9 +15,8 @@ OPTIONS_DEFINE=	DOCS
 
 PKGNAMESUFFIX=	-devel
 GNU_CONFIGURE=	yes
-USES=		pathfix compiler:c++11-lib
+USES=		libtool pathfix compiler:c++11-lib tar:bzip2
 USE_LDCONFIG=	YES
-USE_BZIP2=	YES
 MAKE_ARGS=	docdir=${DOCSDIR}
 CONFIGURE_ARGS+=--program-transform-name=
 

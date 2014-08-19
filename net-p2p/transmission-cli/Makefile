@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	transmission
-PORTVERSION=	2.82
-PORTREVISION?=	0
+PORTVERSION=	2.84
+PORTREVISION?=	1
 CATEGORIES?=	net-p2p
 #MASTER_SITES=	http://download.m0k.org/${PORTNAME}/files/
 MASTER_SITES=	http://transmission.cachefly.net/
@@ -21,6 +21,8 @@ LICENSE=	GPLv2
 .endif
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+USES+=		tar:xz
+
 CONFLICTS_INSTALL=	${PORTNAME}${PKGNAMESUFFIX}-2.5*
 
 OPTIONS_DEFINE=	LITE DOCS
@@ -32,17 +34,19 @@ LIB_DEPENDS?=	${GEN_LIB_DEPENDS}
 
 # General dependencies
 GEN_LIB_DEPENDS=libcurl.so:${PORTSDIR}/ftp/curl \
-		libevent-2.0.so.6:${PORTSDIR}/devel/libevent2
+		libevent.so:${PORTSDIR}/devel/libevent2
 GEN_RUN_DEPENDS=${LOCALBASE}/share/transmission/web/index.html:${PORTSDIR}/www/transmission-web
 
 # This is master port of transmission-*, so don't override USES definition 
-USES+=		gmake pkgconfig iconv
+USES+=		gmake iconv libtool pkgconfig
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
+LIBS+=		-L${LOCALBASE}/lib ${ICONV_LIB}
 CONFIGURE_ARGS=--with-zlib=/usr \
 		${EXTRA_CONF_ARGS}
+CONFIGURE_ENV=	OPENSSL_CFLAGS="-I${OPENSSLINC}" \
+		OPENSSL_LIBS="-L${OPENSSLLIB} -lcrypto"
 EXTRA_CONF_ARGS?=--enable-cli \
 		 --disable-daemon \
 		 --without-gtk \
@@ -56,7 +60,7 @@ CONFIGURE_ARGS+=--enable-lightweight
 EXTRA_PATCHES=	${PATCHDIR}/disable-web
 .endif
 
-USE_XZ=		yes
+USES+=		tar:xz
 
 DOCS=		AUTHORS NEWS README
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
@@ -69,9 +73,8 @@ general-patch:
 		${WRKSRC}/libtransmission/utils.h
 .endif
 	@${REINPLACE_CMD} -e \
-		's|_pthread_flags=".*"|_pthread_flags="${PTHREAD_LIBS}"|g ; \
-		s|rt_clock_gettime=yes|rt_clock_gettime=no|g ; \
-		s|" == "|" = "|g ; s|$$with_ssl.*/usr;|${OPENSSLBASE};|g' \
+		's|rt_clock_gettime=yes|rt_clock_gettime=no|g ; \
+		s|" == "|" = "|g' \
 			${WRKSRC}/configure
 	@${REINPLACE_CMD} -e 's|doc \\| \\|g' \
 		${WRKSRC}/Makefile.in

@@ -6,7 +6,7 @@ PORTVERSION=	${PANDORA_VERSION}
 PORTREVISION=	1
 CATEGORIES=	net-mgmt
 
-MAINTAINER=	koichiro@rworks.jp
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Pandora FMS agent, Perl version
 
 LICENSE=	${PANDORA_LICENSE}
@@ -43,11 +43,6 @@ post-patch:
 .if ! ${PORT_OPTIONS:MTENTACLE_SERVER}
 	@${REINPLACE_CMD} \
 		-e '/TENTACLE_SERVER/s/^/#/' \
-		${WRKSRC}/pandora_agent_installer
-.endif
-.if defined(NO_INSTALL_MANPAGES)
-	@${REINPLACE_CMD} \
-		-e '/PANDORA_MAN/s/^/#/' \
 		${WRKSRC}/pandora_agent_installer
 .endif
 	@${REINPLACE_CMD} -E \

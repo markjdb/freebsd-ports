@@ -3,6 +3,7 @@
 
 PORTNAME=	labplot
 PORTVERSION=	2.0.1
+PORTREVISION=	2
 CATEGORIES=	math kde
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION:R}.0
 
@@ -13,8 +14,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	libgsl.so:${PORTSDIR}/math/gsl
 
-USE_BZIP2=	yes
-USES=		cmake shared-mime-info
+USES=		cmake shared-mime-info tar:bzip2
 USE_XORG=	xft xpm
 USE_GCC=	yes
 USE_KDE4=	automoc4 kdelibs kdeprefix

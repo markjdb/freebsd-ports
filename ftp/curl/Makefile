@@ -3,6 +3,7 @@
 
 PORTNAME=	curl
 PORTVERSION=	7.37.1
+PORTREVISION=	2
 CATEGORIES=	ftp www
 MASTER_SITES=	http://curl.haxx.se/download/ \
 		LOCAL/sunpoet
@@ -41,9 +42,12 @@ USES=		libtool:oldver pathfix perl5 tar:lzma
 
 .if !defined(BUILDING_HIPHOP)
 USE_LDCONFIG=	yes
+USES+=		cpe
 
 PORTDOCS=	*
 PORTEXAMPLES=	*
+
+CPE_VENDOR=	haxx
 
 DOCS=		BINDINGS BUGS CONTRIBUTE DISTRO-DILEMMA FAQ FEATURES HISTORY \
 		HTTP-COOKIES INSTALL INSTALL.devcpp INTERNALS KNOWN_BUGS \

@@ -36,8 +36,8 @@
     SUBDIR += clang32
     SUBDIR += clang33
     SUBDIR += clang34
+    SUBDIR += clang35
     SUBDIR += clay
-    SUBDIR += clisp
     SUBDIR += clojure
     SUBDIR += clojure-mode.el
     SUBDIR += cmucl
@@ -50,10 +50,9 @@
     SUBDIR += dlv
     SUBDIR += dmd1
     SUBDIR += dmd2
-    SUBDIR += dragonegg46-33
-    SUBDIR += dragonegg47-33
     SUBDIR += ecl
     SUBDIR += elan
+    SUBDIR += elixir
     SUBDIR += elk
     SUBDIR += emacs-lisp-intro
     SUBDIR += embryo
@@ -217,6 +216,7 @@
     SUBDIR += p5-Tcl
     SUBDIR += p5-Test-XPath
     SUBDIR += p5-Try-Tiny
+    SUBDIR += p5-Try-Tiny-Retry
     SUBDIR += p5-TryCatch
     SUBDIR += p5-ePerl
     SUBDIR += p5-signatures
@@ -259,6 +259,7 @@
     SUBDIR += python-doc-pdf-letter
     SUBDIR += python-doc-text
     SUBDIR += python-mode.el
+    SUBDIR += python-tools
     SUBDIR += python2
     SUBDIR += python27
     SUBDIR += python3
@@ -305,8 +306,7 @@
     SUBDIR += slisp
     SUBDIR += smalltalk
     SUBDIR += sml-mode.el
-    SUBDIR += sml-nj
-    SUBDIR += sml-nj-devel
+    SUBDIR += smlnj
     SUBDIR += snobol4
     SUBDIR += spidermonkey17
     SUBDIR += spidermonkey170
@@ -336,6 +336,7 @@
     SUBDIR += ucc
     SUBDIR += urweb
     SUBDIR += v8
+    SUBDIR += v8-devel
     SUBDIR += vala
     SUBDIR += vala-vapigen
     SUBDIR += visualworks

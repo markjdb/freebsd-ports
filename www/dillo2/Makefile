@@ -13,15 +13,14 @@ DIST_SUBDIR=	${PORTNAME}
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	bf@FreeBSD.org
-COMMENT=	A fast, small graphical Web browser built upon fltk
+COMMENT=	Fast, small graphical Web browser built upon fltk
 
 LICENSE=	GPLv3
 
 LIB_DEPENDS=	libfltk.so:${PORTSDIR}/x11-toolkits/fltk
 RUN_DEPENDS=	wget:${PORTSDIR}/ftp/wget
 
-USES=		gmake pkgconfig
-USE_BZIP2=	yes
+USES=		gmake pkgconfig tar:bzip2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--libdir=${PREFIX}/libexec
 CONFLICTS=	dillo-i18n-[0-9]* \

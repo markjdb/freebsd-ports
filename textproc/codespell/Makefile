@@ -6,7 +6,6 @@ PORTREVISION=	1
 CATEGORIES=	textproc
 MASTER_SITES=	http://packages.profusion.mobi/${PORTNAME}/ \
 		https://www.glenbarber.us/ports/${CATEGORIES}/${PORTNAME}/
-EXTRACT_SUFX=	.tar.xz
 
 MAINTAINER=	gjb@FreeBSD.org
 COMMENT=	Source code spelling checker

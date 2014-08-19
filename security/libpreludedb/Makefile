@@ -3,7 +3,7 @@
 
 PORTNAME=	libpreludedb
 PORTVERSION=	1.0.1p1
-PORTREVISION=	3
+PORTREVISION=	5
 CATEGORIES=	security
 MASTER_SITES=	https://www.prelude-ids.org/attachments/download/287/
 
@@ -49,7 +49,6 @@ PLIST_SUB+=		WITH_PERL="@comment "
 
 .if ${PORT_OPTIONS:MPYTHON}
 USE_PYTHON=	yes
-.include "${PORTSDIR}/Mk/bsd.python.mk"
 CONFIGURE_ARGS+=	--with-python
 PLIST_SUB+=		WITH_PYTHON="" PYTHON_VER=${PYTHON_VER}
 .else

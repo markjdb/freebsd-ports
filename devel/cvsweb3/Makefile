@@ -3,11 +3,12 @@
 
 PORTNAME=	cvsweb
 PORTVERSION=	3.0.6
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	devel www
 MASTER_SITES=	${MASTER_SITE_LOCAL} \
 		http://people.FreeBSD.org/~scop/cvsweb/
 MASTER_SITE_SUBDIR=	scop
+PKGNAMESUFFIX=	3
 
 # For issues that are not specific to this port/package, please consult
 # the <freebsd-cvsweb@FreeBSD.org> mailing list.
@@ -27,13 +28,12 @@ RUN_DEPENDS+=	p5-MIME-Types>=0:${PORTSDIR}/mail/p5-MIME-Types \
 PAPERSIZE?=	letter
 RUN_DEPENDS+=	enscript:${PORTSDIR}/print/enscript-${PAPERSIZE}
 
-PKGNAMESUFFIX=	3
 CONFLICTS=	cvsweb-2.*
 
-USES=		perl5
+USES=		perl5 shebangfix
+SHEBANG_FILES=	cvsweb.cgi
 NO_BUILD=	yes
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 # Specify where your repository belongs.
@@ -51,9 +51,9 @@ CGIDIR?=	www/cgi-bin
 ICONSDIR?=	www/icons
 CSSDIR?=	www/data/css
 .elif exists(${PREFIX}/www/apache22/cgi-bin)
-CGIDIR?=       www/apache22/cgi-bin
-ICONSDIR?=     www/apache22/icons
-CSSDIR?=       www/apache22/data/css
+CGIDIR?=	www/apache22/cgi-bin
+ICONSDIR?=	www/apache22/icons
+CSSDIR?=	www/apache22/data/css
 .elif exists(${PREFIX}/apache/cgi-bin)
 CGIDIR?=	apache/cgi-bin
 ICONSDIR?=	apache/icons
@@ -76,40 +76,31 @@ SUB_FILES=	pkg-message
 SUB_LIST=	PREFIX="${PREFIX}" DOCSDIR="${DOCSDIR}"
 
 post-patch:
-	@${REINPLACE_CMD} -i '' -e 's,!!PERL!!,${PERL},' \
-			-e 's,!!PREFIX!!,${PREFIX},' \
-		${WRKSRC}/cvsweb.cgi
+	@${SED} -i '' -e 's,/usr/local/etc/,${PREFIX}/etc/,' \
+		-e 's,\(qw(hi.*)\),(\1),' ${WRKSRC}/cvsweb.cgi
 	@${REINPLACE_CMD} -i '' -e 's,!!PREFIX!!,${PREFIX},' \
 			-e 's,!!CVSROOT!!,${CVSROOT},' \
 			-e 's,!!TITLE!!,${TITLE},' \
 		${WRKSRC}/cvsweb.conf
 
 do-install:
-	${MKDIR} ${PREFIX}/${CGIDIR}
-	${INSTALL_SCRIPT} ${WRKSRC}/cvsweb.cgi ${PREFIX}/${CGIDIR}/
-	${MKDIR} ${PREFIX}/etc/cvsweb
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${CGIDIR}
+	${INSTALL_SCRIPT} ${WRKSRC}/cvsweb.cgi ${STAGEDIR}${PREFIX}/${CGIDIR}/
+	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/cvsweb
 .for f in ${CONFFILES}
-	${INSTALL_DATA} ${WRKSRC}/${f} ${PREFIX}/etc/cvsweb/${f}.dist
+	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${PREFIX}/etc/cvsweb/${f}.dist
 .endfor
-	${MKDIR} ${PREFIX}/${ICONSDIR}/cvsweb
-	${INSTALL_DATA} ${WRKSRC}/icons/* ${PREFIX}/${ICONSDIR}/cvsweb/
-	${MKDIR} ${PREFIX}/${CSSDIR}/cvsweb
-	${INSTALL_DATA} ${WRKSRC}/css/*.css ${PREFIX}/${CSSDIR}/cvsweb/
-	${MKDIR} ${PREFIX}/share/enscript/hl
-	${INSTALL_DATA} ${WRKSRC}/enscript/*.st ${PREFIX}/share/enscript/hl/
-.if !defined(NOPORTDOCS)
-	${MKDIR} ${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${ICONSDIR}/cvsweb
+	${INSTALL_DATA} ${WRKSRC}/icons/* ${STAGEDIR}${PREFIX}/${ICONSDIR}/cvsweb/
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${CSSDIR}/cvsweb
+	${INSTALL_DATA} ${WRKSRC}/css/*.css ${STAGEDIR}${PREFIX}/${CSSDIR}/cvsweb/
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/enscript/hl
+	${INSTALL_DATA} ${WRKSRC}/enscript/*.st ${STAGEDIR}${PREFIX}/share/enscript/hl/
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ChangeLog INSTALL NEWS README TODO
-	${INSTALL_DATA} ${WRKSRC}/${f} ${DOCSDIR}/
+	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}/
 .endfor
-	${MKDIR} ${EXAMPLESDIR}
-	${INSTALL_DATA} ${WRKSRC}/samples/* ${EXAMPLESDIR}/
-.endif
-
-post-install:
-.if defined(PACKAGE_BUILDING)
-	${ECHO_CMD} "@unexec rmdir -p %D/${CGIDIR} %D/${ICONSDIR} %D/${CSSDIR} 2>/dev/null || true" >> ${TMPPLIST}
-.endif
-	@${CAT} ${PKGMESSAGE}
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/samples/* ${STAGEDIR}${EXAMPLESDIR}/
 
 .include <bsd.port.post.mk>

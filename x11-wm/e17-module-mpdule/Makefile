@@ -3,12 +3,13 @@
 
 PORTNAME=	mpdule
 PORTVERSION=	20130510
+PORTREVISION=	1
 CATEGORIES=	x11-wm enlightenment
 MASTER_SITES=	LOCAL/gblach/e17/modules/
 PKGNAMEPREFIX=	e17-module-
 
 MAINTAINER=	gblach@FreeBSD.org
-COMMENT=	An MPD module for e17
+COMMENT=	MPD module for e17
 
 LIB_DEPENDS=	libmpd.so:${PORTSDIR}/audio/libmpd
 BUILD_DEPENDS=	enlightenment:${PORTSDIR}/x11-wm/enlightenment

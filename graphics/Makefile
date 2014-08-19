@@ -538,6 +538,7 @@
     SUBDIR += libspiro
     SUBDIR += libsvg
     SUBDIR += libsvg-cairo
+    SUBDIR += libtxc_dxtn
     SUBDIR += libvisual
     SUBDIR += libvisual04
     SUBDIR += libvisual04-plugins
@@ -565,7 +566,6 @@
     SUBDIR += lua-gd
     SUBDIR += luminance
     SUBDIR += luminance-qt5
-    SUBDIR += luxrays
     SUBDIR += luxrender
     SUBDIR += mahotas
     SUBDIR += makehuman
@@ -960,6 +960,7 @@
     SUBDIR += seam-carving-gui
     SUBDIR += seejpeg
     SUBDIR += separate
+    SUBDIR += seq2gif
     SUBDIR += sharpconstruct
     SUBDIR += shiva-collections
     SUBDIR += shotwell
@@ -1004,6 +1005,7 @@
     SUBDIR += tkpng
     SUBDIR += togl
     SUBDIR += truevision
+    SUBDIR += ttygif
     SUBDIR += tulip
     SUBDIR += tumble
     SUBDIR += uDrawGraph

@@ -3,11 +3,14 @@
 
 PORTNAME=	whups
 PORTVERSION=	1.0.1
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	devel www
 
-MAINTAINER=	horde@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Bug tracking/ticketing system
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 USE_HORDE=	base pkg-message
 USES=		gettext

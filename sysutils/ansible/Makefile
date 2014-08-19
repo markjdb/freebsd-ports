@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ansible
-PORTVERSION=	1.6.6
-PORTREVISION=	1
+PORTVERSION=	1.7.1
 CATEGORIES=	sysutils python
 MASTER_SITES=	SF/lifanov-ports-distfiles/sysutils/${PORTNAME}/:icons
 DISTFILES=	${PORTNAME}-${DISTVERSION}${EXTRACT_SUFX} \
@@ -30,15 +29,13 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	${PORTNAME}
 GH_PROJECT=	${PORTNAME}
 GH_TAGNAME=	${GH_COMMIT}
-GH_COMMIT=	69d85c2
+GH_COMMIT=	268e723
 
-USE_PYTHON=		2
-USE_PYDISTUTILS=	yes
-PYDISTUTILS_AUTOPLIST=	yes
-
-USES=		shebangfix
+USES=		cpe python:2 shebangfix
+USE_PYTHON=	autoplist distutils
 SHEBANG_FILES=	library/*/* \
 		lib/ansible/runner/action_plugins/synchronize.py
+CPE_VENDOR=	ansibleworks
 
 SUB_FILES=	pkg-message
 

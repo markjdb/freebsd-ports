@@ -1,0 +1,4 @@
+SHA256 (cfe-3.5.0rc2.src.tar.xz) = a2202993744dfba25154b59c4e4c982d58f44b0c627109c418daab2606c828af
+SIZE (cfe-3.5.0rc2.src.tar.xz) = 8231116
+SHA256 (llvm-3.5.0rc2.src.tar.xz) = 962130e3c1916e5a393675276af709d61a34d272c62d655baa9d966d0b87adde
+SIZE (llvm-3.5.0rc2.src.tar.xz) = 11770380

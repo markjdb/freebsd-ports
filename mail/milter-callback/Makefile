@@ -3,6 +3,7 @@
 
 PORTNAME=	milter-callback
 PORTVERSION=	1.6.0
+PORTREVISION=	1
 CATEGORIES=	mail
 MASTER_SITES=	CRITICAL
 
@@ -11,9 +12,9 @@ COMMENT=	Milter to perform a envelope-from sender verification on target MX
 
 LICENSE=	GPLv3
 
-LIB_DEPENDS+=	libspf2.so:${PORTSDIR}/mail/libspf2
+LIB_DEPENDS=	libspf2.so:${PORTSDIR}/mail/libspf2
 
-USE_XZ=		yes
+USES=		tar:xz
 USE_RC_SUBR=	milter-callback
 USE_GCC=	any
 
@@ -49,8 +50,5 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/mail
 	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}.conf \
 		${STAGEDIR}${PREFIX}/etc/mail/${PORTNAME}.conf.sample
-
-post-install:
-	@${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.mk>

@@ -6,15 +6,14 @@ PORTVERSION=	1.8
 PORTREVISION=	2
 CATEGORIES=	www
 MASTER_SITES=	SF
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	fluffy@FreeBSD.org
-COMMENT=	A light and fast web based squid proxy traffic analyser
+COMMENT=	Light and fast web based squid proxy traffic analyser
 
 OPTIONS_DEFINE=		GD DOCS
 OPTIONS_DEFAULT=	GD
 
-USES=		perl5
+USES=		perl5 tar:tgz
 USE_PERL5=	run
 NO_BUILD=	yes
 

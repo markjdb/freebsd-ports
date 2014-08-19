@@ -2,7 +2,7 @@
 
 PORTNAME=	libimobiledevice
 PORTVERSION=	1.1.5
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES?=	comms
 MASTER_SITES=	http://www.${PORTNAME}.org/downloads/
 
@@ -13,12 +13,14 @@ LICENSE?=	LGPL21
 
 SLAVE_PORT?=	no
 
-USES=		pkgconfig
-USE_BZIP2=	yes
+USES=		libtool pathfix pkgconfig tar:bzip2
+USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	openssl_LIBS=-lssl
+CONFIGURE_ARGS=	openssl_CFLAGS="-I${OPENSSLINC}" \
+		openssl_LIBS="-L${OPENSSLLIB} -lssl -lcrypto"
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
+INSTALL_TARGET=	install-strip
 
 .if ${SLAVE_PORT} == "no"
 
@@ -37,8 +39,6 @@ OPTIONS_DEFINE=	DOCS
 post-patch:
 	@${REINPLACE_CMD} -e 's, *@ssl_requires@,,' \
 		${WRKSRC}/${PORTNAME}*.pc.in
-	@${REINPLACE_CMD} -e 's,$$(libdir)/pkgconfig,${PREFIX}/libdata/pkgconfig,g' \
-		${WRKSRC}/Makefile.in
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

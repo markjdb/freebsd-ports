@@ -6,8 +6,11 @@ PORTVERSION=	0.2.3
 CATEGORIES=	security
 MASTER_SITES=	SF/pam-abl/pam-abl/${PORTVERSION}
 
-MAINTAINER=	prehor@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Blacklisting responsible for repeated failed authentication attempts
+
+DEPRECATED=	Newer version requires large number of hacks, not worth the effort
+EXPIRATION_DATE=2014-08-24
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
@@ -57,10 +60,8 @@ pre-install:
 	${INSTALL_DATA} ${WRKSRC}/${file} ${DOCSDIR}
 .endfor
 .endif
-.if !defined(NO_INSTALL_MANPAGES)
 	@${MKDIR} ${MAN8PREFIX}/man/man8
 	${INSTALL_MAN} ${WRKDIR}/pam_abl.8 ${MAN8PREFIX}/man/man8/
-.endif
 	@${MKDIR} ${PREFIX}/etc/periodic/daily
 	${INSTALL_SCRIPT} ${WRKDIR}/190.clean-pam-abl ${PREFIX}/etc/periodic/daily/
 

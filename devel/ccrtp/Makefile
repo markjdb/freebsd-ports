@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ccrtp
-PORTVERSION=	2.0.6
-PORTREVISION=	3
+PORTVERSION=	2.0.9
 CATEGORIES=	devel
 MASTER_SITES=	GNU
 
@@ -14,7 +13,7 @@ LIB_DEPENDS=	libcommoncpp.so:${PORTSDIR}/devel/ucommon \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt
 
 GNU_CONFIGURE=	yes
-USES=		gmake gettext iconv pkgconfig
+USES=		gmake gettext libtool iconv pkgconfig
 USE_LDCONFIG=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -28,5 +27,8 @@ post-patch:
 post-configure:
 	${FIND} ${WRKSRC} -name Makefile | ${XARGS} \
 	    ${REINPLACE_CMD} -e 's|-l-pthread|-pthread|g'
+
+post-stage:
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libccrtp.so.2.0.6
 
 .include <bsd.port.mk>

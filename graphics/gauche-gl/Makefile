@@ -8,14 +8,14 @@ CATEGORIES=	graphics scheme
 MASTER_SITES=	SF/gauche/Gauche-gl
 PKGNAMEPREFIX=	gauche-
 DISTNAME=	Gauche-${PORTNAME}-${PORTVERSION}
-EXTRACT_SUFX=	.tgz
 
-MAINTAINER=	erik@bz.bzflag.bz
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	OpenGL binding for Gauche
 
 BUILD_DEPENDS=	gosh:${PORTSDIR}/lang/gauche
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
+USES=		tar:tgz
 USE_XORG=	ice sm
 USE_GL=		glut
 GNU_CONFIGURE=	yes
@@ -26,7 +26,7 @@ DOCSDIR=	${PREFIX}/share/doc/gauche/${PORTNAME}
 PLIST_SUB=	TARGET="${CONFIGURE_TARGET}"
 
 .if !defined(NOPORTDOCS)
-USES=		makeinfo
+USES+=		makeinfo
 INFO=		gauche-gl-refe gauche-gl-refj
 .endif
 

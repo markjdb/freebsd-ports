@@ -1,16 +1,17 @@
-# Created by: Rene Ladan
+# Created by: Rene Ladan <rene@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	lablgtk2
 PORTVERSION=	2.16.0
+PORTREVISION=	1
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	http://forge.ocamlcore.org/frs/download.php/979/ \
 		LOCAL/bf
 PKGNAMEPREFIX=	ocaml-
 DISTNAME=	lablgtk-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
-COMMENT=	An Objective Caml interface to GTK+ 2.x
+MAINTAINER=	bf@FreeBSD.org
+COMMENT=	Objective Caml interface to GTK+ 2.x
 
 LICENSE=	LGPL21
 
@@ -22,9 +23,10 @@ USE_OCAMLFIND_PLIST=	yes
 USE_OCAML_LDCONFIG=	yes
 USE_OCAML_WASH= 	yes
 
-OPTIONS_DEFINE =	GLADE GNOMECANVAS GNOMEUI GTKGLAREA GTKSOURCEVIEW2 GTKSPELL \
-			LIBRSVG2
-OPTIONS_DEFAULT =	${OPTIONS_DEFINE}
+OPTIONS_DEFINE=		GLADE GNOMECANVAS GNOMEUI GTKGLAREA GTKSOURCEVIEW2 \
+			GTKSPELL LIBRSVG2 DOCS EXAMPLES
+OPTIONS_DEFAULT=	GLADE GNOMECANVAS GNOMEUI GTKGLAREA GTKSOURCEVIEW2 \
+			GTKSPELL LIBRSVG2
 
 GNOMECANVAS_DESC=	GnomeCanvas support
 GNOMEUI_DESC=		GNOME 2 UI support
@@ -43,7 +45,6 @@ CONFIGURE_ENV=	CAMLP4O="camlp4 pa_o.cmo pa_op.cmo pr_dump.cmo"
 
 PATTERN=	[[:space:]]*(do|then)?[[:space:]]*)cp([[:space:]]
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
@@ -128,17 +129,16 @@ post-patch:
 		-e 's,^(${PATTERN}+.*INSTALLDIR),\1\$${BSD_INSTALL_DATA} \3,' \
 		-e 's,^(${PATTERN}+.*BINDIR),\1\$${BSD_INSTALL_SCRIPT} \3,' \
 		-e 's,^(${PATTERN}+.*LIBDIR),\1\$${BSD_INSTALL_DATA} \3,' \
+		-e 's,(touch)( "\$$\(DESTDIR\)\$$\(OCAMLLDCONF\)"),${TRUE}\2,' \
+		-e 's,(-ldconf )("\$$\(DESTDIR\)\$$\(OCAMLLDCONF\)"),\1ignore,' \
 		${WRKSRC}/src/Makefile
 
 post-install:
-.if ${PORT_OPTIONS:MDOCS}
-	@${MKDIR} ${DOCSDIR}
-	@cd ${WRKSRC} ; ${INSTALL_DATA} ${PORTDOCS} ${DOCSDIR}
-.endif
-.if ${PORT_OPTIONS:MEXAMPLES}
-	@${MKDIR} ${EXAMPLESDIR}
-	@cd ${WRKSRC}/examples ; ${COPYTREE_SHARE} \
-	"*.ml *.png *.rgb *.xpm text ${EXAMPLES_SUBDIRS}" ${EXAMPLESDIR}
-.endif
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	@cd ${WRKSRC}/examples && ${COPYTREE_SHARE} \
+	"*.ml *.png *.rgb *.xpm text ${EXAMPLES_SUBDIRS}" \
+		${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>

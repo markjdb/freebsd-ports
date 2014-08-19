@@ -3,6 +3,7 @@
 
 PORTNAME=	lapispuzzle
 PORTVERSION=	1.2
+PORTREVISION=	1
 CATEGORIES=	games gnustep
 MASTER_SITES=	${MASTER_SITE_SAVANNAH}
 MASTER_SITE_SUBDIR=	gap
@@ -20,5 +21,4 @@ USE_GNUSTEP_INSTALL=	yes
 
 WRKSRC=		${WRKDIR}/LapisPuzzle-${PORTVERSION}
 
-NO_STAGE=	yes
 .include <bsd.port.mk>

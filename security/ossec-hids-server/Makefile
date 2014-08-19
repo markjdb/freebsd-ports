@@ -16,6 +16,8 @@ USE_RC_SUBR=	ossec-hids
 
 CFLAGS+=	-ferror-limit=0
 
+USES=		readline
+
 .if defined(MAINTAINER_MODE)
 UID_FILES+=	../../UIDs
 GID_FILES+=	../../GIDs
@@ -67,6 +69,9 @@ CONFLICTS=	ossec-hids-client-[0-9]* ossec-hids-local-[0-9]*
 post-patch:
 	@${REINPLACE_CMD} 's|PREFIX|${PREFIX}/${PORTNAME}|' ${WRKSRC}/src/headers/defs.h
 	@${ECHO} "DIR=\"${STAGEDIR}${PREFIX}/${PORTNAME}\"" > ${WRKSRC}/src/LOCATION
+	@${REINPLACE_CMD} -e 's|-DLUA_USE_LINUX|& ${CPPFLAGS}|' \
+		-e 's|-lreadline|& ${LDFLAGS}|' \
+		${WRKSRC}/src/external/lua-5.2.3/src/Makefile
 
 do-build:
 .if defined(WITH_DB)

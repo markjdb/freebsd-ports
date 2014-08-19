@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	rspamd
-PORTVERSION=	0.6.9
-PORTREVISION=	2
+PORTVERSION=	0.6.10
 CATEGORIES=	mail
 MASTER_SITES=	http://rspamd.com/downloads/
 
@@ -13,7 +12,7 @@ LICENSE=	BSD2CLAUSE
 
 LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre \
 		libgmime-2.4.so:${PORTSDIR}/mail/gmime24 \
-		libevent.so:${PORTSDIR}/devel/libevent
+		libevent.so:${PORTSDIR}/devel/libevent2
 
 OPTIONS_DEFINE=	GPERF REDIRECTOR
 GPERF_DESC=		google perf-tools profiling
@@ -34,7 +33,7 @@ CMAKE_ARGS+=	-DCONFDIR=${PREFIX}/etc/rspamd \
 				-DLIBDIR=${PREFIX}/lib \
 				-DNO_SHARED=ON
 
-USES=		cmake:outsource gettext iconv pkgconfig lua:51+
+USES=		cmake:outsource gettext iconv pkgconfig lua:51+ tar:xz
 USE_LDCONFIG=	yes
 
 USE_GNOME=	glib20

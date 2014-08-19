@@ -3,7 +3,7 @@
 
 PORTNAME=	coda
 PORTVERSION=	6.9.4
-PORTREVISION?=	2
+PORTREVISION?=	4
 CATEGORIES=	net
 MASTER_SITES=	ftp://ftp.coda.cs.cmu.edu/pub/coda/src/ \
 		ftp://ftp.planetmirror.com/pub/coda/src/ \
@@ -18,7 +18,7 @@ LIB_DEPENDS=	liblwp.so:${PORTSDIR}/devel/lwp \
 		librpc2.so:${PORTSDIR}/devel/rpc2 \
 		librvmlwp.so:${PORTSDIR}/devel/rvm
 
-USES=		pkgconfig gmake shebangfix perl5
+USES=		pkgconfig gmake shebangfix perl5 readline
 USE_PERL5=	run
 SHEBANG_FILES=	coda-src/scripts/tape.pl \
 		coda-src/scripts/volinfo.pl \

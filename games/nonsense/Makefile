@@ -7,13 +7,11 @@ PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	SF
 
-MAINTAINER=	eadler@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Nonsense text generator
 
 NO_BUILD=	yes
 NO_ARCH=	yes
-
-.include <bsd.port.options.mk>
 
 post-configure:
 		${REINPLACE_CMD} -e "s,/usr/local,${PREFIX}," ${WRKSRC}/nonsense

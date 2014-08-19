@@ -11,7 +11,6 @@
     SUBDIR += baekmukfonts-bdf
     SUBDIR += baekmukfonts-ttf
     SUBDIR += engdic
-    SUBDIR += eterm
     SUBDIR += fcitx-hangul
     SUBDIR += gimp-help
     SUBDIR += gtkcomm
@@ -43,7 +42,6 @@
     SUBDIR += unfonts-core
     SUBDIR += unfonts-extra
     SUBDIR += uniksc
-    SUBDIR += unzip
     SUBDIR += xpdf
 
 .include <bsd.port.subdir.mk>

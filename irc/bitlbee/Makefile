@@ -2,6 +2,7 @@
 
 PORTNAME=	bitlbee
 PORTVERSION=	3.2.2
+PORTREVISION=	2
 CATEGORIES=	irc
 MASTER_SITES=	http://get.bitlbee.org/src/ \
 		${MASTER_SITE_LOCAL}
@@ -116,7 +117,7 @@ CONFIGURE_ARGS+=--purple=0
 
 post-patch:
 	@${REINPLACE_CMD} \
-		-e "s|^EFLAGS=|EFLAGS=${LDFLAGS}|" \
+		-e "s|^\(EFLAGS=.*\)|\1 ${LDFLAGS}|" \
 		${WRKSRC}/configure
 
 	@${REINPLACE_CMD} \

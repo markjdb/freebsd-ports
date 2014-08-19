@@ -9,7 +9,7 @@ CATEGORIES=	net java parallel
 MASTER_SITES=	http://www.mcs.anl.gov/research/projects/mpich2/downloads/tarballs/${DISTVERSION}/
 DIST_SUBDIR=	mpich
 
-MAINTAINER=	bf@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Portable implementation of MPI-1 and MPI-2
 
 LICENSE=	MPICH
@@ -47,7 +47,7 @@ CONFIGURE_ENV=	FCFLAGS="${FFLAGS}" \
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 .if ${FFLAGS} == "-O"
-FFLAGS =	-O2
+FFLAGS=		-O2
 .endif
 LDFLAGS+=	-L${LOCALBASE}/lib -lexecinfo ${PTHREAD_LIBS}
 
@@ -75,7 +75,7 @@ PLIST_SUB+=	JAVA="@comment "
 PLX11=		"@comment "
 .else
 .if ! ${PORT_OPTIONS:MX11}
-IGNORE =	WITH_JAVA requires WITH_X11
+IGNORE=		WITH_JAVA requires WITH_X11
 .endif
 CONFIGURE_ARGS+=	--with-java="${JAVA_HOME}"
 USE_JAVA=	yes

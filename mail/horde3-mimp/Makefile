@@ -3,12 +3,15 @@
 
 PORTNAME=	mimp
 PORTVERSION=	1.1.4
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	mail www
 
 MAINTAINER= ports@FreeBSD.org
 COMMENT=	Mobile webmail system
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 #-----------------------------------------------------------------------
 NO_STAGE=	yes

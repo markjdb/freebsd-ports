@@ -3,7 +3,7 @@
 
 PORTNAME=	sssd
 DISTVERSION=	1.9.6
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	security
 MASTER_SITES=   https://fedorahosted.org/released/${PORTNAME}/ \
 		http://mirrors.rit.edu/zi/
@@ -97,7 +97,6 @@ post-patch:
 		-e 's|install-data-hook install-dist_initSCRIPTS|install-dist_initSCRIPTS|g' \
 		-e 's|install-data-hook|notinstall-data-hook|g' \
 		-e 's| -lpam_misc||g' \
-		-e '/^ldap_child_LDADD =/s|=|= $$(LTLIBINTL)|' \
 		${WRKSRC}/Makefile.am
 	@${REINPLACE_CMD} -e 's|/etc/sssd/|${ETCDIR}/|g' \
 		-e 's|/etc/openldap/|${LOCALBASE}/etc/openldap/|g' \

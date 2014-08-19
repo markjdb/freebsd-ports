@@ -9,10 +9,9 @@ MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	A collection of backgrounds for GNOME 2
+COMMENT=	Collection of backgrounds for GNOME 2
 
-USE_BZIP2=	yes
-USES=		gettext gmake pathfix
+USES=		gettext gmake pathfix tar:bzip2
 GNU_CONFIGURE=	yes
 USE_GNOME=	gnomeprefix intlhack
 CPPFLAGS+=	-I${LOCALBASE}/include

@@ -2,7 +2,7 @@
 
 PORTNAME=	sblim-wbemcli
 PORTVERSION=	1.6.1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	net-mgmt
 MASTER_SITES=	SF/sblim/${PORTNAME}/${PORTVERSION}
 
@@ -12,7 +12,7 @@ COMMENT=	CLI for Web Based Enterprise Management by SBLIM
 BUILD_DEPENDS=	libwww-config:${PORTSDIR}/www/libwww
 LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 
-USE_BZIP2=	YES
+USES=	tar:bzip2
 GNU_CONFIGURE=	YES
 CPPFLAGS+=	-I${PREFIX}/include
 LDFLAGS+=	-L${PREFIX}/lib

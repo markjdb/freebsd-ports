@@ -4,13 +4,16 @@
 PORTNAME=	base
 PORTVERSION=	3.3.13
 DISTVERSIONPREFIX=
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	www
 MASTER_SITE_SUBDIR=	horde
 DISTNAME=	horde-${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Common code-base used by Horde applications
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 NO_STAGE=	yes
 #----------------------------------------------------------------------------

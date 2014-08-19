@@ -14,8 +14,7 @@ COMMENT=	Improved rich city simulation game for X
 BUILD_DEPENDS=	jam:${PORTSDIR}/devel/jam
 LIB_DEPENDS=	libphysfs.so:${PORTSDIR}/devel/physfs
 
-USES=		pkgconfig
-USE_BZIP2=	yes
+USES=		pkgconfig tar:bzip2
 USE_SDL=	sdl mixer image ttf gfx
 USE_GL=		yes
 USE_GNOME=	libxml2
@@ -25,6 +24,8 @@ CONFIGURE_ARGS=	--with-libphysfs=${PREFIX} \
 		--x-libraries=${LOCALBASE}/lib --x-includes=${LOCALBASE}/include
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib ${PTHREAD_LIBS}
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e 's| -O| -I${LOCALBASE}/include&|g' \

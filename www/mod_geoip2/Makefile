@@ -3,6 +3,7 @@
 
 PORTNAME=	mod_geoip2
 PORTVERSION=	1.2.9
+PORTREVISION=	1
 CATEGORIES=	www geography
 MASTER_SITES=	https://github.com/maxmind/geoip-api-mod_geoip2/archive/
 DISTNAME=	${PORTVERSION}
@@ -16,7 +17,7 @@ LICENSE=	APACHE20
 BUILD_DEPENDS=	GeoIP>=1.4.4:${PORTSDIR}/net/GeoIP
 RUN_DEPENDS=	GeoIP>=1.4.4:${PORTSDIR}/net/GeoIP
 
-USE_APACHE=	22
+USE_APACHE=	22+
 MODULENAME=	mod_geoip
 AP_FAST_BUILD=	yes
 AP_GENPLIST=	yes

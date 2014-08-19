@@ -5,6 +5,7 @@
 
     SUBDIR += 0ad
     SUBDIR += 0verkill
+    SUBDIR += 2048
     SUBDIR += 3dc
     SUBDIR += 3dpong
     SUBDIR += 3omns
@@ -214,6 +215,7 @@
     SUBDIR += duckmaze
     SUBDIR += duel
     SUBDIR += duke3d-data
+    SUBDIR += dunelegacy
     SUBDIR += dungeon
     SUBDIR += dungeoncrawl
     SUBDIR += dustrac
@@ -510,7 +512,6 @@
     SUBDIR += libshhcards
     SUBDIR += lincity
     SUBDIR += lincity-ng
-    SUBDIR += linux-americasarmy
     SUBDIR += linux-candycruncher-demo
     SUBDIR += linux-coldwar-demo
     SUBDIR += linux-darwinia-demo
@@ -681,6 +682,7 @@
     SUBDIR += openpref
     SUBDIR += opensfx
     SUBDIR += opensonic
+    SUBDIR += openspades
     SUBDIR += openssn
     SUBDIR += opensurge
     SUBDIR += openttd

@@ -26,9 +26,9 @@ include/libmetisse/proto.h
 %%PYTHON_SITELIBDIR%%/facade_setup.pyc
 %%PYTHON_SITELIBDIR%%/facade_setup.pyo
 lib/libmetisse.a
-lib/libmetisse.la
 lib/libmetisse.so
 lib/libmetisse.so.1
+lib/libmetisse.so.1.0.0
 libdata/pkgconfig/libmetisse.pc
 libexec/fvwm-insitu/2.5.20/FvwmAnimate
 libexec/fvwm-insitu/2.5.20/FvwmAudio
@@ -75,19 +75,63 @@ libexec/fvwm-insitu/2.5.20/FvwmWinList
 libexec/fvwm-insitu/2.5.20/FvwmWindowMenu
 @dirrm libexec/fvwm-insitu/2.5.20
 @dirrm libexec/fvwm-insitu
+man/man1/FvwmAnimate.1.gz
+man/man1/FvwmAuto.1.gz
+man/man1/FvwmBacker.1.gz
+man/man1/FvwmBanner.1.gz
+man/man1/FvwmButtons.1.gz
+man/man1/FvwmCommand.1.gz
+man/man1/FvwmConsole.1.gz
+man/man1/FvwmConsoleC.pl.1.gz
+man/man1/FvwmCpp.1.gz
+man/man1/FvwmDebug.1.gz
+man/man1/FvwmDragWell.1.gz
+man/man1/FvwmEvent.1.gz
+man/man1/FvwmForm.1.gz
+%%GTK%%man/man1/FvwmGtk.1.gz
+man/man1/FvwmGtkDebug.1.gz
+man/man1/FvwmIconBox.1.gz
+man/man1/FvwmIconMan.1.gz
+man/man1/FvwmIdent.1.gz
+man/man1/FvwmM4.1.gz
+man/man1/FvwmPager.1.gz
+man/man1/FvwmPerl.1.gz
+man/man1/FvwmProxy.1.gz
+man/man1/FvwmRearrange.1.gz
+man/man1/FvwmSave.1.gz
+man/man1/FvwmSaveDesk.1.gz
+man/man1/FvwmScript.1.gz
+man/man1/FvwmScroll.1.gz
+man/man1/FvwmTabs.1.gz
+man/man1/FvwmTaskBar.1.gz
+man/man1/FvwmTheme.1.gz
+man/man1/FvwmWharf.1.gz
+man/man1/FvwmWinList.1.gz
+man/man1/FvwmWindowMenu.1.gz
+man/man1/fvwm-bug.1.gz
+man/man1/fvwm-config.1.gz
+man/man1/fvwm-convert-2.4.1.gz
+man/man1/fvwm-convert-2.6.1.gz
+man/man1/fvwm-menu-desktop.1.gz
+man/man1/fvwm-menu-directory.1.gz
+man/man1/fvwm-menu-headlines.1.gz
+man/man1/fvwm-menu-xlock.1.gz
+man/man1/fvwm-perllib.1.gz
+man/man1/fvwm-root.1.gz
+man/man1/fvwm.1.gz
 share/applications/fvwmi.desktop
 share/applications/mini-fvwmi.desktop
 share/applications/opale.desktop
-%%DOCSDIR%%/docs/building.html
-%%DOCSDIR%%/docs/metisse-architecture.png
-%%DOCSDIR%%/docs/running.html
-%%DOCSDIR%%/docs/using.html
-%%DOCSDIR%%/index.html
-%%DOCSDIR%%/metisse.css
-%%DOCSDIR%%/no3d.png
-%%DOCSDIR%%/up.jpg
-@dirrm %%DOCSDIR%%/docs
-@dirrm %%DOCSDIR%%
+%%PORTDOCS%%%%DOCSDIR%%/docs/building.html
+%%PORTDOCS%%%%DOCSDIR%%/docs/metisse-architecture.png
+%%PORTDOCS%%%%DOCSDIR%%/docs/running.html
+%%PORTDOCS%%%%DOCSDIR%%/docs/using.html
+%%PORTDOCS%%%%DOCSDIR%%/index.html
+%%PORTDOCS%%%%DOCSDIR%%/metisse.css
+%%PORTDOCS%%%%DOCSDIR%%/no3d.png
+%%PORTDOCS%%%%DOCSDIR%%/up.jpg
+%%PORTDOCS%%@dirrm %%DOCSDIR%%/docs
+%%PORTDOCS%%@dirrm %%DOCSDIR%%
 share/fvwm-insitu/ConfigFvwmBacker
 share/fvwm-insitu/ConfigFvwmButtons
 share/fvwm-insitu/ConfigFvwmDefaults

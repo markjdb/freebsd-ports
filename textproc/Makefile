@@ -67,10 +67,8 @@
     SUBDIR += chm2pdf
     SUBDIR += chpp
     SUBDIR += cl-meta
-    SUBDIR += cl-meta-clisp
     SUBDIR += cl-meta-sbcl
     SUBDIR += cl-ppcre
-    SUBDIR += cl-ppcre-clisp
     SUBDIR += cl-ppcre-sbcl
     SUBDIR += clit
     SUBDIR += clucene
@@ -225,8 +223,8 @@
     SUBDIR += hs-Diff
     SUBDIR += hs-HStringTemplate
     SUBDIR += hs-HaXml
+    SUBDIR += hs-appar
     SUBDIR += hs-attoparsec
-    SUBDIR += hs-attoparsec-conduit
     SUBDIR += hs-attoparsec-enumerator
     SUBDIR += hs-blaze-html
     SUBDIR += hs-blaze-markup
@@ -247,6 +245,7 @@
     SUBDIR += hs-hxt-unicode
     SUBDIR += hs-lhs2tex
     SUBDIR += hs-libxml
+    SUBDIR += hs-libxml-sax
     SUBDIR += hs-pandoc
     SUBDIR += hs-pandoc-types
     SUBDIR += hs-parsec
@@ -260,9 +259,10 @@
     SUBDIR += hs-tagsoup
     SUBDIR += hs-tagstream-conduit
     SUBDIR += hs-texmath
-    SUBDIR += hs-xhtml
+    SUBDIR += hs-uri
     SUBDIR += hs-xml
     SUBDIR += hs-xml-conduit
+    SUBDIR += hs-xml-hamlet
     SUBDIR += hs-xml-types
     SUBDIR += hs-xmlhtml
     SUBDIR += hs-yaml
@@ -568,6 +568,7 @@
     SUBDIR += p5-Lingua-EN-Numbers
     SUBDIR += p5-Lingua-EN-Numbers-Easy
     SUBDIR += p5-Lingua-EN-Numbers-Ordinate
+    SUBDIR += p5-Lingua-EN-PluralToSingular
     SUBDIR += p5-Lingua-EN-Sentence
     SUBDIR += p5-Lingua-EN-Squeeze
     SUBDIR += p5-Lingua-EN-Summarize
@@ -1139,7 +1140,9 @@
     SUBDIR += py-Chameleon
     SUBDIR += py-MarkupSafe
     SUBDIR += py-Tempita
+    SUBDIR += py-asciinema
     SUBDIR += py-asv
+    SUBDIR += py-bugzillatools
     SUBDIR += py-charade
     SUBDIR += py-chardet
     SUBDIR += py-cloud_sptheme
@@ -1159,6 +1162,7 @@
     SUBDIR += py-html2text
     SUBDIR += py-hyperestraier-python
     SUBDIR += py-jaxml
+    SUBDIR += py-junit-xml
     SUBDIR += py-libtre
     SUBDIR += py-libxml2
     SUBDIR += py-libxslt
@@ -1177,6 +1181,7 @@
     SUBDIR += py-pyscss
     SUBDIR += py-pysrt
     SUBDIR += py-pystache
+    SUBDIR += py-pytidylib
     SUBDIR += py-pyx12
     SUBDIR += py-qt4-xml
     SUBDIR += py-qt4-xmlpatterns

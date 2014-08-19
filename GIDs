@@ -90,6 +90,7 @@ cbsd:*:150:
 rbldns:*:153:
 trircd:*:154:
 xorp:*:155:
+monetdb:*:156:
 sfs:*:171:
 agk:*:172:
 polipo:*:173:
@@ -219,6 +220,7 @@ netdisco:*:840:
 munin:*:842:
 dahdi:*:843:asterisk
 fossy:*:901:www
+scanlogd:*:902:
 bacula:*:910:
 iserv:*:911:
 _sj3:*:912:
@@ -283,6 +285,12 @@ boinc:*:973:
 radicale:*:974:
 unifi:*:975:
 minetest:*:976:
+sguil:*:978:
 ums:*:979:
+hbase:*:980:
+uvncrep:*:981:
+bro:*:982:
+syncthing:*:983:
+tvheadend:*:984:
 nogroup:*:65533:
 nobody:*:65534:
