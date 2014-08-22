@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dbmail
-PORTVERSION=	3.1.15
+PORTVERSION=	3.1.17
 CATEGORIES=	mail
 MASTER_SITES=	http://git.dbmail.eu/paul/dbmail/snapshot/
 
@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	libgmime-2.6.so:${PORTSDIR}/mail/gmime26 \
 		libzdb.so:${PORTSDIR}/databases/libzdb \
 		libmhash.so:${PORTSDIR}/security/mhash \
-		libevent-2.0.so:${PORTSDIR}/devel/libevent2
+		libevent.so:${PORTSDIR}/devel/libevent2
 
 BUILD_DEPENDS=	asciidoc:${PORTSDIR}/textproc/asciidoc \
 		xmlto:${PORTSDIR}/textproc/xmlto \
@@ -23,7 +23,7 @@ BUILD_DEPENDS=	asciidoc:${PORTSDIR}/textproc/asciidoc \
 CONFLICTS=	dbmail22-[0-9]*
 
 OPTIONS_DEFINE=	DOCS LDAP SIEVE THREADS
-OPTIONS_DEFAULT=	THREADS
+OPTIONS_DEFAULT=	SIEVE THREADS
 SIEVE_DESC=	Sieve mail sorting language support
 
 OPTIONS_SUB=	yes

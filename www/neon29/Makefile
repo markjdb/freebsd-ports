@@ -9,7 +9,7 @@ MASTER_SITES=	http://www.webdav.org/neon/
 DISTNAME=	neon-${PORTVERSION}
 
 MAINTAINER=	lev@FreeBSD.org
-COMMENT=	An HTTP and WebDAV client library for Unix systems
+COMMENT=	HTTP and WebDAV client library for Unix systems
 
 CONFLICTS=	neon2[^9]-[0-9]*
 
@@ -80,7 +80,6 @@ DOCSDIR=	${PREFIX}/share/doc/neon
 post-install:
 	${INSTALL_MAN} ${WRKSRC}/doc/man/*.1 ${STAGEDIR}${MANPREFIX}/man/man1
 	${INSTALL_MAN} ${WRKSRC}/doc/man/*.3 ${STAGEDIR}${MANPREFIX}/man/man3
-	${MAKE} -C ${WRKSRC} install-html ${MAKE_ARGS}
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libneon.so.27.*
 
 .include <bsd.port.mk>

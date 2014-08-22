@@ -9,7 +9,7 @@ MASTER_SITES=	SF
 MAINTAINER=	johans@FreeBSD.org
 COMMENT=	Arbitrary precision calculator
 
-USES=		gmake tar:bzip2
+USES=		gmake tar:bzip2 readline
 USE_LDCONFIG=	yes
 
 MAKE_JOBS_UNSAFE=	yes
@@ -19,6 +19,10 @@ MAKE_ENV+=	CALCPAGER="${CALCPAGER}" CAT="${CAT}" CHMOD="${CHMOD}" \
 		CP="${CP}" GMAKE="${MAKE_CMD}" LN="${LN}" MKDIR="${MKDIR}" \
 		MV="${MV}" RM="${RM}" SED="${SED}" TOUCH="${TOUCH}" \
 		TRUE="${TRUE}"
+.if !exists(/usr/lib/libreadline.so)
+MAKE_ARGS=	READLINE_INCLUDE="-I${LOCALBASE}/include" \
+		READLINE_LIB="-L${LOCALBASE}/lib -lreadline"
+.endif
 
 PLIST_SUB+=	VERSION=${PORTVERSION}	VER1=${PORTVERSION:R} \
 		VER2=${PORTVERSION:R:R}	VER3=${PORTVERSION:R:R:R}

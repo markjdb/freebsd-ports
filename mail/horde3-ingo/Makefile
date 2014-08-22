@@ -4,12 +4,15 @@
 PORTNAME=	ingo
 PORTVERSION=	1.2.6
 DISTVERSIONSUFFIX=
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	mail www
 
 MAINTAINER= ports@FreeBSD.org
 COMMENT=	Email-filter management application
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 #-----------------------------------------------------------------------
 NO_STAGE=	yes

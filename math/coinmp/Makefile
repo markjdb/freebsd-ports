@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	CoinMP
-PORTVERSION=	1.7.2
+PORTVERSION=	1.7.6
+PORTREVISION=	1
 CATEGORIES=	math
 MASTER_SITES=	http://www.coin-or.org/download/source/CoinMP/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	cpm@fbsd.es
 COMMENT=	Optimization library with support for COIN-OR CLP, CBC, and CGL
 
 LICENSE=	CPL
@@ -16,20 +17,21 @@ LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 CONFLICTS=	clp-[0-9]*
 
-USES=	pkgconfig tar:tgz
-USE_AUTOTOOLS=	libtool
+GNU_CONFIGURE=	yes
+USES=	libtool pkgconfig tar:tgz
 USE_LDCONFIG=	yes
-USE_GCC=	any
+INSTALL_TARGET=	install-strip
 CONFIGURE_ARGS+=	PKG_CONFIG_PATH=${STAGEDIR}${PREFIX}/libdata/pkgconfig
 
-OPTIONS_DEFINE=	DEBUG DOCS
+OPTIONS_DEFINE=	DEBUG DOCS GLPK
+
+GLPK_DESC=	GNU Linear Programming Kit support
 
 PORTDOCS=	*
 
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGLPK}
-BROKEN =	the GLPK option requires math/glpk headers that are not currently installed by that port
 CONFIGURE_ARGS+=	--with-gmpl-incdir=${LOCALBASE}/include	\
 		--with-gmpl-lib="-L${LOCALBASE}/lib -lglpk"
 LIB_DEPENDS+=	libglpk.so:${PORTSDIR}/math/glpk
@@ -43,19 +45,10 @@ CXXFLAGS+=	-fomit-frame-pointer
 .endif
 
 post-patch::
-	@${REINPLACE_CMD} -e \
+	@${FIND} ${WRKSRC} -name Makefile.in | ${XARGS} ${REINPLACE_CMD} -e \
 		's|$$(libdir)/pkgconfig|${PREFIX}/libdata/pkgconfig|' \
-		${WRKSRC}/Clp/Makefile.in ${WRKSRC}/Osi/Makefile.in \
-		${WRKSRC}/Cbc/Makefile.in ${WRKSRC}/Cgl/Makefile.in \
-		${WRKSRC}/CoinUtils/Makefile.in ${WRKSRC}/CoinMP/Makefile.in \
-		${WRKSRC}/Data/Sample/Makefile.in
-	@${REINPLACE_CMD} -e 's|$$(DESTDIR)$$(addlibsdir)|$$(addlibsdir)|g' \
-		${WRKSRC}/CoinMP/Makefile.in
-
-pre-build:
-.for dir in Cbc Cgl Clp CoinMP CoinUtils Osi
-	${CP} ${LTMAIN} ${WRKSRC}/${dir}
-.endfor
+		-e 's|$$(DESTDIR)$$(addlibsdir)|$$(addlibsdir)|g' \
+		-e 's|addlibs_DATA = examples/Makefile examples/example.c||g'
 
 post-install:
 	${MV} ${STAGEDIR}${PREFIX}/share/coin/doc ${STAGEDIR}${DOCSDIR}

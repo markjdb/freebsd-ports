@@ -8,7 +8,6 @@ PORTEPOCH=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://www.clanlib.org/download/releases-2.0/
 DISTNAME=	ClanLib-${PORTVERSION}
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Cross-platform game SDK
@@ -20,12 +19,11 @@ LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libmikmod.so:${PORTSDIR}/audio/libmikmod \
 		libvorbis.so:${PORTSDIR}/audio/libvorbis \
 		libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
-		libpcre.so:${PORTSDIR}/devel/pcre \
-		libexecinfo.so:${PORTSDIR}/devel/libexecinfo
+		libpcre.so:${PORTSDIR}/devel/pcre
 
 USE_GCC=	yes
 USE_XORG=	x11
-USES=		gmake pathfix pkgconfig
+USES=		execinfo gmake pathfix pkgconfig tar:tgz
 USE_LDCONFIG=	yes
 USE_GL=		yes
 USE_SQLITE=	yes

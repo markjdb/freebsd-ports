@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	puppet
-PORTVERSION=	2.7.25
+PORTVERSION=	2.7.26
 CATEGORIES=	sysutils
 MASTER_SITES=	http://downloads.puppetlabs.com/puppet/
 PKGNAMESUFFIX=	27
@@ -26,7 +26,6 @@ PORTEXAMPLES=	*
 USERS=		puppet
 GROUPS=		puppet
 SUB_FILES+=	pkg-message
-PLIST_SUB+=	RESETPREFIX=${PREFIX}
 
 PORTSCOUT=	limit:^2\.7\.
 

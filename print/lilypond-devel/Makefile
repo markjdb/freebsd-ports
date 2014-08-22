@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lilypond
-PORTVERSION=	2.19.9
+PORTVERSION=	2.19.11
 CATEGORIES=	print audio
 MASTER_SITES=	http://download.linuxaudio.org/lilypond/sources/v${PORTVERSION:R}/
 PKGNAMESUFFIX=	-devel
@@ -21,6 +21,7 @@ BUILD_DEPENDS=	pdftexi2dvi:${PORTSDIR}/print/texinfo \
 		help2man:${PORTSDIR}/misc/help2man \
 		pngtopnm:${PORTSDIR}/graphics/netpbm \
 		rsync:${PORTSDIR}/net/rsync \
+		texi2html:${PORTSDIR}/textproc/texi2html \
 		zip:${PORTSDIR}/archivers/zip \
 		${LOCALBASE}/share/ghostscript/fonts/c059033l.pfb:${PORTSDIR}/print/gsfonts
 
@@ -60,8 +61,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--with-ncsb-dir=${LOCALBASE}/share/ghostscript/fonts \
 		--with-python-include=${PYTHON_INCLUDEDIR}
 CONFIGURE_ENV+=	ac_cv_prog_MAKEINFO="${LOCALBASE}/bin/makeinfo" \
-		FLEX=${FLEX} YACC=${YACC} HOME=${WRKDIR} \
-		FCLIST=${TRUE}
+		FLEX=${FLEX} YACC=${YACC} HOME=${WRKDIR}
 
 ALL_TARGET=	all
 
@@ -80,6 +80,8 @@ PLIST_SUB+=	NLS="@comment "
 .endif
 
 post-patch:
+	${FIND} ${WRKSRC} -name "*.cc" | ${XARGS} \
+	    ${REINPLACE_CMD} -e 's|isinf[ ]*(|::isinf(|g' -e 's|isnan|::isnan|g'
 	${REINPLACE_CMD} -e 's|<FlexLexer.h>|"/usr/include/FlexLexer.h"|' \
 	    ${WRKSRC}/lily/include/includable-lexer.hh
 .if !${PORT_OPTIONS:MNLS}

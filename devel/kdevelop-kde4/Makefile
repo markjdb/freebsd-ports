@@ -3,7 +3,7 @@
 
 PORTNAME=	kdevelop
 DISTVERSION=	${KDEVELOP_VERSION}
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	devel kde
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR=	${KDEVELOP_BRANCH}/kdevelop/${DISTVERSION}/src
@@ -18,8 +18,7 @@ RUN_DEPENDS=	gmake:${PORTSDIR}/devel/gmake
 USE_KDE4=	kdehier kdelibs kdeprefix workspace automoc4
 USE_QT4=	qmake_build moc_build uic_build rcc_build \
 		corelib declarative gui help script webkit xml
-USE_XZ=		yes
-USES=		cmake gmake shared-mime-info
+USES=		cmake gmake shared-mime-info tar:xz
 
 OPTIONS_DEFINE=	OKTETA PHP NLS
 OPTIONS_DEFAULT=	OKTETA PHP

@@ -7,7 +7,7 @@
 # Valid ARGS:
 #				build	Adds twisted and any additional component as build
 #						dependency to the port
-#				run		Adds twisted and any additional component as build
+#				run	Adds twisted and any additional component as run
 #						dependency to the port
 #				comp	Adds the specified twisted component to as build or
 #						run dependency to the ports
@@ -53,7 +53,7 @@ BUILD_DEPENDS+=	${PYTHON_SITELIBDIR}/twisted/__init__.py:${PORTSDIR}/devel/py-tw
 RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/twisted/__init__.py:${PORTSDIR}/devel/py-twistedCore
 .endif
 
-_TWISTED_COMPONENTS=	conch flow lore mail names news runner web web2 words
+_TWISTED_COMPONENTS=	conch flow lore mail names news pair runner web web2 words
 
 conch_DEPENDS=	${PYTHON_SITELIBDIR}/twisted/conch/__init__.py:${PORTSDIR}/security/py-twistedConch
 flow_DEPENDS=	${PYTHON_SITELIBDIR}/twisted/flow/__init__.py:${PORTSDIR}/devel/py-twistedFlow

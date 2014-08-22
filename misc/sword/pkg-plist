@@ -14,7 +14,7 @@ bin/xml2gbs
 bin/imp2gbs
 bin/imp2ld
 bin/mod2zmod
-%%ETCDIR%%.conf
+@sample etc/sword.conf
 include/sword/canon.h
 include/sword/canon_abbrevs.h
 include/sword/cipherfil.h
@@ -186,15 +186,16 @@ include/sword/canon_null.h
 include/sword/canon_orthodox.h
 lib/libsword-%%PORTVERSION%%.so
 lib/libsword.a
-lib/libsword.la
 lib/libsword.so
 libdata/pkgconfig/sword.pc
 %%DATADIR%%/locales.d/abbr.conf
 %%DATADIR%%/locales.d/af-utf8.conf
 %%DATADIR%%/locales.d/af.conf
+%%DATADIR%%/locales.d/ar-utf8.conf
 %%DATADIR%%/locales.d/ar_EG-cp1256.conf
 %%DATADIR%%/locales.d/ar_EG-utf8.conf
 %%DATADIR%%/locales.d/az-utf8.conf
+%%DATADIR%%/locales.d/bg-utf8.conf
 %%DATADIR%%/locales.d/bg_BG-cp1251.conf
 %%DATADIR%%/locales.d/cs-utf8.conf
 %%DATADIR%%/locales.d/cs.conf
@@ -255,6 +256,7 @@ libdata/pkgconfig/sword.pc
 %%DATADIR%%/locales.d/pt_BR.conf
 %%DATADIR%%/locales.d/ro-utf8.conf
 %%DATADIR%%/locales.d/ro.conf
+%%DATADIR%%/locales.d/ru-utf8.conf
 %%DATADIR%%/locales.d/ru_RU-cp1251.conf
 %%DATADIR%%/locales.d/ru_RU-koi8-r.conf
 %%DATADIR%%/locales.d/ru_RU-utf8.conf
@@ -265,6 +267,7 @@ libdata/pkgconfig/sword.pc
 %%DATADIR%%/locales.d/sv-utf8.conf
 %%DATADIR%%/locales.d/sv.conf
 %%DATADIR%%/locales.d/th-utf8.conf
+%%DATADIR%%/locales.d/uk-utf8.conf
 %%DATADIR%%/locales.d/uk_UA-cp1251.conf
 %%DATADIR%%/locales.d/uk_UA-koi8-u.conf
 %%DATADIR%%/locales.d/vi-utf8.conf

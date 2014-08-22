@@ -8,13 +8,13 @@ CATEGORIES=		www
 MASTER_SITES=		http://modmellon.googlecode.com/files/
 DIST_SUBDIR=		apache2
 
-MAINTAINER=		tj@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=		Apache auth module for identifying SSO users
 
 LICENSE=		GPLv2
 
-LIB_DEPENDS=		lasso:${PORTSDIR}/security/lasso \
-			curl:${PORTSDIR}/ftp/curl
+LIB_DEPENDS=		liblasso.so:${PORTSDIR}/security/lasso \
+			libcurl.so:${PORTSDIR}/ftp/curl
 
 USES=			pkgconfig
 GNU_CONFIGURE=		yes

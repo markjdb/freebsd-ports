@@ -3,7 +3,7 @@
 
 PORTNAME=	osdlyrics
 PORTVERSION=	0.4.3
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	audio deskutils
 MASTER_SITES=	GOOGLE_CODE
 PROJECTHOST=	osd-lyrics
@@ -47,8 +47,8 @@ AMAROK_CONFIGURE_ENABLE=	amarok1
 
 post-patch:
 .for i in src/Makefile.in src/tests/Makefile.in
-	@${REINPLACE_CMD} -e \
-		'/-lstdc++/d' ${WRKSRC}/${i}
+	@${REINPLACE_CMD} -e '/-lstdc++/d' -e '/^CCLD =/s/=.*/= $$(CXX)/' \
+		${WRKSRC}/${i}
 .endfor
 .for i in lib/chardetect/Makefile.in
 	@${REINPLACE_CMD} -e \

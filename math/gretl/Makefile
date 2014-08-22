@@ -3,7 +3,7 @@
 
 PORTNAME=	gretl
 PORTVERSION=	1.9.13
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	math finance
 MASTER_SITES=	SF
 
@@ -16,9 +16,8 @@ LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
 		libfftw3.so:${PORTSDIR}/math/fftw3
 
 GNU_CONFIGURE=	yes
-USE_BZIP2=	yes
 USE_LDCONFIG=	yes
-USES=		fortran gmake pathfix pkgconfig
+USES=		fortran gmake libtool pathfix pkgconfig tar:bzip2
 WANT_GNOME=	yes
 
 ALL_TARGET=		# empty
@@ -29,8 +28,6 @@ CPPFLAGS+=		-I${LOCALBASE}/include
 LDFLAGS+=		-L${LOCALBASE}/lib
 CONFIGURE_ENV=		LAPACK_LIBS="${LAPACK} ${BLAS}"
 
-MAN1=			gretl.1
-
 OPTIONS_DEFINE=	ATLAS GUI ODBC OPENMP R UNZIP
 
 ATLAS_DESC=		Use ATLAS for BLAS and LAPACK
@@ -40,7 +37,6 @@ UNZIP_DESC=		UnZip compression support via libgsf
 
 OPTIONS_DEFAULT=	GUI OPENMP UNZIP
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MATLAS}

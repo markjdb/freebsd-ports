@@ -180,6 +180,7 @@
     SUBDIR += plopfolio
     SUBDIR += preferencepanes
     SUBDIR += preferences
+    SUBDIR += py-pystash
     SUBDIR += py-send2trash
     SUBDIR += py-vobject
     SUBDIR += pybookreader
@@ -234,6 +235,7 @@
     SUBDIR += tuxcards
     SUBDIR += vboxgtk
     SUBDIR += virt-manager
+    SUBDIR += vit
     SUBDIR += vnc2flv
     SUBDIR += vym
     SUBDIR += wammu

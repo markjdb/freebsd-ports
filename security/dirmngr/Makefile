@@ -3,7 +3,7 @@
 
 PORTNAME=	dirmngr
 PORTVERSION=	1.1.0
-PORTREVISION=	9
+PORTREVISION=	11
 CATEGORIES=	security
 MASTER_SITES=	${MASTER_SITE_GNUPG}
 MASTER_SITE_SUBDIR=	dirmngr
@@ -19,8 +19,7 @@ LIB_DEPENDS=	libassuan.so:${PORTSDIR}/security/libassuan \
 		libksba.so:${PORTSDIR}/security/libksba \
 		libpth.so:${PORTSDIR}/devel/pth
 
-USES=		gmake iconv
-USE_BZIP2=	yes
+USES=		gmake iconv tar:bzip2
 USE_OPENLDAP=	yes
 GNU_CONFIGURE=	yes
 INFO=		dirmngr

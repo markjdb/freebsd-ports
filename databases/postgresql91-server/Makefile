@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME?=	postgresql
-DISTVERSION?=	9.1.13
-PORTREVISION?=	1
+DISTVERSION?=	9.1.14
+PORTREVISION?=	0
 CATEGORIES?=	databases
 MASTER_SITES=	PGSQL
 MASTER_SITE_SUBDIR=	source/v${DISTVERSION}
@@ -29,7 +29,7 @@ UNIQUENAME?=	${PORTNAME}${DISTVERSION:R:S/.//}${PKGNAMESUFFIX}
 .endif
 
 PKGINSTALL?=	${PKGDIR}/pkg-install${COMPONENT}
-USE_BZIP2=	yes
+USES+=		tar:bzip2
 .if !defined(NO_BUILD)
 USES+=	gmake
 GNU_CONFIGURE=	yes
@@ -214,7 +214,7 @@ IGNORE=	requires that you remove heimdal's /usr/bin/krb5-config and /usr/lib/lib
 CONFIGURE_ARGS+=--with-krb5
 # Allow defining a home built MIT Kerberos by setting KRB5_HOME
 .    if defined(KRB5_HOME) && exists(${KRB5_HOME}/lib/libgssapi_krb5.a) && exists(${KRB5_HOME}/bin/krb5-config)
-LIB_DEPENDS+=	krb5.3:${PORTSDIR}/security/krb5
+LIB_DEPENDS+=	libkrb5.so:${PORTSDIR}/security/krb5
 .    endif
 .   endif
 .  endif

@@ -3,6 +3,7 @@
 
 PORTNAME=	luminance-hdr
 DISTVERSION=	2.3.1
+PORTREVISION=	2
 CATEGORIES=	graphics
 MASTER_SITES=	SF/qtpfsgui/luminance/${DISTVERSION}
 
@@ -25,6 +26,10 @@ USES=		cmake tar:bzip2
 USE_QT4=	gui sql webkit xml linguist_build moc_build qmake_build \
 		rcc_build uic_build imageformats_run
 INSTALLS_ICONS=	yes
+
+CONFLICTS_INSTALL=	luminance-hdr-qt5-*
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 # Do not install yet another copy of GPL (we use license framework instead)

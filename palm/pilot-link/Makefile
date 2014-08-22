@@ -15,8 +15,7 @@ LICENSE=	GPLv2
 
 BUILD_DEPENDS=	xsltproc:${PORTSDIR}/textproc/libxslt
 
-USES=		pathfix pkgconfig iconv
-USE_BZIP2=	yes
+USES=		pathfix pkgconfig iconv tar:bzip2
 GNU_CONFIGURE=	yes
 CFLAGS+=	-I${WRKSRC}/popt -I${LOCALBASE}/include
 CONFIGURE_ARGS+=${ICONV_CONFIGURE_BASE}  --with-included-popt --enable-conduits --enable-xsltproc
@@ -45,7 +44,7 @@ LDFLAGS+=	${PTHREAD_LIBS}
 .endif
 
 .if ${PORT_OPTIONS:MPNG}
-LIB_DEPENDS+=	png15:${PORTSDIR}/graphics/png
+LIB_DEPENDS+=	libpng15.so:${PORTSDIR}/graphics/png
 CONFIGURE_ARGS+=	--with-libpng=${PREFIX}
 .else
 CONFIGURE_ARGS+=	--disable-png

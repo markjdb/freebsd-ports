@@ -4,12 +4,15 @@
 PORTNAME=	nic
 DISTVERSIONPREFIX=
 DISTVERSION=	0.1.beta20070316
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	net-mgmt
 MASTER_SITES=	CENKES http://freebsd.alaskaparadise.com/source/
 
-MAINTAINER=	horde@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Network service monitor
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 USE_HORDE=	base pkg-message
 USES=		gettext

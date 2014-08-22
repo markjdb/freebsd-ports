@@ -3,7 +3,7 @@
 
 PORTNAME=	ffmpeg
 PORTVERSION=	2.2.4
-PORTREVISION=	1
+PORTREVISION=	4
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	http://ffmpeg.org/releases/
@@ -24,7 +24,7 @@ USES=		gmake pkgconfig perl5 tar:bzip2
 USE_PERL5=	build
 WANT_SDL=	yes
 
-OPTIONS_DEFINE=	AACPLUS ALSA AMR_NB AMR_WB ASS CDIO CELT DEBUG FAAC \
+OPTIONS_DEFINE=	AACPLUS ALSA AMR_NB AMR_WB ASS CDIO CELT DEBUG DOCS FAAC \
 		FDK_AAC FFSERVER FONTCONFIG FREETYPE FREI0R GNUTLS GSM ICONV \
 		JACK LAME LIBBLURAY LIBV4L MODPLUG OPENAL OPENCV OPENJPEG OPENSSL \
 		OPTIMIZED_CFLAGS OPUS PULSEAUDIO RTMP SCHROEDINGER SDL SPEEX \
@@ -39,7 +39,6 @@ CDIO_DESC=	Audio CD grabbing with libcdio
 FDK_AAC_DESC=	AAC audio encoding via Fraunhofer FDK
 FFSERVER_DESC=	Build and install ffserver
 LIBV4L_DESC=	Video for Linux support
-OPUS_DESC=	Opus decoding with libopus
 X11GRAB_DESC=	Enable x11 grabbing
 
 # aacplus
@@ -64,7 +63,7 @@ ASS_LIB_DEPENDS=	libass.so:${PORTSDIR}/multimedia/libass
 ASS_CONFIGURE_ENABLE=	libass
 
 # cdio
-CDIO_LIB_DEPENDS=	libcdio.so:${PORTSDIR}/sysutils/libcdio
+CDIO_LIB_DEPENDS=	libcdio_paranoia.so:${PORTSDIR}/sysutils/libcdio-paranoia
 CDIO_CONFIGURE_ENABLE=	libcdio
 
 # celt

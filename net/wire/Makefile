@@ -9,7 +9,7 @@ MASTER_SITES=	http://mirror.mcx2.org/ \
 		${MASTER_SITE_LOCAL}
 MASTER_SITE_SUBDIR=	dhn
 
-MAINTAINER=	dhn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Wire is a screen-oriented command line Wired client
 
 GNU_CONFIGURE=	yes
@@ -27,7 +27,7 @@ MAN1=		wire.1
 #.include <bsd.port.pre.mk>
 
 .if exists(${LOCALBASE}/lib/libreadline.so.6)
-LIB_DEPENDS+=	readline.6:${PORTSDIR}/devel/readline
+LIB_DEPENDS+=	libreadline.so.6:${PORTSDIR}/devel/readline
 .endif
 
 #.include <bsd.port.post.mk>

@@ -1,27 +1,28 @@
 # Created by: Kubilay Kocak <koobs@FreeBSD.org>
 # $FreeBSD$
 
-PORTNAME=		python34
-PORTVERSION=		3.4.1
-PORTREVISION=		1
-CATEGORIES=		lang python ipv6
-MASTER_SITES=		PYTHON
-MASTER_SITE_SUBDIR=	${PYTHON_MASTER_SITE_SUBDIR}
-DISTNAME=		${PYTHON_DISTNAME}
-DIST_SUBDIR=		python
+PORTNAME=	python34
+PORTVERSION=	3.4.1
+PORTREVISION=	3
+CATEGORIES=	lang python ipv6
+MASTER_SITES=	PYTHON
+MASTER_SITE_SUBDIR=	ftp/python/${PORTVERSION}
+DISTNAME=	Python-${PORTVERSION}
+DIST_SUBDIR=	python
 
 MAINTAINER=	python@FreeBSD.org
 COMMENT=	Interpreted object-oriented programming language
 
 LICENSE=	PSFL
 
-USES=		ncurses pkgconfig readline tar:xz
+USES=		cpe ncurses pkgconfig readline tar:xz
+USE_OPENSSL=	yes
 USE_LDCONFIG=	yes
-USE_PYTHON=	yes
 GNU_CONFIGURE=	yes
 
-PYTHON_VERSION=		python3.4
-PYTHON_NO_DEPENDS=	yes
+CPE_VENDOR=	python
+CPE_PRODUCT=	${CPE_VENDOR}
+CPE_VERSION=	${PORTVERSION}
 
 DISABLED_EXTENSIONS=	_sqlite3 _tkinter _gdbm
 CONFIGURE_ARGS+=	--enable-shared --without-ensurepip
@@ -32,7 +33,7 @@ SHAREMODE=		644							# Match upstream INSTALL_DATA=644, so we can STRIP shared 
 MAKE_ARGS+=		INSTALL_SHARED="${INSTALL_LIB}"				# Override read-only for libraries, so we can STRIP them
 MAKE_ARGS+=		LIBPC="${PREFIX}/libdata/pkgconfig"			# Until pathfix gets support for files other than Makefile.in
 
-PLIST_SUB=		VER=${PYTHON_VER} ABI=${ABIFLAGS} XY=${PYTHON_SUFFIX} \
+PLIST_SUB=		ABI=${ABIFLAGS} \
 			OSMAJOR=${OSVERSION:C/([0-9]*)[0-9]{5}/\1/}		# For plat-freebsd* in pkg-plist. http://bugs.python.org/issue19554
 
 OPTIONS_DEFINE=		DEBUG IPV6 NLS PYMALLOC THREADS TSC
@@ -58,7 +59,7 @@ IPV6_CONFIGURE_ENABLE=	ipv6
 # to break in Python 2.7, or preprocessor complaints in Python >= 3.3
 # Upstream Issue: http://bugs.python.org/issue6299
 NLS_USES=		gettext
-NLS_LDFLAGS=		-L${LOCALBASE}/lib
+NLS_LIBS=		-L${LOCALBASE}/lib -lintl
 NLS_CPPFLAGS=		-I${LOCALBASE}/include
 NLS_CONFIGURE_ENV_OFF=	ac_cv_lib_intl_textdomain=no ac_cv_header_libintl_h=no
 
@@ -80,9 +81,9 @@ ABIFLAGS:=	d${ABIFLAGS}
 .endif
 
 .if !empty(ABIFLAGS)
-PLIST_FILES+=	bin/python%%VER%%%%ABI%%
-PLIST_FILES+=	bin/python%%VER%%%%ABI%%-config
-PLIST_FILES+=	libdata/pkgconfig/python-%%VER%%%%ABI%%.pc
+PLIST_FILES+=	bin/python3.4%%ABI%%
+PLIST_FILES+=	bin/python3.4%%ABI%%-config
+PLIST_FILES+=	libdata/pkgconfig/python-3.4%%ABI%%.pc
 .endif
 
 .if ${ARCH} == sparc64
@@ -106,6 +107,6 @@ post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libpython3.4${ABIFLAGS}.so.1			# Strip shared library
 
 regression-test: build
-	@cd ${WRKSRC} && ${MAKE} TESTOPTS=-j${MAKE_JOBS_NUMBER} test
+	@cd ${WRKSRC} && ${MAKE} TESTOPTS=-j${MAKE_JOBS_NUMBER} buildbottest
 
 .include <bsd.port.mk>

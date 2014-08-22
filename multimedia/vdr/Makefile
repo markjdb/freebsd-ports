@@ -3,7 +3,7 @@
 
 PORTNAME=	vdr
 PORTVERSION=	1.7.29
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	multimedia
 MASTER_SITES=	ftp://ftp.tvdr.de/vdr/Developer/
 
@@ -16,7 +16,7 @@ BUILD_DEPENDS+=	${LOCALBASE}/libdata/pkgconfig/fontconfig.pc:${PORTSDIR}/x11-fon
 RUN_DEPENDS+=	${LOCALBASE}/libdata/pkgconfig/fontconfig.pc:${PORTSDIR}/x11-fonts/fontconfig \
 		xorg-fonts-truetype>=0:${PORTSDIR}/x11-fonts/xorg-fonts-truetype
 
-OPTIONS_DEFINE=		IPTVPATCH TTXPATCH STB0899_SIGNAL
+OPTIONS_DEFINE=		IPTVPATCH TTXPATCH STB0899_SIGNAL DOCS NLS
 IPTVPATCH_DESC=		Stops EIT scans on IPTV channels
 TTXPATCH_DESC=		Support patches for teletext subtitle plugin
 DVBPATCH_DESC=		DVB audio patch for some countries
@@ -53,6 +53,10 @@ PLIST_SUB=	VDR_USER=${VDR_USER}
 PLIST_SUB+=	VDR_GROUP=${VDR_GROUP}
 
 .include <bsd.port.options.mk>
+
+.if ${ARCH} == "i386"
+USE_GCC=	any
+.endif
 
 EXTRA_PATCHES+=	${FILESDIR}/vdr-1.7.15-disable_ca_updates.patch
 .if ${PORT_OPTIONS:MIPTVPATCH}

@@ -10,9 +10,9 @@ MASTER_SITES=	SF
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Multi-threaded branch of the well known mplayer media player
 
-LIB_DEPENDS=	jpeg.11:${PORTSDIR}/graphics/jpeg \
-		png15:${PORTSDIR}/graphics/png \
-		vcdinfo.2:${PORTSDIR}/multimedia/vcdimager
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng15.so:${PORTSDIR}/graphics/png \
+		libvcdinfo.so:${PORTSDIR}/multimedia/vcdimager
 RUN_DEPENDS=	${LOCALBASE}/share/mplayer/fonts:${PORTSDIR}/multimedia/mplayer-fonts
 
 OPTIONS_DEFINE=	DVDNAV CDPARANOIA OPTIMIZED_CFLAGS SDL TERMCAP WIN32
@@ -25,9 +25,8 @@ ONLY_FOR_ARCHS=	i386
 
 MAKE_JOBS_UNSAFE=	yes
 
-USE_BZIP2=	yes
 USE_XORG=	xinerama xv xxf86dga xxf86vm
-USES=		iconv gmake
+USES=		iconv gmake tar:bzip2
 HAS_CONFIGURE=	yes
 WANT_SDL=	yes
 USE_LDCONFIG=	yes
@@ -64,7 +63,7 @@ CFLAGS+=	-fomit-frame-pointer
 
 # cdda support
 .if ${PORT_OPTIONS:MCDPARANOIA}
-LIB_DEPENDS+=	cdda_paranoia.0:${PORTSDIR}/audio/cdparanoia
+LIB_DEPENDS+=	libcdda_paranoia.so:${PORTSDIR}/audio/cdparanoia
 
 CONFIGURE_ARGS+=	--enable-cdparanoia
 .else
@@ -80,7 +79,7 @@ CONFIGURE_ARGS+=	--disable-libdvdread
 .endif
 # xine libdvdnav
 .if ${PORT_OPTIONS:MDVDNAV}
-LIB_DEPENDS+=	dvdnav.4:${PORTSDIR}/multimedia/libdvdnav
+LIB_DEPENDS+=	libdvdnav.so:${PORTSDIR}/multimedia/libdvdnav
 
 CONFIGURE_ARGS+=	--enable-libdvdnav
 .else

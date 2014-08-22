@@ -3,6 +3,7 @@
 
 PORTNAME=	geoip
 PORTVERSION=	1.0.8
+PORTREVISION=	1
 CATEGORIES=	net www
 MASTER_SITES=	http://pecl.php.net/get/
 PKGNAMEPREFIX=	pecl-
@@ -12,7 +13,7 @@ DIST_SUBDIR=	${PORTNAME}
 MAINTAINER=	clsung@FreeBSD.org
 COMMENT=	Map IP address to geographic places
 
-LIB_DEPENDS=	GeoIP:${PORTSDIR}/net/GeoIP
+LIB_DEPENDS=	libGeoIP.so:${PORTSDIR}/net/GeoIP
 
 USE_PHP=	yes
 USE_PHPEXT=	yes

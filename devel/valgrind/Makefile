@@ -21,7 +21,7 @@ ONLY_FOR_ARCHS=	i386 amd64
 
 LIB32_PATH?=	${DESTDIR}/usr/lib32/libc.so
 
-OPTIONS_DEFINE=		MPI
+OPTIONS_DEFINE=		MPI DOCS
 OPTIONS_DEFINE_amd64=	32BIT
 .if exists(${LIB32_PATH})
 OPTIONS_DEFAULT_amd64=	32BIT
@@ -29,7 +29,7 @@ OPTIONS_DEFAULT_amd64=	32BIT
 32BIT_DESC=	Enable debugging of 32-bit programs (requires lib32)
 MPI_DESC=	Enable build of MPI wrappers
 
-MPI_LIB_DEPENDS=	mpich:${PORTSDIR}/net/mpich2
+MPI_LIB_DEPENDS=	libmpich.so:${PORTSDIR}/net/mpich2
 
 OPTIONS_SUB=	yes
 USES=		pathfix tar:bzip2 pkgconfig gmake perl5 shebangfix

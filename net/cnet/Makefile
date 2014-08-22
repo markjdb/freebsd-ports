@@ -8,15 +8,14 @@ CATEGORIES=	net tcl tk
 MASTER_SITES=	http://www.csse.uwa.edu.au/cnet/ \
 		ftp://ftp.giga.net.tw/OS/FreeBSD/distfiles/ \
 		http://T32.TecNik93.com/FreeBSD/ports/${PORTNAME}/sources/
-EXTRACT_SUFX=	.tgz
 
-MAINTAINER=	itetcu@FreeBSD.org
-COMMENT=	A networking simulator
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Networking simulator
 
-LIB_DEPENDS=	tk84.1:${PORTSDIR}/x11-toolkits/tk84
+LIB_DEPENDS=	libtk84.so:${PORTSDIR}/x11-toolkits/tk84
 
 USE_XORG=	xpm
-USES=		gmake
+USES=		gmake tar:tgz
 ALL_TARGET=	# empty
 MAN1=		cnet.1
 

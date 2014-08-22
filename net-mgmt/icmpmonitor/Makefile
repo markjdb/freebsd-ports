@@ -7,9 +7,9 @@ CATEGORIES=	net-mgmt
 MASTER_SITES=	SF
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	A multiple host icmp monitoring tool
+COMMENT=	Multiple host icmp monitoring tool
 
-GNU_CONFIGURE=	YES
+GNU_CONFIGURE=	yes
 
 PLIST_FILES=	man/man1/icmpmonitor.1.gz sbin/icmpmonitor
 

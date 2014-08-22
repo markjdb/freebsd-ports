@@ -3,12 +3,15 @@
 
 PORTNAME=	passwd
 PORTVERSION=	3.1.3
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	www mail
 DIST_SUBDIR=	horde
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Password changing module
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 USE_HORDE=	base
 USES=		gettext

@@ -14,7 +14,7 @@ MAINTAINER=	brooks@FreeBSD.org
 COMMENT=	C, Objective-C, and C++ compiler
 
 CLANG_NAME=	clang-${PORTVERSION}
-CLANG_RELEASE=	${PORTVERSION:C/\.r[0-9]*//}.0svn
+CLANG_RELEASE=	${PORTVERSION:C/\.r[0-9]*//}svn
 CLANG_SOURCE=	${CLANG_NAME}${EXTRACT_SUFX}
 LLVM_NAME=	llvm-${PORTVERSION}
 LLVM_SOURCE=	${LLVM_NAME}${EXTRACT_SUFX}
@@ -33,8 +33,7 @@ DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 
 GNU_CONFIGURE=	yes
 GNU_CONFIGURE_PREFIX=	${LLVM_PREFIX}
-USES=		compiler:c++11-lib gmake perl5
-USE_BZIP2=	yes
+USES=		compiler:c++11-lib gmake perl5 tar:bzip2
 USE_PYTHON=	yes
 
 MAKE_ARGS=	CLANG_TBLGEN=${WRKSRC}/${RELTYPE}/bin/clang-tblgen \

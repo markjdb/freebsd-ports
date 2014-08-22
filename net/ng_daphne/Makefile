@@ -8,8 +8,8 @@ CATEGORIES=	net kld
 MASTER_SITES=	http://newton.ee.auth.gr/ng_daphne/ \
 		LOCAL/glarkin
 
-MAINTAINER=	gedimitr@auth.gr
-COMMENT=	A simple netgraph module for multihop ad hoc networks
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Simple netgraph module for multihop ad hoc networks
 
 SSP_UNSAFE=	kernel module does not support ssp
 

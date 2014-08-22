@@ -3,11 +3,14 @@
 
 PORTNAME=	hermes
 PORTVERSION=	1.0.1
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	deskutils www
 
-MAINTAINER=	horde@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Time tracking application
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 USE_HORDE=	base pkg-message
 USES=		gettext

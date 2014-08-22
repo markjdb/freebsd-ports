@@ -538,6 +538,7 @@
     SUBDIR += libspiro
     SUBDIR += libsvg
     SUBDIR += libsvg-cairo
+    SUBDIR += libtxc_dxtn
     SUBDIR += libvisual
     SUBDIR += libvisual04
     SUBDIR += libvisual04-plugins
@@ -564,7 +565,7 @@
     SUBDIR += lprof-devel
     SUBDIR += lua-gd
     SUBDIR += luminance
-    SUBDIR += luxrays
+    SUBDIR += luminance-qt5
     SUBDIR += luxrender
     SUBDIR += mahotas
     SUBDIR += makehuman
@@ -863,7 +864,7 @@
     SUBDIR += py-seqdiag
     SUBDIR += py-sorl-thumbnail
     SUBDIR += py-soya3d
-    SUBDIR += py-stl
+    SUBDIR += py-stltools
     SUBDIR += py-wand
     SUBDIR += py-webcolors
     SUBDIR += py3-cairo
@@ -959,6 +960,7 @@
     SUBDIR += seam-carving-gui
     SUBDIR += seejpeg
     SUBDIR += separate
+    SUBDIR += seq2gif
     SUBDIR += sharpconstruct
     SUBDIR += shiva-collections
     SUBDIR += shotwell
@@ -1003,6 +1005,7 @@
     SUBDIR += tkpng
     SUBDIR += togl
     SUBDIR += truevision
+    SUBDIR += ttygif
     SUBDIR += tulip
     SUBDIR += tumble
     SUBDIR += uDrawGraph

@@ -7,7 +7,6 @@ PORTREVISION=	1
 CATEGORIES=	misc
 MASTER_SITES=	http://www.maier-komor.de/software/mbuffer/
 DISTNAME=	${PORTNAME}-${PORTVERSION:S/.//g}
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	mm@FreeBSD.org
 COMMENT=	Tool for buffering data streams
@@ -15,7 +14,7 @@ COMMENT=	Tool for buffering data streams
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		gmake
+USES=		gmake tar:tgz
 GNU_CONFIGURE=	yes
 MAKE_ARGS=	SHELL=${SH}
 
@@ -29,7 +28,7 @@ OPTIONS_DEFAULT=	MHASH
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMHASH}
-LIB_DEPENDS+=	mhash.2:${PORTSDIR}/security/mhash
+LIB_DEPENDS+=	libmhash.so:${PORTSDIR}/security/mhash
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 .else

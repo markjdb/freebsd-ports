@@ -1,14 +1,14 @@
 # $FreeBSD$
 
 PORTNAME=	monitorix
-PORTVERSION=	3.4.0
+PORTVERSION=	3.5.1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.monitorix.org/ \
 		http://www.monitorix.org/old_versions/ \
 		http://www.bayofrum.net/dist/${PORTNAME}/
 
 MAINTAINER=	crees@FreeBSD.org
-COMMENT=	A web based monitoring system
+COMMENT=	Web based monitoring system
 
 LICENSE=	GPLv2
 

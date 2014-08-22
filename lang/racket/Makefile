@@ -2,17 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	racket
-PORTVERSION=	5.93
-PORTREVISION=	1
+PORTVERSION=	6.1
 CATEGORIES=	lang scheme
-MASTER_SITES=	http://download.racket-lang.org/installers/${PORTVERSION}/ \
-		http://www.eecs.northwestern.edu/racket/${PORTVERSION}/ \
+MASTER_SITES=	http://mirror.racket-lang.org/installers/${PORTVERSION}/ \
 		http://www.cs.utah.edu/plt/installers/${PORTVERSION}/ \
+		http://www.eecs.northwestern.edu/racket/${PORTVERSION}/ \
+		http://mirror.csclub.uwaterloo.ca/racket/racket-installers/${PORTVERSION}/ \
 		http://mirror.informatik.uni-tuebingen.de/mirror/racket/${PORTVERSION}/ \
-		ftp://infogroep.be/pub/racket/installers/${PORTVERSION}/ \
-		http://russell.cs.bilgi.edu.tr/racket-installers/${PORTVERSION}/
+		http://racket.infogroep.be/${PORTVERSION}/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-src
-EXTRACT_SUFX=	.tgz
 DIST_SUBDIR=	${PORTNAME}/${PORTVERSION}
 
 MAINTAINER=	olgeni@FreeBSD.org
@@ -36,14 +34,10 @@ CONFIGURE_ARGS=	--enable-shared --enable-pthread \
 IGNORE=		requires X11; use lang/racket-textual instead
 .endif
 
-.if ${ARCH} == "i386"
-MANUAL_PACKAGE_BUILD=	i386 requires kern.maxdsiz="640M" to build
-.endif
-
-LIB_DEPENDS+=	ffi:${PORTSDIR}/devel/libffi		\
-		cairo:${PORTSDIR}/graphics/cairo	\
-		jpeg:${PORTSDIR}/graphics/jpeg	\
-		png15:${PORTSDIR}/graphics/png
+LIB_DEPENDS+=	libffi.so:${PORTSDIR}/devel/libffi		\
+		libcairo.so:${PORTSDIR}/graphics/cairo	\
+		libjpeg.so:${PORTSDIR}/graphics/jpeg	\
+		libpng15.so:${PORTSDIR}/graphics/png
 
 .if ${PORT_OPTIONS:MRACKET_PLACES}
 CONFIGURE_ARGS+=	--enable-places
@@ -56,20 +50,21 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 CPPFLAGS+=	-I${LOCALBASE}/include
 
 WRKSRC=		${WRKDIR}/racket-${PORTVERSION}/src
-USES+=		iconv
-USE_AUTOTOOLS=	libtool:env
+USES=		iconv libtool tar:tgz
 USE_LDCONFIG=	yes
 USE_GNOME=	pango
 USE_SQLITE=	3
 
 ONLY_FOR_ARCHS=	i386 amd64
 
-RACKET_PLIST=	${WRKDIR}/pkg-plist
-
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64"
 CPPFLAGS+=	-DLONG64
 .endif
+
+post-install:
+	${REINPLACE_CMD} -e "s@${STAGEDIR}@@" ${STAGEDIR}${PREFIX}/share/applications/*.desktop
+	${RM} ${STAGEDIR}${PREFIX}/share/applications/*.bak
 
 .include <bsd.port.post.mk>

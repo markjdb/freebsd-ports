@@ -12,7 +12,7 @@ COMMENT=	HTTP, FTP, and Gopher mirroring tool
 
 LICENSE=	GPLv2
 
-USE_BZIP2=	yes
+USES=	tar:bzip2
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-locale-dir=${PREFIX}/share/locale \
@@ -22,7 +22,7 @@ CONFIGURE_ARGS=	--with-locale-dir=${PREFIX}/share/locale \
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=	DANTE GTK2 NLS
+OPTIONS_DEFINE=	DANTE GTK2 NLS DOCS
 DANTE_DESC=	Enable SOCKS proxy support
 OPTIONS_DEFAULT=	GTK2
 OPTIONS_SUB=	yes

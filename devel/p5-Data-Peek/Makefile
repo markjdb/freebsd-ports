@@ -6,7 +6,6 @@ PORTVERSION=	0.40
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Collection of low-level debug facilities
@@ -16,7 +15,10 @@ LICENSE_COMB=	dual
 
 TEST_DEPENDS=	p5-Test-NoWarnings>=0:${PORTSDIR}/devel/p5-Test-NoWarnings
 
-USES=		perl5
+USES=		perl5 tar:tgz
 USE_PERL5=	configure
+
+post-stage:
+	${STRIP_CMD} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/auto/Data/Peek/Peek.so
 
 .include <bsd.port.mk>

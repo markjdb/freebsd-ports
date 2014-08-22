@@ -3,7 +3,7 @@
 
 PORTNAME=	opendbx
 PORTVERSION=	1.4.6
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	databases
 MASTER_SITES=	http://www.linuxnetworks.de/opendbx/download/
 
@@ -12,11 +12,11 @@ COMMENT=	C library for accessing databases with a single API
 
 LICENSE=	LGPL21
 
-USES=		gmake
-USE_AUTOTOOLS=	libtool
+USES=		gmake libtool
 
 CPPFLAGS+=	-I${LOCALBASE}/include ${PTHREAD_CFLAGS}
 LDFLAGS+=	${PTHREAD_LIBS} -L${WRKSRC}/lib -L${LOCALBASE}/lib
+GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--with-backends="${CONFIGURE_MODULES}"
 
 USE_LDCONFIG=	${PREFIX}/lib/opendbx
@@ -40,9 +40,9 @@ SQLITE_LIB_DEPENDS=	libsqlite.so:${PORTSDIR}/databases/sqlite2
 
 SQLITE3_USE=	SQLITE=3
 
-MSSQL_LIB_DEPENDS=	sybdb:${PORTSDIR}/databases/freetds
+MSSQL_LIB_DEPENDS=	libsybdb.so:${PORTSDIR}/databases/freetds
 
-SYBASE_LIB_DEPENDS=	ct:${PORTSDIR}/databases/freetds
+SYBASE_LIB_DEPENDS=	libct.so:${PORTSDIR}/databases/freetds
 
 NLS_USES=		gettext
 NLS_CONFIGURE_DISABLE=	nls

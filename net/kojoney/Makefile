@@ -6,8 +6,8 @@ PORTVERSION=	0.0.4.2
 CATEGORIES=	net
 MASTER_SITES=	SF/${PORTNAME}
 
-MAINTAINER=	systemoperator@gmail.com
-COMMENT=	A low level interaction honeypot that emulates an SSH server
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Low level interaction honeypot that emulates an SSH server
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zope.interface>=3.3.0_1:${PORTSDIR}/devel/py-zope.interface \
 		${PYTHONPREFIX_SITELIBDIR}/Crypto:${PORTSDIR}/security/py-pycrypto \

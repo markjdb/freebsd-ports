@@ -2,17 +2,16 @@
 
 PORTNAME=	libmemcached
 PORTVERSION=	1.0.7
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	databases
 MASTER_SITES=	http://launchpad.net/${PORTNAME}/1.0/${PORTVERSION}/+download/
 
 MAINTAINER=	m.tsatsenko@gmail.com
 COMMENT=	C and C++ client library to the memcached server
 
-LIB_DEPENDS?=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo \
-		libevent-1.4.so:${PORTSDIR}/devel/libevent
+LIB_DEPENDS?=	libevent.so:${PORTSDIR}/devel/libevent2
 
-USES=		gmake pathfix pkgconfig perl5 libtool:keepla
+USES=		execinfo gmake pathfix pkgconfig perl5 libtool
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes

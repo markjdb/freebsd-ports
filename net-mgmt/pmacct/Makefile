@@ -3,7 +3,7 @@
 
 PORTNAME=	pmacct
 DISTVERSION=	0.14.3
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://www.pmacct.net/ \
 		http://mirrors.rit.edu/zi/
@@ -101,7 +101,7 @@ CONFIGURE_ARGS+=--enable-mongodb \
 .endif
 
 .if ${PORT_OPTIONS:MGEOIP}
-LIB_DEPENDS+=	GeoIP:${PORTSDIR}/net/GeoIP
+LIB_DEPENDS+=	libGeoIP.so:${PORTSDIR}/net/GeoIP
 CONFIGURE_ARGS+=--enable-geoip \
 		--with-geoip-libs=${LOCALBASE}/lib \
 		--with-geoip-includes=${LOCALBASE}/include

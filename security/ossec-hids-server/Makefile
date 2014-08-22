@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ossec-hids
-PORTVERSION=	2.7.1
+PORTVERSION=	2.8
 PORTREVISION?=	0
 CATEGORIES=	security
 MASTER_SITES=	http://www.ossec.net/files/ \
@@ -15,6 +15,8 @@ COMMENT?=	Security tool to monitor and check logs and intrusions
 USE_RC_SUBR=	ossec-hids
 
 CFLAGS+=	-ferror-limit=0
+
+USES=		readline
 
 .if defined(MAINTAINER_MODE)
 UID_FILES+=	../../UIDs
@@ -31,7 +33,7 @@ OPTIONS_DEFINE+=	DOCS
 SUB_LIST=	PORTNAME=${PORTNAME}
 SUB_FILES=	pkg-message
 PLIST_SUB=	PORTNAME=${PORTNAME}
-PORTDOCS=	BUGS CONFIG CONTRIBUTORS INSTALL LICENSE README
+PORTDOCS=	BUGS CONFIG CONTRIBUTORS INSTALL LICENSE
 
 .include <bsd.port.pre.mk>
 .if ${OSVERSION} < 800067
@@ -67,6 +69,9 @@ CONFLICTS=	ossec-hids-client-[0-9]* ossec-hids-local-[0-9]*
 post-patch:
 	@${REINPLACE_CMD} 's|PREFIX|${PREFIX}/${PORTNAME}|' ${WRKSRC}/src/headers/defs.h
 	@${ECHO} "DIR=\"${STAGEDIR}${PREFIX}/${PORTNAME}\"" > ${WRKSRC}/src/LOCATION
+	@${REINPLACE_CMD} -e 's|-DLUA_USE_LINUX|& ${CPPFLAGS}|' \
+		-e 's|-lreadline|& ${LDFLAGS}|' \
+		${WRKSRC}/src/external/lua-5.2.3/src/Makefile
 
 do-build:
 .if defined(WITH_DB)

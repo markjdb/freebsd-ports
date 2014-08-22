@@ -6,14 +6,14 @@ PORTVERSION=	1.1
 CATEGORIES=	net
 MASTER_SITES=	SF/ipa-system/modules/ipa_ipfw
 
-MAINTAINER=	simon@comsys.ntu-kpi.kiev.ua
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	IPA accounting module for FreeBSD IP Firewall
 
 LICENSE=	BSD
 
 NO_PACKAGE=	Needs to be built uniquely for each host
 
-USE_BZIP2=	yes
+USES=	tar:bzip2
 USE_LDCONFIG=	yes
 
 NO_STAGE=	yes

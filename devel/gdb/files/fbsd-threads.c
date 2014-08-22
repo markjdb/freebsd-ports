@@ -1296,7 +1296,7 @@ tsd_cb (thread_key_t key, void (*destructor)(void *), void *ignore)
   if (!bms.minsym)
     name = "???";
   else
-    name = SYMBOL_PRINT_NAME (bms.minsym);
+    name = MSYMBOL_PRINT_NAME (bms.minsym);
 
   printf_filtered ("Key %d, destructor %p <%s>\n", key, destructor, name);
   return 0;
@@ -1502,14 +1502,14 @@ ps_err_e
 ps_pglobal_lookup (struct ps_prochandle *ph, const char *obj,
    const char *name, psaddr_t *sym_addr)
 {
-  struct minimal_symbol *ms;
+  struct bound_minimal_symbol ms;
   CORE_ADDR addr;
 
   ms = lookup_minimal_symbol (name, NULL, NULL);
-  if (ms == NULL)
+  if (!ms.minsym) 
     return PS_NOSYM;
 
-  *sym_addr = SYMBOL_VALUE_ADDRESS (ms);
+  *sym_addr = BMSYMBOL_VALUE_ADDRESS (ms);
   return PS_OK;
 }
 

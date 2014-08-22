@@ -14,7 +14,7 @@ BUILD_DEPENDS=	nkf:${PORTSDIR}/japanese/nkf
 LIB_DEPENDS=	libapr-1.so:${PORTSDIR}/devel/apr1
 
 USE_AUTOTOOLS=	libtool
-USE_BZIP2=	YES
+USES=	tar:bzip2
 USE_BDB=	42
 GNU_CONFIGURE=	YES
 USE_RUBY=	YES
@@ -69,5 +69,7 @@ NO_STAGE=	yes
 DEFAULT_ENCODING?=	euc_jp
 
 BROKEN=		Does not compile
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2014-08-22
 
 .include <bsd.port.post.mk>

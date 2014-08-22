@@ -8,7 +8,7 @@ CATEGORIES=	lang
 MASTER_SITES=	http://user.cs.tu-berlin.de/~opal/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-src
 
-MAINTAINER=	bkoenig@cs.tu-berlin.de
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	The OPAL Compilation System
 
 BROKEN=		Fails to build
@@ -25,8 +25,7 @@ PLIST=		${WRKDIR}/pkg-plist
 # installs it manually at the 'do-install' stage.
 ALL_TARGET=	install
 
-USE_BZIP2=	yes
-USES=		gmake perl5 tk
+USES=		gmake perl5 tk tar:bzip2
 HAS_CONFIGURE=	yes
 USE_XORG=	xt
 MAKE_JOBS_UNSAFE=	yes

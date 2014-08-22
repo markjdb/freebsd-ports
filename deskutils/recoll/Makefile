@@ -6,7 +6,7 @@ PORTVERSION=	1.19.14
 CATEGORIES=	deskutils
 MASTER_SITES=	http://www.lesbonscomptes.com/${PORTNAME}/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	arved@FreeBSD.org
 COMMENT=	Personal full text search package, based on Xapian
 
 LICENSE=	GPLv2
@@ -45,7 +45,7 @@ IMAGE_RUN_DEPENDS=	exiftool:${PORTSDIR}/graphics/p5-Image-ExifTool-devel
 KONQUEROR_DESC=		Konqueror webarchive format with Python
 KONQUEROR_RUN_DEPENDS=	kwebkitpart:${PORTSDIR}/www/kwebkitpart
 LATEX_RUN_DEPENDS=	detex:${PORTSDIR}/print/detex \
-			dvips:${PORTSDIR}/print/dvips
+			dvips:${PORTSDIR}/print/tex-dvipsk
 PDF_RUN_DEPENDS=	xpdf:${PORTSDIR}/graphics/xpdf
 PS_RUN_DEPENDS=		pstotext:${PORTSDIR}/print/pstotext
 PYTHON_USE=		python=yes

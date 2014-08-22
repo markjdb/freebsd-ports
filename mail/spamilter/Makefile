@@ -6,7 +6,6 @@ PORTREVISION=	1
 CATEGORIES=	mail
 MASTER_SITES=	http://www.wanlink.com/spamilter/download/
 MASTER_SITE_SUBDIR=	dinoex
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Sendmail LibMilter filter to block spam
@@ -16,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 NEED_ROOT=	yes
 
-USES=		shebangfix
+USES=		tar:tgz shebangfix
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--have-resn
 USE_RC_SUBR=	spamilter
@@ -37,7 +36,7 @@ PLIST_FILES+=	bin/dnsblchk bin/dnsblupd bin/ipfwmtad bin/mxlookup \
 PORTDOCS=	Changelog INSTALL LICENSE docs.html docs.txt db.rcpt \
 		db.rdnsbl db.sndr policy.html spamilter.rc
 
-OPTIONS_DEFINE=	SMTP_AFTER_POP3 PAM LIBSPF
+OPTIONS_DEFINE=	SMTP_AFTER_POP3 PAM LIBSPF DOCS
 SMTP_AFTER_POP3_DESC=	SMTP after POP3
 LIBSPF_DESC=	build with libspf
 

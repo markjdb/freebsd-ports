@@ -9,10 +9,12 @@ MASTER_SITES=	ftp://ftp.edpsciences.org/pub/aa/
 DISTNAME=	aa-package
 DIST_SUBDIR=	latex
 
-MAINTAINER=	yokota@res.otaru-uc.ac.jp
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	LaTeX class for submission to "Astronomy and Astrophysics"
 
 BROKEN=		Does not install
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2014-08-22
 
 NO_BUILD=	yes
 NO_WRKSUBDIR=	yes

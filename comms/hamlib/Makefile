@@ -3,7 +3,7 @@
 
 PORTNAME=	hamlib
 PORTVERSION=	1.2.15.3
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	comms hamradio
 MASTER_SITES=	SF
 
@@ -14,17 +14,20 @@ LICENSE=	LGPL20
 
 BUILD_DEPENDS=	swig:${PORTSDIR}/devel/swig13
 
-USES=		perl5 pkgconfig pathfix tcl
+USES=		perl5 libtool:keepla pkgconfig pathfix tcl
 USE_GNOME=	libxml2
 USE_PYTHON=	yes
-USE_AUTOTOOLS=	autoconf libtool libltdl
+USE_AUTOTOOLS=	autoconf libltdl
 USE_LDCONFIG=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
+GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-perl-binding \
 		--enable-tcl-binding --with-tcl=${TCL_LIBDIR} \
 		--with-python-binding --without-rigmatrix
 PLIST_SUB=	VER=${PORTVERSION} TCL_VER=${TCL_VER}
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	${REINPLACE_CMD} -e 's|%%PYTHON_SITELIBDIR%%|${PYTHON_SITELIBDIR}|g' \

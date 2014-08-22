@@ -31,12 +31,12 @@ LIMGDIR?=	www/data/images
 IMGDIR=		${PREFIX}/${LIMGDIR}
 PLIST_SUB=	IMGDIR="${LIMGDIR}"
 
-.include <bsd.port.pre.mk>
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/analog ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/analog.man ${STAGEDIR}${MANPREFIX}/man/man1/analog.1
-	${INSTALL_DATA} ${WRKSRC}/analog.cfg ${STAGEDIR}${PREFIX}/etc/analog.cfg-dist
+	${INSTALL_DATA} ${WRKSRC}/analog.cfg ${STAGEDIR}${PREFIX}/etc/analog.cfg.sample
 	${MKDIR} ${STAGEDIR}${DATADIR}/lang
 	${INSTALL_DATA} ${WRKSRC}/lang/* ${STAGEDIR}${DATADIR}/lang
 	${MKDIR} ${STAGEDIR}${IMGDIR}
@@ -53,8 +53,4 @@ do-install:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/css/jreeves
 	${INSTALL_DATA} ${WRKSRC}/examples/css/jreeves/* ${STAGEDIR}${EXAMPLESDIR}/css/jreeves
 
-.if !exists(${STAGEDIR}${PREFIX}/etc/analog.cfg)
-	@cd ${STAGEDIR}${PREFIX}/etc && ${CP} -f analog.cfg-dist analog.cfg
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

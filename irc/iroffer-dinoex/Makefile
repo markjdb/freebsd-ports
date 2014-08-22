@@ -2,7 +2,7 @@
 
 PORTNAME=	iroffer
 PORTVERSION=	3.29
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	irc
 MASTER_SITES=	http://iroffer.dinoex.net/
 PKGNAMESUFFIX=	-dinoex${PKGNAMESUFFIX2}
@@ -39,7 +39,7 @@ IROFFER_EXAMPLES= iroffer.cron \
 IROFFER_HTDOCS=	iroffer-state.css robots.txt \
 		info.txt.rb json.txt.rb md5.txt.rb sfv.txt.rb
 
-OPTIONS_DEFINE=	CURL RUBY UPNP GEOIP
+OPTIONS_DEFINE=	CURL RUBY UPNP GEOIP DOCS EXAMPLES
 OPTIONS_DEFAULT=CURL RUBY UPNP GEOIP
 
 CURL_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl

@@ -23,7 +23,6 @@
     SUBDIR += bigsister
     SUBDIR += bpft
     SUBDIR += braa
-    SUBDIR += bsd-airtools
     SUBDIR += bsnmp-jails
     SUBDIR += bsnmp-regex
     SUBDIR += bsnmp-ucd
@@ -34,7 +33,6 @@
     SUBDIR += cdpd
     SUBDIR += cdpr
     SUBDIR += centreon-clib
-    SUBDIR += cflowd
     SUBDIR += check_logfiles
     SUBDIR += check_multi
     SUBDIR += check_mysql_health
@@ -79,6 +77,7 @@
     SUBDIR += grepcidr
     SUBDIR += grepip
     SUBDIR += gsnmp
+    SUBDIR += guifi-snpservices
     SUBDIR += hastmon
     SUBDIR += hawk
     SUBDIR += horde3-nic
@@ -105,6 +104,7 @@
     SUBDIR += jnettop
     SUBDIR += kismet
     SUBDIR += lanmap
+    SUBDIR += lg
     SUBDIR += libsmi
     SUBDIR += macroscope
     SUBDIR += mbrowse
@@ -117,6 +117,7 @@
     SUBDIR += nagios
     SUBDIR += nagios-certexp-plugin
     SUBDIR += nagios-check_bacula
+    SUBDIR += nagios-check_bacula5
     SUBDIR += nagios-check_clamav
     SUBDIR += nagios-check_cpu_usage
     SUBDIR += nagios-check_email_delivery
@@ -128,6 +129,7 @@
     SUBDIR += nagios-check_netsnmp
     SUBDIR += nagios-check_ports
     SUBDIR += nagios-check_postgres
+    SUBDIR += nagios-check_relayd_status
     SUBDIR += nagios-check_puppet
     SUBDIR += nagios-check_smartmon
     SUBDIR += nagios-check_tftp
@@ -321,6 +323,7 @@
     SUBDIR += torrus
     SUBDIR += unifi2
     SUBDIR += unifi3
+    SUBDIR += victorops-nagios
     SUBDIR += vidalia
     SUBDIR += virt-viewer
     SUBDIR += virtinst

@@ -7,7 +7,7 @@ PORTREVISION=	2
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	GH
 
-MAINTAINER=	waitman@waitman.net
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PR review for ports
 
 LICENSE=	PRHISTORY
@@ -15,8 +15,8 @@ LICENSE_NAME=	PRHISTORY BSD LICENSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 LICENSE_PERMS=	${_LICENSE_PERMS_DEFAULT}
 
-LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl \
-		sqlite3:${PORTSDIR}/databases/sqlite3
+LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
+		libsqlite3.so:${PORTSDIR}/databases/sqlite3
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	waitman

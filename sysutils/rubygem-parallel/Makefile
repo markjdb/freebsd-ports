@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	parallel
-PORTVERSION=	1.0.0
+PORTVERSION=	1.2.3
 CATEGORIES=	sysutils rubygems
 MASTER_SITES=	RG
 

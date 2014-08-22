@@ -25,7 +25,6 @@
     SUBDIR += bestfit
     SUBDIR += bibletime
     SUBDIR += biblical-curse
-    SUBDIR += bigboard
     SUBDIR += biosfont-demos
     SUBDIR += birthday
     SUBDIR += bogosort
@@ -34,7 +33,6 @@
     SUBDIR += boxquote.el
     SUBDIR += brs
     SUBDIR += buffer
-    SUBDIR += c-hey
     SUBDIR += callid
     SUBDIR += cave
     SUBDIR += cdcollect
@@ -96,6 +94,7 @@
     SUBDIR += fortune-mod-bible
     SUBDIR += fortune-mod-bofh
     SUBDIR += fortune-mod-culmea-culmilor
+    SUBDIR += fortune-mod-epictetus
     SUBDIR += fortune-mod-ferengi_rules_of_acquisition
     SUBDIR += fortune-mod-futurama
     SUBDIR += fortuneit
@@ -120,7 +119,6 @@
     SUBDIR += freebsd-doc-tr
     SUBDIR += freebsd-doc-zh_cn
     SUBDIR += freebsd-doc-zh_tw
-    SUBDIR += freecode-submit
     SUBDIR += freeguide
     SUBDIR += ftdi-eeprom
     SUBDIR += fxload
@@ -147,7 +145,6 @@
     SUBDIR += gkrellshoot2
     SUBDIR += gkrellweather2
     SUBDIR += gkx86info2
-    SUBDIR += gman
     SUBDIR += gnome-devel-docs
     SUBDIR += gnome-icon-theme
     SUBDIR += gnome-icon-theme-extras
@@ -449,6 +446,7 @@
     SUBDIR += unclutter
     SUBDIR += upclient
     SUBDIR += us-zipcodes
+    SUBDIR += usbids
     SUBDIR += usbrh-libusb
     SUBDIR += utftools
     SUBDIR += valspeak
@@ -459,7 +457,6 @@
     SUBDIR += window
     SUBDIR += wmScoreBoard
     SUBDIR += wmcalendar
-    SUBDIR += wminfo
     SUBDIR += wmjulia
     SUBDIR += wmpal
     SUBDIR += wmtunlo

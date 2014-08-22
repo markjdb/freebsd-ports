@@ -3,11 +3,10 @@
 
 PORTNAME=	pixie
 PORTVERSION=	2.2.6
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES=	graphics
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/Pixie%20${PORTVERSION}
 DISTNAME=	Pixie-src-${PORTVERSION}
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Photorealistic renderer with Pixar's RenderMan-like interface
@@ -19,7 +18,7 @@ LIB_DEPENDS=	libIlmImf.so:${PORTSDIR}/graphics/OpenEXR \
 		libfltk_gl.so:${PORTSDIR}/x11-toolkits/fltk
 
 USE_GL=		glu
-USES=		bison libtool pathfix
+USES=		bison libtool pathfix tar:tgz
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--includedir=${PREFIX}/include/pixie \
 		--libdir=${PREFIX}/lib/pixie \

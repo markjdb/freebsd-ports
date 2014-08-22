@@ -3,6 +3,7 @@
 
 PORTNAME=	bmon
 PORTVERSION=	3.3
+PORTREVISION=	1
 CATEGORIES=	net
 
 MAINTAINER=	michelle@sorbs.net
@@ -23,5 +24,7 @@ USES=		ncurses pkgconfig:build
 USE_AUTOTOOLS=	libtoolize autoheader automake aclocal
 AUTOMAKE_ARGS+=	--add-missing
 GNU_CONFIGURE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

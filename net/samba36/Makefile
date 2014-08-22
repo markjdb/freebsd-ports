@@ -2,7 +2,7 @@
 
 PORTNAME=		${SAMBA_BASENAME}36
 PORTVERSION=		3.6.24
-PORTREVISION?=		0
+PORTREVISION?=		2
 CATEGORIES?=		net
 MASTER_SITES=		${MASTER_SITE_SAMBA}
 MASTER_SITE_SUBDIR=	samba samba/stable samba/pre
@@ -20,6 +20,8 @@ PATCH_STRIP=		-p1
 EXTRA_PATCHES=		${PATCHDIR}/sernet.patch
 
 SAMBA_BASENAME=		samba
+CPE_VENDOR=		samba
+CPE_PRODUCT=		samba
 
 LATEST_LINK=		${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
 EXAMPLESDIR=		${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
@@ -30,7 +32,7 @@ AUTOHEADER_ARGS=	${IPATHS}
 AUTOCONF_ARGS=		${IPATHS}
 
 GNU_CONFIGURE=		yes
-USES=			gmake pkgconfig iconv
+USES=			gmake pkgconfig iconv cpe
 USE_AUTOTOOLS=		autoconf autoheader
 USE_LDCONFIG=		${SAMBA_LIBDIR}
 # pkg-config is used to find talloc
@@ -80,7 +82,7 @@ CONFIGURE_ENV+=		ac_cv_header_sys_mount_h=yes
 # XXX: readdir test fails on ZFS, bringing unusable replacement code
 CONFIGURE_ENV+=		libreplace_cv_READDIR_NEEDED=no
 # Let process generate meaningful backtrace on a core dump
-LIB_DEPENDS+=		execinfo:${PORTSDIR}/devel/libexecinfo
+LIB_DEPENDS+=		libexecinfo.so:${PORTSDIR}/devel/libexecinfo
 # tdb
 BUILD_DEPENDS+=		tdb>=1.2.6:${PORTSDIR}/databases/tdb
 RUN_DEPENDS+=		tdb>=1.2.6:${PORTSDIR}/databases/tdb
@@ -99,9 +101,9 @@ CONFIGURE_ARGS+=	${ICONV_CONFIGURE_BASE} \
 
 .if !defined(SAMBA_SUBPORT)
 OPTIONS_DEFINE=		ACL_SUPPORT ADS AIO_SUPPORT AVAHI CUPS DNSUPDATE \
-			EXP_MODULES FAM_SUPPORT IPV6 LDAP MAX_DEBUG \
-			PAM_SMBPASS POPT PTHREADPOOL QUOTAS SMBTORTURE \
-			SWAT SYSLOG UTMP WINBIND
+			DOCS EXAMPLES EXP_MODULES FAM_SUPPORT IPV6 LDAP \
+			MAX_DEBUG PAM_SMBPASS POPT PTHREADPOOL QUOTAS \
+			SMBTORTURE SWAT SYSLOG UTMP WINBIND
 
 OPTIONS_DEFAULT=	ACL_SUPPORT AIO_SUPPORT CUPS LDAP POPT PTHREADPOOL \
 			WINBIND
@@ -164,7 +166,7 @@ SAMBA_WANT_LDAP=	yes
 .endif
 
 .if ${PORT_OPTIONS:MCUPS}
-LIB_DEPENDS+=		cups:${PORTSDIR}/print/cups-client
+LIB_DEPENDS+=		libcups.so:${PORTSDIR}/print/cups-client
 CONFIGURE_ARGS+=	--enable-cups --enable-iprint
 SUB_LIST+=		CUPS=""
 .else
@@ -175,7 +177,7 @@ SUB_LIST+=		CUPS="@comment "
 .if ${PORT_OPTIONS:MMAX_DEBUG}
 CPPFLAGS+=		-g
 LDFLAGS+=		-g
-LIB_DEPENDS+=		dmalloc:${PORTSDIR}/devel/dmalloc
+LIB_DEPENDS+=		libdmalloc.so:${PORTSDIR}/devel/dmalloc
 CONFIGURE_ARGS+=	--enable-debug
 #			--enable-socket-wrapper --enable-nss-wrapper \
 #			--enable-developer --enable-krb5developer \
@@ -249,7 +251,7 @@ CONFIGURE_ARGS+=	--disable-fam
 CONFIGURE_ARGS+=	--with-acl-support
 .	if ${OSVERSION} > 800000
 WANT_EXP_MODULES+=	vfs_zfsacl
-LIB_DEPENDS+=		sunacl:${PORTSDIR}/sysutils/libsunacl
+LIB_DEPENDS+=		libsunacl.so:${PORTSDIR}/sysutils/libsunacl
 .	endif
 .else
 CONFIGURE_ARGS+=	--without-acl-support
@@ -276,7 +278,7 @@ PLIST_SUB+=		SMBPASS="@comment "
 .	if ! ${PORT_OPTIONS:MADS}
 IGNORE=			dynamic DNS updates require ADS support. Disable DNSUPDATE support
 .	endif
-LIB_DEPENDS+=		uuid:${PORTSDIR}/misc/e2fsprogs-libuuid
+LIB_DEPENDS+=		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid
 CONFIGURE_ARGS+=	--with-dnsupdate
 .else
 CONFIGURE_ARGS+=	--without-dnsupdate
@@ -285,7 +287,7 @@ CONFIGURE_ARGS+=	--without-dnsupdate
 .if ${PORT_OPTIONS:MAVAHI}
 CPPFLAGS+=		`pkg-config --cflags avahi-client`
 CONFIGURE_ENV+=		DNSSD_LIBS="`pkg-config --libs avahi-client`"
-LIB_DEPENDS+=		avahi-client:${PORTSDIR}/net/avahi-app
+LIB_DEPENDS+=		libavahi-client.so:${PORTSDIR}/net/avahi-app
 CONFIGURE_ARGS+=	--enable-avahi
 .else
 CONFIGURE_ARGS+=	--disable-avahi
@@ -298,7 +300,7 @@ CONFIGURE_ARGS+=	--disable-pthreadpool
 .endif
 
 .if ${PORT_OPTIONS:MPOPT}
-LIB_DEPENDS+=		popt:${PORTSDIR}/devel/popt
+LIB_DEPENDS+=		libpopt.so:${PORTSDIR}/devel/popt
 CONFIGURE_ARGS+=	--without-included-popt
 .else
 CONFIGURE_ARGS+=	--with-included-popt
@@ -332,7 +334,7 @@ CONFIGURE_ARGS+=	--with-krb5="${HEIMDAL_HOME}"
 .elif exists(/usr/lib/libkrb5.so) && exists(/usr/bin/krb5-config)
 CONFIGURE_ARGS+=	--with-krb5="/usr"
 .else
-LIB_DEPENDS+=		krb5:${PORTSDIR}/security/heimdal
+LIB_DEPENDS+=		libkrb5.so:${PORTSDIR}/security/heimdal
 CONFIGURE_ARGS+=	--with-krb5="${LOCALBASE}"
 .endif
 .else
@@ -357,6 +359,8 @@ post-patch:
 		    ${WRKSRC}/Makefile.in
 		@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \
 		    ${WRKSRC}/configure.in ${WRKSRC}/m4/aclocal.m4
+		${REINPLACE_CMD} -e '\|^Libs:|d; s|^#Libs:|Libs:|g' \
+		    ${WRKSRC}/pkgconfig/*.pc.in
 ###
 ### end of common part
 ###
@@ -481,6 +485,7 @@ pre-install:
 .endif
 
 post-install:
+	@${RM} -f ${STAGEDIR}/${PREFIX}/bin/findsmb
 .for sect in 1 3 5 7 8
 	@${MKDIR} ${STAGEDIR}${MAN${sect}PREFIX}/man/man${sect}
 .	for man in ${SAMBA_MAN${sect}}

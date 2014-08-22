@@ -2,7 +2,7 @@
 
 PORTNAME=	gnuradio
 PORTVERSION=	3.7.2.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	comms astro hamradio
 MASTER_SITES=	http://gnuradio.org/releases/gnuradio/ \
 		${MASTER_SITE_LOCAL}
@@ -15,6 +15,7 @@ BUILD_DEPENDS=	sdl-config:${PORTSDIR}/devel/sdl12 \
 		swig2.0:${PORTSDIR}/devel/swig20 \
 		cheetah:${PORTSDIR}/devel/py-cheetah \
 		py*-lxml>=0:${PORTSDIR}/devel/py-lxml \
+		${PYNUMPY} \
 		${PYTHON_SITELIBDIR}/pygtk.py:${PORTSDIR}/x11-toolkits/py-gtk2 \
 		${PYTHON_SITELIBDIR}/PyQt4/Qt.py:${PORTSDIR}/devel/py-qt4 \
 		xdg-open:${PORTSDIR}/devel/xdg-utils \

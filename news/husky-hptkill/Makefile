@@ -8,10 +8,10 @@ CATEGORIES=	news mail
 MASTER_SITES=	SF/husky/${PORTNAME}/1.10-release
 DISTNAME=	${PORTNAME}-${PORTVERSION}-src
 
-MAINTAINER=	fjoe@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Area killing utility
 
-LIB_DEPENDS=	fidoconfig.0:${PORTSDIR}/news/husky-fidoconf
+LIB_DEPENDS=	libfidoconfig.so:${PORTSDIR}/news/husky-fidoconf
 
 MAN1=		hptkill.1
 MANCOMPRESSED=	yes

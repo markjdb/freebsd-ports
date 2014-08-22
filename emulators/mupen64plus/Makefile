@@ -8,7 +8,7 @@ MASTER_SITES=	# empty
 DISTFILES=	# empty
 EXTRACT_ONLY=	# empty
 
-MAINTAINER?=	acm@FreeBSD.org
+MAINTAINER?=	ports@FreeBSD.org
 COMMENT=	Fork of Mupen64 Nintendo 64 emulator with plugins (meta port)
 
 # Mupen64 Emulator core and ui-console
@@ -34,7 +34,6 @@ SUB_FILES=	pkg-message
 
 do-install:	# empty
 
-NO_STAGE=	yes
 post-install:
 	@${CAT} ${PKGMESSAGE}
 

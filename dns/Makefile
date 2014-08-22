@@ -21,6 +21,7 @@
     SUBDIR += curvedns
     SUBDIR += ddclient
     SUBDIR += ddns
+    SUBDIR += denominator
     SUBDIR += dhisd
     SUBDIR += djbdns
     SUBDIR += djbdns-tools
@@ -34,6 +35,7 @@
     SUBDIR += dnscrypt-proxy
     SUBDIR += dnsflood
     SUBDIR += dnshijacker
+    SUBDIR += dnshistory
     SUBDIR += dnsjava
     SUBDIR += dnsmasq
     SUBDIR += dnsmasq-devel
@@ -58,6 +60,8 @@
     SUBDIR += ghtool
     SUBDIR += hesiod
     SUBDIR += hostdb
+    SUBDIR += hs-dns
+    SUBDIR += hs-gnuidn
     SUBDIR += idnkit
     SUBDIR += idnkit2
     SUBDIR += inadyn
@@ -72,6 +76,7 @@
     SUBDIR += libdjbdns
     SUBDIR += libidn
     SUBDIR += linux-f10-libasyncns
+    SUBDIR += mDNSResponder_nss
     SUBDIR += maradns
     SUBDIR += maradns1
     SUBDIR += mdnsd

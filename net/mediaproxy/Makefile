@@ -8,8 +8,8 @@ CATEGORIES=	net
 MASTER_SITES=	http://mediaproxy.ag-projects.com/ \
 		http://mediaproxy.ag-projects.com/old/
 
-MAINTAINER=	steve@energistic.com
-COMMENT=	A far-end NAT traversal solution for SER/OpenSER
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Far-end NAT traversal solution for SER/OpenSER
 
 USE_RC_SUBR=	mediaproxy proxydispatcher
 

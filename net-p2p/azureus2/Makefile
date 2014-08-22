@@ -8,8 +8,8 @@ CATEGORIES=	net-p2p java
 MASTER_SITES=	SF/azureus/x_obsolete/azureus-${PORTVERSION}
 DISTNAME=	azureus_${PORTVERSION}_source
 
-MAINTAINER=	rnoland@2hip.net
-COMMENT=	A BitTorrent client written in Java
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	BitTorrent client written in Java
 
 BROKEN=		Fails to build
 

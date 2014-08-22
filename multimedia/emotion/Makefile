@@ -14,9 +14,8 @@ COMMENT=	Video playback wrapper library for Enlightenment
 LICENSE=	BSD
 
 DIST_SUBDIR=	e17
-USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
-USES=		pathfix pkgconfig
+USES=		pathfix pkgconfig tar:bzip2
 USE_EFL=	ecore edje eet eio embryo evas libtool_hack modarch_hack
 USE_EFL_EVAS_LOADERS=	png jpeg
 USE_LDCONFIG=	yes
@@ -47,7 +46,7 @@ PLIST_SUB+=	GST="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MLIBXINE}
-LIB_DEPENDS+=	xine:${PORTSDIR}/multimedia/libxine
+LIB_DEPENDS+=	libxine.so:${PORTSDIR}/multimedia/libxine
 CONFIGURE_ARGS+=--enable-xine
 PLIST_SUB+=	XINE=""
 .else

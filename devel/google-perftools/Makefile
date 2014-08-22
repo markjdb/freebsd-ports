@@ -19,15 +19,14 @@ PROJECTHOST=	gperftools
 WRKSRC=		${WRKDIR}/gperftools-${PORTVERSION}
 DOCSDIR=	${PREFIX}/share/doc/gperftools
 
-BUILD_DEPENDS+=	${LOCALBASE}/include/execinfo.h:${PORTSDIR}/devel/libexecinfo
-LIB_DEPENDS+=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo
-
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-USES=		compiler libtool
+USES=		compiler execinfo libtool
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib -lexecinfo
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.pre.mk>
 

@@ -9,7 +9,7 @@ CATEGORIES=	misc
 MASTER_SITES=	SF/amanda/amanda%20-%20stable/${PORTVERSION}
 PKGNAMESUFFIX?=	-server
 
-MAINTAINER=	kuriyama@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT?=	The Advanced Maryland Automatic Network Disk Archiver (server)
 
 RUN_DEPENDS=	perl-amanda:${PORTSDIR}/misc/amanda-perl-wrapper
@@ -144,7 +144,7 @@ CONFIGURE_ARGS+=	--with-smbclient=${LOCALBASE}/bin/smbclient
 
 # If configure founds libcurl, automatically enabled it (with plist change).
 .if ${PORT_OPTIONS:MS3}
-LIB_DEPENDS+=	curl:${PORTSDIR}/ftp/curl
+LIB_DEPENDS+=	libcurl.so:${PORTSDIR}/ftp/curl
 CONFIGURE_ARGS+=	--enable-s3-device
 PLIST_SUB+=	S3DEVICE=''
 .else

@@ -2,7 +2,7 @@
 
 PORTNAME=	adjustableclock
 PORTVERSION=	4.1.4
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	x11-clocks deskutils kde
 MASTER_SITES=	http://kde-look.org/CONTENT/content-files/
 PKGNAMEPREFIX=	plasma-applet-
@@ -13,8 +13,7 @@ COMMENT=	KDE4 highly configurable clock plasma applet
 
 LICENSE=	GPLv2
 
-USE_BZIP2=	yes
-USES=		cmake gettext
+USES=		cmake gettext tar:bzip2
 USE_KDE4=	automoc4 kdeprefix workspace
 USE_QT4=	qmake_build moc_build rcc_build uic_build
 

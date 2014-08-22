@@ -8,15 +8,14 @@ PORTEPOCH=	1
 CATEGORIES=	print www
 MASTER_SITES=	http://www.fpdf.org/en/
 DISTNAME=	${PORTNAME}${PORTVERSION:S|.||}
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	thierry@FreeBSD.org
-COMMENT=	A free PHP class to generate PDF files with pure PHP
+COMMENT=	Free PHP class to generate PDF files with pure PHP
 
 USE_PHP=	zlib
 
 FETCH_CMD=	${FETCH_BINARY} -ARr -o ${DISTDIR}/${DISTFILES}
-USES=		dos2unix
+USES=		dos2unix tar:tgz
 NO_BUILD=	yes
 
 FPDF_DIR?=	share/fpdf

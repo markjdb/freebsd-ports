@@ -54,6 +54,7 @@
     SUBDIR += higan
     SUBDIR += hugo
     SUBDIR += i386-wine
+    SUBDIR += i386-wine-compholio
     SUBDIR += i386-wine-devel
     SUBDIR += ia64sim
     SUBDIR += ines
@@ -107,6 +108,7 @@
     SUBDIR += pcemu
     SUBDIR += pcsxr
     SUBDIR += pearpc
+    SUBDIR += pipelight
     SUBDIR += psim-freebsd
     SUBDIR += q4wine
     SUBDIR += qemu
@@ -155,6 +157,7 @@
     SUBDIR += wine
     SUBDIR += wine-devel
     SUBDIR += wine-doors
+    SUBDIR += wine-compholio
     SUBDIR += wine-gecko
     SUBDIR += wine-gecko-devel
     SUBDIR += wine-mono

@@ -3,6 +3,7 @@
 
 PORTNAME=	luxrender
 PORTVERSION=	1.3.1
+PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	http://src.luxrender.net/lux/get/ \
 		http://src.luxrender.net/luxrays/get/:lr
@@ -23,6 +24,9 @@ LIB_DEPENDS=	libboost_python.so:${PORTSDIR}/devel/boost-python-libs \
 .if !exists(/usr/include/execinfo.h)
 LIB_DEPENDS+=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo
 .endif
+
+ONLY_FOR_ARCHS=	i386 amd64
+ONLY_FOR_ARCHS_REASON=	uses SSE extensions
 
 USES=		bison cmake tar:bzip2
 USE_GL=		glut glew
@@ -50,6 +54,8 @@ post-patch:
 		${LUXRAYS_WRKSRC}/samples/smallluxgpu4/smallluxgpu.h \
 		${WRKSRC}/core/osfunc.h \
 		${WRKSRC}/shapes/mikktspace/weldmesh.c
+	@${REINPLACE_CMD} -e '/^set(Boost_USE_STATIC_LIBS/s,ON,OFF,' \
+		${LUXRAYS_WRKSRC}/cmake/Dependencies.cmake
 
 pre-configure:
 	cd ${LUXRAYS_WRKSRC} && ${SETENV} ${CMAKE_ENV} ${CMAKE_BIN} \

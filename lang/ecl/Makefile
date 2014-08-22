@@ -5,15 +5,16 @@ PORTNAME=	ecl
 PORTVERSION=	13.5.1
 CATEGORIES=	lang lisp
 MASTER_SITES=	SF/${PORTNAME}s/${PORTNAME}s/13.5/
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	ANSI Common Lisp implementation
 
-LIB_DEPENDS=	gmp:${PORTSDIR}/math/gmp
+BROKEN=		Fails to link with new libgc
+
+LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp
 
 MAKE_JOBS_UNSAFE=	yes
-USES=		gmake perl5
+USES=		gmake perl5 tar:tgz
 USE_PERL5=	build
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-system-gmp --with-gmp-prefix=${LOCALBASE} --enable-boehm=system
@@ -64,7 +65,7 @@ PLIST_SUB+=	SOCKETS="@comment "
 
 .if ${PORT_OPTIONS:MDFFI}
 CONFIGURE_ARGS+=--with-dffi=system
-LIB_DEPENDS+=	ffi:${PORTSDIR}/devel/libffi
+LIB_DEPENDS+=	libffi.so:${PORTSDIR}/devel/libffi
 .else
 CONFIGURE_ARGS+=--with-dffi=no
 .endif
@@ -72,11 +73,11 @@ CONFIGURE_ARGS+=--with-dffi=no
 .if ${PORT_OPTIONS:MTHREADS}
 CONFIGURE_ARGS+=--enable-threads=yes
 LDFLAGS+=	${PTHREAD_LIBS}
-LIB_DEPENDS+=	gc-threaded:${PORTSDIR}/devel/boehm-gc-threaded
+LIB_DEPENDS+=	libgc-threaded.so:${PORTSDIR}/devel/boehm-gc-threaded
 PLIST_SUB+=	THREADS=""
 .else
 CONFIGURE_ARGS+=--enable-threads=no
-LIB_DEPENDS+=	gc:${PORTSDIR}/devel/boehm-gc
+LIB_DEPENDS+=	libgc.so:${PORTSDIR}/devel/boehm-gc
 PLIST_SUB+=	THREADS="@comment "
 .endif
 

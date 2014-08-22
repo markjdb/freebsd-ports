@@ -8,10 +8,10 @@ CATEGORIES=	x11-fonts
 MASTER_SITES=	SF/artwizaleczapka/iso-8859-1/${PORTVERSION}
 
 MAINTAINER=	herbert.skuhra@gmx.at
-COMMENT=	A set of (improved) artwiz fonts
+COMMENT=	Set of (improved) artwiz fonts
 
 NO_BUILD=	yes
-USE_BZIP2=	yes
+USES=	tar:bzip2
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
 FONTS=	anorexia.de aqui.de cure.de drift.de edges.de fkp.de gelly.de \

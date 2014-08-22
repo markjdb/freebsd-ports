@@ -9,7 +9,7 @@ MASTER_SITES=	SF/${PORTNAME}/OldFiles
 DISTNAME=	Pyjamas-${PORTVERSION}
 
 MAINTAINER=	nivit@FreeBSD.org
-COMMENT=	A port of Google Web Toolkit to Python
+COMMENT=	Port of Google Web Toolkit to Python
 
 USE_PYTHON=	yes
 # install/require some libraries in sys.prefix
@@ -18,6 +18,8 @@ USE_PYDISTUTILS=	yes
 PYDISTUTILS_AUTOPLIST=	yes
 
 REINPLACE_ARGS=	-i '' -e 's,../../bin,${PREFIX}/bin,'
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/share/pyjamas|${DATADIR}|' ${WRKSRC}/setup.py

@@ -8,7 +8,7 @@ CATEGORIES=	print python
 MASTER_SITES=	http://files.bsdroot.lv/my/FreeBSD/distfiles/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	graudeejs@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Split your pdf into 2 pdf, color and bw, for printing
 
 LICENSE=	GPLv2
@@ -18,7 +18,7 @@ RUN_DEPENDS=	pdftk:${PORTSDIR}/print/pdftk \
 
 USE_GHOSTSCRIPT_RUN=	yes
 USE_PYTHON=	yes
-USE_XZ=		yes
+USES=		tar:xz
 
 PLIST_FILES=	bin/${PORTNAME}
 

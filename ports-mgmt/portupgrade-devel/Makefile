@@ -3,7 +3,7 @@
 
 PORTNAME=	portupgrade
 PORTVERSION=	20140524
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=	3
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	GH \
@@ -34,6 +34,8 @@ MAKE_ARGS=	PREFIX="${PREFIX}" RUBY="${RUBY}" \
 
 EXAMPLESDIR=	${PREFIX}/share/examples/pkgtools
 DOCSDIR=	${PREFIX}/share/doc/pkgtools
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
 .include <bsd.port.pre.mk>
 

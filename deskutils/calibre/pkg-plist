@@ -372,6 +372,7 @@ lib/calibre/calibre/ebooks/metadata/xmp.py
 lib/calibre/calibre/ebooks/metadata/zip.py
 lib/calibre/calibre/ebooks/mobi/__init__.py
 lib/calibre/calibre/ebooks/mobi/debug/__init__.py
+lib/calibre/calibre/ebooks/mobi/debug/containers.py
 lib/calibre/calibre/ebooks/mobi/debug/headers.py
 lib/calibre/calibre/ebooks/mobi/debug/index.py
 lib/calibre/calibre/ebooks/mobi/debug/main.py
@@ -381,6 +382,7 @@ lib/calibre/calibre/ebooks/mobi/huffcdic.py
 lib/calibre/calibre/ebooks/mobi/langcodes.py
 lib/calibre/calibre/ebooks/mobi/mobiml.py
 lib/calibre/calibre/ebooks/mobi/reader/__init__.py
+lib/calibre/calibre/ebooks/mobi/reader/containers.py
 lib/calibre/calibre/ebooks/mobi/reader/headers.py
 lib/calibre/calibre/ebooks/mobi/reader/index.py
 lib/calibre/calibre/ebooks/mobi/reader/markup.py
@@ -1009,6 +1011,7 @@ lib/calibre/calibre/gui2/tweak_book/diff/main.py
 lib/calibre/calibre/gui2/tweak_book/diff/view.py
 lib/calibre/calibre/gui2/tweak_book/editor/__init__.py
 lib/calibre/calibre/gui2/tweak_book/editor/canvas.py
+lib/calibre/calibre/gui2/tweak_book/editor/help.py
 lib/calibre/calibre/gui2/tweak_book/editor/image.py
 lib/calibre/calibre/gui2/tweak_book/editor/insert_resource.py
 lib/calibre/calibre/gui2/tweak_book/editor/smart/__init__.py
@@ -1026,6 +1029,7 @@ lib/calibre/calibre/gui2/tweak_book/job.py
 lib/calibre/calibre/gui2/tweak_book/live_css.py
 lib/calibre/calibre/gui2/tweak_book/main.py
 lib/calibre/calibre/gui2/tweak_book/manage_fonts.py
+lib/calibre/calibre/gui2/tweak_book/plugin.py
 lib/calibre/calibre/gui2/tweak_book/polish.py
 lib/calibre/calibre/gui2/tweak_book/preferences.py
 lib/calibre/calibre/gui2/tweak_book/preview.py
@@ -1044,7 +1048,6 @@ lib/calibre/calibre/gui2/viewer/bookmarkmanager.py
 lib/calibre/calibre/gui2/viewer/bookmarkmanager_ui.py
 lib/calibre/calibre/gui2/viewer/config.py
 lib/calibre/calibre/gui2/viewer/config_ui.py
-lib/calibre/calibre/gui2/viewer/dictionary.py
 lib/calibre/calibre/gui2/viewer/documentview.py
 lib/calibre/calibre/gui2/viewer/flip.py
 lib/calibre/calibre/gui2/viewer/gestures.py
@@ -1153,7 +1156,6 @@ lib/calibre/calibre/utils/complete.py
 lib/calibre/calibre/utils/config.py
 lib/calibre/calibre/utils/config_base.py
 lib/calibre/calibre/utils/date.py
-lib/calibre/calibre/utils/dictclient.py
 lib/calibre/calibre/utils/file_associations.py
 lib/calibre/calibre/utils/filenames.py
 lib/calibre/calibre/utils/fonts/__init__.py
@@ -1530,6 +1532,12 @@ share/applications/calibre-lrfviewer.desktop
 %%DATADIR%%/dictionaries/es-ES/es-ES.dic
 %%DATADIR%%/dictionaries/es-ES/locales
 %%DATADIR%%/ebook-convert-complete.pickle
+%%DATADIR%%/editor-help/css.json
+%%DATADIR%%/editor-help/html.json
+%%DATADIR%%/editor-help/mathml.json
+%%DATADIR%%/editor-help/opf2.json
+%%DATADIR%%/editor-help/opf3.json
+%%DATADIR%%/editor-help/svg.json
 %%DATADIR%%/fonts/calibreSymbols.otf
 %%DATADIR%%/fonts/liberation/LiberationMono-Bold.ttf
 %%DATADIR%%/fonts/liberation/LiberationMono-BoldItalic.ttf
@@ -1586,6 +1594,7 @@ share/applications/calibre-lrfviewer.desktop
 %%DATADIR%%/images/dictionary.png
 %%DATADIR%%/images/diff.png
 %%DATADIR%%/images/document-encrypt.png
+%%DATADIR%%/images/document-import.png
 %%DATADIR%%/images/document-new.png
 %%DATADIR%%/images/document_open.png
 %%DATADIR%%/images/donate.png
@@ -1606,6 +1615,7 @@ share/applications/calibre-lrfviewer.desktop
 %%DATADIR%%/images/embed-fonts.png
 %%DATADIR%%/images/exec.png
 %%DATADIR%%/images/filter.png
+%%DATADIR%%/images/folder_saved_search.png
 %%DATADIR%%/images/font.png
 %%DATADIR%%/images/font_size_larger.png
 %%DATADIR%%/images/font_size_smaller.png
@@ -1767,7 +1777,9 @@ share/applications/calibre-lrfviewer.desktop
 %%DATADIR%%/localization/stats.pickle
 %%DATADIR%%/metadata_sqlite.sql
 %%DATADIR%%/mime.types
-%%DATADIR%%/quick_start.epub
+%%DATADIR%%/quick_start/deu.epub
+%%DATADIR%%/quick_start/eng.epub
+%%DATADIR%%/quick_start/fra.epub
 %%DATADIR%%/scripts.pickle
 %%DATADIR%%/template-functions.json
 %%DATADIR%%/templates/book_details.css
@@ -1978,7 +1990,7 @@ share/applications/calibre-lrfviewer.desktop
 %%DATADIR%%/viewer/mathjax/jax/output/SVG/fonts/TeX/fontdata.js
 %%DATADIR%%/viewer/mathjax/jax/output/SVG/jax.js
 %%DATADIR%%/viewer/referencing.js
-share/bash-completion/calibre
+share/bash-completion/completions/calibre
 share/gnome/apps/calibre-ebook-edit.desktop
 share/gnome/apps/calibre-ebook-viewer.desktop
 share/gnome/apps/calibre-gui.desktop
@@ -2075,6 +2087,7 @@ share/zsh/site-functions/_calibre
 @dirrm %%DATADIR%%/viewer/hyphenate
 @dirrm %%DATADIR%%/viewer
 @dirrm %%DATADIR%%/templates
+@dirrm %%DATADIR%%/quick_start
 @dirrm %%DATADIR%%/localization/pykakasi
 @dirrm %%DATADIR%%/localization
 @dirrm %%DATADIR%%/jacket
@@ -2085,6 +2098,7 @@ share/zsh/site-functions/_calibre
 @dirrm %%DATADIR%%/images
 @dirrm %%DATADIR%%/fonts/liberation
 @dirrm %%DATADIR%%/fonts
+@dirrm %%DATADIR%%/editor-help
 @dirrm %%DATADIR%%/dictionaries/es-ES
 @dirrm %%DATADIR%%/dictionaries/en-US
 @dirrm %%DATADIR%%/dictionaries/en-GB

@@ -8,7 +8,6 @@ CATEGORIES=	cad
 MASTER_SITES=	http://www.geuz.org/gmsh/src/ \
 		http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-source
-EXTRACT_SUFX=	.tgz
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 DIST_SUBDIR=	gmsh
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
@@ -25,13 +24,15 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}-source
 
 SLAVEDIRS=	cad/gmsh-occ
 
-USES=		cmake fortran gmake
+USES=		cmake fortran gmake tar:tgz
 USE_GL=		yes
 ALL_TARGET=	all
 
 MAKE_JOBS_UNSAFE=	yes
 
 CMAKE_ARGS+=	-DCMAKE_SKIP_RPATH:BOOL=YES
+
+OPTIONS_DEFINE=	DOCS
 
 .if !defined(WITHOUT_STATIC_LIB)
 CMAKE_ARGS+=	-DENABLE_BUILD_LIB=ON

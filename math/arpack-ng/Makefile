@@ -20,7 +20,7 @@ CONFLICTS=	arpack-[0-9]*
 
 GNU_CONFIGURE=	yes
 
-CONFIGURE_ARGS =	--disable-mpi --with-blas="${BLAS}" \
+CONFIGURE_ARGS=	--disable-mpi --with-blas="${BLAS}" \
 			--with-lapack="${LAPACK}"
 LDFLAGS+=	-L${LOCALBASE}/lib
 
@@ -32,6 +32,8 @@ PLIST_FILES=	lib/libarpack.a \
 
 WRKSRC=	${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
+OPTIONS_DEFINE=	DOCS
+
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
@@ -42,19 +44,19 @@ WITH_BLAS?=	blas
 
 .if ${WITH_BLAS} == "gotoblas"
 BLAS=		-lgoto2p
-LAPACK =	-lgoto2p
+LAPACK=		-lgoto2p
 LIB_DEPENDS+=	libgoto2p.so:${PORTSDIR}/math/gotoblas
 .elif ${WITH_BLAS} == "atlas"
 BLAS=		-lptf77blas
-LAPACK =	-lalapack -lptcblas
+LAPACK=		-lalapack -lptcblas
 LIB_DEPENDS+=	libptf77blas.so:${PORTSDIR}/math/atlas
 .elif ${WITH_BLAS} == "blas"
 BLAS=		-lblas
-LAPACK =	-llapack
+LAPACK=		-llapack
 LIB_DEPENDS+=	libblas.so:${PORTSDIR}/math/blas \
 		liblapack.so:${PORTSDIR}/math/lapack
 .else
-IGNORE =	unknown value of WITH_BLAS: ${WITH_BLAS}
+IGNORE=		unknown value of WITH_BLAS: ${WITH_BLAS}
 .endif
 
 post-patch:

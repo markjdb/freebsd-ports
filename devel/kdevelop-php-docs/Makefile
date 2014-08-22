@@ -2,7 +2,7 @@
 
 PORTNAME=	kdevelop-php-docs
 PORTVERSION=	${KDEVELOP_VERSION:S/4./1./}
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel kde
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR=	${KDEVELOP_BRANCH}/kdevelop/${KDEVELOP_VERSION}/src
@@ -15,8 +15,7 @@ LIB_DEPENDS=	libkdevplatforminterfaces.so:${PORTSDIR}/devel/kdevplatform
 
 USE_KDE4=	kdehier kdelibs kdeprefix automoc4
 USE_QT4=	moc_build qmake_build rcc_build uic_build
-USE_XZ=		yes
-USES=		cmake
+USES=		cmake tar:xz
 
 OPTIONS_DEFINE=	NLS
 OPTIONS_SUB=	yes

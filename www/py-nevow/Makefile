@@ -11,7 +11,7 @@ DISTNAME=	Nevow-${PORTVERSION}
 EXTRACT_SUFX=	.tar.gz?format=raw
 
 MAINTAINER=	nivit@FreeBSD.org
-COMMENT=	A web application templating system, based on the Twisted Woven
+COMMENT=	Web application templating system, based on the Twisted Woven
 
 USE_PYTHON=		yes
 USE_PYDISTUTILS=	yes
@@ -23,6 +23,8 @@ PKGMESSAGE=	${WRKSRC}/pkg-message
 
 DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

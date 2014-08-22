@@ -7,8 +7,8 @@ CATEGORIES=	print
 MASTER_SITES=	http://www.potentialtech.com/
 EXTRACT_SUFX=	.tbz
 
-MAINTAINER=	sexbear@tmu.edu.tw
-COMMENT=	An easy to use API for creating PDF files dynamically
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Easy to use API for creating PDF files dynamically
 
 USE_PHP=	yes
 WANT_PHP_MOD=	yes
@@ -16,7 +16,7 @@ WANT_PHP_MOD=	yes
 IGNORE_WITH_PHP=5
 
 WRKSRC=		${WRKDIR}/phppdflib
-USE_BZIP2=	yes
+USES=	tar:bzip2
 NO_BUILD=	yes
 
 MYADMDIR?=	www/data/phppdflib

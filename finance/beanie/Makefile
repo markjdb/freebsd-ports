@@ -6,10 +6,10 @@ PORTVERSION=	0.8.2
 CATEGORIES=	finance
 MASTER_SITES=	SF
 
-MAINTAINER=	dtynan@kalopa.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Beanie is a fully-fledged accounting and payroll system
 
-LIB_DEPENDS=	expat:${PORTSDIR}/textproc/expat2
+LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2
 BUILD_DEPENDS=	dbow:${PORTSDIR}/databases/dbow
 
 MAKE_JOBS_UNSAFE=	yes

@@ -3,12 +3,15 @@
 
 PORTNAME=	chora
 PORTVERSION=	2.1.1
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	devel www
 DIST_SUBDIR=	horde
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	CVS web-viewer
+
+DEPRECATED=	EOL in April 2012
+EXPIRATION_DATE=	2014-08-20
 
 #-----------------------------------------------------------------------
 NO_STAGE=	yes

@@ -10,13 +10,13 @@ MASTER_SITES=	http://atterer.net/jigdo/
 PKGNAMEPREFIX=	linux-
 DISTNAME=	jigdo-bin-${PORTVERSION}
 
-MAINTAINER=	udo.schweigert@siemens.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Tool designed to ease the distribution of large files
 
 RUN_DEPENDS=	wget:${PORTSDIR}/ftp/wget
 
 ONLY_FOR_ARCHS=	i386 amd64
-USE_BZIP2=	YES
+USES=	tar:bzip2
 USE_LINUX=	yes
 NO_BUILD=	yes
 

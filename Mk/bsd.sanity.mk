@@ -56,7 +56,7 @@ DEV_WARNING+=	"USE_GNOME=desktopfileutils is deprecated, please use USES=desktop
 .endif
 
 .if defined(LIB_DEPENDS) && ${LIB_DEPENDS:Nlib*}
-DEV_WARNING+=	"Please use the new format for LIB_DEPENDS, see handbook for details"
+DEV_ERROR+=	"Please use the new format for LIB_DEPENDS, see handbook for details"
 .endif
 
 .if defined(USE_TCL) || defined(USE_TCL_BUILD) || defined(USE_TCL_RUN) || defined(USE_TCL_WRAPPER) || \
@@ -101,10 +101,10 @@ DEV_WARNING+=	"LICENSE must not contain BSD, instead use BSD[234]CLAUSE"
 .endif
 
 .if defined(USE_PYDISTUTILS) && ${USE_PYDISTUTILS} == "easy_install"
-DEV_WARNING+=	"USE_PYDISTUTILS=easy_install is deprecated, please use USE_PYDISTUTILS=yes"
+DEV_ERROR+=	"USE_PYDISTUTILS=easy_install is no longer supported, please use USE_PYDISTUTILS=yes"
 .endif
 
-.if defined(USE_PYDISTUTILS) && ${USE_PYDISTUTILS} != "easy_install" && defined(PYDISTUTILS_AUTOPLIST) && defined(PYDISTUTILS_PKGNAME)
+.if defined(USE_PYDISTUTILS) && defined(PYDISTUTILS_AUTOPLIST) && defined(PYDISTUTILS_PKGNAME)
 DEV_WARNING+=	"PYDISTUTILS_PKGNAME has no effect for USE_PYDISTUTILS=yes and PYDISTUTILS_AUTOPLIST=yes"
 .endif
 
@@ -118,11 +118,44 @@ DEV_WARNING+=	"USE_AUTOTOOLS=libtool is deprecated, please use USES=libtool"
 DEV_WARNING+=	"USE_GNOME=ltverhack is deprecated, please use USES=libtool"
 .endif
 
+.if defined(USE_PYTHON) && (${USE_PYTHON} == "yes" || ${USE_PYTHON:C/[-0-9.+]*//} == "")
+_PYTHON_VAL := ${USE_PYTHON}
+.if ${_PYTHON_VAL} != "yes"
+DEV_WARNING+=	"USE_PYTHON=${_PYTHON_VAL} is deprecated, please use USES=python:${_PYTHON_VAL}"
+.else
+DEV_WARNING+=	"USE_PYTHON=yes is deprecated, please use USES=python"
+.endif
+.endif
+.if defined(USE_PYTHON_RUN)
+.if ${USE_PYTHON_RUN} != "yes"
+DEV_WARNING+=	"USE_PYTHON_RUN is deprecated, please use USES=python:${USE_PYTHON_RUN},run"
+.else
+DEV_WARNING+=	"USE_PYTHON_RUN is deprecated, please use USES=python:run"
+.endif
+.endif
+.if defined(USE_PYTHON_BUILD)
+.if ${USE_PYTHON_BUILD} != "yes"
+DEV_WARNING+=	"USE_PYTHON_BUILD is deprecated, please use USES=python:${USE_PYTHON_BUILD},build"
+.else
+DEV_WARNING+=	"USE_PYTHON_BUILD is deprecated, please use USES=python:build"
+.endif
+.endif
+
+.if defined(PYDISTUTILS_INSTALLNOSINGLE)
+DEV_WARNING+=	"PYDISTUTILS_INSTALLNOSINGLE is deprecated, please do not use it anymore"
+.endif
+
+.if defined(INSTALLS_EGGINFO)
+DEV_WARNING+=	"INSTALLS_EGGINFO is deprecated, please add the entry directly to the plist"
+.endif
+
 SANITY_UNSUPPORTED=	USE_OPENAL USE_FAM USE_MAKESELF USE_ZIP USE_LHA USE_CMAKE \
 		USE_READLINE USE_ICONV PERL_CONFIGURE PERL_MODBUILD \
 		USE_PERL5_BUILD USE_PERL5_RUN USE_DISPLAY USE_FUSE \
 		USE_GETTEXT USE_GMAKE USE_SCONS USE_DRUPAL
-SANITY_DEPRECATED=	USE_XZ USE_BZIP2
+SANITY_DEPRECATED=	USE_XZ USE_BZIP2 USE_PYDISTUTILS PYTHON_CONCURRENT_INSTALL \
+		PYDISTUTILS_AUTOPLIST PYTHON_PY3K_PLIST_HACK PYDISTUTILS_NOEGGINFO \
+		USE_PYTHON_PREFIX PYTHON_PKGNAMESUFFIX NO_INSTALL_MANPAGES
 
 USE_OPENAL_ALT=		USES=openal
 USE_FAM_ALT=		USES=fam
@@ -144,6 +177,14 @@ USE_FUSE_ALT=		USES=fuse
 USE_GETTEXT_ALT=	USES=gettext
 USE_SCONS_ALT=		USES=scons
 USE_DRUPAL_ALT=		USES=drupal
+USE_PYDISTUTILS_ALT=		USE_PYTHON=distutils
+PYTHON_CONCURRENT_INSTALL_ALT=	USE_PYTHON=concurrent
+PYDISTUTILS_AUTOPLIST_ALT=	USE_PYTHON=autoplist
+PYTHON_PY3K_PLIST_HACK_ALT=	USE_PYTHON=py3kplist
+PYDISTUTILS_NOEGGINFO_ALT=	USE_PYTHON=noegginfo
+USE_PYTHON_PREFIX_ALT=		USE_PYTHON=pythonprefix
+PYTHON_PKGNAMESUFFIX_ALT=	PYTHON_PKGNAMEPREFIX
+NO_INSTALL_MANPAGES_ALT=	USES=imake:noman
 
 .for a in ${SANITY_DEPRECATED}
 .if defined(${a})

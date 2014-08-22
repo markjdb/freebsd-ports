@@ -12,7 +12,7 @@ DISTFILES=	${PORTNAME}b${PORTVERSION:S,.,-,g}j.zip:binary	\
 		${PORTNAME}-resources9-1-0-1.zip:resources
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	An XSLT 2.0 / XPath 2.0 / XQuery 1.0 processor for Java
+COMMENT=	XSLT 2.0 / XPath 2.0 / XQuery 1.0 processor for Java
 
 RUN_DEPENDS=	java:${PORTSDIR}/java/javavmwrapper
 
@@ -28,8 +28,6 @@ NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
 
 CONFLICTS=	saxon-6.*
-
-OPTIONS_DEFINE=	DOCS
 
 JARFILES=	saxon9-sql.jar saxon9.jar saxon9-xpath.jar saxon9-dom.jar \
 		saxon9-xqj.jar saxon9-s9api.jar

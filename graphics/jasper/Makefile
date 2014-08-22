@@ -16,7 +16,7 @@ LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 LICENSE=	MIT
 
-USES=		libtool:keepla zip
+USES=		zip libtool:keepla
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -27,7 +27,7 @@ MASTER_SITE_IMAGEMAGICK=	\
 	ftp://ftp.imagemagick.org/pub/%SUBDIR%/ \
 	${MASTER_SITE_RINGSERVER:S,%SUBDIR%,graphics/&,}
 
-OPTIONS_DEFINE= OPENGL UUID
+OPTIONS_DEFINE= OPENGL UUID DOCS
 UUID_DESC=	UUID support (required by GDAL)
 
 .include <bsd.port.options.mk>

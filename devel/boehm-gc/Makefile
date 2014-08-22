@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gc
-PORTVERSION=	7.2e
-PORTREVISION?=	0
+PORTVERSION=	7.4.2
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://www.hboehm.info/gc/gc_source/
 PKGNAMEPREFIX=	boehm-
@@ -11,17 +11,21 @@ PKGNAMEPREFIX=	boehm-
 PKGNAMESUFFIX=	-${GC_VARIANT}
 .endif
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	cjpugmed@gmail.com
 COMMENT=	Garbage collection and memory leak detection for C and C++
 
 LICENSE=	BDWGC
 LICENSE_NAME=	Boehm-Demers-Weiser Garbage Collector License
-LICENSE_FILE=	${WRKSRC}/doc/README
+LICENSE_TEXT=	License can be found at http://www.hboehm.info/gc/license.txt
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
+BUILD_DEPENDS=	${LOCALBASE}/lib/libatomic_ops.a:${PORTSDIR}/devel/libatomic_ops
+
 GNU_CONFIGURE=	yes
-USES=		pathfix
+USES=		libtool pathfix pkgconfig
+USE_AUTOTOOLS=	aclocal autoconf libtoolize
 USE_LDCONFIG=	yes
+INSTALL_TARGET=	install-strip
 CONFIGURE_ARGS=	--enable-cplusplus --disable-static
 MAKE_JOBS_UNSAFE=	yes
 
@@ -55,13 +59,13 @@ PORTDOCS=	*
 
 NOT_FOR_ARCHS=	ia64
 
+# no rule to get .lo from .S in subdirectory
+pre-build:
+	${LN} -sf ${WRKSRC}/src/sparc_mach_dep.S ${WRKSRC}
+
 .if ${PORT_OPTIONS:MDEBUG}
 CONFIGURE_ARGS+=--enable-gc-debug
 PKGNAMESUFFIX:=	${PKGNAMESUFFIX}+fulldebug
-.endif
-
-.if ! ${PORT_OPTIONS:MDOCS}
-CONFIGURE_ARGS+=--datarootdir=${WRKDIR}/doc
 .endif
 
 .if defined(GC_VARIANT) && ${GC_VARIANT} == "threaded"
@@ -88,8 +92,8 @@ do-install:
 .endfor
 	${INSTALL_DATA} ${WRKSRC}/bdw-gc.pc \
 		${STAGEDIR}${PREFIX}/libdata/pkgconfig/bdw-gc-${GC_VARIANT}.pc
-
 .else # ! GC_VARIANT
+
 post-patch:
 	@${REINPLACE_CMD} -e "s|%%PREFIX%%|${PREFIX}|g" ${WRKSRC}/doc/gc.man
 	@${REINPLACE_CMD} \
@@ -98,6 +102,8 @@ post-patch:
 
 post-install:
 	${INSTALL_MAN} ${WRKSRC}/doc/gc.man ${STAGEDIR}${MAN3PREFIX}/man/man3/gc.3
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
 
 .endif
 

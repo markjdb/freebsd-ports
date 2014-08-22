@@ -17,7 +17,7 @@ COMMENT=	Bitstream Vera TrueType font collection
 BUILD_DEPENDS=	fc-cache:${PORTSDIR}/x11-fonts/fontconfig
 RUN_DEPENDS=	fc-cache:${PORTSDIR}/x11-fonts/fontconfig
 
-USE_BZIP2=	yes
+USES=	tar:bzip2
 NO_BUILD=	yes
 
 PLIST_SUB=	FONTSDIR="${FONTSDIR:S|${PREFIX}/||}"
@@ -31,6 +31,8 @@ PKGMESSAGE=	${WRKDIR}/pkg-message
 
 FONTNAME=	${PORTNAME}
 FONTSDIR?=	${PREFIX}/lib/X11/fonts/${FONTNAME}
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	${SED} 's|%%FONTSDIR%%|${FONTSDIR}|g' ${MSG_FILE} > ${PKGMESSAGE}

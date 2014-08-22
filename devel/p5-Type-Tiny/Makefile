@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Type-Tiny
-PORTVERSION=	0.044
+PORTVERSION=	1.000000
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:TOBYINK
@@ -31,13 +31,21 @@ TEST_DEPENDS=	p5-Class-InsideOut>=0:${PORTSDIR}/devel/p5-Class-InsideOut \
 		p5-Test-LeakTrace>=0:${PORTSDIR}/devel/p5-Test-LeakTrace \
 		p5-Test-Requires>=0:${PORTSDIR}/devel/p5-Test-Requires \
 		p5-Test-Tester>=0.10.9:${PORTSDIR}/devel/p5-Test-Tester \
+		p5-Test-Warnings>=0:${PORTSDIR}/devel/p5-Test-Warnings \
 		p5-Validation-Class>=0:${PORTSDIR}/devel/p5-Validation-Class \
 		p5-match-simple>=0:${PORTSDIR}/devel/p5-match-simple
+
+OPTIONS_DEFINE=	XS
+OPTIONS_DEFAULT=XS
+XS_DESC=	Use Type::Tiny::XS for speed boost (recommended)
 
 PORTSCOUT=	limit:^[0-9\.]*$$
 
 USE_PERL5=	configure
 USES=		perl5
+
+XS_BUILD_DEPENDS=	p5-Type-Tiny-XS>=0.010:${PORTSDIR}/devel/p5-Type-Tiny-XS
+XS_RUN_DEPENDS=		p5-Type-Tiny-XS>=0.010:${PORTSDIR}/devel/p5-Type-Tiny-XS
 
 .include <bsd.port.pre.mk>
 

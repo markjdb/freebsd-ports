@@ -4,7 +4,7 @@
 
 PORTNAME=	rhythmbox
 PORTVERSION=	0.12.8
-PORTREVISION=	13
+PORTREVISION=	16
 CATEGORIES=	audio gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -24,7 +24,7 @@ LIB_DEPENDS=	libmusicbrainz3.so:${PORTSDIR}/audio/libmusicbrainz3 \
 
 CONFLICTS=	rhythmbox-2.[0-9]* rhythmbox-3.[0-9]*
 
-USES=		desktop-file-utils gettext gmake libtool:keepla pathfix \
+USES=		desktop-file-utils gettext gmake libtool pathfix \
 		pkgconfig tar:bzip2
 INSTALLS_OMF=	yes
 USE_GNOME=	intlhack gnomeprefix gtk20 nautilus2
@@ -81,7 +81,7 @@ PLIST_SUB+=		MTP="@comment "
 .if ${PORT_OPTIONS:MDAAP}
 CONFIGURE_ARGS+=	--enable-daap  --with-mdns=avahi
 LIB_DEPENDS+=		libavahi-client.so:${PORTSDIR}/net/avahi-app \
-    			gnome-keyring.0:${PORTSDIR}/security/libgnome-keyring
+			libgnome-keyring.so:${PORTSDIR}/security/libgnome-keyring
 PLIST_SUB+=		DAAP=""
 .else
 .if exists(${LOCALBASE}/lib/libavahi-client.a)
@@ -100,7 +100,6 @@ CONFIGURE_ARGS+=	--disable-libnotify
 
 .if exists(${LOCALBASE}/libdata/pkgconfig/gst-python-0.10.pc)
 USE_PYTHON=	yes
-.include "${PORTSDIR}/Mk/bsd.python.mk"
 USE_GSTREAMER+=	python
 CONFIGURE_ARGS+=--enable-python
 PLIST_SUB+=	PYTHON=""

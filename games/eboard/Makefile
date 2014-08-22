@@ -19,8 +19,7 @@ COMMENT=	GTK+ chess board interface (mainly for FICS and chessd)
 LIB_DEPENDS=	libpng15.so:${PORTSDIR}/graphics/png
 
 EXTRAS=		1pl2 2
-USES=		shebangfix pkgconfig perl5
-USE_BZIP2=	yes
+USES=		shebangfix pkgconfig perl5 tar:bzip2
 HAS_CONFIGURE=	yes
 USE_PERL5=	build
 USE_GNOME=	gtk20
@@ -32,7 +31,7 @@ CONFIGURE_ARGS=	--prefix=${PREFIX} \
 
 INSTALL_TARGET=	install install-man
 
-OPTIONS_DEFINE=	JOYSTICK
+OPTIONS_DEFINE=	JOYSTICK DOCS
 JOYSTICK_DESC=	Enable joystick support
 
 DESKTOP_ENTRIES="eboard" \

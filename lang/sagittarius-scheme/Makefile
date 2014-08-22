@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	sagittarius
-PORTVERSION=	0.5.5
+PORTVERSION=	0.5.7
 CATEGORIES=	lang
 MASTER_SITES=	http://distfiles.pirateparty.in/%SUBDIR%/ \
 		${MASTER_SITE_LOCAL}
@@ -15,6 +15,7 @@ COMMENT=	R6RS/R7RS Scheme system
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/Copyright
 
+BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/libffi.pc:${PORTSDIR}/devel/libffi
 LIB_DEPENDS=	libffi.so:${PORTSDIR}/devel/libffi \
 		libgc-threaded.so:${PORTSDIR}/devel/boehm-gc-threaded
 
@@ -48,6 +49,9 @@ PLIST_ARCH=	x86_64
 .endif
 
 PLIST_SUB+=	PLIST_ARCH=${PLIST_ARCH}
+
+post-install:
+	@${LN} -sf ${PREFIX}/bin/sagittarius ${STAGEDIR}${PREFIX}/bin/sash
 
 post-build:
 	@${GMAKE} -C ${WRKSRC} doc

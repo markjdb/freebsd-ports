@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	openvpn
-DISTVERSION=	201421
-PORTREVISION=	1
+DISTVERSION=	201425
 CATEGORIES=	security net
 MASTER_SITES=	ftp://ftp.secure-computing.net/pub/FreeBSD/ports/openvpn-devel/ \
 		ftp://ftp2.secure-computing.net/pub/FreeBSD/ports/openvpn-devel/
@@ -28,7 +27,7 @@ SHEBANG_FILES=		sample/sample-scripts/verify-cn \
 CPPFLAGS+=		-I${LOCALBASE}/include
 LDFLAGS+=		-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=		PW_SAVE PKCS11 EASYRSA LZO SNAPPY
+OPTIONS_DEFINE=		PW_SAVE PKCS11 EASYRSA LZO SNAPPY DOCS EXAMPLES
 OPTIONS_DEFAULT=	EASYRSA OPENSSL
 OPTIONS_SINGLE=		SSL
 OPTIONS_SINGLE_SSL=	OPENSSL POLARSSL
@@ -72,7 +71,7 @@ CONFIGURE_ARGS+=--disable-lzo
 .endif
 
 .if ${PORT_OPTIONS:MSNAPPY}
-LIB_DEPENDS+=	snappy:${PORTSDIR}/archivers/snappy
+LIB_DEPENDS+=	libsnappy.so:${PORTSDIR}/archivers/snappy
 .else
 CONFIGURE_ARGS+=--disable-snappy
 .endif

@@ -13,7 +13,8 @@ MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	Securely execute PHP scripts under Apache
 
 GNU_CONFIGURE=	yes
-USE_AUTOTOOLS=	aclocal:env automake autoconf:env libtool:env
+USES=		libtool
+USE_AUTOTOOLS=	aclocal:env automake autoconf:env
 AUTOMAKE_ARGS+=	--add-missing
 SUB_FILES=	pkg-message
 
@@ -37,6 +38,8 @@ CONFIGURE_ARGS=	CFLAGS="${CFLAGS}" --with-apxs=${APXS}
 #
 WITH_SETID_MODE?=	owner
 CONFIGURE_ARGS+=	--with-setid-mode=${WITH_SETID_MODE}
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.options.mk>
 

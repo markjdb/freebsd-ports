@@ -2,6 +2,7 @@
 
 PORTNAME=	libkgapi
 PORTVERSION=	2.0.1
+PORTREVISION=	1
 CATEGORIES=	devel kde
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR=	stable/libkgapi/${PORTVERSION}/src
@@ -12,10 +13,9 @@ COMMENT=	KDE-based library for accessing various Google services
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	qjson.0:${PORTSDIR}/devel/qjson
+LIB_DEPENDS=	libqjson.so:${PORTSDIR}/devel/qjson
 
-USE_BZIP2=	yes
-USES=		cmake:outsource
+USES=		cmake:outsource tar:bzip2
 USE_KDE4=	automoc4 kdelibs kdeprefix kdehier pimlibs
 USE_LDCONFIG=	yes
 USE_QT4=	corelib network webkit xml \

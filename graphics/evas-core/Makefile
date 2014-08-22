@@ -18,9 +18,8 @@ LICENSE=	BSD
 LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2
 
 DIST_SUBDIR=	e17
-USE_BZIP2=	yes
 GNU_CONFIGURE=	yes
-USES=		pathfix pkgconfig
+USES=		pathfix pkgconfig tar:bzip2
 USE_GCC=	any
 USE_EFL=	librt_hack libtool_hack
 USE_LDCONFIG=	yes
@@ -29,7 +28,7 @@ EXAMPLESDIR=	${PREFIX}/share/examples/evas
 
 .include "Makefile.inc"
 
-OPTIONS_DEFINE=	EET FONTCONFIG FRIBIDI
+OPTIONS_DEFINE=	EET FONTCONFIG FRIBIDI EXAMPLES
 OPTIONS_DEFAULT=EET FONTCONFIG FRIBIDI
 EET_DESC=	EET font loader
 

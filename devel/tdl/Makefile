@@ -11,8 +11,13 @@ COMMENT=	To-do list manager
 
 CONFLICTS=	devtodo-[0-9]*
 
+USES=		readline
+
 HAS_CONFIGURE=	yes
 
-CONFIGURE_ARGS+=	--prefix=${PREFIX}
+CONFIGURE_ARGS+=--prefix=${PREFIX} --readline-dir=${LOCALBASE}
+
+post-patch:
+	${REINPLACE_CMD} -e 's/-R\$$/-Wl,-rpath,$$/' ${WRKSRC}/configure
 
 .include <bsd.port.mk>

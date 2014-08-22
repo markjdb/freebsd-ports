@@ -16,7 +16,6 @@
     SUBDIR += autoconvert
     SUBDIR += bg5pdf
     SUBDIR += bg5ps
-    SUBDIR += big5con
     SUBDIR += big5width
     SUBDIR += bitchx
     SUBDIR += bsdconv-opencc
@@ -59,9 +58,9 @@
     SUBDIR += gugod-clean
     SUBDIR += hanzim
     SUBDIR += hc
-    SUBDIR += hztty
     SUBDIR += ibus-chewing
     SUBDIR += ibus-pinyin
+    SUBDIR += ibus-table-chinese
     SUBDIR += irssi
     SUBDIR += jis2gb
     SUBDIR += joe
@@ -129,7 +128,6 @@
     SUBDIR += ttf2pt1
     SUBDIR += ttfm
     SUBDIR += unrar
-    SUBDIR += unzip
     SUBDIR += ve
     SUBDIR += wenju
     SUBDIR += wordpress-zh_CN

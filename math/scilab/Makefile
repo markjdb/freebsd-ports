@@ -3,7 +3,7 @@
 
 PORTNAME=	scilab
 PORTVERSION=	5.3.3
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES=	math cad parallel java
 MASTER_SITES=	http://www.scilab.org/download/${PORTVERSION}/:scilab \
 		http://www.predatorlabs.net/dl/:jgraphx \
@@ -31,10 +31,10 @@ CONFIGURE_ARGS=	--with-gfortran \
 		--without-hdf5
 CONFIGURE_ENV=	ac_cv_search_pthread_join="${PTHREAD_LIBS}" \
 	BLAS_LIBS="${BLAS_LIBS}" LAPACK_LIBS="${LAPACK_LIBS}"
-# prevert from creating $HOME/.Scilab during build
-MAKE_ENV=	HOME=/dev/null
+MAKE_ENV=	LANG=en_US.UTF-8 \
+		LC_ALL=en_US.UTF-8
 
-OPTIONS_DEFINE=	ATLAS FFTW GUI HELP NLS MATIO OCAML PVM TK UMFPACK
+OPTIONS_DEFINE=	ATLAS FFTW GUI HELP NLS MATIO OCAML PVM TK UMFPACK DOCS
 OPTIONS_DEFAULT=	FFTW GUI HELP
 
 ATLAS_DESC=	Use Atlas instead of Blas
@@ -217,6 +217,7 @@ post-patch:
 	@# Run fixes
 	@${REINPLACE_CMD} -e 's|%%JAVALIBDIR%%|${JAVALIBDIR}|' ${WRKSRC}/etc/librarypath.xml
 	@${REINPLACE_CMD} -e 's|%%PREFIX%%|${PREFIX}|' ${WRKSRC}/etc/librarypath.xml
+	@${REINPLACE_CMD} -e 's, gfortran, ${FC},' ${WRKSRC}/modules/dynamic_link/src/scripts/configure
 .if ${PORT_OPTIONS:MGUI}
 	@# Configure fixes
 	@${REINPLACE_CMD} -e 's|/usr/lib/java|${JAVALIBDIR}|g' ${WRKSRC}/configure

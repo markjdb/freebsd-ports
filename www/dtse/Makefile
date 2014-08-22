@@ -9,7 +9,7 @@ MASTER_SITES=	http://apt.douglasthrift.net/files/${PORTNAME}/ \
 DISTNAME=	${PORTNAME}-${PORTVERSION}-src
 
 MAINTAINER=	douglas@douglasthrift.net
-COMMENT=	An indexing search engine for use on small websites
+COMMENT=	Indexing search engine for use on small websites
 
 LICENSE=	APACHE20
 
@@ -20,8 +20,7 @@ USE_OPENSSL=	yes
 CONFIGURE_ARGS+=	--with-openssl=${OPENSSLBASE}
 .endif
 
-USES=		gmake perl5
-USE_BZIP2=	yes
+USES=		gmake perl5 tar:bzip2
 USE_AUTOTOOLS=	aclocal:env automake:env autoconf:env
 
 HAS_CONFIGURE=	yes

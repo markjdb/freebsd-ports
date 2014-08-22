@@ -18,7 +18,7 @@ COMMENT=	Newsreader based on the S-Lang library
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	slang:${PORTSDIR}/japanese/libslang
+LIB_DEPENDS=	libslang.so:${PORTSDIR}/japanese/libslang
 
 CONFLICTS=	slrn-0.*
 
@@ -26,8 +26,6 @@ GNU_CONFIGURE=	yes
 ALL_TARGET=	all slrnpull
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 JDOCSRC=	${WRKDIR}/${PORTNAME}-doc-j0.9.5.6-0
-
-MANLANG=	'' ja
 
 # Tentatively improve inner makefiles in attempt to fix parallel builds
 post-patch:

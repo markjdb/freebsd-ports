@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	bitlbee
-PORTVERSION=	3.2.1
+PORTVERSION=	3.2.2
 PORTREVISION=	2
 CATEGORIES=	irc
 MASTER_SITES=	http://get.bitlbee.org/src/ \
@@ -73,7 +73,7 @@ LIB_DEPENDS+=	libgnutls.so:${PORTSDIR}/security/gnutls \
 
 .if ${PORT_OPTIONS:MOTR}
 CONFIGURE_ARGS+=--otr=1
-LIB_DEPENDS+=	libotr.so.2:${PORTSDIR}/security/libotr3
+LIB_DEPENDS+=	libotr.so:${PORTSDIR}/security/libotr
 .else
 CONFIGURE_ARGS+=--otr=0
 .endif
@@ -117,7 +117,7 @@ CONFIGURE_ARGS+=--purple=0
 
 post-patch:
 	@${REINPLACE_CMD} \
-		-e "s|^EFLAGS=|EFLAGS=${LDFLAGS}|" \
+		-e "s|^\(EFLAGS=.*\)|\1 ${LDFLAGS}|" \
 		${WRKSRC}/configure
 
 	@${REINPLACE_CMD} \
@@ -129,6 +129,7 @@ post-patch:
 		${WRKSRC}/doc/bitlbee.8
 
 post-install:
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/bitlbee
 	${MKDIR} ${STAGEDIR}/${PREFIX}/etc/bitlbee
 .if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}/${DOCSDIR}

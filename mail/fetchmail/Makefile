@@ -36,7 +36,7 @@ CONFIGURE_ARGS=	--enable-opie --enable-RPA --enable-SDPS \
 
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=	X11 NLS NTLM GSSAPI POP2
+OPTIONS_DEFINE=	X11 NLS NTLM GSSAPI POP2 DOCS
 OPTIONS_DEFAULT=	GSSAPI
 OPTIONS_SUB=	yes
 X11_DESC=	Python/Tkinter dependencies for ``fetchmailconf''
@@ -89,6 +89,11 @@ CONFIGURE_ARGS+=	--with-gssapi=${KRB5_HOME}
 .if ${PORT_OPTIONS:MNTLM}
 CONFIGURE_ARGS+=	--enable-NTLM
 PORTDOCS+=	README.NTLM
+.endif
+
+post-patch:
+.if !exists(/usr/lib/libcom_err.so)
+	@${REINPLACE_CMD} -e "s,-lcom_err,,g" ${WRKSRC}/configure
 .endif
 
 post-build:

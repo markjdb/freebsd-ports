@@ -17,6 +17,7 @@
     SUBDIR += anubis
     SUBDIR += archivemail
     SUBDIR += archiveopteryx
+    SUBDIR += archiveopteryx-devel
     SUBDIR += archivesmtp
     SUBDIR += archmbox
     SUBDIR += ask
@@ -32,7 +33,6 @@
     SUBDIR += bayespam
     SUBDIR += bbmail
     SUBDIR += biabam
-    SUBDIR += biffer
     SUBDIR += bmf
     SUBDIR += bogofilter
     SUBDIR += bogofilter-sqlite
@@ -123,7 +123,6 @@
     SUBDIR += exilog
     SUBDIR += exim
     SUBDIR += exim-doc-html
-    SUBDIR += exim-doc-info
     SUBDIR += exim-doc-pdf
     SUBDIR += exim-doc-postscript
     SUBDIR += exim-ldap2
@@ -141,6 +140,7 @@
     SUBDIR += ezmlm-idx
     SUBDIR += ezmlm-web
     SUBDIR += faces
+    SUBDIR += fastforward
     SUBDIR += fdm
     SUBDIR += fetchmail
     SUBDIR += filtermail
@@ -150,7 +150,6 @@
     SUBDIR += ftrack
     SUBDIR += gbuffy
     SUBDIR += gensig
-    SUBDIR += getlive
     SUBDIR += getmail
     SUBDIR += gkrellmmailwatch2
     SUBDIR += gld
@@ -342,7 +341,9 @@
     SUBDIR += p5-Email-Sender-Transport-SMTP-TLS
     SUBDIR += p5-Email-Sender-Transport-SQLite
     SUBDIR += p5-Email-Simple
+    SUBDIR += p5-Email-Simple-FromHandle
     SUBDIR += p5-Email-Stuff
+    SUBDIR += p5-Email-Stuffer
     SUBDIR += p5-Email-Valid
     SUBDIR += p5-Email-Valid-Loose
     SUBDIR += p5-FuzzyOcr-devel
@@ -505,7 +506,6 @@
     SUBDIR += postfix-postfwd
     SUBDIR += postfix-tls
     SUBDIR += postfix210
-    SUBDIR += postfix27
     SUBDIR += postfix28
     SUBDIR += postfix29
     SUBDIR += postfixadmin
@@ -616,7 +616,6 @@
     SUBDIR += scam-backscatter
     SUBDIR += sccmilter
     SUBDIR += sendmail
-    SUBDIR += sendmail-sasl
     SUBDIR += sendok
     SUBDIR += sentinel
     SUBDIR += serialmail

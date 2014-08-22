@@ -8,7 +8,7 @@ MASTER_SITES=	http://dist.schmorp.de/rxvt-unicode/%SUBDIR%/
 MASTER_SITE_SUBDIR=	. Attic
 
 MAINTAINER=	thierry@FreeBSD.org
-COMMENT=	A clone of the terminal emulator rxvt modified to support Unicode
+COMMENT=	Clone of the terminal emulator rxvt modified to support Unicode
 
 LICENSE=	GPLv2
 
@@ -29,7 +29,7 @@ CONFIGURE_ARGS=		--enable-everything --with-term=rxvt	\
 OPTIONS_DEFINE=	PERL XIM UNICODE3 ISO14755 COMBINING RXVT_SCROLLBAR	\
 		NEXT_SCROLLBAR XTERM_SCROLLBAR BACKSPACE_KEY DELETE_KEY	\
 		MOUSEWHEEL SMART_RESIZE IMLOCALE_FIX GDK_PIXBUF		\
-		NOTIFY 256_COLOR
+		NOTIFY 256_COLOR DOCS
 
 SHEBANG_FILES=	${WRKSRC}/src/perl/*
 perl_OLD_CMD=	perl

@@ -3,7 +3,7 @@
 
 PORTNAME=	quagga
 PORTVERSION=	0.99.22.4
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	net ipv6
 MASTER_SITES=	SAVANNAH
 MASTER_SITE_SUBDIR=	quagga
@@ -17,7 +17,7 @@ LICENSE=	GPLv2
 
 CONFLICTS=	openbgpd-[0-9]* openospfd-[0-9]* zebra-0* quagga-re-[0-9]*
 
-USES=		gmake libtool makeinfo perl5
+USES=		gmake libtool makeinfo perl5 readline
 USE_AUTOTOOLS=	autoheader aclocal
 ACLOCAL_ARGS=	-I${LOCALBASE}/share/aclocal
 BUILD_DEPENDS+=	gawk:${PORTSDIR}/lang/gawk

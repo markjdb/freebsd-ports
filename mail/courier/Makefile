@@ -3,7 +3,7 @@
 
 PORTNAME=	courier
 PORTVERSION=	0.65.3
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	mail ipv6
 MASTER_SITES=	SF
 
@@ -11,7 +11,7 @@ MAINTAINER=	bsd@dino.sk
 COMMENT=	Courier SMTP IMAP POP3 HTTP mail server suite
 
 BUILD_DEPENDS=	courierauthconfig:${PORTSDIR}/security/courier-authlib-base
-LIB_DEPENDS=	pcre:${PORTSDIR}/devel/pcre
+LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre
 RUN_DEPENDS=	courierauthconfig:${PORTSDIR}/security/courier-authlib-base \
 		${LOCALBASE}/share/sysconftool/sysconftool:${PORTSDIR}/devel/sysconftool \
 		${LOCALBASE}/etc/mime.types:${PORTSDIR}/misc/mime-support \
@@ -58,10 +58,9 @@ WITH_TRANSPORT=	local esmtp dsn
 
 AUTOMAKE_ARGS=	--add-missing
 USE_AUTOTOOLS=	libtool aclocal automake
-USE_BZIP2=	yes
 USE_OPENSSL=	yes
 USE_SUBMAKE=	yes
-USES=		fam gettext gmake perl5 pkgconfig
+USES=		fam gettext gmake perl5 pkgconfig tar:bzip2
 
 USE_RC_SUBR=	courier
 
@@ -107,7 +106,7 @@ SUB_LIST:=	${PLIST_SUB}
 SUB_FILES+=	pkg-message crontab sharedindexupdate
 #SUB_FILES+=	pkg-install pkg-message crontab sharedindexupdate
 
-OPTIONS_DEFINE=	LDAP PROCMAIL SENDFAX UUCP IPV6 MAILDROPFLAGS
+OPTIONS_DEFINE=	LDAP PROCMAIL SENDFAX UUCP IPV6 MAILDROPFLAGS DOCS
 OPTIONS_GROUP=	WEBMAIL
 #OPTIONS_GROUP=	SYSTEM WEBMAIL
 #OPTIONS_GROUP_SYSTEM=	RCCONF MAILCONF PERIODIC

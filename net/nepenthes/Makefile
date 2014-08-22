@@ -7,16 +7,16 @@ PORTREVISION=	7
 CATEGORIES=	net
 MASTER_SITES=	SF/${PORTNAME}/Nepenthes%20development/${PORTVERSION}
 
-MAINTAINER=	systemoperator@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Determine the malware activity on a network
 
-LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl \
-		magic.1:${PORTSDIR}/sysutils/file \
-		pcre.3:${PORTSDIR}/devel/pcre \
-		adns.1:${PORTSDIR}/dns/adns
+LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
+		libmagic.so:${PORTSDIR}/sysutils/file \
+		libpcre.so:${PORTSDIR}/devel/pcre \
+		libadns.so:${PORTSDIR}/dns/adns
 
 .if defined(WITH_PRELUDE)
-LIB_DEPENDS+=		prelude:${PORTSDIR}/security/libprelude
+LIB_DEPENDS+=		libprelude.so:${PORTSDIR}/security/libprelude
 CONFIGURE_ARGS+=	--enable-prelude
 .endif
 

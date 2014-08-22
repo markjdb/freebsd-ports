@@ -3,7 +3,7 @@
 
 PORTNAME=	heimdal
 PORTVERSION=	1.5.2
-PORTREVISION=	8
+PORTREVISION=	12
 CATEGORIES=	security ipv6
 MASTER_SITES=	http://www.h5l.org/dist/src/ \
 		http://ftp.pdc.kth.se/pub/heimdal/src/ \
@@ -37,9 +37,10 @@ PKINIT_CONFIGURE_ENABLE=	pk-init
 CRACKLIB_BUILD_DEPENDS=		${PREFIX}/lib/libcrack.a:${PORTSDIR}/security/cracklib
 
 USES=		gettext libtool pathfix pkgconfig
+USE_LDCONFIG=	yes
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
-USE_LDCONFIG=	yes
+INSTALL_TARGET=	install-strip
 MAKE_JOBS_UNSAFE=	yes
 CONFIGURE_ARGS+=	--with-libintl=${LOCALBASE} \
 			--with-readline=${DESTDIR}/usr \
@@ -102,8 +103,6 @@ post-patch:
 .endif
 	@${REINPLACE_CMD} -e 's|$$ac_cv_header_fnmatch_h|yes|' \
 		${WRKSRC}/configure
-	@${REINPLACE_CMD} '/^kgetcred_LDADD =/s/$$/ $$(LIB_libintl)/' \
-		${WRKSRC}/kuser/Makefile.in
 	@${REINPLACE_CMD} -e 's|@LDFLAGS@|@LDFLAGS@ \$$\(PTHREADS_LIBADD\)|g' \
 		${WRKSRC}/lib/ipc/Makefile.in
 

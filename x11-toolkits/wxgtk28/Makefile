@@ -3,7 +3,7 @@
 
 PORTNAME=	wx
 PORTVERSION=	2.8.12
-PORTREVISION?=	2
+PORTREVISION?=	3
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	SF/wxwindows/${PORTVERSION}
 PKGNAMESUFFIX=	28-${WXGTK_FLAVOR}
@@ -12,13 +12,12 @@ DISTNAME=	wxGTK-${PORTVERSION}
 MAINTAINER?=	fjoe@FreeBSD.org
 COMMENT?=	The wxWidgets GUI toolkit with GTK+ bindings
 
-LIB_DEPENDS+=	png15:${PORTSDIR}/graphics/png\
-		jpeg.11:${PORTSDIR}/graphics/jpeg\
-		tiff.4:${PORTSDIR}/graphics/tiff\
-		expat.6:${PORTSDIR}/textproc/expat2
+LIB_DEPENDS+=	libpng15.so:${PORTSDIR}/graphics/png\
+		libjpeg.so:${PORTSDIR}/graphics/jpeg\
+		libtiff.so:${PORTSDIR}/graphics/tiff\
+		libexpat.so:${PORTSDIR}/textproc/expat2
 
-USES=		iconv gmake pkgconfig
-USE_BZIP2=	yes
+USES=		iconv gmake pkgconfig tar:bzip2
 USE_XORG=	x11 sm xxf86vm xinerama
 USE_GL=		glu
 USE_GNOME=	gtk20 pangox-compat
@@ -60,7 +59,7 @@ PLIST_SUB+=     GSTREAMER="@comment "
 
 .if ${PORT_OPTIONS:MMSPACK}
 CONFIGURE_ARGS+=--with-libmspack
-LIB_DEPENDS+=	mspack.1:${PORTSDIR}/archivers/libmspack
+LIB_DEPENDS+=	libmspack.so:${PORTSDIR}/archivers/libmspack
 .else
 CONFIGURE_ARGS+=--without-libmspack
 .endif

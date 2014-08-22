@@ -21,8 +21,7 @@ BROKEN=		Does not install
 CONFLICTS=	${PYTHON_PKGNAMEPREFIX}django-profiles-[0-9]* \
 		${PYTHON_PKGNAMEPREFIX}django-registration-[0-9]*
 
-USE_BZIP2=	yes
-USES=		gettext
+USES=		gettext tar:bzip2
 USE_PYTHON=	yes
 USE_PYDISTUTILS=yes
 PYDISTUTILS_PKGNAME=	Pootle
@@ -70,7 +69,7 @@ RUN_DEPENDS+=	svn:${PORTSDIR}/devel/subversion
 .endif
 
 .if ${PORT_OPTIONS:MMEMCACHED}
-LIB_DEPENDS+=	memcached:${PORTSDIR}/databases/libmemcached
+LIB_DEPENDS+=	libmemcached.so:${PORTSDIR}/databases/libmemcached
 RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}memcached>=1.45:${PORTSDIR}/databases/py-memcached
 .endif
 

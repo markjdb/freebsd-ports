@@ -3,7 +3,7 @@
 
 PORTNAME=	qemu
 PORTVERSION=	0.11.1
-PORTREVISION=	13
+PORTREVISION=	14
 CATEGORIES=	emulators
 MASTER_SITES=	${MASTER_SITE_SAVANNAH} \
 		http://bellard.org/qemu/
@@ -23,7 +23,7 @@ ONLY_FOR_ARCHS=	amd64 i386
 CONFLICTS=	qemu-devel-[0-9]*
 
 OPTIONS_DEFINE=	KQEMU RTL8139_TIMER SAMBA SDL GNUTLS CURL PCAP GNS3 \
-		CDROM_DMA ADD_AUDIO ALL_TARGETS
+		CDROM_DMA ADD_AUDIO ALL_TARGETS DOCS
 KQEMU_DESC=		Build with (alpha!) accelerator module
 RTL8139_TIMER_DESC=	allow use of re(4) nic with FreeBSD guests
 SAMBA_DESC=		samba dependency (for -smb)

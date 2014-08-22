@@ -15,9 +15,9 @@ COMMENT=	FSF gcc-4 for Windows cross-development
 BUILD_DEPENDS=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils \
 		mingwm10.dll:${PORTSDIR}/devel/${PKGNAMEPREFIX}bin-msvcrt
 RUN_DEPENDS=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
-LIB_DEPENDS=	gmp:${PORTSDIR}/math/gmp \
-		mpfr:${PORTSDIR}/math/mpfr \
-		mpc:${PORTSDIR}/math/mpc
+LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp \
+		libmpfr.so:${PORTSDIR}/math/mpfr \
+		libmpc.so:${PORTSDIR}/math/mpc
 
 GCCVERSION=	4.7.2
 
@@ -35,7 +35,6 @@ CONFIGURE_SCRIPT=	../${SRCDIR:C/${WRKDIR}//}/configure
 
 BINARIES=	c++ cpp g++ gcc gcov gfortran
 
-NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64"
@@ -68,10 +67,7 @@ CONFIGURE_ARGS=	--disable-nls --target=${GCC_TARG} \
 		--datadir=${PREFIX}/${GCC_TARG}/share \
 		--with-system-zlib
 MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
-PLIST_SUB+=	GCC_TARG=${GCC_TARG} GCC_REV=${GCCVERSION}
-MAN1=		${PKGNAMEPREFIX}cpp.1 ${PKGNAMEPREFIX}g++.1 \
-		${PKGNAMEPREFIX}gcc.1 ${PKGNAMEPREFIX}gcov.1 \
-		${PKGNAMEPREFIX}gfortran.1
+PLIST_SUB+=	GCC_TARG=${GCC_TARG} GCC_REV=${GCCVERSION} PKGNAMEPREFIX=${PKGNAMEPREFIX}
 INFO_PATH=	${GCC_TARG}/info
 INFO=		cpp cppinternals gcc gccinstall gccint gfortran
 .if ${ARCH} == "i386" || ${ARCH} == "amd64"
@@ -88,9 +84,10 @@ pre-configure:
 	@${MKDIR} ${CONFIGURE_WRKSRC}
 
 post-install:
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${GCC_TARG}/bin
 .for F in ${BINARIES}
-	@${LN} -f ${PREFIX}/bin/${PKGNAMEPREFIX}$F \
-		${PREFIX}/${GCC_TARG}/bin/$F
+	@${LN} -f ${STAGEDIR}${PREFIX}/bin/${PKGNAMEPREFIX}$F \
+		${STAGEDIR}${PREFIX}/${GCC_TARG}/bin/$F
 .endfor
 
 .include <bsd.port.post.mk>

@@ -3,6 +3,7 @@
 
 PORTNAME=	srecord
 PORTVERSION=	1.64
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	SF
 
@@ -31,6 +32,8 @@ HEADER_DIRS=	input \
 		output \
 		output/file \
 		quit
+
+OPTIONS_DEFINE=	DOCS
 
 post-build:
 	cd ${WRKSRC} && ${MAKE_CMD} libdir/pkgconfig/srecord.pc

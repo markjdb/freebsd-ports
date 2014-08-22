@@ -68,7 +68,7 @@ SUB_FILES=	pkg-message
 SUB_LIST+=	PORTSDIR="${PORTSDIR}"
 
 .if ${PORT_OPTIONS:MGDB}
-RUN_DEPENDS+=	gdb771:${PORTSDIR}/devel/gdb
+RUN_DEPENDS+=	${LOCALBASE}/bin/gdb:${PORTSDIR}/devel/gdb
 .endif
 
 .if ${PORT_OPTIONS:MGTK2}
@@ -88,7 +88,7 @@ RUN_DEPENDS+=	${LCL_UNITS_DIR}/${LCL_PLATFORM}/interfaces.ppu:${PORTSDIR}/editor
 .endif
 
 .if ${PORT_OPTIONS:MQT4}
-LIB_DEPENDS+=	Qt4Pas.5:${PORTSDIR}/x11-toolkits/qt4pas
+LIB_DEPENDS+=	libQt4Pas.so:${PORTSDIR}/x11-toolkits/qt4pas
 LCL_PLATFORM=	qt
 BUILD_DEPENDS+=	${LCL_UNITS_DIR}/${LCL_PLATFORM}/interfaces.ppu:${PORTSDIR}/editors/lazarus-lcl-qt
 RUN_DEPENDS+=	${LCL_UNITS_DIR}/${LCL_PLATFORM}/interfaces.ppu:${PORTSDIR}/editors/lazarus-lcl-qt

@@ -12,8 +12,8 @@ DISTFILES=		${VMD_DIST} \
 			${TACHYON_DIST}:tachyon \
 			${STRIDE_DIST}:stride
 
-MAINTAINER=		bjk@FreeBSD.org
-COMMENT=		A molecular visualization program
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Molecular visualization program
 
 BUILD_DEPENDS=		makedepend:${PORTSDIR}/devel/makedepend \
 			${PYNUMERIC}

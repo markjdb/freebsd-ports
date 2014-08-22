@@ -3,6 +3,7 @@
 
 PORTNAME=	xfce4-mailwatch-plugin
 PORTVERSION=	1.2.0
+PORTREVISION=	3
 CATEGORIES=	mail xfce
 MASTER_SITES=	${MASTER_SITE_XFCE}
 MASTER_SITE_SUBDIR=	src/panel-plugins/${PORTNAME}/${PORTVERSION:R}
@@ -14,10 +15,10 @@ COMMENT=	Mail notification applet for the Xfce panel
 LIB_DEPENDS=	libgnutls.so:${PORTSDIR}/security/gnutls \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt
 
-USE_BZIP2=	yes
-INSTALLS_ICONS=	yes
-USES=		gettext gmake pkgconfig
 GNU_CONFIGURE=	yes
+INSTALLS_ICONS=	yes
+INSTALL_TARGET=	install-strip
+USES=		gettext gmake libtool pkgconfig tar:bzip2
 USE_GNOME=	glib20 gtk20 intltool intlhack
 USE_XFCE=	configenv libexo libmenu libutil panel
 USE_XORG=	x11

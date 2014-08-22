@@ -6,15 +6,14 @@ PORTVERSION=	2.5
 CATEGORIES=	www benchmarks
 MASTER_SITES=	http://www.mindcraft.com/webstone/
 DISTNAME=	ws25_src
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	World wide web server benchmarking
 
+USES=		tar:tgz
 GNU_CONFIGURE=	yes
 WRKSRC=		${WRKDIR}/WebStone2.5/src
 ALL_TARGET=	install
-NO_INSTALL_MANPAGES=	yes
 
 do-install:
 	@${RM} ${WRKSRC}/../bin/runs/keepme

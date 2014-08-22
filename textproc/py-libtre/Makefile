@@ -13,11 +13,11 @@ DISTNAME=	tre-${PORTVERSION}
 MAINTAINER=	bf@FreeBSD.org
 COMMENT=	Python interface for the tre regular expressions library
 
-LIB_DEPENDS=	tre.5:${PORTSDIR}/textproc/libtre
+LIB_DEPENDS=	libtre.so:${PORTSDIR}/textproc/libtre
 
 LICENSE=	BSD
 LICENSE_FILE=	${WRKSRC}/LICENSE
-USE_BZIP2=	yes
+USES=	tar:bzip2
 USE_PYTHON=	yes
 USE_PYDISTUTILS=	yes
 PYDISTUTILS_AUTOPLIST=	yes

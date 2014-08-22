@@ -2,11 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	urweb
-PORTVERSION=	20120925
-PORTREVISION=	2
+PORTVERSION=	20140704
 CATEGORIES=	lang www
 MASTER_SITES=	http://www.impredicative.com/ur/
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	beyert@cs.ucr.edu
 COMMENT=	Ultimate host for embedded domain-specific languages
@@ -19,18 +17,21 @@ BUILD_DEPENDS=	mlton:${PORTSDIR}/lang/mlton
 CONFIGURE_ENV=	CCARGS="-I${LOCALBASE}/include"
 
 GNU_CONFIGURE=	yes
-USES=		gmake libtool
+USES=		gmake libtool tar:tgz
 USE_LDCONFIG=	yes
 USE_OPENSSL=	yes
 ONLY_FOR_ARCHS=	i386 amd64
 CFLAGS+=	-pthread
 
 OPTIONS_DEFINE=	ELISP PGSQL SQLITE MYSQL
-OPTIONS_DEFAULT=ELISP PGSQL
-OPTIONS_EXCLUDE=NLS DOCS
+OPTIONS_DEFAULT=	ELISP PGSQL
+OPTIONS_EXCLUDE=	NLS DOCS
 ELISP_DESC=	Install contributed Emacs Lisp
 
 .include <bsd.port.options.mk>
+
+USE_OPENSSL=	yes
+CONFIGURE_ARGS+=	--with-openssl=${OPENSSLBASE}
 
 .if ${PORT_OPTIONS:MELISP}
 PLIST_SUB+=	ELISP=""
@@ -57,5 +58,9 @@ USE_MYSQL=	yes
 .else
 CONFIGURE_ENV+=	MSHEADER="no"
 .endif
+
+post-patch:
+	${REINPLACE_CMD} -e "s|postgresql/libpq-fe.h|libpq-fe.h|g" \
+	${WRKSRC}/configure
 
 .include <bsd.port.mk>

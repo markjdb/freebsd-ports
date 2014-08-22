@@ -17,12 +17,11 @@ LICENSE_FILE=	${WRKSRC}/doc/license.txt
 
 LATEST_LINK=	botan${PKGNAMESUFFIX}
 
-OPTIONS_DEFINE=		SSL GMP ECC
+OPTIONS_DEFINE=		SSL GMP ECC DOCS
 OPTIONS_DEFAULT=	SSL GMP ECC
 ECC_DESC=	ECC support
 
-USES=		compiler gmake
-USE_BZIP2=	yes
+USES=		compiler gmake tar:bzip2
 USE_PYTHON_BUILD=	yes
 HAS_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	configure.py
@@ -43,7 +42,7 @@ CONFIGURE_ARGS+=--with-openssl
 .endif
 
 .if ${PORT_OPTIONS:MGMP}
-LIB_DEPENDS+=	gmp:${PORTSDIR}/math/gmp
+LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp
 CONFIGURE_ARGS+=--with-gnump
 MAKE_ARGS+=	LDFLAGS="-L${LOCALBASE}/lib"
 .endif

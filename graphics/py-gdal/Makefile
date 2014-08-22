@@ -3,6 +3,7 @@
 
 PORTNAME=	gdal
 PORTVERSION=	1.11.0
+PORTREVISION=	1
 CATEGORIES=	graphics python
 MASTER_SITES=	http://download.osgeo.org/gdal/ \
 		ftp://ftp.remotesensing.org/pub/gdal/ \
@@ -19,10 +20,8 @@ LIB_DEPENDS=	libgdal.so:${PORTSDIR}/graphics/gdal
 OPTIONS_DEFINE=	NUMPY
 NUMPY_DESC=	Enable array support via NumPy
 
-PYDISTUTILS_AUTOPLIST=	yes
-USE_PYDISTUTILS=yes
-USE_PYTHON=	yes
-USES=		shebangfix
+USE_PYTHON=	autoplist distutils
+USES=		python shebangfix
 
 WRKSRC=		${WRKDIR}/${DISTNAME}/swig/python
 

@@ -6,7 +6,7 @@ DISTFILES=	${PORTNAME}${PKGNAMESUFFIX}-src-${PORTVERSION}.0${EXTRACT_SUFX}:plugi
 
 COMMENT=	Low-level RSP processor plugin for the Mupen64Plus
 
-LIB_DEPENDS=	mupen64plus.2:${PORTSDIR}/emulators/mupen64plus-core
+LIB_DEPENDS=	libmupen64plus.so.2:${PORTSDIR}/emulators/mupen64plus-core
 
 USE_GL=		#
 USE_SDL=	#
@@ -22,5 +22,4 @@ EXTRACT_AFTER_ARGS=	#
 BUILD_WRKSRC=		${WRKSRC}/${PORTNAME}${PKGNAMESUFFIX}/projects/unix
 WRKSRC=			${WRKDIR}
 
-NO_STAGE=	yes
 .include "${MASTERDIR}/Makefile"

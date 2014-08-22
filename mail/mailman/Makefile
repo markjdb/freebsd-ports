@@ -3,13 +3,12 @@
 
 PORTNAME=	mailman
 DISTVERSION=	2.1.18-1
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	mail
 MASTER_SITES=	${MASTER_SITE_GNU} \
 		SF/${PORTNAME}/Mailman%202.1%20%28stable%29/${PORTVERSION} \
 		https://launchpad.net/mailman/${DISTVERSION:R}/${DISTVERSION}/+download/
 MASTER_SITE_SUBDIR=	${PORTNAME}
-EXTRACT_SUFX=	.tgz
 DIST_SUBDIR=	mailman
 
 MAINTAINER=	mandree@FreeBSD.org
@@ -20,6 +19,7 @@ LICENSE_FILE=	${WRKSRC}/gnu-COPYING-GPL
 
 CONFLICTS=	ja-mailman-2.1.*
 
+USES=		tar:tgz
 USE_AUTOTOOLS=	autoconf
 USE_PYTHON=	2
 USE_RC_SUBR=	mailman
@@ -63,11 +63,12 @@ PORTDOCS=	ACKNOWLEDGMENTS BUGS FAQ INSTALL NEWS README README-I18N.en \
 		FreeBSD-post-install-notes
 
 OPTIONS_SINGLE=	MTA
-OPTIONS_SINGLE_MTA=	SENDMAIL EXIM4 POSTFIX COURIER
+OPTIONS_SINGLE_MTA=	COURIER EXIM4 OPENSMTPD POSTFIX SENDMAIL
 OPTIONS_DEFINE=	HTDIG NAMAZU2 NLS DOCS
 OPTIONS_DEFAULT=	SENDMAIL
 COURIER_DESC=	for use with courier
 EXIM4_DESC=	for use with exim4
+OPENSMTPD_DESC=	for use with opensmtpd - EXPERIMENTAL -
 POSTFIX_DESC=	for use with postfix
 SENDMAIL_DESC=	for use with sendmail
 HTDIG_DESC=	- EXPERIMENTAL - htdig integration patches
@@ -93,14 +94,18 @@ MAIL_GID?=	mail
 .endif
 
 .if ${PORT_OPTIONS:MPOSTFIX}
-RUN_DEPENDS+=	${LOCALBASE}/sbin/postconf:${PORTSDIR}/mail/postfix
 BUILD_DEPENDS+=	${LOCALBASE}/sbin/postconf:${PORTSDIR}/mail/postfix
+RUN_DEPENDS+=	${LOCALBASE}/sbin/postconf:${PORTSDIR}/mail/postfix
 MAIL_GID?=	mailman
 EXTRA_PATCHES+=	${FILESDIR}/postfix-verp.diff
 .endif
 
 .if ${PORT_OPTIONS:MCOURIER}
 MAIL_GID?=	courier
+.endif
+
+.if ${PORT_OPTIONS:MOPENSMTPD}
+MAIL_GID?=	_smtpd
 .endif
 
 .if ${PORT_OPTIONS:MHTDIG}

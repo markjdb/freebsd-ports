@@ -14,7 +14,7 @@ DIST_SUBDIR=	ruby
 MAINTAINER=	don@na.rim.or.jp
 COMMENT=	Yet another Ming module for Ruby
 
-LIB_DEPENDS?=	ming.5:${PORTSDIR}/graphics/ming
+LIB_DEPENDS?=	libming.so:${PORTSDIR}/graphics/ming
 
 RUBY_MING_VERSION=	0.2.1
 
@@ -26,6 +26,8 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-ruby
 
 DOCS=	ChangeLog INSTALL LGPL NEWS README TODO
 
+OPTIONS_DEFINE=	DOCS
+
 post-install:
 	${MKDIR} ${STAGEDIR}${RUBY_MODEXAMPLESDIR}
 	(cd ${WRKSRC}/examples/ && ${COPYTREE_SHARE} \* ${STAGEDIR}${RUBY_MODEXAMPLESDIR})
@@ -34,4 +36,10 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${RUBY_MODDOCDIR}/
 .endfor
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${RUBY_VER} >= 2.0
+BROKEN=		Does not build with Ruby 2.0 or newer
+.endif
+
+.include <bsd.port.post.mk>

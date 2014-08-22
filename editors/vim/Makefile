@@ -36,13 +36,13 @@ MAKE_ARGS+=	CC="${CC}" CONF_ARGS="--prefix=${PREFIX} ${CSCOPE_ARG}" STRIP="${STR
 PATCH=		${LOCALBASE}/bin/gpatch
 PATCH_DIST_ARGS=--batch --directory ${WRKSRC} --forward --quiet --remove-empty-files ${PATCH_DIST_STRIP}
 REINPLACE_ARGS=	-i ''
-USES=		iconv pkgconfig shebangfix tar:bzip2
+USES=		cpe iconv pkgconfig shebangfix tar:bzip2
 WANT_GNOME=	yes
 
-PATCHLEVEL=	334
+PATCHLEVEL=	398
 PATCHFILES!=	/usr/bin/jot -s " " -w "%03d" ${PATCHLEVEL} 1 ${PATCHLEVEL}
 #POSTPONED_PATCHES=	064 087 147	# patch files postponed to be applied in post-patch:
-SKIPPED_PATCHES=	208		# patch files skipped
+SKIPPED_PATCHES=	208 356		# patch files skipped
 .for p in ${POSTPONED_PATCHES}
 DISTFILES+=	${PORTVERSION:R}.${p}:patch
 .endfor
@@ -60,6 +60,8 @@ PLIST_SUB=	VIM_VER=${VIM_VER}
 PORTDATA=	*
 
 VIM_VER=	${PORTNAME}${PORTVERSION:R:S/.//g}
+
+CPE_VERSION=	${PORTVERSION:R}
 
 SLAVEDIRS=	editors/vim-lite
 

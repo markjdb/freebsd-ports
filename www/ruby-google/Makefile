@@ -10,7 +10,7 @@ DISTNAME=	ruby-${PORTNAME}-${PORTVERSION}
 DIST_SUBDIR=	ruby
 
 MAINTAINER=	ruby@FreeBSD.org
-COMMENT=	A Ruby interface to Google's SOAP-driven Web API
+COMMENT=	Ruby interface to Google's SOAP-driven Web API
 
 USE_RUBY=	yes
 USE_RUBY_FEATURES=	soap
@@ -19,6 +19,8 @@ RUBY_SETUP=	install.rb
 
 DOCS=		CHANGES Changelog README google.html
 EXAMPLES=	examples/*
+
+OPTIONS_DEFINE=	DOCS
 
 post-install:
 	${MKDIR} ${STAGEDIR}${RUBY_MODEXAMPLESDIR}

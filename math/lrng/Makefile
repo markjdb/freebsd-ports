@@ -21,12 +21,12 @@ LICENSE=	GPLv3
 
 CLEANFILES=	${SRCS}
 LIB=		${PORTNAME}
-LIBDIR =	${PREFIX}/lib
+LIBDIR=		${PREFIX}/lib
 MAKE_ENV+=	CLEANFILES="${CLEANFILES}" \
 		LIB="${LIB}" LIBDIR="${LIBDIR}" SHLIB_MAJOR="${SHLIB_MAJOR}" \
 		SRCS="${SRCS}" SRCCONF="${SRCCONF}"
 NO_WRKSUBDIR=	yes
-OPTIONS_DEFINE=	PROFILE
+OPTIONS_DEFINE=	PROFILE DOCS EXAMPLES
 PLIST_DIRS=	include/${PORTNAME}
 PLIST_FILES=	${DISTFILES:M*.h\:1:S|:1$||:S|^|include/${PORTNAME}/|:} \
 		lib/lib${LIB}.a lib/lib${LIB}.so \
@@ -52,10 +52,10 @@ PORTEXAMPLES=	ex1.c
 
 .if ${PORT_OPTIONS:MPROFILE}
 .if defined(NOPROFILE) || defined(NO_PROFILE) || defined(WITHOUT_PROFILE)
-IGNORE =	you have defined WITH_PROFILE, but have also defined\
+IGNORE=		you have defined WITH_PROFILE, but have also defined\
 WITHOUT_PROFILE, NOPROFILE, or NO_PROFILE
 .elif !exists(/usr/lib/libc_p.a)
-IGNORE =	you have chosen WITH_PROFILE, but have not installed the\
+IGNORE=		you have chosen WITH_PROFILE, but have not installed the\
 base system profiling libraries
 .endif
 PLIST_FILES+=	lib/lib${LIB}_p.a

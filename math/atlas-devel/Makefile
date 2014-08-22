@@ -9,10 +9,10 @@ MASTER_SITES=	SF/math-${PORTNAME}/Developer%20%28unstable%29/${PORTVERSION}
 PKGNAMESUFFIX=	-devel
 DISTNAME=	${PORTNAME}${PORTVERSION}
 
-MAINTAINER=	bf@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Development version of math/atlas
 
-IGNORE =	: dependent ports have been altered to link with math/atlas -- please\
+IGNORE=		: dependent ports have been altered to link with math/atlas -- please\
 use that port instead of math/atlas-devel, while the latter is being revised
 MANUAL_PACKAGE_BUILD=	Optimizes for the local machine.
 
@@ -28,8 +28,8 @@ NO_STAGE=	yes
 NOT_FOR_ARCHS=	alpha
 
 CCOMPILER=	${CC}
-LIB_DEPENDS+=	blas.2:${PORTSDIR}/math/blas
-LIB_DEPENDS+=	lapack.4:${PORTSDIR}/math/lapack
+LIB_DEPENDS+=	libblas.so:${PORTSDIR}/math/blas
+LIB_DEPENDS+=	liblapack.so:${PORTSDIR}/math/lapack
 
 .if ${ARCH} == "sparc64"
 PICFLAG?=	-fPIC

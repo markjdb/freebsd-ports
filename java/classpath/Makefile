@@ -17,7 +17,7 @@ COMMENT=	GNU project to create a free Java class library
 LICENSE=	GPLv2
 
 GNU_CONFIGURE=	yes
-USES=		gmake pkgconfig iconv perl5
+USES=		gmake iconv libtool perl5 pkgconfig
 USE_LDCONFIG=	yes
 USE_PERL5=	build
 USE_XORG=	x11 ice xtst xaw xproto xext
@@ -36,7 +36,7 @@ INFO=		cp-hacking cp-tools cp-vmintegration
 
 CONFLICTS=	sablevm-classpath-1.13 sablevm-classpath-1.13_[1-9]
 
-OPTIONS_DEFINE=	CAIRO ECJ GCONF GJDOC GMP GTK2 QT4
+OPTIONS_DEFINE=	CAIRO ECJ GCONF GJDOC GMP GTK2 QT4 EXAMPLES
 OPTIONS_DEFAULT=GMP GJDOC GTK2
 CAIRO_DESC=	Use Gtk+ Cairo based Graphics2D
 ECJ_DESC=	Embed ECJ as com.sun.tools.javac
@@ -135,7 +135,7 @@ JAVACFLAGS?=		-C
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} -i.bak -e 's|@JAVA@|$${JAVACMD:-java}|g' \
+	@${REINPLACE_CMD} -e 's|@JAVA@|$${JAVACMD:-java}|g' \
 	    ${WRKSRC}/tools/g*.in
 
 .include <bsd.port.mk>

@@ -3,7 +3,7 @@
 
 PORTNAME=	xine
 PORTVERSION=	1.2.4
-PORTREVISION=	11
+PORTREVISION=	14
 CATEGORIES=	multimedia ipv6
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-lib/${PORTVERSION}
 PKGNAMEPREFIX=	lib
@@ -22,7 +22,7 @@ LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac \
 		libdvdread.so:${PORTSDIR}/multimedia/libdvdread \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
 		libfame.so:${PORTSDIR}/multimedia/libfame \
-		libcdio.so:${PORTSDIR}/sysutils/libcdio \
+		libcdio_paranoia.so:${PORTSDIR}/sysutils/libcdio-paranoia \
 		libmodplug.so:${PORTSDIR}/audio/libmodplug \
 		libvcdinfo.so:${PORTSDIR}/multimedia/vcdimager \
 		libtheora.so:${PORTSDIR}/multimedia/libtheora \
@@ -230,9 +230,9 @@ post-patch:
 # XXX older nvidia-driver versions don't support opengl 2.0 so this
 # plugin might not get built:
 post-install:
-.if !exists(${STAGEDIR}${PREFIX}/${PLUGINSDIR}/xineplug_vo_out_opengl2.so)
-	${REINPLACE_CMD} -e '/xineplug_vo_out_opengl2.so/d' \
-		${TMPPLIST}
-.endif
+	@if ! [ -e "${STAGEDIR}${PREFIX}/${PLUGINSDIR}/xineplug_vo_out_opengl2.so" ]; then \
+		${REINPLACE_CMD} -e '/xineplug_vo_out_opengl2.so/d' \
+			${TMPPLIST}; \
+	fi
 
 .include <bsd.port.post.mk>

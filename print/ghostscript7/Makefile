@@ -16,13 +16,13 @@ DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:gs_srcs
 DIST_SUBDIR=	${PORTNAME}
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
-MAINTAINER=	doceng@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Ghostscript 7.x PostScript interpreter
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	jpeg:${PORTSDIR}/graphics/jpeg \
-		png15:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng15.so:${PORTSDIR}/graphics/png
 RUN_DEPENDS=	${LOCALBASE}/share/ghostscript/fonts/a010013l.pfb:${PORTSDIR}/print/gsfonts
 
 CONFLICTS_INSTALL= \

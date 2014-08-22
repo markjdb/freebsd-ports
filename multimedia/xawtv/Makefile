@@ -3,6 +3,7 @@
 
 PORTNAME=	xawtv
 PORTVERSION=	3.103
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://linuxtv.org/downloads/xawtv/
 
@@ -11,16 +12,15 @@ COMMENT=	TV viewing application and a few TV utilities
 
 BUILD_DEPENDS=	${LOCALBASE}/lib/X11/fonts/misc/led-iso8859-1.pcf.gz:${PORTSDIR}/x11-fonts/tv-fonts
 RUN_DEPENDS=	${LOCALBASE}/lib/X11/fonts/misc/led-iso8859-1.pcf.gz:${PORTSDIR}/x11-fonts/tv-fonts
-LIB_DEPENDS=	png15:${PORTSDIR}/graphics/png \
-		jpeg.11:${PORTSDIR}/graphics/jpeg
+LIB_DEPENDS=	libpng15.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 OPTIONS_DEFINE=	AALIB DV QUICKTIME ZVBI
 OPTIONS_DEFINE_i386=	MMX
 OPTIONS_DEFAULT=	AALIB
 ZVBI_DESC=	Enable libzvbi support
 
-USES=		gmake iconv motif perl5
-USE_BZIP2=	yes
+USES=		gmake iconv motif perl5 tar:bzip2
 GNU_CONFIGURE=	yes
 USE_XORG=	x11 xaw
 CPPFLAGS+=	-I${WRKSRC}/common
@@ -35,7 +35,7 @@ FILES_LIBJPEG=	console/Subdir.mk x11/Subdir.mk libng/plugins/Subdir.mk
 
 .if ${PORT_OPTIONS:MAALIB}
 CONFIGURE_ARGS+=--enable-aa
-LIB_DEPENDS+=	aa.1:${PORTSDIR}/graphics/aalib
+LIB_DEPENDS+=	libaa.so:${PORTSDIR}/graphics/aalib
 PLIST_SUB+=	AA=""
 .else
 CONFIGURE_ARGS+=--disable-aa
@@ -43,7 +43,7 @@ PLIST_SUB+=	AA="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MZVBI}
-LIB_DEPENDS+=	zvbi.13:${PORTSDIR}/devel/libzvbi
+LIB_DEPENDS+=	libzvbi.so:${PORTSDIR}/devel/libzvbi
 CONFIGURE_ARGS+=--enable-zvbi
 PLIST_SUB+=	ZVBI="" ZVBI5=""
 .else
@@ -52,7 +52,7 @@ PLIST_SUB+=	ZVBI="@comment " ZVBI5="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MDV}
-LIB_DEPENDS+=	dv.4:${PORTSDIR}/multimedia/libdv
+LIB_DEPENDS+=	libdv.so:${PORTSDIR}/multimedia/libdv
 CONFIGURE_ARGS+=--enable-dv
 PLIST_SUB+=	DV=
 .else
@@ -67,7 +67,7 @@ CFLAGS+=	-DMMX=1
 
 .if ${PORT_OPTIONS:MQUICKTIME}
 CONFIGURE_ARGS+=--enable-quicktime
-LIB_DEPENDS+=	quicktime.0:${PORTSDIR}/multimedia/libquicktime
+LIB_DEPENDS+=	libquicktime.so:${PORTSDIR}/multimedia/libquicktime
 PLIST_SUB+=	QT=
 .else
 CONFIGURE_ARGS+=--enable-quicktime=no

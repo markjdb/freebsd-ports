@@ -8,7 +8,10 @@ MASTER_SITES=	http://squirm.foote.com.au/
 EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	A fast & configurable redirector for the Squid
+COMMENT=	Fast & configurable redirector for the Squid
+
+DEPRECATED=	Depends on www/squid which is two years past EOL
+EXPIRATION_DATE=2014-09-15
 
 RUN_DEPENDS=	${LOCALBASE}/sbin/squid:${PORTSDIR}/www/squid
 

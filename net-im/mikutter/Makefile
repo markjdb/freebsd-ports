@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mikutter
-PORTVERSION=	0.2.2.1537
+PORTVERSION=	3.0.5
 CATEGORIES=	net-im ruby
 MASTER_SITES=	http://mikutter.hachune.net/bin/ \
 		LOCAL
@@ -12,17 +12,20 @@ DISTNAME=	${PORTNAME}.${PORTVERSION}
 MAINTAINER=	tota@FreeBSD.org
 COMMENT=	Simple, powerful, and moeful Twitter client
 
-LICENSE=	GPLv3
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-gtk2>=1.5.0:${PORTSDIR}/x11-toolkits/rubygem-gtk2 \
-		graphics/rubygem-cairo>=1.10.0:${PORTSDIR}/graphics/rubygem-cairo \
-		rubygem-addressable>=2.2.7:${PORTSDIR}/www/rubygem-addressable \
+RUN_DEPENDS=	rubygem-gtk2>=2.1.0:${PORTSDIR}/x11-toolkits/rubygem-gtk2 \
+		rubygem-cairo>=1.12.8:${PORTSDIR}/graphics/rubygem-cairo \
+		rubygem-addressable>=2.3.5:${PORTSDIR}/www/rubygem-addressable \
 		rubygem-hmac>=0.4.0:${PORTSDIR}/security/rubygem-hmac \
-		rubygem-json>=1.8.0:${PORTSDIR}/devel/rubygem-json \
+		rubygem-json>=1.8.1:${PORTSDIR}/devel/rubygem-json \
 		${RUBY_SITELIBDIR}/memoize.rb:${PORTSDIR}/devel/ruby-memoize \
 		rubygem-oauth>=0.4.7:${PORTSDIR}/net/rubygem-oauth \
 		${RUBY_SITELIBDIR}/bsearch.rb:${PORTSDIR}/devel/ruby-bsearch \
-		rubygem-typed-array>=0.1.2:${PORTSDIR}/devel/rubygem-typed-array
+		rubygem-typed-array>=0.1.2:${PORTSDIR}/devel/rubygem-typed-array \
+		rubygem-delayer>=0.0.2:${PORTSDIR}/devel/rubygem-delayer \
+		rubygem-gettext>=2.3.1:${PORTSDIR}/devel/rubygem-gettext
 
 WRKSRC=	${WRKDIR}/${PORTNAME}
 
@@ -31,6 +34,7 @@ NO_BUILD=	yes
 
 RUBY_SHEBANG_FILES=	mikutter.rb \
 			core/miku/miku.rb \
+			core/lib/piapro.rb \
 			devel/makechi.rb
 
 PORTDOCS=	README

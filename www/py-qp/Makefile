@@ -19,8 +19,8 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 OPTIONS_DEFINE=	DOCS EXAMPLES
 OPTIONSFILE=	${PORT_DBDIR}/py-${PORTNAME}/options
 
-USE_PYDISTUTILS=yes
-USE_PYTHON=	2
+USE_PYTHON=	distutils
+USES=		python:2
 
 SUB_FILES=	pkg-message
 
@@ -33,6 +33,6 @@ post-build:
 post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/ ${STAGEDIR}${EXAMPLESDIR}/
 	cd ${WRKSRC}/ && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}/
-	cd ${WRKSRC}/ && ${PYTHON_CMD} ${PYSETUP} install_demo_sites ${STAGEDIR}${EXAMPLESDIR}/
+	cd ${WRKSRC}/ && ${PYTHON_CMD} setup.py install_demo_sites ${STAGEDIR}${EXAMPLESDIR}/
 
 .include <bsd.port.mk>

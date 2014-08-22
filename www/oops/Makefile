@@ -9,7 +9,7 @@ MASTER_SITES=	http://oops-cache.org/ \
 		ftp://kucha.ru/pub/misc/oops/
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	A caching web proxy server
+COMMENT=	Caching web proxy server
 BROKEN=		Fails to stage
 DEPRECATED=	Development stops long ago, domain has been expired
 EXPIRATION_DATE=	2014-08-31
@@ -40,9 +40,7 @@ GROUPS=		nobody
 
 OOPSVAR=	/var/run/oops
 OOPSLOG=	/var/log/oops
-.if !defined(NO_INSTALL_MANPAGES)
 MAN8=		oops.8 oopsctl.8
-.endif
 
 USE_RC_SUBR=	oops
 PKGMESSAGE=	${WRKDIR}/pkg-message
@@ -61,12 +59,12 @@ PGSQL_DESC=	PostgreSQL auth support
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGIGABASE}
-LIB_DEPENDS+=	gigabase_r.2:${PORTSDIR}/databases/gigabase
+LIB_DEPENDS+=	libgigabase_r.so:${PORTSDIR}/databases/gigabase
 CONFIGURE_ARGS+=	--without-DB
 .endif
 
 .if ${PORT_OPTIONS:MDB4}
-LIB_DEPENDS+=	db4.0:${PORTSDIR}/databases/db4
+LIB_DEPENDS+=	libdb4.so:${PORTSDIR}/databases/db4
 CONFIGURE_ARGS+=	--without-GB
 .endif
 
@@ -81,7 +79,7 @@ CONFIGURE_ARGS+=	--with-PGSQL=${PREFIX}/pgsql
 .endif
 
 .if ${PORT_OPTIONS:MPCRE}
-LIB_DEPENDS+=	pcre.3:${PORTSDIR}/devel/pcre
+LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre
 CONFIGURE_ARGS+=	--with-regexp=pcre
 .endif
 
@@ -89,10 +87,8 @@ pre-configure:
 	@cd ${WRKSRC} && ${AUTOHEADER}
 
 post-install:
-.if !defined(NO_INSTALL_MANPAGES)
 	@${INSTALL_MAN} ${WRKSRC}/doc/oops.8 ${PREFIX}/man/man8
 	@${INSTALL_MAN} ${WRKSRC}/doc/oopsctl.8 ${PREFIX}/man/man8
-.endif
 	@${MKDIR} -m 750 ${OOPSVAR}
 	@${CHOWN} oops ${OOPSVAR}
 	@${MKDIR} -m 750 ${OOPSLOG}

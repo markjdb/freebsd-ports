@@ -8,9 +8,11 @@ CATEGORIES=	net-mgmt
 MASTER_SITES=	http://bws.berkeley.edu/ports/
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	A captive portal-based network access control solution in perl
+COMMENT=	Captive portal-based network access control solution in perl
 
 BROKEN=		Does not build
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2014-08-22
 
 LICENSE=	BSD
 

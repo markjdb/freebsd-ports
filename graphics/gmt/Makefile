@@ -3,7 +3,7 @@
 
 PORTNAME=	gmt
 PORTVERSION=	4.5.12
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	graphics
 MASTER_SITES=	ftp://ftp.soest.hawaii.edu/%SUBDIR%/ \
 		ftp://ftp.geologi.uio.no/pub/%SUBDIR%/ \
@@ -30,8 +30,7 @@ RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
-USE_BZIP2=	yes
-USES=		gmake shebangfix
+USES=		gmake shebangfix tar:bzip2
 SHEBANG_FILES=	gmtswitch doc/examples/*/*.sh src/GMT.in \
 		src/gmt_shell_functions.sh.in src/gmtget.in \
 		src/gmtlogo.in src/isogmt.in

@@ -8,10 +8,10 @@ MASTER_SITES=	http://www.auto.tuwien.ac.at/~mkoegler/eib/
 PKGNAMESUFFIX=	-eibd
 DISTFILES=	${PORTNAME}_${PORTVERSION}${EXTRACT_SUFX}
 
-MAINTAINER=	bkoenig@alpha-tierchen.de
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	The EIBnet/IP server of the BCU SDK
 
-LIB_DEPENDS=	pthsem.20:${PORTSDIR}/devel/pthsem
+LIB_DEPENDS=	libpthsem.so:${PORTSDIR}/devel/pthsem
 BUILD_DEPENDS=	${LOCALBASE}/lib/libargp.a:${PORTSDIR}/devel/argp-standalone
 
 GNU_CONFIGURE=	yes

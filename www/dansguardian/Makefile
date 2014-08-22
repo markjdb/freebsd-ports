@@ -8,7 +8,10 @@ CATEGORIES=	www
 MASTER_SITES=	# empty, see below
 
 MAINTAINER=	garga@FreeBSD.org
-COMMENT=	A fast, feature-rich web content filter for Squid proxy servers
+COMMENT=	Fast, feature-rich web content filter for Squid proxy servers
+
+DEPRECATED=	Depends on www/squid which is two years past EOL
+EXPIRATION_DATE=2014-09-15
 
 LICENSE=	GPLv2
 

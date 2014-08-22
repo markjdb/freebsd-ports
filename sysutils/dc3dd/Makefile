@@ -2,15 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	dc3dd
-PORTVERSION=	7.1.614
+PORTVERSION=	7.2.641
 CATEGORIES=	sysutils
-MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/7.1.0
+MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/7.2
 
 MAINTAINER=	nobutaka@FreeBSD.org
-COMMENT=	A dd program useful for computer forensics
+COMMENT=	dd program useful for computer forensics
 
-USE_BZIP2=	yes
-USES=		gettext iconv gmake
+USES=		gettext iconv gmake tar:bzip2
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib

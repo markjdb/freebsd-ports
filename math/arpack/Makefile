@@ -22,7 +22,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 MAKE_JOBS_UNSAFE=	yes
 USES=		fortran
 USE_LDCONFIG=	yes
-WRKSRC =	${WRKDIR}/ARPACK
+WRKSRC=		${WRKDIR}/ARPACK
 
 # The following lapack symbols in arpack are renamed to avoid conflicts with other
 # lapack libraries:
@@ -82,10 +82,10 @@ WITH_BLAS?=	reference
 .endif
 
 .if ${WITH_BLAS} == atlas
-LIB_DEPENDS+=		atlas:${PORTSDIR}/math/atlas
+LIB_DEPENDS+=		libatlas.so:${PORTSDIR}/math/atlas
 BLAS?=			-lf77blas
 .else
-LIB_DEPENDS+=		blas:${PORTSDIR}/math/blas
+LIB_DEPENDS+=		libblas.so:${PORTSDIR}/math/blas
 BLAS?=			-lblas
 .endif
 

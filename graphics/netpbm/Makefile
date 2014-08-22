@@ -8,7 +8,6 @@ CATEGORIES=	graphics
 MASTER_SITES=	SF/netpbm/super_stable/${PORTVERSION} \
 		${MASTER_SITE_LOCAL:S/$/:man/}
 MASTER_SITE_SUBDIR=	dinoex/:man
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Toolkit for conversion of images between different formats
@@ -20,7 +19,7 @@ LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
 		libjasper.so:${PORTSDIR}/graphics/jasper \
 		libxml2.so:${PORTSDIR}/textproc/libxml2
 
-USES=		gmake perl5 shebangfix
+USES=		tar:tgz gmake perl5 shebangfix
 CFLAGS+=	-DPNG_DEPSTRUCT= -Iutil
 MAKE_ENV=	LN="${LN}" RANLIB="${RANLIB}"
 MAKEFILE=	GNUmakefile
@@ -31,7 +30,7 @@ USE_LDCONFIG=	yes
 SHEBANG_FILES=	editor/pnmflip editor/pnmquant editor/ppmfade \
 		editor/ppmquant editor/ppmshadow generator/ppmrainbow
 
-OPTIONS_DEFINE=	X11 MANPAGES
+OPTIONS_DEFINE=	X11 MANPAGES DOCS
 OPTIONS_SUB=	yes
 
 X11_USE=	xorg=x11

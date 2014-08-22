@@ -3,7 +3,7 @@
 
 PORTNAME=	postfix
 PORTVERSION=	2.8.17
-PORTREVISION=	1
+PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	mail ipv6
 MASTER_SITES=	ftp://ftp.porcupine.org/mirrors/postfix-release/official/ \
@@ -15,7 +15,7 @@ MASTER_SITE_SUBDIR=	. old related/postfix
 PKGNAMESUFFIX=	28
 DIST_SUBDIR=	${PORTNAME}
 
-MAINTAINER=	sahil@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Secure alternative to widely-used Sendmail
 
 LICENSE=	IPL10

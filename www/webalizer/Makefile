@@ -2,7 +2,7 @@
 
 PORTNAME=	webalizer
 PORTVERSION=	2.23.8
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES+=	www
 MASTER_SITES=	ftp://ftp.mrunix.net/pub/webalizer/:main \
 MASTER_SITES=	ftp://ftp.mrunix.net/pub/webalizer/geodb/:geodb \
@@ -13,7 +13,7 @@ DISTNAME=	${PORTNAME}-2.23-08-src
 DISTFILES=	${DISTNAME}.tgz:main
 
 MAINTAINER?=	dinoex@FreeBSD.org
-COMMENT=	A web server log file analysis program
+COMMENT=	Web server log file analysis program
 
 LICENSE=	GPLv2
 
@@ -30,7 +30,8 @@ WEBALIZER_LANG?=english
 .endif
 
 OPTIONS_DEFINE=	GEOIP GEODB BDB1 BDB WEBALIZER_CONV \
-		FULL_CGI_REFS CLICKABLE_REFERER LARGE_URL
+		FULL_CGI_REFS CLICKABLE_REFERER LARGE_URL \
+		DOCS EXAMPLES
 OPTIONS_DEFAULT?=
 NO_OPTIONS_SORT=yes
 GEODB_DESC=Enable Webalizers IP-Database support

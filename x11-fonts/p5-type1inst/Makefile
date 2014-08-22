@@ -10,7 +10,7 @@ MASTER_SITE_SUBDIR=X11/xutils
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	hrs@FreeBSD.org
-COMMENT=	A script that helps install Postscript fonts in X Window System
+COMMENT=	Script that helps install Postscript fonts in X Window System
 
 USES=		perl5 shebangfix
 NO_BUILD=	yes
@@ -25,11 +25,9 @@ OPTIONS_DEFAULT=X11
 X11_RUN_DEPENDS=	${LOCALBASE}/bin/mkfontdir:${PORTSDIR}/x11-fonts/mkfontdir \
 			${LOCALBASE}/bin/mkfontscale:${PORTSDIR}/x11-fonts/mkfontscale
 
-.include <bsd.port.options.mk>
-
 do-install:
-	cd ${WRKSRC} && ${INSTALL_SCRIPT} type1inst t1embed \
-		${STAGEDIR}${PREFIX}/bin
+	(cd ${WRKSRC} && ${INSTALL_SCRIPT} type1inst t1embed \
+		${STAGEDIR}${PREFIX}/bin)
 	${INSTALL_MAN} ${WRKSRC}/type1inst.man \
 		${STAGEDIR}${PREFIX}/man/man1/type1inst.1
 

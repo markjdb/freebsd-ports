@@ -13,6 +13,8 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Abyss Web Server is a compact and easy to use web server
 
 BROKEN=		Fails to install
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2014-08-22
 
 WRKSRC=		${WRKDIR}/abyssws
 ONLY_FOR_ARCHS=	i386
@@ -24,7 +26,7 @@ NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} >= 700043
-LIB_DEPENDS+=	c.6:${PORTSDIR}/misc/compat6x
+LIB_DEPENDS+=	libc.so.6:${PORTSDIR}/misc/compat6x
 .endif
 
 pre-install:

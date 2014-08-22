@@ -3,7 +3,7 @@
 
 PORTNAME=	openocd
 PORTVERSION=	0.7.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	SF
 
@@ -271,7 +271,7 @@ CONFIGURE_ARGS+=	--disable-minidriver-dummy
 .endif
 
 .if defined(WITH_LIBFTDI)
-LIB_DEPENDS+=		ftdi:${PORTSDIR}/devel/libftdi
+LIB_DEPENDS+=		libftdi.so:${PORTSDIR}/devel/libftdi
 .endif
 
 .if ${PORT_OPTIONS:MDOXYGEN}

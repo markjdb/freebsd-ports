@@ -3,9 +3,9 @@
 
 PORTNAME=	xmlrpc-c
 PORTVERSION=	1.25.28
+PORTREVISION=	1
 CATEGORIES=	net
 MASTER_SITES=	SF/${PORTNAME}/Xmlrpc-c%20Super%20Stable/${PORTVERSION}
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	garga@FreeBSD.org
 COMMENT=	XML-RPC library for C and C++
@@ -19,7 +19,7 @@ LIBWWW_DESC=	Compile with libwww support
 
 CONFLICTS=	xmlrpc-epi-0.* xmlrpc-c-devel-[0-9]*
 
-USES=		gmake perl5
+USES=		gmake perl5 tar:tgz
 GNU_CONFIGURE=	yes
 MAKEFILE=	GNUmakefile
 MAKE_ARGS=	CFLAGS_COMMON="${CFLAGS}"

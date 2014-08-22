@@ -11,12 +11,12 @@ COMMENT=	CGI Webmail client for Maildirs
 
 BUILD_DEPENDS=	courierauthconfig:${PORTSDIR}/security/courier-authlib-base
 RUN_DEPENDS=	courierauthconfig:${PORTSDIR}/security/courier-authlib-base
-LIB_DEPENDS=	pcre:${PORTSDIR}/devel/pcre
+LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre
 
 CFLAGS:=	-I${LOCALBASE}/include -L${LOCALBASE}/lib ${CFLAGS:S/^[:space:]*//}
 CXXFLAGS:=	-I${LOCALBASE}/include ${CXXFLAGS:S/^[:space:]*//}
 
-OPTIONS_DEFINE=	CACHEDIR FAM GDBM GZIP HTTPS HTTPS_LOGIN ISPELL MIMETYPES SENTRENAME CHARSET
+OPTIONS_DEFINE=	CACHEDIR FAM GDBM GZIP HTTPS HTTPS_LOGIN ISPELL MIMETYPES SENTRENAME CHARSET DOCS
 OPTIONS_DEFAULT=	CACHEDIR FAM GZIP SENTRENAME
 CACHEDIR_DESC=	Cache logins
 FAM_DESC=	Build in fam support for IDLE command
@@ -52,8 +52,7 @@ CACHEOWNER?=	bin
 #
 # End of user variables
 
-USE_BZIP2=	YES
-USES=		gettext gmake iconv perl5
+USES=		gettext gmake iconv perl5 tar:bzip2
 USE_RC_SUBR=	sqwebmail-sqwebmaild
 GNU_CONFIGURE=	yes
 
@@ -160,7 +159,7 @@ CONFIGURE_ARGS+=	--enable-maxpurge=${WITH_MAXPURGE}
 
 .if ${PORT_OPTIONS:MGDBM}
 CONFIGURE_ARGS+=--with-db=gdbm
-LIB_DEPENDS+=	gdbm.4:${PORTSDIR}/databases/gdbm
+LIB_DEPENDS+=	libgdbm.so:${PORTSDIR}/databases/gdbm
 .else
 CONFIGURE_ARGS+=--with-db=db
 .endif

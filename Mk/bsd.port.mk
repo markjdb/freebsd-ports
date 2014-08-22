@@ -394,10 +394,6 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 # USE_OCAML		- If set, this port relies on the OCaml language.
 #				  Implies inclusion of bsd.ocaml.mk.  (Also see
 #				  that file for more information on USE_OCAML*).
-# USE_PYTHON	- If set, this port relies on the Python language.
-#				  Implies inclusion of bsd.python.mk. (Also see
-#				  that file for more information on USE_PYTHON_*
-#				  and USE_PYDISTUTILS).
 # USE_RUBY		- If set, this port relies on the Ruby language.
 #				  Implies inclusion of bsd.ruby.mk.  (Also see
 #				  that file for more information on USE_RUBY_*).
@@ -591,12 +587,6 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				  Installs all directories and files from ${WRKSRC}/doc
 #				  to ${DOCSDIR} except sed backup files.
 #
-# Boolean to control whether manpages are installed.
-#
-# NO_INSTALL_MANPAGES
-#				- If set, this port doesn't want to install any manpages.
-#				  Default: not set, i.e. manpages are installed by default.
-#
 # Set the following to specify all manpages that your port installs.
 # These manpages will be automatically listed in ${PLIST}.  Depending
 # on the setting of NO_MANCOMPRESS, the make rules will compress the
@@ -633,8 +623,8 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				  "maybe".  "yes" means manpages are installed
 #				  compressed; "no" means they are not; "maybe" means
 #				  it changes depending on the value of NO_MANCOMPRESS.
-#				  Default: "yes" if USES=imake is set and NO_INSTALL_MANPAGES
-#				  is not set, and "no" otherwise.
+#				  Default: "yes" if USES=imake is set without the noman
+#				  argument, and "no" otherwise.
 #
 # Set the following to specify all .info files your port installs.
 #
@@ -853,7 +843,7 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 # CONFIGURE_TARGET
 #				- The name of target to call when GNU_CONFIGURE is
 #				  defined.
-#				  Default: ${ARCH}-portbld-freebsd${OSREL}
+#				  Default: ${ARCH}-portbld-${OPSYS:tl}${OSREL}
 # GNU_CONFIGURE_PREFIX
 #				- The directory passed as prefix to the configure script if
 #				  GNU_CONFIGURE is set.
@@ -1243,7 +1233,7 @@ WITH_PKGNG?=	yes
 .endif
 
 .if !defined(WITH_PKGNG) && !defined(NO_WARNING_PKG_INSTALL_EOL)
-WARNING+=	"pkg_install EOL is scheduled for 2014-09-01. Please consider migrating to pkgng"
+WARNING+=	"pkg_install EOL is scheduled for 2014-09-01. Please migrate to pkgng"
 WARNING+=	"http://blogs.freebsdish.org/portmgr/2014/02/03/time-to-bid-farewell-to-the-old-pkg_-tools/"
 WARNING+=	"If you do not want to see this message again set NO_WARNING_PKG_INSTALL_EOL=yes in your make.conf"
 .endif
@@ -1444,7 +1434,7 @@ PKGCOMPATDIR?=		${LOCALBASE}/lib/compat/pkg
 .endif
 
 .if defined(USE_PYTHON) || defined(USE_PYTHON_BUILD) || defined(USE_PYTHON_RUN)
-.include "${PORTSDIR}/Mk/bsd.python.mk"
+USES+=	python
 .endif
 
 .if defined(USE_EFL) || defined(WANT_EFL) || defined(USE_EFL_ESMART)
@@ -1580,7 +1570,8 @@ CONFIGURE_WRKSRC?=	${WRKSRC}
 BUILD_WRKSRC?=	${WRKSRC}
 INSTALL_WRKSRC?=${WRKSRC}
 
-PLIST_SUB+=	OSREL=${OSREL} PREFIX=%D LOCALBASE=${LOCALBASE}
+PLIST_SUB+=	OSREL=${OSREL} PREFIX=%D LOCALBASE=${LOCALBASE} \
+			RESETPREFIX=${PREFIX}
 SUB_LIST+=	PREFIX=${PREFIX} LOCALBASE=${LOCALBASE} \
 		DATADIR=${DATADIR} DOCSDIR=${DOCSDIR} EXAMPLESDIR=${EXAMPLESDIR} \
 		WWWDIR=${WWWDIR} ETCDIR=${ETCDIR}
@@ -1592,7 +1583,7 @@ SUB_LIST+=	PREFIX=${PREFIX} LOCALBASE=${LOCALBASE} \
 #  Remove quotes
 #  Replace . with \. for later sed(1) usage
 PLIST_SUB_SED_MIN?=	2
-PLIST_SUB_SED?= ${PLIST_SUB:C/.*=.{1,${PLIST_SUB_SED_MIN}}$//g:NEXTRACT_SUFX=*:NOSREL=*:NLIB32DIR=*:NPREFIX=*:NLOCALBASE=*:N*="":N*="@comment*:C/([^=]*)="?([^"]*)"?/s!\2!%%\1%%!g;/g:C/\./\\./g}
+PLIST_SUB_SED?= ${PLIST_SUB:C/.*=.{1,${PLIST_SUB_SED_MIN}}$//g:NEXTRACT_SUFX=*:NOSREL=*:NLIB32DIR=*:NPREFIX=*:NLOCALBASE=*:NRESETPREFIX=*:N*="":N*="@comment*:C/([^=]*)="?([^"]*)"?/s!\2!%%\1%%!g;/g:C/\./\\./g}
 
 PLIST_REINPLACE+=	stopdaemon rmtry
 PLIST_REINPLACE_RMTRY=s!^@rmtry \(.*\)!@unexec rm -f %D/\1 2>/dev/null || true!
@@ -1888,10 +1879,6 @@ IGNORE=	Do not define STAGEDIR in command line
 
 .if defined(USE_PHP)
 .include "${PORTSDIR}/Mk/bsd.php.mk"
-.endif
-
-.if defined(USE_PYTHON)
-.include "${PORTSDIR}/Mk/bsd.python.mk"
 .endif
 
 .if defined(USE_WX) || defined(USE_WX_NOT)
@@ -2755,7 +2742,7 @@ LATEST_LINK?=		${PKGBASE}
 PKGLATESTFILE=		${PKGLATESTREPOSITORY}/${LATEST_LINK}${PKG_SUFX}
 
 CONFIGURE_SCRIPT?=	configure
-CONFIGURE_TARGET?=	${ARCH}-portbld-freebsd${OSREL}
+CONFIGURE_TARGET?=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET:=	${CONFIGURE_TARGET:S/--build=//}
 CONFIGURE_LOG?=		config.log
 
@@ -3255,6 +3242,8 @@ options-message:
 	@${ECHO_MSG} "===>  Found saved configuration for ${_OPTIONS_READ}"
 .endif
 
+${PKG_DBDIR} ${PREFIX} ${WRKDIR} ${WRKSRC}:
+	@${MKDIR} ${.TARGET}
 
 # Warn user about deprecated packages.  Advisory only.
 
@@ -3413,7 +3402,7 @@ do-fetch:
 	    fi; \
 	 done
 .if defined(PATCHFILES)
-	@cd ${_DISTDIR};\
+	cd ${_DISTDIR};\
 	${_PATCH_SITES_ENV} ; \
 	for _file in ${PATCHFILES}; do \
 		file=`${ECHO_CMD} $$_file | ${SED} -E -e 's/:[^-:][^:]*$$//'` ; \
@@ -3485,10 +3474,11 @@ do-fetch:
 
 # Extract
 
+clean-wrkdir:
+	@${RM} -rf ${WRKDIR}
+
 .if !target(do-extract)
 do-extract:
-	@${RM} -rf ${WRKDIR}
-	@${MKDIR} ${WRKDIR}
 	@for file in ${EXTRACT_ONLY}; do \
 		if ! (cd ${WRKDIR} && ${EXTRACT_CMD} ${EXTRACT_BEFORE_ARGS} ${_DISTDIR}/$$file ${EXTRACT_AFTER_ARGS});\
 		then \
@@ -3909,9 +3899,8 @@ install-package:
 
 .if !target(check-already-installed)
 .if !defined(NO_PKG_REGISTER) && !defined(FORCE_PKG_REGISTER)
-check-already-installed: ${TMPPLIST_SORT}
+check-already-installed: ${TMPPLIST_SORT} ${PKG_DBDIR}
 		@${ECHO_MSG} "===>  Checking if ${PKGORIGIN} already installed"; \
-		${MKDIR} ${PKG_DBDIR}; \
 		already_installed=`${PKG_INFO} -q -O ${PKGORIGIN}`; \
 		if [ -n "$${already_installed}" ]; then \
 				for p in $${already_installed}; do \
@@ -3951,8 +3940,7 @@ check-umask:
 .endif
 
 .if !target(install-mtree)
-install-mtree:
-	@${MKDIR} ${PREFIX}
+install-mtree: ${PREFIX}
 	@if [ ${UID} != 0 ]; then \
 		if [ -w ${PREFIX}/ ]; then \
 			${ECHO_MSG} "Warning: not superuser, you may get some errors during installation."; \
@@ -4015,6 +4003,7 @@ install-ldconfig-file:
 		> ${STAGEDIR}${LOCALBASE}/${LDCONFIG_DIR}/${UNIQUENAME}
 	@${ECHO_CMD} "@cwd ${LOCALBASE}" >> ${TMPPLIST}
 	@${ECHO_CMD} ${LDCONFIG_DIR}/${UNIQUENAME} >> ${TMPPLIST}
+	@${ECHO_CMD} "@cwd ${PREFIX}" >> ${TMPPLIST}
 .endif
 .endif
 .endif
@@ -4031,12 +4020,13 @@ install-ldconfig-file:
 .if !defined(INSTALL_AS_USER)
 	@${ECHO_MSG} "===>   Installing 32-bit ldconfig configuration file"
 .if defined(NO_MTREE) || ${PREFIX} != ${LOCALBASE}
-	@${MKDIR} ${STAGEDIR}${LOCALBASE}/${LDCONFIG_32DIR}
+	@${MKDIR} ${STAGEDIR}${LOCALBASE}/${LDCONFIG32_DIR}
 .endif
 	@${ECHO_CMD} ${USE_LDCONFIG32} | ${TR} ' ' '\n' \
 		> ${STAGEDIR}${LOCALBASE}/${LDCONFIG32_DIR}/${UNIQUENAME}
 	@${ECHO_CMD} "@cwd ${LOCALBASE}" >> ${TMPPLIST}
 	@${ECHO_CMD} ${LDCONFIG32_DIR}/${UNIQUENAME} >> ${TMPPLIST}
+	@${ECHO_CMD} "@cwd ${PREFIX}" >> ${TMPPLIST}
 .endif
 .endif
 .if defined(INSTALLS_SHLIB)
@@ -4195,14 +4185,14 @@ fix-plist-sequence: ${TMPPLIST}
 	@cd ${.CURDIR} && { ${MAKE} pretty-print-config | fold -sw 120 | ${SED} -e 's/^/@comment OPTIONS:/'; } >> ${TMPPLIST}
 	@${AWK} -f ${KEYWORDS}/pkg_install.awk ${TMPPLIST} > ${TMPPLIST}.keyword && \
 	    ${MV} -f ${TMPPLIST}.keyword ${TMPPLIST}
-	@${ECHO_CMD} "@exec echo pkg_install EOL is scheduled for 2014-09-01. Please consider migrating to pkgng" >> ${TMPPLIST}
+	@${ECHO_CMD} "@exec echo pkg_install EOL is scheduled for 2014-09-01. Please migrate to pkgng" >> ${TMPPLIST}
 	@${ECHO_CMD} "@exec echo http://blogs.freebsdish.org/portmgr/2014/02/03/time-to-bid-farewell-to-the-old-pkg_-tools/" >> ${TMPPLIST}
 .endif
 .endif
 
 .if !defined(DISABLE_SECURITY_CHECK)
 .if !target(security-check)
-security-check:
+security-check: ${TMPPLIST}
 # Scan PLIST for:
 #   1.  setugid files
 #   2.  accept()/recvfrom() which indicates network listening capability
@@ -4931,7 +4921,7 @@ ${deptype:tl}-depends:
 lib-depends:
 .if defined(LIB_DEPENDS) && !defined(NO_DEPENDS)
 	@set -e ; \
-	for i in ${LIB_DEPENDS:M*.so*\:*}; do \
+	for i in ${LIB_DEPENDS}; do \
 		lib=$${i%%:*} ; \
 		dir=$${i#*:}  ; \
 		target="${DEPENDS_TARGET}"; \
@@ -4959,43 +4949,6 @@ lib-depends:
 		else \
 			${ECHO_MSG}; \
 		fi ; \
-	done
-	@set -e ; for i in ${LIB_DEPENDS:N*.so*\:*}; do \
-		lib=$${i%%:*}; \
-		pattern="`${ECHO_CMD} $$lib | ${SED} -E -e 's/\./\\\\./g' -e 's/(\\\\)?\+/\\\\+/g'`"\
-		dir=$${i#*:}; \
-		target=$${i##*:}; \
-		if ${TEST} $$dir = $$target; then \
-			target="${DEPENDS_TARGET}"; \
-			depends_args="${DEPENDS_ARGS}"; \
-		else \
-			dir=$${dir%%:*}; \
-		fi; \
-		${ECHO_MSG} -n "===>   ${PKGNAME} depends on shared library: $$lib"; \
-		if ${LDCONFIG} ${_LDCONFIG_FLAGS} -r | ${GREP} -vwF -e "${PKGCOMPATDIR}" | ${GREP} -qwE -e "-l$$pattern"; then \
-			${ECHO_MSG} " - found"; \
-			if [ ${_DEPEND_ALWAYS} = 1 ]; then \
-				${ECHO_MSG} "       (but building it anyway)"; \
-				notfound=1; \
-			else \
-				notfound=0; \
-			fi; \
-		else \
-			${ECHO_MSG} " - not found"; \
-			notfound=1; \
-		fi; \
-		if [ $$notfound != 0 ]; then \
-			${ECHO_MSG} "===>    Verifying $$target for $$lib in $$dir"; \
-			if [ ! -d "$$dir" ]; then \
-				${ECHO_MSG} "     => No directory for $$lib.  Skipping.."; \
-			else \
-				${_INSTALL_DEPENDS} \
-				if ! ${LDCONFIG} ${_LDCONFIG_FLAGS} -r | ${GREP} -vwF -e "${PKGCOMPATDIR}" | ${GREP} -qwE -e "-l$$pattern"; then \
-					${ECHO_MSG} "Error: shared library \"$$lib\" does not exist"; \
-					${FALSE}; \
-				fi; \
-			fi; \
-		fi; \
 	done
 .endif
 
@@ -5361,6 +5314,16 @@ missing:
 		fi; \
 	done
 
+# shwo missing dependencies by name
+missing-packages:
+	@_packages=$$(${PKG_INFO} -aq); \
+	for dir in $$(${ALL-DEPENDS-LIST}); do \
+		_p=$$(cd $$dir; ${MAKE} -VPKGNAME); \
+		if ! $$(${ECHO_CMD} $${_packages} | ${GREP} -q $${_p}); then \
+			${ECHO_CMD} $${_p}; \
+		fi; \
+	done
+
 ################################################################
 # Everything after here are internal targets and really
 # shouldn't be touched by anybody but the release engineers.
@@ -5499,7 +5462,7 @@ ${i:S/-//:tu}=	${WRKDIR}/${SUB_FILES:M${i}*}
 # files exist.
 
 .if !target(generate-plist)
-generate-plist:
+generate-plist: ${WRKDIR}
 	@${ECHO_MSG} "===>   Generating temporary packing list"
 	@${MKDIR} `${DIRNAME} ${TMPPLIST}`
 	@if [ ! -f ${DESCR} ]; then ${ECHO_MSG} "** Missing pkg-descr for ${PKGNAME}."; exit 1; fi
@@ -5655,6 +5618,10 @@ add-plist-buildinfo:
 .if !target(add-plist-info)
 .if defined(INFO)
 add-plist-info:
+	@if ${EGREP} -qe '^@cw?d' ${TMPPLIST} && \
+		[ "`${SED} -En -e '/^@cw?d[ 	]*/s,,,p' ${TMPPLIST} | ${TAIL} -n 1`" != "${PREFIX}" ]; then \
+		${ECHO_CMD} "@cwd ${PREFIX}" >> ${TMPPLIST}; \
+	fi
 # Process GNU INFO files at package install/deinstall time
 .for i in ${INFO}
 .if defined(NO_STAGE)
@@ -6383,7 +6350,11 @@ show-dev-warnings:
 	@${ECHO_MSG} "${m}"
 .endfor
 	@${ECHO_MSG}
+.if defined(DEV_WARNING_FATAL)
+	@${FALSE}
+.else
 	@sleep ${DEV_WARNING_WAIT}
+.endif
 .endif
 
 .if defined(DEV_ERROR)
@@ -6423,7 +6394,7 @@ _FETCH_SEQ=		fetch-depends pre-fetch pre-fetch-script \
 				do-fetch fetch-specials post-fetch post-fetch-script
 _EXTRACT_DEP=	fetch
 _EXTRACT_SEQ=	check-build-conflicts extract-message checksum extract-depends \
-				pre-extract pre-extract-script do-extract \
+				clean-wrkdir ${WRKDIR} pre-extract pre-extract-script do-extract \
 				post-extract post-extract-script
 _PATCH_DEP=		extract
 _PATCH_SEQ=		ask-license patch-message patch-depends pathfix dos2unix fix-shebang \

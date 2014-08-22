@@ -3,7 +3,7 @@
 
 PORTNAME=	ldap
 PORTVERSION=	0.9.10
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	net ruby
 MASTER_SITES=	RF
 MASTER_SITE_SUBDIR=	ruby-${PORTNAME}
@@ -14,6 +14,8 @@ DIST_SUBDIR=	ruby
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Ruby interface to LDAP API based on RFC1823
 
+OPTIONS_DEFINE=	DOCS
+
 WITH_LDAP_BACKEND?=	openldap2
 
 .if ${WITH_LDAP_BACKEND} == ldapsdk
@@ -22,7 +24,7 @@ LIB_DEPENDS=	${LOCALBASE}/mozilla/directory/lib/libldap.so.1:${PORTSDIR}/net/lda
 USE_OPENLDAP=	yes
 .endif
 
-USE_BZIP2=	yes
+USES=	tar:bzip2
 USE_RUBY=	yes
 USE_RUBY_EXTCONF=	yes
 

@@ -3,7 +3,7 @@
 
 PORTNAME=	polkit-kde
 PORTVERSION=	0.99.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	sysutils kde
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR=	stable/apps/KDE4.x/admin/
@@ -16,10 +16,9 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	libpolkit-qt-agent-1.so:${PORTSDIR}/sysutils/polkit-qt
 
-USE_BZIP2=	yes
 USE_KDE4=	kdehier kdelibs kdeprefix automoc4
 USE_QT4=	moc_build qmake_build rcc_build uic_build
-USES=		cmake
+USES=		cmake tar:bzip2
 
 OPTIONS_DEFINE=	NLS
 OPTIONS_SUB=	yes

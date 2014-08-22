@@ -8,15 +8,14 @@ CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://bxpkg.bsdroot.lv/files/
 DISTNAME=	${PORTNAME}-${DISTVERSION}
 
-MAINTAINER=	kpetrikas@gmail.com
-COMMENT=	bxPKG is a GTK+ based tool to manage binary packages on BSD systems.
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	GTK+ based tool to manage binary packages on BSD systems
 
-USES=		pkgconfig
+USES=		pkgconfig tar:bzip2
 USE_XORG=	x11
 USE_GNOME=	gtk20
 
 PLIST_FILES=	bin/bxpkg
-USE_BZIP2=	YES
 
 WRKSRC=	${WRKDIR}/${PORTNAME}-${DISTVERSION}
 
@@ -24,7 +23,7 @@ NO_STAGE=	yes
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} < 800000
-LIB_DEPENDS+=	archive:${PORTSDIR}/archivers/libarchive
+LIB_DEPENDS+=	libarchive.so:${PORTSDIR}/archivers/libarchive
 .endif
 
 .include <bsd.port.post.mk>

@@ -11,7 +11,7 @@ MASTER_SITE_SUBDIR?=	${PORTNAME}
 #MASTER_SITES=	${MASTER_SITE_LOCAL}
 #MASTER_SITE_SUBDIR=	fluffy
 
-MAINTAINER=	fluffy@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	InterNetNews -- the Internet meets Netnews
 
 BUILD_DEPENDS=	p5-GD>=0:${PORTSDIR}/graphics/p5-GD \
@@ -72,7 +72,7 @@ CONFIGURE_ARGS+=	--with-berkeleydb=${LOCALBASE}
 
 .if ${PORT_OPTIONS:MKERBEROS}
 .    if exists(${LOCALBASE}/bin/krb5-config)
-LIB_DEPENDS+=		gssapi_krb5:${PORTSDIR}/security/krb5
+LIB_DEPENDS+=		libgssapi_krb5.so:${PORTSDIR}/security/krb5
 CONFIGURE_ARGS+=	--with-kerberos=${LOCALBASE}
 .    else
 CONFIGURE_ARGS+=	--with-kerberos=/usr
@@ -104,7 +104,7 @@ CONFIGURE_ARGS+=	--enable-keywords
 
 .if ${PORT_OPTIONS:MSASL}
 CONFIGURE_ARGS+=	--with-sasl=${LOCALBASE}
-LIB_DEPENDS+=		sasl2:${PORTSDIR}/security/cyrus-sasl2
+LIB_DEPENDS+=		libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
 .endif
 
 .if ${PORT_OPTIONS:MTAGGED_HASH}

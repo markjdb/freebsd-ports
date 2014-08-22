@@ -37,7 +37,7 @@ CONFIGURE_ENV=		LIBR_LDFLAGS="${LDFLAGS}" OBJC="${CC}" \
 			SED="${LOCALBASE}/bin/gsed" \
 			ac_cv_have_decl_powl=yes ac_cv_have_decl_log1pl=yes
 
-OPTIONS_DEFINE=		MISSING
+OPTIONS_DEFINE=		MISSING DOCS
 
 MISSING_DESC=		use libmissing rather than libquadmath
 
@@ -52,8 +52,8 @@ PLIST_SUB=		RMATH_SOVERSION="${RMATH_SOVERSION}"
 USE_LDCONFIG=		yes
 .else # LIBRMATH_SLAVEPORT
 ALL_TARGET=		all
-INSTALL_TARGET =	install
-CONFIGURE_ARGS =	--enable-memory-profiling rdocdir=${DOCSDIR} \
+INSTALL_TARGET=		install
+CONFIGURE_ARGS=		--enable-memory-profiling rdocdir=${DOCSDIR} \
 			--with-system-bzlib --with-system-zlib
 CONFIGURE_ENV+=		FCFLAGS="${FFLAGS}" \
 			INSTALL_DATA="${INSTALL} ${COPY} ${_SHROWNGRP} -m 644" \
@@ -65,7 +65,7 @@ OPTIONS_DEFINE+=	ATLAS ICU PCRE_PORT THREADS
 
 ATLAS_DESC=		Use ATLAS instead of BLAS/LAPACK
 ICU_DESC=		Use ICU for collation in multibyte locales
-PCRE_PORT_DESC =	Use devel/pcre instead of the bundled PCRE
+PCRE_PORT_DESC=		Use devel/pcre instead of the bundled PCRE
 
 OPTIONS_DEFAULT+=	ICU PCRE_PORT THREADS
 .if !defined(LIBR_SLAVEPORT)
@@ -189,6 +189,7 @@ CONFIGURE_ARGS+=	--disable-threads
 .if defined(LIBR_SLAVEPORT)
 
 CONFIGURE_ARGS+=	--disable-BLAS-shlib --without-pic --without-x
+USES+=			readline
 
 .else # LIBR_SLAVEPORT
 

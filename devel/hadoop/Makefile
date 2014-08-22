@@ -8,7 +8,6 @@ CATEGORIES=	devel java
 MASTER_SITES=	${MASTER_SITE_APACHE} \
 		http://dist.codehaus.org/jetty/jetty-6.1.14/:jetty
 MASTER_SITE_SUBDIR=	${PORTNAME}/core/${PORTNAME}-${PORTVERSION}
-PKGNAMEPREFIX=	apache-
 DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX} jetty-6.1.14.zip:jetty
 DIST_SUBDIR=	hadoop
 
@@ -88,6 +87,9 @@ PLIST_SUB+=	HADOOP_ARCH=${_HADOOP_ARCH}
 post-patch:
 	@${REINPLACE_CMD} -e 's/ -DCPU=\\\\\\".*\\\\\\"//' \
 		${WRKSRC}/src/c++/libhdfs/configure
+	@${REINPLACE_CMD} 's/-lssl/-lcrypto/' \
+		${WRKSRC}/src/c++/pipes/configure \
+		${WRKSRC}/src/examples/pipes/configure
 .for f in ${FIX_GCC}
 	@${REINPLACE_CMD} -e 's/`gcc/`$$LTCC/' ${WRKSRC}/${f}
 .endfor

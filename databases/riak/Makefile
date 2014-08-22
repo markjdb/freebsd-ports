@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	riak
-PORTVERSION=	1.4.9
+PORTVERSION=	1.4.10
 CATEGORIES=	databases
 MASTER_SITES=	http://s3.amazonaws.com/downloads.basho.com/riak/${PORTVERSION:R}/${PORTVERSION}/ \
 		http://downloads.basho.com.s3.amazonaws.com/riak/${PORTVERSION:R}/${PORTVERSION}/
@@ -13,7 +13,7 @@ LICENSE=	APACHE20
 
 BUILD_DEPENDS=	${LOCALBASE}/lib/erlang15/bin/erlc:${PORTSDIR}/lang/erlang-runtime15
 
-USES=		gmake
+USES=		gmake readline
 USE_RC_SUBR=	riak
 
 PLIST=		${WRKDIR}/pkg-plist
@@ -46,24 +46,24 @@ pre-install:
 	${CAT} ${PKGDIR}/pkg-plist >> ${PLIST}
 	${ECHO} "@owner ${USERS}" >> ${PLIST}
 	${ECHO} "@group ${GROUPS}" >> ${PLIST}
-	cd ${WRKSRC}/rel/${PORTNAME}; ${FIND} releases -type f \
+	(cd ${WRKSRC}/rel/${PORTNAME}; ${FIND} releases -type f \
 		| ${AWK} '{print length, $$0}' | ${SORT} -rn | ${SED} -e 's/^/lib\//' \
-		| ${AWK} '{print "lib/riak/"$$2 }' >> ${PLIST}
-	cd ${WRKSRC}/rel/${PORTNAME}; ${FIND} erts-* -type f \
+		| ${AWK} '{print "lib/riak/"$$2 }' >> ${PLIST})
+	(cd ${WRKSRC}/rel/${PORTNAME}; ${FIND} erts-* -type f \
 		| ${AWK} '{print length, $$0}' | ${SORT} -rn  \
-		| ${AWK} '{print "lib/riak/"$$2 }' >> ${PLIST}
-	cd ${WRKSRC}/rel; ${FIND} ${PORTNAME}/lib -type f \
+		| ${AWK} '{print "lib/riak/"$$2 }' >> ${PLIST})
+	(cd ${WRKSRC}/rel; ${FIND} ${PORTNAME}/lib -type f \
 		| ${AWK} '{print length, $$0}' | ${SORT} -rn | ${SED} -e 's/^/lib\//' \
-		| ${AWK} '{print "lib/"$$2 }' >> ${PLIST}
-	cd ${WRKSRC}/rel/${PORTNAME}; ${FIND} releases -type d \
+		| ${AWK} '{print "lib/"$$2 }' >> ${PLIST})
+	(cd ${WRKSRC}/rel/${PORTNAME}; ${FIND} releases -type d \
 		| ${AWK} '{print length, $$0}' | ${SORT} -rn | ${SED} -e 's/^/lib\//' \
-		| ${AWK} '{print "lib/riak/"$$2 }' | ${SED} -e "s/^/@dirrm\ /" >> ${PLIST}
-	cd ${WRKSRC}/rel/${PORTNAME}; ${FIND} erts-* -type d \
+		| ${AWK} '{print "lib/riak/"$$2 }' | ${SED} -e "s/^/@dirrm\ /" >> ${PLIST})
+	(cd ${WRKSRC}/rel/${PORTNAME}; ${FIND} erts-* -type d \
 		| ${AWK} '{print length, $$0}' | ${SORT} -rn | ${SED} -e 's/^/lib\//' \
-		| ${AWK} '{print "lib/riak/"$$2 }' | ${SED} -e "s/^/@dirrm\ /" >> ${PLIST}
-	cd ${WRKSRC}/rel; ${FIND} ${PORTNAME}/lib -type d \
+		| ${AWK} '{print "lib/riak/"$$2 }' | ${SED} -e "s/^/@dirrm\ /" >> ${PLIST})
+	(cd ${WRKSRC}/rel; ${FIND} ${PORTNAME}/lib -type d \
 		| ${AWK} '{print length, $$0}' | ${SORT} -rn | ${SED} -e 's/^/lib\//' \
-		| ${AWK} '{print "lib/"$$2 }' | ${SED} -e "s/^/@dirrm\ /" >> ${PLIST}
+		| ${AWK} '{print "lib/"$$2 }' | ${SED} -e "s/^/@dirrm\ /" >> ${PLIST})
 	${ECHO} "@dirrm lib/riak" >> ${PLIST}
 	${ECHO} "@cwd /" >> ${PLIST}
 	${ECHO} "@dirrmtry %%RIAK_DBDIR%%" >> ${PLIST}

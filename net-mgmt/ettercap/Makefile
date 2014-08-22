@@ -3,6 +3,7 @@
 
 PORTNAME=	ettercap
 PORTVERSION=	0.8.0
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	net-mgmt security
 
@@ -25,6 +26,7 @@ CMAKE_ARGS=	-DBUNDLED_LIBS=OFF \
 		-DHAVE_LIBNET=${LOCALBASE}/lib/libnet11 \
 		-DHAVE_PCAP=${LIBDIR} \
 		-DHAVE_RESOLV=${LIBDIR} \
+		-DINSTALL_SYSCONFDIR=${PREFIX}/etc \
 		-DLIBNET_INCLUDE_DIR=${LOCALBASE}/include/libnet11 \
 		-DLIBNET_LIB_DIR=${LOCALBASE}/lib/libnet11 \
 		-DLIBNET_LIBRARY=${LOCALBASE}/lib/libnet11 \
@@ -32,11 +34,13 @@ CMAKE_ARGS=	-DBUNDLED_LIBS=OFF \
 CMAKE_VERBOSE=	yes
 LDFLAGS+=	-L${LIBDIR} -L${LOCALBASE}/lib -L${LOCALBASE}/lib/libnet11 ${ICONV_LIB} -lnet -lpcap
 MAKE_JOBS_UNSAFE=	yes
-USES=		bison cmake:outsource iconv pkgconfig
+USES=		bison cmake:outsource cpe iconv pkgconfig
 
 DOCS=		AUTHORS CHANGELOG README README.BINARIES README.BUGS \
 		README.GIT README.PLATFORMS THANKS TODO TODO.TESTING \
 		doc/capture doc/decoders doc/dissectors doc/threads
+
+CPE_VENDOR=	${PORTNAME}_project
 
 GH_ACCOUNT=	Ettercap
 GH_PROJECT=	${PORTNAME}
@@ -60,9 +64,10 @@ PCRE_CMAKE_OFF=		-DHAVE_PCRE=OFF
 PCRE_CMAKE_ON=		-DHAVE_PCRE=ON
 PCRE_LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre
 PLUGINS_BUILD_DEPENDS=	curl>=7.26.0:${PORTSDIR}/ftp/curl
-PLUGINS_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 PLUGINS_CMAKE_OFF=	-DENABLE_PLUGINS=OFF
 PLUGINS_CMAKE_ON=	-DENABLE_PLUGINS=ON
+PLUGINS_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
+PLUGINS_USE_OFF=	LDCONFIG=yes
 SSL_CMAKE_OFF=		-DENABLE_SSL=OFF
 SSL_CMAKE_ON=		-DENABLE_SSL=ON
 SSL_USE=		OPENSSL=yes
@@ -76,18 +81,11 @@ UTF8_USES=		iconv
 .if ${PORT_OPTIONS:MPLUGINS}
 USE_LDCONFIG=	${PREFIX}/lib/ettercap
 DOCS+=		doc/plugins
-.else
-USE_LDCONFIG=	yes
 .endif
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/share/etter.conf ${STAGEDIR}${PREFIX}/etc/etter.conf.sample
-.if !exists(${PREFIX}/etc/etter.conf)
-	${INSTALL_DATA} ${WRKSRC}/share/etter.conf ${STAGEDIR}${PREFIX}/etc/etter.conf
-.endif
-.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/
 	cd ${WRKSRC}/ && ${INSTALL_DATA} ${DOCS} ${STAGEDIR}${DOCSDIR}/
-.endif
 
 .include <bsd.port.mk>

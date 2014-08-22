@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	zabbix22
-PORTVERSION=	2.2.3
-PORTREVISION=	2
+PORTVERSION=	2.2.5
 CATEGORIES=	net-mgmt
 MASTER_SITES=	SF/zabbix/ZABBIX%20Latest%20Stable/${PORTVERSION}
 PKGNAMESUFFIX?=	-server
@@ -96,7 +95,7 @@ PGSQL_USES=	pgsql
 
 SQLITE_CONFIGURE_WITH=	sqlite3
 SQLITE_USE=	SQLITE=3
- 
+
 ORACLE_CONFIGURE_WITH=	oracle
 
 CURL_CONFIGURE_WITH=	libcurl
@@ -165,6 +164,6 @@ post-install:
 	cd ${WRKSRC}/upgrades/ && ${COPYTREE_SHARE} dbpatches ${STAGEDIR}${DATADIR}/${ZABBIX_BUILD}/upgrades/
 	cd ${WRKSRC}/database/ && ${COPYTREE_SHARE} "ibm_db2 mysql oracle postgresql sqlite3" ${STAGEDIR}${DATADIR}/${ZABBIX_BUILD}/database/
 .endif
-.endif # if ${ZABBIX_BUILD} != "frontend"
+.endif
 
 .include <bsd.port.mk>

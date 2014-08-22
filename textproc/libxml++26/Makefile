@@ -11,7 +11,7 @@ MASTER_SITES=	GNOME
 MAINTAINER=	bland@FreeBSD.org
 COMMENT=	XML API for C++
 
-USE_XZ=		yes
+USES+=		tar:xz
 
 PLIST_SUB=	VERSION="2.6" API_VERSION="2.6"
 
@@ -19,10 +19,10 @@ PLIST_SUB=	VERSION="2.6" API_VERSION="2.6"
 
 LATEST_LINK=	libxml++26
 
-LIB_DEPENDS=	glibmm-2.4.1:${PORTSDIR}/devel/glibmm
+LIB_DEPENDS=	libglibmm-2.4.so:${PORTSDIR}/devel/glibmm
 BUILD_DEPENDS=	gm4:${PORTSDIR}/devel/m4
 
-USES=		gmake pathfix pkgconfig
+USES+=		gmake pathfix pkgconfig
 USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes

@@ -7,12 +7,11 @@ CATEGORIES=	lang
 MASTER_SITES=	http://www.afnix.org/ftp/ \
 		ftp://ftp.stack.nl/pub/users/johans/afnix/
 DISTNAME=	${PORTNAME}-src-${PORTVERSION}
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	johans@FreeBSD.org
 COMMENT=	Multi-threaded functional programming language
 
-USES=		gmake
+USES=		gmake tar:tgz
 USE_LDCONFIG=	yes
 HAS_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	cnf/bin/afnix-setup
@@ -23,6 +22,8 @@ MAKE_ENV=	PTHREAD_CFLAGS="${PTHREAD_CFLAGS}" \
 
 PORTDOCS=	*
 PLIST_SUB=	PORTVER=${PORTVERSION:R}
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.pre.mk>
 

@@ -61,7 +61,6 @@ WGET_DESC=		for downloading remote files (http, https, ftp)
 
 MAKE_JOBS_UNSAFE=	yes
 
-USE_BZIP2=	yes
 NO_STAGE=	yes
 
 USE_RC_SUBR=	liquidsoap
@@ -72,7 +71,7 @@ NO_OCAML_RUNDEPENDS=	yes
 USE_AUTOTOOLS=	autoconf:env automake:env
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=
-USES=		gmake pkgconfig
+USES=		gmake pkgconfig tar:bzip2
 
 CONFIGURE_ARGS=	--disable-gui --localstatedir=/var
 CFLAGS+=	-I${LOCALBASE}/${OCAML_LIBDIR}
@@ -114,8 +113,8 @@ BUILD_DEPENDS_dssi=	${LOCALBASE}/include/dssi.h:${PORTSDIR}/audio/dssi
 LIB_DEPENDS_faad=	libfaad.so:${PORTSDIR}/audio/faad
 LIB_DEPENDS_gavl=	libgavl.so:${PORTSDIR}/multimedia/gavl
 BUILD_DEPENDS_gstreamer=${LOCALBASE}/lib/ocaml/libcamlidl.a:${PORTSDIR}/lang/ocaml-camlidl
-LIB_DEPENDS_gstreamer=	libgstreamer-0.10:${PORTSDIR}/multimedia/gstreamer \
-			libgstapp-0.10:${PORTSDIR}/multimedia/gstreamer-plugins
+LIB_DEPENDS_gstreamer=	libgstreamer-0.10.so:${PORTSDIR}/multimedia/gstreamer \
+			libgstapp-0.10.so:${PORTSDIR}/multimedia/gstreamer-plugins
 BUILD_DEPENDS_ladspa=	${LOCALBASE}/include/ladspa.h:${PORTSDIR}/audio/ladspa
 LIB_DEPENDS_lame=	libmp3lame.so:${PORTSDIR}/audio/lame
 LIB_DEPENDS_mad=	libmad.so:${PORTSDIR}/audio/libmad

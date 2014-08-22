@@ -3,17 +3,17 @@
 
 PORTNAME=	softfail
 PORTVERSION=	2.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	mail
 MASTER_SITES=	http://www6.freebsdbrasil.com.br/~eksffa/l/dev/qmail-smtpextfork/ \
 		${MASTER_SITE_LOCAL}
 MASTER_SITE_SUBDIR=	jmelo/${PORTNAME}
 DISTNAME=	${PORTNAME}_fbsdbrasil-${PORTVERSION}
 
-MAINTAINER= ports@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Enhanced greylisting system for qmail w/ SMTPEXTFORK patch
 
-LIB_DEPENDS+=	spf2.3:${PORTSDIR}/mail/libspf2
+LIB_DEPENDS=	libspf2.so:${PORTSDIR}/mail/libspf2
 
 SUB_FILES=	pkg-message
 SUB_LIST=	QMAIL_PREFIX=${QMAIL_PREFIX}
@@ -21,9 +21,8 @@ PLIST_SUB=	QMAIL_PREFIX=${QMAIL_PREFIX}
 
 PORTDOCS=	README softfail.sql
 
-USES=		qmail
+USES=		qmail tar:bzip2
 
-USE_BZIP2=	yes
 USE_MYSQL=	yes
 
 .if defined(QMAIL_SLAVEPORT) && ( ${QMAIL_SLAVEPORT} != "spamcontrol" && ${QMAIL_SLAVEPORT} != "ldap" )

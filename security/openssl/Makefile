@@ -3,8 +3,8 @@
 
 PORTNAME=	openssl
 PORTVERSION=	1.0.1
-DISTVERSIONSUFFIX=	h
-PORTREVISION=	13
+DISTVERSIONSUFFIX=	i
+PORTREVISION=	15
 CATEGORIES=	security devel
 MASTER_SITES=	http://www.openssl.org/%SUBDIR%/ \
 		ftp://ftp.openssl.org/%SUBDIR%/ \
@@ -19,8 +19,10 @@ COMMENT=	SSL and crypto library
 .error You have `USE_OPENSSL' variable defined either in environment or in make(1) arguments. Please undefine and try again.
 .endif
 
-OPTIONS_DEFINE=	SHARED THREADS I386 SSE2 ASM PADLOCK ZLIB SCTP MD2 RC5 RFC3779 GMP
-OPTIONS_DEFAULT=SHARED THREADS SSE2 ASM ZLIB SCTP MD2
+CONFLICTS?=	libressl-*
+
+OPTIONS_DEFINE=	SHARED THREADS I386 SSE2 ASM PADLOCK ZLIB SCTP SSL2 SSL3 MD2 RC5 RFC3779 GMP DOCS
+OPTIONS_DEFAULT=SHARED THREADS SSE2 ASM ZLIB SCTP SSL2 SSL3 MD2
 .for a in amd64 ia64
 OPTIONS_DEFINE_${a}=	EC
 OPTIONS_DEFAULT_${a}=	EC
@@ -39,6 +41,8 @@ PADLOCK_DESC?=	VIA Padlock support
 SHARED_DESC?=	build of shared libs
 ZLIB_DESC?=	zlib compression support
 SCTP_DESC?=	SCTP protocol support
+SSL2_DESC?=	SSLv2 protocol support
+SSL3_DESC?=	SSLv3 protocol support
 MD2_DESC?=	MD2 hash (obsolete)
 RC5_DESC?=	RC5 cipher (patented)
 RFC3779_DESC?=	RFC3779 support
@@ -56,6 +60,8 @@ USE_PERL5=	build
 MAKE_ARGS+=	WHOLE_ARCHIVE_FLAG=--whole-archive
 MAKE_ENV+=	LIBRPATH="${PREFIX}/lib" GREP_OPTIONS=
 SUB_FILES=	pkg-message
+
+CPE_VERSION=	${PORTVERSION}${DISTVERSIONSUFFIX}
 
 FIX_POD=apps/cms.pod \
 	apps/smime.pod \
@@ -131,6 +137,18 @@ EXTRACONFIGURE+=	no-zlib no-zlib-dynamic
 EXTRACONFIGURE+=	sctp
 .else
 EXTRACONFIGURE+=	no-sctp
+.endif
+
+.if ${PORT_OPTIONS:MSSL2}
+EXTRACONFIGURE+=	enable-ssl2
+.else
+EXTRACONFIGURE+=	no-ssl2
+.endif
+
+.if ${PORT_OPTIONS:MSSL3}
+EXTRACONFIGURE+=	enable-ssl3
+.else
+EXTRACONFIGURE+=	no-ssl3
 .endif
 
 .if ${PORT_OPTIONS:MMD2}

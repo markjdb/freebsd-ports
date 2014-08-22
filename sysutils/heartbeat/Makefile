@@ -3,7 +3,7 @@
 
 PORTNAME=	heartbeat
 PORTVERSION=	2.1.4
-PORTREVISION=	22
+PORTREVISION=	24
 CATEGORIES=	sysutils
 #MASTER_SITES=	http://hg.linux-ha.org/lha-2.1/archive/STABLE-2.1.4.tar.bz2
 MASTER_SITES=	${MASTER_SITE_LOCAL}
@@ -22,7 +22,7 @@ LIB_DEPENDS=	libgnutls.so:${PORTSDIR}/security/gnutls \
 		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid \
 		libxml2.so:${PORTSDIR}/textproc/libxml2
 BUILD_DEPENDS=	bison:${PORTSDIR}/devel/bison
-PATCH_DEPENDS=	libtool:${PORTSDIR}/devel/libtool
+PATCH_DEPENDS=	libtoolize:${PORTSDIR}/devel/libtool
 
 USE_AUTOTOOLS=	autoconf autoheader automake aclocal libltdl libtoolize
 AUTOMAKE_ARGS+=	--add-missing --include-deps --copy
@@ -59,14 +59,14 @@ PKGDEINSTALL=	${PKGINSTALL}
 
 PLIST_SUB=	USER=${USERS} GROUP=${GROUPS}
 
-OPTIONS_DEFINE=		MGMT LDIRECTORD APCSNMP DRAC3
+OPTIONS_DEFINE=		MGMT LDIRECTORD APCSNMP DRAC3 DOCS
 MGMT_DESC=		Enable X11 Management Utilities
 LDIRECTORD_DESC=	Enable Linux Director Daemon
 APCSNMP_DESC=		Enable APC SNMP Stonith Device
 DRAC3_DESC=		Enable Dell DRACIII Stonith Device
 
-APCSNMP_LIB_DEPENDS=	netsnmp:${PORTSDIR}/net-mgmt/net-snmp
-DRAC3_LIB_DEPENDS=	curl:${PORTSDIR}/ftp/curl
+APCSNMP_LIB_DEPENDS=	libnetsnmp.so:${PORTSDIR}/net-mgmt/net-snmp
+DRAC3_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 
 .include <bsd.port.options.mk>
 

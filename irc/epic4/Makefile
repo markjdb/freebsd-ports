@@ -22,7 +22,7 @@ CONFLICTS=	epic5-0.[0-2]*
 GNU_CONFIGURE=	yes
 USE_OPENSSL=	yes
 PLIST_SUB+=	PORTVERSION=${PORTVERSION}
-USE_BZIP2=	yes
+USES+=		tar:bzip2
 CFLAGS:=	${CFLAGS:C/-O2/-g -O/g}
 
 OPTIONS_DEFINE=	IPV6 TCL PERL SSL TERMCAP DOCS
@@ -36,7 +36,7 @@ CONFIGURE_ARGS+=	--without-ipv6
 .endif
 
 .if ${PORT_OPTIONS:MTCL}
-LIB_DEPENDS+=		tcl84:${PORTSDIR}/lang/tcl84
+LIB_DEPENDS+=		libtcl84.so:${PORTSDIR}/lang/tcl84
 CONFIGURE_ARGS+=	--with-tcl
 .else
 CONFIGURE_ARGS+=	--without-tcl

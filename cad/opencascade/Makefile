@@ -6,7 +6,6 @@ PORTVERSION=	6.7.1
 PORTREVISION=	1
 CATEGORIES=	cad science
 MASTER_SITES=	http://files.opencascade.com/OCCT/OCC_${PORTVERSION}_release/
-EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	thierry@FreeBSD.org
 COMMENT=	Open CASCADE Technology, 3D modeling & numerical simulation
@@ -20,7 +19,7 @@ RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
 
 # Check ${WRKSRC}/dox/overview/Overview.md
 # and ${WRKSRC}/dox/dev_guides/building
-USES=		bison cmake compiler dos2unix gmake shebangfix tk
+USES=		bison cmake compiler dos2unix gmake shebangfix tk tar:tgz
 USE_XORG=	xmu
 DOS2UNIX_FILES=	adm/templates/*
 SHEBANG_FILES=	adm/templates/env.sh.in adm/templates/draw.sh		\
@@ -28,9 +27,9 @@ SHEBANG_FILES=	adm/templates/env.sh.in adm/templates/draw.sh		\
 		adm/start.tcl draw.sh xcode.sh env.sh custom.sh.in	\
 		gendoc codeblocks.sh
 
-OPTIONS_DEFINE=	TBB VIS
-TBB_DESC=	"Build with TBB"
-VIS_DESC=	"Build Visualizazion module (requires OpenGL, freetype, ftgl and gl2ps)"
+OPTIONS_DEFINE=	TBB VIS DOCS
+TBB_DESC=	Build with TBB
+VIS_DESC=	Build Visualizazion module (requires OpenGL, freetype, ftgl and gl2ps)
 OPTIONS_DEFAULT=TBB VIS
 OPTIONS_SUB=	yes
 
@@ -69,10 +68,10 @@ CMAKE_ARGS+=	-D3RDPARTY_FREETYPE_DIR=${LOCALBASE}	\
 .endif
 
 .if ${PORT_OPTIONS:MDOCS}
+USE_TEX+=	latex:build
 BUILD_DEPENDS+=	bash:${PORTSDIR}/shells/bash		\
 		doxygen:${PORTSDIR}/devel/doxygen	\
 		dot:${PORTSDIR}/graphics/graphviz	\
-		pdflatex:${PORTSDIR}/print/teTeX-base	\
 		inkscape:${PORTSDIR}/graphics/inkscape
 RUN_DEPENDS+=	${LOCALBASE}/www/MathJax/MathJax.js:${PORTSDIR}/www/mathjax
 .endif
