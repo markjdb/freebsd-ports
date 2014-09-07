@@ -17,7 +17,6 @@
     SUBDIR += abe
     SUBDIR += abuse_sdl
     SUBDIR += acm
-    SUBDIR += actx
     SUBDIR += adgali
     SUBDIR += adom
     SUBDIR += adonthell
@@ -29,8 +28,6 @@
     SUBDIR += alephone
     SUBDIR += alephone-data
     SUBDIR += alephone-scenarios
-    SUBDIR += alienarena
-    SUBDIR += alienarena-data
     SUBDIR += alienblaster
     SUBDIR += alienwave
     SUBDIR += allacrost
@@ -52,14 +49,12 @@
     SUBDIR += asteroid
     SUBDIR += asteroids3d
     SUBDIR += atanks
-    SUBDIR += atitd
     SUBDIR += atomix
     SUBDIR += atr3d
     SUBDIR += atris
     SUBDIR += atris-sounds
     SUBDIR += avanor
     SUBDIR += avoision
-    SUBDIR += avp-demo
     SUBDIR += awale
     SUBDIR += awele
     SUBDIR += balazar
@@ -98,7 +93,6 @@
     SUBDIR += bombherman
     SUBDIR += bombz
     SUBDIR += bomns
-    SUBDIR += bomns3
     SUBDIR += boswars
     SUBDIR += bouncy
     SUBDIR += bovo
@@ -140,7 +134,6 @@
     SUBDIR += cheech
     SUBDIR += chessx
     SUBDIR += childsplay
-    SUBDIR += childsplay_plugins
     SUBDIR += chocolate-doom
     SUBDIR += chroma
     SUBDIR += chromium-bsu
@@ -542,15 +535,12 @@
     SUBDIR += linux-rtcw
     SUBDIR += linux-savage
     SUBDIR += linux-skulltag
-    SUBDIR += linux-sof
     SUBDIR += linux-ssamtfe
     SUBDIR += linux-ssamtse
-    SUBDIR += linux-steam
     SUBDIR += linux-unrealgold
     SUBDIR += linux-uplink-demo
     SUBDIR += linux-ut
     SUBDIR += linux-ut2003-demo
-    SUBDIR += linux-ut2004-demo
     SUBDIR += linux-virtual-jay-peak
     SUBDIR += linux-worldofgoo-demo
     SUBDIR += linwarrior
@@ -748,6 +738,7 @@
     SUBDIR += powwow
     SUBDIR += ppracer
     SUBDIR += prboom
+    SUBDIR += prboom-plus
     SUBDIR += primateplunge
     SUBDIR += ptkei
     SUBDIR += ptools
@@ -779,7 +770,6 @@
     SUBDIR += qcc
     SUBDIR += qccx
     SUBDIR += qgo
-    SUBDIR += qix
     SUBDIR += qmars
     SUBDIR += qnetwalk
     SUBDIR += qonk
@@ -809,7 +799,6 @@
     SUBDIR += quake3
     SUBDIR += quake3-data
     SUBDIR += quake3-excessive
-    SUBDIR += quake3-freezetag
     SUBDIR += quake3-osp
     SUBDIR += quake3-ra3
     SUBDIR += quake3-ut
@@ -829,7 +818,6 @@
     SUBDIR += residualvm
     SUBDIR += rezerwar
     SUBDIR += rfksay
-    SUBDIR += rftg
     SUBDIR += ri-li
     SUBDIR += rnd_jue
     SUBDIR += robocalypto
@@ -1003,7 +991,6 @@
     SUBDIR += vamos
     SUBDIR += vavoom
     SUBDIR += vavoom-extras
-    SUBDIR += vdrift
     SUBDIR += vdrift-data
     SUBDIR += vectoroids
     SUBDIR += vegastrike
@@ -1144,6 +1131,7 @@
     SUBDIR += xspringies
     SUBDIR += xteddy
     SUBDIR += xtet42
+    SUBDIR += xtgyoretsu
     SUBDIR += xtic
     SUBDIR += xtriangles
     SUBDIR += xtris

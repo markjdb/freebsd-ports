@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mpv
-PORTVERSION=	0.5.0
+PORTVERSION=	0.5.1
 PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio
@@ -25,7 +25,7 @@ BUILD_DEPENDS=	rst2man:${PORTSDIR}/textproc/py-docutils
 USE_GITHUB=	yes
 GH_ACCOUNT=	mpv-player
 GH_TAGNAME=	v${PORTVERSION}
-GH_COMMIT=	88f247c
+GH_COMMIT=	b677937
 
 WAF_VERSION=	1.7.16
 
@@ -132,6 +132,8 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|/pkgconfig/mpv.pc|data/pkgconfig/mpv.pc|g' \
 		-e 's|/zsh/vendor-completions|/zsh/site-functions|' \
 		${WRKSRC}/wscript_build.py
+	@${REINPLACE_CMD} -e "s|'libpulse', '>= 1.0'|'libpulse', '>= 0.9'|" \
+		${WRKSRC}/wscript
 	@${FIND} ${WRKSRC}/DOCS/man -name '*.rst' | ${XARGS} ${REINPLACE_CMD} \
 		-e 's|/usr/local|${PREFIX}|g'
 

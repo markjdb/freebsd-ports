@@ -143,7 +143,7 @@ IGNORE=		lowercase WITH_STATIC_MODULES="${WITH_STATIC_MODULES}"\
 
 # Setting "@comment " as default.
 .for module in ${AVAILABLE_MODULES:O}
-${module}_PLIST_SUB=	"@comment "
+${module}PLIST_SUB=	"@comment "
 _DISABLE_MODULES+=	--disable-${module:tl}
 .endfor
 
@@ -244,11 +244,11 @@ SHARED_MODULES=		${APACHE_MODULES}
 .endif
 
 .for module in ${SHARED_MODULES}
-${module}_PLIST_SUB=	""
+${module}PLIST_SUB=	""
 .endfor
 
 .for module in ${AVAILABLE_MODULES:O:u}
-PLIST_SUB+=	MOD_${module}=${${module}_PLIST_SUB}
+PLIST_SUB+=	MOD_${module}=${${module}PLIST_SUB}
 .endfor
 
 # pkg-plist workaround STATIC support
@@ -288,8 +288,9 @@ APACHE_MPM!=		${APXS} -q MPM_NAME
 .	endif
 .elif defined(APACHE_PORT)
 _APACHE_VERSION!=	${ECHO_CMD} ${APACHE_PORT} | ${SED} -ne 's,.*/apache\([0-9]*\).*,\1,p'
-.else
-_APACHE_VERSION:=	${DEFAULT_APACHE_VERSION}
+#.else
+# the next line breaks ports with USE_APACHE(_RUN|_BUILD)=22
+#_APACHE_VERSION:=	${DEFAULT_APACHE_VERSION}
 .endif
 
 .if defined(USE_APACHE)
@@ -485,9 +486,6 @@ do-build: ap-gen-plist
 
 .if !target(do-install)
 do-install:
-. if defined(NO_STAGE)
-	@${APXS} -i ${AP_MOD_EN} -n ${SHORTMODNAME} ${WRKSRC}/${MODULENAME}.${AP_BUILDEXT}
-. else
 	@${MKDIR} ${STAGEDIR}${PREFIX}/${APACHEMODDIR}
 	@${APXS} -S LIBEXECDIR=${STAGEDIR}${PREFIX}/${APACHEMODDIR} -i -n ${SHORTMODNAME} ${WRKSRC}/${MODULENAME}.${AP_BUILDEXT}
 .	if !defined(DEBUG)	
@@ -496,7 +494,6 @@ do-install:
 .	else
 		@${ECHO_MSG} "===> DEBUG is set, will not strip ${APACHEMODDIR}/${MODULENAME}.so"
 .	endif
-. endif
 .endif
 
 .endif          # defined(AP_FAST_BUILD)
