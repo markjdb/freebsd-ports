@@ -3,7 +3,7 @@
 
 PORTNAME=	scipy
 PORTVERSION=	0.14.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	science python
 MASTER_SITES=	http://docs.scipy.org/doc/${DISTNAME}/:doc \
 		SF:source
@@ -25,6 +25,8 @@ RUN_DEPENDS=	${PYNUMPY}	\
 
 USES=		fortran python
 USE_PYTHON=	distutils autoplist concurrent
+
+LDFLAGS+=	-shared
 
 OPTIONS_DEFINE=	ATLAS DOCS SUITESPARSE
 OPTIONS_DEFAULT=SUITESPARSE

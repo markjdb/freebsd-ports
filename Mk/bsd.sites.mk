@@ -250,6 +250,27 @@ MASTER_SITE_EXIM+= \
 	http://ftp.exim.llorien.org/exim/%SUBDIR%
 .endif
 
+.if !defined(IGNORE_MASTER_SITE_CENTOS_LINUX)
+MASTER_SITE_CENTOS_LINUX+= \
+	http://mirror.centos.org/centos/6/os/i386/Packages/ \
+	http://vault.centos.org/6.5/os/Source/SPackages/ \
+	http://mirror.centos.org/%SUBDIR%/ \
+	http://vault.centos.org/%SUBDIR%/
+
+.endif
+
+.if !defined(IGNORE_MASTER_SITE_CENTOS_LINUX)
+MASTER_SITE_CENTOS_LINUX_UPDATES+= \
+	http://mirror.centos.org/centos/6/updates/i386/Packages/ \
+	http://vault.centos.org/6.5/updates/Source/SPackages/
+.endif
+
+.if !defined(IGNORE_MASTER_SITE_EPEL)
+MASTER_SITE_EPEL+= \
+	http://dl.fedoraproject.org/pub/epel/6/i386/ \
+	http://dl.fedoraproject.org/pub/epel/6/SRPMS/
+.endif
+
 .if !defined(IGNORE_MASTER_SITE_FEDORA_LINUX)
 MASTER_SITE_FEDORA_LINUX+= \
 	http://archives.fedoraproject.org/pub/archive/fedora/linux/core/%SUBDIR%/ \
@@ -558,6 +579,7 @@ MASTER_SITE_GNOME+= \
 
 .if !defined(IGNORE_MASTER_SITE_GNU)
 MASTER_SITE_GNU+= \
+	http://ftpmirror.gnu.org/%SUBDIR%/ \
 	http://ftp.gnu.org/gnu/%SUBDIR%/ \
 	ftp://ftp.gnu.org/gnu/%SUBDIR%/ \
 	http://www.gtlib.gatech.edu/pub/gnu/gnu/%SUBDIR%/ \
@@ -602,10 +624,18 @@ MASTER_SITE_GNUSTEP_CH+= \
 
 .if !defined(IGNORE_MASTER_SITE_GNU_ALPHA)
 MASTER_SITE_GNU_ALPHA+= \
-	ftp://alpha.gnu.org/pub/gnu/%SUBDIR%/ \
-	ftp://ftp.lublin.pl/mirror/alpha.gnu.org/gnu/%SUBDIR%/ \
-	ftp://ftp.ps.pl/mirrors/alpha.gnu.org/pub/gnu/%SUBDIR%/ \
-	ftp://ftp.funet.fi/pub/mirrors/alpha.gnu.org/gnu/%SUBDIR%/
+	http://alpha.gnu.org/gnu/%SUBDIR%/ \
+	ftp://spinellicreations.com/alpha/gnu/%SUBDIR%/ \
+	http://www.nic.funet.fi/pub/gnu/alpha/gnu/%SUBDIR%/ \
+	http://mirror.thecodefactory.org/gnualpha/%SUBDIR%/ \
+	http://www.mirrorservice.org/sites/alpha.gnu.org/gnu/%SUBDIR%/ \
+	http://gnu.c3sl.ufpr.br/alpha/%SUBDIR%/ \
+	http://mirror.cedia.org.ec/gnualpha/%SUBDIR%/ \
+	http://gnu-alpha.mirrors.hostinginnederland.nl/%SUBDIR%/ \
+	http://gnualpha.uib.no/%SUBDIR%/ \
+	http://mirrors.fe.up.pt/pub/gnu-alpha/%SUBDIR%/ \
+	http://mirror.lihnidos.org/GNU/alpha/gnu/%SUBDIR%/ \
+	http://alpha-gnu-org.ip-connect.vn.ua/%SUBDIR%/
 .endif
 
 .if !defined(IGNORE_MASTER_SITE_GOOGLE_CODE)
@@ -1487,6 +1517,7 @@ MASTER_SITES_SUBDIRS=	APACHE_JAKARTA:${PORTNAME:S,-,/,}/source \
 			GITHUB_CLOUD:${GH_ACCOUNT}/${GH_PROJECT}/ \
 			GNOME:sources/${PORTNAME}/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/} \
 			GNU:${PORTNAME} \
+			GNU_ALPHA:${PORTNAME} \
 			HORDE:${PORTNAME} \
 			LOGILAB:${PORTNAME} \
 			MATE:${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/} \

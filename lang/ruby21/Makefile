@@ -17,8 +17,7 @@ COMMENT?=	Object-oriented interpreted scripting language
 LICENSE=	BSD2CLAUSE RUBY
 LICENSE_COMB=	dual
 
-LIB_DEPENDS=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo \
-		libyaml.so:${PORTSDIR}/textproc/libyaml
+LIB_DEPENDS=	libyaml.so:${PORTSDIR}/textproc/libyaml
 
 # Using LIB_DEPENDS finds the libffi from gcc which causes problems
 BUILD_DEPENDS=	libffi>=0:${PORTSDIR}/devel/libffi
@@ -47,7 +46,6 @@ USE_RUBY=		yes
 RUBY_NO_BUILD_DEPENDS=	yes
 RUBY_NO_RUN_DEPENDS=	yes
 NO_LATEST_LINK=		yes
-MAKE_JOBS_UNSAFE=	yes
 
 OPTIONS_DEFINE=		CAPIDOCS DEBUG DOCS EXAMPLES RDOC
 OPTIONS_DEFAULT=	RDOC READLINE
@@ -64,7 +62,7 @@ CAPIDOCS_BUILD_DEPENDS=	doxygen>0:${PORTSDIR}/devel/doxygen \
 CAPIDOCS_CONFIGURE_OFF=	--disable-install-capi
 RDOC_CONFIGURE_OFF=	--disable-install-rdoc
 
-USES=		tar:bzip2 cpe
+USES=		execinfo cpe tar:bzip2
 
 CPE_VENDOR=	ruby-lang
 CPE_VERSION=	${RUBY_RELVERSION}
@@ -86,11 +84,19 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 # Keep this, else ruby will fail to load libraries dependent op libpthread.
 LIBS+=		-L${LOCALBASE}/lib ${PTHREAD_LIBS}
 
-.if ${ARCH} == "powerpc"
+.if ${OPSYS} == "FreeBSD"
+.if (${ARCH} == "i386" && ${OSVERSION} > 1010000) || (${ARCH} == "amd64" && ${OSVERSION} > 903000)
+CONFIGURE_ARGS+=	--enable-dtrace
+.else
 CONFIGURE_ARGS+=	--disable-dtrace
+.endif
 .endif
 
 CONFIGURE_ENV=	debugflags=
+
+.if ${PORT_OPTIONS:MCAPIDOCS}
+MAKE_JOBS_UNSAFE=	yes
+.endif
 
 .if ${PORT_OPTIONS:MLIBEDIT}
 BUILD_DEPENDS+=	libedit>=0:${PORTSDIR}/devel/libedit

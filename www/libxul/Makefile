@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	libxul
-DISTVERSION=	24.7.0
+DISTVERSION=	24.8.1
 CATEGORIES?=	www devel
-MASTER_SITES=	MOZILLA/firefox/releases/${DISTVERSION}esr/source
+MASTER_SITES=	MOZILLA/firefox/releases/${DISTVERSION}esr/source \
+		https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/${DISTVERSION}esr-candidates/build1/source/
 DISTNAME=	firefox-${DISTVERSION}esr.source
 
 MAINTAINER?=	gecko@FreeBSD.org
@@ -14,6 +15,7 @@ BUILD_DEPENDS=	nspr>=4.10.2:${PORTSDIR}/devel/nspr \
 		nss>=3.15.4:${PORTSDIR}/security/nss \
 		sqlite3>=3.7.17:${PORTSDIR}/databases/sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
+		libevent2>=2.0.21_2:${PORTSDIR}/devel/libevent2 \
 		cairo>=1.10.2_1,1:${PORTSDIR}/graphics/cairo \
 		soundtouch>=1.7.0:${PORTSDIR}/audio/soundtouch \
 		harfbuzz>=0.9.16:${PORTSDIR}/print/harfbuzz \
@@ -21,6 +23,7 @@ BUILD_DEPENDS=	nspr>=4.10.2:${PORTSDIR}/devel/nspr \
 		libvorbis>=1.3.4:${PORTSDIR}/audio/libvorbis \
 		opus>=1.1:${PORTSDIR}/audio/opus \
 		v4l_compat>0:${PORTSDIR}/multimedia/v4l_compat \
+		autoconf-2.13:${PORTSDIR}/devel/autoconf213 \
 		zip:${PORTSDIR}/archivers/zip \
 		unzip:${PORTSDIR}/archivers/unzip
 LIB_DEPENDS=	libv4l2.so:${PORTSDIR}/multimedia/libv4l
@@ -28,8 +31,6 @@ LIB_DEPENDS=	libv4l2.so:${PORTSDIR}/multimedia/libv4l
 WRKSRC=		${WRKDIR}/mozilla-esr24
 CONFLICTS=	libxul-1.9.*
 
-USE_AUTOTOOLS=	autoconf213:env
-USE_PYTHON_BUILD=2
 WANT_GNOME=	yes
 USE_QT4=	# empty
 QT_NONSTANDARD=	yes
@@ -73,8 +74,8 @@ post-patch:
 		${WRKSRC}/xulrunner/stub/nsXULStub.cpp
 
 pre-configure:
-	(cd ${WRKSRC} && ${AUTOCONF})
-	(cd ${WRKSRC}/js/src/ && ${AUTOCONF})
+	(cd ${WRKSRC} && ${LOCALBASE}/bin/autoconf-2.13)
+	(cd ${WRKSRC}/js/src/ && ${LOCALBASE}/bin/autoconf-2.13)
 
 post-build:
 	@${REINPLACE_CMD} -e "s|\(Libs:.*\)\($$\)|\1 -Wl,-rpath,${PREFIX}/lib/${MOZ_RPATH}\2| ; \

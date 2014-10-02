@@ -45,6 +45,7 @@
     SUBDIR += apvlv
     SUBDIR += aqsis
     SUBDIR += asciio
+    SUBDIR += atril
     SUBDIR += autopano-sift-c
     SUBDIR += autoq3d
     SUBDIR += autotrace
@@ -139,6 +140,7 @@
     SUBDIR += eog
     SUBDIR += eog-plugins
     SUBDIR += eos-movrec
+    SUBDIR += eom
     SUBDIR += epdfview
     SUBDIR += epeg
     SUBDIR += epix
@@ -197,7 +199,6 @@
     SUBDIR += founts
     SUBDIR += fpc-cairo
     SUBDIR += fpc-fpgtk
-    SUBDIR += fpc-ggi
     SUBDIR += fpc-graph
     SUBDIR += fpc-hermes
     SUBDIR += fpc-imagemagick
@@ -498,7 +499,6 @@
     SUBDIR += libgaiagraphics
     SUBDIR += libgeotiff
     SUBDIR += libgfx
-    SUBDIR += libggi
     SUBDIR += libglapi
     SUBDIR += libglesv2
     SUBDIR += libgltext
@@ -546,6 +546,14 @@
     SUBDIR += linplasma
     SUBDIR += linux-XnViewMP
     SUBDIR += linux-adobesvg
+    SUBDIR += linux-c6-sdl_image
+    SUBDIR += linux-c6-sdl_ttf
+    SUBDIR += linux-c6-dri
+    SUBDIR += linux-c6-dri-compat
+    SUBDIR += linux-c6-jpeg
+    SUBDIR += linux-c6-tiff
+    SUBDIR += linux-c6-cairo
+    SUBDIR += linux-c6-png
     SUBDIR += linux-f10-cairo
     SUBDIR += linux-f10-dri
     SUBDIR += linux-f10-gdk-pixbuf
@@ -556,9 +564,9 @@
     SUBDIR += linux-f10-libmng
     SUBDIR += linux-f10-png
     SUBDIR += linux-f10-sdl_image
+    SUBDIR += linux-f10-sdl_ttf
     SUBDIR += linux-f10-tiff
     SUBDIR += linux-f10-ungif
-    SUBDIR += linux-sdl_ttf
     SUBDIR += lprof-devel
     SUBDIR += lua-gd
     SUBDIR += luminance
@@ -570,8 +578,6 @@
     SUBDIR += mapnik
     SUBDIR += mapserver
     SUBDIR += mapyrus
-    SUBDIR += mate-document-viewer
-    SUBDIR += mate-image-viewer
     SUBDIR += megapov
     SUBDIR += mesa-demos
     SUBDIR += meshviewer
@@ -723,7 +729,6 @@
     SUBDIR += panoglview
     SUBDIR += panomatic
     SUBDIR += partio
-    SUBDIR += passepartout
     SUBDIR += pdf2svg
     SUBDIR += pear-Horde_Image
     SUBDIR += pear-IO_SWF
@@ -842,6 +847,7 @@
     SUBDIR += py-openimageio
     SUBDIR += py-paint
     SUBDIR += py-pillow
+    SUBDIR += py-pivy
     SUBDIR += py-png
     SUBDIR += py-poppler
     SUBDIR += py-poppler-qt4
@@ -903,21 +909,21 @@
     SUBDIR += ruby-gdal
     SUBDIR += ruby-image_size
     SUBDIR += ruby-imlib2
-    SUBDIR += ruby-ming
     SUBDIR += ruby-svg
-    SUBDIR += ruby-tgif
     SUBDIR += rubygem-cairo
     SUBDIR += rubygem-captcha
     SUBDIR += rubygem-chunky_png
     SUBDIR += rubygem-clutter
     SUBDIR += rubygem-clutter-gtk
     SUBDIR += rubygem-dragonfly
+    SUBDIR += rubygem-emoji
     SUBDIR += rubygem-exifr
     SUBDIR += rubygem-ezprint
     SUBDIR += rubygem-fastimage
     SUBDIR += rubygem-gd2
     SUBDIR += rubygem-gdk_pixbuf2
     SUBDIR += rubygem-geokit
+    SUBDIR += rubygem-gitlab_emoji
     SUBDIR += rubygem-goocanvas
     SUBDIR += rubygem-graphviz
     SUBDIR += rubygem-gruff
@@ -1020,6 +1026,7 @@
     SUBDIR += wxsvg
     SUBDIR += xaos
     SUBDIR += xbmbrowser
+    SUBDIR += xcftools
     SUBDIR += xd3d
     SUBDIR += xdgagrab
     SUBDIR += xface.el

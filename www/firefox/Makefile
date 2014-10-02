@@ -2,18 +2,20 @@
 # $FreeBSD$
 
 PORTNAME=	firefox
-DISTVERSION=	31.0
+DISTVERSION=	32.0.3
+DISTVERSIONSUFFIX=.source
 PORTEPOCH=	1
 CATEGORIES=	www ipv6
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source \
-		https://ftp.mozilla.org/pub/mozilla.org/${PORTNAME}/candidates/${DISTVERSION}-candidates/build2/source/
-DISTNAME=	${PORTNAME}-${DISTVERSION}.source
+		https://ftp.mozilla.org/pub/mozilla.org/${PORTNAME}/candidates/${DISTVERSION}-candidates/build1/source/
 
 MAINTAINER=	gecko@FreeBSD.org
 COMMENT=	Web browser based on the browser portion of Mozilla
 
 BUILD_DEPENDS=	nspr>=4.10.6:${PORTSDIR}/devel/nspr \
 		nss>=3.16.2:${PORTSDIR}/security/nss \
+		libevent2>=2.0.21_2:${PORTSDIR}/devel/libevent2 \
+		cairo>=1.12.16_1,2:${PORTSDIR}/graphics/cairo \
 		soundtouch>=1.8.0:${PORTSDIR}/audio/soundtouch \
 		harfbuzz>=0.9.25:${PORTSDIR}/print/harfbuzz \
 		graphite2>=1.2.4:${PORTSDIR}/graphics/graphite2 \
@@ -23,19 +25,17 @@ BUILD_DEPENDS=	nspr>=4.10.6:${PORTSDIR}/devel/nspr \
 		sqlite3>=3.8.4.2:${PORTSDIR}/databases/sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
 		v4l_compat>0:${PORTSDIR}/multimedia/v4l_compat \
+		autoconf-2.13:${PORTSDIR}/devel/autoconf213 \
 		zip:${PORTSDIR}/archivers/zip \
 		unzip:${PORTSDIR}/archivers/unzip
-#		cairo>=1.12.16,2:${PORTSDIR}/graphics/cairo \
 
 LIB_DEPENDS=	libv4l2.so:${PORTSDIR}/multimedia/libv4l
 
-USE_AUTOTOOLS=	autoconf213:env
-USE_PYTHON_BUILD=2
 OBJDIR_BUILD=	# in-tree build broken after bug 789837
 USE_GECKO=	gecko
-CONFLICTS=	firefox-esr-24.* firefox-esr-17.* firefox-1[07].*
+CONFLICTS=	firefox-esr-31.* firefox-esr-24.* firefox-esr-17.*
 MOZ_PKGCONFIG_FILES=	# empty
-USE_MOZILLA=	-cairo
+USE_MOZILLA=	# empty
 MOZILLA_NAME=	Firefox
 
 WANT_GNOME=	yes
@@ -96,8 +96,8 @@ post-patch:
 		${WRKSRC}/browser/app/nsBrowserApp.cpp
 
 pre-configure:
-	(cd ${WRKSRC} && ${AUTOCONF})
-	(cd ${WRKSRC}/js/src/ && ${AUTOCONF})
+	(cd ${WRKSRC} && ${LOCALBASE}/bin/autoconf-2.13)
+	(cd ${WRKSRC}/js/src/ && ${LOCALBASE}/bin/autoconf-2.13)
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps

@@ -2,7 +2,7 @@
 
 PORTNAME=	banshee
 PORTVERSION=	2.6.2
-PORTREVISION=	2
+PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio
 MASTER_SITES=	GNOME
@@ -45,6 +45,8 @@ INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
 CONFIGURE_TARGET=	--build=${ARCH}-portbld-freebsd${OSREL}
 CONFIGURE_ARGS=	--with-vendor-build-id=FreeBSD\ BSD\#\ Project --disable-gio-hardware --disable-boo
+CPPFLAGS+=	-I${LOCALBASE}/include
+LIBS+=		-L${LOCALBASE}/lib
 
 .include <bsd.port.options.mk>
 

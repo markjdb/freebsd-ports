@@ -40,9 +40,7 @@ RUBY_MODULE_DESC=	Build RUBY bindings
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPYTHON_MODULE}
-USE_PYTHON=	yes
-INSTALLS_EGGINFO=yes
-PYDISTUTILS_EGGINFO=py_rrdtool-0.2.2-${PYTHON_VERSION:S/thon//}.egg-info
+USES+=		python
 PLIST_SUB+=	WITH_PYTHON=""
 CONFIGURE_ARGS+=	--enable-python
 .else
@@ -123,6 +121,8 @@ post-install:
 	@${ECHO_MSG} "# See ${EXAMPLESDIR} for some demonstration code        #"
 	@${ECHO_MSG} "############################################################################"
 .endif
+.if ${PORT_OPTIONS:MPERL_MODULE}
 	${STRIP_CMD} ${STAGEDIR}${SITE_PERL}/${PERL_ARCH}/auto/RRDs/RRDs.so
+.endif
 
 .include <bsd.port.mk>

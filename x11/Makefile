@@ -187,6 +187,7 @@
     SUBDIR += libxkbui
     SUBDIR += libxklavier
     SUBDIR += libxshmfence
+    SUBDIR += linux-c6-xorg-libs
     SUBDIR += linux-f10-xorg-libs
     SUBDIR += listres
     SUBDIR += lsw
@@ -224,6 +225,7 @@
     SUBDIR += nvidia-driver-96
     SUBDIR += nvidia-settings
     SUBDIR += nvidia-xconfig
+    SUBDIR += nxcomp
     SUBDIR += ooxcb
     SUBDIR += p5-Clipboard
     SUBDIR += p5-X11-GUITest
@@ -243,6 +245,7 @@
     SUBDIR += qt4-graphicssystems-opengl
     SUBDIR += qt4-inputmethods
     SUBDIR += qt5-qev
+    SUBDIR += qt5-x11extras
     SUBDIR += qxkb
     SUBDIR += randrproto
     SUBDIR += recordproto

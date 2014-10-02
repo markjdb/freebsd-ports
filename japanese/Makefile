@@ -134,6 +134,7 @@
     SUBDIR += kon2-16dot
     SUBDIR += kpcal
     SUBDIR += kterm
+    SUBDIR += latex-jlisting
     SUBDIR += leafrogue
     SUBDIR += less
     SUBDIR += libreoffice
@@ -223,16 +224,15 @@
     SUBDIR += quit
     SUBDIR += roget-fpw
     SUBDIR += rogue_s
-    SUBDIR += rskkserv
     SUBDIR += ruby-eb
     SUBDIR += ruby-mecab
-    SUBDIR += ruby-ming
     SUBDIR += ruby-romkan
     SUBDIR += ruby-uconv
     SUBDIR += ruby-usersguide
     SUBDIR += rubygem-jpmobile
     SUBDIR += rubygem-jpmobile-ipaddresses
     SUBDIR += rubygem-jpmobile-terminfo
+    SUBDIR += rubygem-jpmobile4
     SUBDIR += rubygem-myrurema
     SUBDIR += ryaku-fpw
     SUBDIR += scim-anthy

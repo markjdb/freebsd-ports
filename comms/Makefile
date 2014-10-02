@@ -16,7 +16,6 @@
     SUBDIR += bluegps
     SUBDIR += bluez-firmware
     SUBDIR += bpl+
-    SUBDIR += callsign
     SUBDIR += cdr_read
     SUBDIR += chirp
     SUBDIR += chu
@@ -83,6 +82,7 @@
     SUBDIR += libmodbus
     SUBDIR += libticables2
     SUBDIR += libticalcs2
+    SUBDIR += libusbmuxd
     SUBDIR += linrad
     SUBDIR += lirc
     SUBDIR += locator

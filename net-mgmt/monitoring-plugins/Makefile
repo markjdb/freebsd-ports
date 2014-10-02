@@ -3,7 +3,7 @@
 
 PORTNAME=	monitoring-plugins
 PORTVERSION=	2.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	net-mgmt
 MASTER_SITES=	https://www.monitoring-plugins.org/download/ LOCAL/mat/${PORTNAME}
 
@@ -15,16 +15,13 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 CONFLICTS_INSTALL=	nagios-plugins-*
 
-USES=		charsetfix gmake perl5 libtool
+USES=		charsetfix gmake perl5 libtool autoreconf
 CHARSETFIX_MAKEFILEIN=Makefile.am
 USE_SUBMAKE=	yes
-USE_AUTOTOOLS=	aclocal autoconf automake autoheader
-ACLOCAL_ARGS=	-I m4 -I gl/m4
-AUTOMAKE_ARGS=	--add-missing
 
 OPTIONS_DEFINE=	QSTAT FPING NETSNMP RADIUS MYSQL PGSQL LDAP IPV6 JAIL NLS DBI EXTRAOPTS
 OPTIONS_SINGLE=	DNS
-OPTIONS_SINGLE_DNS=	DNS_BASE DNS_BINDTOOLS DNS_BIND98 DNS_BIND99 DNS_BIND910
+OPTIONS_SINGLE_DNS=	DNS_BASE DNS_BINDTOOLS DNS_BIND99 DNS_BIND910
 OPTIONS_DEFAULT=IPV6 EXTRAOPTS DNS_BASE
 OPTIONS_SUB=	yes
 
@@ -43,7 +40,6 @@ DNS_DESC=	Configuration of check_dig and check_dns (see help)
 
 DNS_BASE_DESC=	>= 10 means drill for check_dig and no check_dns
 DNS_BINDTOOLS_DESC=	Use dig and nslookup from dns/bind-tools
-DNS_BIND98_DESC=	Use dig and nslookup from dns/bind98
 DNS_BIND99_DESC=	Use dig and nslookup from dns/bind99
 DNS_BIND910_DESC=	Use dig and nslookup from dns/bind910
 
@@ -100,7 +96,7 @@ MYSQL_USE=	mysql=yes
 MYSQL_CONFIGURE_ON=	--with-mysql=${LOCALBASE}
 MYSQL_CONFIGURE_OFF=	--without-mysql
 
-PGSQL_USE=	pgsql=yes
+PGSQL_USES=	pgsql
 PGSQL_CONFIGURE_ON=	--with-pgsql=${LOCALBASE}
 PGSQL_CONFIGURE_OFF=	--without-pgsql
 
@@ -109,15 +105,13 @@ LDAP_CONFIGURE_WITH=	ldap
 
 NLS_USES=	gettext
 NLS_CONFIGURE_ENABLE=	nls
+NLS_USES_OFF=	gettext:build
 
 DBI_LIB_DEPENDS=	libdbi.so:${PORTSDIR}/databases/libdbi
 DBI_CONFIGURE_WITH=	dbi
 
 DNS_BINDTOOLS_BUILD_DEPENDS=	${LOCALBASE}/bin/dig:${PORTSDIR}/dns/bind-tools
 DNS_BINDTOOLS_CONFIGURE_ON=	--with-dig-command=${LOCALBASE}/bin/dig \
-				--with-nslookup-command=${LOCALBASE}/bin/nslookup
-DNS_BIND98_BUILD_DEPENDS=	${LOCALBASE}/bin/dig:${PORTSDIR}/dns/bind98
-DNS_BIND98_CONFIGURE_ON=	--with-dig-command=${LOCALBASE}/bin/dig \
 				--with-nslookup-command=${LOCALBASE}/bin/nslookup
 DNS_BIND99_BUILD_DEPENDS=	${LOCALBASE}/bin/dig:${PORTSDIR}/dns/bind99
 DNS_BIND99_CONFIGURE_ON=	--with-dig-command=${LOCALBASE}/bin/dig \

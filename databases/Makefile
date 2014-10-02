@@ -70,7 +70,6 @@
     SUBDIR += fpc-sqlite
     SUBDIR += freetds
     SUBDIR += freetds-devel
-    SUBDIR += freetds-msdblib
     SUBDIR += frontbase-jdbc
     SUBDIR += gadfly
     SUBDIR += galera
@@ -149,6 +148,7 @@
     SUBDIR += libpbl
     SUBDIR += libsdb
     SUBDIR += libzdb
+    SUBDIR += linux-c6-sqlite3
     SUBDIR += linux-f10-sqlite3
     SUBDIR += linux-oracle-instantclient-basic
     SUBDIR += linux-oracle-instantclient-sdk
@@ -394,6 +394,7 @@
     SUBDIR += p5-Dancer-Plugin-Database-Core
     SUBDIR += p5-Dancer-Plugin-Redis
     SUBDIR += p5-Dancer-Session-Memcached
+    SUBDIR += p5-Dancer2-Plugin-DBIC
     SUBDIR += p5-Data-Page
     SUBDIR += p5-Data-Pageset
     SUBDIR += p5-Exception-Class-DBI
@@ -808,12 +809,6 @@
     SUBDIR += rrdtool12
     SUBDIR += ruby-bdb
     SUBDIR += ruby-cdb
-    SUBDIR += ruby-dbd_mysql
-    SUBDIR += ruby-dbd_odbc
-    SUBDIR += ruby-dbd_pg
-    SUBDIR += ruby-dbd_sqlite
-    SUBDIR += ruby-dbd_sqlite3
-    SUBDIR += ruby-dbi
     SUBDIR += ruby-gdbm
     SUBDIR += ruby-mysql
     SUBDIR += ruby-o_dbm
@@ -823,7 +818,9 @@
     SUBDIR += ruby-sybct
     SUBDIR += ruby-tokyocabinet
     SUBDIR += rubygem-activemodel
+    SUBDIR += rubygem-activemodel4
     SUBDIR += rubygem-activerecord
+    SUBDIR += rubygem-activerecord4
     SUBDIR += rubygem-activerecord-jdbc-adapter
     SUBDIR += rubygem-activerecord-jdbcmysql-adapter
     SUBDIR += rubygem-activerecord-mysql-adapter
@@ -836,6 +833,10 @@
     SUBDIR += rubygem-couchrest
     SUBDIR += rubygem-data_objects
     SUBDIR += rubygem-datamapper
+    SUBDIR += rubygem-dbd-mysql
+    SUBDIR += rubygem-dbd-odbc
+    SUBDIR += rubygem-dbd-pg
+    SUBDIR += rubygem-dbd-sqlite3
     SUBDIR += rubygem-dbi
     SUBDIR += rubygem-dm-active_model
     SUBDIR += rubygem-dm-aggregates

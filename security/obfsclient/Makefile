@@ -3,6 +3,7 @@
 
 PORTNAME=	obfsclient
 PORTVERSION=	0.0.2
+PORTREVISION=	1
 CATEGORIES=	security
 DISTNAME=	g-${GH_ACCOUNT}-${GH_PROJECT}-${PORTVERSION}-${GH_COMMIT}
 
@@ -18,17 +19,13 @@ GH_COMMIT=	3c551c5
 GH_TAGNAME=	${GH_COMMIT}
 
 GNU_CONFIGURE=	yes
-USES=		compiler:c++11-lib libtool:build pkgconfig tar:bzip2
-USE_AUTOTOOLS=	autoconf aclocal automake
+USES=		autoreconf compiler:c++11-lib pkgconfig tar:bzip2
 
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+CPPFLAGS+=	-I${LOCALBASE}/include
+LIBS+=		-L${LOCALBASE}/lib
 
 PLIST_FILES=	bin/${PORTNAME}
 PORTDOCS=	COPYING
-
-pre-configure:
-	@(cd ${WRKSRC} && ./autogen.sh)
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

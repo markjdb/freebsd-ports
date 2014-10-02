@@ -335,10 +335,10 @@
     SUBDIR += gnake
     SUBDIR += gnarr
     SUBDIR += gno3dtet
+    SUBDIR += gnome-chess
     SUBDIR += gnome-games
     SUBDIR += gnomeattacks
     SUBDIR += gnomebreakout
-    SUBDIR += gnomechess
     SUBDIR += gnomekiss
     SUBDIR += gnomesudoku
     SUBDIR += gnono
@@ -533,7 +533,6 @@
     SUBDIR += linux-quake4
     SUBDIR += linux-quake4-demo
     SUBDIR += linux-rtcw
-    SUBDIR += linux-savage
     SUBDIR += linux-skulltag
     SUBDIR += linux-ssamtfe
     SUBDIR += linux-ssamtse
@@ -1036,6 +1035,7 @@
     SUBDIR += xblast
     SUBDIR += xblood
     SUBDIR += xboard
+    SUBDIR += xboard-devel
     SUBDIR += xboing
     SUBDIR += xbomb
     SUBDIR += xbomber

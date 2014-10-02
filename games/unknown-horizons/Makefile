@@ -3,6 +3,7 @@
 
 PORTNAME=	unknown-horizons
 PORTVERSION=	2013.3
+PORTREVISION=	1
 CATEGORIES=	games
 #MASTER_SITES=	SF/unknownhorizons/Unknown%20Horizons/${PORTVERSION}/
 MASTER_SITES=	GH
@@ -24,11 +25,10 @@ GH_ACCOUNT=	${PORTNAME}
 GH_COMMIT=	ac7af43
 
 USE_GNOME=	intltool
-USES=		gettext:build tar:xz
-USE_PYTHON=	2
-USE_PYDISTUTILS=	yes
+USES=		gettext:build python:2 tar:xz
+USE_PYTHON=	distutils
 PYDISTUTILS_PKGNAME=	UnknownHorizons
-INSTALLS_EGGINFO=	yes
+
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == i386

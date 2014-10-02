@@ -3,14 +3,14 @@
 
 PORTNAME=	amanda
 PORTVERSION=	3.3.2
-PORTREVISION=	2
+PORTREVISION?=	3
 PORTEPOCH=	1
 CATEGORIES=	misc
 MASTER_SITES=	SF/amanda/amanda%20-%20stable/${PORTVERSION}
 PKGNAMESUFFIX?=	-server
 
 MAINTAINER=	fbsd@dylanleigh.net
-COMMENT?=	The Advanced Maryland Automatic Network Disk Archiver (server)
+COMMENT?=	Advanced Maryland Automatic Network Disk Archiver (server)
 
 RUN_DEPENDS=	perl-amanda:${PORTSDIR}/misc/amanda-perl-wrapper
 BUILD_DEPENDS=	perl-amanda:${PORTSDIR}/misc/amanda-perl-wrapper
@@ -19,7 +19,8 @@ WRKSRC=		${WRKDIR}/amanda-${PORTVERSION}
 SLAVEDIRS=	misc/amanda-client
 
 GNU_CONFIGURE=	yes
-USES=		charsetfix gmake pkgconfig perl5
+INSTALL_TARGET=	install-strip
+USES=		charsetfix gmake libtool perl5 pkgconfig
 USE_GNOME=	glib20
 USE_OPENSSL=	yes
 USE_LDCONFIG=	yes
@@ -37,6 +38,8 @@ CONFIGURE_ENV=	PERL=${LOCALBASE}/bin/perl-amanda
 PKG_MESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message
 SUB_LIST=	PORTSDIR=${PORTSDIR}
+
+MAKE_JOBS_UNSAFE=	yes
 
 OPTIONS_DEFINE=	GNUTAR
 OPTIONS_DEFAULT=	GNUTAR

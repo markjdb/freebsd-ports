@@ -393,6 +393,9 @@
     SUBDIR += libxslt-reference
     SUBDIR += libyaml
     SUBDIR += link-grammar
+    SUBDIR += linux-c6-aspell
+    SUBDIR += linux-c6-expat
+    SUBDIR += linux-c6-libxml2
     SUBDIR += linux-f10-aspell
     SUBDIR += linux-f10-expat
     SUBDIR += linux-f10-libxml2
@@ -415,7 +418,6 @@
     SUBDIR += man2html
     SUBDIR += markdown
     SUBDIR += markdown-mode.el
-    SUBDIR += mate-doc-utils
     SUBDIR += mathml-xsd
     SUBDIR += mdocml
     SUBDIR += meld
@@ -1275,7 +1277,6 @@
     SUBDIR += rtfreader
     SUBDIR += rtfx
     SUBDIR += rubber
-    SUBDIR += ruby-amatch
     SUBDIR += ruby-deplate
     SUBDIR += ruby-diff
     SUBDIR += ruby-escape
@@ -1283,7 +1284,6 @@
     SUBDIR += ruby-htmlrepair
     SUBDIR += ruby-htmlsplit
     SUBDIR += ruby-htree
-    SUBDIR += ruby-liquid
     SUBDIR += ruby-rd-mode.el
     SUBDIR += ruby-rdtool
     SUBDIR += ruby-rss
@@ -1294,6 +1294,7 @@
     SUBDIR += ruby-xmlparser
     SUBDIR += ruby-xmlscan
     SUBDIR += rubygem-albino
+    SUBDIR += rubygem-amatch
     SUBDIR += rubygem-asciidoctor
     SUBDIR += rubygem-augeas
     SUBDIR += rubygem-charlock_holmes
@@ -1305,7 +1306,11 @@
     SUBDIR += rubygem-cssmin
     SUBDIR += rubygem-diff-lcs
     SUBDIR += rubygem-diffy
+    SUBDIR += rubygem-elasticsearch
+    SUBDIR += rubygem-elasticsearch-api
+    SUBDIR += rubygem-elasticsearch-transport
     SUBDIR += rubygem-escape_utils
+    SUBDIR += rubygem-escape_utils-rails4
     SUBDIR += rubygem-ezamar
     SUBDIR += rubygem-fast_xs
     SUBDIR += rubygem-fast_xs073
@@ -1316,6 +1321,7 @@
     SUBDIR += rubygem-github-markdown
     SUBDIR += rubygem-github-markup
     SUBDIR += rubygem-gitlab-grit
+    SUBDIR += rubygem-gitlab-linguist
     SUBDIR += rubygem-heredoc_unindent
     SUBDIR += rubygem-hikidoc
     SUBDIR += rubygem-htmlentities
@@ -1337,7 +1343,9 @@
     SUBDIR += rubygem-multi_xml
     SUBDIR += rubygem-nokogiri
     SUBDIR += rubygem-nokogiri14
+    SUBDIR += rubygem-nokogumbo
     SUBDIR += rubygem-opml
+    SUBDIR += rubygem-org-ruby
     SUBDIR += rubygem-parslet
     SUBDIR += rubygem-phone
     SUBDIR += rubygem-rak
@@ -1349,9 +1357,11 @@
     SUBDIR += rubygem-rich
     SUBDIR += rubygem-rouge
     SUBDIR += rubygem-rttool
+    SUBDIR += rubygem-rubypants
     SUBDIR += rubygem-sanitize
     SUBDIR += rubygem-sass
     SUBDIR += rubygem-sass-rails
+    SUBDIR += rubygem-sass-rails4
     SUBDIR += rubygem-sass32
     SUBDIR += rubygem-sax-machine
     SUBDIR += rubygem-simplecov-html
@@ -1363,6 +1373,7 @@
     SUBDIR += rubygem-tidy
     SUBDIR += rubygem-unf
     SUBDIR += rubygem-unf_ext
+    SUBDIR += rubygem-version_sorter
     SUBDIR += rubygem-xml-simple
     SUBDIR += rubygem-xslt
     SUBDIR += rubygem-ya2yaml

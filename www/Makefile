@@ -13,6 +13,7 @@
     SUBDIR += ach
     SUBDIR += adzap
     SUBDIR += amphetadesk
+    SUBDIR += alef-webfont
     SUBDIR += analog
     SUBDIR += anyremote2html
     SUBDIR += anyterm
@@ -43,7 +44,6 @@
     SUBDIR += b2evolution
     SUBDIR += bacula-web
     SUBDIR += baikal
-    SUBDIR += bannerfilter
     SUBDIR += bblog
     SUBDIR += bigbluebutton
     SUBDIR += bins
@@ -63,6 +63,7 @@
     SUBDIR += cakephp22
     SUBDIR += cakephp23
     SUBDIR += calamaris
+    SUBDIR += calendarserver
     SUBDIR += castget
     SUBDIR += caudium14
     SUBDIR += cblog
@@ -105,8 +106,6 @@
     SUBDIR += ctemplate
     SUBDIR += cutycapt
     SUBDIR += dalbum
-    SUBDIR += dansguardian
-    SUBDIR += dansguardian-devel
     SUBDIR += davical
     SUBDIR += dddbl
     SUBDIR += decss
@@ -378,6 +377,8 @@
     SUBDIR += links
     SUBDIR += links-hacked
     SUBDIR += links1
+    SUBDIR += linux-c6-qt47-webkit
+    SUBDIR += linux-c6-flashplugin11
     SUBDIR += linux-f10-flashplugin11
     SUBDIR += linux-firefox
     SUBDIR += linux-libgtkembedmoz
@@ -397,7 +398,6 @@
     SUBDIR += mathjax
     SUBDIR += mathopd
     SUBDIR += mediawiki119
-    SUBDIR += mediawiki121
     SUBDIR += mediawiki122
     SUBDIR += mediawiki123
     SUBDIR += mergelog
@@ -812,6 +812,7 @@
     SUBDIR += p5-Dancer-Plugin-ExtDirect
     SUBDIR += p5-Dancer-Plugin-Feed
     SUBDIR += p5-Dancer-Plugin-Lexicon
+    SUBDIR += p5-Dancer-Plugin-Memcached
     SUBDIR += p5-Dancer-Plugin-REST
     SUBDIR += p5-Dancer-Plugin-SiteMap
     SUBDIR += p5-Dancer-Plugin-ValidationClass
@@ -1460,6 +1461,7 @@
     SUBDIR += py-cssselect
     SUBDIR += py-cssutils
     SUBDIR += py-django
+    SUBDIR += py-django-allauth
     SUBDIR += py-django-annoying
     SUBDIR += py-django-app-plugins
     SUBDIR += py-django-appconf
@@ -1634,6 +1636,7 @@
     SUBDIR += py-praw
     SUBDIR += py-prewikka
     SUBDIR += py-py-restclient
+    SUBDIR += py-pyjwt
     SUBDIR += py-pylons
     SUBDIR += py-pyquery
     SUBDIR += py-pyramid
@@ -1649,6 +1652,7 @@
     SUBDIR += py-requests
     SUBDIR += py-requests-oauth-hook
     SUBDIR += py-requests-oauthlib
+    SUBDIR += py-requests-toolbelt
     SUBDIR += py-requests1
     SUBDIR += py-restclient
     SUBDIR += py-rhodecode
@@ -1727,15 +1731,15 @@
     SUBDIR += rt42
     SUBDIR += ruby-amazon
     SUBDIR += ruby-aws
-    SUBDIR += ruby-borges
-    SUBDIR += ruby-fcgi
-    SUBDIR += ruby-fcgiwrap
     SUBDIR += ruby-google
     SUBDIR += ruby-wgettsv
+    SUBDIR += rubygem-ace-rails-ap
     SUBDIR += rubygem-actionpack
     SUBDIR += rubygem-actionpack4
     SUBDIR += rubygem-activeresource
+    SUBDIR += rubygem-activeresource4
     SUBDIR += rubygem-acts-as-taggable-on
+    SUBDIR += rubygem-acts-as-taggable-on3
     SUBDIR += rubygem-addressable
     SUBDIR += rubygem-akami
     SUBDIR += rubygem-amazon-ecs
@@ -1745,14 +1749,15 @@
     SUBDIR += rubygem-bootstrap-sass
     SUBDIR += rubygem-carrierwave
     SUBDIR += rubygem-cgi_multipart_eof_fix
-    SUBDIR += rubygem-chef-server-api
-    SUBDIR += rubygem-chef-server-webui
     SUBDIR += rubygem-chosen-rails
     SUBDIR += rubygem-cookiejar
+    SUBDIR += rubygem-crass
     SUBDIR += rubygem-cuba
     SUBDIR += rubygem-d3_rails
+    SUBDIR += rubygem-d3_rails-rails4
     SUBDIR += rubygem-davclient
     SUBDIR += rubygem-domainatrix
+    SUBDIR += rubygem-dropzonejs-rails
     SUBDIR += rubygem-em-http-request
     SUBDIR += rubygem-em-socksify
     SUBDIR += rubygem-em-twitter
@@ -1770,11 +1775,14 @@
     SUBDIR += rubygem-geminabox
     SUBDIR += rubygem-gitlab-gollum-lib
     SUBDIR += rubygem-gitlab-grack
+    SUBDIR += rubygem-gollum-lib
     SUBDIR += rubygem-gon
+    SUBDIR += rubygem-gon-rails4
     SUBDIR += rubygem-haml
     SUBDIR += rubygem-haml-coderay
     SUBDIR += rubygem-haml-contrib
     SUBDIR += rubygem-haml-rails
+    SUBDIR += rubygem-haml-rails-rails4
     SUBDIR += rubygem-heroku
     SUBDIR += rubygem-heroku-api
     SUBDIR += rubygem-heroku-nav
@@ -1782,15 +1790,18 @@
     SUBDIR += rubygem-html2haml
     SUBDIR += rubygem-http
     SUBDIR += rubygem-http-cookie
-    SUBDIR += rubygem-httpi
+    SUBDIR += rubygem-http_router
     SUBDIR += rubygem-httparty
     SUBDIR += rubygem-httpclient
+    SUBDIR += rubygem-httpi
     SUBDIR += rubygem-innate
     SUBDIR += rubygem-jekyll
     SUBDIR += rubygem-jekyll-watch
     SUBDIR += rubygem-journey
     SUBDIR += rubygem-jquery-atwho-rails
+    SUBDIR += rubygem-jquery-atwho-rails-rails4
     SUBDIR += rubygem-jquery-rails
+    SUBDIR += rubygem-jquery-rails4
     SUBDIR += rubygem-jquery-turbolinks
     SUBDIR += rubygem-jquery-ui-rails
     SUBDIR += rubygem-jruby-rack
@@ -1817,6 +1828,7 @@
     SUBDIR += rubygem-net-http-persistent25
     SUBDIR += rubygem-nicovideo
     SUBDIR += rubygem-ntlm-http
+    SUBDIR += rubygem-pagerduty
     SUBDIR += rubygem-passenger
     SUBDIR += rubygem-puma
     SUBDIR += rubygem-puma16
@@ -1834,7 +1846,9 @@
     SUBDIR += rubygem-rack-test
     SUBDIR += rubygem-rack15
     SUBDIR += rubygem-rails
+    SUBDIR += rubygem-rails4
     SUBDIR += rubygem-railties
+    SUBDIR += rubygem-railties4
     SUBDIR += rubygem-raindrops
     SUBDIR += rubygem-ramaze
     SUBDIR += rubygem-raphael-rails
@@ -1850,8 +1864,8 @@
     SUBDIR += rubygem-robotex
     SUBDIR += rubygem-robots
     SUBDIR += rubygem-savon
+    SUBDIR += rubygem-sawyer
     SUBDIR += rubygem-scrapi
-    SUBDIR += rubygem-scrubyt
     SUBDIR += rubygem-select2-rails
     SUBDIR += rubygem-selenium-webdriver
     SUBDIR += rubygem-simple-rss
@@ -1911,7 +1925,6 @@
     SUBDIR += spreadlogd
     SUBDIR += sqstat
     SUBDIR += squid
-    SUBDIR += squid32
     SUBDIR += squid33
     SUBDIR += squid_radius_auth
     SUBDIR += squidclamav
@@ -2078,7 +2091,6 @@
     SUBDIR += vdradmin-am
     SUBDIR += vee
     SUBDIR += vertx
-    SUBDIR += videocache
     SUBDIR += vimb
     SUBDIR += visitors
     SUBDIR += volta

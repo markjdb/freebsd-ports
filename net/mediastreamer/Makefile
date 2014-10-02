@@ -3,7 +3,7 @@
 
 PORTNAME=	mediastreamer
 PORTVERSION=	2.10.0
-PORTREVISION=	3
+PORTREVISION=	5
 CATEGORIES=	net
 MASTER_SITES=	SAVANNAH/linphone/mediastreamer
 
@@ -25,7 +25,7 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 USES=		gmake libtool pathfix pkgconfig
-USE_GNOME=	gnomehier intltool
+USE_GNOME=	gnomehier intlhack
 USE_LDCONFIG=	yes
 
 OPTIONS_DEFINE=		IPV6 NLS UPNP VIDEO
@@ -57,7 +57,7 @@ OPUS_CONFIGURE_ENABLE=	opus
 OPUS_LIB_DEPENDS=	libopus.so:${PORTSDIR}/audio/opus
 
 SPANDSP_CONFIGURE_ENABLE=	spandsp
-SPANDSP_LIB_DEPENDS=	libspandsp.so.2.0.0:${PORTSDIR}/comms/spandsp-devel
+SPANDSP_LIB_DEPENDS=	libspandsp.so.2:${PORTSDIR}/comms/spandsp-devel
 
 SPEEX_CONFIGURE_ENABLE=	speex
 SPEEX_LIB_DEPENDS=	libspeex.so:${PORTSDIR}/audio/speex

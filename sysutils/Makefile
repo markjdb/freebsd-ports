@@ -113,6 +113,7 @@
     SUBDIR += cfengine34
     SUBDIR += cfengine35
     SUBDIR += cfengine36
+    SUBDIR += cfengine36-rc
     SUBDIR += chgrep
     SUBDIR += ciso
     SUBDIR += ck4up
@@ -216,6 +217,7 @@
     SUBDIR += exfat-utils
     SUBDIR += extipl
     SUBDIR += ezjail
+    SUBDIR += f3
     SUBDIR += fanout
     SUBDIR += farbot
     SUBDIR += fastest_cvsup
@@ -329,7 +331,6 @@
     SUBDIR += goaccess
     SUBDIR += gosa
     SUBDIR += gpart
-    SUBDIR += gpkgdep
     SUBDIR += gpte
     SUBDIR += graffer
     SUBDIR += graid5
@@ -393,6 +394,7 @@
     SUBDIR += isomaster
     SUBDIR += isomd5sum
     SUBDIR += istatd
+    SUBDIR += jadm
     SUBDIR += jail-primer
     SUBDIR += jail2
     SUBDIR += jailctl
@@ -520,7 +522,6 @@
     SUBDIR += moosefs-client
     SUBDIR += moosefs-master
     SUBDIR += moreutils
-    SUBDIR += moreutils-parallel
     SUBDIR += most
     SUBDIR += mount.app
     SUBDIR += mountsmb2
@@ -666,7 +667,6 @@
     SUBDIR += pftables
     SUBDIR += pftop
     SUBDIR += phantom
-    SUBDIR += philesight
     SUBDIR += php5-fileinfo
     SUBDIR += php5-posix
     SUBDIR += php53-fileinfo
@@ -731,6 +731,7 @@
     SUBDIR += py-psutil
     SUBDIR += py-psutil121
     SUBDIR += py-pytsk
+    SUBDIR += py-queuelib
     SUBDIR += py-ranger
     SUBDIR += py-salt
     SUBDIR += py-salt-api
@@ -782,12 +783,10 @@
     SUBDIR += rubygem-SyslogLogger
     SUBDIR += rubygem-backup
     SUBDIR += rubygem-bundler
+    SUBDIR += rubygem-bundler_ext
     SUBDIR += rubygem-capistrano
     SUBDIR += rubygem-capistrano-ext
     SUBDIR += rubygem-chef
-    SUBDIR += rubygem-chef-expander
-    SUBDIR += rubygem-chef-server
-    SUBDIR += rubygem-chef-solr
     SUBDIR += rubygem-chef-zero
     SUBDIR += rubygem-facter
     SUBDIR += rubygem-fluent-mixin-plaintextformatter
@@ -803,6 +802,7 @@
     SUBDIR += rubygem-guard-rspec
     SUBDIR += rubygem-hammer_cli
     SUBDIR += rubygem-hammer_cli_foreman
+    SUBDIR += rubygem-hammer_cli_foreman_bootdisk
     SUBDIR += rubygem-hiera
     SUBDIR += rubygem-hiera-json
     SUBDIR += rubygem-hiera-puppet
@@ -813,6 +813,7 @@
     SUBDIR += rubygem-ohai
     SUBDIR += rubygem-parallel
     SUBDIR += rubygem-rubyipmi
+    SUBDIR += rubygem-smart_proxy_salt
     SUBDIR += rubygem-sys-admin
     SUBDIR += rubygem-sys-cpu
     SUBDIR += rubygem-sys-filesystem
@@ -823,6 +824,7 @@
     SUBDIR += rubygem-teamocil
     SUBDIR += rubygem-winrm
     SUBDIR += rubygem-yell
+    SUBDIR += rundeck
     SUBDIR += runit
     SUBDIR += runwhen
     SUBDIR += safe-rm
@@ -938,7 +940,6 @@
     SUBDIR += ttyload
     SUBDIR += tw_cli
     SUBDIR += tzdialog
-    SUBDIR += u-boot-beaglebone-eabi
     SUBDIR += ua
     SUBDIR += ucspi-ipc
     SUBDIR += ucspi-proxy

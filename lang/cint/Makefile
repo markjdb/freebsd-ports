@@ -3,7 +3,7 @@
 
 PORTNAME=	cint
 PORTVERSION=	5.18.00
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	lang
 MASTER_SITES=	http://root.cern.ch/drupal/sites/default/files/
 
@@ -16,7 +16,7 @@ EXTRACT_SUFX=	.tgz
 HAS_CONFIGURE=	yes
 CONFIGURE_ENV=	CC="${CC}" CXX="${CXX}" LDFLAGS="${LDFLAGS}"
 USE_GCC=	yes
-USES=		gmake
+USES=		gmake readline
 USE_LDCONFIG=	${PREFIX}/lib/cint
 ALL_TARGET=
 

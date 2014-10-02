@@ -50,27 +50,16 @@ include/google/protobuf/wire_format.h
 include/google/protobuf/wire_format_lite.h
 include/google/protobuf/wire_format_lite_inl.h
 lib/libprotobuf-lite.a
-lib/libprotobuf-lite.la
 lib/libprotobuf-lite.so
 lib/libprotobuf-lite.so.8
 lib/libprotobuf-lite.so.8.0.0
 lib/libprotobuf.a
-lib/libprotobuf.la
 lib/libprotobuf.so
 lib/libprotobuf.so.8
 lib/libprotobuf.so.8.0.0
 lib/libprotoc.a
-lib/libprotoc.la
 lib/libprotoc.so
 lib/libprotoc.so.8
 lib/libprotoc.so.8.0.0
 libdata/pkgconfig/protobuf-lite.pc
 libdata/pkgconfig/protobuf.pc
-@dirrm include/google/protobuf/stubs
-@dirrm include/google/protobuf/io
-@dirrm include/google/protobuf/compiler/python
-@dirrm include/google/protobuf/compiler/java
-@dirrm include/google/protobuf/compiler/cpp
-@dirrm include/google/protobuf/compiler
-@dirrm include/google/protobuf
-@dirrmtry include/google

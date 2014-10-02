@@ -11,14 +11,13 @@ COMMENT=	Web-based calendar application
 LICENSE=	GPLv2
 
 PORTSCOUT=	limit:^1\.2\. skipb:1
-USES=		uidfix
 USE_PHP=	pcre session
 WANT_PHP_WEB=	yes
 NO_BUILD=	yes
 
 WWWDIR=		${PREFIX}/www/${PORTNAME:tl}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME:tl}
-DEFAULT_VERSIONS=	PHP=5
+DEFAULT_VERSIONS+=	php=5
 WITH_PHP_CGI?=	/cgi-bin/php
 SUB_LIST+=	PHPCGI=${WITH_PHP_CGI}
 PLIST_SUB+=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}

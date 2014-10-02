@@ -268,7 +268,6 @@
     SUBDIR += libident
     SUBDIR += libkpass
     SUBDIR += libksba
-    SUBDIR += libmatekeyring
     SUBDIR += libmcrypt
     SUBDIR += libntlm
     SUBDIR += libotr
@@ -290,6 +289,15 @@
     SUBDIR += libtomcrypt
     SUBDIR += libwhisker
     SUBDIR += libyubikey
+    SUBDIR += linux-c6-libgpg-error
+    SUBDIR += linux-c6-libssh2
+    SUBDIR += linux-c6-openssl
+    SUBDIR += linux-c6-libtasn1
+    SUBDIR += linux-c6-nss
+    SUBDIR += linux-c6-gnutls
+    SUBDIR += linux-c6-cyrus-sasl2
+    SUBDIR += linux-c6-openssl-compat
+    SUBDIR += linux-c6-libgcrypt
     SUBDIR += linux-f10-cyrus-sasl2
     SUBDIR += linux-f10-gnutls
     SUBDIR += linux-f10-libgcrypt
@@ -311,7 +319,6 @@
     SUBDIR += manipulate_data
     SUBDIR += masscan
     SUBDIR += massh
-    SUBDIR += mate-keyring
     SUBDIR += matrixssl
     SUBDIR += mcrypt
     SUBDIR += md4coll
@@ -609,7 +616,6 @@
     SUBDIR += p5-Yahoo-BBAuth
     SUBDIR += p5-dicewaregen
     SUBDIR += p5-openxpki
-    SUBDIR += p5-openxpki-client-html-mason
     SUBDIR += p5-openxpki-i18n
     SUBDIR += pad
     SUBDIR += pam-mysql
@@ -623,6 +629,7 @@
     SUBDIR += pam_krb5-rh
     SUBDIR += pam_ldap
     SUBDIR += pam_mkhomedir
+    SUBDIR += pam_ocra
     SUBDIR += pam_p11
     SUBDIR += pam_per_user
     SUBDIR += pam_pseudo
@@ -770,7 +777,6 @@
     SUBDIR += py-oauthlib
     SUBDIR += py-openid
     SUBDIR += py-openssl
-    SUBDIR += py-otr
     SUBDIR += py-paramiko
     SUBDIR += py-passlib
     SUBDIR += py-plaso
@@ -790,6 +796,7 @@
     SUBDIR += py-pysha3
     SUBDIR += py-python-registry
     SUBDIR += py-rsa
+    SUBDIR += py-service_identity
     SUBDIR += py-slowaes
     SUBDIR += py-ssh
     SUBDIR += py-sslstrip
@@ -855,8 +862,6 @@
     SUBDIR += rkhunter
     SUBDIR += rndpassw
     SUBDIR += ruby-camellia
-    SUBDIR += ruby-crypt
-    SUBDIR += ruby-gpgme
     SUBDIR += ruby-hmac
     SUBDIR += ruby-password
     SUBDIR += ruby-tcpwrap
@@ -990,7 +995,6 @@
     SUBDIR += unhide
     SUBDIR += unicornscan
     SUBDIR += unssh
-    SUBDIR += vida
     SUBDIR += vinetto
     SUBDIR += vlock
     SUBDIR += vlog
@@ -1019,7 +1023,6 @@
     SUBDIR += ykpers
     SUBDIR += zebedee
     SUBDIR += zenmap
-    SUBDIR += zombiezapper
     SUBDIR += zxid
     SUBDIR += zzuf
 

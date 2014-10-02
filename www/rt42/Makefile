@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	rt
-DISTVERSION=	4.2.6
+DISTVERSION=	4.2.7
 CATEGORIES=	www
 MASTER_SITES=	http://download.bestpractical.com/pub/rt/release/
 PKGNAMESUFFIX=	42
@@ -56,7 +56,6 @@ RUN_DEPENDS+=	${CLI_DEPS}        \
 
 USES=		cpe perl5
 CPE_VENDOR=	bestpractical
-USE_AUTOTOOLS=	autoconf
 
 RT_LAYOUT=	FreeBSD
 RT_ETC_DIR?=	etc/${PORTNAME}${PKGNAMESUFFIX}
@@ -84,7 +83,7 @@ SPAWN_FCGI_RUN_DEPENDS=		${LOCALBASE}/bin/spawn-fcgi:${PORTSDIR}/www/spawn-fcgi 
 MYSQL_USE=			MYSQL=yes
 MYSQL_RUN_DEPENDS=		${MYSQL_DEPS}
 
-PGSQL_USE=			PGSQL=yes
+PGSQL_USES=			pgsql
 PGSQL_RUN_DEPENDS=		${PGSQL_DEPS}
 
 ORACLE_RUN_DEPENDS=		${ORACLE_DEPS}
@@ -172,8 +171,6 @@ PKGMESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message
 SUB_LIST=	RT_ETC_PATH=${RT_ETC_PATH}
 PLIST_SUB=	RT_ETC_DIR=${RT_ETC_DIR}
-
-run-autotools:	run-autotools-autoconf
 
 pre-fetch:
 	@${ECHO} ""

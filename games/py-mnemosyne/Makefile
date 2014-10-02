@@ -3,13 +3,14 @@
 
 PORTNAME=	mnemosyne
 PORTVERSION=	2.3.1
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	games python
 MASTER_SITES=	SF/mnemosyne-proj/${PORTNAME}/${PORTNAME}-${DISTVERSION}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	Mnemosyne-${DISTVERSION}
 
-MAINTAINER=	ports@freebsd.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Flash-card tool which optimises your learning process
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}qt4>=4.5:${PORTSDIR}/devel/py-qt4 \

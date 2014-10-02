@@ -104,10 +104,10 @@ PORTDATA+=	cmake
 
 .if ${PORT_OPTIONS:MLIT}
 MAN1SRCS+=		lit.1
-USE_PYTHON=		yes
+USES+=			python
 LIT_COMMANDS=		lit llvm-lit FileCheck
 .else
-USE_PYTHON_BUILD=	yes
+USES+=			python:build
 .endif
 
 .if ${PORT_OPTIONS:MMANPAGES}

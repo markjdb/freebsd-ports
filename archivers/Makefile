@@ -20,6 +20,7 @@
     SUBDIR += dpkg
     SUBDIR += dzip
     SUBDIR += ecm
+    SUBDIR += engrampa
     SUBDIR += epkg
     SUBDIR += fastjar
     SUBDIR += file-roller
@@ -78,7 +79,6 @@
     SUBDIR += macutils
     SUBDIR += makeself
     SUBDIR += mar
-    SUBDIR += mate-file-archiver
     SUBDIR += minizip
     SUBDIR += mscompress
     SUBDIR += mtf
@@ -170,7 +170,6 @@
     SUBDIR += rox-archive
     SUBDIR += rpm2cpio
     SUBDIR += rpm4
-    SUBDIR += rpm5
     SUBDIR += ruby-lha
     SUBDIR += ruby-zip
     SUBDIR += rubygem-archive-tar-minitar

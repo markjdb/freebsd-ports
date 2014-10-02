@@ -3,7 +3,7 @@
 
 PORTNAME=	ess
 DISTVERSION=	13.09-1
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	math
 MASTER_SITES=	http://ess.r-project.org/downloads/ess/
 EXTRACT_SUFX=	.tgz
@@ -36,6 +36,7 @@ post-patch: .SILENT
 		-e "\|^ETCDIR\ =|s|=.*|=${STAGEDIR}${PREFIX}/${EMACS_LIBDIR}/etc/ess|" \
 		-e "\|^INFODIR=|s|=.*|=${STAGEDIR}${PREFIX}/${INFO_PATH}|" \
 		-e "\|^LISPDIR=|s|=.*|=${STAGEDIR}${PREFIX}/${EMACS_SITE_LISPDIR}|" \
+		-e "\|^SITELISP=|d" \
 		${WRKSRC}/Makeconf
 	${REINPLACE_CMD} -e "\|cd doc; \$$(MAKE) \$$@|d" \
 		${WRKSRC}/Makefile

@@ -36,7 +36,7 @@
 .if !defined(_INCLUDE_USES_PERL5_MK)
 _INCLUDE_USES_PERL5_MK=	yes
 
-.if defined(perl5_ARGS)
+.if !empty(perl5_ARGS)
 IGNORE=	Incorrect 'USES+=perl5:${perl5_ARGS}' perl5 takes no arguments
 .endif
 
@@ -187,7 +187,7 @@ CONFIGURE_ARGS+=--create_packlist 0
 .endif
 .if ${_USE_PERL5:Mmodbuildtiny}
 .if ${PORTNAME} != Module-Build-Tiny
-BUILD_DEPENDS+=	p5-Module-Build-Tiny>=0.037:${PORTSDIR}/devel/p5-Module-Build-Tiny
+BUILD_DEPENDS+=	p5-Module-Build-Tiny>=0.038:${PORTSDIR}/devel/p5-Module-Build-Tiny
 .endif
 CONFIGURE_ARGS+=--create_packlist 1
 .endif
@@ -261,7 +261,7 @@ do-install:
 
 .if ${USE_PERL5:Mconfigure} || ${USE_PERL5:Mmodbuildtiny} || ${USE_PERL5:Mfixpacklist}
 fix-packlist::
-	-@[ -d ${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto ] && ${FIND} ${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto -name .packlist -exec ${SED} -i '' 's|^${STAGEDIR}||' '{}' \;
+	@if [ -d ${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto ] ; then ${FIND} ${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto -name .packlist -exec ${SED} -i '' 's|^${STAGEDIR}||' '{}' \; ; fi
 .endif
 
 # Starting with perl 5.20, the empty bootstrap files are not installed any more

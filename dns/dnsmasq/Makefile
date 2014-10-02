@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dnsmasq
-DISTVERSION=	2.71
-PORTREVISION=	2
+DISTVERSION=	2.72
 PORTEPOCH=	1
 CATEGORIES=	dns ipv6
 MASTER_SITES=	http://www.thekelleys.org.uk/dnsmasq/ \
@@ -93,7 +92,6 @@ post-patch:
 	${REINPLACE_CMD} -e "s/lua5\.1/lua-${LUA_VER}/" ${WRKSRC}/Makefile
 
 pre-configure: pretty-print-config
-	@${PRINTF} "dns/libidn config: " ; ${MAKE} -C ${PORTSDIR}/dns/libidn pretty-print-config
 .if ${PORT_OPTIONS:MIDN}
 .if empty(PORT_OPTIONS:MNLS)
 	@if ${OBJDUMP} -p ${LOCALBASE}/lib/libidn.so \

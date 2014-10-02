@@ -3,7 +3,7 @@
 
 PORTNAME=	teeworlds
 PORTVERSION=	0.6.2
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	games
 MASTER_SITES=	https://www.teeworlds.com/files/ \
 		http://mirror.amdmi3.ru/distfiles/
@@ -17,8 +17,7 @@ LICENSE=	ZLIB
 
 LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2
 
-USE_PYTHON_BUILD=	2
-
+USES=		python:2,build
 BAM_VERSION=	0.4.0
 BAM_WRKSRC=	${WRKDIR}/bam-${BAM_VERSION}
 BAM_TARGET=	release

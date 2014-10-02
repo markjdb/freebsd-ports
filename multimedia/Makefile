@@ -181,7 +181,9 @@
     SUBDIR += libquicktime
     SUBDIR += libquicktime-lame
     SUBDIR += libquvi
+    SUBDIR += libquvi09
     SUBDIR += libquvi-scripts
+    SUBDIR += libquvi-scripts09
     SUBDIR += librtmp
     SUBDIR += libsmacker
     SUBDIR += libtheora
@@ -195,6 +197,8 @@
     SUBDIR += libxine
     SUBDIR += libxspf
     SUBDIR += libzen
+    SUBDIR += linux-c6-libtheora
+    SUBDIR += linux-c6-libv4l
     SUBDIR += linux-f10-libtheora
     SUBDIR += linux-f10-libv4l
     SUBDIR += linux-realplayer
@@ -276,7 +280,6 @@
     SUBDIR += plexmediaserver
     SUBDIR += plexmediaserver-plexpass
     SUBDIR += podcastdl
-    SUBDIR += podcatcher
     SUBDIR += poe
     SUBDIR += ppm2fli
     SUBDIR += projectx
@@ -312,12 +315,12 @@
     SUBDIR += quark
     SUBDIR += quodlibet
     SUBDIR += quvi
+    SUBDIR += quvi09
     SUBDIR += recmpeg
     SUBDIR += recordmydesktop
     SUBDIR += replex
     SUBDIR += rox-videothumbnail
     SUBDIR += rtmpdump
-    SUBDIR += ruby-flvtool2
     SUBDIR += rubygem-clutter-gstreamer
     SUBDIR += rubygem-flvtool2
     SUBDIR += rubygem-gstreamer
@@ -385,8 +388,8 @@
     SUBDIR += vdr-plugin-xvdr
     SUBDIR += vdr-plugins
     SUBDIR += vic
+    SUBDIR += vid.stab
     SUBDIR += vlc
-    SUBDIR += vodcatcher
     SUBDIR += vstream-client
     SUBDIR += vtkmpeg2encode
     SUBDIR += w_scan

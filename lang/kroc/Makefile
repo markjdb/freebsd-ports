@@ -3,7 +3,7 @@
 
 PORTNAME=	kroc
 PORTVERSION=	1.5.r6372
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	lang
 MASTER_SITES=	http://ftp.i-scream.org/pub/kroc/ \
 		ftp://ftp.i-scream.org/pub/kroc/
@@ -13,6 +13,8 @@ MAINTAINER=	tdb@FreeBSD.org
 COMMENT=	The Kent Retargetable occam-pi Compiler
 
 BROKEN=		Fails to build
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2014-10-28
 
 BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash
 LIB_DEPENDS=	libpng15.so:${PORTSDIR}/graphics/png
