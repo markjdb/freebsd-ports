@@ -226,6 +226,7 @@
     SUBDIR += fyre
     SUBDIR += g2
     SUBDIR += gauche-gl
+    SUBDIR += gbm
     SUBDIR += gcolor
     SUBDIR += gcolor2
     SUBDIR += gd
@@ -484,24 +485,25 @@
     SUBDIR += libaux
     SUBDIR += libboard
     SUBDIR += libcaca
-    SUBDIR += libcdr
+    SUBDIR += libcdr01
     SUBDIR += libchamplain
     SUBDIR += libdmtx
     SUBDIR += libdrm
     SUBDIR += libecwj2
     SUBDIR += libemf
     SUBDIR += libetonyek
+    SUBDIR += libetonyek01
     SUBDIR += libexif
     SUBDIR += libexif-gtk
     SUBDIR += libfpx
     SUBDIR += libfreehand
-    SUBDIR += libfreehand00
     SUBDIR += libgaiagraphics
     SUBDIR += libgeotiff
     SUBDIR += libgfx
     SUBDIR += libglapi
     SUBDIR += libglesv2
     SUBDIR += libgltext
+    SUBDIR += libgltf
     SUBDIR += libgnomecanvas
     SUBDIR += libgnomecanvas-reference
     SUBDIR += libgnomecanvasmm26
@@ -515,6 +517,7 @@
     SUBDIR += libkipi-kde4
     SUBDIR += libkipiplugins
     SUBDIR += libksane
+    SUBDIR += libkscreen
     SUBDIR += liblqr-1
     SUBDIR += liblug
     SUBDIR += libmng
@@ -543,6 +546,7 @@
     SUBDIR += libwmf
     SUBDIR += libwmf-nox11
     SUBDIR += libwpg
+    SUBDIR += libwpg03
     SUBDIR += linplasma
     SUBDIR += linux-XnViewMP
     SUBDIR += linux-adobesvg
@@ -551,6 +555,7 @@
     SUBDIR += linux-c6-dri
     SUBDIR += linux-c6-dri-compat
     SUBDIR += linux-c6-jpeg
+    SUBDIR += linux-c6-libGLU
     SUBDIR += linux-c6-tiff
     SUBDIR += linux-c6-cairo
     SUBDIR += linux-c6-png
@@ -920,6 +925,7 @@
     SUBDIR += rubygem-exifr
     SUBDIR += rubygem-ezprint
     SUBDIR += rubygem-fastimage
+    SUBDIR += rubygem-flamegraph
     SUBDIR += rubygem-gd2
     SUBDIR += rubygem-gdk_pixbuf2
     SUBDIR += rubygem-geokit

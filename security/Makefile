@@ -247,8 +247,9 @@
     SUBDIR += kpcli
     SUBDIR += kqoauth
     SUBDIR += krb5
+    SUBDIR += krb5-111
+    SUBDIR += krb5-112
     SUBDIR += krb5-appl
-    SUBDIR += krb5-maint
     SUBDIR += kripp
     SUBDIR += kwalletmanager
     SUBDIR += l0pht-watch
@@ -774,6 +775,7 @@
     SUBDIR += py-m2crypto
     SUBDIR += py-mcrypt
     SUBDIR += py-mhash
+    SUBDIR += py-oauth2client
     SUBDIR += py-oauthlib
     SUBDIR += py-openid
     SUBDIR += py-openssl
@@ -795,6 +797,7 @@
     SUBDIR += py-pyptlib
     SUBDIR += py-pysha3
     SUBDIR += py-python-registry
+    SUBDIR += py-rekall
     SUBDIR += py-rsa
     SUBDIR += py-service_identity
     SUBDIR += py-slowaes
@@ -953,6 +956,7 @@
     SUBDIR += ssl-admin
     SUBDIR += sslscan
     SUBDIR += sslsniffer
+    SUBDIR += sslsplit
     SUBDIR += sslwrap
     SUBDIR += sssd
     SUBDIR += ssss
@@ -1009,6 +1013,7 @@
     SUBDIR += webshag
     SUBDIR += whatweb
     SUBDIR += wipe
+    SUBDIR += wpa_supplicant
     SUBDIR += xca
     SUBDIR += xinetd
     SUBDIR += xml-security

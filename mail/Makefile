@@ -137,6 +137,7 @@
     SUBDIR += fastforward
     SUBDIR += fdm
     SUBDIR += fetchmail
+    SUBDIR += filtermail
     SUBDIR += findmaildirs
     SUBDIR += gbuffy
     SUBDIR += gensig
@@ -318,10 +319,10 @@
     SUBDIR += p5-Email-Send
     SUBDIR += p5-Email-Sender
     SUBDIR += p5-Email-Sender-Transport-SMTP-TLS
+    SUBDIR += p5-Email-Sender-Transport-SMTPS
     SUBDIR += p5-Email-Sender-Transport-SQLite
     SUBDIR += p5-Email-Simple
     SUBDIR += p5-Email-Simple-FromHandle
-    SUBDIR += p5-Email-Stuff
     SUBDIR += p5-Email-Stuffer
     SUBDIR += p5-Email-Valid
     SUBDIR += p5-Email-Valid-Loose
@@ -569,6 +570,7 @@
     SUBDIR += ruby-rmail
     SUBDIR += rubygem-actionmailer
     SUBDIR += rubygem-actionmailer4
+    SUBDIR += rubygem-email_reply_parser-discourse
     SUBDIR += rubygem-exception_notification
     SUBDIR += rubygem-larch
     SUBDIR += rubygem-mail

@@ -32,7 +32,6 @@
     SUBDIR += check_logfiles
     SUBDIR += check_multi
     SUBDIR += check_mysql_health
-    SUBDIR += check_snmp_pkgvuln
     SUBDIR += chillispot
     SUBDIR += choparp
     SUBDIR += cidr
@@ -108,6 +107,7 @@
     SUBDIR += nagios-check_bacula5
     SUBDIR += nagios-check_clamav
     SUBDIR += nagios-check_cpu_usage
+    SUBDIR += nagios-check_dhcp.pl
     SUBDIR += nagios-check_email_delivery
     SUBDIR += nagios-check_hdd_health
     SUBDIR += nagios-check_hp_bladechassis
@@ -265,6 +265,7 @@
     SUBDIR += qkismet
     SUBDIR += rackmonkey
     SUBDIR += rancid
+    SUBDIR += rancid3
     SUBDIR += rate
     SUBDIR += rcpd
     SUBDIR += remarp

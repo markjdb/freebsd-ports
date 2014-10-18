@@ -2,10 +2,18 @@
 #
 # MAINTAINER: x11@FreeBSD.org
 
-actions: [dirrmtry]
+actions: [dir]
 post-install: <<EOD
-  fc-cache -s %D/%@ 2>/dev/null || true
+  case "%@" in
+  /*) fontsdir="%@" ;;
+  *) fontsdir="%D/%@" ;;
+  esac
+  fc-cache -s ${fontsdir} 2>/dev/null || true
 EOD
 post-deinstall: <<EOD
-  fc-cache -s %D/%@ 2>/dev/null || true
+  case "%@" in
+  /*) fontsdir="%@" ;;
+  *) fontsdir="%D/%@" ;;
+  esac
+  fc-cache -s ${fontsdir} 2>/dev/null || true
 EOD

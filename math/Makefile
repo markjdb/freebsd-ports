@@ -59,6 +59,7 @@
     SUBDIR += arpack
     SUBDIR += arpack++
     SUBDIR += arpack-ng
+    SUBDIR += arpack-ng-mpich
     SUBDIR += asir2000
     SUBDIR += aspcud
     SUBDIR += asymptote
@@ -219,6 +220,7 @@
     SUBDIR += libneural
     SUBDIR += libocas
     SUBDIR += liborigin
+    SUBDIR += libproj4
     SUBDIR += libqalculate
     SUBDIR += libranlip
     SUBDIR += libtommath
@@ -259,6 +261,7 @@
     SUBDIR += ndiff
     SUBDIR += newmat
     SUBDIR += ngraph
+    SUBDIR += nlopt
     SUBDIR += ntl
     SUBDIR += numdiff
     SUBDIR += nyh-hoc
@@ -346,6 +349,7 @@
     SUBDIR += octave-forge-spline-gcvspl
     SUBDIR += octave-forge-splines
     SUBDIR += octave-forge-statistics
+    SUBDIR += octave-forge-stk
     SUBDIR += octave-forge-strings
     SUBDIR += octave-forge-struct
     SUBDIR += octave-forge-symband

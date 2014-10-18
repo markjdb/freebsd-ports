@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	unifi3
-PORTVERSION=	3.2.1
-PORTREVISION=	2
+PORTVERSION=	3.2.5
 CATEGORIES=	net-mgmt java
 MASTER_SITES=	http://dl.ubnt.com/unifi/${PORTVERSION}/
 DISTNAME=	UniFi.unix
@@ -16,7 +15,9 @@ RUN_DEPENDS=	mongodb>0:${PORTSDIR}/databases/mongodb
 
 SUB_LIST+=	USERS=${USERS} GROUPS=${GROUPS} JAVASHAREDIR=${JAVASHAREDIR}
 
-USES=		zip
+USES=		cpe zip
+CPE_VENDOR=	ubnt
+CPE_PRODUCT=	unifi_controller
 USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 JAVA_OS=	native

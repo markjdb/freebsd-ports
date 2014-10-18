@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	cbsd
-PORTVERSION=	10.1.0
+PORTVERSION=	10.1.1
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	olevole@olevole.ru
@@ -17,7 +18,8 @@ LIB_DEPENDS=	libssh2.so:${PORTSDIR}/security/libssh2 \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	olevole
-GH_COMMIT=	3e08717
+GH_TAGNAME=	v${PORTVERSION}
+GH_COMMIT=	1a5ce04
 
 USE_RC_SUBR=	cbsdd cbsdrsyncd
 
@@ -38,8 +40,8 @@ IGNORE=	does not support FreeBSD versions < 10.0
 do-install:
 	@${ECHO} "Installing in ${CBSD_HOME}"
 	${MKDIR} ${STAGEDIR}${CBSD_HOME}
-	${CP} -R ${WRKSRC}/* ${STAGEDIR}${CBSD_HOME}
-	@${INSTALL_MAN} ${WRKSRC}/man/cbsd.8 ${STAGEDIR}${PREFIX}/man/man8/cbsd.8
+	${CP} -a ${WRKSRC}/ ${STAGEDIR}${CBSD_HOME}
+	${INSTALL_MAN} ${WRKSRC}/man/cbsd.8 ${STAGEDIR}${PREFIX}/man/man8/cbsd.8
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/cbsdsh/cbsd ${STAGEDIR}${PREFIX}/bin
 
 post-install:
