@@ -23,6 +23,7 @@
     SUBDIR += avidemux26-plugins
     SUBDIR += avidemux26-qt4
     SUBDIR += avinfo
+    SUBDIR += baka-mplayer
     SUBDIR += bangarang
     SUBDIR += banshee
     SUBDIR += bino
@@ -214,6 +215,7 @@
     SUBDIR += lxdvdrip
     SUBDIR += m2tstoavi
     SUBDIR += m2vrequantiser
+    SUBDIR += mediabrowser
     SUBDIR += mediadownloader
     SUBDIR += mediainfo
     SUBDIR += mencoder

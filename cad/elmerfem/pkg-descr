@@ -11,7 +11,4 @@ electromagnetics, heat transfer and acoustics, for example. These are
 described by partial differential equations which Elmer solves by the
 Finite Element Method (FEM).
 
-WWW: http://www.csc.fi/elmer/elmersolve/
-
-Note: This package installs in it's own ELMER_HOME path, so you usually
-have to add /usr/local/elmer/bin/ to your shell path.
+WWW: https://www.csc.fi/web/elmer/

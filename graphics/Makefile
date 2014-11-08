@@ -85,6 +85,7 @@
     SUBDIR += clutter
     SUBDIR += clutter-box2d
     SUBDIR += clutter-gtk
+    SUBDIR += code-eli
     SUBDIR += colord
     SUBDIR += colord-gtk
     SUBDIR += comical
@@ -461,6 +462,7 @@
     SUBDIR += kolourpaint
     SUBDIR += kphotoalbum-kde4
     SUBDIR += kpovmodeler
+    SUBDIR += kqtquickcharts
     SUBDIR += ksaneplugin
     SUBDIR += ksnapshot
     SUBDIR += kudu
@@ -491,6 +493,7 @@
     SUBDIR += libdrm
     SUBDIR += libecwj2
     SUBDIR += libemf
+    SUBDIR += libepoxy
     SUBDIR += libetonyek
     SUBDIR += libetonyek01
     SUBDIR += libexif
@@ -578,6 +581,7 @@
     SUBDIR += luminance-qt5
     SUBDIR += luxrender
     SUBDIR += mahotas
+    SUBDIR += maim
     SUBDIR += makehuman
     SUBDIR += mandelbulber
     SUBDIR += mapnik

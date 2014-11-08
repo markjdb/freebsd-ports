@@ -62,6 +62,7 @@
     SUBDIR += chrony
     SUBDIR += citrix_ica
     SUBDIR += clamz
+    SUBDIR += cloud-init
     SUBDIR += clusterit
     SUBDIR += cnd
     SUBDIR += coda6_client
@@ -340,6 +341,7 @@
     SUBDIR += luasocket
     SUBDIR += lvwimax
     SUBDIR += mDNSResponder
+    SUBDIR += macchanger
     SUBDIR += mad_fcl
     SUBDIR += mcast-tools
     SUBDIR += mediastreamer
@@ -358,6 +360,7 @@
     SUBDIR += morebalance
     SUBDIR += mosh
     SUBDIR += mosquitto
+    SUBDIR += motsognir
     SUBDIR += mpd-l2tp-ipv6pd-client
     SUBDIR += mpd5
     SUBDIR += mpich
@@ -392,6 +395,7 @@
     SUBDIR += netwib
     SUBDIR += neubot
     SUBDIR += nfsshell
+    SUBDIR += ng_mikrotik_eoip
     SUBDIR += ngrep
     SUBDIR += nifmon
     SUBDIR += nload
@@ -590,6 +594,7 @@
     SUBDIR += p5-Net-NIS
     SUBDIR += p5-Net-NIS-Listgroup
     SUBDIR += p5-Net-Nessus-XMLRPC
+    SUBDIR += p5-Net-Nmsg
     SUBDIR += p5-Net-OAuth
     SUBDIR += p5-Net-OAuth-Simple
     SUBDIR += p5-Net-OAuth2
@@ -1082,7 +1087,6 @@
     SUBDIR += sixxs-aiccu
     SUBDIR += skstream
     SUBDIR += sl2tps
-    SUBDIR += slirp
     SUBDIR += slurm
     SUBDIR += smb4k-kde4
     SUBDIR += smbldap-tools

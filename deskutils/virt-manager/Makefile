@@ -3,7 +3,7 @@
 
 PORTNAME=	virt-manager
 PORTVERSION=	0.9.5
-PORTREVISION=	6
+PORTREVISION=	8
 CATEGORIES=	deskutils net-mgmt
 MASTER_SITES=	http://virt-manager.et.redhat.com/download/sources/${PORTNAME}/ \
 		LOCAL/jgh/deskutils/${PORTNAME}/
@@ -33,8 +33,7 @@ INSTALLS_ICONS=	yes
 GCONF_SCHEMAS=	virt-manager.schemas
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--without-tui
-USES=		gmake
-USE_PYTHON=	yes
+USES=		gmake python
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|itlocaledir = $$(prefix)/$$(DATADIRNAME)/locale|itlocaledir = $$(prefix)/share/locale|' \

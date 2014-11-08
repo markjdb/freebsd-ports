@@ -71,6 +71,8 @@
     SUBDIR += argtable
     SUBDIR += arm-elf-binutils
     SUBDIR += arm-gnueabi-binutils
+    SUBDIR += arm-none-eabi-binutils
+    SUBDIR += arm-none-eabi-gcc
     SUBDIR += armv6-freebsd10.0-xdev
     SUBDIR += aros-sdk
     SUBDIR += art
@@ -142,6 +144,7 @@
     SUBDIR += bpython
     SUBDIR += bsdbuild
     SUBDIR += bsdcflow
+    SUBDIR += bsdowl
     SUBDIR += bufferpool
     SUBDIR += bug-buddy
     SUBDIR += bugzilla44
@@ -1124,6 +1127,7 @@
     SUBDIR += librevisa-vxi
     SUBDIR += libruin
     SUBDIR += libs11n
+    SUBDIR += libsearpc
     SUBDIR += libserialport
     SUBDIR += libserver
     SUBDIR += libshbuf
@@ -1370,6 +1374,7 @@
     SUBDIR += omake
     SUBDIR += omniNotify
     SUBDIR += omniORB
+    SUBDIR += omniORB-4.1
     SUBDIR += oniguruma
     SUBDIR += oniguruma4
     SUBDIR += oniguruma5
@@ -2305,6 +2310,7 @@
     SUBDIR += p5-Log-Dispatch-Screen-Color
     SUBDIR += p5-Log-Dispatch-Scribe
     SUBDIR += p5-Log-Dispatchouli
+    SUBDIR += p5-Log-Dump
     SUBDIR += p5-Log-Handler
     SUBDIR += p5-Log-Log4perl
     SUBDIR += p5-Log-Log4perl-Appender-RabbitMQ
@@ -2567,7 +2573,9 @@
     SUBDIR += p5-Package-Stash-XS
     SUBDIR += p5-Package-Variant
     SUBDIR += p5-PadWalker
+    SUBDIR += p5-Parallel-Async
     SUBDIR += p5-Parallel-ForkManager
+    SUBDIR += p5-Parallel-Fork-BossWorker
     SUBDIR += p5-Parallel-Iterator
     SUBDIR += p5-Parallel-Prefork
     SUBDIR += p5-Parallel-Scoreboard
@@ -2599,6 +2607,7 @@
     SUBDIR += p5-Path-Class-File-Lockable
     SUBDIR += p5-Path-Dispatcher
     SUBDIR += p5-Path-Dispatcher-Declarative
+    SUBDIR += p5-Path-Extended
     SUBDIR += p5-Path-FindDev
     SUBDIR += p5-Path-IsDev
     SUBDIR += p5-Path-Iterator-Rule
@@ -3815,6 +3824,7 @@
     SUBDIR += py-oletools
     SUBDIR += py-omnijson
     SUBDIR += py-omniorb
+    SUBDIR += py-omniorb-3
     SUBDIR += py-optik
     SUBDIR += py-orbit
     SUBDIR += py-ordereddict
@@ -3909,6 +3919,7 @@
     SUBDIR += py-robotframework-pabot
     SUBDIR += py-robotframework-ride
     SUBDIR += py-robotframework-selenium2library
+    SUBDIR += py-robotremoteserver
     SUBDIR += py-rope
     SUBDIR += py-rose
     SUBDIR += py-roxlib
@@ -4165,7 +4176,7 @@
     SUBDIR += qt5-linguisttools
     SUBDIR += qt5-qdbus
     SUBDIR += qt5-qdbusviewer
-    SUBDIR += qt5-qmldevtools
+    SUBDIR += qt5-qdoc
     SUBDIR += qt5-script
     SUBDIR += qt5-scripttools
     SUBDIR += qt5-testlib
