@@ -540,6 +540,7 @@
     SUBDIR += gio-sharp
     SUBDIR += git
     SUBDIR += git-bzr-ng
+    SUBDIR += git-extras
     SUBDIR += git-merge-changelog
     SUBDIR += git-modes
     SUBDIR += git-review
@@ -646,6 +647,7 @@
     SUBDIR += hp48xgcc
     SUBDIR += hs-BNFC
     SUBDIR += hs-Boolean
+    SUBDIR += hs-BoundedChan
     SUBDIR += hs-ConfigFile
     SUBDIR += hs-DrIFT
     SUBDIR += hs-Glob
@@ -694,6 +696,7 @@
     SUBDIR += hs-bsd-sysctl
     SUBDIR += hs-byteable
     SUBDIR += hs-byteorder
+    SUBDIR += hs-bytestring-lexing
     SUBDIR += hs-bytestring-nums
     SUBDIR += hs-bytestring-show
     SUBDIR += hs-c2hs
@@ -1055,6 +1058,7 @@
     SUBDIR += libkolab
     SUBDIR += liblangtag
     SUBDIR += liblas
+    SUBDIR += liblas12
     SUBDIR += liblcfg
     SUBDIR += libleaftag
     SUBDIR += liblnk
@@ -2846,6 +2850,7 @@
     SUBDIR += p5-Term-Query
     SUBDIR += p5-Term-RawInput
     SUBDIR += p5-Term-ReadKey
+    SUBDIR += p5-Term-ReadLine
     SUBDIR += p5-Term-ReadLine-Perl
     SUBDIR += p5-Term-ReadLine-Zoid
     SUBDIR += p5-Term-ReadPassword
@@ -3608,6 +3613,7 @@
     SUBDIR += py-anonfunc
     SUBDIR += py-anyjson
     SUBDIR += py-apipkg
+    SUBDIR += py-appdirs
     SUBDIR += py-application
     SUBDIR += py-archetypes.querywidget
     SUBDIR += py-archetypes.referencebrowserwidget
@@ -3999,6 +4005,7 @@
     SUBDIR += py-usb
     SUBDIR += py-user_agents
     SUBDIR += py-utils
+    SUBDIR += py-validictory
     SUBDIR += py-venusian
     SUBDIR += py-versiontools
     SUBDIR += py-virtualenv

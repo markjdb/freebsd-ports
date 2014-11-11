@@ -762,6 +762,7 @@
     SUBDIR += raincoat
     SUBDIR += rcadm
     SUBDIR += rclean
+    SUBDIR += rcm
     SUBDIR += rdate
     SUBDIR += rdiff-backup
     SUBDIR += rdiff-backup-devel
@@ -1059,6 +1060,7 @@
     SUBDIR += xsysstats
     SUBDIR += xvidcap
     SUBDIR += yum
+    SUBDIR += zbackup
     SUBDIR += zeitgeist
     SUBDIR += zeroer
     SUBDIR += zetaback
