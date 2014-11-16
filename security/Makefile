@@ -716,7 +716,6 @@
     SUBDIR += pidgin-otr
     SUBDIR += pinentry
     SUBDIR += pinentry-curses
-    SUBDIR += pinentry-gtk
     SUBDIR += pinentry-gtk2
     SUBDIR += pinentry-qt4
     SUBDIR += pkcrack
@@ -981,6 +980,7 @@
     SUBDIR += switzerland
     SUBDIR += symbion-sslproxy
     SUBDIR += tclsasl
+    SUBDIR += tcpcrypt
     SUBDIR += tinc
     SUBDIR += tinyca
     SUBDIR += tlswrap
