@@ -9,6 +9,7 @@
     SUBDIR += R-cran-digest
     SUBDIR += aescrypt
     SUBDIR += aespipe
+    SUBDIR += afl
     SUBDIR += afterglow
     SUBDIR += aide
     SUBDIR += aimsniff
@@ -65,6 +66,7 @@
     SUBDIR += clamav
     SUBDIR += clamav-milter
     SUBDIR += clamav-unofficial-sigs
+    SUBDIR += clambc
     SUBDIR += clamcour
     SUBDIR += clamd-stream-client
     SUBDIR += clamsmtp
@@ -141,6 +143,7 @@
     SUBDIR += fwlogwatch
     SUBDIR += gag
     SUBDIR += gcipher
+    SUBDIR += gcr
     SUBDIR += gnome-gpg
     SUBDIR += gnome-keyring
     SUBDIR += gnome-keyring-sharp
@@ -149,6 +152,7 @@
     SUBDIR += gnomint
     SUBDIR += gnupg
     SUBDIR += gnupg1
+    SUBDIR += gnupg20
     SUBDIR += gnutls
     SUBDIR += go.crypto
     SUBDIR += goptlib
@@ -291,15 +295,15 @@
     SUBDIR += libtomcrypt
     SUBDIR += libwhisker
     SUBDIR += libyubikey
+    SUBDIR += linux-c6-cyrus-sasl2
+    SUBDIR += linux-c6-gnutls
+    SUBDIR += linux-c6-libgcrypt
     SUBDIR += linux-c6-libgpg-error
     SUBDIR += linux-c6-libssh2
-    SUBDIR += linux-c6-openssl
     SUBDIR += linux-c6-libtasn1
     SUBDIR += linux-c6-nss
-    SUBDIR += linux-c6-gnutls
-    SUBDIR += linux-c6-cyrus-sasl2
+    SUBDIR += linux-c6-openssl
     SUBDIR += linux-c6-openssl-compat
-    SUBDIR += linux-c6-libgcrypt
     SUBDIR += linux-f10-cyrus-sasl2
     SUBDIR += linux-f10-gnutls
     SUBDIR += linux-f10-libgcrypt
@@ -372,6 +376,7 @@
     SUBDIR += openssh-askpass
     SUBDIR += openssh-portable
     SUBDIR += openssh-portable-base
+    SUBDIR += openssh-portable66
     SUBDIR += openssl
     SUBDIR += openssl_tpm_engine
     SUBDIR += openvas-client
@@ -494,6 +499,7 @@
     SUBDIR += p5-Crypt-RC4
     SUBDIR += p5-Crypt-RC5
     SUBDIR += p5-Crypt-RC6
+    SUBDIR += p5-Crypt-RHash
     SUBDIR += p5-Crypt-RIPEMD160
     SUBDIR += p5-Crypt-RSA
     SUBDIR += p5-Crypt-RSA-Yandex
@@ -501,7 +507,6 @@
     SUBDIR += p5-Crypt-RandPasswd
     SUBDIR += p5-Crypt-Random
     SUBDIR += p5-Crypt-Random-Source
-    SUBDIR += p5-Crypt-RHash
     SUBDIR += p5-Crypt-Rijndael
     SUBDIR += p5-Crypt-Rijndael_PP
     SUBDIR += p5-Crypt-SKey
@@ -515,8 +520,8 @@
     SUBDIR += p5-Crypt-SmbHash
     SUBDIR += p5-Crypt-Solitaire
     SUBDIR += p5-Crypt-TEA
-    SUBDIR += p5-Crypt-Tea_JS
     SUBDIR += p5-Crypt-T_e_a
+    SUBDIR += p5-Crypt-Tea_JS
     SUBDIR += p5-Crypt-TripleDES
     SUBDIR += p5-Crypt-Twofish
     SUBDIR += p5-Crypt-Twofish2
@@ -530,6 +535,8 @@
     SUBDIR += p5-Dancer-Plugin-Auth-Extensible
     SUBDIR += p5-Dancer-Plugin-Auth-Extensible-Provider-Usergroup
     SUBDIR += p5-Dancer-Plugin-Passphrase
+    SUBDIR += p5-Dancer2-Plugin-Auth-Extensible
+    SUBDIR += p5-Dancer2-Plugin-Passphrase
     SUBDIR += p5-Data-Entropy
     SUBDIR += p5-Data-Password
     SUBDIR += p5-Digest
@@ -727,6 +734,7 @@
     SUBDIR += pktsuckers
     SUBDIR += please
     SUBDIR += polarssl
+    SUBDIR += polarssl13
     SUBDIR += poly1305aes
     SUBDIR += pond
     SUBDIR += portsentry
@@ -876,20 +884,25 @@
     SUBDIR += rubygem-gssapi
     SUBDIR += rubygem-hmac
     SUBDIR += rubygem-jugyo-twitter_oauth
+    SUBDIR += rubygem-metasploit-concern
+    SUBDIR += rubygem-metasploit-credential
+    SUBDIR += rubygem-metasploit-model
     SUBDIR += rubygem-metasploit_data_models
+    SUBDIR += rubygem-meterpreter_bins
     SUBDIR += rubygem-net-scp
     SUBDIR += rubygem-net-scp11
     SUBDIR += rubygem-net-sftp
     SUBDIR += rubygem-net-ssh
-    SUBDIR += rubygem-net-ssh27
     SUBDIR += rubygem-net-ssh-gateway
     SUBDIR += rubygem-net-ssh-multi
+    SUBDIR += rubygem-net-ssh27
     SUBDIR += rubygem-nmap-parser
     SUBDIR += rubygem-omniauth
     SUBDIR += rubygem-origami
     SUBDIR += rubygem-pyu-ruby-sasl
     SUBDIR += rubygem-razorback-scriptNugget
     SUBDIR += rubygem-rc4
+    SUBDIR += rubygem-recog
     SUBDIR += rubygem-roauth
     SUBDIR += rubygem-ruby-hmac
     SUBDIR += rubygem-six
@@ -905,7 +918,6 @@
     SUBDIR += scanssh
     SUBDIR += scrypt
     SUBDIR += seahorse
-    SUBDIR += seahorse-plugins
     SUBDIR += seccure
     SUBDIR += secpanel
     SUBDIR += sectok

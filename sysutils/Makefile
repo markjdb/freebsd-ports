@@ -12,6 +12,7 @@
     SUBDIR += abck
     SUBDIR += abgx360
     SUBDIR += abgx360gui
+    SUBDIR += accountsservice
     SUBDIR += acpi_call
     SUBDIR += acpica-tools
     SUBDIR += adtool
@@ -116,8 +117,9 @@
     SUBDIR += cfengine34
     SUBDIR += cfengine35
     SUBDIR += cfengine36
-    SUBDIR += cfengine36-rc
     SUBDIR += chgrep
+    SUBDIR += cinnamon-control-center
+    SUBDIR += cinnamon-settings-daemon
     SUBDIR += ciso
     SUBDIR += ciso-maker
     SUBDIR += ck4up
@@ -332,7 +334,6 @@
     SUBDIR += gnome-schedule
     SUBDIR += gnome-settings-daemon
     SUBDIR += gnome-system-monitor
-    SUBDIR += gnome-system-tools
     SUBDIR += gnome_subr
     SUBDIR += goaccess
     SUBDIR += gosa
@@ -563,6 +564,7 @@
     SUBDIR += nvramtool
     SUBDIR += oak
     SUBDIR += obliterate
+    SUBDIR += odo
     SUBDIR += ods2
     SUBDIR += open
     SUBDIR += openipmi
@@ -669,7 +671,6 @@
     SUBDIR += pecl-proctitle
     SUBDIR += pefs-kmod
     SUBDIR += personality
-    SUBDIR += pessulus
     SUBDIR += pflogx
     SUBDIR += pfstat
     SUBDIR += pftables
@@ -815,8 +816,6 @@
     SUBDIR += rubygem-hammer_cli_foreman_bootdisk
     SUBDIR += rubygem-hammer_cli_foreman_ssh
     SUBDIR += rubygem-hiera
-    SUBDIR += rubygem-hiera-json
-    SUBDIR += rubygem-hiera-puppet
     SUBDIR += rubygem-librarian-puppet
     SUBDIR += rubygem-log4r
     SUBDIR += rubygem-mogilefs-client
@@ -862,7 +861,6 @@
     SUBDIR += searchmonkey
     SUBDIR += seatools
     SUBDIR += sec
-    SUBDIR += serpentine
     SUBDIR += setcdboot
     SUBDIR += setquota
     SUBDIR += sformat
@@ -942,9 +940,6 @@
     SUBDIR += torsmo
     SUBDIR += toshctl
     SUBDIR += tracker
-    SUBDIR += tracker-client
-    SUBDIR += tracker-gnome
-    SUBDIR += tracker-libtrackergtk
     SUBDIR += tree
     SUBDIR += tren
     SUBDIR += ts

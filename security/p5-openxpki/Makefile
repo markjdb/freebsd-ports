@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	openxpki
-PORTVERSION=	0.23.0.1
+PORTVERSION=	0.25.0.1
 CATEGORIES=	security perl5
 PKGNAMEPREFIX=	p5-
 DIST_SUBDIR=	openxpki
@@ -74,7 +74,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	openxpki
 GH_PROJECT=	openxpki
 GH_TAGNAME=	${GH_COMMIT}
-GH_COMMIT=	ec42128
+GH_COMMIT=	2f83048
 
 USE_OPENSSL=	yes
 USE_PERL5=	configure
@@ -114,12 +114,12 @@ post-stage:
 	@${MKDIR} ${STAGEDIR}/var/log/openxpki
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/openxpki
 
-pre-install:	test
+#pre-install:	test
 
 .include <bsd.port.pre.mk>
 
 post-install:
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_PERL_REL}/${PERL_ARCH}/auto/OpenXPKI/OpenXPKI.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/OpenXPKI/OpenXPKI.so
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	@(cd ${WRKSRC}/../../config && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
 .	if ${PORT_OPTIONS:MDOCS}

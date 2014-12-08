@@ -12,8 +12,8 @@
     SUBDIR += WebMagick
     SUBDIR += ach
     SUBDIR += adzap
-    SUBDIR += amphetadesk
     SUBDIR += alef-webfont
+    SUBDIR += amphetadesk
     SUBDIR += analog
     SUBDIR += anyremote2html
     SUBDIR += anyterm
@@ -77,7 +77,6 @@
     SUBDIR += checkbot
     SUBDIR += chems
     SUBDIR += cherokee
-    SUBDIR += chimera
     SUBDIR += choqok
     SUBDIR += chpasswd
     SUBDIR += chromium
@@ -121,7 +120,6 @@
     SUBDIR += dotclear
     SUBDIR += dotproject
     SUBDIR += download-gemist
-    SUBDIR += dpsearch
     SUBDIR += drood
     SUBDIR += drraw
     SUBDIR += drupal6
@@ -171,10 +169,8 @@
     SUBDIR += entrans
     SUBDIR += ephemera
     SUBDIR += epiphany
-    SUBDIR += epiphany-extensions
     SUBDIR += erwn
     SUBDIR += eventum
-    SUBDIR += evolution-webcal
     SUBDIR += extjs
     SUBDIR += fancybox
     SUBDIR += faup
@@ -349,6 +345,7 @@
     SUBDIR += jtoolkit
     SUBDIR += junkbuster
     SUBDIR += kannel
+    SUBDIR += kcgi
     SUBDIR += kdewebdev4
     SUBDIR += kpartsplugin
     SUBDIR += kplaylist
@@ -362,6 +359,7 @@
     SUBDIR += libhpack
     SUBDIR += libhtp-suricata
     SUBDIR += libmicrohttpd
+    SUBDIR += libsocialweb
     SUBDIR += libwww
     SUBDIR += libxul
     SUBDIR += lifetype
@@ -377,8 +375,8 @@
     SUBDIR += links
     SUBDIR += links-hacked
     SUBDIR += links1
-    SUBDIR += linux-c6-qt47-webkit
     SUBDIR += linux-c6-flashplugin11
+    SUBDIR += linux-c6-qt47-webkit
     SUBDIR += linux-f10-flashplugin11
     SUBDIR += linux-firefox
     SUBDIR += linux-libgtkembedmoz
@@ -392,6 +390,7 @@
     SUBDIR += luakit
     SUBDIR += lynx
     SUBDIR += lynx-current
+    SUBDIR += madsonic
     SUBDIR += magento
     SUBDIR += mahara
     SUBDIR += man2web
@@ -400,6 +399,7 @@
     SUBDIR += mediawiki119
     SUBDIR += mediawiki122
     SUBDIR += mediawiki123
+    SUBDIR += mediawiki124
     SUBDIR += mergelog
     SUBDIR += mgstat
     SUBDIR += mhonarc
@@ -517,6 +517,7 @@
     SUBDIR += mongrel2
     SUBDIR += moodle26
     SUBDIR += moodle27
+    SUBDIR += moodle28
     SUBDIR += mozplugger
     SUBDIR += multisort
     SUBDIR += multiwatch
@@ -555,14 +556,15 @@
     SUBDIR += opera-linuxplugins
     SUBDIR += orangehrm
     SUBDIR += oscommerce
-    SUBDIR += otter-browser
     SUBDIR += otrs
+    SUBDIR += otter-browser
     SUBDIR += owncloud
     SUBDIR += p5-AMF-Perl
     SUBDIR += p5-Acme-Monta
     SUBDIR += p5-Amon2
     SUBDIR += p5-Amon2-Lite
     SUBDIR += p5-Amon2-Plugin-LogDispatch
+    SUBDIR += p5-Amon2-Plugin-Web-CSRFDefender
     SUBDIR += p5-Amon2-Plugin-Web-MobileAgent
     SUBDIR += p5-Any-Template
     SUBDIR += p5-Any-URI-Escape
@@ -1304,6 +1306,7 @@
     SUBDIR += p5-WebService-NoPaste
     SUBDIR += p5-WebService-Pushover
     SUBDIR += p5-WebService-Rakuten
+    SUBDIR += p5-WebService-Redmine
     SUBDIR += p5-WebService-Simple
     SUBDIR += p5-WebService-Technorati
     SUBDIR += p5-WebService-YouTube
@@ -1669,8 +1672,8 @@
     SUBDIR += py-seafobj
     SUBDIR += py-selector
     SUBDIR += py-selenium
-    SUBDIR += py-slimmer
     SUBDIR += py-slimit
+    SUBDIR += py-slimmer
     SUBDIR += py-slumber
     SUBDIR += py-splinter
     SUBDIR += py-surl
@@ -1693,6 +1696,7 @@
     SUBDIR += py-webhelpers
     SUBDIR += py-webkitgtk
     SUBDIR += py-webob
+    SUBDIR += py-websocket-client
     SUBDIR += py-webunit
     SUBDIR += py-webware
     SUBDIR += py-webware-component
@@ -1762,6 +1766,7 @@
     SUBDIR += rubygem-cuba
     SUBDIR += rubygem-d3_rails
     SUBDIR += rubygem-d3_rails-rails4
+    SUBDIR += rubygem-dashing
     SUBDIR += rubygem-davclient
     SUBDIR += rubygem-domainatrix
     SUBDIR += rubygem-dropzonejs-rails
@@ -1816,6 +1821,7 @@
     SUBDIR += rubygem-jquery-ui-rails
     SUBDIR += rubygem-jquery-ui-rails-rails4
     SUBDIR += rubygem-jruby-rack
+    SUBDIR += rubygem-jsobfu
     SUBDIR += rubygem-jwt
     SUBDIR += rubygem-kaminari
     SUBDIR += rubygem-kaminari-rails4
@@ -1873,9 +1879,9 @@
     SUBDIR += rubygem-rfeedfinder
     SUBDIR += rubygem-rinku
     SUBDIR += rubygem-rkelly-remix
-    SUBDIR += rubygem-rqrcode
     SUBDIR += rubygem-robotex
     SUBDIR += rubygem-robots
+    SUBDIR += rubygem-rqrcode
     SUBDIR += rubygem-rtlit
     SUBDIR += rubygem-ruby-readability
     SUBDIR += rubygem-savon
@@ -1915,6 +1921,7 @@
     SUBDIR += sarg
     SUBDIR += scloader
     SUBDIR += script4rss
+    SUBDIR += seahub
     SUBDIR += seamonkey
     SUBDIR += seamonkey-i18n
     SUBDIR += selenium

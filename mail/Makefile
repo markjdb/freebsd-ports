@@ -105,6 +105,7 @@
     SUBDIR += dsbl-testers
     SUBDIR += dspam
     SUBDIR += ecartis
+    SUBDIR += elm
     SUBDIR += elmo
     SUBDIR += elmo-devel
     SUBDIR += emil
@@ -113,7 +114,7 @@
     SUBDIR += epstools
     SUBDIR += esmtp
     SUBDIR += evolution
-    SUBDIR += evolution-exchange
+    SUBDIR += evolution-ews
     SUBDIR += evolution-mapi
     SUBDIR += exact
     SUBDIR += exilog
@@ -139,11 +140,11 @@
     SUBDIR += filtermail
     SUBDIR += findmaildirs
     SUBDIR += gbuffy
+    SUBDIR += geary
     SUBDIR += gensig
     SUBDIR += getmail
     SUBDIR += gkrellmmailwatch2
     SUBDIR += gld
-    SUBDIR += gmail-notify
     SUBDIR += gmime2
     SUBDIR += gmime2-sharp
     SUBDIR += gmime24
@@ -401,8 +402,8 @@
     SUBDIR += p5-Net-SMTP-Server
     SUBDIR += p5-Net-SMTP-TLS
     SUBDIR += p5-Net-SMTP-TLS-ButMaintained
-    SUBDIR += p5-Net-SMTP_auth
     SUBDIR += p5-Net-SMTPS
+    SUBDIR += p5-Net-SMTP_auth
     SUBDIR += p5-Net-SenderBase
     SUBDIR += p5-Net-Server-Mail
     SUBDIR += p5-POE-Component-Client-POP3

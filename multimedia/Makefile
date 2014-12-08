@@ -54,7 +54,7 @@
     SUBDIR += dvdrip
     SUBDIR += dvdstyler
     SUBDIR += dvts
-    SUBDIR += emotion
+    SUBDIR += emotion_generic_players-vlc
     SUBDIR += emovix
     SUBDIR += ffmpeg
     SUBDIR += ffmpeg0
@@ -65,8 +65,8 @@
     SUBDIR += flvstreamer
     SUBDIR += flvtool++
     SUBDIR += fpc-dts
-    SUBDIR += fpc-matroska
     SUBDIR += fpc-libvlc
+    SUBDIR += fpc-matroska
     SUBDIR += freetuxtv
     SUBDIR += freevo
     SUBDIR += fxtv
@@ -177,6 +177,7 @@
     SUBDIR += libfame
     SUBDIR += libkate
     SUBDIR += libmatroska
+    SUBDIR += libmediaart
     SUBDIR += libmediainfo
     SUBDIR += libmovtar
     SUBDIR += libmpeg2
@@ -185,9 +186,9 @@
     SUBDIR += libquicktime
     SUBDIR += libquicktime-lame
     SUBDIR += libquvi
-    SUBDIR += libquvi09
     SUBDIR += libquvi-scripts
     SUBDIR += libquvi-scripts09
+    SUBDIR += libquvi09
     SUBDIR += librtmp
     SUBDIR += libsmacker
     SUBDIR += libtheora
@@ -198,6 +199,7 @@
     SUBDIR += libva-vdpau-driver
     SUBDIR += libvdpau
     SUBDIR += libvpx
+    SUBDIR += libx264
     SUBDIR += libxine
     SUBDIR += libxspf
     SUBDIR += libzen
@@ -295,8 +297,8 @@
     SUBDIR += py-enzyme
     SUBDIR += py-ffmpeg
     SUBDIR += py-gstreamer
-    SUBDIR += py-guessit
     SUBDIR += py-gstreamer1
+    SUBDIR += py-guessit
     SUBDIR += py-kaa-base
     SUBDIR += py-kaa-imlib2
     SUBDIR += py-kaa-metadata
@@ -322,6 +324,7 @@
     SUBDIR += quodlibet
     SUBDIR += quvi
     SUBDIR += quvi09
+    SUBDIR += rage
     SUBDIR += recmpeg
     SUBDIR += recordmydesktop
     SUBDIR += replex
@@ -339,6 +342,7 @@
     SUBDIR += smplayer-themes
     SUBDIR += sms1xxx-kmod
     SUBDIR += smtube
+    SUBDIR += snappy
     SUBDIR += spigot
     SUBDIR += spook
     SUBDIR += spotify-websocket-api
@@ -415,7 +419,6 @@
     SUBDIR += xporthdmv
     SUBDIR += xtheater
     SUBDIR += xvid
-    SUBDIR += y4mscaler
     SUBDIR += yamdi
     SUBDIR += zoneminder
 

@@ -4,8 +4,7 @@
 PORTNAME=	fgrun
 PORTVERSION=	3.2.0
 CATEGORIES=	games
-MASTER_SITES=	https://gitorious.org/${GO_ACCOUNT}/${GO_PROJECT}/archive/${GO_TAGNAME}.tar.gz?dummy= \
-		LOCAL/martymac
+MASTER_SITES=	LOCAL/martymac
 
 MAINTAINER=	buganini@gmail.com
 COMMENT=	Graphical frontend to run FlightGear Flight Simulator
