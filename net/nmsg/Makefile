@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	nmsg
-PORTVERSION=	0.9.0
-# DISTNAME=	${PORTNAME}-${PORTVERSION}
+PORTVERSION=	0.9.1
 PORTREVISION=	1
 CATEGORIES=	net
 MASTER_SITES=	https://dl.farsightsecurity.com/dist/nmsg/ \

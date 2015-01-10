@@ -3,7 +3,8 @@
 #    $MCom: ports/trunk/sysutils/tracker/Makefile 20045 2014-11-10 06:23:59Z gusi $
 
 PORTNAME=	tracker
-PORTVERSION=	1.2.4
+PORTVERSION=	1.2.5
+PORTREVISION=	1
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 
@@ -120,7 +121,7 @@ PLIST_SUB+=	DOCUMENT_MINERS="@comment "
 .if ${PORT_OPTIONS:MGRAPHIC_MINERS}
 LIB_DEPENDS+=	libexif.so:${PORTSDIR}/graphics/libexif \
 		libgif.so:${PORTSDIR}/graphics/giflib \
-		libpng15.so:${PORTSDIR}/graphics/png \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libtiff.so:${PORTSDIR}/graphics/tiff
 CONFIGURE_ARGS+=	--enable-libgif \
 			--enable-libjpeg \

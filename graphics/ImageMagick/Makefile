@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	ImageMagick
-DISTVERSION=	6.9.0-0
-PORTREVISION=	1
+DISTVERSION=	6.9.0-2
 PORTEPOCH=	1
 CATEGORIES=	graphics perl5
 MASTER_SITES=	http://www.imagemagick.org/download/ \
@@ -46,8 +45,8 @@ CONFIGURE_ARGS=	--without-dps \
 		--without-lcms
 USE_LDCONFIG=	yes
 
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+CPPFLAGS+=	-isystem${LOCALBASE}/include
+LDFLAGS+=	-Wl,-Y${LOCALBASE}/lib
 
 SAMPLE_FILES=	coder.xml colors.xml delegates.xml log.xml magic.xml mime.xml \
 		policy.xml quantization-table.xml thresholds.xml type-dejavu.xml \
@@ -59,7 +58,7 @@ PLIST_SUB=	PORTVERSION=${PORTVERSION:R}
 OPTIONS_DEFINE=	BZIP2 DOCS DJVU FFTW FONTCONFIG FPX FREETYPE \
 		GRAPHVIZ GSLIB JPEG2000 JBIG JPEG LCMS2 LZMA LQR MODULES \
 		OPENEXR OPENMP PANGO PDF PERL PNG SVG TESTS TIFF WEBP WMF \
-		THREADS X11 SIMD
+		THREADS X11
 OPTIONS_DEFAULT=	16BIT_PIXEL BZIP2 FFTW FONTCONFIG FPX FREETYPE \
 		JPEG2000 JBIG JPEG LCMS2 LZMA LQR MODULES PDF PERL PNG SVG \
 		TIFF WEBP WMF THREADS X11
@@ -74,7 +73,8 @@ GSLIB_DESC=		libgs (Postscript SHLIB) support
 HDRI_DESC=		High dynamic range images support
 MODULES_DESC=		Modules support
 TESTS_DESC=		Run bundled self-tests after build
-SIMD_CONFIGURE_WITH=	gcc-arch
+#SIMD_CONFIGURE_WITH=	gcc-arch
+CONFIGURE_ARGS+=	--without-gcc-arch
 
 .include <bsd.port.options.mk>
 
@@ -200,7 +200,7 @@ PLIST_SUB+=		JPEG="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MPNG}
-LIB_DEPENDS+=		libpng15.so:${PORTSDIR}/graphics/png
+LIB_DEPENDS+=		libpng.so:${PORTSDIR}/graphics/png
 PLIST_SUB+=		PNG=""
 .else
 CONFIGURE_ARGS+=	--without-png

@@ -150,8 +150,6 @@
     SUBDIR += drupal6-wysiwyg
     SUBDIR += drupal6-zeropoint
     SUBDIR += drupal7
-    SUBDIR += drupal7-jailadmin
-    SUBDIR += drupal7-vulnscan
     SUBDIR += drupal7-wysiwyg
     SUBDIR += drush
     SUBDIR += dtse
@@ -160,7 +158,6 @@
     SUBDIR += eaccelerator
     SUBDIR += edbrowse
     SUBDIR += efront
-    SUBDIR += egueb
     SUBDIR += elgg
     SUBDIR += elinks
     SUBDIR += eliom
@@ -226,6 +223,7 @@
     SUBDIR += google-sitemapgen
     SUBDIR += googlebook_dl
     SUBDIR += goose
+    SUBDIR += gpx2map
     SUBDIR += grafana
     SUBDIR += grails
     SUBDIR += gregarius
@@ -528,7 +526,7 @@
     SUBDIR += mythplugin-mythweb
     SUBDIR += nanoblogger
     SUBDIR += nanoblogger-extra
-    SUBDIR += neon29
+    SUBDIR += neon
     SUBDIR += netoffice
     SUBDIR += netrik
     SUBDIR += netstiff
@@ -821,6 +819,7 @@
     SUBDIR += p5-Dancer-Session-Cookie
     SUBDIR += p5-Dancer-Template-Xslate
     SUBDIR += p5-Dancer2
+    SUBDIR += p5-Dancer2-Plugin-Ajax
     SUBDIR += p5-Data-TreeDumper-Renderer-DHTML
     SUBDIR += p5-Data-Validate-URI
     SUBDIR += p5-Emplacken
@@ -1036,6 +1035,8 @@
     SUBDIR += p5-Maypole
     SUBDIR += p5-Maypole-Authentication-UserSessionCookie
     SUBDIR += p5-Maypole-Component
+    SUBDIR += p5-McBain
+    SUBDIR += p5-McBain-WithPSGI
     SUBDIR += p5-MediaWiki
     SUBDIR += p5-MediaWiki-API
     SUBDIR += p5-Mobile-UserAgent
@@ -1046,6 +1047,7 @@
     SUBDIR += p5-Mojolicious-Plugin-Authentication
     SUBDIR += p5-Mojolicious-Plugin-Database
     SUBDIR += p5-Mojolicious-Plugin-Mongodb
+    SUBDIR += p5-Mojolicious-Plugin-TtRenderer
     SUBDIR += p5-Mojolicious-Plugin-YamlConfig
     SUBDIR += p5-Monoceros
     SUBDIR += p5-Mozilla-CA
@@ -1140,6 +1142,7 @@
     SUBDIR += p5-RTx-Calendar
     SUBDIR += p5-Reaction
     SUBDIR += p5-Reddit
+    SUBDIR += p5-Reddit-Client
     SUBDIR += p5-Rose-HTML-Objects
     SUBDIR += p5-Router-Boom
     SUBDIR += p5-Router-Simple
@@ -1150,6 +1153,7 @@
     SUBDIR += p5-STF-Dispatcher-PSGI
     SUBDIR += p5-SWF-Chart
     SUBDIR += p5-Scrappy
+    SUBDIR += p5-Selenium-Remote-Driver
     SUBDIR += p5-Session-Storage-Secure
     SUBDIR += p5-Squatting
     SUBDIR += p5-Squatting-On-PSGI
@@ -1204,6 +1208,7 @@
     SUBDIR += p5-URI-Sequin
     SUBDIR += p5-URI-Title
     SUBDIR += p5-URI-ToDisk
+    SUBDIR += p5-URL-Encode-XS
     SUBDIR += p5-VUser-Google-ProvisioningAPI
     SUBDIR += p5-W3C-LinkChecker
     SUBDIR += p5-W3C-LogValidator
@@ -1237,6 +1242,7 @@
     SUBDIR += p5-WWW-Mechanize-FormFiller
     SUBDIR += p5-WWW-Mechanize-GZip
     SUBDIR += p5-WWW-Mechanize-Meta
+    SUBDIR += p5-WWW-Mechanize-PhantomJS
     SUBDIR += p5-WWW-Mechanize-Pluggable
     SUBDIR += p5-WWW-Mechanize-Plugin-phpBB
     SUBDIR += p5-WWW-Mechanize-Shell
@@ -1535,6 +1541,7 @@
     SUBDIR += py-flask-flatpages
     SUBDIR += py-flask-sockets
     SUBDIR += py-flask-uploads
+    SUBDIR += py-flask-wtf
     SUBDIR += py-flexget
     SUBDIR += py-flup
     SUBDIR += py-formalchemy
@@ -1676,6 +1683,7 @@
     SUBDIR += py-slimmer
     SUBDIR += py-slumber
     SUBDIR += py-splinter
+    SUBDIR += py-spyne
     SUBDIR += py-surl
     SUBDIR += py-textile
     SUBDIR += py-tgwebservices
@@ -1784,6 +1792,7 @@
     SUBDIR += rubygem-feed-normalizer
     SUBDIR += rubygem-feedjira
     SUBDIR += rubygem-flowdock
+    SUBDIR += rubygem-form_data
     SUBDIR += rubygem-geminabox
     SUBDIR += rubygem-gitlab-flowdock-git-hook
     SUBDIR += rubygem-gitlab-gollum-lib
@@ -1899,6 +1908,7 @@
     SUBDIR += rubygem-thin
     SUBDIR += rubygem-tinyatom
     SUBDIR += rubygem-tinymce-rails
+    SUBDIR += rubygem-tumblr_client
     SUBDIR += rubygem-turbolinks
     SUBDIR += rubygem-typhoeus
     SUBDIR += rubygem-uglifier
@@ -2058,7 +2068,6 @@
     SUBDIR += tt-rss
     SUBDIR += ttf2eot
     SUBDIR += twig
-    SUBDIR += twig-php
     SUBDIR += twiki
     SUBDIR += twiki-BehaviourContrib
     SUBDIR += twiki-BlogAddOn
@@ -2137,6 +2146,7 @@
     SUBDIR += webkit-qt4
     SUBDIR += webkit-qt5
     SUBDIR += webkit-sharp
+    SUBDIR += webkit2-gtk3
     SUBDIR += weblint
     SUBDIR += weblint++
     SUBDIR += webmachine

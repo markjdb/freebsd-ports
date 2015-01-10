@@ -2,7 +2,7 @@
 
 PORTNAME=	gcc
 PORTVERSION=	4.9.1
-PORTREVISION=	1
+PORTREVISION?=	1
 CATEGORIES=	devel
 MASTER_SITES=	GCC
 MASTER_SITE_SUBDIR=	releases/gcc-${DISTVERSION}
@@ -14,7 +14,7 @@ COMMENT=	Cross GNU Compiler Collection for ${PKGNAMEPREFIX:C/-//g}
 LICENSE=	GPLv3 GPLv3RLE
 LICENSE_COMB=	multi
 
-USES=	gmake iconv libtool tar:bzip2 makeinfo
+USES=	gmake iconv libtool tar:bzip2 makeinfo compiler
 PLIST_SUB=	TARGETARCH=${PKGNAMEPREFIX:C/-//g} \
 		OPSYS=${OPSYS:tl} \
 		GCC_TARGET=${GCC_TARGET}
@@ -41,7 +41,7 @@ EXTRA_PATCHES+= ${FILESDIR}/freebsd-format-extensions
 .endif
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--target=${GCC_TARGET} --disable-nls --enable-languages=c,c++ \
+CONFIGURE_ARGS+=--target=${GCC_TARGET} --disable-nls --enable-languages=c,c++ \
 		--without-headers \
 		--with-gmp=${LOCALBASE} \
 		--with-pkgversion="FreeBSD Ports Collection for ${PKGNAMEPREFIX:C/-//g}" \
@@ -51,8 +51,8 @@ CONFIGURE_ARGS=	--target=${GCC_TARGET} --disable-nls --enable-languages=c,c++ \
 
 CONFIGURE_SCRIPT=	../${PORTNAME}-${PORTVERSION}/configure
 
-ALL_TARGET=	all-gcc
-INSTALL_TARGET=	install-gcc
+ALL_TARGET?=	all-gcc
+INSTALL_TARGET?=	install-gcc
 
 .include <bsd.port.options.mk>
 

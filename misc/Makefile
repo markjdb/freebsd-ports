@@ -147,7 +147,6 @@
     SUBDIR += gnome-mime-data
     SUBDIR += gnome-osd
     SUBDIR += gnome-user-docs
-    SUBDIR += gnomehier
     SUBDIR += gnu-watch
     SUBDIR += gnuit
     SUBDIR += gnuls
@@ -271,7 +270,6 @@
     SUBDIR += mmv
     SUBDIR += mtail
     SUBDIR += mtx
-    SUBDIR += nagios-base-logos
     SUBDIR += najitool
     SUBDIR += newer
     SUBDIR += nsf
@@ -341,6 +339,7 @@
     SUBDIR += p5-Norge
     SUBDIR += p5-OSSP-uuid
     SUBDIR += p5-Software-License
+    SUBDIR += p5-Software-License-CCpack
     SUBDIR += p5-Test-Dir
     SUBDIR += p5-Text-FIGlet
     SUBDIR += p5-Tie-DxHash

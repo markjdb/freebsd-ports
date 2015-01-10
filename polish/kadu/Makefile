@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	kadu
-PORTVERSION=	1.2
+PORTVERSION=	1.4
 PORTEPOCH=	1
 CATEGORIES=	polish net-im
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}/:kadu \
@@ -19,7 +19,7 @@ COMMENT=	Internet communicator supporting Gadu-Gadu and Jabber/XMPP
 LICENSE=	GPLv2
 
 BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash \
-		pl-libgadu>=1.11.1:${PORTSDIR}/polish/libgadu
+		pl-libgadu>=1.12.1:${PORTSDIR}/polish/libgadu
 LIB_DEPENDS=	libmpdclient.so:${PORTSDIR}/audio/libmpdclient \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile \
 		libqca.so:${PORTSDIR}/devel/qca \
@@ -61,12 +61,6 @@ USE_GCC=	yes
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000009
 LIB_DEPENDS+=	libarchive.so.13:${PORTSDIR}/archivers/libarchive
 .endif
-
-post-patch:
-	@${FIND} ${WRKSRC} -exec ${GREP} -q "#!/bin/bash" {} \; \
-		-exec ${REINPLACE_CMD} -e 's|#!/bin/bash|#!/usr/bin/env bash|g' {} \;
-	@${REINPLACE_CMD} 's|/bin/bash|${LOCALBASE}/bin/bash|' \
-		${WRKSRC}/plugins/sql_history/storage/sql-restore.cpp
 
 post-install:
 .if ${PORT_OPTIONS:MGG_EMOTS}

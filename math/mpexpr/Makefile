@@ -11,7 +11,7 @@ COMMENT=	Multiple precision math for Tcl
 
 LICENSE=	TclTk
 LICENSE_NAME=	Tcl/Tk License
-LICENSE_FILE=	${WRKSRC}/LICENSE.TERMS
+LICENSE_FILE=	${WRKSRC}/../LICENSE.TERMS
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 WRKSRC=		${WRKDIR}/${DISTNAME}/unix
@@ -23,7 +23,6 @@ CONFIGURE_ARGS=	--prefix=${PREFIX} \
 CONFIGURE_ENV+=	TCL_INC_DIR=${TCL_INCLUDEDIR} \
 		TCL_LIB_DIR=${TCL_LIBDIR}
 
-PLIST_DIRS=	lib/Mpexpr10
 PLIST_FILES=	lib/Mpexpr10/libMpexpr10.so \
 		lib/Mpexpr10/pkgIndex.tcl \
 		man/mann/mpexpr.n.gz

@@ -28,6 +28,7 @@
     SUBDIR += aslookup
     SUBDIR += asterisk
     SUBDIR += asterisk11
+    SUBDIR += asterisk13
     SUBDIR += avahi
     SUBDIR += avahi-app
     SUBDIR += avahi-autoipd
@@ -37,6 +38,7 @@
     SUBDIR += avahi-libdns
     SUBDIR += avahi-qt4
     SUBDIR += avahi-sharp
+    SUBDIR += axa
     SUBDIR += babeld
     SUBDIR += beacon
     SUBDIR += beanstalkd
@@ -155,6 +157,7 @@
     SUBDIR += gogoc
     SUBDIR += google-cloud-sdk
     SUBDIR += google-daemon
+    SUBDIR += google-startup-scripts
     SUBDIR += googlecl
     SUBDIR += gopher
     SUBDIR += gotthard
@@ -225,6 +228,7 @@
     SUBDIR += ilbc
     SUBDIR += imapproxy
     SUBDIR += iodine
+    SUBDIR += ip2location
     SUBDIR += ip6_int
     SUBDIR += ipgrab
     SUBDIR += iplog
@@ -355,6 +359,7 @@
     SUBDIR += mcast-tools
     SUBDIR += mediastreamer
     SUBDIR += mediatomb
+    SUBDIR += megatools
     SUBDIR += mgen
     SUBDIR += micro_inetd
     SUBDIR += micro_proxy
@@ -416,12 +421,12 @@
     SUBDIR += nss-pam-ldapd-sasl
     SUBDIR += nss_ldap
     SUBDIR += nstxd
+    SUBDIR += ntimed
     SUBDIR += ntlmaps
     SUBDIR += ntop
     SUBDIR += ntopng
     SUBDIR += ntp
     SUBDIR += ntp-devel
-    SUBDIR += ntp-rc
     SUBDIR += ntraceroute
     SUBDIR += nusoap
     SUBDIR += nxproxy
@@ -498,6 +503,7 @@
     SUBDIR += p5-IO-Socket-IP
     SUBDIR += p5-IO-Socket-Multicast
     SUBDIR += p5-IO-Socket-Multicast6
+    SUBDIR += p5-IO-Socket-UNIX-Util
     SUBDIR += p5-IP-Anonymous
     SUBDIR += p5-IP-Country
     SUBDIR += p5-IPC-Session
@@ -753,6 +759,7 @@
     SUBDIR += p5-XML-Fast
     SUBDIR += p5-XML-RPC
     SUBDIR += p5-XML-RPC-Fast
+    SUBDIR += p5-XMLRPC-Lite
     SUBDIR += p5-XPC
     SUBDIR += p5-ZConf
     SUBDIR += p5-ZConf-Bookmarks
@@ -818,6 +825,7 @@
     SUBDIR += pecl-cvsclient
     SUBDIR += pecl-geoip
     SUBDIR += pecl-gupnp
+    SUBDIR += pecl-ip2location
     SUBDIR += pecl-mosquitto
     SUBDIR += pecl-oauth
     SUBDIR += pecl-radius
@@ -845,6 +853,7 @@
     SUBDIR += phpldapadmin
     SUBDIR += pimdd
     SUBDIR += pipsecd
+    SUBDIR += pjsip
     SUBDIR += pktanon
     SUBDIR += pload
     SUBDIR += plugdaemon
@@ -1006,10 +1015,13 @@
     SUBDIR += rubygem-connection_pool
     SUBDIR += rubygem-domain_name
     SUBDIR += rubygem-dropbox-sdk
+    SUBDIR += rubygem-fog-atmos
+    SUBDIR += rubygem-fog-ecloud
     SUBDIR += rubygem-fog-profitbricks
     SUBDIR += rubygem-fog-radosgw
     SUBDIR += rubygem-fog-sakuracloud
     SUBDIR += rubygem-fog-softlayer
+    SUBDIR += rubygem-fog-storm_on_demand
     SUBDIR += rubygem-fog-terremark
     SUBDIR += rubygem-fog-vmfusion
     SUBDIR += rubygem-fog-voxel
@@ -1056,6 +1068,7 @@
     SUBDIR += rubygem-rye
     SUBDIR += rubygem-simple_oauth
     SUBDIR += rubygem-stompserver
+    SUBDIR += rubygem-t
     SUBDIR += rubygem-tweetstream
     SUBDIR += rubygem-twitter
     SUBDIR += rubygem-twitter-stream
@@ -1210,6 +1223,7 @@
     SUBDIR += unison-devel
     SUBDIR += unison-nox11
     SUBDIR += unison232
+    SUBDIR += unison240
     SUBDIR += unix2tcp
     SUBDIR += uplog
     SUBDIR += urelay
@@ -1267,6 +1281,7 @@
     SUBDIR += xrdesktop
     SUBDIR += xrdp
     SUBDIR += xrdp-devel
+    SUBDIR += yami4
     SUBDIR += yaph
     SUBDIR += yate
     SUBDIR += yaz

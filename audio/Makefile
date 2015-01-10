@@ -262,6 +262,7 @@
     SUBDIR += gstreamer1-plugins-modplug
     SUBDIR += gstreamer1-plugins-ogg
     SUBDIR += gstreamer1-plugins-opus
+    SUBDIR += gstreamer1-plugins-pulse
     SUBDIR += gstreamer1-plugins-shout2
     SUBDIR += gstreamer1-plugins-sidplay
     SUBDIR += gstreamer1-plugins-soundtouch
@@ -692,6 +693,7 @@
     SUBDIR += sox
     SUBDIR += specimen
     SUBDIR += speex
+    SUBDIR += speexdsp
     SUBDIR += spek
     SUBDIR += sphinx
     SUBDIR += sphinx3

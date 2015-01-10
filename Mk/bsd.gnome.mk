@@ -69,14 +69,14 @@ Gnome_Pre_Include=			bsd.gnome.mk
 
 # non-version specific components
 _USE_GNOME_ALL= esound intlhack intltool introspection \
-		gnomehack referencehack gnomehier gnomemimedata \
+		referencehack gnomemimedata \
 		gnomeprefix
 
 # GNOME 1 components
-_USE_GNOME_ALL+= gdkpixbuf glib12 gtk12 imlib
+_USE_GNOME_ALL+= gdkpixbuf glib12 gtk12
 
 # GNOME 2 components
-_USE_GNOME_ALL+= atk atspi cairo desktopfileutils gal2 \
+_USE_GNOME_ALL+= atk atspi cairo gal2 \
 		gdkpixbuf2 gconf2 glib20 \
 		gnomedocutils gnomesharp20 \
 		gnomespeech gnomevfs2 gtk-update-icon-cache gtk20 gtkhtml3 gtksharp10 \
@@ -102,25 +102,9 @@ _USE_GNOME_ALL+=atkmm cairomm gconfmm26 glibmm gtkmm20 gtkmm24 \
 
 GNOME_MAKEFILEIN?=	Makefile.in
 SCROLLKEEPER_DIR=	/var/db/rarian
-gnomehack_PRE_PATCH=	${FIND} ${WRKSRC} -name "${GNOME_MAKEFILEIN}*" -type f | ${XARGS} ${REINPLACE_CMD} -e \
-				's|[(]libdir[)]/locale|(prefix)/share/locale|g ; \
-				 s|[(]libdir[)]/pkgconfig|(prefix)/libdata/pkgconfig|g ; \
-				 s|{libdir}/pkgconfig|(prefix)/libdata/pkgconfig|g ; \
-				 s|[(]datadir[)]/pkgconfig|(prefix)/libdata/pkgconfig|g ; \
-				 s|[(]prefix[)]/lib/pkgconfig|(prefix)/libdata/pkgconfig|g ; \
-				 s|[$$][(]localstatedir[)]/scrollkeeper|${SCROLLKEEPER_DIR}|g ; \
-				 s|[(]libdir[)]/bonobo/servers|(prefix)/libdata/bonobo/servers|g' ; \
-			${FIND} ${WRKSRC} -name "configure" -type f | ${XARGS} ${REINPLACE_CMD} -e \
-				's|-lpthread|${PTHREAD_LIBS}|g ; \
-				 s|DATADIRNAME=lib|DATADIRNAME=share|g ; \
-				 s|{libdir}/locale|{prefix}/share/locale|g'
 
 referencehack_PRE_PATCH=	${FIND} ${WRKSRC} -name "Makefile.in" -type f | ${XARGS} ${REINPLACE_CMD} -e \
 				"s|test \"\$$\$$installfiles\" = '\$$(srcdir)/html/\*'|:|"
-
-GNOME_MTREE_FILE?=		${LOCALBASE}/etc/mtree/BSD.gnome.dist
-gnomehier_DETECT=	${GNOME_MTREE_FILE}
-gnomehier_RUN_DEPENDS=	${gnomehier_DETECT}:${PORTSDIR}/misc/gnomehier
 
 GNOME_HTML_DIR?=	${PREFIX}/share/doc
 GCONF_CONFIG_OPTIONS?=	merged
@@ -220,19 +204,11 @@ gdkpixbuf_MAKE_ENV=	GDK_PIXBUF_CONFIG="${GDK_PIXBUF_CONFIG}"
 gdkpixbuf_DETECT=	${GDK_PIXBUF_CONFIG}
 gdkpixbuf_USE_GNOME_IMPL=gtk12
 
-IMLIB_CONFIG?=		${LOCALBASE}/bin/imlib-config
-imlib_LIB_DEPENDS=	libImlib.so:${PORTSDIR}/graphics/imlib
-imlib_CONFIGURE_ENV=	IMLIB_CONFIG="${IMLIB_CONFIG}"
-imlib_MAKE_ENV=		IMLIB_CONFIG="${IMLIB_CONFIG}"
-imlib_DETECT=		${IMLIB_CONFIG}
-imlib_USE_GNOME_IMPL=	gtk12
-
 gnomemimedata_DETECT=	${LOCALBASE}/libdata/pkgconfig/gnome-mime-data-2.0.pc
 gnomemimedata_BUILD_DEPENDS=${gnomemimedata_DETECT}:${PORTSDIR}/misc/gnome-mime-data
 gnomemimedata_RUN_DEPENDS=${gnomemimedata_DETECT}:${PORTSDIR}/misc/gnome-mime-data
 
-glib20_LIB_DEPENDS=	libglib-2.0.so:${PORTSDIR}/devel/glib20 \
-			libpcre.so:${PORTSDIR}/devel/pcre
+glib20_LIB_DEPENDS=	libglib-2.0.so:${PORTSDIR}/devel/glib20
 glib20_DETECT=		${LOCALBASE}/libdata/pkgconfig/glib-2.0.pc
 
 atk_LIB_DEPENDS=	libatk-1.0.so:${PORTSDIR}/accessibility/atk
@@ -475,15 +451,10 @@ gnomespeech_LIB_DEPENDS=libgnomespeech.so:${PORTSDIR}/accessibility/gnome-speech
 gnomespeech_DETECT=	${LOCALBASE}/libdata/pkgconfig/gnome-speech-1.0.pc
 gnomespeech_USE_GNOME_IMPL=libbonobo
 
-evolutiondataserver3_LIB_DEPENDS=	libedataserver-1.2.so.18:${PORTSDIR}/databases/evolution-data-server
+evolutiondataserver3_LIB_DEPENDS=	libedataserver-1.2.so:${PORTSDIR}/databases/evolution-data-server
 evolutiondataserver3_DETECT=		${LOCALBASE}/libdata/pkgconfig/libedataserverui-3.0.pc
 evolutiondataserver3_USE_GNOME_IMPL=	libxml2 gtk30
 evolutiondataserver3_GNOME_DESKTOP_VERSION=3
-
-desktopfileutils_BUILD_DEPENDS=update-desktop-database:${PORTSDIR}/devel/desktop-file-utils
-desktopfileutils_RUN_DEPENDS=update-desktop-database:${PORTSDIR}/devel/desktop-file-utils
-desktopfileutils_DETECT=	${LOCALBASE}/bin/update-desktop-database
-desktopfileutils_USE_GNOME_IMPL=glib20
 
 gnomemenus3_BUILD_DEPENDS=	gnome-menus>=3.2.0:${PORTSDIR}/x11/gnome-menus
 gnomemenus3_RUN_DEPENDS=	gnome-menus>=3.2.0:${PORTSDIR}/x11/gnome-menus
@@ -755,14 +726,11 @@ CONFIGURE_FAIL_MESSAGE= "Please run the gnomelogalyzer, available from \"http://
 
 
 .if defined(GCONF_SCHEMAS) || defined(INSTALLS_OMF) || defined(INSTALLS_ICONS) \
-	|| defined(GLIB_SCHEMAS) || (defined(_USE_GNOME) && ${_USE_GNOME:Mgnomehier}!="")
+	|| defined(GLIB_SCHEMAS)
 pre-su-install: gnome-pre-su-install
 post-install: gnome-post-install
 
 gnome-pre-su-install:
-.if defined(_USE_GNOME) && ${_USE_GNOME:Mgnomehier}!="" && !defined(NO_MTREE)
-	@${MTREE_CMD} ${MTREE_ARGS:S/${MTREE_FILE}/${GNOME_MTREE_FILE}/} ${STAGEDIR}${PREFIX}/ >/dev/null
-.endif
 .if defined(GCONF_SCHEMAS)
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/gconf/gconf.xml.defaults/
 .else

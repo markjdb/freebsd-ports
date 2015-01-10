@@ -224,7 +224,6 @@
     SUBDIR += el
     SUBDIR += el-data
     SUBDIR += ember
-    SUBDIR += empire
     SUBDIR += endgame-singularity
     SUBDIR += endgame-singularity-music
     SUBDIR += enigma
@@ -391,7 +390,6 @@
     SUBDIR += help_hannahs_horse
     SUBDIR += heretic
     SUBDIR += heroes
-    SUBDIR += hex
     SUBDIR += hex-a-hop
     SUBDIR += hexalate
     SUBDIR += hexglass
@@ -871,8 +869,6 @@
     SUBDIR += seahaven
     SUBDIR += searchandrescue
     SUBDIR += searchandrescue-data
-    SUBDIR += secretmaryochronicles
-    SUBDIR += secretmaryochronicles-music
     SUBDIR += secrettower
     SUBDIR += senken
     SUBDIR += sets
@@ -1034,6 +1030,7 @@
     SUBDIR += wmpuzzle
     SUBDIR += wmqstat
     SUBDIR += wmquake
+    SUBDIR += vms-empire
     SUBDIR += wmshuffle
     SUBDIR += wmtictactoe
     SUBDIR += wolfpack
@@ -1041,6 +1038,7 @@
     SUBDIR += wordplay
     SUBDIR += worldofpadman
     SUBDIR += wtf
+    SUBDIR += wxlauncher
     SUBDIR += xabacus
     SUBDIR += xasteroids
     SUBDIR += xataxx
@@ -1090,6 +1088,7 @@
     SUBDIR += xjumpx
     SUBDIR += xkoules
     SUBDIR += xlaby
+    SUBDIR += xlennart
     SUBDIR += xlife
     SUBDIR += xlogical
     SUBDIR += xmahjongg

@@ -2,15 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	Catalyst-Runtime
-PORTVERSION=	5.90070
-PORTREVISION=	1
+PORTVERSION=	5.90077
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:JJNAPIORK
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	perl@FreeBSD.org
-COMMENT=	The Elegant MVC Web Application Framework (Runtime)
+COMMENT=	Elegant MVC Web Application Framework (Runtime)
 
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
@@ -68,6 +67,8 @@ TEST_DEPENDS=	p5-IO-stringy>=0:${PORTSDIR}/devel/p5-IO-stringy \
 		p5-Test-Without-Module>=0:${PORTSDIR}/devel/p5-Test-Without-Module \
 		p5-YAML>=0:${PORTSDIR}/textproc/p5-YAML
 
+PORTSCOUT=	limit:^[0-9\.]*$$
+
 USES=		perl5
 USE_PERL5=	configure
 
@@ -79,7 +80,7 @@ RUN_DEPENDS+=	p5-Encode>=2.49:${PORTSDIR}/converters/p5-Encode
 .endif
 
 # Devel::InnerPackage (in Module::Pluggable) will be removed from core since Perl 5.20
-.if ${PERL_LEVEL} >= 502000
+.if ${PERL_LEVEL} >= 501800
 BUILD_DEPENDS+=	p5-Module-Pluggable>=4.7:${PORTSDIR}/devel/p5-Module-Pluggable
 RUN_DEPENDS+=	p5-Module-Pluggable>=4.7:${PORTSDIR}/devel/p5-Module-Pluggable
 .endif

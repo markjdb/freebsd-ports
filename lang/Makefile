@@ -32,7 +32,6 @@
     SUBDIR += cjs
     SUBDIR += clang-cheri
     SUBDIR += clang-devel
-    SUBDIR += clang32
     SUBDIR += clang33
     SUBDIR += clang34
     SUBDIR += clang35
@@ -209,7 +208,6 @@
     SUBDIR += pbasic
     SUBDIR += pcc
     SUBDIR += pecl-perl
-    SUBDIR += perl5.14
     SUBDIR += perl5.16
     SUBDIR += perl5.18
     SUBDIR += perl5.20

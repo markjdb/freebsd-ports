@@ -3,7 +3,7 @@
 
 PORTNAME=	tuxmath
 PORTVERSION=	2.0.3
-PORTREVISION=	5
+PORTREVISION=	6
 PORTEPOCH=	1
 CATEGORIES=	games
 MASTER_SITES=	http://alioth.debian.org/frs/download.php/3571/ \
@@ -29,7 +29,7 @@ CONFIGURE_ENV=	T4K_COMMON_CFLAGS="-I${T4K_WRKSRC}/src" \
 
 CPPFLAGS+=	$$(pkg-config --cflags SDL_Pango) -I${LOCALBASE}/include \
 		-DHAVE_ALPHASORT -DHAVE_SCANDIR -DHAVE_FSYNC -DICONV_CONST=""
-LDFLAGS+=	$$(pkg-config --libs SDL_Pango) -L${LOCALBASE}/lib ${ICONV_LIB} -lpng15
+LDFLAGS+=	$$(pkg-config --libs SDL_Pango) -L${LOCALBASE}/lib ${ICONV_LIB} -lpng
 
 T4K_NAME=	t4k_common
 T4K_VERSION=	0.1.1

@@ -42,7 +42,6 @@
     SUBDIR += ebd-fpw
     SUBDIR += eblook
     SUBDIR += ebnetd
-    SUBDIR += ebview
     SUBDIR += ebview-gtk2
     SUBDIR += edict
     SUBDIR += edict-fpw
@@ -234,6 +233,7 @@
     SUBDIR += rubygem-jpmobile-ipaddresses
     SUBDIR += rubygem-jpmobile-terminfo
     SUBDIR += rubygem-jpmobile4
+    SUBDIR += rubygem-mail-iso-2022-jp
     SUBDIR += rubygem-myrurema
     SUBDIR += ryaku-fpw
     SUBDIR += scim-anthy
@@ -288,7 +288,6 @@
     SUBDIR += wwasw-fpw
     SUBDIR += xdtp
     SUBDIR += xgate
-    SUBDIR += xjtext
     SUBDIR += xlockmore
     SUBDIR += xpdf
     SUBDIR += xshodou

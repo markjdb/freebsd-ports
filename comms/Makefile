@@ -74,6 +74,7 @@
     SUBDIR += jsdr
     SUBDIR += kb
     SUBDIR += kermit
+    SUBDIR += klog
     SUBDIR += kremotecontrol
     SUBDIR += libconcord
     SUBDIR += libfec
@@ -84,6 +85,7 @@
     SUBDIR += libticables2
     SUBDIR += libticalcs2
     SUBDIR += libusbmuxd
+    SUBDIR += linpsk
     SUBDIR += linrad
     SUBDIR += lirc
     SUBDIR += locator
@@ -134,6 +136,7 @@
     SUBDIR += qrq
     SUBDIR += qsstv
     SUBDIR += qt5-serialport
+    SUBDIR += qtel
     SUBDIR += quisk
     SUBDIR += remserial
     SUBDIR += rtl-sdr
@@ -176,6 +179,7 @@
     SUBDIR += wwl
     SUBDIR += wy60
     SUBDIR += xastir
+    SUBDIR += xcwcp
     SUBDIR += xdx
     SUBDIR += xlog
     SUBDIR += xmorse

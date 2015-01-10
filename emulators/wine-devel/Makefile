@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-DISTVERSION=	1.7.32
+DISTVERSION=	1.7.33
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	SF/${PORTNAME}/Source \
@@ -21,27 +22,36 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/flex:${PORTSDIR}/textproc/flex \
 		prelink:${PORTSDIR}/sysutils/prelink
 LIB_DEPENDS=	libxml2.so:${PORTSDIR}/textproc/libxml2
 
-CONFLICTS_INSTALL=	i386-wine-[0-9]* i386-wine-devel-[0-9]* wine-[0-9]*
+CONFLICTS_INSTALL=	wine-[0-9]* wine-compholio-[0-9]* i386-wine-[0-9]* \
+			i386-wine-compholio-[0-9]* i386-wine-devel-[0-9]*
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--verbose --disable-tests \
 		--without-alsa --without-capi --without-dbus \
+		--without-gettextpo \
 		--without-gphoto --without-gsm --without-gstreamer \
-		--without-opencl --with-oss --without-sane --without-tiff \
-		--with-xcomposite --without-xinerama
+		--without-opencl \
+		--without-osmesa \
+		--with-oss \
+		--without-sane \
+		--without-tiff \
+		--without-xinerama
 CONFIGURE_ENV=	FLEX="${LOCALBASE}/bin/flex"
 WINELIBDIR?=	${PREFIX}/lib
 .if !defined(USE_LDCONFIG32)
 USE_LDCONFIG=	${WINELIBDIR} ${WINELIBDIR}/wine
 .endif
 ONLY_FOR_ARCHS=	i386
-USES=		bison compiler:c11 gmake shebangfix tar:bzip2
-SHEBANG_FILES=	tools/winemaker tools/winedump/function_grep.pl
+USES=		bison compiler:c11 desktop-file-utils gmake shebangfix tar:bzip2
+SHEBANG_FILES=	tools/make_requests tools/winemaker \
+		tools/winedump/function_grep.pl
 
 SUB_FILES=	pkg-message
 PKGMESSAGE=	${WRKDIR}/pkg-message
+
+PORTDATA=	l_intl.nls wine.inf
 
 OPTIONS_DEFINE=	COMPHOLIO CUPS DOCS DOSBOX GNUTLS HAL LDAP LIBXSLT MPG123 OPENAL V4L WINEMAKER X11 GECKO MONO
 OPTIONS_DEFAULT=X11
@@ -73,7 +83,7 @@ LDAP_USE=		OPENLDAP=yes
 LIBXSLT_CONFIGURE_WITH=	xslt
 LIBXSLT_LIB_DEPENDS=	libxslt.so:${PORTSDIR}/textproc/libxslt
 
-MONO_RUN_DEPENDS=	${DATADIR}/mono/wine-mono-4.5.2.msi:${PORTSDIR}/emulators/wine-mono-devel
+MONO_RUN_DEPENDS=	${DATADIR}/mono/wine-mono-4.5.4.msi:${PORTSDIR}/emulators/wine-mono-devel
 
 MPG123_CONFIGURE_WITH=	mpg123
 MPG123_LIB_DEPENDS=	libmpg123.so:${PORTSDIR}/audio/mpg123
@@ -86,15 +96,13 @@ V4L_LIB_DEPENDS=	libv4l1.so:${PORTSDIR}/multimedia/libv4l
 
 WINEMAKER_RUN_DEPENDS=	p5-XML-LibXML>0:${PORTSDIR}/textproc/p5-XML-LibXML
 
-X11_CONFIGURE_WITH=	x fontconfig glu opengl xinput2 xrandr freetype
-X11_USE=		GL=glu XORG=xcomposite,xcursor,xi,xpm,xrandr,xrender
+X11_CONFIGURE_WITH=	x cms fontconfig freetype glu jpeg opengl png xinput2 xrandr xrender
+X11_USE=		GL=glu XORG=xcomposite,xcursor,xi,xrandr,xrender
 X11_LIB_DEPENDS=	libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
 			libfreetype.so:${PORTSDIR}/print/freetype2 \
 			libjpeg.so:${PORTSDIR}/graphics/jpeg \
 			liblcms2.so:${PORTSDIR}/graphics/lcms2 \
-			libpng15.so:${PORTSDIR}/graphics/png
-
-PORTDATA=	l_intl.nls wine.inf
+			libpng.so:${PORTSDIR}/graphics/png
 
 .include <bsd.port.options.mk>
 
@@ -102,9 +110,12 @@ PORTDATA=	l_intl.nls wine.inf
 MASTER_SITES+=	https://github.com/compholio/wine-compholio-daily/archive/:cho
 COMP_DIST=	v${DISTVERSION}.tar.gz
 DISTFILES+=	${COMP_DIST}:cho
-USE_AUTOTOOLS=	autoconf
+
 BUILD_DEPENDS+=	bash:${PORTSDIR}/shells/bash \
 		git:${PORTSDIR}/devel/git
+
+CONFIGURE_ARGS+=--without-pulse
+USE_AUTOTOOLS=	autoconf
 
 pre-configure:
 	cd ${WRKSRC} && ${TAR} xf ${DISTDIR}/${COMP_DIST} --strip-components 1

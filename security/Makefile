@@ -295,6 +295,7 @@
     SUBDIR += libtomcrypt
     SUBDIR += libwhisker
     SUBDIR += libyubikey
+    SUBDIR += libzrtpcppcore
     SUBDIR += linux-c6-cyrus-sasl2
     SUBDIR += linux-c6-gnutls
     SUBDIR += linux-c6-libgcrypt
@@ -375,7 +376,6 @@
     SUBDIR += openscep
     SUBDIR += openssh-askpass
     SUBDIR += openssh-portable
-    SUBDIR += openssh-portable-base
     SUBDIR += openssh-portable66
     SUBDIR += openssl
     SUBDIR += openssl_tpm_engine
@@ -536,6 +536,7 @@
     SUBDIR += p5-Dancer-Plugin-Auth-Extensible-Provider-Usergroup
     SUBDIR += p5-Dancer-Plugin-Passphrase
     SUBDIR += p5-Dancer2-Plugin-Auth-Extensible
+    SUBDIR += p5-Dancer2-Plugin-Auth-Extensible-Provider-Usergroup
     SUBDIR += p5-Dancer2-Plugin-Passphrase
     SUBDIR += p5-Data-Entropy
     SUBDIR += p5-Data-Password
@@ -725,6 +726,7 @@
     SUBDIR += pinentry-curses
     SUBDIR += pinentry-gtk2
     SUBDIR += pinentry-qt4
+    SUBDIR += pinentry-tty
     SUBDIR += pkcrack
     SUBDIR += pkcs11-dump
     SUBDIR += pkcs11-gateway
@@ -790,6 +792,7 @@
     SUBDIR += py-openssl
     SUBDIR += py-paramiko
     SUBDIR += py-passlib
+    SUBDIR += py-pbkdf2
     SUBDIR += py-plaso
     SUBDIR += py-plone.app.openid
     SUBDIR += py-plone.keyring
@@ -801,6 +804,7 @@
     SUBDIR += py-pyclamd
     SUBDIR += py-pycrypto
     SUBDIR += py-pycryptopp
+    SUBDIR += py-pydeep
     SUBDIR += py-pylibacl
     SUBDIR += py-pyme
     SUBDIR += py-pyptlib

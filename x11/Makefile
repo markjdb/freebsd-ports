@@ -7,6 +7,7 @@
     SUBDIR += 9box
     SUBDIR += 9menu
     SUBDIR += alltray
+    SUBDIR += antimicro
     SUBDIR += appres
     SUBDIR += apwal
     SUBDIR += arandr
@@ -210,8 +211,6 @@
     SUBDIR += nvidia-driver
     SUBDIR += nvidia-driver-173
     SUBDIR += nvidia-driver-304
-    SUBDIR += nvidia-driver-71
-    SUBDIR += nvidia-driver-96
     SUBDIR += nvidia-settings
     SUBDIR += nvidia-xconfig
     SUBDIR += nxcomp
@@ -221,7 +220,6 @@
     SUBDIR += p5-X11-IdleTime
     SUBDIR += p5-X11-Protocol
     SUBDIR += p5-X11-Resolution
-    SUBDIR += peeper
     SUBDIR += pixman
     SUBDIR += plasma-scriptengine-python
     SUBDIR += plasma-scriptengine-ruby
@@ -263,6 +261,7 @@
     SUBDIR += sisctrl
     SUBDIR += slim
     SUBDIR += slock
+    SUBDIR += slop
     SUBDIR += smproxy
     SUBDIR += sselp
     SUBDIR += stalonetray
@@ -270,6 +269,7 @@
     SUBDIR += sterm
     SUBDIR += stjerm
     SUBDIR += swarp
+    SUBDIR += sxhkd
     SUBDIR += sxpc
     SUBDIR += tabbed
     SUBDIR += temperature.app
@@ -472,6 +472,7 @@
     SUBDIR += xvinfo
     SUBDIR += xvkbd
     SUBDIR += xvmcinfo
+    SUBDIR += xvt
     SUBDIR += xwatchwin
     SUBDIR += xwd
     SUBDIR += xwininfo

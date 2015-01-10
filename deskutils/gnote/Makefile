@@ -3,7 +3,7 @@
 #   $MCom: ports/trunk/deskutils/gnote/Makefile 19997 2014-10-19 18:15:03Z gusi $
 
 PORTNAME=	gnote
-PORTVERSION=	3.14.0
+PORTVERSION=	3.14.1
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 
@@ -37,6 +37,10 @@ GLIB_SCHEMAS=	org.gnome.gnote.gschema.xml
 DOCS=		AUTHORS ChangeLog NEWS README TODO
 
 .include <bsd.port.options.mk>
+
+.if ${OSVERSION} < 900000
+BROKEN=		Fails to build
+.endif
 
 PLIST_SUB+=	VERSION=${PORTVERSION}
 
