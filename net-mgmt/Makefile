@@ -95,6 +95,7 @@
     SUBDIR += lanmap
     SUBDIR += lg
     SUBDIR += libsmi
+    SUBDIR += lldpd
     SUBDIR += mbrowse
     SUBDIR += mk-livestatus
     SUBDIR += monitoring-plugins
@@ -270,6 +271,7 @@
     SUBDIR += rate
     SUBDIR += rcpd
     SUBDIR += remarp
+    SUBDIR += riemann
     SUBDIR += rotorouter
     SUBDIR += routers2
     SUBDIR += routers2-extensions
@@ -296,6 +298,7 @@
     SUBDIR += spectools
     SUBDIR += ssgless
     SUBDIR += statsd
+    SUBDIR += statsite
     SUBDIR += subcalc
     SUBDIR += sx
     SUBDIR += sysmon

@@ -22,6 +22,7 @@
     SUBDIR += arirang
     SUBDIR += arm
     SUBDIR += arpCounterattack
+    SUBDIR += asignify
     SUBDIR += authforce
     SUBDIR += autossh
     SUBDIR += avcheck
@@ -162,6 +163,7 @@
     SUBDIR += gpass
     SUBDIR += gpgdir
     SUBDIR += gpgme
+    SUBDIR += gputty
     SUBDIR += gringotts
     SUBDIR += gsasl
     SUBDIR += gsfv
@@ -176,6 +178,7 @@
     SUBDIR += hmap
     SUBDIR += honggfuzz
     SUBDIR += hotssh
+    SUBDIR += hpenc
     SUBDIR += hs-Crypto
     SUBDIR += hs-DRBG
     SUBDIR += hs-HsOpenSSL
@@ -255,6 +258,7 @@
     SUBDIR += krb5-112
     SUBDIR += krb5-appl
     SUBDIR += kripp
+    SUBDIR += kstart
     SUBDIR += kwalletmanager
     SUBDIR += l0pht-watch
     SUBDIR += l0phtcrack
@@ -376,7 +380,6 @@
     SUBDIR += openscep
     SUBDIR += openssh-askpass
     SUBDIR += openssh-portable
-    SUBDIR += openssh-portable66
     SUBDIR += openssl
     SUBDIR += openssl_tpm_engine
     SUBDIR += openvas-client
@@ -409,6 +412,7 @@
     SUBDIR += p5-Authen-DecHpwd
     SUBDIR += p5-Authen-Htpasswd
     SUBDIR += p5-Authen-Krb5
+    SUBDIR += p5-Authen-Krb5-Simple
     SUBDIR += p5-Authen-Libwrap
     SUBDIR += p5-Authen-NTLM
     SUBDIR += p5-Authen-OATH
@@ -419,10 +423,13 @@
     SUBDIR += p5-Authen-Radius
     SUBDIR += p5-Authen-SASL
     SUBDIR += p5-Authen-SASL-Cyrus
+    SUBDIR += p5-Authen-SASL-SASLprep
+    SUBDIR += p5-Authen-SCRAM
     SUBDIR += p5-Authen-Simple
     SUBDIR += p5-Authen-Simple-DBI
     SUBDIR += p5-Authen-Simple-DBM
     SUBDIR += p5-Authen-Simple-HTTP
+    SUBDIR += p5-Authen-Simple-Kerberos
     SUBDIR += p5-Authen-Simple-LDAP
     SUBDIR += p5-Authen-Simple-Net
     SUBDIR += p5-Authen-Simple-PAM
@@ -486,6 +493,8 @@
     SUBDIR += p5-Crypt-OpenSSL-Bignum
     SUBDIR += p5-Crypt-OpenSSL-CA
     SUBDIR += p5-Crypt-OpenSSL-DSA
+    SUBDIR += p5-Crypt-OpenSSL-EC
+    SUBDIR += p5-Crypt-OpenSSL-ECDSA
     SUBDIR += p5-Crypt-OpenSSL-RSA
     SUBDIR += p5-Crypt-OpenSSL-Random
     SUBDIR += p5-Crypt-OpenSSL-X509
@@ -518,6 +527,7 @@
     SUBDIR += p5-Crypt-Shark
     SUBDIR += p5-Crypt-Simple
     SUBDIR += p5-Crypt-SmbHash
+    SUBDIR += p5-Crypt-Sodium
     SUBDIR += p5-Crypt-Solitaire
     SUBDIR += p5-Crypt-TEA
     SUBDIR += p5-Crypt-T_e_a
@@ -551,6 +561,7 @@
     SUBDIR += p5-Digest-EMAC
     SUBDIR += p5-Digest-Elf
     SUBDIR += p5-Digest-FNV
+    SUBDIR += p5-Digest-GOST
     SUBDIR += p5-Digest-HMAC
     SUBDIR += p5-Digest-Hashcash
     SUBDIR += p5-Digest-Haval256
@@ -584,6 +595,7 @@
     SUBDIR += p5-GSSAPI
     SUBDIR += p5-GnuPG
     SUBDIR += p5-GnuPG-Interface
+    SUBDIR += p5-Heimdal-Kadm5
     SUBDIR += p5-HTML-Email-Obfuscate
     SUBDIR += p5-IO-Async-SSL
     SUBDIR += p5-IO-Socket-SSL
@@ -609,6 +621,7 @@
     SUBDIR += p5-OpenCA-PKCS7
     SUBDIR += p5-OpenCA-REQ
     SUBDIR += p5-OpenCA-X509
+    SUBDIR += p5-PBKDF2-Tiny
     SUBDIR += p5-PGP
     SUBDIR += p5-PGP-Sign
     SUBDIR += p5-POE-Component-SSLify
@@ -783,6 +796,7 @@
     SUBDIR += py-kerberos
     SUBDIR += py-keyczar
     SUBDIR += py-keyring
+    SUBDIR += py-libnacl
     SUBDIR += py-m2crypto
     SUBDIR += py-mcrypt
     SUBDIR += py-mhash
@@ -839,9 +853,6 @@
     SUBDIR += py-zope.security
     SUBDIR += py-zope.securitypolicy
     SUBDIR += py-zope.session
-    SUBDIR += qca-cyrus-sasl
-    SUBDIR += qca-gnupg
-    SUBDIR += qca-ossl
     SUBDIR += qtkeychain
     SUBDIR += quantis
     SUBDIR += quantis-kmod
@@ -871,6 +882,7 @@
     SUBDIR += rdigest
     SUBDIR += regripper
     SUBDIR += regripperplugins
+    SUBDIR += reop
     SUBDIR += retranslator
     SUBDIR += revealrk
     SUBDIR += revelation
@@ -952,6 +964,7 @@
     SUBDIR += snortsam
     SUBDIR += snortsnarf
     SUBDIR += softhsm
+    SUBDIR += softhsm2
     SUBDIR += spass
     SUBDIR += spike-proxy
     SUBDIR += spybye
