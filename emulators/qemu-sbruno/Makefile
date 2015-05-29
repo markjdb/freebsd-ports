@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	qemu
-PORTVERSION=	2.2.50.g20150215
-PORTREVISION=	1
+PORTVERSION=	2.3.50.g20150528
 CATEGORIES=	emulators
-MASTER_SITES=	GH GHC \
+MASTER_SITES=	GH \
 		LOCAL/nox \
 		LOCAL/nox:dtc \
 		http://people.freebsd.org/~nox/tmp/distfiles/ \
@@ -21,8 +20,7 @@ COMMENT?=	QEMU CPU Emulator - github bsd-user branch
 USE_GITHUB=	yes
 GH_ACCOUNT=	seanbruno
 GH_PROJECT=	${PORTNAME}-bsd-user
-GH_COMMIT=	87de5f9
-GH_TAGNAME=	${GH_COMMIT}
+GH_TAGNAME=	36c0068
 HAS_CONFIGURE=	yes
 USES=		gmake pkgconfig bison perl5 python:2,build
 USE_PERL5=	build
@@ -134,7 +132,7 @@ CONFIGURE_ARGS+=	--prefix=${PREFIX} --cc=${CC} --enable-docs \
 	--smbd=${LOCALBASE}/sbin/smbd \
 	--enable-debug \
 	--enable-debug-info \
-	--extra-cflags=-I${WRKSRC}\ -I${LOCALBASE}/include\ -DPREFIX=\\\"${PREFIX}\\\"
+	--extra-cflags=-I${WRKSRC}\ -I${LOCALBASE}/include\ -DPREFIX=\\\"\"${PREFIX}\\\"\"
 
 .if empty(PORT_OPTIONS:MX11)
 CONFIGURE_ARGS+=	--disable-sdl
@@ -183,7 +181,7 @@ LIB_DEPENDS+=	libcurl.so:${PORTSDIR}/ftp/curl
 .endif
 
 .if empty(PORT_OPTIONS:MOPENGL)
-CONFIGURE_ARGS+=	--disable-glx
+CONFIGURE_ARGS+=	--disable-opengl
 .else
 USE_GL=		yes
 .endif
@@ -280,14 +278,12 @@ post-patch:
 		-e "1s|^(#! )/usr/bin/perl|\1${PERL}|" \
 		${WRKSRC}/scripts/texi2pod.pl
 
-.if ${OSVERSION} >= 800091
 # XXX need to disable usb host code on head while it's not ported to the
 # new usb stack yet
 post-configure:
 	@${REINPLACE_CMD} -E \
 		-e "s|^(HOST_USB=)bsd|\1stub|" \
 		${WRKSRC}/config-host.mak
-.endif
 
 .if !target(post-install)
 post-install:

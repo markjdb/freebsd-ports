@@ -42,6 +42,7 @@
     SUBDIR += fuse-roms
     SUBDIR += fuse-utils
     SUBDIR += gbe
+    SUBDIR += gem5
     SUBDIR += generator
     SUBDIR += generator-cbiere
     SUBDIR += gens
@@ -56,7 +57,7 @@
     SUBDIR += hugo
     SUBDIR += hyperv-is
     SUBDIR += i386-wine
-    SUBDIR += i386-wine-compholio
+    SUBDIR += i386-wine-staging
     SUBDIR += i386-wine-devel
     SUBDIR += ia64sim
     SUBDIR += ines
@@ -74,8 +75,6 @@
     SUBDIR += linux-f10
     SUBDIR += linux_base-c6
     SUBDIR += linux_base-f10
-    SUBDIR += linux_base-gentoo-stage3
-    SUBDIR += linux_dist-gentoo-stage3
     SUBDIR += lisaem
     SUBDIR += loemu
     SUBDIR += m2000
@@ -110,6 +109,8 @@
     SUBDIR += pcsxr
     SUBDIR += pearpc
     SUBDIR += pipelight
+    SUBDIR += ppsspp
+    SUBDIR += ppsspp-devel
     SUBDIR += q4wine
     SUBDIR += qemu
     SUBDIR += qemu-devel
@@ -154,7 +155,7 @@
     SUBDIR += vmw
     SUBDIR += vxtools
     SUBDIR += wine
-    SUBDIR += wine-compholio
+    SUBDIR += wine-staging
     SUBDIR += wine-devel
     SUBDIR += wine-gecko
     SUBDIR += wine-gecko-devel
@@ -165,6 +166,8 @@
     SUBDIR += x49gp
     SUBDIR += xbraitenberg
     SUBDIR += xcpc
+    SUBDIR += xen
+    SUBDIR += xen-kernel
     SUBDIR += xhomer
     SUBDIR += xsystem35
     SUBDIR += xzx

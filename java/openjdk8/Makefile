@@ -2,7 +2,7 @@
 
 PORTNAME=	openjdk
 PORTVERSION=	${JDK_MAJOR_VERSION}.${JDK_UPDATE_VERSION}.${JDK_BUILD_NUMBER:S/^0//}
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	java devel
 MASTER_SITES=	http://download.java.net/openjdk/jdk${JDK_MAJOR_VERSION}/promoted/b${DIST_BUILD_NUMBER}/:jdk \
 		https://adopt-openjdk.ci.cloudbees.com/job/jtreg/${JTREG_JENKINS_BUILD}/artifact/:jtreg \
@@ -26,9 +26,11 @@ LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib \
 RUN_DEPENDS=	javavm:${PORTSDIR}/java/javavmwrapper \
 		dejavu>0:${PORTSDIR}/x11-fonts/dejavu
 
-USES=		compiler:features dos2unix gmake iconv pkgconfig shebangfix
+USES=		compiler:features dos2unix gmake iconv pkgconfig \
+		shebangfix
 USE_AUTOTOOLS=	autoconf
 USE_XORG=	x11 xext xi xrender xt xtst
+GNU_CONFIGURE=	yes
 
 .if !exists(/usr/bin/unzip)
 BUILD_DEPENDS+=	${UNZIP_CMD}:${PORTSDIR}/archivers/unzip
@@ -37,17 +39,37 @@ BUILD_DEPENDS+=	${UNZIP_CMD}:${PORTSDIR}/archivers/unzip
 ONLY_FOR_ARCHS=	i386 amd64
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-DOS2UNIX_FILES=	jdk/src/share/classes/com/sun/org/apache/xml/internal/security/resource/xmlsecurity_en.properties \
-		jdk/src/bsd/doc/man/java.1 \
+DOS2UNIX_FILES= jdk/src/bsd/doc/man/java.1 \
 		jdk/src/bsd/doc/man/javac.1 \
+		jdk/src/bsd/doc/man/javadoc.1 \
 		jdk/src/bsd/doc/man/javap.1 \
+		jdk/src/bsd/doc/man/jcmd.1 \
+		jdk/src/bsd/doc/man/jjs.1 \
+		jdk/src/bsd/doc/man/jstat.1 \
+		jdk/src/bsd/doc/man/keytool.1 \
+		jdk/src/bsd/doc/man/policytool.1 \
 		jdk/src/linux/doc/man/java.1 \
 		jdk/src/linux/doc/man/javac.1 \
+		jdk/src/linux/doc/man/javadoc.1 \
 		jdk/src/linux/doc/man/javap.1 \
+		jdk/src/linux/doc/man/jcmd.1 \
+		jdk/src/linux/doc/man/jjs.1 \
+		jdk/src/linux/doc/man/jstat.1 \
+		jdk/src/linux/doc/man/keytool.1 \
+		jdk/src/linux/doc/man/policytool.1 \
+		jdk/src/share/classes/com/sun/org/apache/xml/internal/security/resource/xmlsecurity_en.properties \
 		jdk/src/solaris/doc/sun/man/man1/java.1 \
 		jdk/src/solaris/doc/sun/man/man1/javac.1 \
+		jdk/src/solaris/doc/sun/man/man1/javadoc.1 \
 		jdk/src/solaris/doc/sun/man/man1/javap.1 \
-		nashorn/test/script/jfx.js
+		jdk/src/solaris/doc/sun/man/man1/jcmd.1 \
+		jdk/src/solaris/doc/sun/man/man1/jjs.1 \
+		jdk/src/solaris/doc/sun/man/man1/jstat.1 \
+		jdk/src/solaris/doc/sun/man/man1/keytool.1 \
+		jdk/src/solaris/doc/sun/man/man1/policytool.1 \
+		nashorn/test/script/jfx.js \
+		nashorn/test/script/jfx/kaleidoscope.js \
+		nashorn/test/script/jfx/spread.js
 SHEBANG_FILES=	configure
 
 _MAKE_JOBS=	#
@@ -72,8 +94,8 @@ NO_CCACHE=		yes
 NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	8
-JDK_UPDATE_VERSION=	31
-JDK_BUILD_NUMBER=	13
+JDK_UPDATE_VERSION=	45
+JDK_BUILD_NUMBER=	14
 DIST_BUILD_NUMBER=	132
 JTREG_VERSION=		4.1
 JTREG_BUILD_NUMBER=	b08
@@ -96,6 +118,7 @@ CONFIGURE_ARGS+=	--disable-ccache \
 			--with-giflib=system \
 			--with-jobs=${MAKE_JOBS_NUMBER} \
 			--with-milestone=fcs \
+			--with-package-path=${LOCALBASE} \
 			--with-zlib=system
 CONFIGURE_SCRIPT=	../../configure
 CONFIGURE_WRKSRC=	${WRKSRC}/common/autoconf
@@ -162,6 +185,11 @@ BOOTSTRAPJDKDIR?=	${LOCALBASE}/openjdk7
 BUILD_DEPENDS+=		${BOOTSTRAPJDKDIR}/bin/javac:${PORTSDIR}/java/openjdk7
 .endif
 
+# PR193009: work around the rtld bug
+.if ${OSVERSION} < 1001511
+CONFIGURE_ARGS+=	--enable-static-libjli
+.endif
+
 .if ${COMPILER_TYPE} == clang
 .if ${COMPILER_VERSION} >= 35
 MAKE_ENV+=	COMPILER_WARNINGS_FATAL=false
@@ -170,6 +198,11 @@ MAKE_ENV+=	USE_CLANG=true
 .if ${COMPILER_FEATURES:Mlibc++}
 CONFIGURE_ENV=	LIBCXX="-lc++"
 .endif
+.endif
+
+# GCC is broken with PCH: https://lists.freebsd.org/pipermail/svn-src-all/2015-March/101722.html
+.if ${COMPILER_TYPE} == gcc
+MAKE_ARGS+=	USE_PRECOMPILED_HEADER=0
 .endif
 
 .if empty(ICONV_LIB)
@@ -212,6 +245,9 @@ post-patch:
 	    ${WRKSRC}/jdk/make/lib/CoreLibraries.gmk \
 	    ${WRKSRC}/jdk/make/lib/ServiceabilityLibraries.gmk
 	@${CHMOD} 755 ${WRKSRC}/configure
+
+run-autotools-autoconf:
+	@cd ${CONFIGURE_WRKSRC} && ${SETENV} ${AUTOTOOLS_ENV} bash autogen.sh
 
 post-build:
 .if !defined(BUILD_JRE)

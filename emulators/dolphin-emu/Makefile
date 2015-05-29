@@ -10,17 +10,16 @@ MAINTAINER=	martymac@FreeBSD.org
 COMMENT=	Gamecube and Wii Emulator
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/license.txt
 
 LIB_DEPENDS=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
 		liblzo2.so:${PORTSDIR}/archivers/lzo2 \
 		libSoundTouch.so:${PORTSDIR}/audio/soundtouch \
-		libpolarssl.so:${PORTSDIR}/security/polarssl
+		libpolarssl.so.5:${PORTSDIR}/security/polarssl
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	${PORTNAME}
 GH_PROJECT=	dolphin
-GH_COMMIT=	88fabf7
 
 USE_SDL=	sdl
 USE_XORG=	ice xext x11 xrandr xi
@@ -69,6 +68,10 @@ NLS_CMAKE_ON=	-DDISABLE_NLS:BOOL=OFF
 NLS_CMAKE_OFF=	-DDISABLE_NLS:BOOL=ON
 
 .include <bsd.port.pre.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 900000
+BROKEN=		does not build: absence of xlocale.h
+.endif
 
 # XXX Temporary workaround for ports/184540
 .if ${PORT_OPTIONS:MDEBUG}

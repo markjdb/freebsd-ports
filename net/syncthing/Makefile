@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	syncthing
-PORTVERSION=	0.10.23
-CATEGORIES=	net
-MASTER_SITES=	GHR
+PORTVERSION=	0.11.5
 DISTVERSIONPREFIX=	v
+CATEGORIES=	net
 
 MAINTAINER=	swills@FreeBSD.org
 COMMENT=	Encrypted file sync tool
@@ -19,8 +18,6 @@ PORTDOCS=	*
 
 USERS=		syncthing
 GROUPS=		syncthing
-
-WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 STRIP=		# stripping can break go binaries
 

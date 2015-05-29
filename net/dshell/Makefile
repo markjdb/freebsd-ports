@@ -11,28 +11,31 @@ COMMENT=	Extensible network forensic analysis framework
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash \
+BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash \
 		${PYTHON_PKGNAMEPREFIX}pygeoip>0:${PORTSDIR}/net/py-pygeoip \
 		${PYTHON_PKGNAMEPREFIX}pycrypto>0:${PORTSDIR}/security/py-pycrypto \
 		${PYTHON_PKGNAMEPREFIX}dpkt>0:${PORTSDIR}/net/py-dpkt \
 		${PYTHON_PKGNAMEPREFIX}ipy>0:${PORTSDIR}/net-mgmt/py-ipy \
 		${PYTHON_PKGNAMEPREFIX}pypcap>0:${PORTSDIR}/net/py-pypcap
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USE_GITHUB=	yes
 USES=		python
 
 GH_ACCOUNT=	USArmyResearchLab
 GH_PROJECT=	Dshell
-GH_TAGNAME=	${GH_COMMIT}
-GH_COMMIT=	46e691c
+GH_TAGNAME=	46e691c
 
 OPTIONS_DEFINE=	DOCS
+
+MAKE_ENV+=	PYTHON_CMD=${PYTHON_CMD}
 
 .include <bsd.port.options.mk>
 
 post-patch:
 .for f in bin/generate-dshellrc.py doc/generate-doc.sh
 	${REINPLACE_CMD} -e 's|/bin/bash|${LOCALBASE}/bin/bash|' ${WRKSRC}/${f}
+	${REINPLACE_CMD} -e 's|pydoc|${LOCALBASE}/bin/pydoc${PYTHON_VER}|' ${WRKSRC}/${f}
 .endfor
 
 post-build:
