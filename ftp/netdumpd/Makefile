@@ -11,6 +11,8 @@ COMMENT=	UDP server capable of handling netdump transfers
 
 LICENSE=	BSD2CLAUSE
 
+IGNORE_FreeBSD_10=	Depends on libcasper
+
 MAKE_ARGS+=	BINDIR=${PREFIX}/sbin
 MAKE_ARGS+=	MANDIR=${PREFIX}/man/man
 MAKE_ARGS+=	SCRIPTSDIR=${PREFIX}/etc/rc.d
