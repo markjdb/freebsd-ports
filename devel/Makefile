@@ -1105,6 +1105,7 @@
     SUBDIR += kronosnet
     SUBDIR += ksql
     SUBDIR += ktextaddons
+    SUBDIR += kutrace-kmod
     SUBDIR += kyra
     SUBDIR += kyua
     SUBDIR += lab
