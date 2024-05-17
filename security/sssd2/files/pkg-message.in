@@ -21,6 +21,9 @@ For additional details, please see the man pages for pam.conf and nsswitch.conf
 
 An sssd HOWTO is also available:
 https://fedorahosted.org/sssd/wiki/HOWTO_Configure_1_0_2
+
+The krb5_store_password_if_offline feature requires linprocfs(5) to be mounted
+at /compat/linux/proc.
 ================================================================================
 EOM
 }
