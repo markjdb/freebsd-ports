@@ -315,6 +315,26 @@ ${component}_USE_GNOME_IMPL+=${${subcomponent}_USE_GNOME_IMPL}
 .      endfor
 .    endfor
 
+.  if ${USE_GNOME:Mintrospection\:build} && ${ABI:Mpurecap}
+# CheriABI libffi doesn't currently support closures that are used in GObject
+# introspection, therefore disable this. Note that meson_options typically
+# declares the introspection option as a boolean, but in some cases this is a
+# string value. introspection_MESON_ARG provides a mechansim for the port to
+# specify this option.
+USE_GNOME:=	${USE_GNOME:Nintrospection\:build}
+.    if ${USES:Mmeson}
+introspection_MESON_ARG?=	false
+.    endif
+.  endif
+.  if defined(introspection_MESON_ARG)
+MESON_ARGS+=	-Dintrospection=${introspection_MESON_ARG}
+.    if ${introspection_MESON_ARG} == "false" || ${introspection_MESON_ARG} == "disabled"
+PLIST_SUB+=	GIR="@comment "
+.    else
+PLIST_SUB+=	GIR=""
+.    endif
+.  endif
+
 # Then use already expanded USE_GNOME_IMPL to expand USE_GNOME.
 # Also, check to see if each component has a desktop requirement.  If it does,
 # and if the user's chosen desktop is not of the same version, mark the
@@ -393,23 +413,6 @@ MAKE_ENV+=	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 GNOME_SUBR=		${LOCALBASE}/etc/gnome.subr
 RUN_DEPENDS+=	${GNOME_SUBR}:sysutils/gnome_subr
 SUB_LIST+=		GNOME_SUBR=${GNOME_SUBR}
-.  endif
-
-.  if ${ABI:Mpurecap}
-# CheriABI libffi doesn't currently support closures that are used in GObject
-# introspection, therefore disable this. Note that meson_options typically
-# declares the introspection option as a boolean, but in some cases this is a
-# string value. introspection_MESON_ARG provides a mechansim for the port to
-# specify this option.
-introspection_MESON_ARG?=	false
-.  endif
-.  if defined(introspection_MESON_ARG)
-MESON_ARGS+=	-Dintrospection=${introspection_MESON_ARG}
-.    if ${introspection_MESON_ARG} == "false" || ${introspection_MESON_ARG} == "disabled"
-PLIST_SUB+=	GIR="@comment "
-.    else
-PLIST_SUB+=	GIR=""
-.    endif
 .  endif
 
 .endif

@@ -100,7 +100,6 @@ CONFIGURE_ARGS+=--disable-stack-protector
 # Purecap libffi does not currently support ffi closures required by
 # gobject-introspection.
 CONFIGURE_ARGS+=--disable-introspection
-USE_GNOME:=	${USE_GNOME:Nintrospection\:build}
 .endif
 
 post-patch: avahi-post-patch

@@ -53,10 +53,8 @@ X11_USE=	XORG=x11,xft,xrender
 .include <bsd.port.options.mk>
 
 .if ${ABI:Mpurecap}
-# Purecap libffi does not currently support ffi closures required by
-# gobject-introspection.
+# -Dintrospection should be set to "disabled" when disabling introspection.
 introspection_MESON_ARG=	disabled
-USE_GNOME:=	${USE_GNOME:Nintrospection\:build}
 .endif
 
 pre-configure:
