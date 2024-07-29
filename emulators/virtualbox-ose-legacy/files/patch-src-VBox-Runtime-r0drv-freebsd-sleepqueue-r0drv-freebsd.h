@@ -7,7 +7,7 @@ The patch improves the situation significantly. Also, it (approximately) follows
 what tvtohz does.
 
 Submitted by:	Andriy Gapon <avg@FreeBSD.org>
---- src/VBox/Runtime/r0drv/freebsd/sleepqueue-r0drv-freebsd.h.orig	2020-05-13 19:44:32 UTC
+--- src/VBox/Runtime/r0drv/freebsd/sleepqueue-r0drv-freebsd.h.orig	2020-07-09 16:57:38 UTC
 +++ src/VBox/Runtime/r0drv/freebsd/sleepqueue-r0drv-freebsd.h
 @@ -82,6 +82,8 @@ DECLINLINE(uint32_t) rtR0SemBsdWaitUpdateTimeout(PRTR0
      uint64_t cTicks = ASMMultU64ByU32DivByU32(uTimeout, hz, UINT32_C(1000000000));
@@ -18,3 +18,20 @@ Submitted by:	Andriy Gapon <avg@FreeBSD.org>
      else
          pWait->iTimeout     = (int)cTicks;
  #endif
+@@ -298,10 +300,16 @@ DECLINLINE(void) rtR0SemBsdSignal(void *pvWaitChan)
+ DECLINLINE(void) rtR0SemBsdSignal(void *pvWaitChan)
+ {
+     sleepq_lock(pvWaitChan);
++#if __FreeBSD_version < 1500022
+     int fWakeupSwapProc = sleepq_signal(pvWaitChan, SLEEPQ_CONDVAR, 0, 0);
++#else
++    sleepq_signal(pvWaitChan, SLEEPQ_CONDVAR, 0, 0);
++#endif
+     sleepq_release(pvWaitChan);
++#if __FreeBSD_version < 1500022
+     if (fWakeupSwapProc)
+         kick_proc0();
++#endif
+ }
+ 
+ /**
