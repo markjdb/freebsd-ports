@@ -1,17 +1,19 @@
---- src/util/find_uid.c.orig	2024-05-16 11:35:27 UTC
+--- src/util/find_uid.c.orig	2024-12-05 12:16:16 UTC
 +++ src/util/find_uid.c
-@@ -36,6 +36,10 @@
+@@ -36,6 +36,12 @@
  #include <ctype.h>
  #include <sys/time.h>
  #include <dhash.h>
 +#ifdef __FreeBSD__
 +#include <sys/sysctl.h>
 +#include <sys/user.h>
++#include <kvm.h>
++#include <paths.h>
 +#endif
  
  #include "util/find_uid.h"
  #include "util/util.h"
-@@ -325,9 +329,86 @@ done:
+@@ -325,9 +331,75 @@ done:
      return ret;
  }
  
@@ -20,40 +22,28 @@
 +static errno_t get_active_uid_freebsd(hash_table_t *table, uid_t uid)
  {
 +    struct kinfo_proc *kp;
++    kvm_t *kd;
 +    hash_key_t key;
 +    hash_value_t value;
-+    size_t sz;
-+    int err, mib[3];
++    int cnt, err;
 +
-+    mib[0] = CTL_KERN;
-+    mib[1] = KERN_PROC;
-+    mib[2] = KERN_PROC_PROC;
-+
-+    sz = 0;
-+    err = sysctl(mib, 3, NULL, &sz, NULL, 0);
-+    if (err) {
++    kd = kvm_openfiles(_PATH_DEVNULL, _PATH_DEVNULL, NULL, O_RDONLY, NULL);
++    if (kd == NULL) {
 +        err = errno;
-+        DEBUG(SSSDBG_CRIT_FAILURE, "sysctl failed.\n");
++        DEBUG(SSSDBG_CRIT_FAILURE, "kvm_openfiles failed.\n");
 +        return err;
 +    }
-+    sz *= 2;
 +
-+    kp = talloc_size(NULL, sz);
++    kp = kvm_getprocs(kd, KERN_PROC_PROC, 0, &cnt);
 +    if (kp == NULL) {
-+        DEBUG(SSSDBG_CRIT_FAILURE, "talloc failed.\n");
-+        return ENOMEM;
-+    }
-+
-+    err = sysctl(mib, 3, kp, &sz, NULL, 0);
-+    if (err) {
 +        err = errno;
-+        DEBUG(SSSDBG_CRIT_FAILURE, "sysctl failed.\n");
-+        talloc_free(kp);
++        DEBUG(SSSDBG_CRIT_FAILURE, "kvm_getprocs failed.\n");
++        (void)kvm_close(kd);
 +        return err;
 +    }
 +
 +    err = ENOENT;
-+    for (size_t i = 0; i < sz / sizeof(struct kinfo_proc); i++) {
++    for (int i = 0; i < cnt; i++) {
 +        if (kp[i].ki_uid == 0) {
 +            continue;
 +        }
@@ -78,7 +68,8 @@
 +            }
 +        }
 +    }
-+    talloc_free(kp);
++    free(kp);
++    (void)kvm_close(kd);
 +    return err;
 +}
 +#endif /* __FreeBSD__ */
@@ -99,7 +90,7 @@
      int ret;
  
      ret = hash_create_ex(0, table, 0, 0, 0, 0,
-@@ -339,10 +420,7 @@ errno_t get_uid_table(TALLOC_CTX *mem_ctx, hash_table_
+@@ -339,10 +411,7 @@ errno_t get_uid_table(TALLOC_CTX *mem_ctx, hash_table_
          return ENOMEM;
      }
  
@@ -111,7 +102,7 @@
  }
  
  errno_t check_if_uid_is_active(uid_t uid, bool *result)
-@@ -365,9 +443,9 @@ errno_t check_if_uid_is_active(uid_t uid, bool *result
+@@ -365,9 +434,9 @@ errno_t check_if_uid_is_active(uid_t uid, bool *result
      /* fall back to the old method */
  #endif
  
